@@ -1,3 +1,4 @@
+import {createFlipSprite, flipFrameAt} from './roadster-flip.js';
 import {createRocketSystem} from './rocket.js';
 import {createDirector} from './director.js?v=2.1.0';
 import {types} from './catalog.js?v=2.1.0';
@@ -13,11 +14,14 @@ const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),el
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
 const clock=createClock();
 const photos=createPhotoRenderer();
+const flipSprite=createFlipSprite();
 const environment=createEnvironmentRenderer(), props=createPropRenderer(photos);
 const slapstick=createSlapstick(), projectiles=slapstick.projectiles;
 function updateProjectiles(dt){slapstick.update(dt,S.obs,obstacleDx);}
 function drawProjectiles(){slapstick.draw(ctx,{px,ground,scale});}
-const artReview=new URLSearchParams(location.search).get('review')==='obstacles';
+const reviewMode=new URLSearchParams(location.search).get('review');
+const flipReview=reviewMode==='flip';
+const artReview=reviewMode==='obstacles'||flipReview;
 const S={mode:'menu',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.8,obs:[],particles:[],toast:0,lastCharge:0};
 let best=0;try{best=Number(localStorage.getItem('roadster-best-v1'))||0}catch{}$('best').textContent=String(best).padStart(5,'0');
 let W,H,scale,ground,px,sound=false,audio,sceneTime=0,roadDistance=0;
@@ -134,11 +138,11 @@ let spritesReady=false;
 const atlas=new Image(),extras=new Image(),launchpad=new Image(),cast=new Image();
 $('start').disabled=true;$('start').textContent='ЗАГРУЖАЕМ ВЫРЕЗКИ…';
 const loadSprite=(img,src)=>new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=src});
-Promise.all([loadSprite(atlas,'collage-atlas.png'),loadSprite(extras,'collage-extras.png'),loadSprite(launchpad,'starbase-pad.png'),loadSprite(cast,'paper-cast.png'),photos.load()]).then(()=>{spritesReady=true;$('start').disabled=false;$('start').innerHTML='НАЧАТЬ '+icon('arrow')}).catch(()=>{$('start').textContent='ОБНОВИТЕ СТРАНИЦУ';$('menu').querySelector('p').textContent='Не удалось загрузить графику. Проверьте интернет и обновите страницу.'});
+Promise.all([loadSprite(atlas,'collage-atlas.png'),loadSprite(extras,'collage-extras.png'),loadSprite(launchpad,'starbase-pad.png'),loadSprite(cast,'paper-cast.png'),photos.load(),flipSprite.load()]).then(()=>{spritesReady=true;$('start').disabled=false;$('start').innerHTML='НАЧАТЬ '+icon('arrow')}).catch(()=>{$('start').textContent='ОБНОВИТЕ СТРАНИЦУ';$('menu').querySelector('p').textContent='Не удалось загрузить графику. Проверьте интернет и обновите страницу.'});
 const cutouts={zuckHead:[cast,40,130,340,395],rogozinHead:[cast,425,140,345,390],bezosHead:[cast,805,165,320,365],katyHead:[cast,1145,140,350,435],toyRocket:[cast,270,620,1030,325],head:[atlas,40,40,380,410],roadster:[atlas,475,185,550,180],v8:[atlas,1025,185,510,180],trump:[atlas,90,490,300,505],trumpHead:[atlas,90,490,300,282],truck:[atlas,450,655,635,260],rocket:[atlas,1190,455,195,545],protest:[extras,0,110,890,825],doge:[extras,945,145,585,790]};
 function cutout(key,x,y,w,h,target=ctx){const [img,sx,sy,sw,sh]=cutouts[key];if(!img.complete||!img.naturalWidth)return false;target.drawImage(img,sx*img.naturalWidth/1536,sy*img.naturalHeight/1024,sw*img.naturalWidth/1536,sh*img.naturalHeight/1024,x,y,w,h);return true}
 function paperLimb(points,color,width){line(points,'#282b2d',width+1.3);line(points,color,width)}
-function car(x,y,flip=0){ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(flip)*.12);ctx.scale(1,Math.cos(flip));if(!cutout('roadster',-49,-23,98,34)){rect(-45,-10,90,18,'#eee9db',4)}if(Math.cos(flip)<-.2){ctx.globalAlpha=.72;rect(-30,-4,60,9,'#28333b',3);ctx.globalAlpha=1}ctx.restore()}
+function car(x,y,phase=0){flipSprite.draw(ctx,x,y,phase)}
 const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime}),gestureTarget,obstacleDx,photos});
 const {elon,trumpPose,zuckerberg,rogozin,amber,cameoRider}=characters;
 function boostFlame(x,y){if(B.factor<1.03)return;const intensity=(B.factor-1)/3,len=(65+intensity*140)*(1+Math.sin(sceneTime*47)*.1);ctx.save();ctx.translate(x,y);ctx.globalAlpha=Math.min(1,intensity*3);
@@ -189,7 +193,19 @@ function reviewObstacles() {
     text(type.name,x,y+ch-8,Math.min(10,cw/18),'#bac6bd');
   });
 }
-function render(dt,time){if(artReview){reviewObstacles();return;}background(time);milestoneFireworks();cameoScene();speedStreaks();let demo=S.mode==='menu';let x=px;let ds=scale;let hop=S.y;ellipse(x,ground+5,48*ds,Math.max(2,7-hop*.015)*ds,'#0007');for(const o of S.obs)obstacle(o);drawProjectiles();ctx.save();ctx.translate(x,ground-hop*ds-12*ds);ctx.scale(ds,ds);let phase=S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0;if(demo)phase=0;let gap=S.y>0?Math.sin(phase*Math.PI)*24:0;if(S.y>0){for(let k=0;k<3;k++)line([[-36-k*12,8+gap],[-70-k*20,15+gap]],'#b8f8ff55',2);if(phase<.2||phase>.82){poly([[-30,7],[-41,46+Math.sin(sceneTime*43)*8],[-20,7]],'#d0fcff66');poly([[25,7],[30,36+Math.sin(sceneTime*37)*6],[37,7]],'#d0fcff66')}}boostFlame(-2,gap-4);car(0,gap,phase*Math.PI*2);elon(0,-22-gap*.2,S.y>0,time);if(S.charging){rect(-28,17,56,4,'#45574f',2);rect(-28,17,56*S.charge,4,'#d9ff62',2)};ctx.restore();for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c)}ctx.globalAlpha=1;if(demo){text('ELON / ROCKET RIDER',x,ground+31,8,'#b5c7bd');}}
+function reviewFlip(time) {
+ ctx.fillStyle='#172027';ctx.fillRect(0,0,W,H);
+ text('ROADSTER / VIDEO KICKFLIP — 9 FRAMES',W/2,30,14,'#f4eedf');
+ if(!spritesReady)return;
+ const cw=W/3,ch=(H-160)/3;
+ for(let i=0;i<9;i++){
+  const x=(i%3+.5)*cw,y=60+(Math.floor(i/3)+.5)*ch;
+  flipSprite.drawFrame(ctx,i,x,y,Math.min(cw*.76,ch*1.7,290));
+  text(String(i+1).padStart(2,'0'),x,y+ch*.4,10,'#bac6bd');
+ }
+ flipSprite.draw(ctx,W/2,H-45,(time*.65)%1);
+}
+function render(dt,time){if(flipReview){reviewFlip(performance.now()/1000);return;}if(artReview){reviewObstacles();return;}background(time);milestoneFireworks();cameoScene();speedStreaks();let demo=S.mode==='menu';let x=px;let ds=scale;let hop=S.y;ellipse(x,ground+5,48*ds,Math.max(2,7-hop*.015)*ds,'#0007');for(const o of S.obs)obstacle(o);drawProjectiles();ctx.save();ctx.translate(x,ground-hop*ds-12*ds);ctx.scale(ds,ds);let phase=S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0;if(demo)phase=0;let gap=S.y>0?Math.sin(phase*Math.PI)*24:0;if(S.y>0){for(let k=0;k<3;k++)line([[-36-k*12,8+gap],[-70-k*20,15+gap]],'#b8f8ff55',2);if(phase<.2||phase>.82){poly([[-30,7],[-41,46+Math.sin(sceneTime*43)*8],[-20,7]],'#d0fcff66');poly([[25,7],[30,36+Math.sin(sceneTime*37)*6],[37,7]],'#d0fcff66')}}boostFlame(-2,gap-4);car(0,gap,phase);elon(0,-22-gap*.2,S.y>0,time);if(S.charging){rect(-28,17,56,4,'#45574f',2);rect(-28,17,56*S.charge,4,'#d9ff62',2)};ctx.restore();for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c)}ctx.globalAlpha=1;if(demo){text('ELON / ROCKET RIDER',x,ground+31,8,'#b5c7bd');}}
 let lastHud=0;
 const perf={frames:0,fps:0,meanRenderMs:0,p95RenderMs:0,samples:[],since:0};
 function step(dt){
@@ -223,7 +239,7 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.1.0",time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.2.0",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){

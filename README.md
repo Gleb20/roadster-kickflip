@@ -44,3 +44,7 @@ Simulation rate is independent of display refresh rate. Render resolution is cap
 The original PNG source art remains unchanged. Scenery, props and character bodies are authored Canvas drawings in the same cut-paper palette. All five vehicle obstacles now use generated photographic cutouts. Amber Heard has a generated photographic-style head. Buildings are excluded from the obstacle pool. All celebrity scenes are fictional game parody.
 
 Visual QA: `?review=obstacles` shows the complete obstacle cast using the live painters. This is a read-only contact sheet with no gameplay, editor or extra HTML build.
+
+## Video-derived kickflip v2.2
+
+`src/roadster-flip.js` plays nine normalized transparent frames from Tesla’s Roadster Event (11:26.690–11:29.890). AI-assisted background removal and exposure correction were used; this is retouched video imagery. Frames are selected by jump progress, without rotation, squash or negative scale. Idle and landing share frame 0. Review all poses and the loop at `?review=flip`. Individual PNGs and the runtime atlas are in `assets/roadster-flip/`; original captures are in `art-source/roadster-flip/`. Physics and UI are unchanged.

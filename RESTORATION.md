@@ -20,3 +20,9 @@ All five car obstacles use obstacle-photos.png via src/photo-cutouts.js (proport
 User explicitly authorized publication of the changed code and generated art to Gleb20/roadster-kickflip at 18:25 Moscow. Earlier auto-review blocks were resolved by this authorization. Base: a45122eacb0312419326c783a8ba7c06b586bf60; image blob: e85502981849e5f3e706b4d86753c1856f3a765f.
 
 Six physics tests PASS; changed JavaScript syntax PASS. Local server is unavailable in the sandbox (EPERM). Verify the Pages deployment and ?review=obstacles contact sheet, then normal gameplay and console errors before reporting completion. Versioned imports include director -> catalog -> props so a cached old catalog cannot restore the removed pavilion.
+
+Confirmed publication: commit 75f3617d090011e806212d1296cc2c1a59dbb5f4, Pages workflow 38924043020 completed successfully. Live Chrome contact sheet: all 16 obstacles visible, five photographic vehicles, recognizable Amber head, round paper couch family, no pavilion; no console errors. Live normal game: start/restart, pointer jump and boost verified, screenshot showed the airborne flip with active boost. The keyboard attempt was inconclusive due to button focus; do not report it as verified.
+
+## Video kickflip v2.2
+
+Player car now uses nine video-derived photo poses from the official Tesla Roadster Event. Preserve `src/roadster-flip.js` and `assets/roadster-flip/`; do not restore cosine flattening or runtime sprite rotation. `?review=flip` is the shared-entry art review, not a duplicate HTML build. Source timestamps and AI retouching are documented in assets-provenance.json.

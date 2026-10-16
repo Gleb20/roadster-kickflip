@@ -34,5 +34,33 @@
     ],
     "notes": "Five photorealistic car cutouts and an AI-generated photographic-style Amber Heard head. These are generated images, not documentary photos. Transparent source retained. Sprite cells, alpha-connected-component cleanup and proportional ground anchors are defined in src/photo-cutouts.js. Humans retain paper-cutout bodies; couch faces use round South Park-inspired proportions. Island pavilion removed from obstacle catalog.",
     "promptSummary": "Transparent 3-by-2 atlas: orange Dodge Charger, steel Cybertruck, burgundy Mustang, teal Camaro, tan pickup, recognizable Amber Heard head. Photographic textures, side-on cars facing right, thin warm-white cut edge, no scenery."
+  },
+  "roadsterFlipV22": {
+    "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+    "sourceTitle": "Roadster Event — Tesla",
+    "timestampsSeconds": [
+      686.690082,
+      687.090078,
+      687.490077,
+      687.890075,
+      688.290071,
+      688.690067,
+      689.090063,
+      689.490062,
+      689.890061
+    ],
+    "method": "Nine actual browser video captures; AI-assisted background removal, exposure correction and horizontal mirroring in one sheet; alpha component cleanup and proportional frame normalization. Retouched video-derived assets, not untouched video pixels.",
+    "frames": "assets/roadster-flip/frame-0.png through frame-8.png",
+    "atlas": "assets/roadster-flip/atlas.png",
+    "frameSize": [
+      256,
+      160
+    ],
+    "atlasSize": [
+      768,
+      480
+    ],
+    "anchor": "shared visual centre; 232 px visible car length",
+    "playback": "Nine poses selected from normalized jump time, upright frame at takeoff and landing; no rotation or squash transforms."
   }
 }
