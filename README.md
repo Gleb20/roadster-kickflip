@@ -13,7 +13,7 @@ npm run dev
 npm test
 ```
 
-The server listens at http://127.0.0.1:8766. Publish this directory at the GitHub Pages repository root. Keep the four original PNG atlases at their existing paths.
+The server listens at http://127.0.0.1:8766. Publish this directory at the GitHub Pages repository root. Keep the original PNG atlases and obstacle-photos.png at their existing paths.
 
 ## Code ownership
 
@@ -21,7 +21,8 @@ The server listens at http://127.0.0.1:8766. Publish this directory at the GitHu
 - `src/physics.js`: movement constants, analytic jump, collision bounds and pair clearance.
 - `src/catalog.js`, `src/director.js`: obstacle definitions and progressive waves.
 - `src/characters.js`: complete character silhouettes, animated limbs, shoes and cleaned head sprites.
-- `src/props.js`: cached proportional paper props and vehicles.
+- `src/props.js`: cached paper props and South Park-inspired couch family.
+- `src/photo-cutouts.js`: shared photographic vehicle atlas and Amber head; clean alpha, proportional fitting and ground anchors.
 - `src/environment.js`: cached sky, four parallax layers and asphalt.
 - `src/rocket.js`: original launch, landing and recovery events.
 - `src/slapstick.js`: cosmetic Amber projectile with a bounded path behind the player.
@@ -40,4 +41,6 @@ Simulation rate is independent of display refresh rate. Render resolution is cap
 
 `npm test` covers clock schedules, interruption handling, jump extrema, every obstacle's launch window, trampoline phases and allowed two-obstacle patterns. Browser verification must cover real input, desktop/portrait/landscape, both boosts, taunt/crouch, resize, milestones, console errors and screenshots. Chrome mobile emulation is not a real iPhone performance test.
 
-The original PNG source art remains unchanged. New scenery, props and character poses are authored Canvas drawings in the same cut-paper palette. All celebrity scenes are fictional game parody.
+The original PNG source art remains unchanged. Scenery, props and character bodies are authored Canvas drawings in the same cut-paper palette. All five vehicle obstacles now use generated photographic cutouts. Amber Heard has a generated photographic-style head. Buildings are excluded from the obstacle pool. All celebrity scenes are fictional game parody.
+
+Visual QA: `?review=obstacles` shows the complete obstacle cast using the live painters. This is a read-only contact sheet with no gameplay, editor or extra HTML build.

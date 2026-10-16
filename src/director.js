@@ -1,4 +1,4 @@
-import {types} from './catalog.js';
+import {types} from './catalog.js?v=2.1.0';
 import {clearPair} from './physics.js';
 export function createDirector({S,B,spawnX}){
 const DIRECTOR={wave:0,pending:null,gap:0};

@@ -24,5 +24,15 @@
       "src/slapstick.js"
     ],
     "notes": "Original PNG atlases unchanged. New silhouettes, sneaker shapes, spaceport layers, vehicles, couch, pavilion and fictional comic projectile are code-drawn."
+  },
+  "obstacleStyleV21": {
+    "file": "obstacle-photos.png",
+    "method": "OpenAI image generation",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "notes": "Five photorealistic car cutouts and an AI-generated photographic-style Amber Heard head. These are generated images, not documentary photos. Transparent source retained. Sprite cells, alpha-connected-component cleanup and proportional ground anchors are defined in src/photo-cutouts.js. Humans retain paper-cutout bodies; couch faces use round South Park-inspired proportions. Island pavilion removed from obstacle catalog.",
+    "promptSummary": "Transparent 3-by-2 atlas: orange Dodge Charger, steel Cybertruck, burgundy Mustang, teal Camaro, tan pickup, recognizable Amber Heard head. Photographic textures, side-on cars facing right, thin warm-white cut edge, no scenery."
   }
 }

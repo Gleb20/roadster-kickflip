@@ -1,5 +1,5 @@
 /** Paper characters: one silhouette per figure, reusable render buffers, no DOM/frame allocation. */
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, obstacleDx}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, obstacleDx, photos}) {
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const mix=(a,b,t)=>a+(b-a)*t;
@@ -126,11 +126,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
       const wind=ease(t/.28),release=ease((t-.28)/.12),follow=ease((t-.4)/.6);
       const hx=mix(mix(20,-18,wind),34,release)-follow*14,hy=mix(mix(-29,-77,wind),-60,release)+follow*31;
       limb(c,[[13,-48],[mix(22,27,release),mix(-44,-51,wind)],[hx,hy]],SKIN,6);hand(c,hx,hy,1,0,0,.6);
-      poly(c,[[-22,-82],[-16,-91],[-3,-94],[13,-90],[21,-80],[22,-51],[14,-49],[-18,-51],[-24,-62]],'#c5a05b');
-      oval(c,-1,-72,18,20,SKIN,INK);poly(c,[[-21,-80],[-15,-91],[-3,-94],[13,-90],[20,-82],[6,-87],[-5,-80],[-18,-76]],'#e2bd70');
-      oval(c,-8,-74,6.8,8,'#fff9ed',INK);oval(c,5,-75,6.6,8,'#fff9ed',INK);oval(c,-10,-74,1.9,2.5,'#466a78');oval(c,3,-75,1.9,2.5,'#466a78');
-      line(c,[[-15,-84],[-7,-85]],'#876135',1);line(c,[[2,-85],[10,-84]],'#876135',1);line(c,[[-2,-72],[-4,-65],[0,-65]],'#bd8c67',.8);line(c,[[-8,-60],[-1,-58],[7,-61]],'#983f44',1.5);
-      line(c,[[15,-85],[19,-65],[16,-54]],'#efcd84',1.4);line(c,[[-20,-74],[-19,-56]],'#efcd84',1.2);
+      photos.draw(c,'amberHead',-25,-94,50,56);
     },`amber:${frame}`);
   }
   function cameoRider(headKey,x,y,color,katy=false){
