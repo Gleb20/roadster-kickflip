@@ -1,6 +1,23 @@
-/** Paper characters: one silhouette per figure, reusable render buffers, no DOM/frame allocation. */
+/** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
+// A compact raised forearm; the middle finger always stays upright in screen space.
+export function raisedArm(shoulder,upper,lower,side){
+  const angle=Math.atan2(-.55,side*Math.sqrt(1-.55**2));
+  const reach=(upper+lower)*.72,bend=Math.acos((upper*upper+reach*reach-lower*lower)/(2*upper*reach));
+  const elbow={x:shoulder.x+upper*Math.cos(angle+side*bend),y:shoulder.y+upper*Math.sin(angle+side*bend)};
+  const wrist={x:shoulder.x+reach*Math.cos(angle),y:shoulder.y+reach*Math.sin(angle)};
+  return {elbow,wrist};
+}
+export function uprightWristAngle(parentAngle,side,strength){
+  const limit=Math.PI/12;
+  return Math.max(-limit,Math.min(limit,side*Math.PI/18*strength))-parentAngle;
+}
+export function pupilOffset(target,eye,rx,ry){
+  const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
+  return {x:dx/distance*rx,y:dy/distance*ry};
+}
 export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, obstacleDx, photos}) {
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
+  const companyX=new Path2D('M18.244 2.25h3.308l-7.227 8.26L22.828 21.75h-6.657l-5.214-6.817L4.992 21.75H1.682l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z');
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
   const mix=(a,b,t)=>a+(b-a)*t;
   const ease=t=>{t=clamp(t);return t*t*(3-2*t)};
@@ -54,6 +71,62 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
     c.putImageData(pixels,0,0);const head={image,left,top,w:right-left+1,h:bottom-top+1};heads.set(key,head);return head;
   }
   function head(c,key,x,y,w,h){const a=cleanHead(key);if(a&&a.w>0)c.drawImage(a.image,a.left,a.top,a.w,a.h,x,y,w,h);else oval(c,x+w/2,y+h/2,w*.48,h*.48,SKIN,INK)}
+  const faceBases=new Map();
+  function faceBase(c,key){
+    if(!faceBases.has(key)){
+      if(!cleanHead(key))return;
+      const image=canvas(key==='head'?136:96,key==='head'?156:86),b=image.getContext('2d');
+      if(key==='head'){
+        b.scale(2,2);b.translate(33,74);head(b,key,-33,-74,68,78);
+        // Opaque replacement: original eyes, brows and smile never show through.
+        b.beginPath();b.moveTo(-19,-52);b.bezierCurveTo(-12,-62,16,-64,25,-54);
+        b.bezierCurveTo(30,-43,33,-16,25,-7);b.bezierCurveTo(12,5,-10,1,-20,-12);
+        b.bezierCurveTo(-24,-24,-24,-42,-19,-52);b.closePath();b.fillStyle='#f3c99a';b.fill();
+      }else{
+        b.scale(2,2);b.translate(24,94);head(b,key,-24,-94,48,43);
+        b.beginPath();b.moveTo(-16,-78);b.bezierCurveTo(-11,-81,5,-79,9,-75);
+        b.bezierCurveTo(15,-68,11,-56,3,-54);b.bezierCurveTo(-9,-52,-20,-60,-18,-69);
+        b.closePath();b.fillStyle='#efba83';b.fill();
+      }
+      faceBases.set(key,image);
+    }
+    const hero=key==='head';c.drawImage(faceBases.get(key),hero?-33:-24,hero?-74:-94,hero?68:48,hero?78:43);
+  }
+  function eyes(c,centres,target,rx,ry){
+    for(const [x,y] of centres){
+      oval(c,x,y,rx,ry,'#fff9ed',INK);
+      const pupil=pupilOffset(target,{x,y},rx*.48,ry*.46);
+      oval(c,x+pupil.x,y+pupil.y,rx*.23,ry*.27,INK);
+    }
+  }
+  function heroHead(c,boosted,target,angry){
+    if(!boosted&&!target){head(c,'head',-33,-74,68,78);return;}
+    faceBase(c,'head');
+    eyes(c,[[-7,-33],[13,-34]],target||{x:65,y:-25},9,11);
+    line(c,[[-16,-49+angry*4],[-1,-50+angry*11]],'#66503d',2.5);
+    line(c,[[5,-50+angry*11],[22,-49+angry*3]],'#66503d',2.5);
+    line(c,[[3,-29],[1,-23],[5,-22]],'#b48660',1);
+    if(angry>.1){
+      line(c,[[-7,-10],[1,-13],[12,-12],[18,-8]],INK,1.5);
+    }else{
+      oval(c,7,-11,6.5,8,'#49332e');oval(c,8,-7,3,2,'#d88978');
+    }
+  }
+  function donnyHead(c,target,angry){
+    if(!target||angry<=.01){head(c,'trumpHead',-24,-94,48,43);return;}
+    faceBase(c,'trumpHead');
+    eyes(c,[[-10,-71],[2,-70]],target,5.3,5.8);
+    line(c,[[-16,-80],[-5,-75]],'#967040',2);
+    line(c,[[0,-75],[9,-78]],'#967040',2);
+    line(c,[[-5,-68],[-7,-63],[-3,-63]],'#b48660',.8);
+    line(c,[[-11,-57],[-6,-60],[0,-59],[4,-56]],INK,1.1);
+  }
+  function localPoint(c,point,s){
+    return c.getTransform().inverse().transformPoint({x:(point.x+s.ox)*R,y:(point.y+s.oy)*R});
+  }
+  function unrotate(point,angle){
+    return {x:point.x*Math.cos(angle)+point.y*Math.sin(angle),y:point.y*Math.cos(angle)-point.x*Math.sin(angle)};
+  }
   function sneaker(c,x,y,side,size=1,color='#e9e5da'){
     c.save();c.translate(x,y);c.scale(side*size,size);
     // The ankle ends inside the padded collar, above a closed sole.
@@ -62,35 +135,46 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
     line(c,[[-3,-8],[4,-6],[0,-5],[6,-3]],'#fbf7eb',1.3);
     line(c,[[-5,-3],[1,-1],[9,-3]],'#414d50',1.4);c.restore();
   }
-  function hand(c,x,y,side,taunt=0,wave=0,size=1){
-    c.save();c.translate(x,y);c.scale(side*size,size);
+  function hand(c,x,y,side,taunt=0,wave=0,size=1,angle=0){
+    c.save();c.translate(x,y);c.rotate(angle);c.scale(side*size,size);
     // A single palm; fingers deform with the same arm, never overlay a second limb.
     oval(c,0,0,5.3,6.1,SKIN,INK);
-    line(c,[[-2,-3],[-1,-6-15*taunt-5*wave]],INK,3.8);line(c,[[-2,-3],[-1,-6-15*taunt-5*wave]],SKIN,2.4);
-    for(let i=0;i<3;i++){const fx=-4+i*3;line(c,[[fx,-2],[fx+(i-1)*wave*2,-4-8*wave]],SKIN,2.1)}
+    if(taunt>.001){
+      line(c,[[0,-3],[0,-6-8*taunt]],INK,3.8);line(c,[[0,-3],[0,-6-8*taunt]],SKIN,2.4);
+      // Folded fingers and a tucked thumb make the raised middle finger legible.
+      for(const fx of [-3,0,3])oval(c,fx,-1,1.4,2.1,SKIN,'#ba8b68');
+      line(c,[[4,0],[2,2],[-1,2]],'#ba8b68',.8);
+    }else{
+      line(c,[[-2,-3],[-1,-6-5*wave]],INK,3.8);line(c,[[-2,-3],[-1,-6-5*wave]],SKIN,2.4);
+      for(let i=0;i<3;i++){const fx=-4+i*3;line(c,[[fx,-2],[fx+(i-1)*wave*2,-4-8*wave]],SKIN,2.1)}
+    }
     line(c,[[2,1],[3,4]],'#ba8b68',.65);c.restore();
   }
   const motion={last:NaN,taunt:0,wave:0,facing:0};
   function elon(x,y,air,pose=0){
-    const {S,B,CAMEO,sceneTime}=getState(),target=CAMEO.active?null:gestureTarget();
+    const {S,B,CAMEO,sceneTime,heroY}=getState(),target=CAMEO.active?null:gestureTarget();
     const dt=Number.isFinite(motion.last)?clamp(sceneTime-motion.last,0,.1):1/60;motion.last=sceneTime;
-    const a=1-Math.exp(-dt*15),facing=target?Math.sign(obstacleDx(target)+target.w/2)||1:0;
-    motion.taunt=mix(motion.taunt,target?1:0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
+    const dx=target?obstacleDx(target)+target.w/2:0;
+    const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
+    motion.taunt=mix(motion.taunt,target?ease((300-Math.abs(dx))/100):0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
     const crouch=S.charging?(.3+.7*S.charge):0,drop=27*crouch,thrust=clamp((B.factor-1)/3),taunt=motion.taunt,wave=motion.wave;
-    ctx.save();ctx.translate(x,y);ctx.rotate((air?-.085:Math.sin(pose*4)*.012)-thrust*.24);
+    const tilt=(air?-.085:Math.sin(pose*4)*.012)-thrust*.24;
+    const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
+    ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
       for(const side of [-1,1]){limb(c,[[side*11,-43+drop],[side*(23+15*crouch),-25-(air?10:0)+drop*.5],[side*25,-6]],side<0?'#343b43':'#42464c',14);sneaker(c,side*25,-1,side,1,'#e8e7dc')}
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
       poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],'#252a2d');
-      line(c,[[-7,-78],[8,-61]],'#f9f4e5',2.2);line(c,[[8,-78],[-7,-61]],'#f9f4e5',2.2);
+      c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
         const normalY=air?-92:-65+10*crouch,armWave=side===1?wave:0;
-        let ex=mix(side*34,side*39,taunt),ey=mix(-65,-72,taunt),hx=mix(side*44,side*47,taunt),hy=mix(normalY,-104,taunt);
+        const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
+        let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
         ex=mix(ex,side*39,armWave);ey=mix(ey,-98,armWave);hx=mix(hx,side*(46+5*Math.sin(sceneTime*7)),armWave);hy=mix(hy,-117,armWave);
-        limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);hand(c,hx,hy,side,taunt*(1-armWave),armWave);
+        const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
+        limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);hand(c,hx,hy,side,k*(1-armWave),armWave,1,wristAngle);
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));head(c,'head',-33,-74,68,78);
-      if(thrust>.025){c.globalAlpha=clamp(thrust*4);oval(c,-7,-33,9,11,'#fff9ed',INK);oval(c,13,-34,9,11,'#fff9ed',INK);oval(c,-4,-32,2,3,INK);oval(c,16,-33,2,3,INK);line(c,[[-16,-48],[-5,-51]],'#66503d',2);line(c,[[7,-51],[20,-48]],'#66503d',2);oval(c,7,-12,5+thrust*2,6+thrust*3,'#49332e');oval(c,8,-8,3,2,'#d88978');c.globalAlpha=1}
+      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt);
       c.restore();c.restore();
     });ctx.restore();
   }
@@ -99,11 +183,18 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
     poly(c,[[-18,-55],[17,-55],[21,-24],[-20,-24]],color);
   }
   function trumpPose(o,bob=0){
-    const dx=obstacleDx(o)+o.w/2,side=dx>=0?-1:1,t=ease((240-Math.abs(dx))/70),frame=Math.round(t*16),blend=frame/16;
+    const {S,CAMEO,heroY}=getState(),dx=obstacleDx(o)+o.w/2,side=dx>=0?-1:1;
+    const blend=CAMEO.active?0:ease((300-Math.abs(dx))/100);
+    const crouch=S.charging?(.3+.7*S.charge):0;
+    const target=blend>0?unrotate({x:-dx,y:heroY-125+27*crouch},bob*.008):null;
     drawFigure(humanSurface,c=>{body(c,'#25374e','#1d293c');poly(c,[[-7,-54],[7,-54],[0,-29]],'#f2eddf');poly(c,[[0,-53],[4,-48],[2,-25],[-2,-29],[-3,-48]],'#bc3536');
-      for(const s of [-1,1]){const k=s===side?blend:0,ex=mix(s*23,s*28,k),ey=mix(-39,-42,k),hx=mix(s*25,s*34,k),hy=mix(-25,-64,k);limb(c,[[s*17,-48],[ex,ey],[hx,hy]],'#25374e',7);hand(c,hx,hy,s,k,0,.67)}
-      head(c,'trumpHead',-24,-94,48,43);
-    },`trump:${side}:${frame}`);
+      for(const s of [-1,1]){
+        const k=target&&s===side?blend:0,arm=k?raisedArm({x:s*17,y:-48},15,15,s):null;
+        const ex=mix(s*23,arm?.elbow.x??s*23,k),ey=mix(-39,arm?.elbow.y??-39,k),hx=mix(s*25,arm?.wrist.x??s*25,k),hy=mix(-25,arm?.wrist.y??-25,k);
+        limb(c,[[s*17,-48],[ex,ey],[hx,hy]],'#25374e',7);hand(c,hx,hy,s,k,0,.67,k?uprightWristAngle(bob*.008,s,k):0);
+      }
+      donnyHead(c,target,blend);
+    },target?null:'trump:idle');
   }
   function zuckerberg(){drawFigure(humanSurface,c=>{body(c,'#7e8587','#40566b');for(const s of [-1,1]){limb(c,[[s*17,-48],[s*23,-27]],'#7e8587',7);hand(c,s*23,-25,s,0,0,.6)}head(c,'zuckHead',-23,-94,46,43)},'zuck')}
   function rogozinBounce(){return 20*Math.abs(Math.sin(getState().sceneTime*3.8))}

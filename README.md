@@ -2,6 +2,8 @@
 
 Canonical game: https://gleb20.github.io/roadster-kickflip/
 
+Release 2.3.2: muted spaceport effects, nine-frame kickflip, rolling wheels and suspension, upright mutual taunts, tracking pupils and the X shirt logo. See [release checks](docs/releases/2026-10-16-v2.3.2.md).
+
 An online Canvas 2D game with native JavaScript ES modules and a DOM UI. No runtime framework, CDN dependency, bundler or generated standalone HTML copies. The small `index.html` is the web entry point; all logic lives in `src/`.
 
 ## Development
@@ -24,7 +26,8 @@ The server listens at http://127.0.0.1:8766. Publish this directory at the GitHu
 - `src/props.js`: cached paper props and South Park-inspired couch family.
 - `src/photo-cutouts.js`: shared photographic vehicle atlas and Amber head; clean alpha, proportional fitting and ground anchors.
 - `src/environment.js`: cached sky, four parallax layers and asphalt.
-- `src/rocket.js`: original launch, landing and recovery events.
+- `src/rocket.js`: slow midground spaceport passage, launch/landing and recovery director.
+- `src/spaceport-sprites.js`: single shared sprite atlas for hardware, exhaust, smoke, dust and explosions.
 - `src/slapstick.js`: cosmetic Amber projectile with a bounded path behind the player.
 - `src/main.js`: input, lifecycle, boost, score, composition and HUD integration.
 - `style.css`: shared interface tokens, responsive layout and controls.
@@ -48,3 +51,20 @@ Visual QA: `?review=obstacles` shows the complete obstacle cast using the live p
 ## Video-derived kickflip v2.2
 
 `src/roadster-flip.js` plays nine normalized transparent frames from Tesla’s Roadster Event (11:26.690–11:29.890). AI-assisted background removal and exposure correction were used; this is retouched video imagery. Frames are selected by jump progress, without rotation, squash or negative scale. Idle and landing share frame 0. Review all poses and the loop at `?review=flip`. Individual PNGs and the runtime atlas are in `assets/roadster-flip/`; original captures are in `art-source/roadster-flip/`. Physics and UI are unchanged.
+
+## Spaceport and face v2.3
+
+Boost swaps a cached full face with an opaque facial replacement; there is no translucent feature overlay. Spaceport art is graded once and rendered behind the near hangars. Launch and landing last 14 seconds each; a passing site persists through events, with a capped parallax rate during boost. Failure recovers through a 5-second smoke event and a 12-second crawler delivery. Review the actual painters at `?review=spaceport`.
+
+## Mutual taunt and gaze v2.3.2
+
+Elon and Donny use only the hand nearest their opponent. Fixed-length arm bones lift a compact forearm; the middle finger points up while the other fingers fold into the palm. Its angle stays within ±15° of screen vertical (normally ±10°), compensating for body lean during boost and crouch. Within 300 logical units, both faces turn angry and both pairs of pupils track the opponent in two dimensions through approach, jump and departure. The boost face uses the same opaque cached base, so no original eyes or mouth show through. The cameo wave keeps priority. Active Donny poses are rendered dynamically so a cached ground pose cannot freeze his gaze during a jump. Elon's shirt retains the company X logo.
+
+`npm test` includes arm-length, upright-finger and pupil-bound regressions. Optional rendered verification: start `npm run dev`, then run `node scripts/verify-characters.cjs` using an existing Playwright installation (`PLAYWRIGHT_MODULE` and `CHROMIUM_EXECUTABLE_PATH` can select local tooling). It measures finger angles after the final screen transform. Release checks and limits are recorded in [the release note](docs/releases/2026-10-16-v2.3.2.md).
+
+
+## Rolling Roadster and rocket verification v2.3.2
+
+The upright car is anchored at the measured tyre contact line of frame 0. Its photographed tyres and original rims are cached as separate layers; rim exposure is raised once for readability, and rotation follows speed in the fixed simulation step. A damped cosmetic spring lowers the body and Elon under jump charge, releases at takeoff, and compresses on landing. Tyres remain on the road while grounded. The nine airborne poses, jump physics and collision bounds are preserved; the old vertical jet polygons at takeoff/landing are removed. Pause freezes both wheels and suspension.
+
+Rocket launch, landing, failures and crawler replacement use the existing muted midground atlas. Detonation now uses the exact ascent/descent altitude, eliminating a position jump. Full integrated cycles are verified with accelerated 120 Hz steps and regular rendering in Chromium. `scripts/verify-roadster.cjs` also exercises real charge/release, landing response, pause/resume, boost, wheel pixels and tyre contact at desktop/portrait/landscape sizes. See [release checks and rollback](docs/releases/2026-10-16-v2.3.2.md). Physical-device acceptance remains unverified.

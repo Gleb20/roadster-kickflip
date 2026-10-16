@@ -61,6 +61,17 @@
       480
     ],
     "anchor": "shared visual centre; 232 px visible car length",
-    "playback": "Nine poses selected from normalized jump time, upright frame at takeoff and landing; no rotation or squash transforms."
+    "playback": "Nine poses selected from normalized jump time, upright frame at takeoff and landing; no rotation or squash transforms.",
+    "rollingLayers": "Runtime Canvas caches split the original upright frame into body, photographed tyres and circular original rims. Rim exposure is doubled once for readability; no replacement wheel art. Contact baseline 112.5 of 160 source pixels; damped cosmetic body suspension, wheel rotation from simulated speed."
+  },
+  "spaceportV23": {
+    "file": "assets/spaceport/spaceport-atlas.png",
+    "method": "OpenAI image generation",
+    "sourceDimensions": [
+      1280,
+      1280
+    ],
+    "notes": "One transparent 16-cell atlas: rocket, pad, hangar, crawler, 4 exhaust, 4 dust/smoke, 4 explosion frames. Shared blue-gray paper palette, atmosphere tint cached at load. No foreground sticker border.",
+    "promptSummary": "Muted cut-paper night spaceport, slate smoke, terracotta/amber engine and explosion, 4 by 4 transparent atlas; no labels or scenery background."
   }
 }

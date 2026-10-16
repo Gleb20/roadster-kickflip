@@ -239,8 +239,8 @@ export function createEnvironmentRenderer() {
           ctx.restore();
         }
       }
-      tile(ctx, layers.buildings, W, ground - 29 - 130 * zoom, zoom, distance * .095);
       if (rocketScene) rocketScene();
+      tile(ctx, layers.buildings, W, ground - 29 - 130 * zoom, zoom, distance * .095);
       tile(ctx, layers.verge, W, ground - 48 * zoom, zoom, distance * .18);
       tile(ctx, road, W, ground + 2, 1, distance);
       line(ctx, [[0, ground], [W, ground]], '#7d978b', 1.6);

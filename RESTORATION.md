@@ -26,3 +26,10 @@ Confirmed publication: commit 75f3617d090011e806212d1296cc2c1a59dbb5f4, Pages wo
 ## Video kickflip v2.2
 
 Player car now uses nine video-derived photo poses from the official Tesla Roadster Event. Preserve `src/roadster-flip.js` and `assets/roadster-flip/`; do not restore cosine flattening or runtime sprite rotation. `?review=flip` is the shared-entry art review, not a duplicate HTML build. Source timestamps and AI retouching are documented in assets-provenance.json.
+
+
+## Combined release 2.3.2 — 2026-10-16
+
+This release adds the muted spaceport sprite system and whole facial replacement, rolling Roadster wheels and suspension, upright one-hand taunts with a 15-degree screen-space limit, dynamic mutual pupils and the white X shirt logo. Nine video-derived flip frames remain unchanged. Rocket failure transitions preserve altitude.
+
+The release is assembled from a frozen local snapshot against parent `331a970a2c3256856fbc3fe3fe287eea7584de37`, with expected-head protection. See [the release record](docs/releases/2026-10-16-v2.3.2.md) for validation, limits and rollback. Historical local chat exports, migration archives and machine-specific handoffs remain outside the public game release.
