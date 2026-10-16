@@ -1,4 +1,4 @@
-import {loading} from './loading.js?v=2.4.3';
+import {loading} from './loading.js?v=2.4.4';
 import {createThrusterEffects} from './thrusters.js?v=2.4.1';
 import {createSound} from './sound.js?v=2.4.1';
 import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.1';
@@ -10,7 +10,7 @@ import {START_SPEED, MAX_SPEED, START_KMH, MAX_KMH, RAMP_SECONDS, JUMP_SPEED, GR
 import {createSlapstick} from './slapstick.js';
 import {createClock} from './clock.js';
 import {createEnvironmentRenderer} from './environment.js?v=2.4.1';
-import {createCharacterRenderer} from './characters.js?v=2.4.1';
+import {createCharacterRenderer} from './characters.js?v=2.4.4';
 import {createPropRenderer} from './props.js?v=2.1.0';
 import {createPhotoRenderer} from './photo-cutouts.js';
 const elements=new Map();
@@ -170,7 +170,7 @@ function ellipse(x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx
 function line(p,c,w=2){ctx.beginPath();p.forEach((v,i)=>i?ctx.lineTo(...v):ctx.moveTo(...v));ctx.strokeStyle=c;ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke()}
 function text(t,x,y,size,c,align='center'){ctx.fillStyle=c;ctx.font=`bold ${size}px Arial`;ctx.textAlign=align;ctx.fillText(t,x,y)}
 let spritesReady=false;
-const atlas=new Image(),extras=new Image(),cast=new Image();
+const atlas=new Image(),extras=new Image(),cast=new Image(),joeSprite=new Image();
 $('start').disabled=true;$('start').textContent='LOADING CUTOUTS…';
 const loadSprite=async(img,src)=>{img.src=src;await img.decode();};
 loading.load([
@@ -179,6 +179,7 @@ loading.load([
   {name:'scene extras',load:()=>loadSprite(extras,'collage-extras.png')},
   {name:'spaceport / VFX',load:()=>spaceportSprites.load()},
   {name:'paper cast',load:()=>loadSprite(cast,'paper-cast.png')},
+  {name:'Joe / podcast cutout',load:()=>loadSprite(joeSprite,'assets/characters/joe-rogan.png')},
   {name:'photo cutouts',load:()=>photos.load()},
   {name:'kickflip / 9 poses',load:()=>flipSprite.load()},
 ]).then(ready=>{
@@ -194,7 +195,7 @@ const cutouts={zuckHead:[cast,40,130,340,395],rogozinHead:[cast,425,140,345,390]
 function cutout(key,x,y,w,h,target=ctx){const [img,sx,sy,sw,sh]=cutouts[key];if(!img.complete||!img.naturalWidth)return false;target.drawImage(img,sx*img.naturalWidth/1536,sy*img.naturalHeight/1024,sw*img.naturalWidth/1536,sh*img.naturalHeight/1024,x,y,w,h);return true}
 function paperLimb(points,color,width){line(points,'#282b2d',width+1.3);line(points,color,width)}
 function car(x,y,phase=0){flipSprite.draw(ctx,x,y,phase,roadsterMotion)}
-const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,heroY:playerPose().y}),gestureTarget,joeTarget,obstacleDx,photos});
+const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,heroY:playerPose().y}),gestureTarget,joeTarget,obstacleDx,photos,joeSprite});
 const {elon,trumpPose,zuckerberg,rogozin,amber,joe,cameoRider}=characters;
 function boostFlame(x,y){if(B.factor<1.03)return;const intensity=(B.factor-1)/3,len=(65+intensity*140)*(1+Math.sin(sceneTime*47)*.1);ctx.save();ctx.translate(x,y);ctx.globalAlpha=Math.min(1,intensity*3);
 ctx.save();ctx.scale(1,.32);const glow=ctx.createRadialGradient(-50,0,1,-50,0,len);glow.addColorStop(0,B.level===2?'#ca82ff65':'#73eaff65');glow.addColorStop(1,'#68dfff00');ctx.fillStyle=glow;ctx.fillRect(-50-len,-len,2*len,2*len);ctx.restore();
@@ -332,7 +333,7 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.4.3",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.4.4",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){

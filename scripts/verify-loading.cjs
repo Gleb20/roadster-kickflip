@@ -19,8 +19,8 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
   await p.route('**/*.png',r=>new Promise(resolve=>pending.push({url:r.request().url(),release:async()=>{await r.continue();resolve();}})));
   await p.goto(base,{waitUntil:'domcontentloaded'});
   await p.waitForFunction(()=>typeof render_game_to_text==='function');
-  for(let i=0;i<100&&pending.length<6;i++)await p.waitForTimeout(30);
-  assert.equal(pending.length,6);
+  for(let i=0;i<100&&pending.length<7;i++)await p.waitForTimeout(30);
+  assert.equal(pending.length,7);
   assert.equal(await p.locator('#game').getAttribute('inert'),'');
   await p.keyboard.press('Space');
   assert.equal(await p.evaluate(()=>JSON.parse(render_game_to_text()).mode),'menu');
@@ -29,8 +29,8 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
    const seen=new Set(),begin=performance.now();function tick(){seen.add(document.querySelector('.loader-pose.is-active').dataset.pose);if(performance.now()-begin>2900)resolve([...seen]);else requestAnimationFrame(tick)}tick();
   }));assert.equal(poses.length,9);
   await pending[0].release();await p.waitForFunction(()=>document.querySelector('#loading-progress').value===2);
-  assert.equal(await p.locator('.loader-segment.is-filled').count(),17);
-  assert.equal(await p.locator('#loading-percent').textContent(),'28%');
+  assert.equal(await p.locator('.loader-segment.is-filled').count(),15);
+  assert.equal(await p.locator('#loading-percent').textContent(),'25%');
   for(const [name,width,height] of [['desktop',1440,900],['portrait',390,740],['small-portrait',320,568],['landscape',844,390]]){
    await p.setViewportSize({width,height});await p.waitForTimeout(160);
    const fits=await p.locator('.loader-console').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight});assert.equal(fits,true,name);
@@ -43,16 +43,16 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
    const style=document.createElement('style');style.textContent='#contact .loader-ink {animation:none;stroke-dashoffset:0} #contact .loader-base {opacity:0} #contact svg {width:320px;margin:auto}';grid.append(style);
    for(let i=0;i<9;i++){const svg=document.querySelector('.loader-instrument').cloneNode(true);svg.querySelectorAll('.loader-pose').forEach(el=>el.classList.toggle('is-active',el.dataset.pose===String(i)));grid.append(svg)}document.body.append(grid);
   });await p.screenshot({path:resolve(out,'nine-vector-poses.png')});await p.evaluate(()=>document.getElementById('contact').remove());
-  for(let i=1;i<5;i++){await pending[i].release();await p.waitForFunction(n=>document.querySelector('#loading-progress').value===n,i+2);}
-  assert.equal(await p.locator('#loading-percent').textContent(),'85%');assert.equal(await p.locator('#loading-screen').isVisible(),true);
-  await pending[5].release();await ready(p);
+  for(let i=1;i<6;i++){await pending[i].release();await p.waitForFunction(n=>document.querySelector('#loading-progress').value===n,i+2);}
+  assert.equal(await p.locator('#loading-percent').textContent(),'87%');assert.equal(await p.locator('#loading-screen').isVisible(),true);
+  await pending[6].release();await ready(p);
   assert.equal(await p.locator('#loading-percent').textContent(),'100%');assert.equal(await p.locator('.loader-segment.is-filled').count(),60);
   await p.setViewportSize({width:390,height:740});await p.screenshot({path:resolve(out,'ready.png')});
   await p.click('#start');await p.evaluate(()=>{__qa.S.next=1e9;__qa.S.obs=[]});
   await p.keyboard.down('Space');await p.waitForTimeout(160);await p.keyboard.up('Space');await p.waitForFunction(()=>__qa.S.y>20);
   await p.click('#pause');assert.equal(await p.evaluate(()=>JSON.parse(render_game_to_text()).mode),'paused');await p.click('#resume');
   await p.click('#boost');assert.equal(await p.evaluate(()=>JSON.parse(render_game_to_text()).boost.state),'active');
-  results.push({scenario:'stylesheet + six independently released decoded assets',poses:poses.sort(),progress:[0,14,28,42,57,71,85,100],viewports:4,realInput:'start / charge / jump / pause / resume / boost'});await p.close();
+  results.push({scenario:'stylesheet + seven independently released decoded assets',poses:poses.sort(),progress:[0,12,25,37,50,62,75,87,100],viewports:4,realInput:'start / charge / jump / pause / resume / boost'});await p.close();
 
   // A resource failure stays visible, and the native retry reloads successfully.
   const failed=await page();failed.expectedNetworkFailure=true;await failed.route('**/paper-cast.png',r=>r.fulfill({status:503,body:'unavailable'}));

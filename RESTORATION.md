@@ -33,3 +33,10 @@ Player car now uses nine video-derived photo poses from the official Tesla Roads
 This release adds the muted spaceport sprite system and whole facial replacement, rolling Roadster wheels and suspension, upright one-hand taunts with a 15-degree screen-space limit, dynamic mutual pupils and the white X shirt logo. Nine video-derived flip frames remain unchanged. Rocket failure transitions preserve altitude.
 
 The release is assembled from a frozen local snapshot against parent `331a970a2c3256856fbc3fe3fe287eea7584de37`, with expected-head protection. See [the release record](docs/releases/2026-10-16-v2.3.2.md) for validation, limits and rollback. Historical local chat exports, migration archives and machine-specific handoffs remain outside the public game release.
+
+
+## Joe Rogan visual v2.4.4 — 16 October 2026
+
+A generated transparent full-body South Park-style Joe replaces the procedural head/body/mic. Photo references: JRE #1169 for pink shirt, bald head and podcast equipment; supplemental smiling face reference is explicitly an editorial composite. No reference photo pixels are shipped. Source, exact built-in imagegen prompt and provenance are retained under art-source/joe-rogan/ and assets-provenance.json.
+
+The intact headphones and separate boom mic are part of the sprite; a warm smile and gaze face Elon by mirroring after passing. The direct draw bypasses the cropped shared human buffer, with 94px visible height and the existing collision box. Eight material tasks gate startup, including decoded Joe art. Cache-busted entry/module chain and updated browser harnesses preserve loader and first-face guarantees. See [verification](docs/releases/2026-10-16-v2.4.4.md). Publication remains pending verification.

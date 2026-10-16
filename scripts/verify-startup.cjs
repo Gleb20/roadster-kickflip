@@ -40,23 +40,23 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
      new MutationObserver(()=>{if(!start.disabled&&!__startupProbe.startEnabled)__startupProbe.startEnabled={headPrepared:__startupProbe.headCopies.length>0,completeHeroDrawn:!!__startupProbe.firstHero};}).observe(start,{attributes:true,attributeFilter:['disabled']});
     });
    });
-   await p.goto(base,{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.__headDownloadComplete&&document.querySelector('#loading-progress').value===6);
+   await p.goto(base,{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.__headDownloadComplete&&document.querySelector('#loading-progress').value===7);
    await p.waitForTimeout(700);
-   assert.equal(await p.locator('#loading-percent').textContent(),'85%');assert.equal(await p.locator('#start').isDisabled(),true);assert.equal(await p.locator('#game').getAttribute('inert'),'');
+   assert.equal(await p.locator('#loading-percent').textContent(),'87%');assert.equal(await p.locator('#start').isDisabled(),true);assert.equal(await p.locator('#game').getAttribute('inert'),'');
    assert.equal(await p.evaluate(()=>__startupProbe.headCopies.length),0);assert.equal(await p.evaluate(()=>__startupProbe.firstHero),null);
    await p.screenshot({path:resolve(out,name+'-waiting-for-face.png')});
    await p.evaluate(()=>__releaseHeadDecode());await p.waitForFunction(()=>document.querySelector('#loading-screen').hidden);
    const probe=await p.evaluate(()=>__startupProbe);
    assert.deepEqual(probe.firstHero,{headPrepared:true,loaderVisible:true});assert.deepEqual(probe.startEnabled,{headPrepared:true,completeHeroDrawn:true});
    assert.equal(probe.headCopies[0].decoded,true);assert.ok(probe.headCopies[0].visible>3000);assert.ok(probe.headCopies[0].dark>100);assert.ok(probe.headCopies[0].skin>1000);
-   const state=await p.evaluate(()=>JSON.parse(render_game_to_text()));assert.equal(state.version,'2.4.3');
+   const state=await p.evaluate(()=>JSON.parse(render_game_to_text()));assert.equal(state.version,'2.4.4');
    await p.screenshot({path:resolve(out,name+'-first-complete-scene.png')});
    if(name==='portrait')await p.screenshot({path:resolve(out,'face-detail.png'),clip:{x:50,y:470,width:90,height:140},scale:'css'});
    await p.locator('#start').tap();await p.locator('#boost').tap();await p.waitForFunction(()=>JSON.parse(render_game_to_text()).boost.factor>1.5);
    await p.screenshot({path:resolve(out,name+'-boost-face.png')});
    await p.touchscreen.tap(viewport.width*.55,viewport.height*.45);await p.waitForFunction(()=>JSON.parse(render_game_to_text()).y>20);
    await p.locator('#pause').tap();assert.equal(await p.evaluate(()=>JSON.parse(render_game_to_text()).mode),'paused');await p.locator('#resume').tap();
-   results.push({viewport:name,held:'decoded collage atlas only',progressWhileHeld:85,probe,realInput:'start / boost / jump / pause / resume',productionQA:await p.evaluate(()=>typeof window.__qa)});
+   results.push({viewport:name,held:'decoded collage atlas only',progressWhileHeld:87,probe,realInput:'start / boost / jump / pause / resume',productionQA:await p.evaluate(()=>typeof window.__qa)});
    await context.close();
   }
   // A failed first-frame face preparation must never expose a partial game.

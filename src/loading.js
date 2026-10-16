@@ -117,7 +117,7 @@ export const loading = {
 function materialsFromCache() {
   const resources = performance.getEntriesByType('resource').filter(entry =>
     entry.initiatorType === 'img' || entry.name === stylesheet.href);
-  return resources.length >= 7 && resources.every(entry =>
+  return resources.length >= 8 && resources.every(entry =>
     entry.transferSize === 0 && entry.decodedBodySize > 0);
 }
 function show() {
@@ -157,4 +157,4 @@ logTimer = setInterval(() => {
 }, 340);
 
 // Start the tiny vector instrument before requesting the game's module graph.
-import('./main.js?v=2.4.3').catch(fail);
+import('./main.js?v=2.4.4').catch(fail);

@@ -16,7 +16,7 @@ const out=resolve(process.argv[2]||'/tmp/tesla-v24-review');mkdirSync(out,{recur
   });
   async function load(query=''){
    await page.goto((process.env.GAME_BASE_URL||'http://127.0.0.1:8766/')+query);
-   await page.waitForFunction(()=>!document.querySelector('#start').disabled);
+   await page.waitForFunction(()=>document.querySelector('#loading-screen').hidden&&!document.querySelector('#start').disabled);
    assert.equal(await page.evaluate(()=>JSON.parse(render_game_to_text()).version),process.env.GAME_VERSION||require('../package.json').version);
   }
   async function noRussian(){assert.equal(await page.evaluate(()=>/[А-Яа-яЁё]/.test(document.body.textContent+Array.from(document.querySelectorAll('[aria-label]')).map(n=>n.ariaLabel).join(''))),false)}

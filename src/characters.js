@@ -16,7 +16,7 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, photos}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, photos, joeSprite}) {
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
   const companyX=new Path2D('M18.244 2.25h3.308l-7.227 8.26L22.828 21.75h-6.657l-5.214-6.817L4.992 21.75H1.682l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z');
@@ -254,25 +254,14 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     },target?null:'trump:idle');
   }
   function joe(o){
+    // The generated silhouette includes the entire headband and separate boom mic.
+    // Draw directly: the old 102px human buffer clipped the top of Joe's head.
     const dx=obstacleDx(o)+o.w/2;
-    drawFigure(humanSurface,c=>{
-      body(c,'#373d3f','#334553');
-      // Bald head, heavy brows, headphones and the podcast mic are paper cutouts.
-      oval(c,0,-72,23,24,'#dca97f',INK);
-      oval(c,-5,-77,15,15,'#e8b68b');
-      for(const x of [-9,9]){
-        oval(c,x,-71,5.5,3.5,'#fbf2df',INK);
-        const p=pupilOffset({x:-dx,y:-70},{x,y:-71},2,1.3);
-        oval(c,x+p.x,-71+p.y,1.6,1.9,INK);
-        line(c,[[x-5,-78],[x+4,-79]],'#66513d',2.5);
-      }
-      line(c,[[0,-70],[-3,-64],[3,-63]],'#9e7256',1.2);
-      line(c,[[-8,-57],[0,-55],[8,-57]],INK,1.4);
-      c.beginPath();c.ellipse(0,-76,25,23,0,Math.PI,Math.PI*2);c.strokeStyle=INK;c.lineWidth=4;c.stroke();
-      for(const side of [-1,1]){oval(c,side*23,-72,5,10,'#252a2d');limb(c,[[side*17,-48],[side*27,-36],[side*22,-30]],'#373d3f',7);hand(c,side*22,-29,side,0,0,.6);}
-      line(c,[[-34,-3],[-34,-35],[-16,-51]],'#171d22',3);
-      oval(c,-12,-53,6,10,'#22292e',PAPER);
-    });
+    ctx.save();
+    ctx.scale(dx<0?-1:1,1); // Keep the smile and gaze toward Elon after passing.
+    // Source alpha bounds map to 94px tall, shoes and stand on the road.
+    ctx.drawImage(joeSprite,-41.5,-98.8,68.5,102.75);
+    ctx.restore();
   }
   function zuckerberg(){drawFigure(humanSurface,c=>{body(c,'#7e8587','#40566b');for(const s of [-1,1]){limb(c,[[s*17,-48],[s*23,-27]],'#7e8587',7);hand(c,s*23,-25,s,0,0,.6)}head(c,'zuckHead',-23,-94,46,43)},'zuck')}
   function rogozinBounce(){return 20*Math.abs(Math.sin(getState().sceneTime*3.8))}

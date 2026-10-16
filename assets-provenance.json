@@ -98,5 +98,32 @@
     ],
     "notes": "Inline SVG only, no raster art or external font at boot. Three line weights; nine existing poses use shared flipFrameAt timing over a 2.7-second loop. Wheel ellipses are schematic construction guides. Thruster console messages are decorative fictional telemetry; progress counts seven real readiness tasks (stylesheet and six decoded/baked image sets).",
     "presentationV243": "180ms appearance grace, 220ms fade in, minimum 3 seconds on first uncached successful visit. Actual Resource Timing identifies cached image/style responses; successful-visit storage only controls repeat intro. Cached/quick starts skip the instrument; readiness and full face preparation always gate reveal."
+  },
+  "joeRoganV244": {
+    "method": "Built-in OpenAI imagegen, transparent original full-body South Park-style caricature, not a documentary photograph",
+    "file": "assets/characters/joe-rogan.png",
+    "original": "art-source/joe-rogan/generated-source.png",
+    "prompt": "art-source/joe-rogan/prompt.txt",
+    "sourceDimensions": [
+      1024,
+      1536
+    ],
+    "runtimeDimensions": [
+      512,
+      768
+    ],
+    "normalization": "sips proportional resize only; generated RGBA alpha preserved",
+    "references": [
+      {
+        "url": "https://www.youtube.com/watch?v=ycPr5-27vSI",
+        "image": "https://img.youtube.com/vi/ycPr5-27vSI/sddefault.jpg",
+        "role": "JRE #1169: Joe at left, pink shirt, bald head, headphones and microphone"
+      },
+      {
+        "url": "https://www.thestreet.com/technology/elon-musk-reveals-his-greatest-feat-about-artificial-intelligence-and-joe-rogan-agrees-",
+        "role": "Supplemental smiling Joe face at right; editorial composite, not a verified frame from the podcast"
+      }
+    ],
+    "notes": "New generated face, full body, intact headphones, separate floor boom mic, warm toothy smile and left gaze. Entire cutout mirrors toward Elon after passing; 94px visible height and original collision box preserved. Runtime bypasses the cropped human buffer. Eight material tasks include this decoded sprite. Reference photo pixels are not shipped."
   }
 }

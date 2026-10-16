@@ -1,5 +1,7 @@
 # Roadster / Kickflip
 
+**2.4.4 candidate**: recognizable smiling Joe with intact headphones, separate podcast mic and full transparent body; [sources, verification and rollback](docs/releases/2026-10-16-v2.4.4.md).
+
 Canonical game: https://gleb20.github.io/roadster-kickflip/
 
 Release 2.3.2: muted spaceport effects, nine-frame kickflip, rolling wheels and suspension, upright mutual taunts, tracking pupils and the X shirt logo. See [release checks](docs/releases/2026-10-16-v2.3.2.md).
