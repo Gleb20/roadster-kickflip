@@ -1,13 +1,14 @@
-import {createSpaceportSprites} from './spaceport-sprites.js?v=2.3.0';
-import {createFlipSprite, flipFrameAt, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=2.3.2';
-import {createRocketSystem} from './rocket.js?v=2.3.2';
-import {createDirector} from './director.js?v=2.1.0';
-import {types} from './catalog.js?v=2.1.0';
+import {createSound} from './sound.js?v=2.4.0';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.0';
+import {createFlipSprite, flipFrameAt, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=2.4.0';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=2.4.0';
+import {createDirector} from './director.js?v=2.4.0';
+import {types} from './catalog.js?v=2.4.0';
 import {START_SPEED, MAX_SPEED, START_KMH, MAX_KMH, RAMP_SECONDS, JUMP_SPEED, GRAVITY, CHARGE_SECONDS, jumpHeight, hitsObstacle} from './physics.js';
 import {createSlapstick} from './slapstick.js';
 import {createClock} from './clock.js';
 import {createEnvironmentRenderer} from './environment.js?v=2.3.0';
-import {createCharacterRenderer} from './characters.js?v=2.3.2';
+import {createCharacterRenderer} from './characters.js?v=2.4.0';
 import {createPropRenderer} from './props.js?v=2.1.0';
 import {createPhotoRenderer} from './photo-cutouts.js';
 const elements=new Map();
@@ -28,7 +29,7 @@ const spaceportReview=reviewMode==='spaceport';
 const artReview=reviewMode==='obstacles'||flipReview||spaceportReview;
 const S={mode:'menu',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.8,obs:[],particles:[],toast:0,lastCharge:0};
 let best=0;try{best=Number(localStorage.getItem('roadster-best-v1'))||0}catch{}$('best').textContent=String(best).padStart(5,'0');
-let W,H,scale,ground,px,sound=false,audio,sceneTime=0,roadDistance=0;
+let W,H,scale,ground,px,sceneTime=0,roadDistance=0;
 let learnedJump=false;try{learnedJump=localStorage.getItem('roadster-charge-learned-v1')==='1'}catch{}
 
 Object.assign(S,{charging:false,charge:0,launchSpeed:JUMP_SPEED});
@@ -44,8 +45,8 @@ $('boost-ring').style.strokeDashoffset=String(289*(1-(active?B.left/B.duration:M
 $('boost-overcharge').style.strokeDashoffset=String(239*(1-(active?0:Math.max(0,B.charge-1))));
 $('boost-title').textContent=superReady||(active&&B.level===2)?'BOOST X2':'BOOST';
 $('boost-time').textContent=active?B.left.toFixed(1)+'s':ready?(superReady?'+300%':'+146%'):Math.ceil((1-B.charge)*30)+'s';
-$('boost-note').textContent=active?'РАСХОД':superReady?'МАКСИМУМ':ready?'X2 ЧЕРЕЗ '+Math.ceil((2-B.charge)*30)+'s':'ЗАРЯДКА';
-el.setAttribute('aria-label',active?'Буст активен':ready?(superReady?'Буст X2: плюс 300 процентов на 7 секунд':'Буст: плюс 146 процентов на 5 секунд'):'Буст заряжается');}
+$('boost-note').textContent=active?'ACTIVE':superReady?'MAX POWER':ready?'X2 IN '+Math.ceil((2-B.charge)*30)+'s':'CHARGING';
+el.setAttribute('aria-label',active?'Boost active':ready?(superReady?'Boost X2: 300 percent extra speed for 7 seconds':'Boost: 146 percent extra speed for 5 seconds'):'Boost recharging');}
 function updateBoost(dt){let rest=dt;if(B.state==='active'){const used=Math.min(rest,B.left);B.left=Math.max(0,B.left-used);rest-=used;if(B.left<1e-8){B.left=0;B.state='charging'}}
 if(B.state!=='active'){B.charge=Math.min(2,B.charge+rest/30);B.state=B.charge>=2?'super':B.charge>=1?'ready':'charging'}
 const target=B.state==='active'?(B.level===2?4:2.46):1,old=B.factor;
@@ -57,6 +58,11 @@ function obstacleDx(o){return(o.x-px/scale)/B.factor}
 function gestureTarget(){
  let nearest=null,distance=300;
  for(const o of S.obs){const dx=Math.abs(obstacleDx(o)+o.w/2);if(o.id==='trump'&&dx<distance){nearest=o;distance=dx;}}
+ return nearest;
+}
+function joeTarget(){
+ let nearest=null,distance=650;
+ for(const o of S.obs){const dx=obstacleDx(o)+o.w/2;if(o.id==='joe'&&dx<650&&dx>-480&&Math.abs(dx)<distance){nearest=o;distance=Math.abs(dx);}}
  return nearest;
 }
 function playerPose(){
@@ -79,9 +85,17 @@ function resize(){
   clock.reset();
 }
 addEventListener('resize',resize);resize();
-function tone(f,d=.1,type='sine',v=.04){if(!sound)return;try{audio??=new(window.AudioContext||window.webkitAudioContext)();audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(f,audio.currentTime);o.frequency.exponentialRampToValueAtTime(f*.5,audio.currentTime+d);g.gain.setValueAtTime(v,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d)}catch{}}
+const sound=createSound();
+const tone=(...args)=>sound.tone(...args);
+function soundUI(){
+  const enabled=sound.enabled,button=$('sound');
+  button.innerHTML=icon('sound')+'<span>SOUND '+(enabled?'ON':'OFF')+'</span>';
+  button.setAttribute('aria-label',enabled?'Turn sound off':'Turn sound on');
+  button.setAttribute('aria-pressed',String(enabled));
+}
+soundUI();
 function ui(){for(let [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);$('jump').classList.toggle('hidden',S.mode!=='playing'||learnedJump);$('pause').style.visibility=['playing','paused'].includes(S.mode)?'visible':'hidden';boostUI()}
-function start(){if(!spritesReady||artReview)return;cancelCharge();Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.7,obs:[],particles:[],toast:0,charging:false,charge:0,launchSpeed:JUMP_SPEED,lastCharge:0});resetBoost();Object.assign(roadsterMotion,createRoadsterMotion());director.reset();Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();$('toast').textContent='';$('score').textContent='00000';$('status').textContent='0 M / '+START_KMH+' KM/H';projectiles.length=0;clock.reset();ui();tone(500)}
+function start(){if(!spritesReady||artReview)return;sound.unlock();cancelCharge();Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.7,obs:[],particles:[],toast:0,charging:false,charge:0,launchSpeed:JUMP_SPEED,lastCharge:0});resetBoost();Object.assign(roadsterMotion,createRoadsterMotion());director.reset();Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();$('toast').textContent='';$('score').textContent='00000';$('status').textContent='0 M / '+START_KMH+' KM/H';projectiles.length=0;clock.reset();ui();tone(500)}
 function cancelCharge(){S.charging=false;S.charge=0;activePointer=null;activeKey=null}
 function beginCharge(){if(S.mode!=='playing'||S.y>0||S.charging)return false;S.charging=true;S.charge=0;return true}
 function jump(){if(S.mode!=='playing'||S.y>0){cancelCharge();return}const power=S.charge;S.lastCharge=power;cancelCharge();S.launchSpeed=JUMP_SPEED+60*power;S.vy=S.launchSpeed;S.y=.01;S.jumpTime=0;S.flips++;learnedJump=true;$('jump').classList.add('hidden');try{localStorage.setItem('roadster-charge-learned-v1','1')}catch{}S.bonus+=10;burst(px,ground-8,14+Math.round(power*8),'#c9f9ff');tone(660+power*150,.18,'triangle')}
@@ -94,7 +108,7 @@ addEventListener('pointerup',e=>{if(e.pointerId!==activePointer)return;e.prevent
 addEventListener('pointercancel',e=>{if(e.pointerId===activePointer)cancelCharge()});
 $('game').addEventListener('lostpointercapture',e=>{if(e.pointerId===activePointer)cancelCharge()});
 for(const event of ['selectstart','dragstart','contextmenu'])$('game').addEventListener(event,e=>e.preventDefault());
-$('sound').onclick=()=>{sound=!sound;$('sound').innerHTML=icon('sound')+'<span>'+(sound?'ON':'OFF')+'</span>';$('sound').setAttribute('aria-label',sound?'Выключить звук':'Включить звук');tone(600)};
+$('sound').onclick=()=>{sound.toggle();soundUI();tone(600)};
 addEventListener('keydown',e=>{if(['KeyB','ShiftLeft','ShiftRight'].includes(e.code)&&!e.repeat){e.preventDefault();activateBoost();return}if(['Space','ArrowUp','KeyW'].includes(e.code)){e.preventDefault();if(e.repeat)return;if(S.mode==='menu'||S.mode==='dead'){start();return}if(activePointer===null&&activeKey===null&&beginCharge())activeKey=e.code}if((e.code==='Escape'||e.code==='KeyP')&&!e.repeat)pause()});
 addEventListener('keyup',e=>{if(e.code!==activeKey)return;e.preventDefault();releaseCharge()});
 addEventListener('blur',()=>{if(S.mode==='playing')pause();else cancelCharge()});
@@ -103,7 +117,7 @@ function burst(x,y,n,c){for(let i=0;i<n;i++)S.particles.push({x,y,vx:(Math.rando
 
 
 const director=createDirector({S,B,spawnX:()=>px/scale+(W/scale+120-px/scale)*B.factor});
-function die(o){cancelCharge();S.score=Math.floor(S.distance/20)+S.bonus;S.mode='dead';tone(90,.35,'sawtooth');burst(px,ground-S.y*scale,24,'#ff835e');const record=S.score>best;if(record){best=S.score;try{localStorage.setItem('roadster-best-v1',best)}catch{}}$('best').textContent=String(best).padStart(5,'0');$('finalScore').textContent=S.score;$('flips').textContent=S.flips;$('reason').textContent='На пути оказался '+o.name+'. Ещё один запуск?';$('endlabel').textContent=record?'НОВЫЙ ЛИЧНЫЙ РЕКОРД!':'НЕ ВСЁ ВЗЛЕТАЕТ.';$('toast').textContent='';ui()}
+function die(o){cancelCharge();S.score=Math.floor(S.distance/20)+S.bonus;S.mode='dead';tone(90,.35,'sawtooth');burst(px,ground-S.y*scale,24,'#ff835e');const record=S.score>best;if(record){best=S.score;try{localStorage.setItem('roadster-best-v1',best)}catch{}}$('best').textContent=String(best).padStart(5,'0');$('finalScore').textContent=S.score;$('flips').textContent=S.flips;$('reason').textContent='You hit '+o.name+'. Ready for another launch?';$('endlabel').textContent=record?'NEW PERSONAL BEST!':'NOT EVERYTHING TAKES OFF.';$('toast').textContent='';ui()}
 function update(dt) {
   if (S.mode !== 'playing') return;
   S.t += dt;
@@ -141,7 +155,7 @@ function update(dt) {
       tone(920, .12);
     }
   }
-  S.obs = S.obs.filter(o => obstacleDx(o) + px / scale + o.w > -100);
+  S.obs = S.obs.filter(o => o.id==='joe' ? obstacleDx(o)+o.w/2>-480 : obstacleDx(o) + px / scale + o.w > -100);
   if (S.toast > 0) { S.toast -= dt; if (S.toast <= 0) $('toast').textContent = ''; }
   S.score = Math.floor(S.distance / 20) + S.bonus;
 }
@@ -152,20 +166,20 @@ function line(p,c,w=2){ctx.beginPath();p.forEach((v,i)=>i?ctx.lineTo(...v):ctx.m
 function text(t,x,y,size,c,align='center'){ctx.fillStyle=c;ctx.font=`bold ${size}px Arial`;ctx.textAlign=align;ctx.fillText(t,x,y)}
 let spritesReady=false;
 const atlas=new Image(),extras=new Image(),cast=new Image();
-$('start').disabled=true;$('start').textContent='ЗАГРУЖАЕМ ВЫРЕЗКИ…';
+$('start').disabled=true;$('start').textContent='LOADING CUTOUTS…';
 const loadSprite=(img,src)=>new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=src});
-Promise.all([loadSprite(atlas,'collage-atlas.png'),loadSprite(extras,'collage-extras.png'),spaceportSprites.load(),loadSprite(cast,'paper-cast.png'),photos.load(),flipSprite.load()]).then(()=>{spritesReady=true;$('start').disabled=false;$('start').innerHTML='НАЧАТЬ '+icon('arrow')}).catch(()=>{$('start').textContent='ОБНОВИТЕ СТРАНИЦУ';$('menu').querySelector('p').textContent='Не удалось загрузить графику. Проверьте интернет и обновите страницу.'});
+Promise.all([loadSprite(atlas,'collage-atlas.png'),loadSprite(extras,'collage-extras.png'),spaceportSprites.load(),loadSprite(cast,'paper-cast.png'),photos.load(),flipSprite.load()]).then(()=>{spritesReady=true;$('start').disabled=false;$('start').innerHTML='LET’S GO '+icon('arrow')}).catch(()=>{$('start').textContent='RELOAD TO RETRY';$('menu').querySelector('p').textContent='The artwork could not load. Check your connection and reload to retry.'});
 const cutouts={zuckHead:[cast,40,130,340,395],rogozinHead:[cast,425,140,345,390],bezosHead:[cast,805,165,320,365],katyHead:[cast,1145,140,350,435],toyRocket:[cast,270,620,1030,325],head:[atlas,40,40,380,410],roadster:[atlas,475,185,550,180],v8:[atlas,1025,185,510,180],trump:[atlas,90,490,300,505],trumpHead:[atlas,90,490,300,282],truck:[atlas,450,655,635,260],rocket:[atlas,1190,455,195,545],protest:[extras,0,110,890,825],doge:[extras,945,145,585,790]};
 function cutout(key,x,y,w,h,target=ctx){const [img,sx,sy,sw,sh]=cutouts[key];if(!img.complete||!img.naturalWidth)return false;target.drawImage(img,sx*img.naturalWidth/1536,sy*img.naturalHeight/1024,sw*img.naturalWidth/1536,sh*img.naturalHeight/1024,x,y,w,h);return true}
 function paperLimb(points,color,width){line(points,'#282b2d',width+1.3);line(points,color,width)}
 function car(x,y,phase=0){flipSprite.draw(ctx,x,y,phase,roadsterMotion)}
-const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,heroY:playerPose().y}),gestureTarget,obstacleDx,photos});
-const {elon,trumpPose,zuckerberg,rogozin,amber,cameoRider}=characters;
+const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,heroY:playerPose().y}),gestureTarget,joeTarget,obstacleDx,photos});
+const {elon,trumpPose,zuckerberg,rogozin,amber,joe,cameoRider}=characters;
 function boostFlame(x,y){if(B.factor<1.03)return;const intensity=(B.factor-1)/3,len=(65+intensity*140)*(1+Math.sin(sceneTime*47)*.1);ctx.save();ctx.translate(x,y);ctx.globalAlpha=Math.min(1,intensity*3);
 ctx.save();ctx.scale(1,.32);const glow=ctx.createRadialGradient(-50,0,1,-50,0,len);glow.addColorStop(0,B.level===2?'#ca82ff65':'#73eaff65');glow.addColorStop(1,'#68dfff00');ctx.fillStyle=glow;ctx.fillRect(-50-len,-len,2*len,2*len);ctx.restore();
 poly([[-43,-9],[-70,-15],[-len*.8,-6],[-len-45,0],[-len*.7,7],[-72,13],[-43,6]],B.level===2?'#ad77ff':'#59dfff');poly([[-46,-5],[-83,-7],[-len*.75-20,0],[-80,7],[-46,4]],'#fff1ab');poly([[-44,-3],[-105,0],[-44,3]],'#fffdf1');for(let i=0;i<5;i++){const progress=(sceneTime*(1.9+i*.08)+i*.19)%1;line([[-65-progress*len,i%2?12:-12],[-75-progress*len,i%2?12:-12]],'#adf3ff',1.5)}ctx.restore()}
 function speedStreaks(){if(B.factor<1.05)return;ctx.save();ctx.globalAlpha=Math.min(.55,(B.factor-1)*.2);for(let i=0;i<18;i++){const y=H*.25+(i*83)%(H*.6),x=W-((sceneTime*(500+B.factor*160)+i*137)%(W+300));line([[x,y],[x+30+B.factor*18,y]],B.level===2?'#d3a2ef':'#a0e6ed',i%3?1:2)}ctx.restore()}
-function drawObstacleArt(o,bob=0){return (o.id==='amber'?amber(o):o.id==='rogozin'?rogozin(o):o.id==='zuck'?zuckerberg():o.id==='trump'?trumpPose(o,bob):photos.has(o.id)?photos.drawGround(ctx,o.id,o.w,o.h):cutouts[o.id]?cutout(o.id,-o.w/2,-o.h+bob,o.w,o.h):props.draw(ctx,o.id,o.w,o.h));}
+function drawObstacleArt(o,bob=0){return (o.id==='joe'?joe(o):o.id==='amber'?amber(o):o.id==='rogozin'?rogozin(o):o.id==='zuck'?zuckerberg():o.id==='trump'?trumpPose(o,bob):photos.has(o.id)?photos.drawGround(ctx,o.id,o.w,o.h):cutouts[o.id]?cutout(o.id,-o.w/2,-o.h+bob,o.w,o.h):props.draw(ctx,o.id,o.w,o.h));}
 function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground);ctx.scale(scale,scale);const bob=['trump','protest','doge'].includes(o.id)?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);text(o.name,0,18,8,'#a9b3aa');ctx.restore()}
 
 const CAMEO={active:false,t:0,nextScore:5000,milestone:0};
@@ -187,7 +201,7 @@ function cameoScene(){if(!CAMEO.active)return;const t=CAMEO.t,k=Math.min(scale,.
  // Foreground bent legs make the seated, straddling pose readable.
  for(const rx of [-15,38])paperLimb([[rx,-6],[rx-24,4],[rx-20,36]],'#37618d',11);
  paperLimb([[21,-25],[5,-13],[-27,-14]],'#3768a1',8);ellipse(-27,-14,5,5,'#edbc90');
- if(t>2&&t<9){rect(-155,-153,310,36,'#f5eee2',5);poly([[-18,-118],[-6,-108],[0,-118]],'#f5eee2');text('ИЛОН, '+CAMEO.milestone.toLocaleString('ru-RU')+'! ПОЗДРАВЛЯЮ!',0,-130,12,'#25374e')}
+ if(t>2&&t<9){rect(-155,-153,310,36,'#f5eee2',5);poly([[-18,-118],[-6,-108],[0,-118]],'#f5eee2');text('ELON, '+CAMEO.milestone.toLocaleString('en-US')+'! CONGRATS!',0,-130,12,'#25374e')}
  ctx.restore();
 }
 
@@ -199,7 +213,7 @@ function background(){environment.draw(ctx,{W,H,ground,scale,roadDistance,sceneT
 function reviewObstacles() {
   ctx.fillStyle='#172027';ctx.fillRect(0,0,W,H);
   text('ROADSTER / OBSTACLE CAST',W/2,35,16,'#f4eedf');
-  if(!spritesReady){text('ЗАГРУЗКА',W/2,H/2,14,'#f4eedf');return;}
+  if(!spritesReady){text('LOADING',W/2,H/2,14,'#f4eedf');return;}
   const cols=W<700?2:4,rows=Math.ceil(types.length/cols),cw=W/cols,ch=(H-65)/rows;
   types.forEach((type,i)=>{
     const x=(i%cols+.5)*cw,y=65+Math.floor(i/cols)*ch;
@@ -228,9 +242,9 @@ function reviewSpaceport(){
  const states=[['launch',3],['launch',7],['landing',12],['ready',1],['explosion',.5],['explosion',2.8]];
  const cw=W/3,ch=(H-220)/2;
  states.forEach(([phase,t],i)=>{
-   const col=i%3,row=Math.floor(i/3),x=(col+.5)*cw,y=70+(row+1)*ch;
+   const col=i%3,row=Math.floor(i/3),x=(col+.5)*cw,y=50+(row+1)*ch;
    ctx.save();ctx.beginPath();ctx.rect(col*cw,45+row*ch,cw,ch);ctx.clip();
-   ctx.translate(x-W*.5,y-(ground-94));rocket.draw({...R,phase,t,kind:'landing',pass:0,crashLift:.01},W*.5);ctx.restore();
+   ctx.translate(x-W*.5,y-spaceportLayout({H,ground}).base);rocket.draw({...R,phase,t,kind:'landing',pass:0,crashLift:.01},W*.5);ctx.restore();
    text(phase+' / '+t+'s',x,y+15,10,'#a9bbb9');
  });
  const saved={...B};
@@ -294,12 +308,12 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.3.2",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.4.0",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){
   window.__qa={S,B,CAMEO,types,start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,activateBoost,pause,
     setTime(t){S.t=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
     spawn(id,dx=260){const type=types.find(o=>o.id===id);S.obs.push({...type,x:px/scale+dx*B.factor,passed:false});},
-    rocket,roadsterMotion,stop(){S.mode='paused';ui();},projectiles,characters};
+    rocket,roadsterMotion,stop(){S.mode='paused';ui();},projectiles,characters,sound};
 }

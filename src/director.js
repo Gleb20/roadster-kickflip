@@ -1,4 +1,4 @@
-import {types} from './catalog.js?v=2.1.0';
+import {types} from './catalog.js?v=2.4.0';
 import {clearPair} from './physics.js';
 export function createDirector({S,B,spawnX}){
 const DIRECTOR={wave:0,pending:null,gap:0};
@@ -21,7 +21,7 @@ function spawn(){
   }
  }
  if(!a){
-  const solo=types.filter(o=>o.id!=='rogozin'&&(stage>0||o.h<=90));
+  const solo=types.filter(o=>o.id!=='rogozin'&&(stage>0||o.h<=90||o.id==='joe'));
   a=S.t>=45&&Math.random()<(stage>=4?.13:stage>=2?.085:.055)?types.find(o=>o.id==='rogozin'):solo[Math.floor(Math.random()*solo.length)];
  }
  if(a.id==='rogozin'){gap=Math.max(gap,2.18);b=null}

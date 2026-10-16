@@ -7,6 +7,17 @@ export function rocketLift(phase,t) {
   if(phase==='landing')return Math.pow(1-clamp01(t/ROCKET_TIMING.landing),2);
   return 0;
 }
+// Tower leans away before ignition, then closes after a successful touchdown.
+export function towerRetraction(phase,t,kind='launch'){
+  if(phase==='launch')return ease(t/1.6);
+  if(phase==='ready')return kind==='landing'?1-ease(t/2.4):0;
+  if(phase==='delivery')return 1-ease((t-8.5)/3.5);
+  return 1;
+}
+export function spaceportLayout({H,ground}){
+  const zoom=Math.max(.58,Math.min(.9,H/950));
+  return {zoom,base:ground-35*zoom,h:112*zoom};
+}
 export function createRocketState(){return {phase:'ready',t:0,next:10,fail:false,crashLift:0,kind:'launch',events:0,pass:0};}
 // Pure fixed-step event director; failure leaves an empty pad until replacement arrives.
 export function advanceRocket(R,dt,now,random=Math.random){
@@ -33,10 +44,10 @@ export function createRocketSystem({ctx,sprites,tone,view,time}){
     const {speed=360}=view();R.pass=(R.pass+dt*.006*Math.min(1.7,Math.max(.7,speed/540)))%1;
   }
   function draw(state=R,anchor){
-    const {W,H,ground}=view(),zoom=Math.max(.66,Math.min(1,H/760));
+    const {W,H,ground}=view(),{zoom,base,h}=spaceportLayout({H,ground});
     const span=W+660*zoom;
     const rx=anchor??(W*.78-state.pass*span+330*zoom+span)%span-330*zoom;
-    const base=ground-94*zoom,h=123*zoom,t=state.t,phase=state.phase,travel=base+h;
+    const t=state.t,phase=state.phase,travel=base+h;
     const sprite=(i,x,y,w,hh,ay=1,alpha=1)=>sprites.draw(ctx,i,x,y,w,hh,ay,alpha);
     const body=(x,y,angle=0,alpha=1)=>{ctx.save();ctx.translate(x,y);ctx.rotate(angle);sprite(0,0,0,h*120/301,h,1,alpha);ctx.restore();};
     const smoke=(x,y,age,alpha=1,size=1)=>{const frame=Math.min(3,Math.floor(age*.8));sprite(8+frame,x,y,156*zoom*size,89*zoom*size,1,alpha*.55);};
@@ -44,8 +55,13 @@ export function createRocketSystem({ctx,sprites,tone,view,time}){
     const glow=(x,y,r,alpha)=>{ctx.save();ctx.globalAlpha*=alpha;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,'#cb9c63');g.addColorStop(1,'#cb9c6300');ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);ctx.restore();};
     ctx.save();ctx.globalAlpha*=.64;
     // Pad, rocket, hangar and effects share the same color grade and depth plane.
-    sprite(2,rx-147*zoom,base+17*zoom,150*zoom,94*zoom,1,.65);
-    sprite(1,rx+57*zoom,base+19*zoom,160*zoom,158*zoom);
+    sprite(2,rx-106*zoom,base+8*zoom,103*zoom,65*zoom,1,.65);
+    // Fixed pad and moving tower share one ground plane with the rocket.
+    sprite(17,rx+21*zoom,base+8*zoom,137*zoom,15*zoom);
+    ctx.save();ctx.translate(rx+48*zoom,base-6*zoom);
+    ctx.rotate(towerRetraction(phase,t,state.kind)*.21);
+    sprite(16,-27*zoom,0,137*zoom,121*zoom);
+    ctx.restore();
     const lift=rocketLift(phase,t)*travel;
     if(phase==='launch'||phase==='landing'){
       // Persistent segmented smoke trail uses the same smoke frames, with a hard cap.

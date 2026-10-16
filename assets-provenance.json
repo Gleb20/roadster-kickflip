@@ -73,5 +73,14 @@
     ],
     "notes": "One transparent 16-cell atlas: rocket, pad, hangar, crawler, 4 exhaust, 4 dust/smoke, 4 explosion frames. Shared blue-gray paper palette, atmosphere tint cached at load. No foreground sticker border.",
     "promptSummary": "Muted cut-paper night spaceport, slate smoke, terracotta/amber engine and explosion, 4 by 4 transparent atlas; no labels or scenery background."
+  },
+  "memeScenesV24": {
+    "method": "Authored Canvas vector caricatures",
+    "files": [
+      "src/characters.js",
+      "src/encounter.js"
+    ],
+    "references": "Two user-provided visual references: Impossibru expression and Elon podcast reaction. References remain private; no attachment pixels are shipped.",
+    "notes": "Original paper Joe Rogan caricature with headphones and microphone. Fictional approach/inhale/reaction/departure choreography. Boost face uses opaque cached skin with vector squint, brows and grimace. No new raster assets."
   }
 }

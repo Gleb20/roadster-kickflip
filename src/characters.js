@@ -1,3 +1,4 @@
+import {joeReaction} from './encounter.js?v=2.4.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 // A compact raised forearm; the middle finger always stays upright in screen space.
 export function raisedArm(shoulder,upper,lower,side){
@@ -15,7 +16,8 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, obstacleDx, photos}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, photos}) {
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
   const companyX=new Path2D('M18.244 2.25h3.308l-7.227 8.26L22.828 21.75h-6.657l-5.214-6.817L4.992 21.75H1.682l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z');
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -99,7 +101,40 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
       oval(c,x+pupil.x,y+pupil.y,rx*.23,ry*.27,INK);
     }
   }
-  function heroHead(c,boosted,target,angry){
+  function heroHead(c,boosted,target,angry,reaction){
+    if(reaction.meme>.05||reaction.inhale>.15){
+      faceBase(c,'head');
+      // Sideways glance, pursed lips and the raised brow from the podcast meme.
+      for(const x of [-8,13]){
+        oval(c,x,-34,8,4.2,'#fff9ed',INK);oval(c,x-2,-34,2,2.6,INK);
+        line(c,[[x-8,-43],[x,-46-(x>0?3:0)],[x+8,-42]],'#66503d',2);
+        line(c,[[x-7,-26],[x,-24],[x+6,-26]],'#b48660',1);
+      }
+      line(c,[[1,-30],[-1,-22],[5,-21]],'#b48660',1);
+      if(reaction.meme>.05){
+        line(c,[[-9,-10],[-3,-14],[7,-14],[16,-9]],INK,1.8);
+        line(c,[[-3,-8],[6,-7],[12,-9]],'#b48660',1.2);
+      }else oval(c,14,-11,3,2.5,'#624337',INK);
+      return;
+    }
+    if(boosted&&!target){
+      faceBase(c,'head');
+      // Impossibru: arched brows, tightly squinting eyes and a compressed grimace.
+      for(const x of [-8,14]){
+        line(c,[[x-8,-46],[x-2,-51],[x+6,-47]],INK,2.3);
+        line(c,[[x-8,-34],[x,-37],[x+7,-34]],INK,1.8);
+        line(c,[[x-7,-30],[x,-28],[x+6,-30]],'#8b644b',1);
+        line(c,[[x-7,-41],[x-2,-43],[x+4,-41]],'#b48660',.8);
+      }
+      line(c,[[2,-34],[-2,-24],[5,-23],[9,-26]],'#8b644b',1.2);
+      poly(c,[[-12,-13],[-5,-18],[8,-18],[20,-12],[17,-7],[-7,-7]],'#624337',INK,1);
+      poly(c,[[-8,-13],[-3,-15],[9,-15],[16,-12],[15,-10],[-6,-10]],'#f7efdc','#f7efdc',.5);
+      for(const side of [-1,1]){
+        line(c,[[side*18,-24],[side*23,-19],[side*23,-9]],'#9b7254',1);
+        line(c,[[side*14,-4],[side*8,-2]],'#9b7254',1);
+      }
+      return;
+    }
     if(!boosted&&!target){head(c,'head',-33,-74,68,78);return;}
     faceBase(c,'head');
     eyes(c,[[-7,-33],[13,-34]],target||{x:65,y:-25},9,11);
@@ -152,7 +187,9 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
   }
   const motion={last:NaN,taunt:0,wave:0,facing:0};
   function elon(x,y,air,pose=0){
-    const {S,B,CAMEO,sceneTime,heroY}=getState(),target=CAMEO.active?null:gestureTarget();
+    const {S,B,CAMEO,sceneTime,heroY}=getState(),podcast=CAMEO.active?null:joeTarget?.();
+    const reaction=joeReaction(podcast?obstacleDx(podcast)+podcast.w/2:NaN);
+    const target=CAMEO.active||podcast?null:gestureTarget();
     const dt=Number.isFinite(motion.last)?clamp(sceneTime-motion.last,0,.1):1/60;motion.last=sceneTime;
     const dx=target?obstacleDx(target)+target.w/2:0;
     const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
@@ -162,6 +199,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
     const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
+      let jointHand;
       for(const side of [-1,1]){limb(c,[[side*11,-43+drop],[side*(23+15*crouch),-25-(air?10:0)+drop*.5],[side*25,-6]],side<0?'#343b43':'#42464c',14);sneaker(c,side*25,-1,side,1,'#e8e7dc')}
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
       poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],'#252a2d');
@@ -171,11 +209,30 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
         const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
         let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
         ex=mix(ex,side*39,armWave);ey=mix(ey,-98,armWave);hx=mix(hx,side*(46+5*Math.sin(sceneTime*7)),armWave);hy=mix(hy,-117,armWave);
+        if(side===1&&reaction.reach>0){
+          const r=reaction.reach,i=reaction.inhale;
+          ex=mix(ex,35,r);ey=mix(ey,-77-i*7,r);
+          hx=mix(hx,40-i*6,r);hy=mix(hy,-92-i*11,r);
+        }
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
         limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);hand(c,hx,hy,side,k*(1-armWave),armWave,1,wristAngle);
+        if(side===1&&reaction.reach>.08)jointHand={x:hx,y:hy};
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt);
-      c.restore();c.restore();
+      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt,reaction);
+      c.restore();
+      if(jointHand){
+        const {x,y}=jointHand;
+        line(c,[[x-2,y-2],[x-17,y-4]],'#e6dbc3',3);
+        line(c,[[x-17,y-4],[x-20,y-4.5]],'#e99356',2.5);
+      }
+      if(reaction.smoke>.01){
+        c.save();c.globalAlpha=.35*reaction.smoke;
+        for(let i=0;i<6;i++){
+          const age=reducedMotion?i/6:(sceneTime*.45+i/6)%1;
+          oval(c,19+age*48+Math.sin(i*2)*6,-107-age*47,4+age*12,3+age*8,'#c1c8c3');
+        }c.restore();
+      }
+      c.restore();
     });ctx.restore();
   }
   function body(c,color,trousers='#374352'){
@@ -195,6 +252,27 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
       }
       donnyHead(c,target,blend);
     },target?null:'trump:idle');
+  }
+  function joe(o){
+    const dx=obstacleDx(o)+o.w/2;
+    drawFigure(humanSurface,c=>{
+      body(c,'#373d3f','#334553');
+      // Bald head, heavy brows, headphones and the podcast mic are paper cutouts.
+      oval(c,0,-72,23,24,'#dca97f',INK);
+      oval(c,-5,-77,15,15,'#e8b68b');
+      for(const x of [-9,9]){
+        oval(c,x,-71,5.5,3.5,'#fbf2df',INK);
+        const p=pupilOffset({x:-dx,y:-70},{x,y:-71},2,1.3);
+        oval(c,x+p.x,-71+p.y,1.6,1.9,INK);
+        line(c,[[x-5,-78],[x+4,-79]],'#66513d',2.5);
+      }
+      line(c,[[0,-70],[-3,-64],[3,-63]],'#9e7256',1.2);
+      line(c,[[-8,-57],[0,-55],[8,-57]],INK,1.4);
+      c.beginPath();c.ellipse(0,-76,25,23,0,Math.PI,Math.PI*2);c.strokeStyle=INK;c.lineWidth=4;c.stroke();
+      for(const side of [-1,1]){oval(c,side*23,-72,5,10,'#252a2d');limb(c,[[side*17,-48],[side*27,-36],[side*22,-30]],'#373d3f',7);hand(c,side*22,-29,side,0,0,.6);}
+      line(c,[[-34,-3],[-34,-35],[-16,-51]],'#171d22',3);
+      oval(c,-12,-53,6,10,'#22292e',PAPER);
+    });
   }
   function zuckerberg(){drawFigure(humanSurface,c=>{body(c,'#7e8587','#40566b');for(const s of [-1,1]){limb(c,[[s*17,-48],[s*23,-27]],'#7e8587',7);hand(c,s*23,-25,s,0,0,.6)}head(c,'zuckHead',-23,-94,46,43)},'zuck')}
   function rogozinBounce(){return 20*Math.abs(Math.sin(getState().sceneTime*3.8))}
@@ -232,5 +310,5 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, o
       head(c,headKey,-25,-103,50,58);
     });ctx.restore();
   }
-  return {elon,trumpPose,zuckerberg,rogozin,amber,rogozinBounce,cameoRider};
+  return {elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider};
 }
