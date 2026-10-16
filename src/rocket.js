@@ -14,8 +14,9 @@ export function towerRetraction(phase,t,kind='launch'){
   if(phase==='delivery')return 1-ease((t-8.5)/3.5);
   return 1;
 }
-export function spaceportLayout({H,ground}){
-  const zoom=Math.max(.58,Math.min(.9,H/950));
+export function spaceportLayout({W=1440,H,ground}){
+  const mobile=W<700||H<500;
+  const zoom=Math.max(.58,Math.min(.9,H/950))*(mobile?1.65:1);
   return {zoom,base:ground-35*zoom,h:112*zoom};
 }
 export function createRocketState(){return {phase:'ready',t:0,next:10,fail:false,crashLift:0,kind:'launch',events:0,pass:0};}
@@ -44,7 +45,7 @@ export function createRocketSystem({ctx,sprites,tone,view,time}){
     const {speed=360}=view();R.pass=(R.pass+dt*.006*Math.min(1.7,Math.max(.7,speed/540)))%1;
   }
   function draw(state=R,anchor){
-    const {W,H,ground}=view(),{zoom,base,h}=spaceportLayout({H,ground});
+    const {W,H,ground}=view(),{zoom,base,h}=spaceportLayout({W,H,ground});
     const span=W+660*zoom;
     const rx=anchor??(W*.78-state.pass*span+330*zoom+span)%span-330*zoom;
     const t=state.t,phase=state.phase,travel=base+h;

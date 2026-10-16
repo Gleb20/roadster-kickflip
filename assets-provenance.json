@@ -82,5 +82,10 @@
     ],
     "references": "Two user-provided visual references: Impossibru expression and Elon podcast reaction. References remain private; no attachment pixels are shipped.",
     "notes": "Original paper Joe Rogan caricature with headphones and microphone. Fictional approach/inhale/reaction/departure choreography. Boost face uses opaque cached skin with vector squint, brows and grimace. No new raster assets."
+  },
+  "thrustersV241": {
+    "method": "Authored Canvas cyan/white exhaust and landing dust",
+    "file": "src/thrusters.js",
+    "notes": "No new raster art. Nine source-pixel nozzle mappings follow the existing Roadster atlas; fixed-step, bounded landing dust."
   }
 }

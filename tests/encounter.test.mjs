@@ -26,6 +26,13 @@ test('tower clears the rocket before liftoff and closes only after successful to
  assert.equal(towerRetraction('delivery',0),1);assert.equal(towerRetraction('delivery',12),0);
  for(const H of [390,844,900]){
   const {base,zoom,h}=spaceportLayout({H,ground:H*.84});
-  assert.ok(H*.84-base<34);assert.ok(h<102);assert.ok(zoom>0);
+  assert.ok(H*.84-base<34);assert.ok(h<108);assert.ok(zoom>0);
  }
+});
+
+test('mobile spaceport is enlarged without changing the desktop layout',()=>{
+ const desktop=spaceportLayout({W:1440,H:844,ground:700});
+ const mobile=spaceportLayout({W:390,H:844,ground:700});
+ assert.equal(mobile.h/desktop.h,1.65);
+ assert.equal(desktop.zoom,844/950);
 });

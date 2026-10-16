@@ -78,3 +78,9 @@ Joe Rogan is a paper obstacle with headphones, a microphone and dynamic gaze. El
 The smaller hangar and rocket now share a low ground plane behind near buildings. A stationary pad and independently cropped tower reuse the existing atlas. The tower retracts before liftoff and returns over 2.4 seconds after successful touchdown; failed landings leave it open until replacement delivery.
 
 Refactoring: optional audio lives in `src/sound.js`; pure encounter choreography lives in `src/encounter.js`; shared spaceport layout drives gameplay and its review sheet. `npm run check` now checks every runtime JS module. No new dependencies. `scripts/verify-v24.cjs` exercises sound, real jump over Joe, departure cleanup, rocket frames, English states and responsive layouts with an existing Playwright installation.
+
+## Mobile occlusion, flip exhaust and Safari audio v2.4.1
+
+Mobile spaceport hardware is scaled up 1.65×. Opaque near terrain closes the strip below building silhouettes; the rocket, tower and hangar stay behind roofs/walls without protruding beneath them. Nine-pose, source-anchored thruster jets follow the car roll, clip at the road and produce a short landing dust cloud instead of green sparks. Dust updates in simulation, scrolls with the world and has bounded lifetime/count.
+
+Sound uses an explicit playback AudioSession on opt-in where available, primes output in a user gesture, resumes interrupted/suspended contexts on touch completion and keeps the first effect through async unlock. Muting releases the prior session. Safari hardware audio remains unverified; see [v2.4.1 verification](docs/releases/2026-10-16-v2.4.1.md). `scripts/verify-v241.cjs` checks pixel occlusion, touch landing and audio recovery. `src/thrusters.js` owns the cosmetic exhaust and dust; physics is unchanged.

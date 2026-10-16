@@ -240,6 +240,11 @@ export function createEnvironmentRenderer() {
         }
       }
       if (rocketScene) rocketScene();
+      // The near terrain is opaque beneath the building silhouettes. Midground
+      // hardware may appear above/alongside them, never through the strip below.
+      ctx.fillStyle='#172b34';
+      const nearBase=ground-29-5*zoom;
+      ctx.fillRect(0,nearBase,W,ground+2-nearBase);
       tile(ctx, layers.buildings, W, ground - 29 - 130 * zoom, zoom, distance * .095);
       tile(ctx, layers.verge, W, ground - 48 * zoom, zoom, distance * .18);
       tile(ctx, road, W, ground + 2, 1, distance);

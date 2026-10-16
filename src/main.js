@@ -1,14 +1,15 @@
-import {createSound} from './sound.js?v=2.4.0';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.0';
-import {createFlipSprite, flipFrameAt, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=2.4.0';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=2.4.0';
-import {createDirector} from './director.js?v=2.4.0';
-import {types} from './catalog.js?v=2.4.0';
+import {createThrusterEffects} from './thrusters.js?v=2.4.1';
+import {createSound} from './sound.js?v=2.4.1';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.1';
+import {createFlipSprite, flipFrameAt, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=2.4.1';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=2.4.1';
+import {createDirector} from './director.js?v=2.4.1';
+import {types} from './catalog.js?v=2.4.1';
 import {START_SPEED, MAX_SPEED, START_KMH, MAX_KMH, RAMP_SECONDS, JUMP_SPEED, GRAVITY, CHARGE_SECONDS, jumpHeight, hitsObstacle} from './physics.js';
 import {createSlapstick} from './slapstick.js';
 import {createClock} from './clock.js';
-import {createEnvironmentRenderer} from './environment.js?v=2.3.0';
-import {createCharacterRenderer} from './characters.js?v=2.4.0';
+import {createEnvironmentRenderer} from './environment.js?v=2.4.1';
+import {createCharacterRenderer} from './characters.js?v=2.4.1';
 import {createPropRenderer} from './props.js?v=2.1.0';
 import {createPhotoRenderer} from './photo-cutouts.js';
 const elements=new Map();
@@ -19,6 +20,7 @@ const photos=createPhotoRenderer();
 const spaceportSprites=createSpaceportSprites();
 const flipSprite=createFlipSprite();
 const roadsterMotion=createRoadsterMotion();
+const thrusters=createThrusterEffects();
 const environment=createEnvironmentRenderer(), props=createPropRenderer(photos);
 const slapstick=createSlapstick(), projectiles=slapstick.projectiles;
 function updateProjectiles(dt){slapstick.update(dt,S.obs,obstacleDx);}
@@ -94,13 +96,15 @@ function soundUI(){
   button.setAttribute('aria-pressed',String(enabled));
 }
 soundUI();
+// Capture touch completion before game handlers prevent default or stop bubbling.
+for(const event of ['pointerup','touchend','keydown'])addEventListener(event,()=>sound.unlock(),{capture:true,passive:true});
 function ui(){for(let [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);$('jump').classList.toggle('hidden',S.mode!=='playing'||learnedJump);$('pause').style.visibility=['playing','paused'].includes(S.mode)?'visible':'hidden';boostUI()}
-function start(){if(!spritesReady||artReview)return;sound.unlock();cancelCharge();Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.7,obs:[],particles:[],toast:0,charging:false,charge:0,launchSpeed:JUMP_SPEED,lastCharge:0});resetBoost();Object.assign(roadsterMotion,createRoadsterMotion());director.reset();Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();$('toast').textContent='';$('score').textContent='00000';$('status').textContent='0 M / '+START_KMH+' KM/H';projectiles.length=0;clock.reset();ui();tone(500)}
+function start(){if(!spritesReady||artReview)return;sound.unlock();cancelCharge();Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.7,obs:[],particles:[],toast:0,charging:false,charge:0,launchSpeed:JUMP_SPEED,lastCharge:0});resetBoost();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();director.reset();Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();$('toast').textContent='';$('score').textContent='00000';$('status').textContent='0 M / '+START_KMH+' KM/H';projectiles.length=0;clock.reset();ui();tone(500)}
 function cancelCharge(){S.charging=false;S.charge=0;activePointer=null;activeKey=null}
 function beginCharge(){if(S.mode!=='playing'||S.y>0||S.charging)return false;S.charging=true;S.charge=0;return true}
 function jump(){if(S.mode!=='playing'||S.y>0){cancelCharge();return}const power=S.charge;S.lastCharge=power;cancelCharge();S.launchSpeed=JUMP_SPEED+60*power;S.vy=S.launchSpeed;S.y=.01;S.jumpTime=0;S.flips++;learnedJump=true;$('jump').classList.add('hidden');try{localStorage.setItem('roadster-charge-learned-v1','1')}catch{}S.bonus+=10;burst(px,ground-8,14+Math.round(power*8),'#c9f9ff');tone(660+power*150,.18,'triangle')}
 function releaseCharge(){if(S.charging)jump()}
-function pause(){cancelCharge();clock.reset();if(S.mode==='playing')S.mode='paused';else if(S.mode==='paused')S.mode='playing';ui()}
+function pause(){cancelCharge();clock.reset();if(S.mode==='playing')S.mode='paused';else if(S.mode==='paused'){sound.unlock();S.mode='playing';}ui()}
 $('boost').onclick=activateBoost;$('boost').addEventListener('pointerdown',e=>e.stopPropagation());
 $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$('pause').onclick=pause;
 $('game').addEventListener('pointerdown',e=>{if(e.button!==0||!e.isPrimary||activePointer!==null||activeKey!==null)return;if(e.target.closest('button,a')&&!e.target.closest('#jump'))return;e.preventDefault();if(beginCharge()){activePointer=e.pointerId;try{$('game').setPointerCapture(e.pointerId)}catch{}}});
@@ -140,10 +144,10 @@ function update(dt) {
     if (S.y <= 0) {
       impactSpeed=Math.abs(S.vy);
       S.y = 0; S.vy = 0;
-      burst(px, ground - 5, 8, '#d9ff62');
       tone(130, .08);
     }
   }
+  thrusters.update(dt,{impactSpeed,speed:S.speed});
   advanceRoadsterMotion(roadsterMotion,dt,{grounded:S.y===0,speed:S.speed,charge:S.charge,impactSpeed});
   for (const o of S.obs) {
     o.x -= S.speed * dt;
@@ -244,7 +248,7 @@ function reviewSpaceport(){
  states.forEach(([phase,t],i)=>{
    const col=i%3,row=Math.floor(i/3),x=(col+.5)*cw,y=50+(row+1)*ch;
    ctx.save();ctx.beginPath();ctx.rect(col*cw,45+row*ch,cw,ch);ctx.clip();
-   ctx.translate(x-W*.5,y-spaceportLayout({H,ground}).base);rocket.draw({...R,phase,t,kind:'landing',pass:0,crashLift:.01},W*.5);ctx.restore();
+   ctx.translate(x-W*.5,y-spaceportLayout({W,H,ground}).base);rocket.draw({...R,phase,t,kind:'landing',pass:0,crashLift:.01},W*.5);ctx.restore();
    text(phase+' / '+t+'s',x,y+15,10,'#a9bbb9');
  });
  const saved={...B};
@@ -261,12 +265,14 @@ function render(dt,time){
  const demo=S.mode==='menu',x=px,ds=scale,hop=S.y;
  ellipse(x,ground+1.5*ds,46*ds,Math.max(1.3,3.5-hop*.012)*ds,'#0007');
  for(const o of S.obs)obstacle(o);
- drawProjectiles();ctx.save();ctx.translate(x,ground-hop*ds);ctx.scale(ds,ds);
+ drawProjectiles();ctx.save();ctx.translate(px,ground);ctx.scale(ds,ds);thrusters.drawDust(ctx);ctx.restore();ctx.save();ctx.translate(x,ground-hop*ds);ctx.scale(ds,ds);
  let {phase,gap}=playerPose();if(demo){phase=0;gap=0;}
  if(S.y>0){
    for(let k=0;k<3;k++)line([[-36-k*12,4+gap],[-70-k*20,11+gap]],'#b8f8ff55',2);
  }
  boostFlame(-2,gap-11.5+roadsterMotion.compression);
+ ctx.save();ctx.translate(0,gap);
+ thrusters.drawJets(ctx,{phase,time:sceneTime,airborne:S.y>0,compression:roadsterMotion.compression,groundDistance:S.y-gap});ctx.restore();
  car(0,gap,phase);
  elon(0,-29.5-gap*.2+roadsterMotion.compression,S.y>0,time);
  if(S.charging){rect(-28,17,56,4,'#45574f',2);rect(-28,17,56*S.charge,4,'#d9ff62',2);}
@@ -308,12 +314,12 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.4.0",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.4.1",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){
   window.__qa={S,B,CAMEO,types,start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,activateBoost,pause,
     setTime(t){S.t=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
     spawn(id,dx=260){const type=types.find(o=>o.id===id);S.obs.push({...type,x:px/scale+dx*B.factor,passed:false});},
-    rocket,roadsterMotion,stop(){S.mode='paused';ui();},projectiles,characters,sound};
+    rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound};
 }
