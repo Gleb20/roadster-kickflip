@@ -1,11 +1,12 @@
-# Roadster Kickflip: restoration
+# Current source of truth
 
-Canonical source: Gleb20/roadster-kickflip main. Public game: https://gleb20.github.io/roadster-kickflip/
+Canonical repository: Gleb20/roadster-kickflip, main.
+Canonical URL: https://gleb20.github.io/roadster-kickflip/
 
-Based on approved a24229caf3a2c7a9ed27dde31822486620312009. Preserve paper-cutout visuals, original assets, BOOST/X2 circles, crouch animation, charge controls, jump physics, rocket scenes and Trump gestures. No redesign.
+The 2026-10-16 online v2 revision replaces the former duplicated inline HTML/JS source. Edit `src/` and `style.css`; never regenerate an inline HTML copy or use the old Sites checkout as a source. `index.html` only bootstraps the web game. Top-level `game.js` is a compatibility import, not a second implementation.
 
-Added: seamless DO A FLIP start; Zuckerberg, eyed AI logos, Rogozin trampoline with inset hitboxes; removed AI INTERN. Bezos/Katy suspended rocket congratulates each 5000 score milestone with fireworks. Milestones reset per run and never repeat. Decorative cameo has no collision.
+Approved direction: South Park-inspired cut-paper game scene, original head/car/rocket atlases, single white character silhouettes, modern restrained Apple-inspired DOM UI, acid yellow primary. Preserve crouching, flip, circular boost, progressive waves and the 5000-point Bezos/Katy event.
 
-index.html embeds game.js and style.css: keep both copies synchronized. No build dependencies. Preview: python3 -m http.server 8765. Validate: node --check game.js. Compare protected functions and original assets against baseline; test desktop/mobile, charge/release/cancel, boost recharge, milestone crossing/restart.
+Prior balance commit: 305a936211c16e0b915d5313405b8f822fb160de. This revision retains its director and 0.4 s charge while fixing frame-rate slowdown, invisible Rogozin charge wall, duplicate hero arm, resize distance jump and render/simulation coupling. Start speed is higher and Rogozin peak is 130 units.
 
-Changes to progression/charge speed belong to the separate balancing task after Rogozin is verified on GitHub Pages. Refresh main before editing to preserve work from other chats.
+Before future changes, read fresh main and confirm no concurrent edits. Publish with expected-head protection; verify the Pages deployment and live game version before reporting publication.

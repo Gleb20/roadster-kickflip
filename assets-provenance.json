@@ -14,5 +14,15 @@
     "normalization": "sips proportional resize, original retained",
     "alpha": "RGBA, transparent background verified",
     "reference": "https://www.flickr.com/photos/vchameleon/52598813581"
+  },
+  "onlineV2": {
+    "method": "Authored Canvas 2D vector sprites and animations",
+    "files": [
+      "src/characters.js",
+      "src/environment.js",
+      "src/props.js",
+      "src/slapstick.js"
+    ],
+    "notes": "Original PNG atlases unchanged. New silhouettes, sneaker shapes, spaceport layers, vehicles, couch, pavilion and fictional comic projectile are code-drawn."
   }
 }
