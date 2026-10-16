@@ -87,5 +87,15 @@
     "method": "Authored Canvas cyan/white exhaust and landing dust",
     "file": "src/thrusters.js",
     "notes": "No new raster art. Nine source-pixel nozzle mappings follow the existing Roadster atlas; fixed-step, bounded landing dust."
+  },
+  "blueprintLoaderV242": {
+    "method": "SVG silhouette and tonal-region vector tracing of the existing nine-frame Roadster atlas; simplified contours with authored wheel construction ellipses",
+    "source": "assets/roadster-flip/atlas.png",
+    "sourceSHA256": "8dd912225478ba0541a45a1b094ad3acc6be6d8bd951c2255e84bea8540e9cfd",
+    "files": [
+      "index.html",
+      "src/loading.js"
+    ],
+    "notes": "Inline SVG only, no raster art or external font at boot. Three line weights; nine existing poses use shared flipFrameAt timing over a 2.7-second loop. Wheel ellipses are schematic construction guides. Thruster console messages are decorative fictional telemetry; progress counts seven real readiness tasks (stylesheet and six decoded/baked image sets)."
   }
 }

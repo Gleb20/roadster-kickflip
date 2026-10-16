@@ -1,3 +1,4 @@
+import {loading} from './loading.js?v=2.4.2';
 import {createThrusterEffects} from './thrusters.js?v=2.4.1';
 import {createSound} from './sound.js?v=2.4.1';
 import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.1';
@@ -171,8 +172,24 @@ function text(t,x,y,size,c,align='center'){ctx.fillStyle=c;ctx.font=`bold ${size
 let spritesReady=false;
 const atlas=new Image(),extras=new Image(),cast=new Image();
 $('start').disabled=true;$('start').textContent='LOADING CUTOUTS…';
-const loadSprite=(img,src)=>new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=src});
-Promise.all([loadSprite(atlas,'collage-atlas.png'),loadSprite(extras,'collage-extras.png'),spaceportSprites.load(),loadSprite(cast,'paper-cast.png'),photos.load(),flipSprite.load()]).then(()=>{spritesReady=true;$('start').disabled=false;$('start').innerHTML='LET’S GO '+icon('arrow')}).catch(()=>{$('start').textContent='RELOAD TO RETRY';$('menu').querySelector('p').textContent='The artwork could not load. Check your connection and reload to retry.'});
+const loadSprite=async(img,src)=>{img.src=src;await img.decode();};
+loading.load([
+  {name:'interface stylesheet',load:()=>loading.stylesReady},
+  {name:'collage atlas',load:()=>loadSprite(atlas,'collage-atlas.png')},
+  {name:'scene extras',load:()=>loadSprite(extras,'collage-extras.png')},
+  {name:'spaceport / VFX',load:()=>spaceportSprites.load()},
+  {name:'paper cast',load:()=>loadSprite(cast,'paper-cast.png')},
+  {name:'photo cutouts',load:()=>photos.load()},
+  {name:'kickflip / 9 poses',load:()=>flipSprite.load()},
+]).then(ready=>{
+  if(!ready)return;
+  spritesReady=true;
+  // Prepare the complete first scene, including cleaned/cached hero face, while
+  // the loader still covers the game. A drawing failure must keep start blocked.
+  render(0,sceneTime);
+  clock.reset();$('start').disabled=false;$('start').innerHTML='LET’S GO '+icon('arrow');
+  loading.finish();
+}).catch(()=>{spritesReady=false;loading.fail();});
 const cutouts={zuckHead:[cast,40,130,340,395],rogozinHead:[cast,425,140,345,390],bezosHead:[cast,805,165,320,365],katyHead:[cast,1145,140,350,435],toyRocket:[cast,270,620,1030,325],head:[atlas,40,40,380,410],roadster:[atlas,475,185,550,180],v8:[atlas,1025,185,510,180],trump:[atlas,90,490,300,505],trumpHead:[atlas,90,490,300,282],truck:[atlas,450,655,635,260],rocket:[atlas,1190,455,195,545],protest:[extras,0,110,890,825],doge:[extras,945,145,585,790]};
 function cutout(key,x,y,w,h,target=ctx){const [img,sx,sy,sw,sh]=cutouts[key];if(!img.complete||!img.naturalWidth)return false;target.drawImage(img,sx*img.naturalWidth/1536,sy*img.naturalHeight/1024,sw*img.naturalWidth/1536,sh*img.naturalHeight/1024,x,y,w,h);return true}
 function paperLimb(points,color,width){line(points,'#282b2d',width+1.3);line(points,color,width)}
@@ -296,6 +313,7 @@ function step(dt){
   if(S.mode==='playing')updateProjectiles(dt);
 }
 function frame(ts){
+  if(!spritesReady){requestAnimationFrame(frame);return;}
   clock.advance(ts,step,()=>{if(S.mode==='playing')pause();});
   if(!perf.since)perf.since=ts;
   const begin=performance.now();render(0,sceneTime);
@@ -314,7 +332,7 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.4.1",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.4.2",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){

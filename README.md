@@ -84,3 +84,9 @@ Refactoring: optional audio lives in `src/sound.js`; pure encounter choreography
 Mobile spaceport hardware is scaled up 1.65×. Opaque near terrain closes the strip below building silhouettes; the rocket, tower and hangar stay behind roofs/walls without protruding beneath them. Nine-pose, source-anchored thruster jets follow the car roll, clip at the road and produce a short landing dust cloud instead of green sparks. Dust updates in simulation, scrolls with the world and has bounded lifetime/count.
 
 Sound uses an explicit playback AudioSession on opt-in where available, primes output in a user gesture, resumes interrupted/suspended contexts on touch completion and keeps the first effect through async unlock. Muting releases the prior session. Safari hardware audio remains unverified; see [v2.4.1 verification](docs/releases/2026-10-16-v2.4.1.md). `scripts/verify-v241.cjs` checks pixel occlusion, touch landing and audio recovery. `src/thrusters.js` owns the cosmetic exhaust and dust; physics is unchanged.
+
+## Readiness-gated blueprint loader v2.4.2
+
+Nine existing kickflip poses now animate as inline white SVG schematics inside a segmented instrument. The ring and progress bar track CSS and six decoded/baked material sets. The complete first scene, including Elon's actual face and cleaned-head cache, is prepared before enabling start and revealing the game. A failed resource or first scene keeps the game blocked and offers retry. Critical inline vectors/styles are visible before the larger resources arrive; reduced motion stays static. No new runtime dependencies or raster art.
+
+See [release and verification details](docs/releases/2026-10-16-v2.4.2.md).
