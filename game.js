@@ -93,7 +93,7 @@ poly([[-20,-52],[19,-52],[24,-20],[-22,-20]],'#25374e','#f5eee2');poly([[-9,-51]
 for(const d of [-1,1]){if(taunt&&d===side){paperLimb([[d*17,-45],[d*29,-38],[d*36,-62]],'#25374e',8);rudeHand(d*36,-68,.8,d)}else{paperLimb([[d*18,-45],[d*24,-24]],'#25374e',8);ellipse(d*24,-22,4,5,'#edbc90')}}
 ctx.save();ctx.translate(0,bob);ctx.rotate(taunt?side*.08:0);cutout('trumpHead',-27,-94,54,51);ctx.restore()}
 function boostFlame(x,y){if(B.factor<1.03)return;const intensity=(B.factor-1)/3,len=(65+intensity*140)*(1+Math.sin(sceneTime*47)*.1);ctx.save();ctx.translate(x,y);ctx.globalAlpha=Math.min(1,intensity*3);
-const glow=ctx.createRadialGradient(-50,0,1,-50,0,len);glow.addColorStop(0,B.level===2?'#ca82ff65':'#73eaff65');glow.addColorStop(1,'#68dfff00');ctx.fillStyle=glow;ctx.fillRect(-len-60,-55,len+70,110);
+ctx.save();ctx.scale(1,.32);const glow=ctx.createRadialGradient(-50,0,1,-50,0,len);glow.addColorStop(0,B.level===2?'#ca82ff65':'#73eaff65');glow.addColorStop(1,'#68dfff00');ctx.fillStyle=glow;ctx.fillRect(-50-len,-len,2*len,2*len);ctx.restore();
 poly([[-43,-9],[-70,-15],[-len*.8,-6],[-len-45,0],[-len*.7,7],[-72,13],[-43,6]],B.level===2?'#ad77ff':'#59dfff');poly([[-46,-5],[-83,-7],[-len*.75-20,0],[-80,7],[-46,4]],'#fff1ab');poly([[-44,-3],[-105,0],[-44,3]],'#fffdf1');for(let i=0;i<5;i++){const progress=(sceneTime*(1.9+i*.08)+i*.19)%1;line([[-65-progress*len,i%2?12:-12],[-75-progress*len,i%2?12:-12]],'#adf3ff',1.5)}ctx.restore()}
 function speedStreaks(){if(B.factor<1.05)return;ctx.save();ctx.globalAlpha=Math.min(.55,(B.factor-1)*.2);for(let i=0;i<18;i++){const y=H*.25+(i*83)%(H*.6),x=W-((sceneTime*(500+B.factor*160)+i*137)%(W+300));line([[x,y],[x+30+B.factor*18,y]],B.level===2?'#d3a2ef':'#a0e6ed',i%3?1:2)}ctx.restore()}
 function paperProp(o){const w=o.w,h=o.h;
@@ -131,7 +131,7 @@ const angle=-(1-ease(raise))*Math.PI/2,hingeX=22;
 line([[hingeX,-28],[hingeX-45*(1-raise),-30-70*raise]],'#e4debd',4);
 if(elevate>0)paperLimb([[hingeX,-28],[hingeX,-29-elevate]],'#717e75',5);if(loaded)rocketBody(hingeX,-29-elevate,h,angle,1);
 text('SPACE DELIVERY',-4,-31,7,'#dae1c6');ctx.restore()}
-function rocketScene(){const rx=W*.77,padH=Math.min(310,Math.max(195,H*.33)),padW=padH*2/3,padBottom=ground-38,padTop=padBottom-padH*.96,base=padTop+padH*.735,h=padH*.62,t=R.t,phase=R.phase,travel=H+h;
+function rocketScene(){const padH=Math.min(310,Math.max(195,H*.33)),padW=padH*2/3,rx=Math.min(W*.77,W-padW*.62-12),padBottom=ground-38,padTop=padBottom-padH*.96,base=padTop+padH*.735,h=padH*.62,t=R.t,phase=R.phase,travel=H+h;
 if(launchpad.complete&&launchpad.naturalWidth){ctx.save();ctx.globalAlpha=.9;ctx.drawImage(launchpad,rx-padW*.38,padTop,padW,padH);ctx.restore()}
 // Access road joins the sprite foundation and remains behind the playable road.
 line([[rx-padW*.25,padBottom-2],[W,padBottom-2]],'#4c6161',3);
