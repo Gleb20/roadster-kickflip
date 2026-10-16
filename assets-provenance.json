@@ -96,6 +96,7 @@
       "index.html",
       "src/loading.js"
     ],
-    "notes": "Inline SVG only, no raster art or external font at boot. Three line weights; nine existing poses use shared flipFrameAt timing over a 2.7-second loop. Wheel ellipses are schematic construction guides. Thruster console messages are decorative fictional telemetry; progress counts seven real readiness tasks (stylesheet and six decoded/baked image sets)."
+    "notes": "Inline SVG only, no raster art or external font at boot. Three line weights; nine existing poses use shared flipFrameAt timing over a 2.7-second loop. Wheel ellipses are schematic construction guides. Thruster console messages are decorative fictional telemetry; progress counts seven real readiness tasks (stylesheet and six decoded/baked image sets).",
+    "presentationV243": "180ms appearance grace, 220ms fade in, minimum 3 seconds on first uncached successful visit. Actual Resource Timing identifies cached image/style responses; successful-visit storage only controls repeat intro. Cached/quick starts skip the instrument; readiness and full face preparation always gate reveal."
   }
 }

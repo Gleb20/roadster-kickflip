@@ -9,6 +9,12 @@ const poses = [...screen.querySelectorAll('.loader-pose')];
 const segments = [...screen.querySelectorAll('.loader-segment')];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const bootTime = performance.now();
+const visitKey = 'roadster-materials-ready-v1';
+let returning = false;
+try { returning = localStorage.getItem(visitKey) === '1'; } catch {}
+// A short grace period prevents a loader flash on a ready/cached navigation.
+const appearDelay = 180, firstVisitDuration = 3000;
+let shownAt = null, showTimer, presentationTimer;
 const telemetry = [
   'RCS :: discover thruster bus / address 0x04',
   'RCS :: bind fore / aft nozzle pairs',
@@ -28,23 +34,26 @@ function log(message) {
   while (logs.children.length > 5) logs.firstElementChild.remove();
 }
 function animate(now) {
-  const next = reducedMotion.matches ? 0 : flipFrameAt(((now - bootTime) % 2700) / 2700);
+  const next = reducedMotion.matches ? 0 : document.hidden ? frame : flipFrameAt(((now - shownAt) % 2700) / 2700);
   if (next !== frame) {
     poses[frame].classList.remove('is-active');
     poses[next].classList.add('is-active');
     frame = next;
   }
-  if (state === 'loading') animation = requestAnimationFrame(animate);
+  if (state === 'loading' || state === 'ready') animation = requestAnimationFrame(animate);
 }
 function stop() {
   cancelAnimationFrame(animation);
   clearInterval(logTimer);
   clearTimeout(timeout);
+  clearTimeout(showTimer);
+  clearTimeout(presentationTimer);
 }
 function fail() {
   if (state !== 'loading') return;
   state = 'failed';
   stop();
+  show();
   screen.classList.add('has-error');
   document.getElementById('loading-title').textContent = 'Loading failed';
   status.textContent = 'The artwork could not load. Check your connection and retry.';
@@ -89,29 +98,63 @@ export const loading = {
   finish() {
     if (state !== 'loading') return;
     state = 'ready';
-    stop();
+    clearTimeout(timeout);
+    clearTimeout(showTimer);
     status.textContent = 'Flight systems ready.';
-    // Let the first complete game frame paint beneath the opaque screen.
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      screen.classList.add('is-leaving');
-      const reveal = () => {
-        const restoreFocus = screen.contains(document.activeElement);
-        screen.hidden = true;
-        game.inert = false;
-        game.removeAttribute('aria-hidden');
-        if (restoreFocus) document.getElementById('start').focus({preventScroll: true});
-      };
-      if (reducedMotion.matches) reveal();
-      else setTimeout(reveal, 180);
-    }));
+    // A stored visit is only an intro preference; resource readiness still comes
+    // from load/decode/bake and the complete first scene prepared by main.js.
+    const firstVisit = !returning && !materialsFromCache();
+    try { localStorage.setItem(visitKey, '1'); } catch {}
+    if (firstVisit) show();
+    const remaining = shownAt === null ? 0 : Math.max(0,
+      (firstVisit ? firstVisitDuration : 220) - (performance.now() - shownAt));
+    presentationTimer = setTimeout(reveal, remaining);
   },
   fail,
 };
+// Resource Timing describes the actual image/style responses, including a
+// first visit whose resources were already cached by an older game version.
+function materialsFromCache() {
+  const resources = performance.getEntriesByType('resource').filter(entry =>
+    entry.initiatorType === 'img' || entry.name === stylesheet.href);
+  return resources.length >= 7 && resources.every(entry =>
+    entry.transferSize === 0 && entry.decodedBodySize > 0);
+}
+function show() {
+  if (shownAt !== null) return;
+  shownAt = Number(screen.dataset.shownAt) || performance.now();
+  screen.classList.add('is-visible');
+  screen.removeAttribute('aria-hidden');
+  if (state !== 'failed') animation = requestAnimationFrame(animate);
+}
+function reveal() {
+  stop();
+  state = 'done';
+  const complete = () => {
+    const restoreFocus = screen.contains(document.activeElement);
+    screen.hidden = true;
+    game.inert = false;
+    game.removeAttribute('aria-hidden');
+    if (restoreFocus) document.getElementById('start').focus({preventScroll: true});
+  };
+  // The complete scene is already prepared; cached/fast starts skip both fades.
+  if (shownAt === null) complete();
+  else {
+    screen.classList.add('is-leaving');
+    if (reducedMotion.matches) complete();
+    else setTimeout(complete, 180);
+  }
+}
+if (screen.classList.contains('is-visible')) show();
 timeout = setTimeout(fail, 30000);
-animation = requestAnimationFrame(animate);
+showTimer = setTimeout(() => {
+  if (state === 'loading' && !materialsFromCache()) show();
+}, appearDelay);
 logTimer = setInterval(() => {
-  if (!reducedMotion.matches) log(telemetry[logIndex++ % telemetry.length]);
+  if (shownAt !== null && !document.hidden && !reducedMotion.matches) {
+    log(state === 'ready' ? 'CTRL :: flight systems ready / awaiting pilot' : telemetry[logIndex++ % telemetry.length]);
+  }
 }, 340);
 
 // Start the tiny vector instrument before requesting the game's module graph.
-import('./main.js?v=2.4.2').catch(fail);
+import('./main.js?v=2.4.3').catch(fail);

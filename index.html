@@ -1,8 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-16-release-v2.4.2"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-16-release-v2.4.3"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
 #loading-screen { --instrument-white: #f3f5f4; --instrument-dim: rgb(243 245 244 / 38%); position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); box-sizing: border-box; background: #10151b; color: var(--instrument-white); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; opacity: 1; transition: opacity 180ms ease-out; }
 #loading-screen[hidden] { display: none; }
 #loading-screen.is-leaving { opacity: 0; pointer-events: none; }
-.loader-console { width: min(320px, 100%); text-align: center; }
+.loader-console { width: min(320px, 100%); text-align: center; opacity: 0; transition: opacity 220ms cubic-bezier(.16, 1, .3, 1); }
+#loading-screen.is-visible .loader-console { opacity: 1; }
+#loading-screen:not(.is-visible) .loader-sweep, #loading-screen:not(.is-visible) .loader-ink { animation-play-state: paused; }
 #loading-title { margin: 0 0 8px; font-size: 16px; font-weight: 400; letter-spacing: .16em; line-height: 1.5; }
 .loader-kicker { margin: 0; color: var(--instrument-dim); font-size: 7px; letter-spacing: .2em; line-height: 1.5; }
 .loader-instrument { display: block; width: 100%; height: auto; margin: 0 auto 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
@@ -35,9 +37,9 @@
 @keyframes loader-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes loader-orbit { to { transform: rotate(360deg); } }
 @media (max-height: 560px) { .loader-console { width: min(240px, 100%); } #loading-title { margin-bottom: 4px; font-size: 14px; } .loader-instrument { width: 184px; margin-bottom: 8px; } .loader-log-window { height: 38px; margin-top: 12px; } #loading-status { margin-top: 8px; } }
-@media (prefers-reduced-motion: reduce) { #loading-screen { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
+@media (prefers-reduced-motion: reduce) { #loading-screen, .loader-console { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
 </style><link id="game-style" rel="preload" as="style" href="./style.css?v=2.0.0"></head><body>
-<section id="loading-screen" aria-labelledby="loading-title">
+<section id="loading-screen" aria-labelledby="loading-title" aria-hidden="true">
   <div class="loader-console">
     <h2 id="loading-title">Loading</h2>
     <p class="loader-kicker">ROADSTER / FLIGHT SYSTEMS</p>
@@ -58,14 +60,23 @@
     <div class="loader-log-window" aria-hidden="true"><pre id="loading-logs"><span>[0.000] RCS :: boot / flight controller standby</span></pre></div>
     <p id="loading-status" role="status" aria-live="polite">Preparing flight systems…</p>
     <a id="loading-retry" href="" hidden>RETRY LOADING</a>
-    <noscript><p style="font-size:12px">Enable JavaScript to load the game.</p></noscript>
+    <noscript><style>.loader-console { opacity: 1; }</style><p style="font-size:12px">Enable JavaScript to load the game.</p></noscript>
   </div>
 </section>
 <main id="game" inert aria-hidden="true"><canvas id="scene" aria-label="Game scene: Elon jumps over obstacles in a Tesla"></canvas><header><a class="brand" href="./">R<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><small>ROADSTER<br>KICKFLIP</small></a><div class="tools"><button id="sound" aria-pressed="false" aria-label="Turn sound on"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10h4l5-5v14l-5-5H4ZM17 8q5 4 0 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SOUND OFF</span></button><button id="pause" aria-label="Pause"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></header><section class="hud"><div><label>SCORE</label><strong id="score">00000</strong></div><div id="speed-readout" class="hidden"><b id="speed-value">130</b><span>KM/H</span><i><em id="speed-fill"></em></i></div><div class="record"><label>PERSONAL BEST</label><strong id="best">00000</strong></div></section><div id="toast" aria-live="polite"></div><section id="menu"><h1>DO A <em>FLIP</em></h1><button id="start" class="primary">LET’S GO</button><p role="status"></p></section><section id="result" class="panel hidden" aria-live="polite"><div class="eyebrow" id="endlabel">NOT EVERYTHING TAKES OFF.</div><h2>RAPID<br><em>DISASSEMBLY.</em></h2><p id="reason"></p><div class="stats"><div><label>SCORE</label><strong id="finalScore">0</strong></div><div><label>KICKFLIPS</label><strong id="flips">0</strong></div></div><button class="primary" id="restart">TRY AGAIN <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11a8 8 0 1 1 2 7M4 4v7h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></section><section id="paused" class="panel hidden"><div class="eyebrow">PIT STOP</div><h2>PAUSED.</h2><p>Mars can wait.</p><button id="resume" class="primary">RESUME <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></section><footer><span id="status">01 / TEXAS TEST TRACK</span><span>FAN-MADE • UNOFFICIAL</span></footer><button id="jump" class="hidden" aria-label="Hold and release to jump"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 17q7-14 14-10M13 5l6 2-2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="desktop-tip">Hold and release to jump</span><span class="mobile-tip">Hold the screen, then release</span><small>Hold a little longer to jump higher</small></span></button><button id="boost" class="hidden" type="button" aria-label="Boost: 146 percent extra speed for 5 seconds" title="Boost — B or Shift"><svg class="boost-gauge" viewBox="0 0 104 104" aria-hidden="true"><circle class="boost-track" cx="52" cy="52" r="46"/><circle id="boost-ring" cx="52" cy="52" r="46"/><circle id="boost-overcharge" cx="52" cy="52" r="38"/></svg><svg class="boost-bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2 5 14h6l-1 8 9-13h-6Z"/></svg><span id="boost-title">BOOST</span><strong id="boost-time">+146%</strong><small id="boost-note">X2 IN 30s</small></button></main><script type="module">
-import('./src/loading.js?v=2.4.2').catch(() => {
+const screen = document.getElementById('loading-screen');
+// Still show the instrument if fetching the tiny boot module itself is slow.
+const waiting = setTimeout(() => {
+  screen.dataset.shownAt = String(performance.now());
+  screen.classList.add('is-visible');
+  screen.removeAttribute('aria-hidden');
+}, 180);
+import('./src/loading.js?v=2.4.3').then(() => clearTimeout(waiting)).catch(() => {
+  clearTimeout(waiting);
   document.getElementById('loading-title').textContent = 'Loading failed';
   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';
-  document.getElementById('loading-screen').classList.add('has-error');
+  document.getElementById('loading-screen').classList.add('has-error', 'is-visible');
+  document.getElementById('loading-screen').removeAttribute('aria-hidden');
   document.getElementById('loading-retry').hidden = false;
 });
 </script></body></html>

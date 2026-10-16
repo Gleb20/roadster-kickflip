@@ -84,6 +84,7 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
   assert.equal(await critical.locator('#loading-screen').evaluate(e=>getComputedStyle(e).position),'fixed');
   assert.equal(await critical.locator('#loading-screen svg image').count(),0);
   assert.equal(await critical.locator('.loader-pose.is-active').count(),1);
+  await critical.waitForFunction(()=>document.querySelector('#loading-screen').classList.contains('is-visible'));
   await critical.screenshot({path:resolve(out,'before-css-and-js.png'),timeout:5000});
   await releaseCSS();await releaseModule();await ready(critical);results.push({scenario:'inline instrument visible before game CSS, JS modules and images'});await critical.close();
 
@@ -93,7 +94,7 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
    results.push({scenario:'module failure -> retry',module:path});await moduleFailure.close();
   }
   const cssFailure=await page();cssFailure.expectedNetworkFailure=true;await cssFailure.route('**/style.css*',r=>r.fulfill({status:503,body:'unavailable'}));await cssFailure.goto(base);await cssFailure.locator('#loading-retry').waitFor({state:'visible',timeout:35000});results.push({scenario:'stylesheet failure -> retry'});await cssFailure.close();
-  const cached=await page();await cached.goto(base);await ready(cached);await cached.reload();await ready(cached);results.push({scenario:'normal reload, no forced minimum animation duration'});await cached.close();
+  const cached=await page();await cached.goto(base);await ready(cached);await cached.reload();await ready(cached);results.push({scenario:'normal first visit and repeat reload complete'});await cached.close();
   assert.deepEqual(errors,[]);
   writeFileSync(resolve(out,'results.json'),JSON.stringify({results,errors},null,2));console.log(JSON.stringify({scenarios:results.length,errors}));
  }finally{await browser.close()}

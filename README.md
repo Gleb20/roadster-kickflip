@@ -90,3 +90,7 @@ Sound uses an explicit playback AudioSession on opt-in where available, primes o
 Nine existing kickflip poses now animate as inline white SVG schematics inside a segmented instrument. The ring and progress bar track CSS and six decoded/baked material sets. The complete first scene, including Elon's actual face and cleaned-head cache, is prepared before enabling start and revealing the game. A failed resource or first scene keeps the game blocked and offers retry. Critical inline vectors/styles are visible before the larger resources arrive; reduced motion stays static. No new runtime dependencies or raster art.
 
 See [release and verification details](docs/releases/2026-10-16-v2.4.2.md).
+
+## Conditional loader presentation v2.4.3
+
+The instrument fades in only when needed. First uncached visits get at least three seconds; cached/quick startup skips the loader, and returning cache misses have no repeated intro. Real resource decoding and the complete first scene with Elon's face still gate startup. See [presentation and cache verification](docs/releases/2026-10-16-v2.4.3.md).

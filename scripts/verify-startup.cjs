@@ -49,7 +49,7 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
    const probe=await p.evaluate(()=>__startupProbe);
    assert.deepEqual(probe.firstHero,{headPrepared:true,loaderVisible:true});assert.deepEqual(probe.startEnabled,{headPrepared:true,completeHeroDrawn:true});
    assert.equal(probe.headCopies[0].decoded,true);assert.ok(probe.headCopies[0].visible>3000);assert.ok(probe.headCopies[0].dark>100);assert.ok(probe.headCopies[0].skin>1000);
-   const state=await p.evaluate(()=>JSON.parse(render_game_to_text()));assert.equal(state.version,'2.4.2');
+   const state=await p.evaluate(()=>JSON.parse(render_game_to_text()));assert.equal(state.version,'2.4.3');
    await p.screenshot({path:resolve(out,name+'-first-complete-scene.png')});
    if(name==='portrait')await p.screenshot({path:resolve(out,'face-detail.png'),clip:{x:50,y:470,width:90,height:140},scale:'css'});
    await p.locator('#start').tap();await p.locator('#boost').tap();await p.waitForFunction(()=>JSON.parse(render_game_to_text()).boost.factor>1.5);
