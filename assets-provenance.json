@@ -1,0 +1,18 @@
+{
+  "starbasePad": {
+    "file": "starbase-pad.png",
+    "method": "OpenAI image generation",
+    "prompt": "Create ONE production game sprite, isolated on a truly transparent background, for a 2D side-view satirical paper cutout game. Subject: SpaceX Starbase Starship launch infrastructure, WITHOUT ANY ROCKET, no vehicle, no people, no sky, no scenery. A tall rectangular grey steel lattice launch tower on the RIGHT, large clearly drawn X braces, stacked service floors, small red warning lights, two short mechanical catching arms extending left near the upper third. To its LEFT and near ground level: a large EMPTY circular orbital launch mount viewed from side, thick dark steel ring supported by 6 stout splayed concrete/steel legs, clear open central space under the ring for rocket exhaust. Include a broad grounded concrete foundation strip, small pipes and two squat service tanks at far right on the foundation. Mount top should be about 12 percent of total sprite height above bottom, mount center about 38 percent of sprite width; tower is 90 percent of sprite height, tower center about 73 percent of sprite width. Nothing in the vertical launch corridor above the mount. Orthographic side elevation, no aerial perspective. Whole object fully within frame with modest 4 percent transparent margin. Distinctive tactile torn construction-paper collage, South Park cut-paper look, graphite silver and muted blue grey cardstock, warm cream irregular thin paper cut edge, simple readable chunky shapes, subtle paper grain. Attractive crafted asset, coherent night-game muted palette yet readable. Tall portrait composition 2:3. No text, no letters, no logo, no shadows outside foundation. Do NOT include rocket.",
+    "sourceDimensions": [
+      1024,
+      1536
+    ],
+    "runtimeDimensions": [
+      512,
+      768
+    ],
+    "normalization": "sips proportional resize, original retained",
+    "alpha": "RGBA, transparent background verified",
+    "reference": "https://www.flickr.com/photos/vchameleon/52598813581"
+  }
+}
