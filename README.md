@@ -1,6 +1,6 @@
 # Roadster / Kickflip
 
-**2.4.4 candidate**: recognizable smiling Joe with intact headphones, separate podcast mic and full transparent body; [sources, verification and rollback](docs/releases/2026-10-16-v2.4.4.md).
+**2.4.8**: cut-paper cameo faces, seated rocket riders and planted Roadster feet; keyboard and queued jump controls, animated encounter reactions and Money Guns. [Release, sources and validation](docs/releases/2026-10-18-v2.4.8.md).
 
 Canonical game: https://gleb20.github.io/roadster-kickflip/
 
@@ -96,3 +96,12 @@ See [release and verification details](docs/releases/2026-10-16-v2.4.2.md).
 ## Conditional loader presentation v2.4.3
 
 The instrument fades in only when needed. First uncached visits get at least three seconds; cached/quick startup skips the loader, and returning cache misses have no repeated intro. Real resource decoding and the complete first scene with Elon's face still gate startup. See [presentation and cache verification](docs/releases/2026-10-16-v2.4.3.md).
+
+
+## Character and contact update 2.4.8
+
+Space charges on hold and jumps on release; either Shift activates boost. Holding again in flight queues crouch/charge after landing; releasing early cancels. Elon laughs and points at Rogozin. Elon and Mark each use two Money Guns with bounded opposing banknote streams and laughter.
+
+Bezos and Katy sit half-turned toward the camera with one foreground leg and registered smile/laugh frames; Amber uses a matching cut-paper head. Rider hips overlap the rocket hull. Grounded Elon’s feet remain supported on the Roadster during boost and crouch. Obstacle names appear on collision, with no running-scene captions.
+
+The three new v247 sprites are required decoded startup resources. Source prompts, generated originals and normalization records are retained; reference photographs and official show stills remain local research inputs, with source URLs in assets-provenance.json. Amber photo/adaptation credit: [Gage Skidmore](https://commons.wikimedia.org/wiki/File:Amber_Heard_(43723454772).jpg), [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/); changed into a cartoon, no endorsement implied.

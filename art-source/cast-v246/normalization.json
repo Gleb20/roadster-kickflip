@@ -1,0 +1,58 @@
+{
+  "bezos": [
+    {
+      "panel": 0,
+      "sourceBounds": {
+        "left": 119,
+        "top": 15,
+        "width": 607,
+        "height": 988
+      },
+      "width": 295,
+      "height": 480
+    },
+    {
+      "panel": 1,
+      "sourceBounds": {
+        "left": 79,
+        "top": 15,
+        "width": 607,
+        "height": 988
+      },
+      "width": 295,
+      "height": 480
+    }
+  ],
+  "katy": [
+    {
+      "panel": 0,
+      "sourceBounds": {
+        "left": 169,
+        "top": 39,
+        "width": 451,
+        "height": 953
+      },
+      "width": 227,
+      "height": 480
+    },
+    {
+      "panel": 1,
+      "sourceBounds": {
+        "left": 82,
+        "top": 38,
+        "width": 453,
+        "height": 955
+      },
+      "width": 228,
+      "height": 480
+    }
+  ],
+  "amber": {
+    "sourceBounds": {
+      "left": 158,
+      "top": 40,
+      "width": 1059,
+      "height": 1116
+    }
+  }
+}

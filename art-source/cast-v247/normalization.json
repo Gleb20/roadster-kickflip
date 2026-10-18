@@ -1,0 +1,63 @@
+{
+  "sources": {
+    "bezos": "art-source/cast-v247/bezos-alpha.png",
+    "katy": "art-source/cast-v247/katy-clean.png",
+    "amber": "art-source/cast-v247/amber-generated.png"
+  },
+  "bezos": [
+    {
+      "panel": 0,
+      "sourceBounds": {
+        "left": 75,
+        "top": 15,
+        "width": 672,
+        "height": 982
+      },
+      "width": 303,
+      "height": 443
+    },
+    {
+      "panel": 1,
+      "sourceBounds": {
+        "left": 61,
+        "top": 15,
+        "width": 674,
+        "height": 981
+      },
+      "width": 304,
+      "height": 442
+    }
+  ],
+  "katy": [
+    {
+      "panel": 0,
+      "sourceBounds": {
+        "left": 97,
+        "top": 24,
+        "width": 545,
+        "height": 1079
+      },
+      "width": 242,
+      "height": 480
+    },
+    {
+      "panel": 1,
+      "sourceBounds": {
+        "left": 43,
+        "top": 24,
+        "width": 560,
+        "height": 1079
+      },
+      "width": 249,
+      "height": 480
+    }
+  ],
+  "amber": {
+    "sourceBounds": {
+      "left": 95,
+      "top": 47,
+      "width": 1152,
+      "height": 1123
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Space after focused Start charges and jumps without restarting",
+    "airborne Space hold waits for landing, then charges the next jump",
+    "release in flight cancels queued pointer charge without jumping on landing",
+    "left Shift activates boost",
+    "right Shift activates boost",
+    "mouse can prepare the next jump before landing",
+    "pause cancels held and queued input",
+    "blur cancels input and pauses",
+    "touch hold in flight prepares and releases a second jump",
+    "touch cancellation clears queued charge",
+    "paused scene remains pixel-identical",
+    "DPR 2 visual fixtures: desktop, portrait, landscape; approach, overhead, departure; four guns and 52 notes",
+    "weapons and notes disappear after encounter",
+    "reduced motion renders a sparse static cash exchange"
+  ],
+  "errors": []
+}

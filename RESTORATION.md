@@ -40,3 +40,8 @@ The release is assembled from a frozen local snapshot against parent `331a970a2c
 A generated transparent full-body South Park-style Joe replaces the procedural head/body/mic. Photo references: JRE #1169 for pink shirt, bald head and podcast equipment; supplemental smiling face reference is explicitly an editorial composite. No reference photo pixels are shipped. Source, exact built-in imagegen prompt and provenance are retained under art-source/joe-rogan/ and assets-provenance.json.
 
 The intact headphones and separate boom mic are part of the sprite; a warm smile and gaze face Elon by mirroring after passing. The direct draw bypasses the cropped shared human buffer, with 94px visible height and the existing collision box. Eight material tasks gate startup, including decoded Joe art. Cache-busted entry/module chain and updated browser harnesses preserve loader and first-face guarantees. See [verification](docs/releases/2026-10-16-v2.4.4.md). Publication remains pending verification.
+
+
+## Accepted release 2.4.8 — 18 October 2026
+
+Final combined character, controls, encounter and contact update is authorized for publication. See [release record](docs/releases/2026-10-18-v2.4.8.md). Historical chat exports and machine-specific handoffs stay local. Fresh verification uses an isolated candidate; the original dirty checkout remains intact.

@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "real Space and airborne queued hold preserved",
+    "all three generated sprites rendered at desktop/portrait/landscape; Amber windup/release/follow-through preserved",
+    "both riders select registered smile/laugh frames, back and foreground use same frame",
+    "pause is pixel-stable",
+    "reduced-motion smiles remain static",
+    "each new image decode gates first complete scene"
+  ],
+  "errors": []
+}

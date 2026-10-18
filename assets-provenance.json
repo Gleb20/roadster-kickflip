@@ -125,5 +125,236 @@
       }
     ],
     "notes": "New generated face, full body, intact headphones, separate floor boom mic, warm toothy smile and left gaze. Entire cutout mirrors toward Elon after passing; 94px visible height and original collision box preserved. Runtime bypasses the cropped human buffer. Eight material tasks include this decoded sprite. Reference photo pixels are not shipped."
+  },
+  "castV246": {
+    "method": "Built-in OpenAI imagegen using actual photographs plus current Joe game sprite as visual inputs; original cut-paper South Park-like caricatures, not documentary photos",
+    "prototype": [
+      "Jeff Bezos, NS-16 blue flight suit",
+      "Katy Perry, NS-31 blue flight suit",
+      "Amber Heard, blonde 2018 Comic-Con portrait"
+    ],
+    "artSource": "art-source/cast-v246/brief.md",
+    "inputs": {
+      "bezos": [
+        "art-source/cast-v246/bezos-photo.png",
+        "art-source/cast-v246/style-joe.png"
+      ],
+      "katy": [
+        "art-source/cast-v246/katy-photo.jpg",
+        "art-source/cast-v246/style-joe.png"
+      ],
+      "amber": [
+        "art-source/cast-v246/amber-photo.jpg",
+        "art-source/cast-v246/style-joe.png"
+      ]
+    },
+    "photoReferences": [
+      {
+        "subject": "Jeff Bezos",
+        "page": "https://www.blueorigin.com/missions/ns-16",
+        "image": "https://d1o72l87sylvqg.cloudfront.net/redstone/Astronauts_NS16-JeffBezos.png",
+        "credit": "Blue Origin",
+        "license": "unspecified on source"
+      },
+      {
+        "subject": "Katy Perry, second from left in original group photo",
+        "page": "https://www.blueorigin.com/gallery/asset/6931c2f9ac77095f7c5fe382",
+        "image": "https://d1o72l87sylvqg.cloudfront.net/redstone/gallery-ns-31_crew_ringroad.jpeg",
+        "credit": "Blue Origin",
+        "license": "unspecified on source",
+        "photoDate": "2025-04-14"
+      },
+      {
+        "subject": "Amber Heard",
+        "page": "https://commons.wikimedia.org/wiki/File:Amber_Heard_(43723454772).jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Amber_Heard_%2843723454772%29.jpg",
+        "credit": "Gage Skidmore",
+        "license": "CC BY-SA 2.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "photoDate": "2018-07-21"
+      }
+    ],
+    "accessDate": "2026-10-18",
+    "styleReferences": [
+      "assets/characters/joe-rogan.png",
+      "art-source/cast-v246/current-cameo.png"
+    ],
+    "prompts": [
+      "art-source/cast-v246/bezos-prompt.txt",
+      "art-source/cast-v246/katy-prompt.txt",
+      "art-source/cast-v246/amber-prompt.txt"
+    ],
+    "cleanupPrompts": [
+      "art-source/cast-v246/bezos-cleanup-prompt.txt",
+      "art-source/cast-v246/katy-cleanup-prompt.txt"
+    ],
+    "originals": [
+      "art-source/cast-v246/bezos-generated.png",
+      "art-source/cast-v246/katy-generated.png",
+      "art-source/cast-v246/amber-generated.png"
+    ],
+    "selectedRiderSheets": [
+      "art-source/cast-v246/bezos-clean.png",
+      "art-source/cast-v246/katy-clean.png"
+    ],
+    "normalization": "scripts/prepare-cast.cjs: source alpha>=128 bounding box plus 2px edge padding, proportional resizing, 480px fixed silhouette height in 320x512 panel; two panels per atlas. Amber proportional contain in 256 square. Generated alpha preserved. No code-drawn substitute art.",
+    "normalizationRecord": "art-source/cast-v246/normalization.json",
+    "runtime": [
+      {
+        "file": "assets/characters/bezos-v246.png",
+        "dimensions": [
+          640,
+          512
+        ],
+        "alpha": true,
+        "sha256": "576a6580b6205f71d45cd90bede0eab00378a518425a59bb6cf19483d3debe5e"
+      },
+      {
+        "file": "assets/characters/katy-v246.png",
+        "dimensions": [
+          640,
+          512
+        ],
+        "alpha": true,
+        "sha256": "14807fbb9203dfae98e00f5e755387809ab33c40e9823343ec47301a3c549d8c"
+      },
+      {
+        "file": "assets/characters/amber-head-v246.png",
+        "dimensions": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "sha256": "43245a278fc1bc95b8f2137a0290b6a9cfb7c40704d2b7b901ecf50009a5fcfa"
+      }
+    ],
+    "notes": "Riders: three-quarter seated torso, camera-facing face, one visible leg; same generated sprite composited behind hull and foreground leg clip. Two facial expressions driven by cameo simulation time; static smile for reduced motion. Amber generated head replaces procedural face while existing body/throw and collision remain. New images are mandatory decoded startup resources. No publication.",
+    "amberAdaptationLicense": "Generated Amber head adaptation credited to Gage Skidmore and distributed under CC BY-SA 2.0; changed from photo into cartoon; no endorsement implied."
+  },
+  "castV247": {
+    "method": "Built-in imagegen: photo-referenced redraw into explicit South Park television cut-paper visual grammar; no code-drawn replacement illustration",
+    "userDirection": "User rejected v246 as beautiful vector illustration, not South Park. Explicit TV cut-paper style overrides prior Joe-based aesthetics; Final v247 style with v248 contact corrections accepted for publication on 2026-10-18.",
+    "accessDate": "2026-10-18",
+    "prototype": [
+      "Jeff Bezos, NS-16 blue flight suit",
+      "Katy Perry, NS-31 blue flight suit",
+      "Amber Heard, blonde 2018 Comic-Con portrait"
+    ],
+    "photoReferences": [
+      {
+        "subject": "Jeff Bezos",
+        "page": "https://www.blueorigin.com/missions/ns-16",
+        "image": "https://d1o72l87sylvqg.cloudfront.net/redstone/Astronauts_NS16-JeffBezos.png",
+        "credit": "Blue Origin",
+        "license": "unspecified on source"
+      },
+      {
+        "subject": "Katy Perry, second from left in original group photo",
+        "page": "https://www.blueorigin.com/gallery/asset/6931c2f9ac77095f7c5fe382",
+        "image": "https://d1o72l87sylvqg.cloudfront.net/redstone/gallery-ns-31_crew_ringroad.jpeg",
+        "credit": "Blue Origin",
+        "license": "unspecified on source",
+        "photoDate": "2025-04-14"
+      },
+      {
+        "subject": "Amber Heard",
+        "page": "https://commons.wikimedia.org/wiki/File:Amber_Heard_(43723454772).jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Amber_Heard_%2843723454772%29.jpg",
+        "credit": "Gage Skidmore",
+        "license": "CC BY-SA 2.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "photoDate": "2018-07-21"
+      }
+    ],
+    "styleReference": {
+      "page": "https://www.southparkstudios.com/video-clips/meky79/south-park-customers-up-our-ass-sharon",
+      "image": "https://images.paramount.tech/uri/mgid%3Aarc%3Aimageassetref%3Ashared.southpark.global%3Abe5bc1a7-8981-4785-ab72-3ead8ef94c2f?crop=true&format=jpg&gen=ntrn&height=630&quality=0.7&width=1200",
+      "local": "art-source/cast-v247/south-park-family.jpg",
+      "credit": "South Park / Paramount",
+      "license": "unspecified; visual style reference only, no source pixels shipped"
+    },
+    "inputs": {
+      "bezos": [
+        "art-source/cast-v247/bezos-photo.png",
+        "art-source/cast-v247/south-park-family.jpg",
+        "assets/characters/bezos-v246.png"
+      ],
+      "katy": [
+        "art-source/cast-v247/katy-photo.jpg",
+        "art-source/cast-v247/south-park-family.jpg",
+        "assets/characters/katy-v246.png"
+      ],
+      "amber": [
+        "art-source/cast-v247/amber-photo.jpg",
+        "art-source/cast-v247/south-park-family.jpg",
+        "assets/characters/amber-head-v246.png"
+      ]
+    },
+    "inputRoles": [
+      "Actual person photo: identity only",
+      "Actual official South Park TV still: authoritative style",
+      "Previous game asset: pose/layout/compatibility only, explicitly not the style target"
+    ],
+    "originals": [
+      "art-source/cast-v247/bezos-generated.png",
+      "art-source/cast-v247/katy-generated.png",
+      "art-source/cast-v247/amber-generated.png"
+    ],
+    "prompts": [
+      "art-source/cast-v247/bezos-prompt.txt",
+      "art-source/cast-v247/katy-prompt.txt",
+      "art-source/cast-v247/amber-prompt.txt"
+    ],
+    "preciseEdits": {
+      "gaze": [
+        "art-source/cast-v247/bezos-clean.png",
+        "art-source/cast-v247/katy-clean.png"
+      ],
+      "gazePrompts": [
+        "art-source/cast-v247/bezos-gaze-prompt.txt",
+        "art-source/cast-v247/katy-gaze-prompt.txt"
+      ],
+      "alphaRepair": "art-source/cast-v247/bezos-alpha.png",
+      "alphaPrompt": "art-source/cast-v247/bezos-alpha-prompt.txt"
+    },
+    "selectedSources": [
+      "art-source/cast-v247/bezos-alpha.png",
+      "art-source/cast-v247/katy-clean.png",
+      "art-source/cast-v247/amber-generated.png"
+    ],
+    "normalization": "scripts/prepare-cast.cjs v247: proportional fit into 304x480 safe area, common scale per character, shared shoe baseline in 320x512 frames. Amber proportional contain in 256x256. Generated alpha preserved; bounds/selected sources recorded in normalization.json.",
+    "normalizationRecord": "art-source/cast-v247/normalization.json",
+    "notes": "Flatter heads, very large adjoining white eyes and dot pupils, tiny facial strokes, broad paper hair pieces, simplified clothing. Seated three-quarter pose, camera gaze, one visible foreground leg, same smile/laugh choreography preserved. Amber body/throw and game physics unchanged. Official still used only as style reference; these are new fictional game illustrations, not documentary images.",
+    "amberAdaptationLicense": "Generated Amber head adaptation credited to Gage Skidmore and distributed under CC BY-SA 2.0; changed from photo into cartoon; no endorsement implied.",
+    "runtime": [
+      {
+        "file": "assets/characters/bezos-v247.png",
+        "dimensions": [
+          640,
+          512
+        ],
+        "alpha": true,
+        "sha256": "b78d60b0557823644c871ea44aae88213f333d03cae3ceb64357c7386907dc22"
+      },
+      {
+        "file": "assets/characters/katy-v247.png",
+        "dimensions": [
+          640,
+          512
+        ],
+        "alpha": true,
+        "sha256": "a064c19b5310aaecf28574cc0beee0bfc018ff9ef27ad266c9149e97f5829b6b"
+      },
+      {
+        "file": "assets/characters/amber-head-v247.png",
+        "dimensions": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "sha256": "e063808cd0b31b8c49547fa2f63e49b67e73542d2542c38650ac5d60ab4a44fe"
+      }
+    ],
+    "publicationInputs": "Reference photographs and show stills remain local research inputs; URLs/credits retained here. Generated originals, prompts and normalization records are published."
   }
 }

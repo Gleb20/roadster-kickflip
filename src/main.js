@@ -1,4 +1,4 @@
-import {loading} from './loading.js?v=2.4.4';
+import {loading} from './loading.js?v=2.4.8';
 import {createThrusterEffects} from './thrusters.js?v=2.4.1';
 import {createSound} from './sound.js?v=2.4.1';
 import {createSpaceportSprites} from './spaceport-sprites.js?v=2.4.1';
@@ -10,7 +10,7 @@ import {START_SPEED, MAX_SPEED, START_KMH, MAX_KMH, RAMP_SECONDS, JUMP_SPEED, GR
 import {createSlapstick} from './slapstick.js';
 import {createClock} from './clock.js';
 import {createEnvironmentRenderer} from './environment.js?v=2.4.1';
-import {createCharacterRenderer} from './characters.js?v=2.4.4';
+import {createCharacterRenderer} from './characters.js?v=2.4.8';
 import {createPropRenderer} from './props.js?v=2.1.0';
 import {createPhotoRenderer} from './photo-cutouts.js';
 const elements=new Map();
@@ -60,7 +60,7 @@ S.speed=S.baseSpeed*B.factor}
 function obstacleDx(o){return(o.x-px/scale)/B.factor}
 function gestureTarget(){
  let nearest=null,distance=300;
- for(const o of S.obs){const dx=Math.abs(obstacleDx(o)+o.w/2);if(o.id==='trump'&&dx<distance){nearest=o;distance=dx;}}
+ for(const o of S.obs){const dx=Math.abs(obstacleDx(o)+o.w/2);if((o.id==='trump'||(S.y>0&&['rogozin','zuck'].includes(o.id)))&&dx<distance){nearest=o;distance=dx;}}
  return nearest;
 }
 function joeTarget(){
@@ -101,10 +101,10 @@ soundUI();
 for(const event of ['pointerup','touchend','keydown'])addEventListener(event,()=>sound.unlock(),{capture:true,passive:true});
 function ui(){for(let [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);$('jump').classList.toggle('hidden',S.mode!=='playing'||learnedJump);$('pause').style.visibility=['playing','paused'].includes(S.mode)?'visible':'hidden';boostUI()}
 function start(){if(!spritesReady||artReview||$('game').inert)return;sound.unlock();cancelCharge();Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.7,obs:[],particles:[],toast:0,charging:false,charge:0,launchSpeed:JUMP_SPEED,lastCharge:0});resetBoost();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();director.reset();Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();$('toast').textContent='';$('score').textContent='00000';$('status').textContent='0 M / '+START_KMH+' KM/H';projectiles.length=0;clock.reset();ui();tone(500)}
-function cancelCharge(){S.charging=false;S.charge=0;activePointer=null;activeKey=null}
-function beginCharge(){if(S.mode!=='playing'||S.y>0||S.charging)return false;S.charging=true;S.charge=0;return true}
+function cancelCharge(){S.queuedCharge=false;S.charging=false;S.charge=0;activePointer=null;activeKey=null}
+function beginCharge(){if(S.mode!=='playing'||S.charging||S.queuedCharge)return false;S.queuedCharge=S.y>0;S.charging=!S.queuedCharge;S.charge=0;return true}
 function jump(){if(S.mode!=='playing'||S.y>0){cancelCharge();return}const power=S.charge;S.lastCharge=power;cancelCharge();S.launchSpeed=JUMP_SPEED+60*power;S.vy=S.launchSpeed;S.y=.01;S.jumpTime=0;S.flips++;learnedJump=true;$('jump').classList.add('hidden');try{localStorage.setItem('roadster-charge-learned-v1','1')}catch{}S.bonus+=10;burst(px,ground-8,14+Math.round(power*8),'#c9f9ff');tone(660+power*150,.18,'triangle')}
-function releaseCharge(){if(S.charging)jump()}
+function releaseCharge(){if(S.charging)jump();else cancelCharge()}
 function pause(){cancelCharge();clock.reset();if(S.mode==='playing')S.mode='paused';else if(S.mode==='paused'){sound.unlock();S.mode='playing';}ui()}
 $('boost').onclick=activateBoost;$('boost').addEventListener('pointerdown',e=>e.stopPropagation());
 $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$('pause').onclick=pause;
@@ -114,8 +114,8 @@ addEventListener('pointercancel',e=>{if(e.pointerId===activePointer)cancelCharge
 $('game').addEventListener('lostpointercapture',e=>{if(e.pointerId===activePointer)cancelCharge()});
 for(const event of ['selectstart','dragstart','contextmenu'])$('game').addEventListener(event,e=>e.preventDefault());
 $('sound').onclick=()=>{sound.toggle();soundUI();tone(600)};
-addEventListener('keydown',e=>{if(['KeyB','ShiftLeft','ShiftRight'].includes(e.code)&&!e.repeat){e.preventDefault();activateBoost();return}if(['Space','ArrowUp','KeyW'].includes(e.code)){e.preventDefault();if(e.repeat)return;if(S.mode==='menu'||S.mode==='dead'){start();return}if(activePointer===null&&activeKey===null&&beginCharge())activeKey=e.code}if((e.code==='Escape'||e.code==='KeyP')&&!e.repeat)pause()});
-addEventListener('keyup',e=>{if(e.code!==activeKey)return;e.preventDefault();releaseCharge()});
+addEventListener('keydown',e=>{if($('game').inert)return;if(['KeyB','ShiftLeft','ShiftRight'].includes(e.code)&&!e.repeat){e.preventDefault();activateBoost();return}if(['Space','ArrowUp','KeyW'].includes(e.code)){e.preventDefault();if(e.repeat)return;if(S.mode==='menu'||S.mode==='dead'){start();return}if(activePointer===null&&activeKey===null&&beginCharge())activeKey=e.code}if((e.code==='Escape'||e.code==='KeyP')&&!e.repeat)pause()});
+addEventListener('keyup',e=>{if(e.code==='Space'&&S.mode==='playing')e.preventDefault();if(e.code!==activeKey)return;e.preventDefault();releaseCharge()});
 addEventListener('blur',()=>{if(S.mode==='playing')pause();else cancelCharge()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='playing')pause()});
 function burst(x,y,n,c){for(let i=0;i<n;i++)S.particles.push({x,y,vx:(Math.random()-.5)*180,vy:-Math.random()*160,life:.5+Math.random()*.3,c})}
@@ -145,6 +145,7 @@ function update(dt) {
     if (S.y <= 0) {
       impactSpeed=Math.abs(S.vy);
       S.y = 0; S.vy = 0;
+      if(S.queuedCharge){S.queuedCharge=false;S.charging=true;S.charge=0;}
       tone(130, .08);
     }
   }
@@ -171,6 +172,7 @@ function line(p,c,w=2){ctx.beginPath();p.forEach((v,i)=>i?ctx.lineTo(...v):ctx.m
 function text(t,x,y,size,c,align='center'){ctx.fillStyle=c;ctx.font=`bold ${size}px Arial`;ctx.textAlign=align;ctx.fillText(t,x,y)}
 let spritesReady=false;
 const atlas=new Image(),extras=new Image(),cast=new Image(),joeSprite=new Image();
+const castSprites={bezos:new Image(),katy:new Image(),amber:new Image()};
 $('start').disabled=true;$('start').textContent='LOADING CUTOUTS…';
 const loadSprite=async(img,src)=>{img.src=src;await img.decode();};
 loading.load([
@@ -180,6 +182,7 @@ loading.load([
   {name:'spaceport / VFX',load:()=>spaceportSprites.load()},
   {name:'paper cast',load:()=>loadSprite(cast,'paper-cast.png')},
   {name:'Joe / podcast cutout',load:()=>loadSprite(joeSprite,'assets/characters/joe-rogan.png')},
+  ...Object.entries(castSprites).map(([id,img])=>({name:id+' / paper character',load:()=>loadSprite(img,'assets/characters/'+(id==='amber'?'amber-head':id)+'-v247.png')})),
   {name:'photo cutouts',load:()=>photos.load()},
   {name:'kickflip / 9 poses',load:()=>flipSprite.load()},
 ]).then(ready=>{
@@ -193,16 +196,15 @@ loading.load([
 }).catch(()=>{spritesReady=false;loading.fail();});
 const cutouts={zuckHead:[cast,40,130,340,395],rogozinHead:[cast,425,140,345,390],bezosHead:[cast,805,165,320,365],katyHead:[cast,1145,140,350,435],toyRocket:[cast,270,620,1030,325],head:[atlas,40,40,380,410],roadster:[atlas,475,185,550,180],v8:[atlas,1025,185,510,180],trump:[atlas,90,490,300,505],trumpHead:[atlas,90,490,300,282],truck:[atlas,450,655,635,260],rocket:[atlas,1190,455,195,545],protest:[extras,0,110,890,825],doge:[extras,945,145,585,790]};
 function cutout(key,x,y,w,h,target=ctx){const [img,sx,sy,sw,sh]=cutouts[key];if(!img.complete||!img.naturalWidth)return false;target.drawImage(img,sx*img.naturalWidth/1536,sy*img.naturalHeight/1024,sw*img.naturalWidth/1536,sh*img.naturalHeight/1024,x,y,w,h);return true}
-function paperLimb(points,color,width){line(points,'#282b2d',width+1.3);line(points,color,width)}
 function car(x,y,phase=0){flipSprite.draw(ctx,x,y,phase,roadsterMotion)}
-const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,heroY:playerPose().y}),gestureTarget,joeTarget,obstacleDx,photos,joeSprite});
-const {elon,trumpPose,zuckerberg,rogozin,amber,joe,cameoRider}=characters;
+const characters=createCharacterRenderer({ctx,cutout,getState:()=>({S,B,CAMEO,sceneTime,scale,heroY:playerPose().y}),gestureTarget,joeTarget,obstacleDx,joeSprite,castSprites});
+const {elon,trumpPose,zuckerberg,rogozin,amber,joe,cameoRider,cameoLeg,drawMoneyStreams}=characters;
 function boostFlame(x,y){if(B.factor<1.03)return;const intensity=(B.factor-1)/3,len=(65+intensity*140)*(1+Math.sin(sceneTime*47)*.1);ctx.save();ctx.translate(x,y);ctx.globalAlpha=Math.min(1,intensity*3);
 ctx.save();ctx.scale(1,.32);const glow=ctx.createRadialGradient(-50,0,1,-50,0,len);glow.addColorStop(0,B.level===2?'#ca82ff65':'#73eaff65');glow.addColorStop(1,'#68dfff00');ctx.fillStyle=glow;ctx.fillRect(-50-len,-len,2*len,2*len);ctx.restore();
 poly([[-43,-9],[-70,-15],[-len*.8,-6],[-len-45,0],[-len*.7,7],[-72,13],[-43,6]],B.level===2?'#ad77ff':'#59dfff');poly([[-46,-5],[-83,-7],[-len*.75-20,0],[-80,7],[-46,4]],'#fff1ab');poly([[-44,-3],[-105,0],[-44,3]],'#fffdf1');for(let i=0;i<5;i++){const progress=(sceneTime*(1.9+i*.08)+i*.19)%1;line([[-65-progress*len,i%2?12:-12],[-75-progress*len,i%2?12:-12]],'#adf3ff',1.5)}ctx.restore()}
 function speedStreaks(){if(B.factor<1.05)return;ctx.save();ctx.globalAlpha=Math.min(.55,(B.factor-1)*.2);for(let i=0;i<18;i++){const y=H*.25+(i*83)%(H*.6),x=W-((sceneTime*(500+B.factor*160)+i*137)%(W+300));line([[x,y],[x+30+B.factor*18,y]],B.level===2?'#d3a2ef':'#a0e6ed',i%3?1:2)}ctx.restore()}
-function drawObstacleArt(o,bob=0){return (o.id==='joe'?joe(o):o.id==='amber'?amber(o):o.id==='rogozin'?rogozin(o):o.id==='zuck'?zuckerberg():o.id==='trump'?trumpPose(o,bob):photos.has(o.id)?photos.drawGround(ctx,o.id,o.w,o.h):cutouts[o.id]?cutout(o.id,-o.w/2,-o.h+bob,o.w,o.h):props.draw(ctx,o.id,o.w,o.h));}
-function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground);ctx.scale(scale,scale);const bob=['trump','protest','doge'].includes(o.id)?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);text(o.name,0,18,8,'#a9b3aa');ctx.restore()}
+function drawObstacleArt(o,bob=0){return (o.id==='joe'?joe(o):o.id==='amber'?amber(o):o.id==='rogozin'?rogozin(o):o.id==='zuck'?zuckerberg(o):o.id==='trump'?trumpPose(o,bob):photos.has(o.id)?photos.drawGround(ctx,o.id,o.w,o.h):cutouts[o.id]?cutout(o.id,-o.w/2,-o.h+bob,o.w,o.h):props.draw(ctx,o.id,o.w,o.h));}
+function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground);ctx.scale(scale,scale);const bob=['trump','protest','doge'].includes(o.id)?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}
 
 const CAMEO={active:false,t:0,nextScore:5000,milestone:0};
 function updateCameo(dt){
@@ -218,11 +220,10 @@ function cameoScene(){if(!CAMEO.active)return;const t=CAMEO.t,k=Math.min(scale,.
  ctx.save();ctx.translate(x,y);ctx.scale(k,k);
  // Ropes remain upright and exit the viewport; no thrust, smoke or collision.
  for(const rx of [-116,112]){line([[rx,-H/k-200],[rx,18]],'#b8ab91',2);ellipse(rx,18,4,3,'#e3dac2')}
- cameoRider('katyHead',38,6,'#3768a1',true);cameoRider('bezosHead',-15,4,'#2e5682');
+ cameoRider('katyHead',38,6);cameoRider('bezosHead',-15,4);
  cutout('toyRocket',-160,-5,320,85);
  // Foreground bent legs make the seated, straddling pose readable.
- for(const rx of [-15,38])paperLimb([[rx,-6],[rx-24,4],[rx-20,36]],'#37618d',11);
- paperLimb([[21,-25],[5,-13],[-27,-14]],'#3768a1',8);ellipse(-27,-14,5,5,'#edbc90');
+ cameoLeg('katyHead',38,6);cameoLeg('bezosHead',-15,4);
  if(t>2&&t<9){rect(-155,-153,310,36,'#f5eee2',5);poly([[-18,-118],[-6,-108],[0,-118]],'#f5eee2');text('ELON, '+CAMEO.milestone.toLocaleString('en-US')+'! CONGRATS!',0,-130,12,'#25374e')}
  ctx.restore();
 }
@@ -279,7 +280,7 @@ function render(dt,time){
  if(spaceportReview){reviewSpaceport();return;}
  if(flipReview){reviewFlip(performance.now()/1000);return;}
  if(artReview){reviewObstacles();return;}
- background(time);milestoneFireworks();cameoScene();speedStreaks();
+ characters.beginFrame();background(time);milestoneFireworks();cameoScene();speedStreaks();
  const demo=S.mode==='menu',x=px,ds=scale,hop=S.y;
  ellipse(x,ground+1.5*ds,46*ds,Math.max(1.3,3.5-hop*.012)*ds,'#0007');
  for(const o of S.obs)obstacle(o);
@@ -294,7 +295,7 @@ function render(dt,time){
  car(0,gap,phase);
  elon(0,-29.5-gap*.2+roadsterMotion.compression,S.y>0,time);
  if(S.charging){rect(-28,17,56,4,'#45574f',2);rect(-28,17,56*S.charge,4,'#d9ff62',2);}
- ctx.restore();
+ ctx.restore();drawMoneyStreams();
  for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c);}
  ctx.globalAlpha=1;
  if(demo)text('ELON / ROCKET RIDER',x,ground+31,8,'#b5c7bd');
@@ -333,7 +334,7 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:"2.4.4",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:"2.4.8",carFrame:flipFrameAt(S.y>0?Math.min(1,S.jumpTime/(2*S.launchSpeed/GRAVITY)):0),time:S.t,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},mode:S.mode,score:S.score,best,y:S.y,speed:S.speed,playerX:px/scale,obstacles:S.obs.map(o=>({type:o.id,x:o.x,w:o.w,h:o.h})),flips:S.flips,charging:S.charging,queuedCharge:!!S.queuedCharge,charge:S.charge,kmh:S.kmh*B.factor,baseKmh:S.kmh,boost:{state:B.state,charge:B.charge,left:B.left,level:B.level,factor:B.factor},cameo:{active:CAMEO.active,t:CAMEO.t,milestone:CAMEO.milestone,nextScore:CAMEO.nextScore},sound:sound.enabled,audio:{state:sound.state,session:navigator.audioSession?.type||'unsupported'},joe:joeTarget()?{dx:obstacleDx(joeTarget())+joeTarget().w/2}:null,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 
 
 if(['localhost','127.0.0.1'].includes(location.hostname)){

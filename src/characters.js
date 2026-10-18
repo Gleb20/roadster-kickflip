@@ -16,7 +16,7 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, photos, joeSprite}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites}) {
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
   const companyX=new Path2D('M18.244 2.25h3.308l-7.227 8.26L22.828 21.75h-6.657l-5.214-6.817L4.992 21.75H1.682l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z');
@@ -30,7 +30,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const color=canvas(w*R,h*R),white=canvas(w*R,h*R),result=canvas(w*R,h*R);
     return {w,h,ox,oy,color,white,result,c:color.getContext('2d'),m:white.getContext('2d'),r:result.getContext('2d')};
   }
-  const heroSurface=surface(170,186,85,178),humanSurface=surface(102,102,51,98),cameoSurface=surface(136,150,68,112);
+  const heroSurface=surface(170,214,85,178),humanSurface=surface(102,102,51,98),amberSurface=surface(102,112,51,108);
   function line(c,points,color,width=1){c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.lineJoin='round';c.lineCap='round';c.stroke()}
   function poly(c,p,color,stroke=INK,width=1){c.beginPath();p.forEach((v,i)=>i?c.lineTo(...v):c.moveTo(...v));c.closePath();c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.lineJoin='round';c.stroke()}}
   function oval(c,x,y,rx,ry,color,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=.8;c.stroke()}}
@@ -102,6 +102,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     }
   }
   function heroHead(c,boosted,target,angry,reaction){
+    if(reaction.laugh){faceBase(c,'head');laugh(c,3,-30,1.05);return;}
     if(reaction.meme>.05||reaction.inhale>.15){
       faceBase(c,'head');
       // Sideways glance, pursed lips and the raised brow from the podcast meme.
@@ -179,11 +180,61 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       // Folded fingers and a tucked thumb make the raised middle finger legible.
       for(const fx of [-3,0,3])oval(c,fx,-1,1.4,2.1,SKIN,'#ba8b68');
       line(c,[[4,0],[2,2],[-1,2]],'#ba8b68',.8);
+    }else if(wave>.1){
+      for(let i=0;i<4;i++){const fx=-4+i*2.6;limb(c,[[fx,-2],[fx+(i-1.5)*2,-9-(i===1||i===2?3:0)]],SKIN,2.1);}
+      limb(c,[[4,1],[9,-3]],SKIN,2.4);
     }else{
       line(c,[[-2,-3],[-1,-6-5*wave]],INK,3.8);line(c,[[-2,-3],[-1,-6-5*wave]],SKIN,2.4);
       for(let i=0;i<3;i++){const fx=-4+i*3;line(c,[[fx,-2],[fx+(i-1)*wave*2,-4-8*wave]],SKIN,2.1)}
     }
     line(c,[[2,1],[3,4]],'#ba8b68',.65);c.restore();
+  }
+  const muzzles={elon:[],zuck:[]};
+  function beginFrame(){muzzles.elon.length=0;muzzles.zuck.length=0;}
+  function laugh(c,x,y,size=1){
+    const {sceneTime}=getState(),beat=reducedMotion?.5:(1+Math.sin(sceneTime*22))*.5;
+    c.save();c.translate(x,y);c.scale(size,size);
+    for(const ex of [-9,9]){line(c,[[ex-6,-5],[ex,-8],[ex+6,-5]],INK,1.8);line(c,[[ex-5,-14],[ex,-16],[ex+5,-14]],'#715039',1.4);}
+    oval(c,0,10,10,7+beat*4,'#482e2b',INK);
+    poly(c,[[-8,5],[8,5],[6,8],[-6,8]],'#fff7e5',null);oval(c,0,14+beat*2,5,2,'#dc8a87');
+    c.restore();
+  }
+  function pointingHand(c,x,y,target,size=1){
+    const angle=Math.atan2(target.y-y,target.x-x);
+    c.save();c.translate(x,y);c.rotate(angle);c.scale(size,size);
+    oval(c,0,0,5,5,SKIN,INK);limb(c,[[1,-3],[15,-3]],SKIN,3.2);
+    for(const fy of [0,3])oval(c,1,fy,2,1.7,SKIN,'#ba8b68');c.restore();
+  }
+  function moneyGun(c,x,y,target,size,who,surface){
+    const angle=Math.atan2(target.y-y,target.x-x);
+    c.save();c.translate(x,y);c.rotate(angle);c.scale(size,size);
+    // Boxy gold cash cannon, top-loading banknotes and a separate grip.
+    poly(c,[[-10,-11],[17,-11],[20,-6],[20,1],[-10,1]],'#e3b952');
+    poly(c,[[-6,0],[2,0],[-1,12],[-7,11]],'#886839');
+    poly(c,[[1,-14],[14,-14],[14,-10],[0,-10]],'#c5e3ab','#568267');
+    line(c,[[18,-9],[18,-1]],'#563e2e',2);line(c,[[-7,-7],[12,-7]],'#fff0a5',1.5);
+    const p=c.getTransform().transformPoint({x:21,y:-5});
+    muzzles[who].push(ctx.getTransform().transformPoint({x:p.x/R-surface.ox,y:p.y/R-surface.oy}));
+    c.restore();hand(c,x,y,1,0,0,size*.75);
+  }
+  function drawMoneyStreams(){
+    const {sceneTime}=getState();
+    if(muzzles.elon.length!==2||muzzles.zuck.length!==2)return;
+    for(const [from,to] of [['elon','zuck'],['zuck','elon']])for(let gun=0;gun<2;gun++){
+      const a=muzzles[from][gun],b=muzzles[to][gun],dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1;
+      const count=reducedMotion?4:13,k=Math.hypot(ctx.getTransform().a,ctx.getTransform().b)*getState().scale;
+      ctx.save();ctx.setTransform(1,0,0,1,0,0);
+      for(let i=0;i<count;i++){
+        const t=reducedMotion?(i+.5)/count:(sceneTime*1.7+i/count+gun*.17)%1;
+        const spread=Math.sin(t*Math.PI)*Math.sin(i*2.4+gun)*18*k;
+        const x=a.x+dx*t-dy/length*spread,y=a.y+dy*t+dx/length*spread-18*k*Math.sin(t*Math.PI);
+        ctx.save();ctx.translate(x,y);ctx.rotate(Math.atan2(dy,dx)+(reducedMotion?0:Math.sin(sceneTime*8+i)*.9));
+        ctx.scale(k,k*(reducedMotion?1:.4+.6*Math.abs(Math.sin(t*9+i))));ctx.globalAlpha=.85;
+        poly(ctx,[[-6,-3],[6,-3],[6,3],[-6,3]],i%2?'#bfdb9d':'#e2e8b8','#416549',.7);
+        oval(ctx,0,0,1.5,2,'#759b69');line(ctx,[[-4,-1],[-3,-1],[3,1],[4,1]],'#759b69',.7);ctx.restore();
+      }
+      ctx.restore();
+    }
   }
   const motion={last:NaN,taunt:0,wave:0,facing:0};
   function elon(x,y,air,pose=0){
@@ -200,12 +251,23 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
       let jointHand;
-      for(const side of [-1,1]){limb(c,[[side*11,-43+drop],[side*(23+15*crouch),-25-(air?10:0)+drop*.5],[side*25,-6]],side<0?'#343b43':'#42464c',14);sneaker(c,side*25,-1,side,1,'#e8e7dc')}
+      for(const side of [-1,1]){
+        // Measured on upright Roadster frame 0: soles follow its rear deck/bonnet.
+        // Keep those supports fixed while the hips and torso lean under boost.
+        const shoeAngle=air?0:side<0?-.17:.31;
+        const support={x:side*25,y:air?-1:side<0?1.6:4.8};
+        const foot=air?support:unrotate(support,tilt);
+        const ankleWorld={x:support.x+5*Math.sin(shoeAngle),y:support.y-5*Math.cos(shoeAngle)};
+        const ankle=air?ankleWorld:unrotate(ankleWorld,tilt);
+        limb(c,[[side*11,-43+drop],[side*(23+15*crouch),-25-(air?10:0)+drop*.5],[ankle.x,ankle.y]],side<0?'#343b43':'#42464c',14);
+        c.save();c.translate(foot.x,foot.y);c.rotate(air?0:shoeAngle-tilt);sneaker(c,0,0,side,1,'#e8e7dc');c.restore();
+      }
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
       poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],'#252a2d');
       c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
         const normalY=air?-92:-65+10*crouch,armWave=side===1?wave:0;
+        const special=target&&target.id!=='trump',guns=target?.id==='zuck';
         const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
         let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
         ex=mix(ex,side*39,armWave);ey=mix(ey,-98,armWave);hx=mix(hx,side*(46+5*Math.sin(sceneTime*7)),armWave);hy=mix(hy,-117,armWave);
@@ -214,11 +276,19 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
           ex=mix(ex,35,r);ey=mix(ey,-77-i*7,r);
           hx=mix(hx,40-i*6,r);hy=mix(hy,-92-i*11,r);
         }
+        const aim=opponent?localPoint(c,opponent,heroSurface):null;
+        if(special){
+          const near=side===facing;
+          if(guns||near){const angle=Math.atan2(aim.y+82,aim.x-side*22);ex=side*22+Math.cos(angle)*22;ey=-82+Math.sin(angle)*22;hx=side*22+Math.cos(angle)*43;hy=-82+Math.sin(angle)*43+(guns?side*7:0);}
+        }
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
-        limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);hand(c,hx,hy,side,k*(1-armWave),armWave,1,wristAngle);
+        limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);
+        if(guns)moneyGun(c,hx,hy,aim,1,'elon',heroSurface);
+        else if(special&&side===facing)pointingHand(c,hx,hy,aim);
+        else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
         if(side===1&&reaction.reach>.08)jointHand={x:hx,y:hy};
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt,reaction);
+      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,laugh:target&&target.id!=='trump'});
       c.restore();
       if(jointHand){
         const {x,y}=jointHand;
@@ -263,7 +333,22 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     ctx.drawImage(joeSprite,-41.5,-98.8,68.5,102.75);
     ctx.restore();
   }
-  function zuckerberg(){drawFigure(humanSurface,c=>{body(c,'#7e8587','#40566b');for(const s of [-1,1]){limb(c,[[s*17,-48],[s*23,-27]],'#7e8587',7);hand(c,s*23,-25,s,0,0,.6)}head(c,'zuckHead',-23,-94,46,43)},'zuck')}
+  function zuckerberg(o){
+    const {S,CAMEO,heroY}=getState(),dx=obstacleDx(o)+o.w/2;
+    const active=S.y>0&&!CAMEO.active&&gestureTarget()===o;
+    drawFigure(active?heroSurface:humanSurface,c=>{
+      body(c,'#7e8587','#40566b');
+      for(const side of [-1,1]){
+        let hx=side*23,hy=-25;
+        const target={x:-dx,y:heroY-80};
+        if(active){const angle=Math.atan2(target.y+48,target.x-side*17);hx=side*17+Math.cos(angle)*27;hy=-48+Math.sin(angle)*27+side*5;}
+        limb(c,[[side*17,-48],[(side*17+hx)/2,-43],[hx,hy]],'#7e8587',7);
+        if(active)moneyGun(c,hx,hy,target,.7,'zuck',heroSurface);else hand(c,hx,hy,side,0,0,.6);
+      }
+      head(c,'zuckHead',-23,-94,46,43);
+      if(active){oval(c,0,-72,18,17,'#efc49d');laugh(c,0,-74,.72);}
+    },active?null:'zuck');
+  }
   function rogozinBounce(){return 20*Math.abs(Math.sin(getState().sceneTime*3.8))}
   function rogozin(o){
     // 94 px person + 16 px trampoline + 20 px jump = 130 px peak.
@@ -277,27 +362,29 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   function amber(o={}){
     // Fictional paper slapstick character; the projectile is cosmetic and owned by the game world.
     const p=clamp(o.throwProgress||0),frame=Math.round(p*24),t=frame/24;
-    drawFigure(humanSurface,c=>{
+    drawFigure(amberSurface,c=>{
       for(const s of [-1,1]){limb(c,[[s*8,-29],[s*10,-6]],SKIN,7);sneaker(c,s*10,-3,s,.58,'#8d3e36')}
       poly(c,[[-15,-56],[14,-56],[19,-23],[-19,-23]],'#773c4c');
       limb(c,[[-14,-49],[-22,-39],[-20,-29]],SKIN,6);hand(c,-20,-28,-1,0,0,.6);
       const wind=ease(t/.28),release=ease((t-.28)/.12),follow=ease((t-.4)/.6);
       const hx=mix(mix(20,-18,wind),34,release)-follow*14,hy=mix(mix(-29,-77,wind),-60,release)+follow*31;
       limb(c,[[13,-48],[mix(22,27,release),mix(-44,-51,wind)],[hx,hy]],SKIN,6);hand(c,hx,hy,1,0,0,.6);
-      photos.draw(c,'amberHead',-25,-94,50,56);
+      c.drawImage(castSprites.amber,-29.5,-101,59,59);
     },`amber:${frame}`);
   }
-  function cameoRider(headKey,x,y,color,katy=false){
-    const {CAMEO}=getState(),t=CAMEO.t;
-    ctx.save();ctx.translate(x,y);drawFigure(cameoSurface,c=>{
-      for(const side of [-1,1]){limb(c,[[side*9,-12],[side*28,-2],[side*30,22]],color,10);sneaker(c,side*30,24,side,.7,'#d2d7ce')}
-      poly(c,[[-17,-52],[17,-52],[18,-10],[-18,-10]],color);
-      const side=katy?1:-1,hx=side*(37+7*Math.sin(t*7)),hy=-68;
-      limb(c,[[side*15,-44],[side*31,-52],[hx,hy]],color,9);hand(c,hx,hy-3,side,0,1,.76);
-      if(katy){limb(c,[[-15,-32],[-32,-18],[-53,-17]],color,8);hand(c,-55,-17,-1,0,0,.65)}
-      else{limb(c,[[14,-43],[23,-26],[13,-15]],color,8);hand(c,13,-15,1,0,0,.65)}
-      head(c,headKey,-25,-103,50,58);
-    });ctx.restore();
+  function seatedSprite(key,x,y,foreground=false){
+    const katy=key==='katyHead',id=katy?'katy':'bezos',t=getState().CAMEO.t;
+    // Registered whole-figure frames; scene time freezes faces with pause.
+    const phase=(t+(katy?.55:0))%2.8,frame=!reducedMotion&&phase>1.55&&phase<2.25?1:0;
+    ctx.save();ctx.translate(x,y);
+    if(foreground){ctx.beginPath();ctx.rect(-65,-1,130,48);ctx.clip();}
+    // Source hip underside: about y=383 (Katy), y=417 (Bezos).
+    // Hull top is y=14.4; overlap it by ~2px instead of leaving a sky gap.
+    const top=katy?-97:-105;
+    ctx.drawImage(castSprites[id],frame*320,0,320,512,-45,top,90,144);
+    ctx.restore();
   }
-  return {elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider};
+  function cameoLeg(headKey,x,y){seatedSprite(headKey,x,y,true);}
+  function cameoRider(headKey,x,y){seatedSprite(headKey,x,y);}
+  return {elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,beginFrame,drawMoneyStreams};
 }

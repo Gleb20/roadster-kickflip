@@ -29,7 +29,7 @@ const out=resolve(process.argv[2]||'/tmp/tesla-jump-character-review');mkdirSync
    };
    proto.drawImage=function(source,...args){
     if(this.canvas.id==='scene'){
-     const who=source.width===255&&source.height===279?'elon':source.width===153&&source.height===153?'donny':null;
+     const who=source.width===255&&source.height===321?'elon':source.width===153&&source.height===153?'donny':null;
      if(who){
       const t=this.getTransform();
       for(const finger of window.__draws.fingers.filter(f=>f.who===who)){

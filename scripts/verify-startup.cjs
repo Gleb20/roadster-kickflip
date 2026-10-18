@@ -30,7 +30,7 @@ const base=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
       for(let i=0;i<pixels.length;i+=4){const [r,g,b,a]=pixels.slice(i,i+4);if(a<128)continue;visible++;if(Math.max(r,g,b)<100)dark++;if(r>g+12&&g>b+5)skin++;}
       __startupProbe.headCopies.push({visible,dark,skin,decoded:__startupProbe.decoded.includes('collage-atlas.png')});
      }
-     if(this.canvas.id==='scene'&&source instanceof HTMLCanvasElement&&source.width===255&&source.height===279&&!__startupProbe.firstHero){
+     if(this.canvas.id==='scene'&&source instanceof HTMLCanvasElement&&source.width===255&&source.height===321&&!__startupProbe.firstHero){
       __startupProbe.firstHero={headPrepared:__startupProbe.headCopies.length>0,loaderVisible:!document.querySelector('#loading-screen').hidden};
      }
      return result;
