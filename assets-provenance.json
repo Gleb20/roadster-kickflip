@@ -398,5 +398,13 @@
     ],
     "method": "Native geometric SVG instruments and nozzle icon derived from user-provided interface references; no screenshot pixels at runtime",
     "pose": "Existing editable Canvas character joint coordinates; original sprite atlases unchanged"
+  },
+  "fallV302": {
+    "files": [
+      "src/fall.js",
+      "src/characters.js"
+    ],
+    "method": "Transforms and animation of existing editable Roadster and paper-figure parts; existing opaque face base, eye, brow and mouth parts are repositioned for an unsettled expression. No new raster illustration, generation or photographic input.",
+    "notes": "Two rolls/impacts, independent car/rider pivots, smooth reunion, shared animated collision shapes. Existing category styles and atlas pixels unchanged."
   }
 }

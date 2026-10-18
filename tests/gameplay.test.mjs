@@ -82,9 +82,11 @@ test('new flight/pace/economy are invariant under 30/60/120 Hz and uneven displa
  const stamps=[0],gaps=[8,17,33,12,45,24];let i=0;while(stamps.at(-1)<10000)stamps.push(Math.min(10000,stamps.at(-1)+gaps[i++%gaps.length]));assert.deepEqual(run(stamps),baseline);
 });
 
-test('precision templates actually require tight landing/late takeoff, including max series speed',()=>{
+test('precision patterns have one high drone, a short ground group and forgiving timing at all speeds',()=>{
  for(const speed of [360,510,660,825]){const pace=createPace(),e=createEconomy();pace.progress=Math.min(150,(speed-360)/2);pace.base=Math.min(660,speed);pace.speed=speed;if(speed>660){e.streak=.25;e.streakLeft=4;}
- const obs=makePattern('precision',{speed,dx:1200});const route=validateRoute(obs,{pace,economy:e,flight:createFlight(0)});assert.ok(route);assert.ok(route.nearLandings>=1);assert.ok(route.lateTakeoffs>=1);
- assert.equal(validateRoute(obs,{pace,economy:e,flight:createFlight(0),charges:[.5,1]}),null,'charged high arc must not bypass precision geometry');
+  const obs=makePattern('precision',{speed,dx:1200}),air=obs.filter(o=>o.altitude),ground=obs.filter(o=>!o.altitude);
+  assert.equal(air.length,1);assert.equal(air[0].altitude,400);assert.ok(ground.length<=3);
+  const route=validateRoute(obs,{pace,economy:e,flight:createFlight(0),timingMargin:C.routeTimingMargin});assert.ok(route,`speed ${speed}`);assert.equal(route.timingMargin,C.routeTimingMargin);
+  for(const offset of [-C.routeTimingMargin,C.routeTimingMargin])assert.ok(validateRoute(obs,{pace,economy:e,flight:createFlight(0),charges:[route.charge],leads:[route.lead+offset],burns:[route.burn]}));
  }
 });

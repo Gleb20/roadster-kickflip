@@ -1,5 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js';
-import {obstacleBoxes} from './physics.js';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.2';
+import {obstacleBoxes} from './physics.js?v=3.0.2';
+import {fallPolygons,interpolateFall} from './fall.js?v=3.0.2';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -70,7 +71,7 @@ export function settleLanding(e,p,result,{late=0,near=0}={}){
   if(n||near){e.streak=Math.min(C.maxStreak,e.streak+C.streakStep);e.streakLeft=C.streakHold;}
   return {points,turns:n,late,near,good:true};
 }
-export function createPace(){return {progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0};}
+export function createPace(){return {progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
 export function stumble(pace){
   const target=pace.recovery?.target??pace.base,r=clamp((target-C.startSpeed)/(C.maxSpeed-C.startSpeed),0,1);
   pace.recovery={target,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
@@ -85,11 +86,12 @@ export function advancePace(pace,e,p,dt){
   if(pace.recovery){
     pace.stumble=Math.max(0,pace.stumble-dt);const r=pace.recovery;r.age=Math.min(r.duration,r.age+dt);pace.base=recoverySpeed(r,r.age);
     if(r.age>=r.duration){pace.base=r.target;pace.recovery=null;}
-  }else{pace.progress+=dt;pace.base=C.startSpeed+(C.maxSpeed-C.startSpeed)*Math.min(1,pace.progress/C.rampSeconds);}
+  }else if(!pace.falling){pace.progress+=dt;pace.base=C.startSpeed+(C.maxSpeed-C.startSpeed)*Math.min(1,pace.progress/C.rampSeconds);}
   pace.speed=Math.max(60,pace.base*(1+e.streak)+p.vx);return pace.speed;
 }
 // Collision proxies rotate with the same pivot (65 above tyre baseline) as the art.
 export function playerPolygons(p){
+  if(p.fallPose)return fallPolygons(p.fallPose);
   const c=Math.cos(p.angle),s=Math.sin(p.angle);
   return [[-47,0,47,25],[-23,25,23,163-32*(p.grab||0)]].map(([l,b,r,t])=>[[l,b],[r,b],[r,t],[l,t]].map(([x,y])=>({x:c*x+s*(y-65),y:p.y+65-s*x+c*(y-65)})));
 }
@@ -106,8 +108,9 @@ export function collisionAt(p,o,dx,time=0){
 }
 // Adaptive substeps protect narrow silhouettes at top speed and during angular motion.
 export function sweptCollision(before,after,o,dxBefore,dxAfter,time,dt){
-  const n=Math.max(1,Math.ceil((Math.abs(dxAfter-dxBefore)+Math.abs(after.y-before.y)+Math.abs(after.angle-before.angle)*170)/4));
-  for(let i=0;i<=n;i++){const f=i/n,p={y:before.y+(after.y-before.y)*f,angle:before.angle+(after.angle-before.angle)*f,grab:(before.grab||0)+((after.grab||0)-(before.grab||0))*f};if(collisionAt(p,o,dxBefore+(dxAfter-dxBefore)*f,time-dt+dt*f))return true;}
+  const fallTravel=before.fallPose&&after.fallPose?Math.abs(after.fallPose.rider.angle-before.fallPose.rider.angle)*170+Math.abs(after.fallPose.rider.y-before.fallPose.rider.y):0;
+  const n=Math.max(1,Math.ceil((Math.abs(dxAfter-dxBefore)+Math.abs(after.y-before.y)+Math.abs(after.angle-before.angle)*170+fallTravel)/4));
+  for(let i=0;i<=n;i++){const f=i/n,p={y:before.y+(after.y-before.y)*f,angle:before.angle+(after.angle-before.angle)*f,grab:(before.grab||0)+((after.grab||0)-(before.grab||0))*f};if(before.fallPose&&after.fallPose)p.fallPose=interpolateFall(before.fallPose,after.fallPose,f);if(collisionAt(p,o,dxBefore+(dxAfter-dxBefore)*f,time-dt+dt*f))return true;}
   return false;
 }
 export function nearWindow(distance,speed){return distance>=0&&distance<=Math.max(0,speed)*C.nearSeconds+1e-8;}

@@ -1,4 +1,4 @@
-import {joeReaction} from './encounter.js?v=2.4.0';
+import {joeReaction} from './encounter.js?v=3.0.2';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 // A compact raised forearm; the middle finger always stays upright in screen space.
 export function raisedArm(shoulder,upper,lower,side){
@@ -112,6 +112,11 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     }
   }
   function heroHead(c,boosted,target,angry,reaction){
+    if(reaction.fall){
+      faceBase(c,'head');eyes(c,[[-8,-33],[14,-33]],{x:5,y:-42},9,12);
+      line(c,[[-17,-49],[-8,-53],[0,-49]],'#66503d',2);line(c,[[7,-48],[14,-44],[22,-47]],'#66503d',2);
+      oval(c,4,-10,4,6,'#49332e');return;
+    }
     if(reaction.laugh){faceBase(c,'head');laugh(c,3,-30,1.05);return;}
     if(reaction.meme>.05||reaction.inhale>.15){
       faceBase(c,'head');
@@ -255,7 +260,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const dx=target?obstacleDx(target)+target.w/2:0;
     const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
     motion.taunt=mix(motion.taunt,target?ease((300-Math.abs(dx))/100):0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
-    const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab),drop=27*crouch+5*grab,taunt=motion.taunt*(1-grab),wave=motion.wave*(1-grab);
+    const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab,taunt=S.falling?0:motion.taunt*(1-grab),wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave*(1-grab);
     const tilt=((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab);
     const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
@@ -276,7 +281,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],'#252a2d');
       c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
-        const normalY=air?-92:-65+10*crouch,armWave=side===1?wave:0;
+        const normalY=air?-92:-65+10*crouch,armWave=S.falling?wave*(.8+.2*Math.sin(sceneTime*13+side)):side===1?wave:0;
         const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5;
         const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
         let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
@@ -302,7 +307,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
         else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
         if(side===1&&reaction.reach>.08&&grab<.5)jointHand={x:hx,y:hy};
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,laugh:target&&target.id!=='trump'});
+      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,fall:S.falling,laugh:target&&target.id!=='trump'});
       c.restore();
       if(jointHand){
         const {x,y}=jointHand;

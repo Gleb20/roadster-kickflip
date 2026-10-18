@@ -55,7 +55,7 @@ export function createHUD({root=document.getElementById('game'),reducedMotion=()
     multiplier.style.setProperty('--combo-scale',String(a.scale));multiplier.style.setProperty('--combo-alpha',String(a.opacity));multiplier.style.setProperty('--combo-shake',a.shake+'px');multiplier.style.setProperty('--combo-saturation',String(.45+.55*s.meter));
     const speed=Math.round(mphFromKmh(s.kmh));$('speed-value').textContent=speed;$('speedometer').setAttribute('aria-label',`${speed} miles per hour. Earned boost ${Math.round(s.streak*100)} percent`);
     $('streak-fill').style.strokeDashoffset=String(1-s.streak/.25);$('streak-value').textContent=s.streak>.001?'+'+Math.round(s.streak*100)+'%':'';
-    const fuel=Math.ceil(s.fuel),button=$('boost');button.disabled=s.mode!=='playing';button.classList.toggle('active',s.thrusting);button.classList.toggle('empty',fuel===0);
+    const fuel=Math.ceil(s.fuel),button=$('boost');button.disabled=s.mode!=='playing'||!!s.falling;button.classList.toggle('active',s.thrusting);button.classList.toggle('empty',fuel===0);
     button.setAttribute('aria-pressed',String(s.thrusting));button.setAttribute('aria-label',`Hold for airborne thrust. Fuel ${fuel} percent`);
     button.style.setProperty('--thrust-charge',String(Math.max(0,Math.min(1,s.fuel/100))));
     $('thrust-fill').style.strokeDashoffset=String(1-s.fuel/100);$('boost-time').textContent=fuel+'%';

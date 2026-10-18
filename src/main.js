@@ -1,24 +1,25 @@
-import {loading} from './loading.js?v=3.0.1';
-import {createThrusterEffects} from './thrusters.js?v=3.0.1';
-import {createSound} from './sound.js?v=3.0.1';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.0.1';
-import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.0.1';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.0.1';
-import {createDirector} from './director.js?v=3.0.1';
-import {types} from './catalog.js?v=3.0.1';
-import {START_SPEED, START_KMH} from './physics.js';
-import {GAMEPLAY as C} from './gameplay-config.js';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js';
-import {AIR_TYPES,stageAt} from './routes.js';
-import {createCoach} from './coaching.js';
-import {createHUD,mphFromKmh} from './hud.js';
-import {viewScale,speedFeedback} from './speed-feedback.js';
-import {createSlapstick} from './slapstick.js';
-import {createClock} from './clock.js';
-import {createEnvironmentRenderer} from './environment.js?v=3.0.1';
-import {createCharacterRenderer} from './characters.js?v=3.0.1';
-import {createPropRenderer} from './props.js?v=2.1.0';
-import {createPhotoRenderer} from './photo-cutouts.js';
+import {loading} from './loading.js?v=3.0.2';
+import {createThrusterEffects} from './thrusters.js?v=3.0.2';
+import {createSound} from './sound.js?v=3.0.2';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.0.2';
+import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.0.2';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.0.2';
+import {createDirector} from './director.js?v=3.0.2';
+import {types} from './catalog.js?v=3.0.2';
+import {START_SPEED, START_KMH} from './physics.js?v=3.0.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.2';
+import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.0.2';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.0.2';
+import {createCoach} from './coaching.js?v=3.0.2';
+import {createHUD,mphFromKmh} from './hud.js?v=3.0.2';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.0.2';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.0.2';
+import {createSlapstick} from './slapstick.js?v=3.0.2';
+import {createClock} from './clock.js?v=3.0.2';
+import {createEnvironmentRenderer} from './environment.js?v=3.0.2';
+import {createCharacterRenderer} from './characters.js?v=3.0.2';
+import {createPropRenderer} from './props.js?v=3.0.2';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.0.2';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -39,7 +40,7 @@ const artReview=reviewMode==='obstacles'||flipReview||spaceportReview;
 const S={mode:'menu',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.8,obs:[],particles:[],toast:0,lastCharge:0};
 let best=0;try{best=Number(localStorage.getItem(C.bestKey))||0}catch{}$('best').textContent=String(best).padStart(5,'0');
 let W,H,scale,ground,px,sceneTime=0,screenRoadDistance=0;
-const P=createFlight(),E=createEconomy(),pace=createPace();
+const P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall();
 let storage;try{storage=localStorage;}catch{}
 const coach=createCoach(storage);
 const hud=createHUD();
@@ -49,23 +50,25 @@ let spinning=false,chargingInput=false,lateTarget=null,lastLanding=null;
 let chargeValue=0,cameraLift=0;
 Object.assign(S,{charging:false,charge:0,anchor:0,entityId:0});
 function syncState(){
- S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=chargeValue;S.charging=chargingInput;
+ S.falling=F.active;S.fallCrouch=F.active?fallPose(F).crouch:0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=chargeValue;S.charging=chargingInput;
  S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);S.baseSpeed=pace.base;S.speed=pace.speed;
  const progress=Math.min(1,pace.progress/C.rampSeconds),cruise=C.startSpeed+(C.maxSpeed-C.startSpeed)*progress;
  S.kmh=(130+270*progress)*S.speed/cruise;Object.assign(B,speedFeedback(pace,E.streak));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
 }
 function boostUI(){
- hud.update({mode:S.mode,score:S.score,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,kmh:S.kmh||START_KMH,fuel:P.fuel,thrusting:P.thrusting,turns:P.turns,pending:P.airborne?C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10:0});
- const lesson=coach.next(pace.progress,S.mode==='playing');$('jump').classList.toggle('hidden',!lesson);
+ hud.update({mode:S.mode,falling:F.active,score:S.score,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,kmh:S.kmh||START_KMH,fuel:P.fuel,thrusting:P.thrusting,turns:P.turns,pending:P.airborne?C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10:0});
+ const lesson=F.active?null:coach.next(pace.progress,S.mode==='playing');$('jump').classList.toggle('hidden',!lesson);
  if(lesson){$('coach-title').textContent=lesson.text;$('coach-detail').textContent=lesson.detail;}
 }
 function obstacleDx(o){return o.x-S.anchor;}
 function gestureTarget(){
+ if(F.active)return null;
  let nearest=null,distance=300;
  for(const o of S.obs){const dx=Math.abs(obstacleDx(o)+o.w/2);if((o.id==='trump'||(S.y>0&&['rogozin','zuck'].includes(o.id)))&&dx<distance){nearest=o;distance=dx;}}
  return nearest;
 }
 function joeTarget(){
+ if(F.active)return null;
  let nearest=null,distance=650;
  for(const o of S.obs){const dx=obstacleDx(o)+o.w/2;if(o.id==='joe'&&dx<650&&dx>-480&&Math.abs(dx)<distance){nearest=o;distance=Math.abs(dx);}}
  return nearest;
@@ -106,18 +109,18 @@ function ui(){for(const [id,mode] of [['menu','menu'],['result','dead'],['paused
 function cancelCharge(){primaryInputs.clear();thrustInputs.clear();spinning=false;chargingInput=false;chargeValue=0;P.thrusting=false;sound.setThrust(false);syncState();}
 function start(){
  if(!spritesReady||artReview||$('game').inert)return;
- sound.unlock();cancelCharge();Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());
+ sound.unlock();cancelCharge();Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());
  Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,next:1.7,obs:[],particles:[],toast:0,entityId:0});
  lateTarget=null;lastLanding=null;cameraLift=0;scale=viewScale(W,H,0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();
  Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();projectiles.length=0;clock.reset();syncState();ui();tone(500);
 }
 function beginCharge(){
- if(S.mode!=='playing'||pace.stumble>0)return false;
+ if(S.mode!=='playing'||F.active||pace.stumble>0)return false;
  if(P.airborne){P.trickStarted=true;spinning=true;}else{chargingInput=true;chargeValue=0;}
  syncState();return true;
 }
 function jump(){
- if(S.mode!=='playing'||P.airborne||pace.stumble>0)return;
+ if(S.mode!=='playing'||P.airborne||F.active||pace.stumble>0)return;
  lateTarget=null;
  for(const o of S.obs){if(o.altitude||o.passed)continue;const gap=obstacleDx(o)+(o.inset||5)-47;if(nearWindow(gap,S.speed+(o.approachSpeed||0))){lateTarget=o;break;}}
  launch(P,chargeValue);S.lastCharge=chargeValue;chargingInput=false;chargeValue=0;spinning=false;
@@ -125,7 +128,7 @@ function jump(){
 }
 function releaseCharge(){if(chargingInput)jump();spinning=false;}
 function pause(){cancelCharge();clock.reset();if(S.mode==='playing')S.mode='paused';else if(S.mode==='paused'){sound.unlock();S.mode='playing';}ui();}
-function pressPrimary(token){if(primaryInputs.has(token))return;const empty=primaryInputs.size===0;primaryInputs.add(token);if(empty)beginCharge();}
+function pressPrimary(token){if(primaryInputs.has(token))return;const empty=primaryInputs.size===0;primaryInputs.add(token);if(empty){if(F.active)hastenFall(F);else beginCharge();}}
 function releasePrimary(token,cancel=false){if(!primaryInputs.delete(token)||primaryInputs.size)return;if(cancel){spinning=false;chargingInput=false;chargeValue=0;}else releaseCharge();}
 $('boost').onclick=e=>e.preventDefault();
 $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$('pause').onclick=pause;
@@ -134,7 +137,7 @@ $('jump').onclick=()=>coach.dismiss(pace.progress);
 $('game').addEventListener('pointerdown',e=>{
  if(e.button!==0||S.mode!=='playing')return;
  const token='p'+e.pointerId;
- if(e.target.closest('#boost')){e.preventDefault();thrustInputs.add(token);}
+ if(e.target.closest('#boost')){e.preventDefault();if(!F.active)thrustInputs.add(token);}
  else if(e.target.closest('button,a'))return;
  else{e.preventDefault();pressPrimary(token);}
  try{$('game').setPointerCapture(e.pointerId);}catch{}
@@ -142,7 +145,12 @@ $('game').addEventListener('pointerdown',e=>{
 function endPointer(e,cancel=false){const token='p'+e.pointerId;releasePrimary(token,cancel);thrustInputs.delete(token);}
 addEventListener('pointerup',e=>endPointer(e));addEventListener('pointercancel',e=>endPointer(e,true));
 $('game').addEventListener('lostpointercapture',e=>endPointer(e,true));
-for(const event of ['selectstart','dragstart','contextmenu'])$('game').addEventListener(event,e=>e.preventDefault());
+// Safari may begin a native range/callout even with inherited user-select:none.
+function clearGameSelection(){const selection=getSelection();if(selection&&!selection.isCollapsed&&($('game').contains(selection.anchorNode)||$('game').contains(selection.focusNode)))selection.removeAllRanges();}
+for(const event of ['selectstart','dragstart','contextmenu'])$('game').addEventListener(event,e=>e.preventDefault(),{capture:true});
+document.addEventListener('selectionchange',clearGameSelection);
+$('game').addEventListener('pointerdown',clearGameSelection,{capture:true});
+$('game').addEventListener('touchstart',clearGameSelection,{capture:true,passive:true});
 $('sound').onclick=()=>{sound.toggle();soundUI();tone(600);};
 const thrustKeys=['KeyB','ShiftLeft','ShiftRight'];const jumpKeys=['Space','ArrowUp','KeyW'];
 addEventListener('keydown',e=>{
@@ -152,7 +160,7 @@ addEventListener('keydown',e=>{
   e.preventDefault();if(e.repeat)return;
   if(jumpKeys.includes(e.code)&&['menu','dead'].includes(S.mode)){start();return;}
   if(S.mode!=='playing')return;
-  if(thrust)thrustInputs.add(e.code);else pressPrimary(e.code);
+  if(thrust){if(!F.active)thrustInputs.add(e.code);}else pressPrimary(e.code);
  }
  if(['Escape','KeyP'].includes(e.code)&&!e.repeat)pause();
 });
@@ -167,12 +175,16 @@ function update(dt){
  S.t+=dt;
  if(chargingInput)chargeValue=Math.min(1,chargeValue+dt/C.chargeSeconds);
  advanceEconomy(E,dt);advanceStreak(E,dt);
- const before={...P},landed=advanceFlight(P,dt,{spin:spinning,thrust:thrustInputs.size>0});
+ const wasFalling=F.active,before={...P,fallPose:F.active?fallPose(F):null};
+ let landed=null,fallStep={impacts:0,finished:false};
+ if(wasFalling){fallStep=advanceFall(F,dt);if(fallStep.finished){cancelCharge();S.next=Math.max(S.next,.8);toast('BACK ON BOARD');}}
+ else landed=advanceFlight(P,dt,{spin:spinning,thrust:thrustInputs.size>0});
+ pace.falling=F.active;
  advancePace(pace,E,P,dt);
  sound.setThrust(P.thrusting);
  if(P.thrusting)coach.complete('thrust');
  S.distance+=pace.speed*dt;screenRoadDistance+=pace.speed*scale*dt;syncState();
- const collisionPose=landed?{...P,angle:landed.angle}:P;
+ const collisionPose=wasFalling?{...P,fallPose:fallPose(F)}:landed?{...P,angle:landed.angle}:P;
  for(const o of S.obs){
   const old=obstacleDx(o);o.x-=(S.speed+(o.approachSpeed||0))*dt;const dx=obstacleDx(o);
   if(sweptCollision(before,collisionPose,o,old,dx,sceneTime,dt)){die(o);return;}
@@ -184,12 +196,12 @@ function update(dt){
   for(const o of S.obs){if(o.altitude||o.nearPaid)continue;const gap=-47-(obstacleDx(o)+o.w-(o.inset||5));if(nearWindow(gap,S.speed)){near++;o.nearPaid=true;}}
   const oldMultiplier=E.multiplier;
   lastLanding=settleLanding(E,P,landed,{late,near});
-  if(!landed.good){hud.dropMultiplier(oldMultiplier/10);stumble(pace);P.angle=Math.max(-Math.PI/4,Math.min(Math.PI/4,uprightError(landed.angle)));P.omega=0;P.vx=0;advancePace(pace,E,P,0);spinning=false;chargingInput=false;chargeValue=0;toast('ROUGH LANDING · SERIES LOST');tone(100,.2);}
+  if(!landed.good){hud.dropMultiplier(oldMultiplier/10);stumble(pace);beginFall(F,landed,{reduced:matchMedia('(prefers-reduced-motion: reduce)').matches});pace.falling=true;P.angle=0;P.omega=0;P.vx=0;P.grab=0;cancelCharge();advancePace(pace,E,P,0);toast('ROUGH LANDING · TAP TO GET UP');S.toast=C.fallSeconds+.3;tone(100,.2);}
   else{if(landed.turns)coach.complete('flip');if(late||near)coach.complete('near');if(lastLanding.points)toast(`${landed.turns?landed.turns+' FLIP'+(landed.turns>1?'S':'')+' · ':''}${late?'LATE +25 · ':''}${near?'CLOSE +25 · ':''}+${Math.round(lastLanding.points)}`);tone(130,.08);}
   lateTarget=null;
  }
  if(!P.airborne&&Math.abs(P.angle)>.001){P.angle*=Math.exp(-dt*18);P.omega=0;}
- thrusters.update(dt,{impactSpeed:landed?.impact||0,speed:S.speed});
+ thrusters.update(dt,{impactSpeed:landed?.impact||(fallStep.impacts?180:0),speed:S.speed});
  advanceRoadsterMotion(roadsterMotion,dt,{grounded:!P.airborne,speed:S.speed,charge:chargeValue,impactSpeed:landed?.impact||0});
  S.obs=S.obs.filter(o=>o===lateTarget||obstacleDx(o)+o.w>(o.id==='joe'?-480:-400));
  S.next-=dt;if(S.next<=0)director.spawn();
@@ -320,10 +332,18 @@ function reviewSpaceport(){
    text(['NORMAL','+5% SPEED','MAX SPEED'][i],W*(i+.5)/3,H-10,10,'#c2cec4');
  });Object.assign(B,saved);
 }
+function drawFallenPlayer(ds,worldGround,time){
+ const pose=fallPose(F);
+ ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);
+ ctx.save();ctx.translate(pose.car.x,-pose.car.y);ctx.rotate(pose.car.angle);car(0,12,0);ctx.restore();
+ ctx.save();ctx.translate(pose.rider.x,-pose.rider.y);ctx.rotate(pose.rider.angle);elon(0,65.5,pose.progress<.85,time);ctx.restore();
+ ctx.restore();
+}
 function render(dt,time){
  if(spaceportReview){reviewSpaceport();return;}
  if(flipReview){reviewFlip(performance.now()/1000);return;}
  if(artReview){reviewObstacles();return;}
+ const shake=F.active&&S.mode==='playing'?fallPose(F).shake:0;canvas.style.transform=shake?`translate(${Math.sin(F.age*83)*shake}px,${Math.cos(F.age*97)*shake}px)`:'';
  characters.beginFrame();background(time);milestoneFireworks();cameoScene();speedStreaks();
  const demo=S.mode==='menu',x=px,ds=scale,hop=P.y;
  const worldGround=ground+cameraLift;
@@ -331,6 +351,7 @@ function render(dt,time){
  for(const o of S.obs)obstacle(o);
  ctx.save();ctx.translate(0,cameraLift);drawProjectiles();ctx.restore();
  ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);thrusters.drawDust(ctx);ctx.restore();
+ if(F.active)drawFallenPlayer(ds,worldGround,time);else{
  ctx.save();ctx.translate(x,worldGround-hop*ds);ctx.scale(ds,ds);
  ctx.translate(0,-65);ctx.rotate(P.angle);ctx.translate(0,65);
  const {phase,gap,cosmetic}=playerPose();
@@ -340,7 +361,7 @@ function render(dt,time){
  car(0,gap,phase);
  elon(0,-29.5+roadsterMotion.compression,P.airborne,time);
  if(chargingInput){rect(-28,17,56,5,'#45574f',2);rect(-28,17,56*chargeValue,5,'#d9ff62',2);line([[0,17],[0,22]],'#fff',1);}
- ctx.restore();drawMoneyStreams();
+ ctx.restore();}drawMoneyStreams();
  for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c);}
  ctx.globalAlpha=1;
  if(demo)text('ELON / ROCKET RIDER',x,ground+31,8,'#b5c7bd');
@@ -378,9 +399,9 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,y:P.y,speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:chargingInput,charge:chargeValue,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,y:P.y,fall:{active:F.active,age:F.age,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:chargingInput,charge:chargeValue,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 if(['localhost','127.0.0.1'].includes(location.hostname)){
- window.__qa={S,B,P,E,pace,CAMEO,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
+ window.__qa={S,B,P,E,F,pace,CAMEO,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
  setTime(t){S.t=t;pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
  spawn(id,dx=260){const type=[...types,...AIR_TYPES].find(o=>o.id===id);S.obs.push({...type,x:S.anchor+dx,uid:++S.entityId,passed:false});},
  rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound,

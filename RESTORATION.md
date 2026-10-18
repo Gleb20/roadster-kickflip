@@ -50,3 +50,8 @@ Final combined character, controls, encounter and contact update is authorized f
 ## Release 3.0.1 — 18 October 2026
 
 Controlled flight, directional fuel thrust, landed trick economy, seven-stage validated patterns, forgiving landing/recovery, revised HUD and real pressure audio. Latest camera fix preserves real projected +5–25% earned speed; subdued flame/lean and maximum-speed-only Impossibru. See docs/gameplay-v3.md and docs/releases/2026-10-18-v3.0.1.md. This supersedes historical 2.x automatic flips, queued ground charge and passive boost. Original archives/private references remain local. Revert the release commit to return to 2.4.8; physical-device acceptance remains open.
+
+
+## Release 3.0.2 — 18 October 2026
+
+Authorized for immediate online publication after physical-device feedback. Native-selection protection, relaxed precision/dense patterns with ±35 ms timing margin and breathers, and a 1.65-second rolling recovery with separate car/rider, two impacts, unsettled expression, bounded shake and tap-accelerated get-up. Controls stay locked during recovery animation; obstacle collisions remain active. All module/style URLs use 3.0.2 to avoid stale phone caches. A single release commit reverts to published 3.0.1. See docs/releases/2026-10-18-v3.0.2.md.
