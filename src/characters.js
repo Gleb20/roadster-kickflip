@@ -16,6 +16,16 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
+// A two-bone reach to the Roadster edge, in the crouched torso's local frame.
+export function boardGrabArm(side,drop,torsoAngle){
+  const shoulder={x:side*22,y:-82},world={x:side*43-4,y:10-drop};
+  const c=Math.cos(torsoAngle),s=Math.sin(torsoAngle);
+  let wrist={x:c*world.x+s*world.y,y:-s*world.x+c*world.y};
+  const dx=wrist.x-shoulder.x,dy=wrist.y-shoulder.y,d=Math.min(71.9,Math.hypot(dx,dy)),a=Math.atan2(dy,dx),bend=Math.acos(d/72);
+  const distance=Math.hypot(dx,dy);if(distance>d)wrist={x:shoulder.x+dx*d/distance,y:shoulder.y+dy*d/distance};
+  const elbow={x:shoulder.x+36*Math.cos(a-side*bend),y:shoulder.y+36*Math.sin(a-side*bend)};
+  return {shoulder,elbow,wrist};
+}
 export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites}) {
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
@@ -245,8 +255,8 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const dx=target?obstacleDx(target)+target.w/2:0;
     const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
     motion.taunt=mix(motion.taunt,target?ease((300-Math.abs(dx))/100):0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
-    const crouch=S.charging?(.3+.7*S.charge):0,drop=27*crouch,thrust=clamp((B.factor-1)/3),taunt=motion.taunt,wave=motion.wave;
-    const tilt=(air?-.085:Math.sin(pose*4)*.012)-thrust*.24;
+    const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab),drop=27*crouch+5*grab,taunt=motion.taunt*(1-grab),wave=motion.wave*(1-grab);
+    const tilt=((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab);
     const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
@@ -267,7 +277,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
         const normalY=air?-92:-65+10*crouch,armWave=side===1?wave:0;
-        const special=target&&target.id!=='trump',guns=target?.id==='zuck';
+        const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5;
         const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
         let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
         ex=mix(ex,side*39,armWave);ey=mix(ey,-98,armWave);hx=mix(hx,side*(46+5*Math.sin(sceneTime*7)),armWave);hy=mix(hy,-117,armWave);
@@ -281,14 +291,18 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
           const near=side===facing;
           if(guns||near){const angle=Math.atan2(aim.y+82,aim.x-side*22);ex=side*22+Math.cos(angle)*22;ey=-82+Math.sin(angle)*22;hx=side*22+Math.cos(angle)*43;hy=-82+Math.sin(angle)*43+(guns?side*7:0);}
         }
+        if(grab>0){
+          const arm=boardGrabArm(side,drop,.09*crouch);
+          ex=mix(ex,arm.elbow.x,grab);ey=mix(ey,arm.elbow.y,grab);hx=mix(hx,arm.wrist.x,grab);hy=mix(hy,arm.wrist.y,grab);
+        }
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
         limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);
         if(guns)moneyGun(c,hx,hy,aim,1,'elon',heroSurface);
         else if(special&&side===facing)pointingHand(c,hx,hy,aim);
         else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
-        if(side===1&&reaction.reach>.08)jointHand={x:hx,y:hy};
+        if(side===1&&reaction.reach>.08&&grab<.5)jointHand={x:hx,y:hy};
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,B.state==='active'||thrust>.025,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,laugh:target&&target.id!=='trump'});
+      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,laugh:target&&target.id!=='trump'});
       c.restore();
       if(jointHand){
         const {x,y}=jointHand;

@@ -1,34 +1,24 @@
-import {types} from './catalog.js?v=2.4.0';
-import {clearPair} from './physics.js';
-export function createDirector({S,B,spawnX}){
-const DIRECTOR={wave:0,pending:null,gap:0};
-function reset(){DIRECTOR.wave=0;DIRECTOR.pending=null;DIRECTOR.gap=0}
-function spawn(){
- if(DIRECTOR.pending){
-  const {type,delay}=DIRECTOR.pending;
-  S.obs.push({...type,x:spawnX(),passed:false});
-  S.next+=Math.max(.75,DIRECTOR.gap-delay);DIRECTOR.pending=null;return;
+import {types} from './catalog.js?v=3.0.0';
+import {stageAt,makePattern,validateRoute} from './routes.js';
+export function createDirector({S,flight,pace,economy,spawnDistance,sceneTime=()=>S.t,random=Math.random}){
+ const state={wave:0,last:null,fallbacks:0,waiting:false};
+ function reset(){Object.assign(state,{wave:0,last:null,fallbacks:0,waiting:false});}
+ function spawn(){
+  if(flight.airborne||pace.recovery||S.obs.some(o=>!o.passed)){S.next=.18;state.waiting=true;return;}
+  state.waiting=false;
+  const stage=stageAt(pace.progress),breath=state.wave%5===4;
+  const pools=[['single'],['single'],['pair','single'],['hover','incoming','pair'],['precision','incoming','pair'],['mixed','precision','thrust'],['mixed','precision','thrust','incoming']];
+  let kind=breath?'single':pools[stage][Math.floor(random()*pools[stage].length)];
+  if(!breath&&stage===3&&pace.progress<72)kind='hover';
+  const choices=types.filter(o=>!o.altitude&&(stage===0?o.h<=64:stage<2?o.h<=94:true));
+  const type=choices[Math.floor(random()*choices.length)],dx=spawnDistance();
+  let obstacles=makePattern(kind,{speed:S.speed,type,dx});
+  let route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime()});
+  if(!route){state.fallbacks++;kind='single';obstacles=makePattern(kind,{speed:S.speed,type:types.find(o=>o.id==='truck'),dx});route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime()});}
+  if(!route){S.next=.3;return;}
+  state.wave++;state.last={kind,stage,route,startedAt:S.t};
+  for(const o of obstacles)S.obs.push({...o,x:o.x+S.anchor,uid:++S.entityId,passed:false,nearPaid:false,latePaid:false});
+  S.next=breath?2.3:1.2;
  }
- const stage=S.t<30?0:S.t<60?1:S.t<100?2:S.t<150?3:4;
- const [lo,hi,pairChance]=[[2.36,2.86,0],[2.05,2.45,.08],[1.77,2.20,.28],[1.64,1.96,.43],[1.54,1.87,.56]][stage];
- const breath=++DIRECTOR.wave%5===0;
- let gap=lo+Math.random()*(hi-lo)+(breath?.54:0),a=null,b=null,delay=0;
- if(!breath&&Math.random()<pairChance){
-  const choices=types.filter(o=>['doge','openai','gemini','claude','pump'].includes(o.id));
-  for(let k=0;k<12;k++){
-   const x=choices[Math.floor(Math.random()*choices.length)],y=choices[Math.floor(Math.random()*choices.length)],d=.25+Math.random()*.14;
-   if(clearPair(x,y,d,S.speed/B.factor)){a=x;b=y;delay=d;break}
-  }
- }
- if(!a){
-  const solo=types.filter(o=>o.id!=='rogozin'&&(stage>0||o.h<=90||o.id==='joe'));
-  a=S.t>=45&&Math.random()<(stage>=4?.13:stage>=2?.085:.055)?types.find(o=>o.id==='rogozin'):solo[Math.floor(Math.random()*solo.length)];
- }
- if(a.id==='rogozin'){gap=Math.max(gap,2.18);b=null}
- S.obs.push({...a,x:spawnX(),passed:false});
- DIRECTOR.gap=gap;
- if(b){DIRECTOR.pending={type:b,delay};S.next+=delay}else S.next+=gap;
-}
-
-return {reset,spawn};
+ return {reset,spawn,state};
 }

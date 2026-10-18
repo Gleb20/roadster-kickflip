@@ -25,6 +25,17 @@ export function createThrusterEffects({reducedMotion}={}){
     },
     get activeClouds(){return dust.length},
     get landingAge(){return landingAge},
+    drawFlightJets(ctx,{active=false,assisting=false,time=0,gap=0}={}){
+      if(!active&&!assisting)return;
+      const quiet=reducedMotion?reducedMotion():media?.matches;
+      const length=active?(quiet?42:48+Math.sin(time*53)*5):10;
+      ctx.save();ctx.globalAlpha=active?.92:.5;
+      for(const x of [-23,23]){
+        ctx.beginPath();ctx.moveTo(x-3,gap-3);ctx.quadraticCurveTo(x-7,gap+length*.45,x,gap+length);ctx.quadraticCurveTo(x+7,gap+length*.45,x+3,gap-3);ctx.fillStyle='#73ddeb';ctx.fill();
+        ctx.beginPath();ctx.moveTo(x-1.5,gap-3);ctx.lineTo(x,gap+length*.75);ctx.lineTo(x+1.5,gap-3);ctx.fillStyle='#f2fff8';ctx.fill();
+      }
+      ctx.restore();
+    },
     drawJets(ctx,{phase,time,airborne,compression=0,groundDistance=Infinity}){
       if(!airborne&&landingAge>.16)return;
       const pose=thrusterPose(phase),quiet=reducedMotion?reducedMotion():media?.matches;

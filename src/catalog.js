@@ -1,4 +1,5 @@
 import {PROP_TYPES} from './props.js?v=2.1.0';
+import {AIR_TYPES} from './routes.js';
 export const types = [
   {id:'v8',name:'V8 • VERY LOUD',w:108,h:36},
   {id:'trump',name:'TARIFF MAN',w:54,h:94},
@@ -14,4 +15,5 @@ export const types = [
   {id:'amber',name:'AMBER HEARD',w:58,h:94,inset:9},
   {id:'joe',name:'JOE ROGAN',w:76,h:94,inset:10},
   ...PROP_TYPES,
+  ...AIR_TYPES,
 ];

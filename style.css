@@ -216,7 +216,7 @@ button.primary {
 .mobile-tip { display: none; }
 @keyframes coach-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .62; } }
 
-/* Both functional rings remain visible: fuel outside, X2 inside. */
+/* Both functional rings remain visible: fuel outside, earned speed inside. */
 #boost {
   position: absolute;
   z-index: 4;
@@ -252,15 +252,7 @@ button.primary {
 #boost-title { font-size: 9px; font-weight: 750; letter-spacing: .8px; }
 #boost-time { font-size: 14px; font-weight: 650; letter-spacing: -.3px; }
 #boost-note { position: absolute; top: calc(100% + 8px); color: #b4c6c7; font-size: 8px; font-weight: 550; letter-spacing: .3px; white-space: nowrap; }
-footer {
-  position: absolute;
-  left: max(var(--edge-x), env(safe-area-inset-left));
-  right: 150px;
-  bottom: max(22px, env(safe-area-inset-bottom));
-  pointer-events: none;
-}
-#status { color: #a7b9bc; font-size: 10px; font-weight: 500; letter-spacing: .35px; }
-footer span:last-child { display: none; }
+
 
 @media (hover: hover) {
   .tools button:hover { background: rgb(52 63 67 / 94%); }
@@ -292,7 +284,6 @@ footer span:last-child { display: none; }
   #boost-title { font-size: 8px; }
   #boost-time { font-size: 12px; }
   #boost-note { font-size: 7px; }
-  #status { font-size: 9px; }
 }
 @media (max-height: 570px) {
   :root { --edge-top: max(12px, env(safe-area-inset-top)); }
@@ -312,9 +303,117 @@ footer span:last-child { display: none; }
   #boost .boost-bolt { width: 12px; height: 12px; }
   #boost-title { font-size: 7px; }
   #boost-time { font-size: 11px; }
-  footer { bottom: max(12px, env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) {
   #jump { animation: none; }
   button.primary, .tools button, #boost { transition: none; }
 }
+
+/* v3: the existing ring is fuel; the inner ring shows earned series speed. */
+#boost::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; }
+#boost.empty { color: var(--secondary); }
+#boost-note { pointer-events: none; }
+#combo { position: absolute; left: var(--edge-x); top: calc(var(--edge-top) + 112px); width: 152px; pointer-events: none; }
+#multiplier { color: var(--primary); font-size: 27px; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.combo-track { display: block; height: 4px; background: rgb(255 255 255 / 14%); border-radius: 4px; overflow: hidden; margin: 5px 0 7px; }
+#combo-fill { display: block; width: 100%; height: 100%; background: var(--primary); transform-origin: left; }
+#series-speed { display: block; color: var(--secondary); font-size: 8px; line-height: 1.4; letter-spacing: .3px; }
+#pending { position: absolute; left: 0; width: 100%; top: 33%; text-align: center; color: #b3f6ff; font-size: 13px; font-weight: 650; pointer-events: none; }
+#jump { z-index: 5; bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px)); max-width: min(390px, calc(100% - 144px)); left: 20px; transform: none; border-radius: 16px; animation: none; padding: 12px 15px; }
+#coach-title { display: block; font-size: 11px; }
+#coach-detail { margin-top: 4px; }
+.tip-dismiss { align-self: flex-start; font-size: 18px; line-height: 1; color: var(--secondary); }
+.menu-controls { color: var(--secondary); font-size: 10px; line-height: 1.8; margin-top: 20px; }
+.text-button { display: block; margin: 12px auto 0; border: 0; background: transparent; color: var(--primary); min-height: 44px; font-size: 10px; letter-spacing: .5px; }
+@media (max-width: 600px) { #combo { top: calc(var(--edge-top) + 106px); width: 105px; } #multiplier { font-size: 23px; } #series-speed { font-size: 7px; } #jump { font-size: 10px; } #coach-title { font-size: 9px; } #coach-detail { font-size: 9px; } }
+@media (max-height: 570px) { #combo { top: calc(var(--edge-top) + 94px); width: 100px; } #multiplier { font-size: 20px; } #series-speed { font-size: 7px; } #jump { bottom: auto; top: 38%; left: 38%; max-width: 330px; } #pending { top: 30%; } .menu-controls { margin-top: 10px; font-size: 8px; } #menu .text-button { margin-top: 0; min-height: 30px; } }
+#speed-readout { left: 205px; top: 0; }
+@media (max-width: 600px) { #speed-readout { left: 140px; top: 56px; width: 94px; } }
+@media (max-height: 570px) { #speed-readout { left: 125px; top: 4px; } }
+
+/* 3.0.1: two mirrored instruments and an odometer, no competing top HUD. */
+#game { --instrument-size:104px; --instrument-bottom:max(12px, calc(env(safe-area-inset-bottom) + 8px)); }
+#game[data-mode='playing'] .brand, #game[data-mode='paused'] .brand { visibility:hidden; pointer-events:none; }
+.tools { gap:10px; }
+#pause[hidden] { display:none; }
+#sound { transition:transform 240ms cubic-bezier(.16,1,.3,1),background 160ms; }
+#game[data-mode='menu'] #sound { transform:translateX(0); }
+#race-score { position:absolute; z-index:3; left:max(var(--edge-x),env(safe-area-inset-left)); top:var(--edge-top); pointer-events:none; }
+#race-score label { font-size:8px; margin-bottom:5px; letter-spacing:1.2px; }
+.score-line { display:flex; align-items:center; gap:14px; }
+.odometer { display:flex; font-size:34px; font-weight:650; line-height:1; letter-spacing:-1px; font-variant-numeric:tabular-nums; }
+.odometer-column { display:block; width:.64em; height:1em; overflow:hidden; }
+.odometer-strip { display:block; line-height:1; }
+.odometer-strip > span { display:block; height:1em; text-align:center; }
+#multiplier { display:inline-block; font-size:23px; font-weight:750; line-height:1; color:var(--tier-color); opacity:var(--combo-alpha,1); filter:saturate(var(--combo-saturation,1)); transform:scale(var(--combo-scale,1)); transform-origin:center; transition:color 180ms,opacity 180ms,filter 180ms; animation:combo-energy 180ms linear infinite; }
+#multiplier[data-tier='1'] { --tier-color:#eef3e9; }
+#multiplier[data-tier='2'] { --tier-color:#d9ff62; }
+#multiplier[data-tier='3'] { --tier-color:#7ce5f3; }
+#multiplier[data-tier='4'] { --tier-color:#c4a0ff; }
+#multiplier[data-tier='5'] { --tier-color:#ffc86d; }
+@keyframes combo-energy { 0%,100% { transform:translate(0,0) scale(var(--combo-scale)); } 25% { transform:translate(var(--combo-shake),calc(var(--combo-shake) * -.5)) scale(var(--combo-scale)); } 75% { transform:translate(calc(var(--combo-shake) * -.6),var(--combo-shake)) scale(var(--combo-scale)); } }
+#game[data-mode='paused'] #multiplier { animation-play-state:paused; }
+.fallen-multiplier { position:fixed; z-index:12; font-weight:750; line-height:1; pointer-events:none; }
+#menu { top:29%; }
+#menu-record { display:flex; align-items:center; flex-direction:column; gap:8px; margin-top:30px; }
+#menu-record > span { font-size:9px; font-weight:600; letter-spacing:1.6px; color:var(--secondary); }
+#menu-record strong { font-size:42px; font-weight:550; letter-spacing:-1.5px; }
+#start-dock { position:absolute; z-index:7; left:50%; bottom:max(30px,calc(env(safe-area-inset-bottom) + 24px)); transform:translateX(-50%); width:240px; text-align:center; }
+#start-dock .primary { margin:0; width:100%; min-height:60px; }
+#start-dock .text-button { min-height:40px; margin:5px auto 0; font-size:9px; color:var(--secondary); }
+#game:not([data-mode='menu']) #start-dock { display:none; }
+.stats { gap:30px; justify-content:space-between; }
+.stats strong { font-size:32px; }
+.landed-stat { font-size:9px; color:var(--secondary); letter-spacing:1px; }
+#boost, #speedometer { position:absolute; width:var(--instrument-size); height:var(--instrument-size); bottom:var(--instrument-bottom); }
+#speedometer { left:max(24px,env(safe-area-inset-left)); pointer-events:none; }
+#boost { right:max(24px,env(safe-area-inset-right)); padding:0; gap:1px; border-radius:15px; background:transparent; box-shadow:none; color:#f2f5ed; transition:transform 120ms; }
+#boost.active { background:transparent; color:#b3f6ff; }
+#boost:active { transform:scale(.97); }
+#boost::before { inset:-8px; border-radius:20px; }
+.instrument { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.instrument-face { fill:rgb(19 29 35 / 76%); stroke:rgb(255 255 255 / 6%); stroke-width:1; }
+#speedometer .instrument-face { fill:rgb(16 25 30 / 34%); stroke:none; }
+#boost .instrument-face { fill:rgb(29 44 51 / 94%); stroke:rgb(255 255 255 / calc(.12 + .12 * var(--thrust-charge,.5))); filter:drop-shadow(0 0 2px rgb(255 255 255 / calc(.08 + .10 * var(--thrust-charge,.5)))) drop-shadow(0 0 6px rgb(255 255 255 / calc(.04 + .06 * var(--thrust-charge,.5)))); }
+#boost.active .instrument-face { fill:rgb(36 61 68 / 96%); }
+.instrument-track { fill:none; stroke:rgb(255 255 255 / 13%); stroke-width:5; stroke-linejoin:round; }
+.speed-rail,.thrust-rail { fill:none; stroke-width:5; stroke-linejoin:round; stroke-dasharray:1; transition:stroke-dashoffset 100ms linear; }
+.speed-rail { stroke:#70b9fa; }
+.thrust-rail { stroke:#d9ff62; }
+#boost.active .thrust-rail { stroke:#b3f6ff; }
+.instrument-readout { position:absolute; top:28%; left:20%; right:4%; display:flex; flex-direction:column; align-items:center; gap:2px; }
+#speed-value { font-size:28px; font-weight:500; line-height:1; letter-spacing:-1px; }
+.instrument-readout small { font-size:7px; color:var(--secondary); font-weight:550; letter-spacing:1px; }
+#streak-value { font-size:8px; color:#91caff; min-height:10px; margin-top:3px; }
+#boost .thruster-icon { width:20px; height:26px; z-index:1; margin-top:-3px; }
+#boost-time { font-size:13px; font-weight:600; z-index:1; margin-top:2px; }
+#boost-title { font-size:6px; letter-spacing:1px; color:var(--secondary); z-index:1; }
+#pending { top:32%; }
+#toast { top:38%; font-size:clamp(15px,2vw,23px); }
+#jump { top:24%; bottom:auto; left:50%; transform:translateX(-50%); max-width:min(340px,calc(100% - 40px)); }
+@media (hover:hover) { #boost:hover .instrument-face { fill:rgb(39 57 65 / 96%); } }
+@media (max-width:600px) {
+ #game { --instrument-size:90px; }
+ #speedometer { left:max(18px,env(safe-area-inset-left)); } #boost { right:max(18px,env(safe-area-inset-right)); }
+ .odometer { font-size:31px; } .score-line { gap:10px; } #multiplier { font-size:21px; }
+ #menu-record { margin-top:25px; } #menu-record strong { font-size:38px; }
+ #speed-value { font-size:25px; } #boost .thruster-icon { width:18px; height:24px; } #boost-time { font-size:12px; }
+ #start-dock { width:230px; bottom:max(26px,calc(env(safe-area-inset-bottom) + 20px)); }
+}
+@media (max-height:570px) {
+ #game { --instrument-size:76px; }
+ #race-score label { display:none; } .odometer { font-size:29px; } #multiplier { font-size:20px; }
+ #menu { top:25%; left:50%; width:90%; } #menu h1 { font-size:56px; }
+ #menu-record { margin-top:12px; gap:4px; } #menu-record strong { font-size:28px; }
+ #start-dock { width:210px; bottom:12px; } #start-dock .primary { min-height:46px; padding:12px 20px; } #start-dock .text-button { min-height:28px; margin:0; width:100%; font-size:8px; }
+ #speed-value { font-size:21px; } #streak-value { font-size:7px; margin-top:1px; }
+ #boost .thruster-icon { width:15px; height:20px; } #boost-time { font-size:10px; } #boost-title { font-size:5px; }
+ #jump { top:30%; left:58%; max-width:330px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ #multiplier { animation:none; transition:none; transform:scale(1); } #sound,#boost,.speed-rail,.thrust-rail { transition:none; }
+}
+@media (max-width:360px) { :root { --edge-x:16px; } .odometer { font-size:25px; } #multiplier { font-size:18px; } .score-line { gap:8px; } .tools { gap:7px; } .tools span { font-size:8px; } .tools button { padding:0 9px; } }
+#race-score:has(.odometer-column:nth-child(6)) .odometer { font-size:27px; }
+@media (max-width:360px) { #race-score:has(.odometer-column:nth-child(6)) .odometer { font-size:21px; } }
+#game:not([data-mode='playing']) #toast, #game:not([data-mode='playing']) #pending { display:none; }

@@ -356,5 +356,47 @@
       }
     ],
     "publicationInputs": "Reference photographs and show stills remain local research inputs; URLs/credits retained here. Generated originals, prompts and normalization records are published."
+  },
+  "phantomGameplayV3": {
+    "object": "DJI Phantom 4 (2016)",
+    "category": "photographic mechanical obstacle",
+    "file": "assets/obstacles/phantom-v3.png",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:20160430-00226-DJI-Phantom4.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/0f/20160430-00226-DJI-Phantom4.jpg",
+    "author": "Thomas Berwing (Volatus)",
+    "sourceLicense": "CC BY-SA 3.0",
+    "assetLicense": "CC BY-SA 3.0",
+    "accessed": "2026-10-18",
+    "photo": "art-source/phantom-gameplay/photo.jpg",
+    "styleReference": "art-source/phantom-gameplay/style-reference.png",
+    "original": "art-source/phantom-gameplay/generated.png",
+    "prompt": "art-source/phantom-gameplay/prompt.txt",
+    "method": "Built-in image_gen; real photo and actual game vehicle atlas both supplied as images; deterministic alpha trim and proportional resize to width 512",
+    "dimensions": [
+      512,
+      222
+    ],
+    "alpha": "RGBA, alpha range 0..255",
+    "referenceRoles": "Photo: actual white hull, four motors/rotors, skids, gimbal camera. Atlas: isolated photographic vehicle/sticker treatment. One sprite shared by hovering and incoming movement variants.",
+    "referenceAvailability": "Photo and style inputs remain local; source URLs and license above identify the original. Generated adaptation and runtime sprite are published under CC BY-SA 3.0."
+  },
+  "thrustPressureHiss": {
+    "file": "assets/audio/thrust-pressure-hiss.mp3",
+    "title": "Pressure Hiss",
+    "author": "unfa",
+    "source": "https://freesound.org/people/unfa/sounds/211096/",
+    "download": "https://cdn.freesound.org/previews/211/211096_1038806-hq.mp3",
+    "license": "CC0 1.0",
+    "accessed": "2026-10-18",
+    "original": "art-source/thrust-audio/source-preview.mp3",
+    "adaptation": "WebAudio highpass 420 Hz; start 0.12s, loop 0.35–2.8s, attack 15ms/release 60ms, gain .2; decode-time RMS normalisation to .12, peak ceiling .8",
+    "notes": "High-quality MP3 preview of a real compressor recording; original lossless FLAC was not downloaded."
+  },
+  "hudV301": {
+    "references": [
+      "User-supplied speedometer and cold-gas nozzle references; retained locally, reference pixels not published"
+    ],
+    "method": "Native geometric SVG instruments and nozzle icon derived from user-provided interface references; no screenshot pixels at runtime",
+    "pose": "Existing editable Canvas character joint coordinates; original sprite atlases unchanged"
   }
 }
