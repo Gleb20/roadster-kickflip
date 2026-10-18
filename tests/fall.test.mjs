@@ -33,7 +33,7 @@ test('speed-scaled seated recovery has readable contacts, three kickflips and a 
  const slow=createFall(),fast=createFall();beginFall(slow,{angle:1,omega:3},{speed:360});beginFall(fast,{angle:1,omega:3},{speed:660});
  assert.ok(slow.duration>=2.7);assert.ok(fast.duration>slow.duration+.5);
  for(const f of [slow,fast]){
-  for(const t of [.14,.36,.56]){f.age=t*f.duration;const pose=fallPose(f);assert.ok(pose.rider.seat>.95);assert.ok(Math.abs(pose.rider.angle)<.3);assert.equal(pose.car.phase,0);}
+  for(const t of [.14,.36,.56]){f.age=t*f.duration;const pose=fallPose(f);assert.ok(pose.rider.seat>.95);assert.ok(pose.rider.angle<-.35&&pose.rider.angle>-.65);assert.equal(pose.car.phase,0);}
   f.age=.25*f.duration;const high=fallPose(f);f.age=.36*f.duration;const low=fallPose(f);assert.ok(high.rider.y>low.rider.y+25);assert.ok(high.car.phase>0&&high.car.phase<1);
   f.age=.86*f.duration;const jump=fallPose(f);assert.ok(jump.rider.y>120);assert.ok(jump.rider.seat<.05);assert.equal(jump.car.phase,0);
   f.age=.98*f.duration;const landed=fallPose(f);assert.ok(Math.abs(landed.rider.x)<1);assert.ok(Math.abs(landed.car.x)<1);assert.equal(landed.car.phase,0);

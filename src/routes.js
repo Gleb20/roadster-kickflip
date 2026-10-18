@@ -1,5 +1,5 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.3';
-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=3.0.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.4';
+import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=3.0.4';
 export const STAGES=C.stages;
 export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
 export const AIR_TYPES=Object.freeze([

@@ -415,5 +415,14 @@
     ],
     "method": "Coordinate animation of the existing paper-figure torso, legs, arms and unsettled face; existing nine video-derived Roadster kickflip atlas frames. No new drawing, raster changes or generated artwork.",
     "notes": "Three seated contacts, planted palms, diminishing rebounds, crouch/push-off and leap; three car kickflips on the same contact schedule, upright return beneath the feet. Existing category style and original frame provenance preserved."
+  },
+  "fallV304": {
+    "files": [
+      "src/characters.js",
+      "src/fall.js",
+      "src/main.js"
+    ],
+    "method": "Coordinate-only animation of existing paper limbs and face; original Roadster atlas unchanged. User-supplied falling-skater illustration informs posture only; no reference pixels copied or generated art added.",
+    "notes": "Backward torso lean, one foot raised and one reaching forward on bent fixed-length leg segments, arms spread during rebounds; palms plant for the existing push-off. Source illustration author/license unverified; it is kept local and not vendored."
   }
 }

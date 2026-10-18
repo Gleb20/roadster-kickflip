@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {raisedArm,uprightWristAngle,pupilOffset} from '../src/characters.js';
+import {raisedArm,uprightWristAngle,pupilOffset,seatedLegPose} from '../src/characters.js';
 
 test('raised arms keep both bone lengths fixed and put the wrist above the shoulder',()=>{
   for(const [upper,lower] of [[23,22],[15,15]])for(const side of [-1,1]){
@@ -30,4 +30,18 @@ test('pupils reverse at departure, track jump height and remain inside the eye',
     assert.ok((p.x/rx)**2+(p.y/ry)**2<=1+1e-12);
   }
   assert.deepEqual(pupilOffset(eye,eye,rx,ry),{x:0,y:0});
+});
+
+
+test('seated fall keeps separate bent legs at fixed lengths with one raised foot',()=>{
+ for(const drop of [18.9,22,27]){
+  const legs=[-1,1].map(side=>seatedLegPose(side,drop));
+  for(const {hip,knee,ankle,foot,angle} of legs){
+   assert.ok(Math.abs(Math.hypot(knee.x-hip.x,knee.y-hip.y)-28)<1e-8);
+   assert.ok(Math.abs(Math.hypot(ankle.x-knee.x,ankle.y-knee.y)-27)<1e-8);
+   assert.ok(Number.isFinite(angle)&&Number.isFinite(foot.x));
+  }
+  assert.ok(legs[0].foot.y-legs[1].foot.y>45);
+  assert.ok(legs[1].foot.x-legs[0].foot.x>10);
+ }
 });
