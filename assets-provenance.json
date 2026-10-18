@@ -406,5 +406,14 @@
     ],
     "method": "Transforms and animation of existing editable Roadster and paper-figure parts; existing opaque face base, eye, brow and mouth parts are repositioned for an unsettled expression. No new raster illustration, generation or photographic input.",
     "notes": "Two rolls/impacts, independent car/rider pivots, smooth reunion, shared animated collision shapes. Existing category styles and atlas pixels unchanged."
+  },
+  "fallV303": {
+    "files": [
+      "src/fall.js",
+      "src/characters.js",
+      "src/main.js"
+    ],
+    "method": "Coordinate animation of the existing paper-figure torso, legs, arms and unsettled face; existing nine video-derived Roadster kickflip atlas frames. No new drawing, raster changes or generated artwork.",
+    "notes": "Three seated contacts, planted palms, diminishing rebounds, crouch/push-off and leap; three car kickflips on the same contact schedule, upright return beneath the feet. Existing category style and original frame provenance preserved."
   }
 }

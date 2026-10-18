@@ -1,4 +1,4 @@
-import {joeReaction} from './encounter.js?v=3.0.2';
+import {joeReaction} from './encounter.js?v=3.0.3';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 // A compact raised forearm; the middle finger always stays upright in screen space.
 export function raisedArm(shoulder,upper,lower,side){
@@ -261,7 +261,8 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
     motion.taunt=mix(motion.taunt,target?ease((300-Math.abs(dx))/100):0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
     const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab,taunt=S.falling?0:motion.taunt*(1-grab),wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave*(1-grab);
-    const tilt=((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab);
+    const seat=clamp(S.fallSeat||0),push=clamp(S.fallPush||0);
+    const tilt=(S.falling?0:((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab));
     const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
@@ -269,12 +270,12 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       for(const side of [-1,1]){
         // Measured on upright Roadster frame 0: soles follow its rear deck/bonnet.
         // Keep those supports fixed while the hips and torso lean under boost.
-        const shoeAngle=air?0:side<0?-.17:.31;
-        const support={x:side*25,y:air?-1:side<0?1.6:4.8};
+        const shoeAngle=seat>.01?-.12*seat:air?0:side<0?-.17:.31;
+        const support={x:mix(side*25,35+side*12,seat),y:mix(air?-1:side<0?1.6:4.8,-24,seat)};
         const foot=air?support:unrotate(support,tilt);
         const ankleWorld={x:support.x+5*Math.sin(shoeAngle),y:support.y-5*Math.cos(shoeAngle)};
         const ankle=air?ankleWorld:unrotate(ankleWorld,tilt);
-        limb(c,[[side*11,-43+drop],[side*(23+15*crouch),-25-(air?10:0)+drop*.5],[ankle.x,ankle.y]],side<0?'#343b43':'#42464c',14);
+        limb(c,[[side*11,-43+drop],[mix(side*(23+15*crouch),22+side*18,seat),mix(-25-(air?10:0)+drop*.5,-23,seat)],[ankle.x,ankle.y]],side<0?'#343b43':'#42464c',14);
         c.save();c.translate(foot.x,foot.y);c.rotate(air?0:shoeAngle-tilt);sneaker(c,0,0,side,1,'#e8e7dc');c.restore();
       }
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
@@ -300,6 +301,8 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
           const arm=boardGrabArm(side,drop,.09*crouch);
           ex=mix(ex,arm.elbow.x,grab);ey=mix(ey,arm.elbow.y,grab);hx=mix(hx,arm.wrist.x,grab);hy=mix(hy,arm.wrist.y,grab);
         }
+        // Existing paper arms brace behind the hips, then push down for takeoff.
+        if(seat>0||push>0){const brace=Math.max(seat,push);ex=mix(ex,side*29-9,brace);ey=mix(ey,-37,brace);hx=mix(hx,side*31-12,brace);hy=mix(hy,mix(-30,-25,push),brace);}
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
         limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);
         if(guns)moneyGun(c,hx,hy,aim,1,'elon',heroSurface);

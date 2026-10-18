@@ -55,3 +55,7 @@ Controlled flight, directional fuel thrust, landed trick economy, seven-stage va
 ## Release 3.0.2 — 18 October 2026
 
 Authorized for immediate online publication after physical-device feedback. Native-selection protection, relaxed precision/dense patterns with ±35 ms timing margin and breathers, and a 1.65-second rolling recovery with separate car/rider, two impacts, unsettled expression, bounded shake and tap-accelerated get-up. Controls stay locked during recovery animation; obstacle collisions remain active. All module/style URLs use 3.0.2 to avoid stale phone caches. A single release commit reverts to published 3.0.1. See docs/releases/2026-10-18-v3.0.2.md.
+
+## 3.0.3 — seated recovery
+
+The rider now bounces on his bottom at three shared contact beats and pushes off the road onto the Roadster. The unchanged nine-frame video-derived atlas supplies three car kickflips. Duration follows pre-fall base speed (2.8–3.45 seconds); primary taps add 0.15 playback rate, up to 1.6×. Jump/thrust lock, pause, reduced motion, continued road travel and live collision remain. No new art/dependencies. Parent c37b935caf41e4629702e0dddd467bda8a555666 is the tested rollback target. Release verification: docs/releases/2026-10-18-v3.0.3.md.

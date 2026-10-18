@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "no selectable game text or native callout",
+    "native selection ranges are cleared",
+    "long touch still activates start without selection",
+    "rough landing starts seated recovery",
+    "THRUST control is disabled while getting up",
+    "thrust and jump locked during fall",
+    "seated legs extend while torso stays upright",
+    "rough landing starts seated recovery",
+    "recovery keeps world moving",
+    "player returns to upright without an automatic jump",
+    "rough landing starts seated recovery",
+    "separate presses increase animation playback speed",
+    "taps return control materially sooner",
+    "jump charge available after getting up",
+    "rough landing starts seated recovery",
+    "pause freezes fall",
+    "resume continues fall",
+    "fall grants no obstacle immunity",
+    "rough landing starts seated recovery",
+    "reduced motion suppresses shake",
+    "no JS or console errors"
+  ],
+  "errors": [],
+  "normalTicks": 324,
+  "tappedTicks": 205
+}

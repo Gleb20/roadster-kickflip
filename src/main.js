@@ -1,25 +1,25 @@
-import {loading} from './loading.js?v=3.0.2';
-import {createThrusterEffects} from './thrusters.js?v=3.0.2';
-import {createSound} from './sound.js?v=3.0.2';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.0.2';
-import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.0.2';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.0.2';
-import {createDirector} from './director.js?v=3.0.2';
-import {types} from './catalog.js?v=3.0.2';
-import {START_SPEED, START_KMH} from './physics.js?v=3.0.2';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.2';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.0.2';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.0.2';
-import {createCoach} from './coaching.js?v=3.0.2';
-import {createHUD,mphFromKmh} from './hud.js?v=3.0.2';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.0.2';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.0.2';
-import {createSlapstick} from './slapstick.js?v=3.0.2';
-import {createClock} from './clock.js?v=3.0.2';
-import {createEnvironmentRenderer} from './environment.js?v=3.0.2';
-import {createCharacterRenderer} from './characters.js?v=3.0.2';
-import {createPropRenderer} from './props.js?v=3.0.2';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.0.2';
+import {loading} from './loading.js?v=3.0.3';
+import {createThrusterEffects} from './thrusters.js?v=3.0.3';
+import {createSound} from './sound.js?v=3.0.3';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.0.3';
+import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.0.3';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.0.3';
+import {createDirector} from './director.js?v=3.0.3';
+import {types} from './catalog.js?v=3.0.3';
+import {START_SPEED, START_KMH} from './physics.js?v=3.0.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.3';
+import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.0.3';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.0.3';
+import {createCoach} from './coaching.js?v=3.0.3';
+import {createHUD,mphFromKmh} from './hud.js?v=3.0.3';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.0.3';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.0.3';
+import {createSlapstick} from './slapstick.js?v=3.0.3';
+import {createClock} from './clock.js?v=3.0.3';
+import {createEnvironmentRenderer} from './environment.js?v=3.0.3';
+import {createCharacterRenderer} from './characters.js?v=3.0.3';
+import {createPropRenderer} from './props.js?v=3.0.3';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.0.3';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -50,7 +50,8 @@ let spinning=false,chargingInput=false,lateTarget=null,lastLanding=null;
 let chargeValue=0,cameraLift=0;
 Object.assign(S,{charging:false,charge:0,anchor:0,entityId:0});
 function syncState(){
- S.falling=F.active;S.fallCrouch=F.active?fallPose(F).crouch:0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=chargeValue;S.charging=chargingInput;
+ const fallen=F.active?fallPose(F):null;
+ S.falling=F.active;S.fallCrouch=fallen?.crouch||0;S.fallSeat=fallen?.rider.seat||0;S.fallPush=fallen?.push||0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=chargeValue;S.charging=chargingInput;
  S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);S.baseSpeed=pace.base;S.speed=pace.speed;
  const progress=Math.min(1,pace.progress/C.rampSeconds),cruise=C.startSpeed+(C.maxSpeed-C.startSpeed)*progress;
  S.kmh=(130+270*progress)*S.speed/cruise;Object.assign(B,speedFeedback(pace,E.streak));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
@@ -196,7 +197,7 @@ function update(dt){
   for(const o of S.obs){if(o.altitude||o.nearPaid)continue;const gap=-47-(obstacleDx(o)+o.w-(o.inset||5));if(nearWindow(gap,S.speed)){near++;o.nearPaid=true;}}
   const oldMultiplier=E.multiplier;
   lastLanding=settleLanding(E,P,landed,{late,near});
-  if(!landed.good){hud.dropMultiplier(oldMultiplier/10);stumble(pace);beginFall(F,landed,{reduced:matchMedia('(prefers-reduced-motion: reduce)').matches});pace.falling=true;P.angle=0;P.omega=0;P.vx=0;P.grab=0;cancelCharge();advancePace(pace,E,P,0);toast('ROUGH LANDING · TAP TO GET UP');S.toast=C.fallSeconds+.3;tone(100,.2);}
+  if(!landed.good){hud.dropMultiplier(oldMultiplier/10);stumble(pace);beginFall(F,landed,{reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,speed:pace.recovery.target});pace.falling=true;P.angle=0;P.omega=0;P.vx=0;P.grab=0;cancelCharge();advancePace(pace,E,P,0);toast('ROUGH LANDING · TAP TO GET UP');S.toast=F.duration+.3;tone(100,.2);}
   else{if(landed.turns)coach.complete('flip');if(late||near)coach.complete('near');if(lastLanding.points)toast(`${landed.turns?landed.turns+' FLIP'+(landed.turns>1?'S':'')+' · ':''}${late?'LATE +25 · ':''}${near?'CLOSE +25 · ':''}+${Math.round(lastLanding.points)}`);tone(130,.08);}
   lateTarget=null;
  }
@@ -335,8 +336,8 @@ function reviewSpaceport(){
 function drawFallenPlayer(ds,worldGround,time){
  const pose=fallPose(F);
  ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);
- ctx.save();ctx.translate(pose.car.x,-pose.car.y);ctx.rotate(pose.car.angle);car(0,12,0);ctx.restore();
- ctx.save();ctx.translate(pose.rider.x,-pose.rider.y);ctx.rotate(pose.rider.angle);elon(0,65.5,pose.progress<.85,time);ctx.restore();
+ ctx.save();ctx.translate(pose.car.x,-pose.car.y);ctx.rotate(pose.car.angle);car(0,12,pose.car.phase);ctx.restore();
+ ctx.save();ctx.translate(pose.rider.x,-pose.rider.y);ctx.rotate(pose.rider.angle);elon(0,65.5,pose.progress>.77&&pose.progress<.97,time);ctx.restore();
  ctx.restore();
 }
 function render(dt,time){
@@ -399,7 +400,7 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,y:P.y,fall:{active:F.active,age:F.age,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:chargingInput,charge:chargeValue,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:chargingInput,charge:chargeValue,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 if(['localhost','127.0.0.1'].includes(location.hostname)){
  window.__qa={S,B,P,E,F,pace,CAMEO,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
  setTime(t){S.t=t;pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
