@@ -45,3 +45,7 @@ test('Supabase gateway key and per-run capability use separate headers',async()=
 test('chunked service uses the configured HTTPS endpoint when no verifier URL is returned',async()=>{
  const paths=[];const c=createOnline({apiUrl:'https://api.test/functions/v1/ranking/',ruleset:session.ruleset,storage:memory(),fetcher:async(url)=>{paths.push(String(url));return Response.json(url.pathname.endsWith('/verify')?{status:'accepted',entry:{id:'final'}}:{status:'pending',continue:true,verifierUrl:null});}});assert.equal((await c.submit(session,record,'PILOT')).entry.id,'final');assert.equal(paths[1],'https://api.test/functions/v1/ranking/verify');
 });
+test('accepted callback persists an explicitly retried score independently of dialog state',async()=>{
+ const accepted=[],client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:memory(),now:()=>1000,onAccepted:(id,entry)=>accepted.push({id,entry}),fetcher:async()=>Response.json({status:'accepted',entry:{id:'public-best',score:400}})});
+ await client.submit(session,record,'PILOT');assert.deepEqual(accepted,[{id:session.id,entry:{id:'public-best',score:400}}]);
+});

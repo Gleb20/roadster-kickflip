@@ -37,14 +37,10 @@ export function createHUD({root=document.getElementById('game'),reducedMotion=()
   }
   function mode(value){
     if(lastMode===value)return;
-    const sound=$('sound'),oldLeft=sound.getBoundingClientRect().left;
-    sound.getAnimations().forEach(animation=>animation.cancel());
     lastMode=value;root.dataset.mode=value;
     const race=['playing','paused'].includes(value);
     for(const id of ['race-score','speedometer','boost'])$(id).classList.toggle('hidden',!race);
     $('pause').hidden=!race;
-    const shift=oldLeft-sound.getBoundingClientRect().left;
-    if(shift&&!reducedMotion())sound.animate([{transform:`translateX(${shift}px)`},{transform:'translateX(0)'}],{duration:240,easing:'cubic-bezier(.16,1,.3,1)'});
     if(value==='paused')fall?.animation.pause();else fall?.animation.play();
     if(value==='menu'||value==='dead'){fall?.node.remove();fall=null;}
   }

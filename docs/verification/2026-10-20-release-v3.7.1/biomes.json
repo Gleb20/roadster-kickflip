@@ -1,0 +1,3459 @@
+{
+  "checks": [
+    "desktop: factory is decoded before start",
+    "desktop: ten minutes below 10000 cannot trigger factory",
+    "desktop: 9999 stays in spaceport",
+    "desktop: 10000 immediately starts factory without a time gate",
+    "desktop: scene title follows score threshold",
+    "desktop: pause freezes active time and factory pixels",
+    "desktop: world boundary passes without another score condition",
+    "desktop: rocket event is inactive inside factory",
+    "desktop: native jump still works in factory",
+    "desktop: resize preserves integrated travel",
+    "desktop: 19999 remains factory",
+    "desktop: 20000 returns to spaceport without restarting",
+    "desktop: return schedules fresh rocket event",
+    "desktop: large bonus chooses current band immediately",
+    "desktop: retry starts from spaceport",
+    "portrait: factory is decoded before start",
+    "portrait: ten minutes below 10000 cannot trigger factory",
+    "portrait: 9999 stays in spaceport",
+    "portrait: 10000 immediately starts factory without a time gate",
+    "portrait: scene title follows score threshold",
+    "portrait: pause freezes active time and factory pixels",
+    "portrait: world boundary passes without another score condition",
+    "portrait: rocket event is inactive inside factory",
+    "portrait: native jump still works in factory",
+    "portrait: resize preserves integrated travel",
+    "portrait: 19999 remains factory",
+    "portrait: 20000 returns to spaceport without restarting",
+    "portrait: return schedules fresh rocket event",
+    "portrait: large bonus chooses current band immediately",
+    "portrait: retry starts from spaceport",
+    "landscape: factory is decoded before start",
+    "landscape: ten minutes below 10000 cannot trigger factory",
+    "landscape: 9999 stays in spaceport",
+    "landscape: 10000 immediately starts factory without a time gate",
+    "landscape: scene title follows score threshold",
+    "landscape: pause freezes active time and factory pixels",
+    "landscape: world boundary passes without another score condition",
+    "landscape: rocket event is inactive inside factory",
+    "landscape: native jump still works in factory",
+    "landscape: resize preserves integrated travel",
+    "landscape: 19999 remains factory",
+    "landscape: 20000 returns to spaceport without restarting",
+    "landscape: return schedules fresh rocket event",
+    "landscape: large bonus chooses current band immediately",
+    "landscape: retry starts from spaceport",
+    "reduced: factory is decoded before start",
+    "reduced: ten minutes below 10000 cannot trigger factory",
+    "reduced: 9999 stays in spaceport",
+    "reduced: 10000 immediately starts factory without a time gate",
+    "reduced: scene title follows score threshold",
+    "reduced: pause freezes active time and factory pixels",
+    "reduced: world boundary passes without another score condition",
+    "reduced: rocket event is inactive inside factory",
+    "reduced: native jump still works in factory",
+    "reduced: resize preserves integrated travel",
+    "reduced: 19999 remains factory",
+    "reduced: 20000 returns to spaceport without restarting",
+    "reduced: return schedules fresh rocket event",
+    "reduced: large bonus chooses current band immediately",
+    "reduced: retry starts from spaceport",
+    "reduced: machinery clock has no cosmetic motion",
+    "full run: unmodified obstacles survive both biome boundaries",
+    "full run: first threshold follows earned score, not 150 seconds",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "results": [
+    {
+      "label": "desktop",
+      "before": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 10000,
+          "nextIn": 1,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 9999,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 1.25,
+          "screenSpeed": 450,
+          "roadScroll": 1481.25
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 334.08,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7245901588533745,
+          "p95RenderMs": 1.6999999284744263
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 9.184671012024559,
+          "events": 0
+        }
+      },
+      "after": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "tesla-factory",
+          "leg": 1,
+          "nextAt": 20000,
+          "nextIn": 10000,
+          "from": "spaceport",
+          "edgeAt": 869.1200000000001,
+          "start": 0,
+          "end": 1254.4,
+          "progress": 0,
+          "moving": true
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 10000,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 1.25,
+          "screenSpeed": 450,
+          "roadScroll": 1481.25
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 334.08,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7245901588533745,
+          "p95RenderMs": 1.6999999284744263
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 9.184671012024559,
+          "events": 0
+        }
+      }
+    },
+    {
+      "label": "portrait",
+      "before": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 10000,
+          "nextIn": 1,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 9999,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.49527272727272725,
+          "screenSpeed": 178.2981818181818,
+          "roadScroll": 583.9265454545439
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 188.98678414096915,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.588524591727335,
+          "p95RenderMs": 1.2999999523162842
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 10.63748018595401,
+          "events": 0
+        }
+      },
+      "after": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "tesla-factory",
+          "leg": 1,
+          "nextAt": 20000,
+          "nextIn": 10000,
+          "from": "spaceport",
+          "edgeAt": 727.6798825256975,
+          "start": 0,
+          "end": 1045.8883994126286,
+          "progress": 0,
+          "moving": true
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 10000,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.49527272727272725,
+          "screenSpeed": 178.2981818181818,
+          "roadScroll": 583.9265454545439
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 188.98678414096915,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.588524591727335,
+          "p95RenderMs": 1.2999999523162842
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 10.63748018595401,
+          "events": 0
+        }
+      }
+    },
+    {
+      "label": "landscape",
+      "before": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 10000,
+          "nextIn": 1,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 9999,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.9069767441860465,
+          "screenSpeed": 326.51162790697674,
+          "roadScroll": 1063.883720930225
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 269.8635897435897,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7099999964237214,
+          "p95RenderMs": 1.600000023841858
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 12.735690688002762,
+          "events": 0
+        }
+      },
+      "after": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "tesla-factory",
+          "leg": 1,
+          "nextAt": 20000,
+          "nextIn": 10000,
+          "from": "spaceport",
+          "edgeAt": 731.2646153846155,
+          "start": 0,
+          "end": 1071.6923076923078,
+          "progress": 0,
+          "moving": true
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 10000,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.9069767441860465,
+          "screenSpeed": 326.51162790697674,
+          "roadScroll": 1063.883720930225
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 269.8635897435897,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7099999964237214,
+          "p95RenderMs": 1.600000023841858
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 12.735690688002762,
+          "events": 0
+        }
+      }
+    },
+    {
+      "label": "reduced",
+      "before": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 10000,
+          "nextIn": 1,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 9999,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.49527272727272725,
+          "screenSpeed": 178.2981818181818,
+          "roadScroll": 551.2385454545431
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 188.98678414096915,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7316666702429454,
+          "p95RenderMs": 1.7000000476837158
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 11.383104758693488,
+          "events": 0
+        }
+      },
+      "after": {
+        "version": "3.7.1",
+        "biome": {
+          "id": "tesla-factory",
+          "leg": 1,
+          "nextAt": 20000,
+          "nextIn": 10000,
+          "from": "spaceport",
+          "edgeAt": 727.6798825256975,
+          "start": 0,
+          "end": 1045.8883994126286,
+          "progress": 0,
+          "moving": true
+        },
+        "time": 0,
+        "progress": 0,
+        "stage": 0,
+        "mode": "playing",
+        "score": 10000,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 360,
+        "camera": {
+          "scale": 0.49527272727272725,
+          "screenSpeed": 178.2981818181818,
+          "roadScroll": 551.2385454545431
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 130,
+        "baseSpeed": 360,
+        "playerX": 188.98678414096915,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 0,
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "foot": {
+                "x": -25,
+                "y": 1.6
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 0,
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "foot": {
+                "x": 25,
+                "y": 4.8
+              }
+            }
+          ],
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "grab": 0,
+        "mph": 80.77825498600001,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": false,
+          "voices": 0,
+          "normalisation": 1
+        },
+        "thrusting": false,
+        "fuel": 61,
+        "latched": false,
+        "turns": 0,
+        "pending": 0,
+        "flips": 0,
+        "multiplier": 1,
+        "meter": 0,
+        "streak": 0,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": null,
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {},
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.7316666702429454,
+          "p95RenderMs": 1.7000000476837158
+        },
+        "sound": false,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 11.383104758693488,
+          "events": 0
+        }
+      }
+    },
+    {
+      "natural": {
+        "mode": "playing",
+        "time": 310,
+        "score": 26843,
+        "visits": [
+          {
+            "leg": 0,
+            "time": 0.008333333333333333,
+            "score": 0,
+            "flips": 0
+          },
+          {
+            "leg": 1,
+            "time": 134.1,
+            "score": 10013,
+            "flips": 0
+          },
+          {
+            "leg": 2,
+            "time": 254.375,
+            "score": 20012,
+            "flips": 0
+          }
+        ],
+        "replay": {
+          "format": 1,
+          "ruleset": "roadster-v3.4.2",
+          "seed": 17,
+          "ticks": 37200,
+          "events": [
+            [
+              474,
+              0
+            ],
+            [
+              474,
+              1
+            ],
+            [
+              496,
+              3
+            ],
+            [
+              538,
+              4
+            ],
+            [
+              922,
+              0
+            ],
+            [
+              922,
+              1
+            ],
+            [
+              1270,
+              0
+            ],
+            [
+              1270,
+              1
+            ],
+            [
+              1613,
+              0
+            ],
+            [
+              1613,
+              1
+            ],
+            [
+              1947,
+              0
+            ],
+            [
+              1947,
+              1
+            ],
+            [
+              2291,
+              0
+            ],
+            [
+              2291,
+              1
+            ],
+            [
+              2638,
+              0
+            ],
+            [
+              2638,
+              1
+            ],
+            [
+              2978,
+              0
+            ],
+            [
+              2978,
+              1
+            ],
+            [
+              3307,
+              0
+            ],
+            [
+              3307,
+              1
+            ],
+            [
+              3635,
+              0
+            ],
+            [
+              3635,
+              1
+            ],
+            [
+              3953,
+              0
+            ],
+            [
+              3953,
+              1
+            ],
+            [
+              4271,
+              0
+            ],
+            [
+              4271,
+              1
+            ],
+            [
+              4589,
+              0
+            ],
+            [
+              4589,
+              1
+            ],
+            [
+              4873,
+              0
+            ],
+            [
+              4897,
+              1
+            ],
+            [
+              5050,
+              0
+            ],
+            [
+              5074,
+              1
+            ],
+            [
+              5422,
+              0
+            ],
+            [
+              5422,
+              1
+            ],
+            [
+              5729,
+              0
+            ],
+            [
+              5729,
+              1
+            ],
+            [
+              5907,
+              0
+            ],
+            [
+              5907,
+              1
+            ],
+            [
+              6211,
+              0
+            ],
+            [
+              6211,
+              1
+            ],
+            [
+              6508,
+              0
+            ],
+            [
+              6508,
+              1
+            ],
+            [
+              6686,
+              0
+            ],
+            [
+              6686,
+              1
+            ],
+            [
+              6979,
+              0
+            ],
+            [
+              6979,
+              1
+            ],
+            [
+              7276,
+              0
+            ],
+            [
+              7276,
+              1
+            ],
+            [
+              8670,
+              0
+            ],
+            [
+              8670,
+              1
+            ],
+            [
+              8933,
+              0
+            ],
+            [
+              8957,
+              1
+            ],
+            [
+              9111,
+              0
+            ],
+            [
+              9135,
+              1
+            ],
+            [
+              10152,
+              0
+            ],
+            [
+              10152,
+              1
+            ],
+            [
+              11116,
+              0
+            ],
+            [
+              11116,
+              1
+            ],
+            [
+              11295,
+              0
+            ],
+            [
+              11295,
+              1
+            ],
+            [
+              11580,
+              0
+            ],
+            [
+              11580,
+              1
+            ],
+            [
+              11844,
+              0
+            ],
+            [
+              11868,
+              1
+            ],
+            [
+              12022,
+              0
+            ],
+            [
+              12046,
+              1
+            ],
+            [
+              12796,
+              0
+            ],
+            [
+              12796,
+              1
+            ],
+            [
+              12974,
+              0
+            ],
+            [
+              12974,
+              1
+            ],
+            [
+              13271,
+              0
+            ],
+            [
+              13271,
+              1
+            ],
+            [
+              14204,
+              0
+            ],
+            [
+              14204,
+              1
+            ],
+            [
+              14382,
+              0
+            ],
+            [
+              14382,
+              1
+            ],
+            [
+              14677,
+              0
+            ],
+            [
+              14677,
+              1
+            ],
+            [
+              14976,
+              0
+            ],
+            [
+              14976,
+              1
+            ],
+            [
+              15275,
+              0
+            ],
+            [
+              15275,
+              1
+            ],
+            [
+              15412,
+              0
+            ],
+            [
+              15412,
+              1
+            ],
+            [
+              15705,
+              0
+            ],
+            [
+              15705,
+              1
+            ],
+            [
+              16005,
+              0
+            ],
+            [
+              16005,
+              1
+            ],
+            [
+              16184,
+              0
+            ],
+            [
+              16184,
+              1
+            ],
+            [
+              16478,
+              0
+            ],
+            [
+              16478,
+              1
+            ],
+            [
+              16743,
+              0
+            ],
+            [
+              16767,
+              1
+            ],
+            [
+              16922,
+              0
+            ],
+            [
+              16946,
+              1
+            ],
+            [
+              17252,
+              0
+            ],
+            [
+              17252,
+              1
+            ],
+            [
+              17430,
+              0
+            ],
+            [
+              17430,
+              1
+            ],
+            [
+              17704,
+              0
+            ],
+            [
+              17704,
+              1
+            ],
+            [
+              17901,
+              0
+            ],
+            [
+              17901,
+              1
+            ],
+            [
+              18180,
+              0
+            ],
+            [
+              18180,
+              1
+            ],
+            [
+              18479,
+              0
+            ],
+            [
+              18479,
+              1
+            ],
+            [
+              18966,
+              0
+            ],
+            [
+              18966,
+              1
+            ],
+            [
+              19146,
+              0
+            ],
+            [
+              19146,
+              1
+            ],
+            [
+              19432,
+              0
+            ],
+            [
+              19432,
+              1
+            ],
+            [
+              19612,
+              0
+            ],
+            [
+              19612,
+              1
+            ],
+            [
+              20101,
+              0
+            ],
+            [
+              20101,
+              1
+            ],
+            [
+              20360,
+              0
+            ],
+            [
+              20360,
+              1
+            ],
+            [
+              20540,
+              0
+            ],
+            [
+              20540,
+              1
+            ],
+            [
+              20826,
+              0
+            ],
+            [
+              20826,
+              1
+            ],
+            [
+              21006,
+              0
+            ],
+            [
+              21006,
+              1
+            ],
+            [
+              21500,
+              0
+            ],
+            [
+              21500,
+              1
+            ],
+            [
+              21638,
+              0
+            ],
+            [
+              21638,
+              1
+            ],
+            [
+              21931,
+              0
+            ],
+            [
+              21931,
+              1
+            ],
+            [
+              22208,
+              0
+            ],
+            [
+              22208,
+              1
+            ],
+            [
+              22406,
+              0
+            ],
+            [
+              22406,
+              1
+            ],
+            [
+              22707,
+              0
+            ],
+            [
+              22707,
+              1
+            ],
+            [
+              22887,
+              0
+            ],
+            [
+              22887,
+              1
+            ],
+            [
+              23146,
+              0
+            ],
+            [
+              23170,
+              1
+            ],
+            [
+              23326,
+              0
+            ],
+            [
+              23350,
+              1
+            ],
+            [
+              23677,
+              0
+            ],
+            [
+              23677,
+              1
+            ],
+            [
+              23966,
+              0
+            ],
+            [
+              23966,
+              1
+            ],
+            [
+              24219,
+              0
+            ],
+            [
+              24243,
+              1
+            ],
+            [
+              24399,
+              0
+            ],
+            [
+              24423,
+              1
+            ],
+            [
+              24728,
+              0
+            ],
+            [
+              24728,
+              1
+            ],
+            [
+              24926,
+              0
+            ],
+            [
+              24926,
+              1
+            ],
+            [
+              25220,
+              0
+            ],
+            [
+              25220,
+              1
+            ],
+            [
+              25400,
+              0
+            ],
+            [
+              25400,
+              1
+            ],
+            [
+              25678,
+              0
+            ],
+            [
+              25678,
+              1
+            ],
+            [
+              25876,
+              0
+            ],
+            [
+              25876,
+              1
+            ],
+            [
+              26165,
+              0
+            ],
+            [
+              26165,
+              1
+            ],
+            [
+              26454,
+              0
+            ],
+            [
+              26454,
+              1
+            ],
+            [
+              26634,
+              0
+            ],
+            [
+              26634,
+              1
+            ],
+            [
+              27138,
+              0
+            ],
+            [
+              27138,
+              1
+            ],
+            [
+              27276,
+              0
+            ],
+            [
+              27276,
+              1
+            ],
+            [
+              27569,
+              0
+            ],
+            [
+              27569,
+              1
+            ],
+            [
+              27707,
+              0
+            ],
+            [
+              27707,
+              1
+            ],
+            [
+              28000,
+              0
+            ],
+            [
+              28000,
+              1
+            ],
+            [
+              28476,
+              0
+            ],
+            [
+              28500,
+              1
+            ],
+            [
+              28656,
+              0
+            ],
+            [
+              28680,
+              1
+            ],
+            [
+              29007,
+              0
+            ],
+            [
+              29007,
+              1
+            ],
+            [
+              29145,
+              0
+            ],
+            [
+              29145,
+              1
+            ],
+            [
+              29438,
+              0
+            ],
+            [
+              29438,
+              1
+            ],
+            [
+              29576,
+              0
+            ],
+            [
+              29576,
+              1
+            ],
+            [
+              29859,
+              0
+            ],
+            [
+              29859,
+              1
+            ],
+            [
+              30146,
+              0
+            ],
+            [
+              30146,
+              1
+            ],
+            [
+              30422,
+              0
+            ],
+            [
+              30422,
+              1
+            ],
+            [
+              30621,
+              0
+            ],
+            [
+              30621,
+              1
+            ],
+            [
+              30920,
+              0
+            ],
+            [
+              30920,
+              1
+            ],
+            [
+              31058,
+              0
+            ],
+            [
+              31058,
+              1
+            ],
+            [
+              31350,
+              0
+            ],
+            [
+              31350,
+              1
+            ],
+            [
+              31650,
+              0
+            ],
+            [
+              31650,
+              1
+            ],
+            [
+              31949,
+              0
+            ],
+            [
+              31949,
+              1
+            ],
+            [
+              32129,
+              0
+            ],
+            [
+              32129,
+              1
+            ],
+            [
+              32401,
+              0
+            ],
+            [
+              32401,
+              1
+            ],
+            [
+              32600,
+              0
+            ],
+            [
+              32600,
+              1
+            ],
+            [
+              32899,
+              0
+            ],
+            [
+              32899,
+              1
+            ],
+            [
+              33037,
+              0
+            ],
+            [
+              33037,
+              1
+            ],
+            [
+              33330,
+              0
+            ],
+            [
+              33330,
+              1
+            ],
+            [
+              33629,
+              0
+            ],
+            [
+              33629,
+              1
+            ],
+            [
+              33918,
+              0
+            ],
+            [
+              33918,
+              1
+            ],
+            [
+              34098,
+              0
+            ],
+            [
+              34098,
+              1
+            ],
+            [
+              34359,
+              0
+            ],
+            [
+              34359,
+              1
+            ],
+            [
+              34557,
+              0
+            ],
+            [
+              34557,
+              1
+            ],
+            [
+              34834,
+              0
+            ],
+            [
+              34834,
+              1
+            ],
+            [
+              35032,
+              0
+            ],
+            [
+              35032,
+              1
+            ],
+            [
+              35331,
+              0
+            ],
+            [
+              35331,
+              1
+            ],
+            [
+              35630,
+              0
+            ],
+            [
+              35630,
+              1
+            ],
+            [
+              35924,
+              0
+            ],
+            [
+              35924,
+              1
+            ],
+            [
+              36104,
+              0
+            ],
+            [
+              36104,
+              1
+            ],
+            [
+              36404,
+              0
+            ],
+            [
+              36404,
+              1
+            ],
+            [
+              36542,
+              0
+            ],
+            [
+              36542,
+              1
+            ],
+            [
+              36835,
+              0
+            ],
+            [
+              36835,
+              1
+            ],
+            [
+              36973,
+              0
+            ],
+            [
+              36973,
+              1
+            ]
+          ]
+        },
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.6433333317438762,
+          "p95RenderMs": 1.5999999046325684
+        }
+      }
+    },
+    {
+      "natural": {
+        "mode": "playing",
+        "time": 310,
+        "score": 26843,
+        "visits": [
+          {
+            "leg": 0,
+            "time": 0.008333333333333333,
+            "score": 0,
+            "flips": 0
+          },
+          {
+            "leg": 1,
+            "time": 134.1,
+            "score": 10013,
+            "flips": 0
+          },
+          {
+            "leg": 2,
+            "time": 254.375,
+            "score": 20012,
+            "flips": 0
+          }
+        ],
+        "replay": {
+          "format": 1,
+          "ruleset": "roadster-v3.4.2",
+          "seed": 17,
+          "ticks": 37200,
+          "events": [
+            [
+              474,
+              0
+            ],
+            [
+              474,
+              1
+            ],
+            [
+              496,
+              3
+            ],
+            [
+              538,
+              4
+            ],
+            [
+              922,
+              0
+            ],
+            [
+              922,
+              1
+            ],
+            [
+              1270,
+              0
+            ],
+            [
+              1270,
+              1
+            ],
+            [
+              1613,
+              0
+            ],
+            [
+              1613,
+              1
+            ],
+            [
+              1947,
+              0
+            ],
+            [
+              1947,
+              1
+            ],
+            [
+              2291,
+              0
+            ],
+            [
+              2291,
+              1
+            ],
+            [
+              2638,
+              0
+            ],
+            [
+              2638,
+              1
+            ],
+            [
+              2978,
+              0
+            ],
+            [
+              2978,
+              1
+            ],
+            [
+              3307,
+              0
+            ],
+            [
+              3307,
+              1
+            ],
+            [
+              3635,
+              0
+            ],
+            [
+              3635,
+              1
+            ],
+            [
+              3953,
+              0
+            ],
+            [
+              3953,
+              1
+            ],
+            [
+              4271,
+              0
+            ],
+            [
+              4271,
+              1
+            ],
+            [
+              4589,
+              0
+            ],
+            [
+              4589,
+              1
+            ],
+            [
+              4873,
+              0
+            ],
+            [
+              4897,
+              1
+            ],
+            [
+              5050,
+              0
+            ],
+            [
+              5074,
+              1
+            ],
+            [
+              5422,
+              0
+            ],
+            [
+              5422,
+              1
+            ],
+            [
+              5729,
+              0
+            ],
+            [
+              5729,
+              1
+            ],
+            [
+              5907,
+              0
+            ],
+            [
+              5907,
+              1
+            ],
+            [
+              6211,
+              0
+            ],
+            [
+              6211,
+              1
+            ],
+            [
+              6508,
+              0
+            ],
+            [
+              6508,
+              1
+            ],
+            [
+              6686,
+              0
+            ],
+            [
+              6686,
+              1
+            ],
+            [
+              6979,
+              0
+            ],
+            [
+              6979,
+              1
+            ],
+            [
+              7276,
+              0
+            ],
+            [
+              7276,
+              1
+            ],
+            [
+              8670,
+              0
+            ],
+            [
+              8670,
+              1
+            ],
+            [
+              8933,
+              0
+            ],
+            [
+              8957,
+              1
+            ],
+            [
+              9111,
+              0
+            ],
+            [
+              9135,
+              1
+            ],
+            [
+              10152,
+              0
+            ],
+            [
+              10152,
+              1
+            ],
+            [
+              11116,
+              0
+            ],
+            [
+              11116,
+              1
+            ],
+            [
+              11295,
+              0
+            ],
+            [
+              11295,
+              1
+            ],
+            [
+              11580,
+              0
+            ],
+            [
+              11580,
+              1
+            ],
+            [
+              11844,
+              0
+            ],
+            [
+              11868,
+              1
+            ],
+            [
+              12022,
+              0
+            ],
+            [
+              12046,
+              1
+            ],
+            [
+              12796,
+              0
+            ],
+            [
+              12796,
+              1
+            ],
+            [
+              12974,
+              0
+            ],
+            [
+              12974,
+              1
+            ],
+            [
+              13271,
+              0
+            ],
+            [
+              13271,
+              1
+            ],
+            [
+              14204,
+              0
+            ],
+            [
+              14204,
+              1
+            ],
+            [
+              14382,
+              0
+            ],
+            [
+              14382,
+              1
+            ],
+            [
+              14677,
+              0
+            ],
+            [
+              14677,
+              1
+            ],
+            [
+              14976,
+              0
+            ],
+            [
+              14976,
+              1
+            ],
+            [
+              15275,
+              0
+            ],
+            [
+              15275,
+              1
+            ],
+            [
+              15412,
+              0
+            ],
+            [
+              15412,
+              1
+            ],
+            [
+              15705,
+              0
+            ],
+            [
+              15705,
+              1
+            ],
+            [
+              16005,
+              0
+            ],
+            [
+              16005,
+              1
+            ],
+            [
+              16184,
+              0
+            ],
+            [
+              16184,
+              1
+            ],
+            [
+              16478,
+              0
+            ],
+            [
+              16478,
+              1
+            ],
+            [
+              16743,
+              0
+            ],
+            [
+              16767,
+              1
+            ],
+            [
+              16922,
+              0
+            ],
+            [
+              16946,
+              1
+            ],
+            [
+              17252,
+              0
+            ],
+            [
+              17252,
+              1
+            ],
+            [
+              17430,
+              0
+            ],
+            [
+              17430,
+              1
+            ],
+            [
+              17704,
+              0
+            ],
+            [
+              17704,
+              1
+            ],
+            [
+              17901,
+              0
+            ],
+            [
+              17901,
+              1
+            ],
+            [
+              18180,
+              0
+            ],
+            [
+              18180,
+              1
+            ],
+            [
+              18479,
+              0
+            ],
+            [
+              18479,
+              1
+            ],
+            [
+              18966,
+              0
+            ],
+            [
+              18966,
+              1
+            ],
+            [
+              19146,
+              0
+            ],
+            [
+              19146,
+              1
+            ],
+            [
+              19432,
+              0
+            ],
+            [
+              19432,
+              1
+            ],
+            [
+              19612,
+              0
+            ],
+            [
+              19612,
+              1
+            ],
+            [
+              20101,
+              0
+            ],
+            [
+              20101,
+              1
+            ],
+            [
+              20360,
+              0
+            ],
+            [
+              20360,
+              1
+            ],
+            [
+              20540,
+              0
+            ],
+            [
+              20540,
+              1
+            ],
+            [
+              20826,
+              0
+            ],
+            [
+              20826,
+              1
+            ],
+            [
+              21006,
+              0
+            ],
+            [
+              21006,
+              1
+            ],
+            [
+              21500,
+              0
+            ],
+            [
+              21500,
+              1
+            ],
+            [
+              21638,
+              0
+            ],
+            [
+              21638,
+              1
+            ],
+            [
+              21931,
+              0
+            ],
+            [
+              21931,
+              1
+            ],
+            [
+              22208,
+              0
+            ],
+            [
+              22208,
+              1
+            ],
+            [
+              22406,
+              0
+            ],
+            [
+              22406,
+              1
+            ],
+            [
+              22707,
+              0
+            ],
+            [
+              22707,
+              1
+            ],
+            [
+              22887,
+              0
+            ],
+            [
+              22887,
+              1
+            ],
+            [
+              23146,
+              0
+            ],
+            [
+              23170,
+              1
+            ],
+            [
+              23326,
+              0
+            ],
+            [
+              23350,
+              1
+            ],
+            [
+              23677,
+              0
+            ],
+            [
+              23677,
+              1
+            ],
+            [
+              23966,
+              0
+            ],
+            [
+              23966,
+              1
+            ],
+            [
+              24219,
+              0
+            ],
+            [
+              24243,
+              1
+            ],
+            [
+              24399,
+              0
+            ],
+            [
+              24423,
+              1
+            ],
+            [
+              24728,
+              0
+            ],
+            [
+              24728,
+              1
+            ],
+            [
+              24926,
+              0
+            ],
+            [
+              24926,
+              1
+            ],
+            [
+              25220,
+              0
+            ],
+            [
+              25220,
+              1
+            ],
+            [
+              25400,
+              0
+            ],
+            [
+              25400,
+              1
+            ],
+            [
+              25678,
+              0
+            ],
+            [
+              25678,
+              1
+            ],
+            [
+              25876,
+              0
+            ],
+            [
+              25876,
+              1
+            ],
+            [
+              26165,
+              0
+            ],
+            [
+              26165,
+              1
+            ],
+            [
+              26454,
+              0
+            ],
+            [
+              26454,
+              1
+            ],
+            [
+              26634,
+              0
+            ],
+            [
+              26634,
+              1
+            ],
+            [
+              27138,
+              0
+            ],
+            [
+              27138,
+              1
+            ],
+            [
+              27276,
+              0
+            ],
+            [
+              27276,
+              1
+            ],
+            [
+              27569,
+              0
+            ],
+            [
+              27569,
+              1
+            ],
+            [
+              27707,
+              0
+            ],
+            [
+              27707,
+              1
+            ],
+            [
+              28000,
+              0
+            ],
+            [
+              28000,
+              1
+            ],
+            [
+              28476,
+              0
+            ],
+            [
+              28500,
+              1
+            ],
+            [
+              28656,
+              0
+            ],
+            [
+              28680,
+              1
+            ],
+            [
+              29007,
+              0
+            ],
+            [
+              29007,
+              1
+            ],
+            [
+              29145,
+              0
+            ],
+            [
+              29145,
+              1
+            ],
+            [
+              29438,
+              0
+            ],
+            [
+              29438,
+              1
+            ],
+            [
+              29576,
+              0
+            ],
+            [
+              29576,
+              1
+            ],
+            [
+              29859,
+              0
+            ],
+            [
+              29859,
+              1
+            ],
+            [
+              30146,
+              0
+            ],
+            [
+              30146,
+              1
+            ],
+            [
+              30422,
+              0
+            ],
+            [
+              30422,
+              1
+            ],
+            [
+              30621,
+              0
+            ],
+            [
+              30621,
+              1
+            ],
+            [
+              30920,
+              0
+            ],
+            [
+              30920,
+              1
+            ],
+            [
+              31058,
+              0
+            ],
+            [
+              31058,
+              1
+            ],
+            [
+              31350,
+              0
+            ],
+            [
+              31350,
+              1
+            ],
+            [
+              31650,
+              0
+            ],
+            [
+              31650,
+              1
+            ],
+            [
+              31949,
+              0
+            ],
+            [
+              31949,
+              1
+            ],
+            [
+              32129,
+              0
+            ],
+            [
+              32129,
+              1
+            ],
+            [
+              32401,
+              0
+            ],
+            [
+              32401,
+              1
+            ],
+            [
+              32600,
+              0
+            ],
+            [
+              32600,
+              1
+            ],
+            [
+              32899,
+              0
+            ],
+            [
+              32899,
+              1
+            ],
+            [
+              33037,
+              0
+            ],
+            [
+              33037,
+              1
+            ],
+            [
+              33330,
+              0
+            ],
+            [
+              33330,
+              1
+            ],
+            [
+              33629,
+              0
+            ],
+            [
+              33629,
+              1
+            ],
+            [
+              33918,
+              0
+            ],
+            [
+              33918,
+              1
+            ],
+            [
+              34098,
+              0
+            ],
+            [
+              34098,
+              1
+            ],
+            [
+              34359,
+              0
+            ],
+            [
+              34359,
+              1
+            ],
+            [
+              34557,
+              0
+            ],
+            [
+              34557,
+              1
+            ],
+            [
+              34834,
+              0
+            ],
+            [
+              34834,
+              1
+            ],
+            [
+              35032,
+              0
+            ],
+            [
+              35032,
+              1
+            ],
+            [
+              35331,
+              0
+            ],
+            [
+              35331,
+              1
+            ],
+            [
+              35630,
+              0
+            ],
+            [
+              35630,
+              1
+            ],
+            [
+              35924,
+              0
+            ],
+            [
+              35924,
+              1
+            ],
+            [
+              36104,
+              0
+            ],
+            [
+              36104,
+              1
+            ],
+            [
+              36404,
+              0
+            ],
+            [
+              36404,
+              1
+            ],
+            [
+              36542,
+              0
+            ],
+            [
+              36542,
+              1
+            ],
+            [
+              36835,
+              0
+            ],
+            [
+              36835,
+              1
+            ],
+            [
+              36973,
+              0
+            ],
+            [
+              36973,
+              1
+            ]
+          ]
+        },
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.6433333317438762,
+          "p95RenderMs": 1.5999999046325684
+        }
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@ export const ONLINE_PENDING_KEY='roadster-online-pending-v1';
 export const validNickname=value=>typeof value==='string'&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length>=3&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length<=12&&/^[\p{L}\p{N} _-]+$/u.test(value.normalize('NFKC').trim().replace(/ +/g,' '));
 const normalName=value=>value.normalize('NFKC').trim().replace(/ +/g,' ');
 export class OnlineError extends Error{constructor(code){super(code);this.code=code;}}
-export function createOnline({apiUrl,apiKey=null,ruleset,storage,fetcher=fetch,now=Date.now,localVerifier=null,onChange=()=>{},enabled=true,connected=()=>typeof navigator==='undefined'||navigator.onLine!==false}){
+export function createOnline({apiUrl,apiKey=null,ruleset,storage,fetcher=fetch,now=Date.now,localVerifier=null,onChange=()=>{},onAccepted=()=>{},enabled=true,connected=()=>typeof navigator==='undefined'||navigator.onLine!==false}){
  let next=null,preparing=null,lastPrepareError=null,persistent=!!storage,jobs=[],writable=!!storage;const sending=new Map();
  try{
   const raw=storage?.getItem(ONLINE_PENDING_KEY);
@@ -39,7 +39,7 @@ export function createOnline({apiUrl,apiKey=null,ruleset,storage,fetcher=fetch,n
      if(value.continue)throw new OnlineError('verification_temporarily_unavailable');
     }
     job.status=value.status;job.entry=value.entry||null;
-    if(value.status==='accepted'){remove(job.session.id);return value;}
+    if(value.status==='accepted'){remove(job.session.id);onAccepted(job.session.id,value.entry);return value;}
     job.error=value.error||(value.status==='rejected'?'verification_failed':'verification_temporarily_unavailable');save();return value;
    }catch(error){job.status='pending';job.error=error?.code||'network';save();throw error;}
    finally{sending.delete(job.session.id);onChange();}

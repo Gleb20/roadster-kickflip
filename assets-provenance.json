@@ -377,8 +377,7 @@
       222
     ],
     "alpha": "RGBA, alpha range 0..255",
-    "referenceRoles": "Photo: actual white hull, four motors/rotors, skids, gimbal camera. Atlas: isolated photographic vehicle/sticker treatment. One sprite shared by hovering and incoming movement variants.",
-    "referenceAvailability": "Photo and style inputs remain local; source URLs and license above identify the original. Generated adaptation and runtime sprite are published under CC BY-SA 3.0."
+    "referenceRoles": "Photo: actual white hull, four motors/rotors, skids, gimbal camera. Atlas: isolated photographic vehicle/sticker treatment. One sprite shared by hovering and incoming movement variants."
   },
   "thrustPressureHiss": {
     "file": "assets/audio/thrust-pressure-hiss.mp3",
@@ -394,7 +393,8 @@
   },
   "hudV301": {
     "references": [
-      "User-supplied speedometer and cold-gas nozzle references; retained locally, reference pixels not published"
+      "art-source/hud-v301/speedometer-user-reference.png",
+      "art-source/hud-v301/thruster-user-reference.png"
     ],
     "method": "Native geometric SVG instruments and nozzle icon derived from user-provided interface references; no screenshot pixels at runtime",
     "pose": "Existing editable Canvas character joint coordinates; original sprite atlases unchanged"
@@ -508,5 +508,169 @@
     ],
     "alpha": "RGBA; proportional resize; original retained",
     "notes": "Fictional background arrangement; no claim these machine/rack models are used by Tesla. Existing worker assets retained as history but removed from renderer and active offline cache."
+  },
+  "elonTrickConcepts20261020": {
+    "status": "concepts-awaiting-user-approval-not-integrated",
+    "files": [
+      "assets/concepts/elon-tricks-20261020/01-tricks.png",
+      "assets/concepts/elon-tricks-20261020/02-jump.png",
+      "assets/concepts/elon-tricks-20261020/03-interactions.png"
+    ],
+    "method": "Built-in image generation with actual user skating photographs, current rendered game hero and photo/video-derived Roadster atlas; category-specific paper character plus photographic car.",
+    "manifest": "art-source/elon-tricks-20261020/provenance.json",
+    "brief": "art-source/elon-tricks-20261020/brief.md",
+    "notes": "Approval concepts only. No runtime imports, gameplay changes, photo redistribution or publication. Original generated PNGs retained; transparent alpha inspected on light/dark previews. Anchor, interpolation and exact game-scale anatomy remain implementation work."
+  },
+  "elonGrabConcepts20261020V2": {
+    "status": "hand-role-rule-confirmed; visual-awaiting-user-approval; not-integrated",
+    "file": "assets/concepts/elon-grab-20261020-v2/02-grab-interactions.png",
+    "manifest": "art-source/elon-grab-20261020-v2/provenance.json",
+    "brief": "art-source/elon-grab-20261020-v2/brief.md",
+    "method": "Built-in imagegen with actual user skating photographs, current game hero/car and prior concept images. Paper hero plus photographic Roadster.",
+    "confirmedRule": "Front anatomical left hand grips the car; rear right hand performs interactions; encounter expressions and gaze persist during tricks.",
+    "supersedes": "elonTrickConcepts20261020",
+    "notes": "Current approval sheet uses one base pose for four gestures and associated faces; intermediate explorations are not handedness acceptance. No runtime/code/publication change."
+  },
+  "elonGrabV351": {
+    "status": "local3.5.1-not-published",
+    "concept": "assets/concepts/elon-grab-v351/concept.png",
+    "manifest": "art-source/elon-grab-v351/provenance.json",
+    "brief": "art-source/elon-grab-v351/brief.md",
+    "method": "Built-in imagegen with real user pose photo and official South Park style still for concept; existing runtime paper pieces sampled as separate limbs/expressions, original photographic Roadster retained.",
+    "runtimeFiles": [
+      "src/characters.js",
+      "src/hero-rig.js",
+      "src/cash.js",
+      "src/main.js"
+    ],
+    "notes": "Flat oval-eye/small-mouth facial grammar; front anatomical left grip, rear right encounter; roof toward rider throughout rotation. No generated concept pixels shipped in runtime; physics/replay ruleset untouched."
+  },
+  "uiStabilization370": {
+    "date": "2026-10-20",
+    "method": "Built-in image_gen with actual photographic inputs and current live game style; deterministic proportional PNG resizing only. Collection teaser is an existing locked portrait capture, with CSS gradient/question mark.",
+    "category": "PWA promotional scene and collection UI teaser",
+    "prototype": [
+      "Elon Musk",
+      "Tesla Roadster second-generation 2017 prototype",
+      "SpaceX Falcon 9 Crew-8 launch",
+      "fictional San Francisco street residents"
+    ],
+    "brief": "art-source/ui-v370/brief.md",
+    "exactPrompt": "art-source/ui-v370/icon-prompt.txt",
+    "original": "art-source/ui-v370/icon-original.png",
+    "generator": "image_gen.imagegen",
+    "transparent_background": false,
+    "actualImageInputs": [
+      "art-source/ui-v370/references/elon-photo.jpg",
+      "art-source/ui-v370/references/roadster-photo.jpg",
+      "art-source/ui-v370/references/rocket-photo.jpg",
+      "art-source/ui-v370/references/sf-street-photo.jpg",
+      "art-source/ui-v370/references/current-game.png"
+    ],
+    "sourcesAndCredits": "assets/ui/ATTRIBUTION.md",
+    "licence": "Generated icon/cover adaptation: CC BY-SA 3.0; reference credits and source-specific terms retained in ATTRIBUTION.",
+    "normalization": "Original square preserved. Cover saved losslessly; launcher variants proportionally resized using Lanczos to192/512. Normal any-purpose icon, no baked rounded corners.",
+    "files": [
+      {
+        "file": "assets/ui/pwa-cover.png",
+        "sha256": "71ae761162bfb7c4677f4dba96a9d267b380ac00f9863b08d22575bde7bf95c1"
+      },
+      {
+        "file": "icons/icon-192.png",
+        "sha256": "307b65514a8a34e4ba7f496a1fdfa73e45fd4161c708672a95b6f94eaf92d25e"
+      },
+      {
+        "file": "icons/icon-512.png",
+        "sha256": "4ed2a93b4418534844a9c10086b4a795f0de6df7f0640fd452af10597d02bb49"
+      },
+      {
+        "file": "assets/ui/collection-mystery.png",
+        "sha256": "deee4491bd44e99ea1b7a5b45eef41d405cf4334e77bb0c929e315a4a4ce60c3"
+      }
+    ],
+    "acceptance": "Visually checked current game vs generated icon and actual 192/64/48px variants. Browser integration in docs/verification/2026-10-20-ui-v370. Physical iOS/Android installation unverified."
+  },
+  "pwaKickflipV2": {
+    "date": "2026-10-20",
+    "release": "local3.7.1",
+    "status": "integrated-locally-not-published",
+    "tool": "image_gen.imagegen",
+    "transparent_background": false,
+    "prompt": "art-source/pwa-kickflip-v2/prompt.txt",
+    "actualImageInputs": [
+      "art-source/pwa-kickflip-v2/references/skater-kickflip-almonroth.jpg",
+      "art-source/pwa-kickflip-v2/references/paul-rodriguez-kickflip.jpg",
+      "art-source/pwa-kickflip-v2/references/style-contact.png",
+      "art-source/pwa-kickflip-v2/references/roadster-rolling.png",
+      "art-source/pwa-kickflip-v2/references/rocket-photo.jpg"
+    ],
+    "styleContactComponents": [
+      "game-hero.png",
+      "south-park-official.jpg",
+      "current-live.png"
+    ],
+    "referencePackaging": "Pillow contact sheet: proportional resize and placement of references only; no drawn substitute for requested art",
+    "photoSources": {
+      "primaryPose": {
+        "subject": "anonymous skateboarder performing kickflip in Justin Herman Plaza",
+        "author": "Almonroth",
+        "page": "https://commons.wikimedia.org/wiki/File:Skateboarding_kickflip.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Skateboarding_kickflip.jpg",
+        "date": "2012-12-08",
+        "licence": "CC BY-SA3.0"
+      },
+      "tuckedKnee": {
+        "subject": "Paul Rodriguez kickflip",
+        "page": "https://www.wearecivil.com/blogs/blog/nike-sb-p-rod-1-returns",
+        "image": "https://cdn.shopify.com/s/files/1/0774/2393/5776/files/Paul_Rodriguez_-_P-Rod_1_kickflip.jpg?v=1747161748",
+        "publisher": "Civil/Nike SB",
+        "photographer": null,
+        "licence": null
+      },
+      "car": {
+        "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+        "title": "Roadster Event - Tesla",
+        "timestampSeconds": 689.890061,
+        "file": "assets/roadster-flip/frame-8.png",
+        "nature": "existing retouched video-derived cutout, not untouched documentary pixels"
+      },
+      "rocket": {
+        "page": "https://www.nasa.gov/blogs/spacestation/2024/03/03/liftoff-nasas-spacex-crew-8-begins-journey-to-international-space-station/",
+        "credit": "NASA/Bill Stafford",
+        "role": "vehicle/exhaust reference; diagonal flight is fictional composition"
+      }
+    },
+    "original": "art-source/pwa-kickflip-v2/generated-original.png",
+    "final": "assets/ui/pwa-cover-kickflip-v2.png",
+    "normalization": "Exact generated opaque square retained; two proportional Lanczos icon derivatives, no crop or scene redrawing.",
+    "sizes": [
+      {
+        "file": "assets/ui/pwa-cover-kickflip-v2.png",
+        "sha256": "1c6ec8e473ab179dcb40e398d977d35526de5e17310368efd0d94babf847bc79"
+      },
+      {
+        "file": "assets/ui/pwa-cover.png",
+        "sha256": "1c6ec8e473ab179dcb40e398d977d35526de5e17310368efd0d94babf847bc79"
+      },
+      {
+        "file": "icons/icon-192.png",
+        "sha256": "b8643e73d2402c30049c662ec096068bd210408b4c5493734781f7442776bfd7"
+      },
+      {
+        "file": "icons/icon-512.png",
+        "sha256": "82a8a2c05856c62cde93fabce958f86375506ac63428769d6eacce8737b3da46"
+      }
+    ],
+    "inspection": "Whole image plus512/192/64/48px and circle crop reviewed against photo pose, game hero, TV shapes and video cutout. Two arms/legs, high knees, separate flipping car, smoke, bottom characters, diagonal rocket, no city."
+  },
+  "release371": {
+    "version": "3.7.1",
+    "scope": "Menu/UI changes and final kickflip icon, preserving latest3.6.2 factory",
+    "verification": "docs/verification/2026-10-20-release-v3.7.1/README.md",
+    "activeIcon": "icons/icon-512.png",
+    "activeCover": "assets/ui/pwa-cover-kickflip-v2.png",
+    "uiSourceRecord": "uiStabilization370",
+    "iconSourceRecord": "pwaKickflipV2",
+    "researchInputs": "Photo and TV references are local-only research, not runtime assets."
   }
 }

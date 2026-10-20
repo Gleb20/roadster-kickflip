@@ -1,4 +1,4 @@
-import {validNickname,onlineMessage} from './online.js?v=3.6.2';
+import {validNickname,onlineMessage} from './online.js?v=3.7.1';
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
 export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
  const dialog=document.getElementById('online-dialog'),content=document.getElementById('online-content'),title=document.getElementById('online-title'),back=document.getElementById('online-close');
@@ -26,7 +26,27 @@ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
    const refresh=el('button','text-button','REFRESH TOP');refresh.type='button';refresh.onclick=()=>void list(1);content.append(refresh);const pending=pendingList();if(pending)content.append(pending);if(!client.persistent)content.append(status('Retry history is available for this window only. Keep it open until your result is confirmed.'));
   }catch(error){if(serial!==request||view!=='list')return;content.replaceChildren(status(onlineMessage(error.code),true));const retry=el('button','primary','RETRY LOADING');retry.type='button';retry.onclick=()=>void list(page,snapshot);content.append(retry);const pending=pendingList();if(pending)content.append(pending);}
  }
- function success(entry){if(!dialog.open)return;view='success';request++;title.textContent='SCORE POSTED';highlight=entry.id;content.replaceChildren(el('div','online-posted-score',entry.score.toLocaleString()),el('h3','online-posted-name',entry.nickname),status('Your verified score is now in the all-time table.'));const button=el('button','primary','VIEW MY RANK');button.type='button';button.onclick=async()=>{const serial=++request;button.disabled=true;try{const rank=await client.entry(entry.id);if(serial!==request||!dialog.open)return;void list(rank.page,rank.snapshot);}catch(error){if(serial!==request||!dialog.open)return;content.append(status(onlineMessage(error.code),true));button.disabled=false;}};content.append(button);}
+ async function showRank(id){
+  view='rank';const serial=++request;title.textContent='YOUR WORLD RANK';content.replaceChildren(status('Finding your verified score…'));
+  try{const rank=await client.entry(id);if(serial!==request||!dialog.open)return;highlight=id;void list(rank.page,rank.snapshot);}
+  catch(error){if(serial!==request||!dialog.open)return;content.replaceChildren(status(onlineMessage(error.code),true));const retry=el('button','primary','RETRY LOADING');retry.onclick=()=>void showRank(id);content.append(retry);appendBack();}
+ }
+ function success(entry){
+  if(!dialog.open)return;view='success';request++;title.textContent='SCORE POSTED';highlight=entry.id;
+  content.replaceChildren(el('div','online-posted-score',entry.score.toLocaleString()),el('h3','online-posted-name',entry.nickname),status('Your verified score is now on the world leaderboard.'));
+  const button=el('button','primary','VIEW MY RANK');button.type='button';button.onclick=()=>void showRank(entry.id);
+  const share=el('button','text-button','SHARE SCORE ↗'),feedback=status('');share.type='button';feedback.hidden=true;
+  share.onclick=async()=>{
+   const serial=request,url=new URL(location.href);url.search='';url.hash='score/'+entry.id;
+   const text=`${entry.nickname} scored ${entry.score.toLocaleString()} in Tesla Jump. Beat that flight!`;
+   try{
+    if(navigator.share)await navigator.share({title:'Tesla Jump',text,url:url.href});
+    else if(navigator.clipboard){await navigator.clipboard.writeText(text+' '+url.href);if(serial===request){feedback.hidden=false;feedback.textContent='Score link copied.';}}
+    else throw Error('clipboard');
+   }catch(error){if(error.name==='AbortError'||serial!==request)return;feedback.hidden=false;feedback.textContent='Copy this public score link:';let input=content.querySelector('.online-share-link');if(!input){input=el('input','online-share-link');input.readOnly=true;input.setAttribute('aria-label','Public score link');content.append(input);}input.value=url.href;input.focus();input.select();}
+  };
+  content.append(button,share,feedback);
+ }
 
  function submitView(){
   view='submit';request++;title.textContent='MAKE YOUR MARK';back.textContent='CLOSE';activeResult=currentRun();content.replaceChildren();
@@ -44,7 +64,7 @@ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
   };
  }
  function close(){dialog.close();request++;afterClose?.();origin?.focus({preventScroll:true});}
- function restore(){const state=history.state?.teslaOnline;if(!state)return;if(!dialog.open){if(beforeOpen?.()===false)return;dialog.showModal();}if(state.view==='submit')submitView();else void list(1);}
+ function restore(){let state=history.state?.teslaOnline;const score=location.hash.match(/^#score\/([0-9a-f-]{36})$/);if(!state&&(score||location.hash==='#leaderboard')){state=score?{view:'rank',id:score[1]}:{view:'list'};const base=new URL(location.href);base.hash='';history.replaceState({...history.state,teslaOnline:undefined},'',base);history.pushState({...history.state,teslaOnline:state},'',score?'#score/'+score[1]:'#leaderboard');}if(!state)return;if(!dialog.open){if(beforeOpen?.()===false)return;dialog.showModal();}if(state.view==='submit')submitView();else if(state.view==='rank')void showRank(state.id);else void list(1);}
  function open(trigger,kind='list'){if(dialog.open||beforeOpen?.()===false)return;origin=trigger;const url=new URL(location.href);url.hash=kind==='submit'?'post-score':'leaderboard';history.pushState({...history.state,teslaCollection:undefined,teslaOnline:{view:kind}},'',url);dialog.showModal();if(kind==='submit')submitView();else void list(1);back.focus();}
  back.onclick=()=>history.back();dialog.addEventListener('cancel',event=>{event.preventDefault();history.back();});addEventListener('popstate',()=>{if(history.state?.teslaOnline)restore();else if(dialog.open)close();});
  return {open,restore,refresh(){if(dialog.open&&view==='list'){const old=content.querySelector('.online-pending'),next=pendingList();if(old){if(next)old.replaceWith(next);else old.remove();}else if(next)content.append(next);}},get isOpen(){return dialog.open;}};

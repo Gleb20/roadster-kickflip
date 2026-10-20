@@ -1,3 +1,7 @@
+# Release3.7.1 - UI and PWA icon
+
+User authorized publication of the completed menu/HUD refinements and corrected kickflip preview to the existing Pages URL. This bounded presentation release does not complete the older3.7 programme's full turntables or metallic head trophies. Sharing of verified scores and the app icon are implemented. Earlier open programme items remain individually unresolved.
+
 ## Factory spatial entry and quieter background — 3.6.2
 
 User requested a gradual physical entry, muted factory background, much smaller arms, varied equipment sections, an occasional distant forklift and no factory workers. The score-only10k/20k/30k cycle is preserved. The doorway travels with the road; both scenes are opaque, without a fade. Background sprites are dimmed/desaturated once, with a darker obstacle plane. Four sections alternate assembly, machining, storage and service. Arms scale0.62→0.24; workers are absent from the renderer/cache. New photo-guided paper racks (Dexion P90) and machinery (Haas VF-2) are fictional background arrangements, with full provenance and no claim of actual Tesla equipment.

@@ -5,7 +5,8 @@ import {ASSETS} from '../src/content.js';
 const root=new URL('../',import.meta.url),pkg=JSON.parse(await readFile(new URL('package.json',root),'utf8'));
 const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.file),
  'assets/characters/bezos-v247.png','assets/characters/katy-v247.png','assets/spaceport/spaceport-atlas.png','assets/roadster-flip/atlas.png',
- 'manifest.webmanifest','icons/icon-192.png','icons/icon-512.png']);
+ 'manifest.webmanifest','icons/icon-192.png','icons/icon-512.png',
+ 'assets/ui/collection-mystery.png','assets/ui/ATTRIBUTION.md']);
 for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))files.add('src/'+name);
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
 for(const id of FACTORY_ASSETS)files.add('assets/factory/'+id+'.png');

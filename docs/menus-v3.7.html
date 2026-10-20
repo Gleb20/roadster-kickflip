@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla Jump — User Flow Report</title>
+<style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>Tesla Jump - menus and results</h1><p class="meta">20 October 2026 - 3.7.1 release flow; verification before publication</p><div class="skills"><span class="chip">flow-navigation</span><span class="chip">interface-design</span><span class="chip">tesla-jump-art</span></div>
+<h2>Decisions</h2><p>Play leads the menu. Collection has a separate upper card. Posting a verifiable finished score leads results. Pause keeps compact Continue, Restart and Home controls. The tutorial checkbox takes effect on the next explicit start.</p>
+<h2>Menu to collection</h2><ol class="flow"><li><span class="step-n">1</span><span class="step-t">Home</span><p class="step-d">Play, personal best and the actual server rank for a posted best. A separate collection card shows discovery progress.</p><p class="cta">Primary: <b>LET'S GO</b> to run</p><div class="branch">Collection opens the encounter files. Replay tips only prepares the next run; toggling does not start.</div></li><li><span class="step-n">2</span><span class="step-t">Encounter files</span><p class="step-d">Locked silhouettes and discovered files. Opening a detail clears its NEW marker.</p><p class="cta">Primary: <b>open a file</b> to its detail</p><div class="branch">Close, Escape and Back return to the expected level. Forward and reload restore detail state.</div></li></ol>
+<h2>Run to world ranking</h2><ol class="flow"><li><span class="step-n">1</span><span class="step-t">Pause</span><p class="step-d">Current score, optional posting of a saved finished best, Continue / Restart / Home. Unavailable posting is explained.</p><p class="cta">Primary: <b>POST PERSONAL BEST</b> to the finished best's form</p><div class="branch">The current run stays paused. Restart and Home end this attempt without posting it. The immutable verifier does not accept an unfinished replay.</div></li><li><span class="step-n">2</span><span class="step-t">Finished run</span><p class="step-d">Prominent score, distinct personal-best celebration, posting CTA and secondary Retry / Home. A local run without a session promotes Retry.</p><p class="cta">Primary: <b>POST SCORE</b> to nickname and explicit submission</p></li><li><span class="step-n">3</span><span class="step-t">Verified score</span><p class="step-d">The server replays the run. Acceptance gives a public identity. View my rank highlights its exact row. Share score invokes native sharing or copies a public score link.</p><div class="branch">A finished best can be posted after reload within 24 hours of session issue. A legacy best number without replay stays local; a rank is never fabricated.</div></li></ol>
+<h3>Screen inventory</h3><div class="overflow"><table><tr><th>Screen</th><th>Purpose</th><th>Primary</th><th>States</th></tr><tr><td>Home</td><td>Start and inspect best</td><td>Play</td><td>Zero, local only, ready to post, posted rank, rank unavailable</td></tr><tr><td>Pause</td><td>Manage attempt</td><td>Post finished best</td><td>No eligible replay explained; current attempt frozen</td></tr><tr><td>Result</td><td>Recognize achievement</td><td>Post or local Retry</td><td>Ordinary, new best, no online session, replay limit</td></tr><tr><td>Ranking</td><td>Verify position</td><td>View my rank</td><td>Loading, error with retry, pending jobs, accepted</td></tr></table></div>
+<h3>Anti-pattern audit</h3><div class="overflow"><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr><tr><td>Clear entry points and non-overlapping layout</td><td class="pass">PASS</td><td>Chromium at 1440x900, 390x844, 844x390, 320x568; menu/ and hud/ screenshots</td></tr><tr><td>No hidden starts or stuck input; keyboard pause</td><td class="pass">PASS</td><td>menu/browser.json and gameplay/browser.json; native input</td></tr><tr><td>Back, Forward and reload restore expected states</td><td class="pass">PASS</td><td>collection/browser.json; public deep link opens exact row and closes to home</td></tr><tr><td>No automatic score publishing</td><td class="pass">PASS</td><td>Writes follow explicit form or Retry; disposable local PGlite with the real frozen verifier, no public writes</td></tr><tr><td>Best identity and rank remain consistent</td><td class="pass">PASS</td><td>Reload, late acceptance of older run, tied best, expiry and unavailable-storage tests</td></tr><tr><td>Offline and safe PWA update</td><td class="pass">PASS</td><td>pwa/browser.json: complete cache, cold offline reload, safe activation, mixed-release rejection</td></tr><tr><td>Physical iPhone/Safari, Android launcher and native Share UI</td><td class="warn">NOT TESTED</td><td>Browser checks and clipboard fallback verified. Device acceptance remains open.</td></tr></table></div>
+<h2>Open questions and parked work</h2><p>Posting an unfinished attempt would require a separate versioned ranking contract. An old number alone cannot reconstruct its replay. Posting lasts 24 hours from server session issue. An estimated rank for an unpublished score is not included; eligible bests instead offer explicit publication. Recorded route-search stalls and unfinished factory ramp, daylight and biome pools remain outside this task.</p><footer>Static inspection, Chromium, disposable local server. Physical-device acceptance follows publication; see release verification for live deployment status.</footer>
+</body></html>

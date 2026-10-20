@@ -521,3 +521,128 @@ button.collection-card:hover { background:rgb(255 255 255 / 6%); border-color:va
 #online-run-status { text-align:center; font-size:10px; margin-bottom:0; }
 @media(max-width:500px){.online-header { padding:22px 20px 16px; }.online-header h2{font-size:24px;}#online-content{padding:16px 20px 24px;}.online-table td{font-size:14px;padding:12px 5px;}.online-table td:first-child{width:42px;}#start-dock .menu-actions{gap:2px;}#start-dock .menu-actions .text-button{font-size:8px;}}
 @media(max-height:570px){#online-dialog{max-height:calc(100dvh - 16px);}.online-header{padding:16px 20px 12px;}.online-header h2{font-size:22px;}#online-content{padding:14px 20px 20px;}.online-form{margin-top:16px;}.online-posted-score{font-size:44px;}#result .stats{margin:12px 0;padding:12px 0;}}
+
+/* Menu hierarchy: play first, a separate encounter teaser, then optional tools. */
+#collection-menu { position:absolute; top:calc(var(--edge-top) + 68px); left:var(--edge-x); z-index:5; width:244px; min-height:90px; display:flex; align-items:center; gap:12px; padding:10px 16px 10px 6px; text-align:left; border:1px solid rgb(159 190 222 / 28%); border-radius:16px; background:linear-gradient(115deg,#3d5263,#253745 60%,#1a2b35); color:var(--text); box-shadow:inset 0 1px rgb(255 255 255 / 9%),0 8px 28px #0002; transition:transform 160ms,border-color 160ms; }
+#game:not([data-mode='menu']) #collection-menu { display:none; }
+#collection-menu:hover { border-color:#b0d6e2; transform:translateY(-2px); }
+#collection-menu:disabled { opacity:.5; }
+.teaser-art { position:relative; display:grid; place-items:center; flex:0 0 76px; height:70px; }
+.teaser-art img { width:90px; height:78px; object-fit:contain; filter:drop-shadow(0 0 8px #98caec66); }
+.teaser-art b { position:absolute; font-size:30px; font-weight:600; color:#cde5ec; text-shadow:0 0 20px #cae9ff99; }
+.teaser-copy { display:flex; flex:1; flex-direction:column; gap:6px; white-space:nowrap; }
+.teaser-copy small { font-size:7px; letter-spacing:1.2px; color:#c0d7e1; }
+.teaser-copy strong { font-size:13px; letter-spacing:.7px; }
+#collection-teaser-count { font-size:8px; letter-spacing:.6px; color:#b2c5ce; }
+#menu-record { gap:7px; }
+#menu #best-rank { max-width:300px; margin:4px auto 0; color:#bacbd0; font-size:11px; line-height:1.6; letter-spacing:.2px; }
+#menu #post-best { min-height:44px; margin:0; color:var(--primary); font-size:10px; letter-spacing:.7px; }
+#menu #post-best[hidden] { display:none; }
+#start-dock { width:260px; }
+#start-dock .menu-actions { justify-content:center; gap:8px; }
+#start-dock .menu-actions .text-button { flex:initial; padding:10px; font-size:9px; }
+.tutorial-toggle { min-height:44px; display:flex; align-items:center; justify-content:center; gap:9px; color:var(--secondary); font-size:10px; cursor:pointer; }
+.tutorial-toggle input { position:absolute; width:1px; height:1px; opacity:0; }
+.toggle-track { width:27px; height:16px; padding:3px; border-radius:12px; border:1px solid #718189; background:#17262d; transition:background 160ms; }
+.toggle-track::after { content:''; display:block; width:8px; height:8px; border-radius:50%; background:#aab7ba; transition:transform 160ms; }
+.tutorial-toggle input:checked + .toggle-track { background:#9bb946; border-color:#d9ff62; }
+.tutorial-toggle input:checked + .toggle-track::after { transform:translateX(11px); background:#172315; }
+.tutorial-toggle input:focus-visible + .toggle-track { outline:3px solid var(--primary); outline-offset:4px; }
+.online-availability { min-height:12px; }
+
+/* Finished runs lead with the score and its explicit publication action. */
+.panel { width:min(420px,calc(100% - 32px)); padding:28px; }
+#result h2 { font-size:27px; margin:16px 0 8px; }
+#result #reason { font-size:12px; margin:8px 0 20px; }
+#result .stats { align-items:flex-end; gap:24px; justify-content:space-between; margin:20px 0 16px; padding:18px 0; }
+#result .stats > div { min-width:0; }
+#result .stats label { display:block; font-size:8px; letter-spacing:1.2px; color:var(--secondary); margin-bottom:8px; }
+#result .stats strong { display:block; font-size:clamp(21px,5vw,28px); font-weight:550; font-variant-numeric:tabular-nums; letter-spacing:-1px; }
+#result .stats #finalScore { font-size:clamp(35px,8vw,54px); font-weight:700; line-height:1; }
+#record-celebration { font-size:12px; color:#e6e8bd; margin:0 0 16px; }
+#record-celebration[hidden] { display:none; }
+#result .landed-stat { font-size:9px; letter-spacing:1px; color:var(--secondary); }
+#result.is-record { border-color:rgb(217 255 98 / 42%); background:radial-gradient(ellipse at 8% 8%,rgb(217 255 98 / 10%),transparent 65%),#172126; }
+#result.is-record #finalScore { color:var(--primary); text-shadow:0 0 30px #d9ff6238; }
+#result.is-record .eyebrow::before { content:'✦ '; }
+#result .primary,#paused .primary { margin-top:22px; }
+#result #post-score[hidden] { display:none; }
+#result #online-run-status,#pause-post-hint { font-size:11px; line-height:1.6; margin:12px 0 18px; }
+#paused h2 { margin:14px 0 24px; }
+.pause-score { display:flex; justify-content:space-between; align-items:baseline; padding:0 0 20px; border-bottom:1px solid var(--hairline); }
+.pause-score span { color:var(--secondary); font-size:9px; letter-spacing:1.3px; }
+.pause-score strong { font-size:32px; font-weight:550; font-variant-numeric:tabular-nums; }
+#pause-post:disabled { opacity:.45; box-shadow:none; }
+.panel-actions { display:flex; justify-content:center; align-items:center; gap:16px; padding-top:18px; border-top:1px solid var(--hairline); }
+.icon-action { flex:0 0 70px; min-width:64px; min-height:64px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:10px 8px; border:1px solid var(--hairline); border-radius:14px; background:#ffffff05; color:var(--text); }
+.icon-action span { font-size:9px; line-height:1.2; }
+.icon-action:hover { border-color:var(--secondary); background:#ffffff0b; }
+#resume { color:var(--primary); border-color:#d9ff6244; }
+#result .panel-actions > .text-button { font-size:9px; margin:0; padding:8px; min-height:44px; }
+#paused > .text-button { display:block; margin:12px auto 0; min-height:44px; font-size:9px; }
+#restart.retry-primary { flex:1; flex-direction:row; min-height:54px; color:#1a230f; background:var(--primary); border-color:transparent; }
+#restart.retry-primary span { font-size:11px; font-weight:700; }
+.online-share-link { width:100%; min-height:44px; color:var(--text); background:#101b20; border:1px solid var(--hairline); border-radius:8px; padding:10px; user-select:text !important; }
+#collection-dialog { transform:translateY(0); transition:transform 200ms ease-out,opacity 200ms ease-out; }
+@starting-style { #collection-dialog[open] { transform:translateY(24px); opacity:0; } }
+@media(max-width:600px) {
+ #collection-menu { top:calc(var(--edge-top) + 68px); left:50%; transform:translateX(-50%); width:234px; min-height:84px; }
+ #collection-menu:hover { transform:translateX(-50%); }
+ #menu { top:29%; }
+ #start-dock { width:250px; bottom:max(20px,calc(env(safe-area-inset-bottom) + 16px)); }
+ .panel { padding:24px; }
+}
+@media(max-height:650px) and (max-width:599px) {
+ #collection-menu { top:calc(var(--edge-top) + 52px); min-height:70px; height:70px; }
+ .teaser-art { height:54px; }.teaser-art img { height:66px; }
+ #menu { top:29%; left:50%; width:94%; }
+ #menu h1 { font-size:clamp(44px,13vw,60px); }
+ #menu-record { margin-top:12px; gap:4px; }#menu-record strong { font-size:28px; }
+ #menu #best-rank { font-size:9px; max-width:240px; }
+ #menu #post-best { font-size:9px; }
+ #start-dock .primary { min-height:48px; margin-top:0; }
+ #start-dock .menu-actions .text-button { min-height:44px; }
+ #start-dock .online-availability { margin:0; font-size:7px; }
+ .panel { padding:20px; }#result h2 { margin-top:10px; }
+ #result .stats { margin:12px 0; padding:12px 0; }
+ #result .primary { margin-top:16px; }
+}
+@media(max-height:570px) and (min-width:600px) {
+ #collection-menu { top:calc(var(--edge-top) + 62px); width:210px; min-height:78px; }
+ #menu { top:23%; left:64%; width:60%; }
+ #menu h1 { font-size:clamp(42px,7vw,62px); }
+ #menu-record { margin-top:10px; gap:3px; }#menu-record strong { font-size:27px; }
+ #menu #best-rank { font-size:9px; margin:0; }#menu #post-best { font-size:9px; }
+ #start-dock { left:64%; width:250px; bottom:max(10px,env(safe-area-inset-bottom)); }
+ #start-dock .primary { min-height:44px; margin-top:0; }
+ #start-dock .menu-actions .text-button { min-height:44px; padding:8px; }
+ .tutorial-toggle { min-height:32px; font-size:9px; }
+ #start-dock .online-availability { display:none; }
+ .panel { padding:18px 24px; width:440px; }
+ #paused h2 { font-size:26px; margin:8px 0 12px; }
+ .pause-score { padding-bottom:10px; }.pause-score strong { font-size:25px; }
+ #paused .primary,#result .primary { margin-top:12px; min-height:46px; padding:12px 20px; }
+ #pause-post-hint,#result #online-run-status { margin:8px 0 10px; font-size:10px; }
+ .panel-actions { padding-top:10px; }.icon-action { min-height:54px; gap:5px; }
+ #paused > .text-button { margin:4px auto 0; min-height:32px; }
+ #result h2 { margin:8px 0; font-size:23px; }
+ #result #reason { margin:4px 0 8px; }
+ #result .stats { margin:8px 0; padding:10px 0; }
+ #result .stats #finalScore { font-size:38px; }
+ #record-celebration { margin:6px 0; font-size:10px; }
+}
+@media(prefers-reduced-motion:reduce) { #collection-menu,#collection-dialog,.toggle-track,.toggle-track::after { transition:none; } }
+/* Header controls take their final flex positions without crossing Pause. */
+#game[data-mode='playing'] #sound,#game[data-mode='paused'] #sound { transform:none; }
+@media(max-width:600px) {
+ #start-dock { width:calc(100% - 160px); min-width:160px; max-width:230px; left:auto; right:20px; transform:none; }
+ #start-dock .primary { padding:16px 20px; }
+ #start-dock .menu-actions { gap:0; }
+ #start-dock .menu-actions .text-button { font-size:8px; padding:10px 6px; }
+ #start-dock .online-availability { font-size:6px; letter-spacing:.5px; }
+ .tutorial-toggle { font-size:9px; gap:7px; }
+}
+@media(max-width:399px) {
+ #game[data-mode='playing'] #sound span,#game[data-mode='paused'] #sound span { display:none; }
+ #game[data-mode='playing'] #sound,#game[data-mode='paused'] #sound { width:44px; padding:0; }
+}

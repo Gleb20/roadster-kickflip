@@ -76,3 +76,8 @@ User authorised frontend publication on20 October2026. Base main210a26a /3.5.0. 
 ## Score-based biome correction3.6.1 —20 October2026
 
 The user superseded150-second legs: every10,000 current-run points changes biome, with no other eligibility condition. The existing4s crossfade animates after the score trigger; pause freezes it and retry resets the band. Base49db4176eca01b5d3d2ae4e0d05b75105436e371, parent tree964650c3f5008a71b2c2fbd6229810d64b40b0ac. Snapshot /tmp/tesla-score-biomes-v361-parent.tar; isolated branch codex/score-biomes-v361 in /tmp/tesla-jump-factory-v360-20261020. Immutable replay/server data and all foreign work must remain intact. Release evidence: docs/verification/2026-10-20-v3.6.1/.
+
+
+## Release3.7.1 - UI and kickflip icon
+
+Parent369cce37d2676f09437e492a8dcf3873b6207e42 / treeae4063693d948ee2fc47fe39cdf38d440950e74a. Preserve all player scores, collection and pending posts. The additive roadster-score-record-v1 key may remain on code rollback. Use the exact release commit inverse only against that release tree; never apply it blindly over newer work. The inverse is tested in a separate checkout to restore the exact parent tree and its103 tests/checks. A rollback for installed users must be served under a fresh cache/release version, preserving safe update behavior. No database migration, score deletion or old verifier replacement is needed. Evidence: docs/verification/2026-10-20-release-v3.7.1/.

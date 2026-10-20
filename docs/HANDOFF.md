@@ -1,3 +1,13 @@
+# Tesla Jump - release3.7.1
+
+User explicitly authorized publication of the UI and corrected kickflip PWA icon to the existing GitHub Pages game on20 October2026. Parent is369cce37d2676f09437e492a8dcf3873b6207e42 /3.6.2. Release is isolated from the original dirty checkout. Scope: collection teaser, compact pause controls, score-first results, retained finished best, actual server rank, public score links, next-run tutorial checkbox and final simplified kickflip icon. No gameplay/balance/backend/ranking-rule change. The actual accepted result identity is persisted; late acceptance of another run cannot overwrite the best's identity. Existing saves remain intact.
+
+The immutable verifier accepts only a run ending at its first collision. Pause therefore submits a saved finished best while preserving the current paused attempt. Legacy best numbers without replay remain local. Posting is explicit and limited by the unchanged24-hour server session window. Source photo and video references, exact generator prompt and public credits are retained; research photo/TV pixels stay out of the release package. Physical-device acceptance remains the user's next step. [Release evidence](verification/2026-10-20-release-v3.7.1/README.md).
+
+Recorded synchronous route-search work is still outside this release. Next bounded debt proposal: remeasure its stalls before choosing caching or workers. Factory ramp/daylight/pool decisions and full turntables remain open, not marked complete by the UI work.
+
+The latest3.6.2 spatial factory entrance, quieter sections and rack/machine assets are included intact. The earlier3.6.1-based candidate was never published.
+
 ## Factory spatial entry and quieter background — 3.6.2
 
 User requested a gradual physical entry, muted factory background, much smaller arms, varied equipment sections, an occasional distant forklift and no factory workers. The score-only10k/20k/30k cycle is preserved. The doorway travels with the road; both scenes are opaque, without a fade. Background sprites are dimmed/desaturated once, with a darker obstacle plane. Four sections alternate assembly, machining, storage and service. Arms scale0.62→0.24; workers are absent from the renderer/cache. New photo-guided paper racks (Dexion P90) and machinery (Haas VF-2) are fictional background arrangements, with full provenance and no claim of actual Tesla equipment.

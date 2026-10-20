@@ -1,6 +1,6 @@
 # Gameplay and content ownership
 
-3.2.0 retains the implemented 3.0.4 movement, balance and art described below. Visible encounters now persist local collection discovery before collision processing; this never pauses play. Menu/pause collection details clear NEW on first successful view. Browser history closes/restores collection layers; closing a card never resumes the game. Obstacle definitions now live in `src/content.js`; their schema/materials are checked by `npm run check`. The TypeScript development tool does not ship in the browser. See [content guide](content.md) and [release sequence](UPGRADE-RELEASES.md).
+3.2.0 retains the implemented 3.0.4 movement, balance and art described below. Visible encounters now persist local collection discovery before collision processing; this never pauses play. Collection details clear NEW on first successful view; since 3.7.0 the guide opens from the main menu only. Browser history closes/restores collection layers; closing a card never resumes the game. Obstacle definitions now live in `src/content.js`; their schema/materials are checked by `npm run check`. The TypeScript development tool does not ship in the browser. See [content guide](content.md) and [release sequence](UPGRADE-RELEASES.md).
 
 # Tesla Jump 3.0.4 — implemented gameplay candidate
 
@@ -30,7 +30,7 @@ A bad landing resets multiplier and earned speed, preserves remaining fuel, clea
 
 0–15 s low singles; 15–35 charged jumps/flips; 35–60 pairs/thrust practice; 60–90 hovering then incoming drones (incoming introduced after 72 s); 90–120 precision trains; 120–150 mixed/thrust trains; 150+ mixes the learned templates. Every fifth template is a low single with extra breathing room; a further breather follows any two consecutive complex templates. Recovery pauses difficulty. All abilities remain usable in the opening seconds.
 
-Contextual, dismissible tips teach jump, charge, flip, thrust, air and near manoeuvres. Success persists in `roadster-coach-v3`; replay is in the main menu. Each run resets temporary tip dismissal. No tutorial dialogs, ability gates, account requirements or external telemetry.
+Contextual, dismissible tips teach jump, charge, flip, thrust, air and near manoeuvres. Success persists in `roadster-coach-v3`; replay uses a quiet “Replay tips on next run” checkbox in the main menu, consumed by the next explicit start. Toggling it never starts a run. Each run resets temporary tip dismissal. No tutorial dialogs, ability gates, account requirements or external telemetry.
 
 Each template starts from the actual grounded player/fuel/pace state and has a witnessed grounded exit. A pure simulator searches input schedules including charge duration, thrust, near rewards, speed streak and moving air objects. Generated routes must also survive the same policy with takeoff lead shifted ±35 ms; mandatory-thrust routes retain at least 20 fuel, and thrust trains are considered only with at least 65 fuel. It never mutates the live state. Templates do not overlap an unfinished predecessor. If no witness is found, try a verified low single; if that too is invalid, wait. Empty fuel always keeps a recoverable path. Positions are never expanded/teleported during speed changes; camera scale changes smoothly and resize preserves obstacle-relative positions.
 

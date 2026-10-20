@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "desktop: logistics varies within storage section",
+    "portrait: logistics varies within storage section",
+    "landscape: logistics varies within storage section"
+  ],
+  "errors": [],
+  "fixture": "Arranged score, distance and obstacles; real production painters"
+}

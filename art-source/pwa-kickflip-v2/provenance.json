@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-20",
+  "release": "local3.7.1",
+  "status": "integrated-locally-not-published",
+  "tool": "image_gen.imagegen",
+  "transparent_background": false,
+  "prompt": "art-source/pwa-kickflip-v2/prompt.txt",
+  "actualImageInputs": [
+    "art-source/pwa-kickflip-v2/references/skater-kickflip-almonroth.jpg",
+    "art-source/pwa-kickflip-v2/references/paul-rodriguez-kickflip.jpg",
+    "art-source/pwa-kickflip-v2/references/style-contact.png",
+    "art-source/pwa-kickflip-v2/references/roadster-rolling.png",
+    "art-source/pwa-kickflip-v2/references/rocket-photo.jpg"
+  ],
+  "styleContactComponents": [
+    "game-hero.png",
+    "south-park-official.jpg",
+    "current-live.png"
+  ],
+  "referencePackaging": "Pillow contact sheet: proportional resize and placement of references only; no drawn substitute for requested art",
+  "photoSources": {
+    "primaryPose": {
+      "subject": "anonymous skateboarder performing kickflip in Justin Herman Plaza",
+      "author": "Almonroth",
+      "page": "https://commons.wikimedia.org/wiki/File:Skateboarding_kickflip.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Skateboarding_kickflip.jpg",
+      "date": "2012-12-08",
+      "licence": "CC BY-SA3.0"
+    },
+    "tuckedKnee": {
+      "subject": "Paul Rodriguez kickflip",
+      "page": "https://www.wearecivil.com/blogs/blog/nike-sb-p-rod-1-returns",
+      "image": "https://cdn.shopify.com/s/files/1/0774/2393/5776/files/Paul_Rodriguez_-_P-Rod_1_kickflip.jpg?v=1747161748",
+      "publisher": "Civil/Nike SB",
+      "photographer": null,
+      "licence": null
+    },
+    "car": {
+      "source": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "title": "Roadster Event - Tesla",
+      "timestampSeconds": 689.890061,
+      "file": "assets/roadster-flip/frame-8.png",
+      "nature": "existing retouched video-derived cutout, not untouched documentary pixels"
+    },
+    "rocket": {
+      "page": "https://www.nasa.gov/blogs/spacestation/2024/03/03/liftoff-nasas-spacex-crew-8-begins-journey-to-international-space-station/",
+      "credit": "NASA/Bill Stafford",
+      "role": "vehicle/exhaust reference; diagonal flight is fictional composition"
+    }
+  },
+  "original": "art-source/pwa-kickflip-v2/generated-original.png",
+  "final": "assets/ui/pwa-cover-kickflip-v2.png",
+  "normalization": "Exact generated opaque square retained; two proportional Lanczos icon derivatives, no crop or scene redrawing.",
+  "sizes": [
+    {
+      "file": "assets/ui/pwa-cover-kickflip-v2.png",
+      "sha256": "1c6ec8e473ab179dcb40e398d977d35526de5e17310368efd0d94babf847bc79"
+    },
+    {
+      "file": "assets/ui/pwa-cover.png",
+      "sha256": "1c6ec8e473ab179dcb40e398d977d35526de5e17310368efd0d94babf847bc79"
+    },
+    {
+      "file": "icons/icon-192.png",
+      "sha256": "b8643e73d2402c30049c662ec096068bd210408b4c5493734781f7442776bfd7"
+    },
+    {
+      "file": "icons/icon-512.png",
+      "sha256": "82a8a2c05856c62cde93fabce958f86375506ac63428769d6eacce8737b3da46"
+    }
+  ],
+  "inspection": "Whole image plus512/192/64/48px and circle crop reviewed against photo pose, game hero, TV shapes and video cutout. Two arms/legs, high knees, separate flipping car, smoke, bottom characters, diagonal rocket, no city."
+}
