@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "390: paused wall time is not replay time",
+    "390: native inputs reach a completed attempt",
+    "390: browser replay matches independent Node simulation",
+    "844: paused wall time is not replay time",
+    "844: native inputs reach a completed attempt",
+    "844: browser replay matches independent Node simulation",
+    "1440: paused wall time is not replay time",
+    "1440: native inputs reach a completed attempt",
+    "1440: browser replay matches independent Node simulation",
+    "viewport/resizing leaves the same commands and outcome",
+    "no runtime errors"
+  ],
+  "errors": []
+}

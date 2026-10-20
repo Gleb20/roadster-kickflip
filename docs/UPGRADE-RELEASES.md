@@ -1,3 +1,9 @@
+## Factory spatial entry and quieter background — 3.6.2
+
+User requested a gradual physical entry, muted factory background, much smaller arms, varied equipment sections, an occasional distant forklift and no factory workers. The score-only10k/20k/30k cycle is preserved. The doorway travels with the road; both scenes are opaque, without a fade. Background sprites are dimmed/desaturated once, with a darker obstacle plane. Four sections alternate assembly, machining, storage and service. Arms scale0.62→0.24; workers are absent from the renderer/cache. New photo-guided paper racks (Dexion P90) and machinery (Haas VF-2) are fictional background arrangements, with full provenance and no claim of actual Tesla equipment.
+
+Base: public3.6.1 d83b2434fc64bb88c55d1cf158a29431140f0592. Immutable roadster-v3.4.2 generation, physics, collision shapes, scoring and backend are unchanged. Existing route-search stalls, ramp geometry, daylight and biome-specific pools were rechecked and remain outside this bounded visual update. After phone acceptance, the bounded debt proposal remains measuring route-search stalls before choosing an implementation. Evidence: verification/2026-10-20-v3.6.2/. Local3.7.x menu/icon work is a separate unpublished candidate and must incorporate this update before its release.
+
 # Incremental upgrade releases
 
 ## Score-based biome correction 3.6.1 — 20 October 2026

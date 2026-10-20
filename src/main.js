@@ -1,35 +1,35 @@
-import {createBiomeScene} from './biomes.js?v=3.6.1';
-import {createFactoryRenderer} from './factory.js?v=3.6.1';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.6.1';
-import {createOnline} from './online.js?v=3.6.1';
-import {createOnlineUI} from './online-ui.js?v=3.6.1';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=3.6.1';
-import {createPWA} from './pwa.js?v=3.6.1';
-import {createCollection} from './collection.js?v=3.6.1';
-import {createCollectionUI} from './collection-ui.js?v=3.6.1';
-import {createObstaclePainter} from './obstacle-art.js?v=3.6.1';
-import {loading} from './loading.js?v=3.6.1';
-import {createThrusterEffects} from './thrusters.js?v=3.6.1';
-import {createSound} from './sound.js?v=3.6.1';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.6.1';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.6.1';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.6.1';
-import {types} from './catalog.js?v=3.6.1';
-import {obstacleDefinition} from './content.js?v=3.6.1';
-import {START_SPEED, START_KMH} from './physics.js?v=3.6.1';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.6.1';
-import {launch,uprightError} from './gameplay.js?v=3.6.1';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.6.1';
-import {createCoach} from './coaching.js?v=3.6.1';
-import {createHUD,mphFromKmh} from './hud.js?v=3.6.1';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.6.1';
-import {fallPose,fallSeatContact} from './fall.js?v=3.6.1';
-import {createSlapstick} from './slapstick.js?v=3.6.1';
-import {createClock} from './clock.js?v=3.6.1';
-import {createEnvironmentRenderer} from './environment.js?v=3.6.1';
-import {createCharacterRenderer} from './characters.js?v=3.6.1';
-import {createPropRenderer} from './props.js?v=3.6.1';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.6.1';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=3.6.2';
+import {createFactoryRenderer} from './factory.js?v=3.6.2';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.6.2';
+import {createOnline} from './online.js?v=3.6.2';
+import {createOnlineUI} from './online-ui.js?v=3.6.2';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=3.6.2';
+import {createPWA} from './pwa.js?v=3.6.2';
+import {createCollection} from './collection.js?v=3.6.2';
+import {createCollectionUI} from './collection-ui.js?v=3.6.2';
+import {createObstaclePainter} from './obstacle-art.js?v=3.6.2';
+import {loading} from './loading.js?v=3.6.2';
+import {createThrusterEffects} from './thrusters.js?v=3.6.2';
+import {createSound} from './sound.js?v=3.6.2';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.6.2';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.6.2';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.6.2';
+import {types} from './catalog.js?v=3.6.2';
+import {obstacleDefinition} from './content.js?v=3.6.2';
+import {START_SPEED, START_KMH} from './physics.js?v=3.6.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.6.2';
+import {launch,uprightError} from './gameplay.js?v=3.6.2';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.6.2';
+import {createCoach} from './coaching.js?v=3.6.2';
+import {createHUD,mphFromKmh} from './hud.js?v=3.6.2';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.6.2';
+import {fallPose,fallSeatContact} from './fall.js?v=3.6.2';
+import {createSlapstick} from './slapstick.js?v=3.6.2';
+import {createClock} from './clock.js?v=3.6.2';
+import {createEnvironmentRenderer} from './environment.js?v=3.6.2';
+import {createCharacterRenderer} from './characters.js?v=3.6.2';
+import {createPropRenderer} from './props.js?v=3.6.2';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.6.2';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -69,7 +69,7 @@ Object.assign(S,{charging:false,charge:0,anchor:0,entityId:0});
 function syncState(){
  const fallen=F.active?fallPose(F):null;
  S.falling=F.active;S.fallCrouch=fallen?.crouch||0;S.fallImpact=fallen?.impact||0;S.fallAngle=fallen?.rider.angle||0;S.fallSeat=fallen?.rider.seat||0;S.fallPush=fallen?.push||0;S.fallFlail=fallen?.flail||0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=input.charge;S.charging=input.charging;
- S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);biomeScene.update(S.score,S.t);S.baseSpeed=pace.base;S.speed=pace.speed;
+ S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);biomeScene.update(S.score,S.distance,{ahead:(W-px+64)/scale,behind:(px+64)/scale});S.baseSpeed=pace.base;S.speed=pace.speed;
  const progress=Math.min(1,pace.progress/C.rampSeconds),cruise=C.startSpeed+(C.maxSpeed-C.startSpeed)*progress;
  S.kmh=(130+270*progress)*S.speed/cruise;Object.assign(B,speedFeedback(pace,E.streak));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
 }
@@ -299,10 +299,15 @@ const rocket=createRocketSystem({ctx,sprites:spaceportSprites,tone,view:()=>({W,
 const R=rocket.state;
 const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v)};
 function background(){
- const biome=biomeScene.state,view={W,H,ground:ground+cameraLift,scale,screenDistance:screenRoadDistance,sceneTime,activeTime:S.t,reducedMotion:reducedScenery.matches,rocketScene:rocket.draw};
+ ctx.fillStyle='#172b34';ctx.fillRect(0,0,W,H);
+ const biome=biomeScene.state,view={W,H,ground:ground+cameraLift,scale,screenDistance:screenRoadDistance,worldDistance:S.distance,sceneTime,activeTime:S.t,reducedMotion:reducedScenery.matches,rocketScene:rocket.draw};
  const draw=id=>id==='tesla-factory'?factory.draw(ctx,view):environment.draw(ctx,view);
- if(biome.mix<1){draw(biome.from);ctx.save();ctx.globalAlpha=biome.mix;draw(biome.id);ctx.restore();}
- else draw(biome.id);
+ if(biome.moving){
+  const edge=biomeEdge(biome,S.distance,px,scale),cut=Math.max(0,Math.min(W,edge));
+  ctx.save();ctx.beginPath();ctx.rect(0,0,cut,H);ctx.clip();draw(biome.from);ctx.restore();
+  ctx.save();ctx.beginPath();ctx.rect(cut,0,W-cut,H);ctx.clip();draw(biome.id);ctx.restore();
+  factory.drawEntrance(ctx,view,edge,biome.id==='tesla-factory');
+ }else draw(biome.id);
 }
 // Read-only art contact sheet uses the actual game painters, with no extra HTML build.
 function reviewObstacles() {

@@ -1,7 +1,7 @@
-import {BIOME_CYCLE} from './content.js?v=3.6.1';
-// Only the current run's score selects scenery. Time animates the crossfade.
+import {BIOME_CYCLE} from './content.js?v=3.6.2';
+// Score selects scenery; a fixed world boundary is driven past the rider.
 // Ranked obstacle generation, scoring and physics stay unchanged.
-export const BIOME_SCORE_STEP=10000,BIOME_TRANSITION_SECONDS=4;
+export const BIOME_SCORE_STEP=10000;
 export const SCENERY_CYCLE=BIOME_CYCLE;
 export function biomeAt(score=0){
  const points=Number.isFinite(score)?Math.max(0,score):0;
@@ -9,13 +9,15 @@ export function biomeAt(score=0){
  return {id:SCENERY_CYCLE[leg%SCENERY_CYCLE.length],leg,nextAt,nextIn:nextAt-points};
 }
 export function createBiomeScene(){
- let state,changedAt=0;
- function reset(){const target=biomeAt(0);state={...target,from:target.id,age:0,mix:1};changedAt=0;}
+ let state;
+ function reset(){const target=biomeAt(0);state={...target,from:target.id,edgeAt:0,start:0,end:0,progress:1,moving:false};}
  reset();
- return {reset,get state(){return state;},update(score,time){
+ return {reset,get state(){return state;},update(score,distance,{ahead=1200,behind=500}={}){
   const target=biomeAt(score);
-  if(target.leg!==state.leg){state={...target,from:state.id,age:0,mix:0};changedAt=time;}
-  const age=Math.max(0,time-changedAt),u=Math.min(1,age/BIOME_TRANSITION_SECONDS);
-  state={...state,...target,age,mix:state.from===target.id?1:u*u*(3-2*u)};
+  if(target.leg!==state.leg){state={...target,from:state.id,edgeAt:distance+ahead,start:distance,end:distance+ahead+behind,progress:0,moving:state.id!==target.id};}
+  const progress=state.moving?Math.max(0,Math.min(1,(distance-state.start)/Math.max(1,state.end-state.start))):1;
+  state={...state,...target,progress,moving:state.moving&&progress<1};
+  if(!state.moving)state.from=state.id;
  }};
 }
+export const biomeEdge=(state,distance,anchor,scale)=>anchor+(state.edgeAt-distance)*scale;

@@ -1,3 +1,4 @@
+import {FACTORY_ASSETS} from '../src/factory.js';
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {ASSETS} from '../src/content.js';
@@ -7,7 +8,8 @@ const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.
  'manifest.webmanifest','icons/icon-192.png','icons/icon-512.png']);
 for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))files.add('src/'+name);
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
-for(const name of await readdir(new URL('assets/factory/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/factory/'+name);
+for(const id of FACTORY_ASSETS)files.add('assets/factory/'+id+'.png');
+files.add('assets/factory/ATTRIBUTION.md');
 const core=[];
 for(const file of [...files].sort()){
  const bytes=await readFile(new URL(file,root));

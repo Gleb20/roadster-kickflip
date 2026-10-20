@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.6.1';
-import {obstacleBoxes} from './physics.js?v=3.6.1';
-import {fallPolygons,interpolateFall} from './fall.js?v=3.6.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.6.2';
+import {obstacleBoxes} from './physics.js?v=3.6.2';
+import {fallPolygons,interpolateFall} from './fall.js?v=3.6.2';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);

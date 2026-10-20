@@ -1,6 +1,6 @@
 # Reproducible runs — ruleset roadster-v3.4.2
 
-Factory scenery in 3.6.0 reads the active run clock without changing the obstacle stream, commands, collision geometry or score. Versioned import URLs change for the coherent PWA package; frozen server ruleset files are untouched. Both biome boundaries are covered by a completed browser replay checked against the immutable server simulator.
+Factory scenery in 3.6.2 reads active distance for spatial entry and the run clock for decorative machinery without changing the obstacle stream, commands, collision geometry or score. Versioned import URLs change for the coherent PWA package; frozen server ruleset files are untouched. Both biome boundaries are covered by a completed browser replay checked against the immutable server simulator.
 
 `src/run.js` is the simulation used by the browser and replay verifier. It owns flight, fuel, scoring, pace, recovery, collisions, obstacle lifecycle, seeded director and semantic input. No DOM, viewport, drawing, audio or storage is needed. `main.js` handles actual keyboard/touch tokens, displays emitted effects and discovers only visible obstacles. Collisions still discover before presenting game-over.
 

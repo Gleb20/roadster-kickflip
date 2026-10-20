@@ -44,7 +44,7 @@ test('explicit activation is limited to a safe single window',async()=>{
 test('factory sprites are cached together and a corrupt sprite cannot replace the offline game',async()=>{
  const h=harness();await h.run('install');const current=[...h.buckets.keys()].find(k=>k.endsWith(':'+version));
  const urls=[...h.buckets.get(current).keys()];
- assert.equal(urls.filter(u=>u.includes('/assets/factory/')&&u.endsWith('.png')).length,11);
+ assert.equal(urls.filter(u=>u.includes('/assets/factory/')&&u.endsWith('.png')).length,10);assert.ok(!urls.some(u=>/worker-[012]\.png/.test(u)));assert.ok(urls.some(u=>u.endsWith('/rack-v362.png')));
  const bad=harness();bad.tamper='assets/factory/forklift.png';await assert.rejects(bad.run('install'),/incomplete/);
  assert.ok(bad.buckets.has('tesla-jump:/roadster-kickflip/:old-2'));assert.equal([...bad.buckets.keys()].some(k=>k.endsWith(':'+version)),false);
 });

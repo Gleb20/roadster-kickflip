@@ -466,5 +466,47 @@
     "hashesAndPivots": "assets/factory/manifest.json",
     "productionProvenance": "assets/factory/production-provenance.json",
     "notes": "Prepared photo/reference originals remain in the preserved project art-source packet. This release adds factory scenery only, retaining ranked collision/generation rules. Ramp stunt and independent daylight remain separate unfinished stages."
+  },
+  "factoryOrganicV362": {
+    "category": "background scenery",
+    "realPrototypes": [
+      "Dexion Speedlock P90 pallet rack",
+      "Haas VF-2 (2013) vertical machining centre"
+    ],
+    "sources": [
+      {
+        "name": "dexion-p90.jpg",
+        "object": "Dexion Speedlock P90 pallet rack",
+        "page": "https://www.dexion.com/products/pallet-racking/speedlock-p90-pallet-racking/",
+        "image": "https://www.dexion.com/globalassets/services/uk_the_range_avonmouth_racking_construction-01.jpg",
+        "author": "Dexion / Gonvarri Material Handling, photographer unspecified",
+        "license": "Reuse license not established; retained locally as reference",
+        "sha256": "602d5bdd0ab0a23093bd00512cf6d345a6814b90ee33753bca41ce839d5fcc1f",
+        "accessDate": "2026-10-20"
+      },
+      {
+        "name": "haas-vf2.jpg",
+        "object": "Haas VF-2 (2013) vertical machining centre",
+        "page": "https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c",
+        "image": "https://portal-images.azureedge.net/auctions-2023/united4-10145/images/f7c20701-d38e-4183-80fe-b0a80176538c.jpg?h=1920&mode=max&w=1920",
+        "author": "United Asset Sales listing, photographer unspecified",
+        "license": "Reuse license not established; retained locally as reference",
+        "sha256": "a6b914708154ed4ac694821b8e568c8c53a1b3ec2a75571e2adddca52252ae11",
+        "accessDate": "2026-10-20"
+      }
+    ],
+    "style": "Current factory rear-wall paper sprite, passed as actual second image",
+    "method": "Built-in image_gen, photo-guided paper adaptation, transparent_background=true",
+    "packet": "art-source/factory-organic-v362/provenance.json",
+    "runtimeFiles": [
+      "assets/factory/rack-v362.png",
+      "assets/factory/machine-v362.png"
+    ],
+    "size": [
+      512,
+      341
+    ],
+    "alpha": "RGBA; proportional resize; original retained",
+    "notes": "Fictional background arrangement; no claim these machine/rack models are used by Tesla. Existing worker assets retained as history but removed from renderer and active offline cache."
   }
 }

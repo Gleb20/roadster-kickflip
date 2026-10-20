@@ -1,0 +1,95 @@
+{
+  "method": "Built-in image_gen, photo-guided paper adaptation, transparent_background=true",
+  "generationDate": "2026-10-20",
+  "style": {
+    "file": "assets/factory/rear-wall.png",
+    "sha256": "500504f1888d40a023c64c3d31ddbc262bddd2fea977b05bffd65c0045123d60",
+    "role": "Current paper background style; actual image passed with photograph"
+  },
+  "references": [
+    {
+      "name": "dexion-p90.jpg",
+      "object": "Dexion Speedlock P90 pallet rack",
+      "page": "https://www.dexion.com/products/pallet-racking/speedlock-p90-pallet-racking/",
+      "image": "https://www.dexion.com/globalassets/services/uk_the_range_avonmouth_racking_construction-01.jpg",
+      "author": "Dexion / Gonvarri Material Handling, photographer unspecified",
+      "license": "Reuse license not established; retained locally as reference",
+      "sha256": "602d5bdd0ab0a23093bd00512cf6d345a6814b90ee33753bca41ce839d5fcc1f",
+      "accessDate": "2026-10-20"
+    },
+    {
+      "name": "haas-vf2.jpg",
+      "object": "Haas VF-2 (2013) vertical machining centre",
+      "page": "https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c",
+      "image": "https://portal-images.azureedge.net/auctions-2023/united4-10145/images/f7c20701-d38e-4183-80fe-b0a80176538c.jpg?h=1920&mode=max&w=1920",
+      "author": "United Asset Sales listing, photographer unspecified",
+      "license": "Reuse license not established; retained locally as reference",
+      "sha256": "a6b914708154ed4ac694821b8e568c8c53a1b3ec2a75571e2adddca52252ae11",
+      "accessDate": "2026-10-20"
+    }
+  ],
+  "assets": {
+    "rack": {
+      "file": "assets/factory/rack-v362.png",
+      "source": "art-source/factory-organic-v362/generated/rack-original.png",
+      "sha256": "1dd2fdb6efdd555864c2aba5fc14d99e3b9450af267ac280dde749c1c1b4f977",
+      "size": [
+        512,
+        341
+      ],
+      "solidBounds": [
+        63,
+        25,
+        449,
+        321
+      ],
+      "contact": 0.9413489736070382,
+      "zeroAlphaPixels": 94083,
+      "prompt": "Use case: stylized-concept. Asset: one transparent background sprite for the middle-distance of a side-scrolling cut-paper factory game. Image 1 is an actual Dexion Speedlock P90 racking photograph: use only the physical steel rack structure and proportions, not people or room. Image 2 is the current paper factory wall: match tactile paper grain, restrained industrial shapes and muted cool grey-blue palette. Draw one complete freestanding two-bay pallet rack in near-frontal side-scroller elevation, tiny hint of depth, three shelf levels with sparse plain cardboard boxes and grey totes on pallets. Dark desaturated blue-grey uprights, dull rusty beams, subdued grey-brown boxes. Quiet background contrast, no bright orange, no white sticker outline. All feet/uprights fully in frame. Genuine transparent alpha outside and between shelves and boxes. No people, forklift, robots, logos, text, floor, room or cast shadow. One unified rack centered with small transparent margin, landscape composition.\n",
+      "photoInput": "dexion-p90.jpg",
+      "generatedSha256": "779be1f0a8820d9089f635933f97fee806e783f23625fa6dbb4736b385725cc1",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "alpha": "RGBA, transparent pixels present, soft edge pixels preserved",
+      "gameWidth": [
+        350,
+        300
+      ],
+      "anchor": "bottom centre at measured solid contact"
+    },
+    "machine": {
+      "file": "assets/factory/machine-v362.png",
+      "source": "art-source/factory-organic-v362/generated/machine-original.png",
+      "sha256": "d973d2b2b4c5cd90c75a77fa9cde62839c6e6b033810c35bc52b4fad4d42f87b",
+      "size": [
+        512,
+        341
+      ],
+      "solidBounds": [
+        47,
+        8,
+        472,
+        331
+      ],
+      "contact": 0.9706744868035191,
+      "zeroAlphaPixels": 68587,
+      "prompt": "Use case: stylized-concept. Asset: one transparent middle-distance sprite for a side-scrolling cut-paper factory game. Image 1 is a real photograph of a Haas VF-2 machining centre: use its enclosed double-door cabinet, dark glazed work windows and right-hand control console as physical structural reference. Image 2 is the current paper factory wall: match its tactile grain, simplified cut-paper shapes and muted industrial palette. Adapt into one complete self-contained unbranded machine-tool silhouette nearly straight on for a side scroller, slight hint of right side depth only. Entire machine and feet inside frame. Cabinet doors closed, dark blue-grey windows, subdued medium grey-blue exterior rather than white, tiny dim controls. Quiet background contrast behind gameplay, no white sticker outline or dramatic highlights. Genuine transparent alpha around machine and under openings. No room, floor, shadows, people, carts, logos, readable labels, warning text, loose cables. One machine, small margins, landscape composition.\n",
+      "photoInput": "haas-vf2.jpg",
+      "generatedSha256": "2fd05e40310a912ced37034bf32e5549b249d8c6a953678666f40f7a850ab227",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "alpha": "RGBA, transparent pixels present, soft edge pixels preserved",
+      "gameWidth": [
+        245,
+        210,
+        130
+      ],
+      "anchor": "bottom centre at measured solid contact"
+    }
+  },
+  "preparation": "Proportional sharp resize only 1536x1024 to512x341. Alpha retained. Runtime one-time background grade: Rec709 grey; saturation0.4; rgb=32+graded*0.30; alpha unchanged. No original photographs distributed."
+}

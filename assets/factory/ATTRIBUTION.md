@@ -7,3 +7,10 @@
 - Documentary stunt references: [Tesla, Roadster Event](https://www.youtube.com/watch?v=qt5p-_tE8d0), actual browser captures at385s/395s. Reuse licence was not established. These reference captures are kept as research provenance; no new ramp sprite has been made from them.
 
 Current game background atlas and paper-person sprite were passed as style references. Their existing provenance remains unchanged. Full local source paths and hashes are in `provenance.json` and `photo-references.json`.
+
+## Organic factory additions (3.6.2)
+
+- Rack: generated paper background adaptation informed by a real [Dexion Speedlock P90 installation](https://www.dexion.com/products/pallet-racking/speedlock-p90-pallet-racking/), Dexion / Gonvarri Material Handling; photographer unspecified.
+- Machining centre: generated paper adaptation informed by a [Haas VF-2 (2013) auction photograph](https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c), United Asset Sales listing; photographer unspecified.
+
+Photograph redistribution licences were not established; original photos remain local research inputs and are not distributed here. Generated sprites are fictional arrangements in the existing factory paper style, with omitted branding; no claim these models are used by Tesla. Prompts, actual visual input hashes, generated output hashes and proportional preparation: organic-v362-provenance.json. Workers are absent from the active renderer/cache; historical garment credits remain above.
