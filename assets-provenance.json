@@ -424,5 +424,16 @@
     ],
     "method": "Coordinate-only animation of existing paper limbs and face; original Roadster atlas unchanged. User-supplied falling-skater illustration informs posture only; no reference pixels copied or generated art added.",
     "notes": "Backward torso lean, one foot raised and one reaching forward on bent fixed-length leg segments, arms spread during rebounds; palms plant for the existing push-off. Source illustration author/license unverified; it is kept local and not vendored."
+  },
+  "pwaIconsV330": {
+    "files": [
+      "icons/icon-192.png",
+      "icons/icon-512.png"
+    ],
+    "method": "Deterministic Canvas packaging of the existing upright Roadster sprite; no new illustration",
+    "source": "assets/roadster-flip/atlas.png",
+    "sourceProvenance": "roadsterFlipV22",
+    "background": "#10151b",
+    "safeZone": "Vehicle stays within the central maskable safe area"
   }
 }

@@ -5,7 +5,7 @@ User-authorized on 20 October 2026: implement and publish successive tested rele
 ## Completed increments
 
 - 3.1.0: content foundation, published and live-verified (commit `8030efb5f161e25786f6bd2214876afe9acee79d`).
-- 3.2.0: collection candidate validation complete; publication state is recorded by the deployed commit and release evidence.
+- 3.2.0: encounter collection, published and live-verified (commit `218c4618e1cffb18babbfba78be15c0a2e346c18`).
 
 ## Delivery order
 

@@ -1,3 +1,7 @@
+## 3.3.0 — Installable and offline
+
+Install from the main menu or your browser. A complete verified copy supports offline play. Updates apply only from the menu/results with other game windows closed; saved collection and personal best remain on this browser. [PWA behaviour](docs/pwa.md).
+
 # Tesla Jump 3.2.0
 
 [Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.2.0)
