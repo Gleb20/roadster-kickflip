@@ -1,5 +1,10 @@
 # Incremental upgrade releases
 
+## Score-based biome correction 3.6.1 — 20 October 2026
+
+User feedback supersedes the 150-second rule: current-run score is the only condition. At10,000 enter factory, at20,000 return to spaceport, at30,000 enter factory again. No minimum play time, survival condition, record requirement or waiting for the rocket. The existing four-second crossfade is animation only; pause freezes it. Multi-threshold bonuses select the actual score band immediately. The accepted scope changes no falls, physics, obstacle stream or leaderboard rules. Earlier time-based3.6.0 descriptions below are historical.
+
+
 User-authorized on 20 October 2026: implement and publish successive tested releases to the existing GitHub Pages game, sending a versioned link after each release. Keep the frontend and leaderboard UI at `https://gleb20.github.io/roadster-kickflip/`. A separate API/data store is required for online writes; that does not require moving the game away from Pages.
 
 ## Completed increments

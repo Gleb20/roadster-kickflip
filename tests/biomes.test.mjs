@@ -1,25 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {biomeAt,BIOME_SECONDS} from '../src/biomes.js';
-import {createRun} from '../src/run.js';
+import {biomeAt,createBiomeScene,BIOME_SCORE_STEP} from '../src/biomes.js';
 
-test('factory begins at 2:30 active time and returns in an ordered repeating cycle',()=>{
- assert.equal(BIOME_SECONDS,150);
- assert.equal(biomeAt(149.999).id,'spaceport');
- assert.deepEqual([biomeAt(150).id,biomeAt(300).id,biomeAt(450).id],['tesla-factory','spaceport','tesla-factory']);
- assert.equal(biomeAt(150).mix,0);assert.equal(biomeAt(152).mix,.5);assert.equal(biomeAt(154).mix,1);
- assert.equal(biomeAt(299).mix,1);assert.equal(biomeAt(300).from,'tesla-factory');
- assert.equal(biomeAt(3600).leg,24);
+test('each 10000 current-run points advances the ordered repeating scenery cycle',()=>{
+ assert.equal(BIOME_SCORE_STEP,10000);
+ for(const [score,id,leg] of [[0,'spaceport',0],[9999,'spaceport',0],[10000,'tesla-factory',1],[19999,'tesla-factory',1],[20000,'spaceport',2],[30000,'tesla-factory',3]]){
+  const b=biomeAt(score);assert.equal(b.id,id);assert.equal(b.leg,leg);assert.equal(b.nextAt,(leg+1)*10000);assert.equal(b.nextIn,b.nextAt-score);
+ }
 });
-test('clock follows a no-trick run, freezes on pause/death, resets on retry',()=>{
- const run=createRun();run.reset();run.S.next=1e9;
- for(let i=0;i<18000;i++)run.step();
- assert.equal(run.S.t,150);assert.equal(run.E.flips,0);assert.equal(biomeAt(run.S.t).id,'tesla-factory');
- const score=run.S.score;run.S.mode='paused';for(let i=0;i<600;i++)run.step();
- assert.equal(run.S.t,150);assert.equal(run.S.score,score);
- run.S.mode='dead';run.step();assert.equal(run.S.t,150);
- run.reset();assert.equal(biomeAt(run.S.t).id,'spaceport');
+test('elapsed time cannot trigger or delay a score threshold',()=>{
+ const scene=createBiomeScene();scene.update(9999,600);assert.equal(scene.state.id,'spaceport');
+ scene.update(10000,600);assert.equal(scene.state.id,'tesla-factory');assert.equal(scene.state.mix,0);
+ scene.reset();scene.update(10000,2);assert.equal(scene.state.id,'tesla-factory');
+ scene.update(10000,4);assert.equal(scene.state.mix,.5);scene.update(10000,6);assert.equal(scene.state.mix,1);
 });
-test('invalid preview times remain in the initial biome',()=>{
- for(const t of [-5,NaN,Infinity])assert.equal(biomeAt(t).id,'spaceport');
+test('pause freezes crossfade and reset forgets previous score and transition',()=>{
+ const scene=createBiomeScene();scene.update(10000,10);scene.update(10025,11);
+ const paused={...scene.state};for(let i=0;i<50;i++)scene.update(10025,11);assert.deepEqual(scene.state,paused);
+ scene.reset();assert.equal(scene.state.id,'spaceport');assert.equal(scene.state.leg,0);assert.equal(scene.state.mix,1);assert.equal(scene.state.nextAt,10000);
+});
+test('bonus points crossing multiple thresholds select the actual score band immediately',()=>{
+ const scene=createBiomeScene();scene.update(35000,1);assert.equal(scene.state.leg,3);assert.equal(scene.state.id,'tesla-factory');assert.equal(scene.state.nextAt,40000);
+ scene.update(45000,2);assert.equal(scene.state.leg,4);assert.equal(scene.state.id,'spaceport');assert.equal(scene.state.from,'tesla-factory');
+ scene.reset();scene.update(25000,1);assert.equal(scene.state.id,'spaceport');assert.equal(scene.state.mix,1);
+});
+test('5000-point cameos and invalid scores do not trigger the factory',()=>{
+ for(const score of [5000,-5,NaN,Infinity])assert.equal(biomeAt(score).id,'spaceport');
 });

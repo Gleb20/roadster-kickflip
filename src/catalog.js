@@ -1,2 +1,2 @@
 // Compatibility export; the content registry is the single source of definitions.
-export {OBSTACLES as types} from './content.js?v=3.6.0';
+export {OBSTACLES as types} from './content.js?v=3.6.1';

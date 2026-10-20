@@ -1,3 +1,7 @@
+## Score-based biomes3.6.1 —20 October2026
+
+User rejected the2:30 wait and explicitly selected score as the only condition: every10,000 points of the current run advances BIOME_CYCLE (10k factory,20k spaceport,30k factory). Implemented in isolated /tmp/tesla-jump-factory-v360-20261020, branch codex/score-biomes-v361, from public49db4176eca01b5d3d2ae4e0d05b75105436e371. createBiomeScene remembers the score-boundary transition; time only animates the existing4s crossfade and pauses with the run. No rocket/landing/survival/minimum-time gate. Restart clears the score band. A large bonus immediately selects the correct band. Shared ranked generation and immutable roadster-v3.4.2 remain unchanged; no backend, scores or art changes. Evidence and release status: verification/2026-10-20-v3.6.1/. Older150s requirements are superseded. Existing route-search debt/ramp/daylight remain outside this user-requested correction; next bounded debt proposal is still measurement only.
+
 # Tesla Jump — release3.5.2
 
 ## Factory 3.6.0 candidate — 20 October 2026

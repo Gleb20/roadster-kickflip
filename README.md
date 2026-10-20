@@ -1,10 +1,10 @@
-# Tesla Jump 3.6.0
+# Tesla Jump 3.6.1
 
-[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.6.0)
+[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.6.1)
 
 Canvas 2D browser/PWA game with controlled flips, directional thrust, landed trick chains and a persistent encounter collection.
 
-The Tesla factory now appears at 2:30 of active play, regardless of score. A four-second scenery crossfade keeps the attempt running; every 150 seconds the route alternates spaceport and factory. Assembly robots, conveyors, fictional workers, moving logistics and concrete/yellow markings use the prepared paper sprites. Both locations work offline after a complete PWA install. Existing controls, grab/reactions, physics, scores and the Supabase leaderboard stay compatible.
+The current run’s score alone changes scenery: 10,000 → Tesla factory, 20,000 → spaceport, 30,000 → factory, repeating every 10,000 points. Elapsed time is not a condition. The existing four-second crossfade keeps the attempt running and freezes on pause. Assembly robots, conveyors, fictional workers, moving logistics and concrete/yellow markings use the prepared paper sprites. Both locations work offline after a complete PWA install. Existing controls, grab/reactions, physics, scores and the Supabase leaderboard stay compatible.
 
 - [Current gameplay rules](docs/gameplay-v3.md)
 - [Content catalogue and obstacle pipeline](docs/content.md)

@@ -1,0 +1,13 @@
+# Score-based biomes 3.6.1 — 20 October 2026
+
+The user rejected the 150-second wait and selected current-run score as the only condition: every 10,000 points advances the ordered scenery cycle. Factory starts at10,000, spaceport returns at20,000, factory again at30,000. No minimum time, personal-record, landing, rocket or other gameplay condition. The existing four-second blend is presentation after the threshold, never an eligibility gate. Pause freezes the blend; retry resets to spaceport. Large point jumps choose the actual score band without queuing transitions.
+
+Base public49db4176eca01b5d3d2ae4e0d05b75105436e371 (3.6.0). Only src/biomes.js and its main.js presentation integration change behavior; other runtime diffs are coherent3.6.1 import/cache version updates. Art, difficulty, falling/recovery, physics, scores, current obstacle stream and immutable roadster-v3.4.2 verifier are unchanged. No cloud/provider/database deployment or score deletion.
+
+Fresh evidence: 103 Node tests and all syntax/content/type/PWA checks;64 biome browser checks on desktop, portrait, landscape and reduced motion;40 gameplay,11 replay,15 PWA checks. Browser checks cover9999/10000/19999/20000, a35000-point jump, waiting600 seconds below the threshold, immediate entry at zero elapsed play time, pause during the crossfade, rocket lifecycle, native jumping, resize and retry. No runtime errors in those suites. Prepared art is unchanged; representative screenshots are retained locally in /tmp/tesla-score-biomes-v361-browser.
+
+Full witness-driven local game run (obstacles unchanged): first threshold crossed at134.1s /10,013 points, second at254.375s /20,012 points. The score bonuses can skip the exact integer threshold. This is an automated exact-command simulation, not a human or physical-phone acceptance. A completed310.67s browser replay also matches the immutable server simulator. No accelerated public-clock autopilot is used as acceptance; its3.6.0 limitation remains recorded in that earlier packet.
+
+Source snapshot: /tmp/tesla-score-biomes-v361-parent.tar. Isolated release checkout: /tmp/tesla-jump-factory-v360-20261020, branch codex/score-biomes-v361. Freeze hashes are in freeze.json. Actual isolated inverse must restore exact parent tree964650c3f5008a71b2c2fbd6229810d64b40b0ac and pass the101 parent tests/checks before ref publication. Confirm the exact Pages commit/version/live hashes before claiming publication.
+
+Physical phone/Safari acceptance remains untested. Existing route-search performance debt, independent daylight and the demo ramp remain outside this bounded correction; the next bounded debt proposal is remeasurement only.

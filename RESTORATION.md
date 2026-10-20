@@ -68,3 +68,7 @@ Backward torso lean, asymmetric raised/forward bent legs and spread arms follow 
 ## Release3.5.2
 
 User authorised frontend publication on20 October2026. Base main210a26a /3.5.0. Scope: compact roof-supported grab, normal kickflip, continuous directed/self-contained encounters and persistent falling cash. Restore only from the frozen release patch on its recorded clean tree; preserve player scores/collection and backend data. Original dirty checkout is not the release source. Release evidence under docs/verification/2026-10-20-release-v3.5.2/; physical-phone acceptance remains open.
+
+## Score-based biome correction3.6.1 —20 October2026
+
+The user superseded150-second legs: every10,000 current-run points changes biome, with no other eligibility condition. The existing4s crossfade animates after the score trigger; pause freezes it and retry resets the band. Base49db4176eca01b5d3d2ae4e0d05b75105436e371, parent tree964650c3f5008a71b2c2fbd6229810d64b40b0ac. Snapshot /tmp/tesla-score-biomes-v361-parent.tar; isolated branch codex/score-biomes-v361 in /tmp/tesla-jump-factory-v360-20261020. Immutable replay/server data and all foreign work must remain intact. Release evidence: docs/verification/2026-10-20-v3.6.1/.
