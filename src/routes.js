@@ -1,11 +1,9 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.4';
-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=3.0.4';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.1.0';
+import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=3.1.0';
 export const STAGES=C.stages;
 export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
-export const AIR_TYPES=Object.freeze([
-  {id:'hoverDrone',name:'HOVER DRONE',w:92,h:40,inset:8,altitude:300,approachSpeed:0},
-  {id:'incomingDrone',name:'INCOMING DRONE',w:92,h:40,inset:8,altitude:220,approachSpeed:110},
-]);
+import {AIR_TYPES} from './content.js?v=3.1.0';
+export {AIR_TYPES};
 export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900}={}){
   const item=(o,offset=0)=>({...o,x:dx+offset,passed:false});
   if(kind==='hover')return [item(AIR_TYPES[0])];

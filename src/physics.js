@@ -1,3 +1,4 @@
+import {obstacleDefinition} from './content.js?v=3.1.0';
 // Simulation uses logical CSS units. Rendering pixel ratio never changes gameplay.
 export const STEP = 1 / 120;
 export const START_SPEED = 360;
@@ -21,7 +22,7 @@ export function rogozinBounce(time) {
 }
 
 export function obstacleBoxes(o, time = 0) {
-  if (o.id === 'rogozin') {
+  if ((o.collision||obstacleDefinition(o.id)?.collision) === 'trampoline') {
     return [
       {left: 6, right: o.w - 6, top: 16},
       {left: o.w / 2 - 18, right: o.w / 2 + 18, top: 108 + rogozinBounce(time)},

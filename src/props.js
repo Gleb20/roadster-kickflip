@@ -1,11 +1,7 @@
 // Static paper props are rasterised once, including their shared outer cut line.
 // All coordinates are authored at the declared aspect ratio; draw() fits, never stretches.
-export const PROP_TYPES = Object.freeze([
-  { id: 'muscleCoupe', name: 'AMERICAN MUSCLE', w: 138, h: 45, inset: 6 },
-  { id: 'muscleCompact', name: 'SMALL BLOCK / BIG EGO', w: 112, h: 38, inset: 5 },
-  { id: 'pickup', name: 'BIG TRUCK ENERGY', w: 140, h: 57, inset: 6 },
-  { id: 'simpsonsCouch', name: 'EVERGREEN TERRACE', w: 136, h: 88, inset: 6 },
-]);
+import {PROP_TYPES, OBSTACLES} from './content.js?v=3.1.0';
+export {PROP_TYPES};
 
 const INK = '#282c2c';
 const PAPER = '#f5eee2';
@@ -140,12 +136,7 @@ function pump(c) {
   box(c, 2, 70, 48, 7, '#d8cbb0', 2);
 }
 
-const EXISTING_PROP_TYPES = [
-  { id: 'openai', w: 70, h: 68 },
-  { id: 'claude', w: 84, h: 73 },
-  { id: 'gemini', w: 58, h: 78 },
-  { id: 'pump', w: 54, h: 78 },
-];
+const EXISTING_PROP_TYPES = OBSTACLES.filter(o=>o.visual.renderer==='prop');
 
 const painters = {
   simpsonsCouch: couch,

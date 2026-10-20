@@ -72,7 +72,7 @@ const waiting = setTimeout(() => {
   screen.classList.add('is-visible');
   screen.removeAttribute('aria-hidden');
 }, 180);
-import('./src/loading.js?v=3.0.4').then(() => clearTimeout(waiting)).catch(() => {
+import('./src/loading.js?v=3.1.0').then(() => clearTimeout(waiting)).catch(() => {
   clearTimeout(waiting);
   document.getElementById('loading-title').textContent = 'Loading failed';
   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';

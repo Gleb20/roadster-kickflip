@@ -1,25 +1,26 @@
-import {loading} from './loading.js?v=3.0.4';
-import {createThrusterEffects} from './thrusters.js?v=3.0.4';
-import {createSound} from './sound.js?v=3.0.4';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.0.4';
-import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.0.4';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.0.4';
-import {createDirector} from './director.js?v=3.0.4';
-import {types} from './catalog.js?v=3.0.4';
-import {START_SPEED, START_KMH} from './physics.js?v=3.0.4';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.0.4';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.0.4';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.0.4';
-import {createCoach} from './coaching.js?v=3.0.4';
-import {createHUD,mphFromKmh} from './hud.js?v=3.0.4';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.0.4';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.0.4';
-import {createSlapstick} from './slapstick.js?v=3.0.4';
-import {createClock} from './clock.js?v=3.0.4';
-import {createEnvironmentRenderer} from './environment.js?v=3.0.4';
-import {createCharacterRenderer} from './characters.js?v=3.0.4';
-import {createPropRenderer} from './props.js?v=3.0.4';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.0.4';
+import {loading} from './loading.js?v=3.1.0';
+import {createThrusterEffects} from './thrusters.js?v=3.1.0';
+import {createSound} from './sound.js?v=3.1.0';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.1.0';
+import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.1.0';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.1.0';
+import {createDirector} from './director.js?v=3.1.0';
+import {types} from './catalog.js?v=3.1.0';
+import {obstacleDefinition} from './content.js?v=3.1.0';
+import {START_SPEED, START_KMH} from './physics.js?v=3.1.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.1.0';
+import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.1.0';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.1.0';
+import {createCoach} from './coaching.js?v=3.1.0';
+import {createHUD,mphFromKmh} from './hud.js?v=3.1.0';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.1.0';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.1.0';
+import {createSlapstick} from './slapstick.js?v=3.1.0';
+import {createClock} from './clock.js?v=3.1.0';
+import {createEnvironmentRenderer} from './environment.js?v=3.1.0';
+import {createCharacterRenderer} from './characters.js?v=3.1.0';
+import {createPropRenderer} from './props.js?v=3.1.0';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.1.0';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -65,7 +66,7 @@ function obstacleDx(o){return o.x-S.anchor;}
 function gestureTarget(){
  if(F.active)return null;
  let nearest=null,distance=300;
- for(const o of S.obs){const dx=Math.abs(obstacleDx(o)+o.w/2);if((o.id==='trump'||(S.y>0&&['rogozin','zuck'].includes(o.id)))&&dx<distance){nearest=o;distance=dx;}}
+ for(const o of S.obs){const r=obstacleDefinition(o.id)?.reactions.hero,dx=Math.abs(obstacleDx(o)+o.w/2);if(r?.enabled&&r.trigger!=='passage'&&(r.trigger!=='airborne-near'||S.y>0)&&dx<Math.min(distance,r.range)){nearest=o;distance=dx;}}
  return nearest;
 }
 function joeTarget(){
@@ -260,8 +261,15 @@ function speedStreaks(){
  for(let i=0;i<6;i++){const y=H*.25+(i*83)%(H*.6),x=W-((screenRoadDistance*1.25+i*137)%(W+160));line([[x,y],[x+18+18*B.intensity,y]],'#a0c9d1',1);}
  ctx.restore();
 }
-function drawObstacleArt(o,bob=0){if(o.altitude){ctx.drawImage(droneSprite,-o.w/2,-o.h,o.w,o.h);return true;}return (o.id==='joe'?joe(o):o.id==='amber'?amber(o):o.id==='rogozin'?rogozin(o):o.id==='zuck'?zuckerberg(o):o.id==='trump'?trumpPose(o,bob):photos.has(o.id)?photos.drawGround(ctx,o.id,o.w,o.h):cutouts[o.id]?cutout(o.id,-o.w/2,-o.h+bob,o.w,o.h):props.draw(ctx,o.id,o.w,o.h));}
-function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground+cameraLift-(o.altitude||0)*scale);ctx.scale(scale,scale);const bob=['trump','protest','doge'].includes(o.id)?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}
+function drawObstacleArt(o,bob=0){
+ const visual=obstacleDefinition(o.id)?.visual;if(!visual)return false;
+ if(visual.renderer==='drone'){ctx.drawImage(droneSprite,-o.w/2,-o.h,o.w,o.h);return true;}
+ if(visual.renderer==='character')return ({joe,amber,rogozin,zuck:zuckerberg,trump:trumpPose}[visual.key])?.(o,bob);
+ if(visual.renderer==='photo')return photos.drawGround(ctx,visual.key,o.w,o.h);
+ if(visual.renderer==='cutout')return cutout(visual.key,-o.w/2,-o.h+bob,o.w,o.h);
+ return props.draw(ctx,visual.key,o.w,o.h);
+}
+function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground+cameraLift-(o.altitude||0)*scale);ctx.scale(scale,scale);const bob=obstacleDefinition(o.id)?.visual.bob?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}
 
 const CAMEO={active:false,t:0,nextScore:5000,milestone:0};
 function updateCameo(dt){

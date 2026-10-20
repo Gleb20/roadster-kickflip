@@ -1,0 +1,21 @@
+# Incremental upgrade releases
+
+User-authorized on 20 October 2026: implement and publish successive tested releases to the existing GitHub Pages game, sending a versioned link after each release. Keep the frontend and leaderboard UI at `https://gleb20.github.io/roadster-kickflip/`. A separate API/data store is required for online writes; that does not require moving the game away from Pages.
+
+## Delivery order
+
+1. **3.1 — Content foundation:** one obstacle catalogue, explicit anchors/renderers/reactions/biomes, validation and gradual typing. Preserve gameplay as a measurable baseline.
+2. **3.2 — Encounter collection:** silhouettes, non-interrupting discovery (collision counts), menu/pause entry, detail cards and persistent NEW until first detail view. Full turntable artwork is a later content release; static cards must not be described as completed rotations.
+3. **3.3 — PWA:** installation, deliberate offline content, independent staging/cache scopes and safe updates between attempts. Preserve the browser URL and saves.
+4. **3.4 — Animation and reproducible runs:** reusable rig/clip contracts, seeded generation, shared headless simulation and bounded difficulty. Preserve foot/tyre contacts and the current controls.
+5. **3.5 — Online leaderboard:** Cloudflare Workers/D1 candidate, while the game stays on Pages. Optional submission of any completed run, server validation, one record per run, pagination, retry/idempotency and migration rehearsals. Provider access, verifier CPU and costs must be tested before selecting deployment settings.
+6. **3.6 — Biomes and light:** spaceport/factory loop, concrete/yellow markings, layered factory with workers/robots/logistics and near-wall convex ramp. Factory car-stunt preparation/performance replaces the rocket event there. Day/night remains independent of biome cycles.
+7. **3.7 — Full presentation:** photo-referenced turntables, three metallic head trophies, sharing and separately reviewed preview artwork.
+
+Minor versions/patches may split an item when that gives a smaller testable release. Do not skip an incomplete feature by marking it done. Artwork and physical-device feel have their own acceptance.
+
+## Gate for each release
+
+Freeze the candidate and exact parent; inspect the diff; run focused and existing checks; verify desktop/mobile views and real input; test the reverse change in an isolated checkout. Update main with an expected-head lease, confirm Pages deployed the correct commit, and compare live resource hashes/version. No claim of online publication from a local test or a successful ref update alone.
+
+Send the versioned play link as soon as live checks pass, then continue the authorised sequence. User mobile feedback steers subsequent work. Keep unsent work in isolated checkouts and preserve unrelated local changes. Changing the frontend hosting or deleting leaderboard data is outside this instruction.

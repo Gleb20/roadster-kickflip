@@ -1,3 +1,21 @@
+# Tesla Jump 3.1.0
+
+[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.1.0)
+
+Canvas 2D browser game with native ES modules and DOM controls. The 3.1.0 content foundation retains the 3.0.4 gameplay/art and replaces duplicated obstacle lists with one validated, typed catalogue.
+
+- [Current gameplay rules](docs/gameplay-v3.md)
+- [Content definitions and adding obstacles](docs/content.md)
+- [Incremental release sequence](docs/UPGRADE-RELEASES.md)
+
+Node 20+; `npm ci`, `npm run dev`, `npm test`, `npm run check`. The browser uses checked-in JavaScript directly; TypeScript is a development check of the content contract, not a new runtime dependency. The local server is http://127.0.0.1:8766.
+
+The game and forthcoming collection/leaderboard UI stay on the existing GitHub Pages URL. PWA, factory, new animation contracts and the online API are subsequent releases, not features claimed by this version. Historical release notes below describe earlier states.
+
+---
+
+## Historical release and architecture notes
+
 # Roadster / Kickflip — Tesla Jump 3.0.4
 
 [Play online](https://gleb20.github.io/roadster-kickflip/?v=3.0.4)

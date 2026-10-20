@@ -1,11 +1,16 @@
 {
   "name": "roadster-kickflip",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs && npm run check:content && npm run check:types",
+    "check:content": "node scripts/check-content.mjs",
+    "check:types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
   }
 }

@@ -1,3 +1,7 @@
+# Gameplay and content ownership
+
+3.1.0 retains the implemented 3.0.4 movement, balance, art and encounters described below. Obstacle definitions now live in `src/content.js`; their schema/materials are checked by `npm run check`. The TypeScript development tool does not ship in the browser. See [content guide](content.md) and [release sequence](UPGRADE-RELEASES.md).
+
 # Tesla Jump 3.0.4 — implemented gameplay candidate
 
 Status: 3.0.4 release, 18 October 2026; publication evidence is recorded in the release notes. `src/gameplay-config.js` is the source of numeric balance, `src/gameplay.js` owns deterministic flight, reward and pace rules. Existing art/encounters outside this feature remain intact.
