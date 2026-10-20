@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "initial verified offline cache installed",
+    "installation guide opens",
+    "guide keys do not start gameplay",
+    "cold navigation works offline",
+    "collection survives offline reload",
+    "offline game starts with assets",
+    "new release waits in menu",
+    "playing update is refused",
+    "paused run update is refused",
+    "completed run allows update",
+    "other open game blocks activation and restores controls",
+    "explicit safe update reloads coherent app",
+    "mixed deployment is rejected without waiting release",
+    "last complete release still works after failed update",
+    "no runtime errors"
+  ],
+  "errors": []
+}

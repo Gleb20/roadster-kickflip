@@ -9,6 +9,8 @@ export const HERO_CLIPS=Object.freeze({
  brace:Object.freeze({elbowX:29,elbowY:-37,wristX:31,wristY:Object.freeze({keys:Object.freeze([[0,-30],[1,-25]])})}),
  flailLeft:Object.freeze({elbowX:-44,elbowY:-75,wristX:-65,wristY:-90}),
  flailRight:Object.freeze({elbowX:44,elbowY:-102,wristX:56,wristY:-118}),
+ reboundLeft:Object.freeze({wristX:-42,wristY:-56}),
+ reboundRight:Object.freeze({wristX:18,wristY:-67}),
 });
 export function sampleClip(clip,time=0,progress=0){
  const pose={};for(const [channel,track] of Object.entries(clip)){
@@ -37,20 +39,20 @@ export function boardGrabArm(side,drop,torsoAngle,rig=HERO_RIG){
  if(d>limit){wrist.x=shoulder.x+dx*limit/d;wrist.y=shoulder.y+dy*limit/d;}
  const {joint:elbow,end}=solveTwoBone(shoulder,wrist,rig.arm.upper,rig.arm.lower,-side);return {shoulder,elbow,wrist:end};
 }
-export function seatedLegPose(side,drop,rig=HERO_RIG){
- const hip={x:side*rig.hip.x,y:rig.hip.y+drop},foot=side>0?{x:53,y:drop-74}:{x:39,y:drop-26},angle=side>0?-.75:.08;
+export function seatedLegPose(side,drop,rig=HERO_RIG,impact=0){
+ const compression=clamp(impact),hip={x:side*rig.hip.x,y:rig.hip.y+drop},foot=side>0?{x:57-9*compression,y:drop-22-6*compression}:{x:37-8*compression,y:drop-19-5*compression},angle=side>0?-.22:.10;
  const ankle={x:foot.x+rig.soleOffset*Math.sin(angle),y:foot.y-rig.soleOffset*Math.cos(angle)};
- const {joint:knee}=solveTwoBone(hip,ankle,rig.leg.upper,rig.leg.lower,side<0?1:-1);return {hip,knee,ankle,foot,angle};
+ const {joint:knee}=solveTwoBone(hip,ankle,rig.leg.upper,rig.leg.lower,-1);return {hip,knee,ankle,foot,angle};
 }
-export function sampleHeroLeg(side,{air=false,crouch=0,drop=0,seat=0,tilt=0},rig=HERO_RIG){
+export function sampleHeroLeg(side,{air=false,crouch=0,drop=0,seat=0,tilt=0,impact=0},rig=HERO_RIG){
  let angle=air?0:side<0?-.17:.31;const support={x:side*25,y:air?-1:side<0?1.6:4.8};
  const foot=air?{...support}:unrotate(support,tilt),world={x:support.x+rig.soleOffset*Math.sin(angle),y:support.y-rig.soleOffset*Math.cos(angle)},ankle=air?world:unrotate(world,tilt);
  const hip={x:side*rig.hip.x,y:rig.hip.y+drop},knee={x:side*(23+15*crouch),y:-25-(air?10:0)+drop*.5};
- if(seat>0){const p=seatedLegPose(side,drop,rig);for(const [a,b] of [[foot,p.foot],[ankle,p.ankle],[knee,p.knee]]){a.x=mix(a.x,b.x,seat);a.y=mix(a.y,b.y,seat);}angle=mix(angle,p.angle,seat);}
+ if(seat>0){const p=seatedLegPose(side,drop,rig,impact);for(const [a,b] of [[foot,p.foot],[ankle,p.ankle],[knee,p.knee]]){a.x=mix(a.x,b.x,seat);a.y=mix(a.y,b.y,seat);}angle=mix(angle,p.angle,seat);}
  return {hip,knee,ankle,foot,angle:air&&!seat?0:angle-tilt};
 }
 /** Layer priority: idle → wave/taunt → interaction → grab → brace → fall. */
-export function sampleHeroArm(side,{air=false,crouch=0,drop=0,wave=0,taunt=0,aim=null,special=false,guns=false,facing=0,reaction={},grab=0,seat=0,push=0,flail=0,time=0,falling=false},rig=HERO_RIG){
+export function sampleHeroArm(side,{air=false,crouch=0,drop=0,wave=0,taunt=0,aim=null,special=false,guns=false,facing=0,reaction={},grab=0,seat=0,push=0,flail=0,time=0,falling=false,impact=0,fallAngle=0},rig=HERO_RIG){
  const shoulder={x:side*rig.shoulder.x,y:rig.shoulder.y},k=aim&&side===facing?taunt:0,raised=k?raisedArm(shoulder,23,22,side):null;
  let elbow={x:mix(side*34,raised?.elbow.x??side*34,k),y:mix(-65,raised?.elbow.y??-65,k)},wrist={x:mix(side*44,raised?.wrist.x??side*44,k),y:mix(air?-92:-65+10*crouch,raised?.wrist.y??-65,k)};
  const armWave=falling?wave*(.8+.2*Math.sin(time*13+side)):side===1?wave:0,w=sampleClip(HERO_CLIPS.wave,time);
@@ -60,6 +62,15 @@ export function sampleHeroArm(side,{air=false,crouch=0,drop=0,wave=0,taunt=0,aim
  if(grab>0){const p=boardGrabArm(side,drop,.09*crouch,rig);for(const [a,b] of [[elbow,p.elbow],[wrist,p.wrist]]){a.x=mix(a.x,b.x,grab);a.y=mix(a.y,b.y,grab);}}
  if(seat>0||push>0){const weight=Math.max(seat,push),p=sampleClip(HERO_CLIPS.brace,time,push);elbow.x=mix(elbow.x,side*p.elbowX-9,weight);elbow.y=mix(elbow.y,p.elbowY,weight);wrist.x=mix(wrist.x,side*p.wristX-12,weight);wrist.y=mix(wrist.y,p.wristY,weight);}
  if(flail>0){const p=sampleClip(side<0?HERO_CLIPS.flailLeft:HERO_CLIPS.flailRight);elbow.x=mix(elbow.x,p.elbowX,flail);elbow.y=mix(elbow.y,p.elbowY,flail);wrist.x=mix(wrist.x,p.wristX,flail);wrist.y=mix(wrist.y,p.wristY,flail);}
+ if(falling){
+  const weight=Math.max(seat,flail),compression=clamp(impact),p=sampleClip(side<0?HERO_CLIPS.reboundLeft:HERO_CLIPS.reboundRight);
+  shoulder.y+=5*compression;
+  const up=unrotate({x:p.wristX,y:p.wristY+12*compression},fallAngle+.09*crouch);
+  const target={x:shoulder.x+up.x,y:shoulder.y+up.y};
+  const raised=solveTwoBone(shoulder,target,rig.arm.upper,rig.arm.lower,side);
+  elbow={x:mix(elbow.x,raised.joint.x,weight),y:mix(elbow.y,raised.joint.y,weight)};
+  wrist={x:mix(wrist.x,raised.end.x,weight),y:mix(wrist.y,raised.end.y,weight)};
+ }
  return {shoulder,elbow,wrist,taunt:k,wave:armWave};
 }
 export function createHeroAnimation(){return {taunt:0,wave:0,facing:0};}

@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.4.1';
-import {obstacleBoxes} from './physics.js?v=3.4.1';
-import {fallPolygons,interpolateFall} from './fall.js?v=3.4.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.4.2';
+import {obstacleBoxes} from './physics.js?v=3.4.2';
+import {fallPolygons,interpolateFall} from './fall.js?v=3.4.2';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -97,7 +97,7 @@ export function playerPolygons(p){
 }
 function overlaps(poly,rect){
   const axes=[{x:1,y:0},{x:0,y:1}];
-  for(let i=0;i<2;i++){const a=poly[i],b=poly[i+1];axes.push({x:-(b.y-a.y),y:b.x-a.x});}
+  for(let i=0;i<(poly.length===4?2:poly.length);i++){const a=poly[i],b=poly[(i+1)%poly.length];axes.push({x:-(b.y-a.y),y:b.x-a.x});}
   for(const a of axes){const ps=poly.map(p=>p.x*a.x+p.y*a.y),rs=rect.map(p=>p.x*a.x+p.y*a.y);if(Math.max(...ps)<=Math.min(...rs)||Math.max(...rs)<=Math.min(...ps))return false;}
   return true;
 }
@@ -108,7 +108,7 @@ export function collisionAt(p,o,dx,time=0){
 }
 // Adaptive substeps protect narrow silhouettes at top speed and during angular motion.
 export function sweptCollision(before,after,o,dxBefore,dxAfter,time,dt){
-  const fallTravel=before.fallPose&&after.fallPose?Math.abs(after.fallPose.rider.angle-before.fallPose.rider.angle)*170+Math.abs(after.fallPose.rider.y-before.fallPose.rider.y):0;
+  const fallTravel=before.fallPose&&after.fallPose?Math.max(...['rider','car'].map(part=>Math.abs(after.fallPose[part].angle-before.fallPose[part].angle)*(part==='car'?55:170)+Math.abs(after.fallPose[part].y-before.fallPose[part].y)+Math.abs(after.fallPose[part].x-before.fallPose[part].x))):0;
   const n=Math.max(1,Math.ceil((Math.abs(dxAfter-dxBefore)+Math.abs(after.y-before.y)+Math.abs(after.angle-before.angle)*170+fallTravel)/4));
   for(let i=0;i<=n;i++){const f=i/n,p={y:before.y+(after.y-before.y)*f,angle:before.angle+(after.angle-before.angle)*f,grab:(before.grab||0)+((after.grab||0)-(before.grab||0))*f};if(before.fallPose&&after.fallPose)p.fallPose=interpolateFall(before.fallPose,after.fallPose,f);if(collisionAt(p,o,dxBefore+(dxAfter-dxBefore)*f,time-dt+dt*f))return true;}
   return false;

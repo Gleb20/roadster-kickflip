@@ -26,3 +26,16 @@ test('animation transitions depend on simulation time and sampling never advance
  for(const field of ['taunt','wave','facing'])for(const s of samples)near(s[field],samples[0][field]);
  const before=structuredClone(samples[0]);for(let i=0;i<100;i++)sampleHeroArm(1,{wave:samples[0].wave,time:1});assert.deepEqual(samples[0],before);
 });
+
+test('fall impact lowers the raised hands and shoulders, and folds both forward legs without stretching',()=>{
+ for(const side of [-1,1]){
+  const rebound=sampleHeroArm(side,{falling:true,seat:1,flail:1,impact:0});
+  const impact=sampleHeroArm(side,{falling:true,seat:1,flail:1,impact:1});
+  assert.ok(rebound.wrist.y<rebound.shoulder.y-35,'both arms reach upward');
+  assert.ok(impact.wrist.y>rebound.wrist.y+8);assert.ok(impact.shoulder.y>rebound.shoulder.y+3);
+  for(const p of [rebound,impact]){near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),36);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),36);}
+  const a=sampleHeroLeg(side,{seat:1,drop:22,impact:0}),b=sampleHeroLeg(side,{seat:1,drop:22,impact:1});
+  assert.ok(a.foot.x>a.hip.x+25);assert.ok(b.foot.x<a.foot.x-6,'feet draw inward at impact');
+  for(const p of [a,b]){near(Math.hypot(p.knee.x-p.hip.x,p.knee.y-p.hip.y),28);near(Math.hypot(p.ankle.x-p.knee.x,p.ankle.y-p.knee.y),27);}
+ }
+});

@@ -11,6 +11,10 @@ User-authorized on 20 October 2026: implement and publish successive tested rele
 
 - 3.4.0: reusable paper rider rig, published and live-verified (commit `b55e2be953233fcba8fbac3110a72a2e9693e454`).
 
+## User-feedback increment3.4.2
+
+The user prioritised a specific fall/reunion choreography before the pending online release. Two seated rebounds and a stronger third launch replace the palm push; a single nose/rear somersault replaces longitudinal car rolls. Recovery duration, input locks and tap acceleration remain. Current candidate evidence is in `verification/2026-10-20-v3.4.2/`. Ranking3.5 remains separate and must merge this new ruleset before deployment; do not publish the older candidate over3.4.2.
+
 ## Delivery order
 
 1. **3.1 — Content foundation:** one obstacle catalogue, explicit anchors/renderers/reactions/biomes, validation and gradual typing. Preserve gameplay as a measurable baseline.

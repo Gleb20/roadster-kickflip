@@ -1,4 +1,4 @@
-import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=3.4.1';
+import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=3.4.2';
 // Source-pixel nozzle anchors measured on each of the nine photographed poses.
 // The car rolls about its long axis: exhaust points up while the car is inverted.
 const POSES=[
@@ -17,11 +17,11 @@ export function createThrusterEffects({reducedMotion}={}){
   const dust=[];let landingAge=Infinity;
   return {
     reset(){dust.length=0;landingAge=Infinity},
-    update(dt,{impactSpeed=0,speed=0}={}){
+    update(dt,{impactSpeed=0,speed=0,impactX=0}={}){
       landingAge+=dt;
       for(const cloud of dust){cloud.age+=dt;cloud.x-=speed*dt;}
       while(dust.length&&dust[0].age>=.72)dust.shift();
-      if(impactSpeed>0){landingAge=0;dust.push({age:0,x:0});if(dust.length>3)dust.shift();}
+      if(impactSpeed>0){landingAge=0;dust.push({age:0,x:impactX});if(dust.length>3)dust.shift();}
     },
     get activeClouds(){return dust.length},
     get landingAge(){return landingAge},

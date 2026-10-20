@@ -1,6 +1,6 @@
 // All v3 balance values use logical world units and simulation seconds.
 export const GAMEPLAY = Object.freeze({
-  version:'3.4.1', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
+  version:'3.4.2', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
   spinSpeed:6.2, spinAcceleration:60, assistSpeed:3.5, assistAcceleration:28,
   landingAngle:Math.PI*2/9, landingOmega:Math.PI*4/3,
   thrustAcceleration:2100, horizontalDrag:1.8, maxHorizontal:260,

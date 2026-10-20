@@ -33,7 +33,7 @@ test('pupils reverse at departure, track jump height and remain inside the eye',
 });
 
 
-test('seated fall keeps separate bent legs at fixed lengths with one raised foot',()=>{
+test('seated fall keeps separate bent legs at fixed lengths with forward feet and distinct bent knees',()=>{
  for(const drop of [18.9,22,27]){
   const legs=[-1,1].map(side=>seatedLegPose(side,drop));
   for(const {hip,knee,ankle,foot,angle} of legs){
@@ -41,7 +41,7 @@ test('seated fall keeps separate bent legs at fixed lengths with one raised foot
    assert.ok(Math.abs(Math.hypot(ankle.x-knee.x,ankle.y-knee.y)-27)<1e-8);
    assert.ok(Number.isFinite(angle)&&Number.isFinite(foot.x));
   }
-  assert.ok(legs[0].foot.y-legs[1].foot.y>45);
+  assert.ok(legs[0].foot.y-legs[1].foot.y>2);
   assert.ok(legs[1].foot.x-legs[0].foot.x>10);
  }
 });

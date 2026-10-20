@@ -1,28 +1,22 @@
-## 3.4.1 — Reproducible runs
+# Tesla Jump 3.4.2
 
-The browser and verifier share the same seeded fixed-tick simulation. Resizing changes the view only. [Replay contract and measurements](docs/replay.md). Online submission is the next separate increment.
+[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.4.2)
 
-## 3.4.0 — Reusable paper-rider animation
+Canvas 2D browser/PWA game with controlled flips, directional thrust, landed trick chains and a persistent encounter collection.
 
-Named joints, shared arm/leg pose sampling and replaceable appearance configuration. [Animation contract](docs/hero-animation.md). Current controls and collision remain the baseline.
-
-## 3.3.0 — Installable and offline
-
-Install from the main menu or your browser. A complete verified copy supports offline play. Updates apply only from the menu/results with other game windows closed; saved collection and personal best remain on this browser. [PWA behaviour](docs/pwa.md).
-
-# Tesla Jump 3.2.0
-
-[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.2.0)
-
-Canvas 2D browser game with native ES modules and DOM controls. 3.2.0 adds a local encounter collection to the 3.1 content foundation. Meet obstacles (including crashes), then browse silhouettes and unlocked cards from the main menu or pause. NEW clears only after the first detail view and persists between visits. Existing portraits are reused; full rotation artwork is a later content increment.
+3.4.2 revises rough-landing recovery: two seated rebounds, a stronger third launch, standing in flight and a return onto the Roadster. The car pitches nose-first then rear-first behind the rider, levels and drives underneath before the feet land. Head, shoulders, raised hands and bent legs compress together at each seated impact. Existing photographs and paper parts are reused.
 
 - [Current gameplay rules](docs/gameplay-v3.md)
-- [Content definitions and adding obstacles](docs/content.md)
+- [Content catalogue and obstacle pipeline](docs/content.md)
+- [Hero animation contract](docs/hero-animation.md)
+- [Replay contract](docs/replay.md)
+- [PWA installation, offline play and safe updates](docs/pwa.md)
 - [Incremental release sequence](docs/UPGRADE-RELEASES.md)
+- [3.4.2 validation and rollback](docs/verification/2026-10-20-v3.4.2/README.md)
 
-Node 20+; `npm ci`, `npm run dev`, `npm test`, `npm run check`. The browser uses checked-in JavaScript directly; TypeScript is a development check of the content contract, not a new runtime dependency. The local server is http://127.0.0.1:8766.
+The collection unlocks visible encounters even on collision, without interrupting play. Browse it from the menu or pause; NEW clears on the first detailed view. Portraits are currently static. Browser saves remain local. Online ranking, factory/daylight, full portrait rotations, head trophies and sharing are later unfinished increments; the game stays on GitHub Pages.
 
-The game and forthcoming collection/leaderboard UI stay on the existing GitHub Pages URL. PWA, factory, new animation contracts, full turntables and the online API are subsequent releases, not features claimed by this version. Historical release notes below describe earlier states.
+Node20+; `npm ci`, `npm run dev`, `npm test`, `npm run check`. The local server is http://127.0.0.1:8766. Run `npm run build:pwa` after runtime changes to regenerate the coherent offline package. TypeScript checks the content contract only; it is not a runtime dependency.
 
 ---
 

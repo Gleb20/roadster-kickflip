@@ -1,6 +1,6 @@
-import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.4.1';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.4.1';
-import {joeReaction} from './encounter.js?v=3.4.1';
+import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.4.2';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.4.2';
+import {joeReaction} from './encounter.js?v=3.4.2';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;
@@ -243,14 +243,14 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const target=CAMEO.active||podcast?null:gestureTarget();
     const dx=target?obstacleDx(target)+target.w/2:0,facing=target?Math.sign(dx)||1:0;
     const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab,taunt=S.falling?0:motion.taunt*(1-grab),wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave*(1-grab);
-    const seat=clamp(S.fallSeat||0),push=clamp(S.fallPush||0),flail=clamp(S.fallFlail||0);
+    const seat=clamp(S.fallSeat||0),push=clamp(S.fallPush||0),flail=clamp(S.fallFlail||0),impact=clamp(S.fallImpact||0);
     const tilt=(S.falling?0:((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab));
     const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
       let jointHand;
       for(const side of [-1,1]){
-        const {hip,knee,ankle,foot,angle:shoeAngle}=sampleHeroLeg(side,{air,crouch,drop,seat,tilt},heroRig);
+        const {hip,knee,ankle,foot,angle:shoeAngle}=sampleHeroLeg(side,{air,crouch,drop,seat,tilt,impact},heroRig);
         limb(c,[[hip.x,hip.y],[knee.x,knee.y],[ankle.x,ankle.y]],side<0?appearance.rearLeg:appearance.frontLeg,14);
         c.save();c.translate(foot.x,foot.y);c.rotate(shoeAngle);sneaker(c,0,0,side,1,appearance.shoes);c.restore();
       }
@@ -259,7 +259,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';if(appearance.emblem)c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
         const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5,aim=opponent?localPoint(c,opponent,heroSurface):null;
-        const arm=sampleHeroArm(side,{air,crouch,drop,wave,taunt,aim,special,guns,facing,reaction,grab,seat,push,flail,time:sceneTime,falling:S.falling},heroRig);
+        const arm=sampleHeroArm(side,{air,crouch,drop,wave,taunt,aim,special,guns,facing,reaction,grab,seat,push,flail,time:sceneTime,falling:S.falling,impact,fallAngle:S.fallAngle||0},heroRig);
         const {x:ex,y:ey}=arm.elbow,{x:hx,y:hy}=arm.wrist,k=arm.taunt,armWave=arm.wave;
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
         limb(c,[[arm.shoulder.x,arm.shoulder.y],[ex,ey],[hx,hy]],appearance.arms,11);
@@ -268,7 +268,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
         else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
         if(side===1&&reaction.reach>.08&&grab<.5)jointHand={x:hx,y:hy};
       }
-      c.save();c.translate(0,-92);c.rotate(motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,fall:S.falling,laugh:target&&target.id!=='trump'});
+      c.save();c.translate(0,-92+6*impact);c.rotate(S.falling?.07*impact:motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,fall:S.falling,laugh:target&&target.id!=='trump'});
       c.restore();
       if(jointHand){
         const {x,y}=jointHand;
