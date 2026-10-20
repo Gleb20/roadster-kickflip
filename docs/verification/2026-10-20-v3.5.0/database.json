@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "SQL transaction tests and ROLLBACK succeed",
+    "transaction left no ranking tables",
+    "writes begin paused",
+    "browser cannot read another session",
+    "submission ignores client score",
+    "idempotent submission stays pending",
+    "changed submission cannot replace the original",
+    "many chunks continue to exact verified score",
+    "private state is absent from public replies",
+    "duplicate verify returns same public ID",
+    "one session creates one row",
+    "rank endpoint identifies own row",
+    "actual anon database role denied RPC execution"
+  ],
+  "exactScore": 73,
+  "chunks": 8
+}

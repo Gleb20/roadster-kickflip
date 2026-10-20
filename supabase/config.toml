@@ -1,0 +1,4 @@
+project_id = "tesla-jump-ranking-staging"
+[functions.tesla-ranking]
+verify_jwt = true
+entrypoint = "./functions/tesla-ranking/index.ts"

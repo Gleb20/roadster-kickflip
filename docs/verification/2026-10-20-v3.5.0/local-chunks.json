@@ -1,0 +1,29 @@
+[
+  {
+    "seconds": 32.03333333333333,
+    "score": 1272,
+    "chunks": 1,
+    "maxChunkMs": 88.545458,
+    "meanChunkMs": 88.545458,
+    "maxCheckpointBytes": 0,
+    "exactResult": true
+  },
+  {
+    "seconds": 603.8166666666667,
+    "score": 53478,
+    "chunks": 13,
+    "maxChunkMs": 160.04037500000004,
+    "meanChunkMs": 111.37311530769226,
+    "maxCheckpointBytes": 2435,
+    "exactResult": true
+  },
+  {
+    "seconds": 3592,
+    "score": 328341,
+    "chunks": 73,
+    "maxChunkMs": 669.0329999999994,
+    "meanChunkMs": 136.12933615068505,
+    "maxCheckpointBytes": 3333,
+    "exactResult": true
+  }
+]

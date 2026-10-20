@@ -1,4 +1,4 @@
-import {COLLECTION_COPY} from './collection-copy.js?v=3.4.2';
+import {COLLECTION_COPY} from './collection-copy.js?v=3.5.0';
 
 export function createCollectionUI({store,definitions,preview,beforeOpen,afterClose}){
  const dialog=document.getElementById('collection-dialog'),grid=document.getElementById('collection-grid'),detail=document.getElementById('collection-detail');
@@ -49,7 +49,7 @@ export function createCollectionUI({store,definitions,preview,beforeOpen,afterCl
  }
  function route(view,id){
   const url=new URL(location.href);url.hash=view==='detail'?`collection/${id}`:'collection';
-  history.pushState({...history.state,teslaCollection:{view,id}},'',url);
+  history.pushState({...history.state,teslaOnline:undefined,teslaCollection:{view,id}},'',url);
  }
  function openDetail(id){scroll=dialog.querySelector('.collection-scroll').scrollTop;route('detail',id);renderDetail(id);}
  function close(){dialog.close();afterClose?.();origin?.focus({preventScroll:true});}

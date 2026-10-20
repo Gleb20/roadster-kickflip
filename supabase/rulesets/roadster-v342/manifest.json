@@ -1,0 +1,16 @@
+{
+  "ruleset": "roadster-v3.4.2",
+  "sourceCommit": "5632fc64a7b3712d70bab71ba44af70697b8714a",
+  "files": {
+    "run.js": "56277187d0446d355cf73007c07d69114fe3fc24f9824c9eb76f903141edc1c2",
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "director.js": "47c51de0dad646f5ea3e17c57bd6f0dcecd73b777746b231278eda2150ca38b5",
+    "routes.js": "d8a954a6929c996648cff2dac5c482e6893ec774fd10746ae27cacc4e58550c2",
+    "gameplay.js": "f41a809b144c8240f606bab97758cf4d89a44a2d7e857ba8e18168036569accf",
+    "gameplay-config.js": "d5ec26f5c91679baae9651a40f5ec703eaddeea084482e3ce8d3ffda343a5076",
+    "physics.js": "1f319ff040e3a9f2799a8eba49a82f0f993e2b1ad45d50f45043ab2f0fff0417",
+    "fall.js": "4ffba87c7c14dbf239728169bd1358b66048f0a8e7f301f25809e1d44465df3a",
+    "catalog.js": "1e0946e26bb50fbc40716bfe335d190c8f1a61a35b1770456918c7848bae4d29",
+    "content.js": "c7fd12545c0688379b3230d0fb9132407ff61b47ca0c4f58a0626dbab42548e7"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "table": "config",
+      "rows": 1,
+      "sha256": "1f607c0cc8091a21c193eedfd3d29f92f66a0902c05294c0ff143b39bc44fe0e",
+      "equal": true
+    },
+    {
+      "table": "sessions",
+      "rows": 4,
+      "sha256": "f2a134ffb2464659dfd0284e493cb488986d1d3d25046b1bcbf4c650f6a8fae1",
+      "equal": true
+    },
+    {
+      "table": "runs",
+      "rows": 13,
+      "sha256": "f437a95a98292e96d297cfc654a5d0cc647c1fc217e27d7c7bb867fbeb1b02db",
+      "equal": true
+    },
+    {
+      "table": "rate_buckets",
+      "rows": 3,
+      "sha256": "911879fbff5b0c653fc9fefb241ed0d09ee0dd5d7449fbb333b9c13bd545d3ad",
+      "equal": true
+    }
+  ],
+  "fullRankOrderEqual": true,
+  "pendingCheckpointResumed": true,
+  "capabilityHashPreserved": true,
+  "newIdentitySequence": 14,
+  "sourceUntouched": true
+}

@@ -28,3 +28,7 @@ test('replay parser bounds ticks/events and rejects malformed or unsupported inp
  for(const mutation of [{ruleset:'unknown'},{ticks:0},{ticks:432001},{seed:-1},{events:[[0,6]]},{events:[[1,0],[0,1]]},{events:[[0,.1]]},{events:[[0,0,0]]},{events:Array(24001).fill([0,0])}])assert.throws(()=>validateReplay({...valid,...mutation}));
  r.S.mode='paused';const t=r.S.tick;r.step();assert.equal(r.S.tick,t);assert.equal(r.command('primary-down'),false);r.S.mode='playing';assert.throws(()=>r.command('teleport'));
 });
+test('service recording limit does not end the endless casual simulation',()=>{
+ const r=createRun({seed:4});r.reset();r.S.tick=432000;r.S.next=1e9;r.step();
+ assert.equal(r.S.mode,'playing');assert.equal(r.recordable,false);assert.equal(r.replay(),null);r.step();assert.equal(r.S.tick,432002);
+});

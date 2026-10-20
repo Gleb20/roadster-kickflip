@@ -43,3 +43,7 @@ Physical-device performance, touch comfort, sound mix and human difficulty accep
 3.0.4 replaces rapid rolling with three seated contacts, diminishing rebounds and a push-off leap back onto the Roadster. Its three kickflips follow the same impacts and finish upright under the feet. Speed-scaled duration is 2.8–3.45 s; taps speed playback up to 1.6×. Existing selection guards, forgiving patterns and scores are preserved. See [release notes](docs/releases/2026-10-18-v3.0.4.md).
 
 3.0.4 adjusts the existing fall pose to lean back with asymmetrical bent legs and spread arms, using the user's pose illustration as movement reference. Fixed leg lengths prevent stretched or stacked feet. Existing recovery timing and controls remain. [Release notes](docs/releases/2026-10-18-v3.0.4.md).
+
+## Online ranking 3.5.0
+
+Optional arcade names and verified all-time scores use Supabase while the game remains on GitHub Pages. Ranking is available from the menu, pause and completed runs; any eligible run can be posted, including a non-record score. Ten rows per page, highlighted own rank, durable explicit retries and staged replay verification are implemented. See [service setup](supabase/README.md) and [migration preserving results](docs/ranking-migration.md). Metallic rank badges are implemented; illustrated rotating head trophies and sharing preview art remain later visual stages.

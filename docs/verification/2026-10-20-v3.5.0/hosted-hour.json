@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "sessionId": "f337b4e1-faf8-4855-8a93-3c5d11f930b5",
+  "publicId": "3ccbef45-29fe-4ab2-8faa-58c19016d511",
+  "seconds": 3594.5416666666665,
+  "score": 325434,
+  "chunks": 72,
+  "maxHttpMs": 2320.346458,
+  "totalHttpMs": 57444.74837300003,
+  "exactResult": true
+}
