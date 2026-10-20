@@ -418,3 +418,52 @@ button.primary {
 #race-score:has(.odometer-column:nth-child(6)) .odometer { font-size:27px; }
 @media (max-width:360px) { #race-score:has(.odometer-column:nth-child(6)) .odometer { font-size:21px; } }
 #game:not([data-mode='playing']) #toast, #game:not([data-mode='playing']) #pending { display:none; }
+
+/* Encounter files: game palette, local progress and a quiet pause-only drawer. */
+.collection-entry { min-height:44px; color:var(--text); }
+#paused .collection-entry { display:block; margin:12px auto 0; }
+#collection-dialog { width:min(1040px,calc(100% - 32px)); height:calc(100dvh - 32px); max-height:960px; max-width:none; padding:0; border:1px solid var(--hairline); border-radius:var(--radius); margin:auto; background:#182329; color:var(--text); overflow:hidden; }
+#collection-dialog::backdrop { background:rgb(6 12 17 / 84%); }
+#collection-dialog .collection-header { position:static; display:flex; justify-content:space-between; gap:16px; align-items:center; padding:24px 28px 20px; border-bottom:1px solid var(--hairline); background:var(--surface); }
+.collection-header h2 { margin:8px 0 6px; font-size:clamp(23px,4vw,34px); letter-spacing:-.8px; }
+#collection-summary { margin:0; font-size:10px; letter-spacing:1.5px; color:var(--secondary); font-variant-numeric:tabular-nums; }
+.collection-back { flex-shrink:0; min-width:84px; min-height:44px; padding:10px 14px; border:1px solid var(--hairline); border-radius:24px; color:var(--text); background:transparent; font-size:11px; font-weight:600; }
+.collection-back:hover { border-color:var(--secondary); }
+.collection-back:active,.collection-card:active { transform:scale(.98); }
+.collection-scroll { height:calc(100% - 132px); padding:20px 28px 32px; overflow-y:auto; overscroll-behavior:contain; touch-action:pan-y; }
+.collection-hint { color:var(--secondary); font-size:12px; line-height:1.6; max-width:650px; margin:0 0 24px; }
+.collection-warning { font-size:12px; color:var(--primary); line-height:1.6; }
+#collection-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.collection-card { position:relative; min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; border:1px solid var(--hairline); border-radius:16px; background:rgb(255 255 255 / 3%); color:var(--text); padding:12px 12px 18px; transition:transform 120ms; }
+button.collection-card:hover { background:rgb(255 255 255 / 6%); border-color:var(--secondary); }
+.collection-card[data-state='locked'] { background:rgb(255 255 255 / 2%); }
+#collection-dialog .collection-portrait { position:static; inset:auto; width:100%; height:auto; aspect-ratio:384/328; z-index:auto; object-fit:contain; pointer-events:none; }
+.collection-card-name { font-size:10px; font-weight:650; letter-spacing:.7px; line-height:1.5; text-align:center; min-height:30px; display:flex; align-items:center; }
+.collection-card[data-state='locked'] .collection-card-name { color:var(--secondary); }
+.collection-new { position:absolute; top:12px; right:12px; padding:4px 7px; border-radius:5px; font-size:8px; letter-spacing:1px; font-weight:800; background:var(--primary); color:#152027; }
+#collection-detail { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; align-items:center; padding:16px 0; }
+#collection-detail[hidden],#collection-grid[hidden] { display:none; }
+.collection-detail-art { padding:16px; background:rgb(255 255 255 / 3%); border-radius:20px; }
+.collection-id { font-size:10px; color:var(--primary); letter-spacing:2px; }
+.collection-detail-copy h3 { font-size:clamp(26px,4vw,40px); line-height:1.08; letter-spacing:-1px; margin:14px 0 18px; }
+.collection-description { font-size:16px; line-height:1.65; margin:0 0 28px; color:var(--text); }
+.collection-properties { display:grid; grid-template-columns:100px 1fr; gap:12px 16px; font-size:10px; line-height:1.6; letter-spacing:.8px; }
+.collection-properties dt { color:var(--secondary); }.collection-properties dd { margin:0; text-transform:uppercase; }
+.collection-scroll:has(#collection-detail:not([hidden])) .collection-hint { display:none; }
+@media(max-width:600px) {
+ #collection-dialog { width:100%; height:100dvh; max-height:none; border:0; border-radius:0; }
+ #collection-dialog .collection-header { padding:max(20px,env(safe-area-inset-top)) 20px 20px; gap:12px; }
+ .collection-header h2 { font-size:24px; }.collection-header .eyebrow { font-size:8px; }
+ .collection-scroll { padding:20px 20px max(28px,env(safe-area-inset-bottom)); height:calc(100% - 132px); }
+ #collection-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+ .collection-card { padding:8px 8px 14px; }.collection-card-name { font-size:9px; }
+ #collection-detail { grid-template-columns:1fr; gap:24px; padding-top:0; }.collection-detail-art { max-width:400px; width:100%; margin:auto; padding:8px; }
+ .collection-description { font-size:15px; }.collection-properties { grid-template-columns:90px 1fr; }
+}
+@media(max-height:570px) and (min-width:601px) {
+ #collection-dialog .collection-header { padding:12px 20px; }.collection-header h2 { font-size:22px; margin:4px 0; }
+ .collection-header .eyebrow { display:none; }.collection-scroll { height:calc(100% - 92px); padding:16px 20px; }
+ .collection-card { padding:8px; }#collection-detail { gap:24px; padding:0; }.collection-detail-art { max-height:220px; }
+ #collection-dialog .collection-detail-art .collection-portrait { max-height:180px; width:auto; max-width:100%; display:block; margin:auto; }
+}
+@media(prefers-reduced-motion:reduce) { .collection-card { transition:none; } }

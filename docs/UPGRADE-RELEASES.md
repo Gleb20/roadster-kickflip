@@ -2,6 +2,11 @@
 
 User-authorized on 20 October 2026: implement and publish successive tested releases to the existing GitHub Pages game, sending a versioned link after each release. Keep the frontend and leaderboard UI at `https://gleb20.github.io/roadster-kickflip/`. A separate API/data store is required for online writes; that does not require moving the game away from Pages.
 
+## Completed increments
+
+- 3.1.0: content foundation, published and live-verified (commit `8030efb5f161e25786f6bd2214876afe9acee79d`).
+- 3.2.0: collection candidate validation complete; publication state is recorded by the deployed commit and release evidence.
+
 ## Delivery order
 
 1. **3.1 — Content foundation:** one obstacle catalogue, explicit anchors/renderers/reactions/biomes, validation and gradual typing. Preserve gameplay as a measurable baseline.

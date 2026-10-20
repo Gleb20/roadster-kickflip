@@ -1,4 +1,4 @@
-import {flipFrameAt} from './roadster-flip.js?v=3.1.0';
+import {flipFrameAt} from './roadster-flip.js?v=3.2.0';
 
 const screen = document.getElementById('loading-screen');
 const game = document.getElementById('game');
@@ -135,6 +135,7 @@ function reveal() {
     screen.hidden = true;
     game.inert = false;
     game.removeAttribute('aria-hidden');
+    game.dispatchEvent(new Event('tesla-ready'));
     if (restoreFocus) document.getElementById('start').focus({preventScroll: true});
   };
   // The complete scene is already prepared; cached/fast starts skip both fades.
@@ -157,4 +158,4 @@ logTimer = setInterval(() => {
 }, 340);
 
 // Start the tiny vector instrument before requesting the game's module graph.
-import('./main.js?v=3.1.0').catch(fail);
+import('./main.js?v=3.2.0').catch(fail);

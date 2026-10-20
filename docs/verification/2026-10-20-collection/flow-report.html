@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla Jump 3.2 collection flows</title><style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style></head><body><h1>Tesla Jump 3.2 — collection</h1><p class="meta">20 October 2026 · userflow / flow-navigation / flow-tables / interface-design</p><p>Implemented scope: local discovery, silhouette grid, details, NEW and safe navigation. Existing art is reused. Full rotation frames are a later content release. Chrome emulation at 390×844, 844×390 and 1440×900; physical-device and user testing remain open.</p>
+<h2>Discovery during a run</h2><ol class="flow">
+<li><span class="step-n">1</span><span class="step-t">Visible encounter</span><p class="step-d">Persist discovery before collision processing; no dialog or pause.</p><p class="cta">Action: <b>Continue racing</b></p></li>
+<li><span class="step-n">2</span><span class="step-t">Pause or main menu</span><p class="step-d">Open COLLECTION voluntarily.</p><p class="cta">Action: <b>Open grid</b></p></li>
+</ol><h3>Screen inventory</h3><div class="overflow"><table><tr><th>Screen</th><th>Purpose</th><th>Action</th><th>States</th></tr>
+<tr><td>Visible encounter</td><td>Persist discovery before collision processing; no dialog or pause.</td><td>Continue racing</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+<tr><td>Pause or main menu</td><td>Open COLLECTION voluntarily.</td><td>Open grid</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+</table></div><h3>Anti-pattern audit</h3><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr><tr><td>Pause, NEW, history, focus and persistence</td><td class="pass">PASS</td><td>verify-collection.cjs, three viewports. Full report retained with release evidence.</td></tr><tr><td>Physical Safari, touch comfort and screen reader</td><td class="warn">NOT TESTED</td><td>Requires actual device/user acceptance.</td></tr></table>
+<h2>Collection and first view</h2><ol class="flow">
+<li><span class="step-n">1</span><span class="step-t">Grid</span><p class="step-d">Locked silhouettes are noninteractive. Discovered, unviewed cards show NEW.</p><p class="cta">Action: <b>Open discovered card</b></p></li>
+<li><span class="step-n">2</span><span class="step-t">Detail</span><p class="step-d">Existing portrait, fictional description and properties. Successful first display persists viewed state.</p><p class="cta">Action: <b>Back to grid</b></p></li>
+<li><span class="step-n">3</span><span class="step-t">Return</span><p class="step-d">Grid scroll/focus retained; closing returns to the originating menu or pause.</p><p class="cta">Action: <b>Explicit RESUME from pause</b></p></li>
+</ol><h3>Screen inventory</h3><div class="overflow"><table><tr><th>Screen</th><th>Purpose</th><th>Action</th><th>States</th></tr>
+<tr><td>Grid</td><td>Locked silhouettes are noninteractive. Discovered, unviewed cards show NEW.</td><td>Open discovered card</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+<tr><td>Detail</td><td>Existing portrait, fictional description and properties. Successful first display persists viewed state.</td><td>Back to grid</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+<tr><td>Return</td><td>Grid scroll/focus retained; closing returns to the originating menu or pause.</td><td>Explicit RESUME from pause</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+</table></div><h3>Anti-pattern audit</h3><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr><tr><td>Pause, NEW, history, focus and persistence</td><td class="pass">PASS</td><td>verify-collection.cjs, three viewports. Full report retained with release evidence.</td></tr><tr><td>Physical Safari, touch comfort and screen reader</td><td class="warn">NOT TESTED</td><td>Requires actual device/user acceptance.</td></tr></table>
+<h2>History and persistence</h2><ol class="flow">
+<li><span class="step-n">1</span><span class="step-t">Reload</span><p class="step-d">Restore progress; restore an open detail only after material readiness.</p><p class="cta">Action: <b>Continue viewing</b></p></li>
+<li><span class="step-n">2</span><span class="step-t">Browser Back / Forward</span><p class="step-d">Navigate detail, grid and origin without resuming play.</p><p class="cta">Action: <b>Return to previous view</b></p></li>
+</ol><h3>Screen inventory</h3><div class="overflow"><table><tr><th>Screen</th><th>Purpose</th><th>Action</th><th>States</th></tr>
+<tr><td>Reload</td><td>Restore progress; restore an open detail only after material readiness.</td><td>Continue viewing</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+<tr><td>Browser Back / Forward</td><td>Navigate detail, grid and origin without resuming play.</td><td>Return to previous view</td><td>Locked / new / viewed; storage failure uses memory with a warning; portrait error retains NEW</td></tr>
+</table></div><h3>Anti-pattern audit</h3><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr><tr><td>Pause, NEW, history, focus and persistence</td><td class="pass">PASS</td><td>verify-collection.cjs, three viewports. Full report retained with release evidence.</td></tr><tr><td>Physical Safari, touch comfort and screen reader</td><td class="warn">NOT TESTED</td><td>Requires actual device/user acceptance.</td></tr></table>
+<h2>Open / parked</h2><p>Rotation artwork, online leaderboard, factory, PWA and future content releases are separate increments. This report does not claim those features.</p><footer>Current controls and design tokens reused; browser screenshots inspected.</footer></body></html>

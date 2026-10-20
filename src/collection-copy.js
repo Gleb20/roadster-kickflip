@@ -1,0 +1,22 @@
+// Fictional arcade descriptions; stable IDs are deliberately separate from names.
+export const COLLECTION_COPY={
+ v8:['V8 / VERY LOUD','Eight cylinders. Zero indoor voice. Announces its arrival three biomes in advance.'],
+ trump:['TARIFF MAN','Promises the biggest ramp. Sends the bill to the other side.'],
+ protest:['COUCH CRITICS','A travelling committee of experts in how you should have landed that.'],
+ truck:['CYBERBRICK','A stainless-steel answer to a question nobody finished asking. Mind the corners.'],
+ doge:['MUCH WOW','Such obstacle. Very road. Many surprised drivers.'],
+ pump:['BIG OIL','Still waiting for you to pull over. Takes a dim view of cold-gas propulsion.'],
+ zuck:['PARK ZUCCHINI BERG','Extremely interested in your trajectory. Has already recommended it to three friends.'],
+ openai:['OPEN EYE','Predicts your next move with impressive confidence. Occasionally predicts a lamppost.'],
+ claude:['CLOUD','Thought carefully about being an obstacle. Decided it was the helpful thing to do.'],
+ gemini:['GEMI-NICE','Two opinions about the landing. Both delivered at once.'],
+ rogozin:['DMITRY TRAMPOLINSKI','An enthusiastic supporter of alternative launch infrastructure. Batteries not included.'],
+ amber:['AMBER HURDLE','Brings props to every dramatic entrance. A clear flight path was never in the script.'],
+ joe:['JOE BROGAN','Has a microphone, a theory and several hours to discuss your suspension.'],
+ muscleCoupe:['AMERICAN MUSCLE','A full-size engine with a small supporting vehicle attached.'],
+ muscleCompact:['SMALL BLOCK / BIG EGO','Compact dimensions. Uncompromising volume.'],
+ pickup:['BIG TRUCK ENERGY','Could carry the whole leaderboard. Has chosen to occupy your lane instead.'],
+ simpsonsCouch:['EVERGREEN TERRACE','The family has found a front-row seat. Unfortunately, it is on the road.'],
+ hoverDrone:['HOVER DRONE','Holding position for the perfect shot of your less perfect landing.'],
+ incomingDrone:['INCOMING DRONE','Express delivery. Recipient: your personal space.'],
+};

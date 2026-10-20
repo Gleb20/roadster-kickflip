@@ -1,6 +1,6 @@
 # Gameplay and content ownership
 
-3.1.0 retains the implemented 3.0.4 movement, balance, art and encounters described below. Obstacle definitions now live in `src/content.js`; their schema/materials are checked by `npm run check`. The TypeScript development tool does not ship in the browser. See [content guide](content.md) and [release sequence](UPGRADE-RELEASES.md).
+3.2.0 retains the implemented 3.0.4 movement, balance and art described below. Visible encounters now persist local collection discovery before collision processing; this never pauses play. Menu/pause collection details clear NEW on first successful view. Browser history closes/restores collection layers; closing a card never resumes the game. Obstacle definitions now live in `src/content.js`; their schema/materials are checked by `npm run check`. The TypeScript development tool does not ship in the browser. See [content guide](content.md) and [release sequence](UPGRADE-RELEASES.md).
 
 # Tesla Jump 3.0.4 — implemented gameplay candidate
 

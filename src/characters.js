@@ -1,4 +1,4 @@
-import {joeReaction} from './encounter.js?v=3.1.0';
+import {joeReaction} from './encounter.js?v=3.2.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 // A compact raised forearm; the middle finger always stays upright in screen space.
 export function raisedArm(shoulder,upper,lower,side){

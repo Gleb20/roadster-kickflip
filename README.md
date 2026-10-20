@@ -1,8 +1,8 @@
-# Tesla Jump 3.1.0
+# Tesla Jump 3.2.0
 
-[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.1.0)
+[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.2.0)
 
-Canvas 2D browser game with native ES modules and DOM controls. The 3.1.0 content foundation retains the 3.0.4 gameplay/art and replaces duplicated obstacle lists with one validated, typed catalogue.
+Canvas 2D browser game with native ES modules and DOM controls. 3.2.0 adds a local encounter collection to the 3.1 content foundation. Meet obstacles (including crashes), then browse silhouettes and unlocked cards from the main menu or pause. NEW clears only after the first detail view and persists between visits. Existing portraits are reused; full rotation artwork is a later content increment.
 
 - [Current gameplay rules](docs/gameplay-v3.md)
 - [Content definitions and adding obstacles](docs/content.md)
@@ -10,7 +10,7 @@ Canvas 2D browser game with native ES modules and DOM controls. The 3.1.0 conten
 
 Node 20+; `npm ci`, `npm run dev`, `npm test`, `npm run check`. The browser uses checked-in JavaScript directly; TypeScript is a development check of the content contract, not a new runtime dependency. The local server is http://127.0.0.1:8766.
 
-The game and forthcoming collection/leaderboard UI stay on the existing GitHub Pages URL. PWA, factory, new animation contracts and the online API are subsequent releases, not features claimed by this version. Historical release notes below describe earlier states.
+The game and forthcoming collection/leaderboard UI stay on the existing GitHub Pages URL. PWA, factory, new animation contracts, full turntables and the online API are subsequent releases, not features claimed by this version. Historical release notes below describe earlier states.
 
 ---
 
