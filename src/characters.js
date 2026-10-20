@@ -1,13 +1,7 @@
-import {joeReaction} from './encounter.js?v=3.3.0';
+import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.4.0';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.4.0';
+import {joeReaction} from './encounter.js?v=3.4.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
-// A compact raised forearm; the middle finger always stays upright in screen space.
-export function raisedArm(shoulder,upper,lower,side){
-  const angle=Math.atan2(-.55,side*Math.sqrt(1-.55**2));
-  const reach=(upper+lower)*.72,bend=Math.acos((upper*upper+reach*reach-lower*lower)/(2*upper*reach));
-  const elbow={x:shoulder.x+upper*Math.cos(angle+side*bend),y:shoulder.y+upper*Math.sin(angle+side*bend)};
-  const wrist={x:shoulder.x+reach*Math.cos(angle),y:shoulder.y+reach*Math.sin(angle)};
-  return {elbow,wrist};
-}
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;
   return Math.max(-limit,Math.min(limit,side*Math.PI/18*strength))-parentAngle;
@@ -16,27 +10,8 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
-// A two-bone reach to the Roadster edge, in the crouched torso's local frame.
-export function boardGrabArm(side,drop,torsoAngle){
-  const shoulder={x:side*22,y:-82},world={x:side*43-4,y:10-drop};
-  const c=Math.cos(torsoAngle),s=Math.sin(torsoAngle);
-  let wrist={x:c*world.x+s*world.y,y:-s*world.x+c*world.y};
-  const dx=wrist.x-shoulder.x,dy=wrist.y-shoulder.y,d=Math.min(71.9,Math.hypot(dx,dy)),a=Math.atan2(dy,dx),bend=Math.acos(d/72);
-  const distance=Math.hypot(dx,dy);if(distance>d)wrist={x:shoulder.x+dx*d/distance,y:shoulder.y+dy*d/distance};
-  const elbow={x:shoulder.x+36*Math.cos(a-side*bend),y:shoulder.y+36*Math.sin(a-side*bend)};
-  return {shoulder,elbow,wrist};
-}
-// Reuse the paper legs, with a reachable ankle and two fixed-length segments.
-// One leg kicks up while the other reaches forward, rather than stacking feet.
-export function seatedLegPose(side,drop){
-  const hip={x:side*11,y:-43+drop},foot=side>0?{x:53,y:drop-74}:{x:39,y:drop-26};
-  const angle=side>0?-.75:.08,ankle={x:foot.x+5*Math.sin(angle),y:foot.y-5*Math.cos(angle)};
-  const dx=ankle.x-hip.x,dy=ankle.y-hip.y,d=Math.hypot(dx,dy),upper=28,lower=27;
-  const along=(upper*upper-lower*lower+d*d)/(2*d),bend=Math.sqrt(Math.max(0,upper*upper-along*along)),sign=side<0?1:-1;
-  const knee={x:hip.x+dx/d*along-sign*dy/d*bend,y:hip.y+dy/d*along+sign*dx/d*bend};
-  return {hip,knee,ankle,foot,angle};
-}
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites, heroRig=HERO_RIG, heroAppearance={}}) {
+  const appearance={...HERO_APPEARANCE,...heroAppearance};
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
   const companyX=new Path2D('M18.244 2.25h3.308l-7.227 8.26L22.828 21.75h-6.657l-5.214-6.817L4.992 21.75H1.682l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z');
@@ -122,6 +97,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     }
   }
   function heroHead(c,boosted,target,angry,reaction){
+    if(appearance.head!=='head'){head(c,appearance.head,-33,-74,68,78);return;}
     if(reaction.fall){
       faceBase(c,'head');eyes(c,[[-8,-33],[14,-33]],{x:5,y:-42},9,12);
       line(c,[[-17,-49],[-8,-53],[0,-49]],'#66503d',2);line(c,[[7,-48],[14,-44],[22,-47]],'#66503d',2);
@@ -184,9 +160,6 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   }
   function localPoint(c,point,s){
     return c.getTransform().inverse().transformPoint({x:(point.x+s.ox)*R,y:(point.y+s.oy)*R});
-  }
-  function unrotate(point,angle){
-    return {x:point.x*Math.cos(angle)+point.y*Math.sin(angle),y:point.y*Math.cos(angle)-point.x*Math.sin(angle)};
   }
   function sneaker(c,x,y,side,size=1,color='#e9e5da'){
     c.save();c.translate(x,y);c.scale(side*size,size);
@@ -261,15 +234,14 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       ctx.restore();
     }
   }
-  const motion={last:NaN,taunt:0,wave:0,facing:0};
+  const motion=createHeroAnimation();
+  function reset(){Object.assign(motion,createHeroAnimation());}
+  function update(dt){const {CAMEO}=getState(),target=CAMEO.active?null:gestureTarget(),distance=target?obstacleDx(target)+target.w/2:0;advanceHeroAnimation(motion,dt,{target:!!target,distance,cameo:CAMEO.active});}
   function elon(x,y,air,pose=0){
     const {S,B,CAMEO,sceneTime,heroY}=getState(),podcast=CAMEO.active?null:joeTarget?.();
     const reaction=joeReaction(podcast?obstacleDx(podcast)+podcast.w/2:NaN);
     const target=CAMEO.active||podcast?null:gestureTarget();
-    const dt=Number.isFinite(motion.last)?clamp(sceneTime-motion.last,0,.1):1/60;motion.last=sceneTime;
-    const dx=target?obstacleDx(target)+target.w/2:0;
-    const a=1-Math.exp(-dt*15),facing=target?Math.sign(dx)||1:0;
-    motion.taunt=mix(motion.taunt,target?ease((300-Math.abs(dx))/100):0,a);motion.wave=mix(motion.wave,CAMEO.active?1:0,a);motion.facing=mix(motion.facing,facing,a);
+    const dx=target?obstacleDx(target)+target.w/2:0,facing=target?Math.sign(dx)||1:0;
     const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab,taunt=S.falling?0:motion.taunt*(1-grab),wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave*(1-grab);
     const seat=clamp(S.fallSeat||0),push=clamp(S.fallPush||0),flail=clamp(S.fallFlail||0);
     const tilt=(S.falling?0:((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab));
@@ -278,50 +250,19 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     drawFigure(heroSurface,c=>{
       let jointHand;
       for(const side of [-1,1]){
-        // Measured on upright Roadster frame 0: soles follow its rear deck/bonnet.
-        // Keep those supports fixed while the hips and torso lean under boost.
-        let shoeAngle=air?0:side<0?-.17:.31;
-        const support={x:side*25,y:air?-1:side<0?1.6:4.8};
-        const foot=air?support:unrotate(support,tilt);
-        const ankleWorld={x:support.x+5*Math.sin(shoeAngle),y:support.y-5*Math.cos(shoeAngle)};
-        const ankle=air?ankleWorld:unrotate(ankleWorld,tilt);
-        const hip={x:side*11,y:-43+drop},knee={x:side*(23+15*crouch),y:-25-(air?10:0)+drop*.5};
-        if(seat>0){
-          const seated=seatedLegPose(side,drop);
-          for(const [point,to] of [[foot,seated.foot],[ankle,seated.ankle],[knee,seated.knee]]){point.x=mix(point.x,to.x,seat);point.y=mix(point.y,to.y,seat);}
-          shoeAngle=mix(shoeAngle,seated.angle,seat);
-        }
-        limb(c,[[hip.x,hip.y],[knee.x,knee.y],[ankle.x,ankle.y]],side<0?'#343b43':'#42464c',14);
-        c.save();c.translate(foot.x,foot.y);c.rotate(air&&!seat?0:shoeAngle-tilt);sneaker(c,0,0,side,1,'#e8e7dc');c.restore();
+        const {hip,knee,ankle,foot,angle:shoeAngle}=sampleHeroLeg(side,{air,crouch,drop,seat,tilt},heroRig);
+        limb(c,[[hip.x,hip.y],[knee.x,knee.y],[ankle.x,ankle.y]],side<0?appearance.rearLeg:appearance.frontLeg,14);
+        c.save();c.translate(foot.x,foot.y);c.rotate(shoeAngle);sneaker(c,0,0,side,1,appearance.shoes);c.restore();
       }
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
-      poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],'#252a2d');
-      c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';c.fill(companyX,'evenodd');c.restore();
+      poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],appearance.shirt);
+      c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';if(appearance.emblem)c.fill(companyX,'evenodd');c.restore();
       for(const side of [-1,1]){
-        const normalY=air?-92:-65+10*crouch,armWave=S.falling?wave*(.8+.2*Math.sin(sceneTime*13+side)):side===1?wave:0;
-        const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5;
-        const k=opponent&&side===facing?taunt:0,arm=k?raisedArm({x:side*22,y:-82},23,22,side):null;
-        let ex=mix(side*34,arm?.elbow.x??side*34,k),ey=mix(-65,arm?.elbow.y??-65,k),hx=mix(side*44,arm?.wrist.x??side*44,k),hy=mix(normalY,arm?.wrist.y??normalY,k);
-        ex=mix(ex,side*39,armWave);ey=mix(ey,-98,armWave);hx=mix(hx,side*(46+5*Math.sin(sceneTime*7)),armWave);hy=mix(hy,-117,armWave);
-        if(side===1&&reaction.reach>0){
-          const r=reaction.reach,i=reaction.inhale;
-          ex=mix(ex,35,r);ey=mix(ey,-77-i*7,r);
-          hx=mix(hx,40-i*6,r);hy=mix(hy,-92-i*11,r);
-        }
-        const aim=opponent?localPoint(c,opponent,heroSurface):null;
-        if(special){
-          const near=side===facing;
-          if(guns||near){const angle=Math.atan2(aim.y+82,aim.x-side*22);ex=side*22+Math.cos(angle)*22;ey=-82+Math.sin(angle)*22;hx=side*22+Math.cos(angle)*43;hy=-82+Math.sin(angle)*43+(guns?side*7:0);}
-        }
-        if(grab>0){
-          const arm=boardGrabArm(side,drop,.09*crouch);
-          ex=mix(ex,arm.elbow.x,grab);ey=mix(ey,arm.elbow.y,grab);hx=mix(hx,arm.wrist.x,grab);hy=mix(hy,arm.wrist.y,grab);
-        }
-        // Existing paper arms brace behind the hips, then push down for takeoff.
-        if(seat>0||push>0){const brace=Math.max(seat,push);ex=mix(ex,side*29-9,brace);ey=mix(ey,-37,brace);hx=mix(hx,side*31-12,brace);hy=mix(hy,mix(-30,-25,push),brace);}
-        if(flail>0){ex=mix(ex,side*44,flail);ey=mix(ey,side<0?-75:-102,flail);hx=mix(hx,side<0?-65:56,flail);hy=mix(hy,side<0?-90:-118,flail);}
+        const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5,aim=opponent?localPoint(c,opponent,heroSurface):null;
+        const arm=sampleHeroArm(side,{air,crouch,drop,wave,taunt,aim,special,guns,facing,reaction,grab,seat,push,flail,time:sceneTime,falling:S.falling},heroRig);
+        const {x:ex,y:ey}=arm.elbow,{x:hx,y:hy}=arm.wrist,k=arm.taunt,armWave=arm.wave;
         const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
-        limb(c,[[side*22,-82],[ex,ey],[hx,hy]],'#303536',11);
+        limb(c,[[arm.shoulder.x,arm.shoulder.y],[ex,ey],[hx,hy]],appearance.arms,11);
         if(guns)moneyGun(c,hx,hy,aim,1,'elon',heroSurface);
         else if(special&&side===facing)pointingHand(c,hx,hy,aim);
         else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
@@ -425,5 +366,5 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   }
   function cameoLeg(headKey,x,y){seatedSprite(headKey,x,y,true);}
   function cameoRider(headKey,x,y){seatedSprite(headKey,x,y);}
-  return {elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,beginFrame,drawMoneyStreams};
+  return {update,reset,elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,beginFrame,drawMoneyStreams};
 }

@@ -7,12 +7,14 @@ User-authorized on 20 October 2026: implement and publish successive tested rele
 - 3.1.0: content foundation, published and live-verified (commit `8030efb5f161e25786f6bd2214876afe9acee79d`).
 - 3.2.0: encounter collection, published and live-verified (commit `218c4618e1cffb18babbfba78be15c0a2e346c18`).
 
+- 3.3.0: installable/offline PWA, published and live-verified (commit `01f32b8dd1973d8eb67fc1833bc0cbcc144cdcc4`).
+
 ## Delivery order
 
 1. **3.1 — Content foundation:** one obstacle catalogue, explicit anchors/renderers/reactions/biomes, validation and gradual typing. Preserve gameplay as a measurable baseline.
 2. **3.2 — Encounter collection:** silhouettes, non-interrupting discovery (collision counts), menu/pause entry, detail cards and persistent NEW until first detail view. Full turntable artwork is a later content release; static cards must not be described as completed rotations.
 3. **3.3 — PWA:** installation, deliberate offline content, independent staging/cache scopes and safe updates between attempts. Preserve the browser URL and saves.
-4. **3.4 — Animation and reproducible runs:** reusable rig/clip contracts, seeded generation, shared headless simulation and bounded difficulty. Preserve foot/tyre contacts and the current controls.
+4. **3.4 — Animation foundation; 3.4.1 — Reproducible runs:** reusable rig/clip contracts, seeded generation, shared headless simulation and bounded difficulty. Preserve foot/tyre contacts and the current controls.
 5. **3.5 — Online leaderboard:** Cloudflare Workers/D1 candidate, while the game stays on Pages. Optional submission of any completed run, server validation, one record per run, pagination, retry/idempotency and migration rehearsals. Provider access, verifier CPU and costs must be tested before selecting deployment settings.
 6. **3.6 — Biomes and light:** spaceport/factory loop, concrete/yellow markings, layered factory with workers/robots/logistics and near-wall convex ramp. Factory car-stunt preparation/performance replaces the rocket event there. Day/night remains independent of biome cycles.
 7. **3.7 — Full presentation:** photo-referenced turntables, three metallic head trophies, sharing and separately reviewed preview artwork.

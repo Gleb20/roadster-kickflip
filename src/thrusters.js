@@ -1,4 +1,4 @@
-import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=3.3.0';
+import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=3.4.0';
 // Source-pixel nozzle anchors measured on each of the nine photographed poses.
 // The car rolls about its long axis: exhaust points up while the car is inverted.
 const POSES=[

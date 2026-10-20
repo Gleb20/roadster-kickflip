@@ -1,3 +1,7 @@
+## 3.4.0 — Reusable paper-rider animation
+
+Named joints, shared arm/leg pose sampling and replaceable appearance configuration. [Animation contract](docs/hero-animation.md). Current controls and collision remain the baseline.
+
 ## 3.3.0 — Installable and offline
 
 Install from the main menu or your browser. A complete verified copy supports offline play. Updates apply only from the menu/results with other game windows closed; saved collection and personal best remain on this browser. [PWA behaviour](docs/pwa.md).
