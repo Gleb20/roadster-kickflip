@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tesla-jump-ranking-staging",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": false
+    }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tesla-jump-ranking-staging",
+      "database_id": "67a52384-f50a-465f-af2a-d9c479bc4eb1",
+      "migrations_dir": "migrations",
+      "preview_database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "staging",
+    "ALLOWED_ORIGINS": "https://gleb20.github.io,http://127.0.0.1:8766",
+    "ACCEPTING_SESSIONS": "false",
+    "SCORE_EPOCH": "v3",
+    "VERIFIER_URL": "",
+    "ACCEPTING_WRITES": "false",
+    "MIGRATION_PROXY_URL": ""
+  },
+  "triggers": {
+    "crons": [
+      "15 3 * * *"
+    ]
+  }
+}

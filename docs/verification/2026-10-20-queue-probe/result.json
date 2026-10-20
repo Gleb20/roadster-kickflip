@@ -1,0 +1,22 @@
+{
+  "purpose": "Bounded test of Cloudflare Queues as an alternative to a Node verifier, without changing any account tariff",
+  "queue": "tesla-jump-verify-staging",
+  "worker": "tesla-jump-verifier-staging",
+  "shortReplay": {
+    "seconds": 32.03333333333333,
+    "score": 1272,
+    "ticks": 3844,
+    "result": "accepted"
+  },
+  "hourReplay": {
+    "seconds": 3592,
+    "result": "started but did not complete"
+  },
+  "limitConfiguration": {
+    "requestedCpuMs": 30000,
+    "status": 400,
+    "providerCode": 100328,
+    "message": "CPU limits are not supported for the Free plan. Switch to a paid plan to set CPU limits."
+  },
+  "decision": "Do not use this queue as the production verifier; retain tested Node adapter pending provider/workspace choice. No billing plan changed. Remove only the probe queue, worker and private probe table; preserve ranking API and database."
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tesla-jump-verifier-staging",
+  "main": "queue-probe.js",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tesla-jump-ranking-staging",
+      "database_id": "67a52384-f50a-465f-af2a-d9c479bc4eb1"
+    }
+  ]
+}

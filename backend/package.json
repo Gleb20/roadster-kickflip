@@ -1,0 +1,22 @@
+{
+  "name": "tesla-jump-ranking-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --ip 127.0.0.1 --port 8787 --var ACCEPTING_SESSIONS:true --var ACCEPTING_WRITES:true",
+    "types": "wrangler types --include-runtime=false --strict-vars=false worker-configuration.d.ts",
+    "check": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "test:api": "node test-api.mjs",
+    "verify:ruleset": "node check-ruleset.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.2",
+    "typescript": "7.0.2",
+    "@cloudflare/workers-types": "5.20261019.1"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

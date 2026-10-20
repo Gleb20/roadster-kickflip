@@ -1,0 +1,8 @@
+import {verifyReplay} from './rulesets/roadster-v341/run.js';
+export default {
+ async fetch(){return Response.json({service:'tesla-jump-verifier-probe',ok:true});},
+ async queue(batch,env){for(const message of batch.messages){const {testId,replay}=message.body;let result;await env.DB.prepare('INSERT OR REPLACE INTO verification_probe(id,result,completed_at) VALUES(?,?,?)').bind(testId,JSON.stringify({phase:'started',hasReplay:!!replay}),Date.now()).run();
+  try{result={outcome:'accepted',...verifyReplay(replay)};}catch(error){result={outcome:'rejected',error:error.message};}
+  await env.DB.prepare('INSERT OR REPLACE INTO verification_probe(id,result,completed_at) VALUES(?,?,?)').bind(testId,JSON.stringify(result),Date.now()).run();message.ack();
+ }}
+};

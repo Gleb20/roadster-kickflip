@@ -1,0 +1,3 @@
+# Local testing only. Real deployment secrets are set through the provider.
+VERIFY_KEY="local-test-only"
+RATE_KEY="local-test-rate-only"
