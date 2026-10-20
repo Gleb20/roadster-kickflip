@@ -78,9 +78,9 @@ await touch.screenshot({path:path.join(out,'landscape-hud.png')});
  // A new required sprite must gate boot, even when all old materials are ready.
  const gated=await browser.newContext();const boot=await gated.newPage();let heldDrone;
  await boot.route('**/phantom-v3.png',route=>{heldDrone=route;});await boot.goto(url);
- await boot.waitForFunction(()=>document.querySelector('#loading-progress').value>=11);
- check('new drone decode gates start',await boot.evaluate(()=>document.querySelector('#game').inert&&document.querySelector('#start').disabled&&document.querySelector('#loading-progress').max===12));
- await heldDrone.continue();await boot.waitForFunction(()=>!document.querySelector('#game').inert);check('releasing drone completes all 12 materials',await boot.evaluate(()=>document.querySelector('#loading-progress').value===12));await gated.close();
+ await boot.waitForFunction(()=>document.querySelector('#loading-progress').value>=document.querySelector('#loading-progress').max-1);
+ check('new drone decode gates start',await boot.evaluate(()=>document.querySelector('#game').inert&&document.querySelector('#start').disabled&&document.querySelector('#loading-progress').max===13));
+ await heldDrone.continue();await boot.waitForFunction(()=>!document.querySelector('#game').inert);check('releasing drone completes all 13 materials',await boot.evaluate(()=>document.querySelector('#loading-progress').value===document.querySelector('#loading-progress').max));await gated.close();
  // Historical best remains present while v3 has its own key.
  await page.evaluate(()=>{localStorage.setItem('roadster-best-v1','12345');localStorage.setItem('roadster-best-v3','678');});await page.reload();await page.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert);check('new record does not overwrite legacy',await page.evaluate(()=>document.querySelector('#best').textContent==='00678'&&localStorage.getItem('roadster-best-v1')==='12345'));
  check('no JS or console errors',errors.length===0);fs.writeFileSync(path.join(out,'browser.json'),JSON.stringify({checks,errors},null,2));console.log(JSON.stringify({checks:checks.length,errors}));

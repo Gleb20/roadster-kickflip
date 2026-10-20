@@ -1,10 +1,10 @@
-# Tesla Jump 3.4.2
+# Tesla Jump 3.6.0
 
-[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.4.2)
+[Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.6.0)
 
 Canvas 2D browser/PWA game with controlled flips, directional thrust, landed trick chains and a persistent encounter collection.
 
-3.4.2 revises rough-landing recovery: two seated rebounds, a stronger third launch, standing in flight and a return onto the Roadster. The car pitches nose-first then rear-first behind the rider, levels and drives underneath before the feet land. Head, shoulders, raised hands and bent legs compress together at each seated impact. Existing photographs and paper parts are reused.
+The Tesla factory now appears at 2:30 of active play, regardless of score. A four-second scenery crossfade keeps the attempt running; every 150 seconds the route alternates spaceport and factory. Assembly robots, conveyors, fictional workers, moving logistics and concrete/yellow markings use the prepared paper sprites. Both locations work offline after a complete PWA install. Existing controls, grab/reactions, physics, scores and the Supabase leaderboard stay compatible.
 
 - [Current gameplay rules](docs/gameplay-v3.md)
 - [Content catalogue and obstacle pipeline](docs/content.md)
@@ -14,7 +14,7 @@ Canvas 2D browser/PWA game with controlled flips, directional thrust, landed tri
 - [Incremental release sequence](docs/UPGRADE-RELEASES.md)
 - [3.4.2 validation and rollback](docs/verification/2026-10-20-v3.4.2/README.md)
 
-The collection unlocks visible encounters even on collision, without interrupting play. Browse it from the menu or pause; NEW clears on the first detailed view. Portraits are currently static. Browser saves remain local. Online ranking, factory/daylight, full portrait rotations, head trophies and sharing are later unfinished increments; the game stays on GitHub Pages.
+The collection unlocks visible encounters even on collision, without interrupting play. Browse it from the menu or pause; NEW clears on the first detailed view. Portraits are currently static. Browser saves remain local. Online ranking uses the existing Supabase API while the game stays on GitHub Pages. Biome-specific obstacle pools, independent daylight, the demonstration ramp/stunt, full portrait rotations, head trophies and sharing remain later unfinished increments.
 
 Node20+; `npm ci`, `npm run dev`, `npm test`, `npm run check`. The local server is http://127.0.0.1:8766. Run `npm run build:pwa` after runtime changes to regenerate the coherent offline package. TypeScript checks the content contract only; it is not a runtime dependency.
 

@@ -16,7 +16,7 @@ function harness(){
  const fetch=async request=>{
   if(!network)throw Error('offline');const url=new URL(typeof request==='string'?request:request.url);
   const file=url.pathname.replace('/roadster-kickflip/','');
-  const bytes=await readFile(new URL(file,root));return new Response(tamper&&file==='style.css'?'wrong version':bytes);
+  const bytes=await readFile(new URL(file,root));return new Response(tamper&&file===(typeof tamper==='string'?tamper:'style.css')?'wrong version':bytes);
  };
  const self={registration:{scope:'https://game.test/roadster-kickflip/'},clients:{claim:async()=>{},matchAll:async()=>clients},skipWaiting:async()=>{skips++;},addEventListener:(name,fn)=>handlers.set(name,fn)};
  vm.runInNewContext(code,{self,caches:storage,fetch,crypto:webcrypto,URL,Request,Response,Uint8Array,Promise,Error,Array});
@@ -39,4 +39,12 @@ test('explicit activation is limited to a safe single window',async()=>{
  await h.run('message',{data:{type:'APPLY_UPDATE',safe:true},source});assert.equal(h.skips,0);assert.equal(h.messages.at(-1).type,'UPDATE_BLOCKED');
  h.clients=[{id:'a',url:'https://game.test/roadster-kickflip/'}];await h.run('message',{data:{type:'APPLY_UPDATE',safe:false},source});assert.equal(h.skips,0);
  await h.run('message',{data:{type:'APPLY_UPDATE',safe:true},source});assert.equal(h.skips,1);
+});
+
+test('factory sprites are cached together and a corrupt sprite cannot replace the offline game',async()=>{
+ const h=harness();await h.run('install');const current=[...h.buckets.keys()].find(k=>k.endsWith(':'+version));
+ const urls=[...h.buckets.get(current).keys()];
+ assert.equal(urls.filter(u=>u.includes('/assets/factory/')&&u.endsWith('.png')).length,11);
+ const bad=harness();bad.tamper='assets/factory/forklift.png';await assert.rejects(bad.run('install'),/incomplete/);
+ assert.ok(bad.buckets.has('tesla-jump:/roadster-kickflip/:old-2'));assert.equal([...bad.buckets.keys()].some(k=>k.endsWith(':'+version)),false);
 });

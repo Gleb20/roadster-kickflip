@@ -1,0 +1,205 @@
+{
+  "baseGameCommit": "f139299f91c8047b3eaee86ad2e9a24be786d8eb",
+  "tool": "Built-in image_gen.imagegen",
+  "date": "2026-10-20",
+  "assets": {
+    "rear-wall": {
+      "generatedOriginal": "generated/rear-wall-original.png",
+      "prompt": "wall-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/assembly-line-2012.jpg",
+          "sha256": "560ad87d5a74fb8566611f188e6d4fbf453ac81b3a268e8a988f9390e601d6e1"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "0cedb549d18a25fc7175959d9c52dbce078689ebb0adec2641a2aa5f8a1d903e",
+      "transparentBackground": false
+    },
+    "conveyor": {
+      "generatedOriginal": "generated/conveyor-original.png",
+      "prompt": "line-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/assembly-line-2012.jpg",
+          "sha256": "560ad87d5a74fb8566611f188e6d4fbf453ac81b3a268e8a988f9390e601d6e1"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "e11fbf96a83583ab57473bf89add85504de8a1076a0ae6674e574637d42a9f7c",
+      "transparentBackground": true
+    },
+    "robot-kit": {
+      "generatedOriginal": "generated/robot-kit-original.png",
+      "prompt": "robot-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/robot-dance-2012.jpg",
+          "sha256": "05e53550b322b24feb02031bd2dbac988c686b24f010206bd4d81504ed45969a"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "309b726b92327153cdcb767fc3a76287ce070202e3179e5016e6c0a9d80b7bef",
+      "transparentBackground": true
+    },
+    "forklift": {
+      "generatedOriginal": "generated/forklift-original.png",
+      "prompt": "forklift-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/linde-e20-2002.jpg",
+          "sha256": "e4923f6729649e3d34faad88a423cc6205f0222b3f28cbdcea730aaba2dc46ab"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "07bc79a40af40612c7bf929bbb03534d26c0735b37d1d192a344af7642d75bf0",
+      "transparentBackground": true
+    },
+    "workers": {
+      "generatedOriginal": "generated/workers-original.png",
+      "prompt": "workers-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/boilersuit-2005.jpg",
+          "sha256": "933e389238edae9b9631440a4765ca7a36f5e0fdc717879103f1e1437816be4c"
+        },
+        {
+          "path": "references/style-paper-person.png",
+          "sha256": "7a6e0986e48260b1769a5da9caa414d0bad4a001a9ad34e52944944d9e62fa5b"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "af864b45d6cd9958c875e587ab19ecb4419c6bceead325abb10e1791f55d4cc7",
+      "transparentBackground": true
+    },
+    "body-shell": {
+      "generatedOriginal": "generated/body-shell-original.png",
+      "prompt": "body-prompt.txt",
+      "inputs": [
+        {
+          "path": "references/assembly-line-2012.jpg",
+          "sha256": "560ad87d5a74fb8566611f188e6d4fbf453ac81b3a268e8a988f9390e601d6e1"
+        },
+        {
+          "path": "references/style-spaceport-atlas.png",
+          "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+        }
+      ],
+      "originalSha256": "65ac19e4e4ec060efc5034839c9b0900ef8925d989dcd810f77db8c69a3a0f18",
+      "transparentBackground": true
+    }
+  },
+  "normalization": "prepare.py: detached alpha dust <64 source pixels removed; crop, proportional Lanczos resize, 2px alpha padding; no painting or invented geometry. Separate prepared/manifest.json records regions, pivots and checksums. Pivots still need assembled animation calibration.",
+  "visualReview": [
+    "Generated originals inspected",
+    "Forklift composited on pale background; transparent cab/forks verified",
+    "All prepared sprites inspected together in pack-review.png",
+    "No game integration, scene layering, joint-motion or device-performance acceptance yet"
+  ],
+  "productionStatusAtCapture": "Asset production candidate, NOT integrated or published",
+  "integration": "Unchanged prepared PNGs integrated into 3.6.0. Production paths below are relative to the original preserved art-source packet.",
+  "prompts": {
+    "forklift-prompt.txt": "Use case: stylized-concept. Create ONE isolated background logistics vehicle sprite for Tesla Jump. Photo A is a real Linde E20-02 electric forklift, year 2002, by Dieter Arndt: preserve its compact red counterweight body, black overhead guard, open empty driver's seat, upright black mast to the RIGHT, two low forks extending right, small solid black wheels and distinctive low electric forklift proportions. It is the physical reference; adapt the slight three-quarter angle into a clean, level, near-perfect SIDE VIEW FACING RIGHT, wheels grounded at one horizontal baseline, whole mast and forks inside frame with generous 6 percent alpha margin. Image B is the CURRENT background sprite atlas: use the same tactile cut-cardstock collage, subtle paper grain, muted brick red body, graphite-blue metal, flat simple layered shading and quiet cut-paper edges. This is a background prop intended to display about 120 CSS pixels wide, not a foreground photographic car obstacle. No white sticker outline. Mast should be lowered to standard driving height, forks low near the wheel baseline. Empty cab, no human, no cargo, no pallet, no scene, wall, floor or cast shadow, no text/branding/letters/logos, no extra wheels or detached parts, no border, no checkerboard. Truly transparent background. Single coherent forklift only.\n",
+    "workers-prompt.txt": "Use case: stylized-concept. Production background people sprite sheet, exactly THREE small FICTIONAL adult factory workers, separate from each other on true transparent alpha, one full body in each equally spaced horizontal cell, with generous empty gutters and feet aligned on one horizontal baseline. Image A is a real photograph of a blue one-piece boilersuit by Anthony Appleyard (2005): use ONLY the garment design (blue work coverall, collar, front closure, chest pockets, loose practical legs) as physical reference, not that person's face, age, identity or pose. Image B is Joe Rogan's CURRENT GAME paper-person sprite, used ONLY for the simple round cartoon heads, big paper eyes, mitten-like hands, chunky shoes, tactile paper shapes and restrained grain; do not draw Joe, headphones, microphone or his clothes. Image C is the game's current background atlas, guiding the quieter saturation and softer edge contrast of distant scenery. These workers stand in a BACKGROUND factory, behind the gameplay plane, intended to display 45 CSS pixels high. A thin dark silhouette edge is sufficient, NO white foreground sticker halo. Left cell: a fictional dark-haired woman with ponytail wearing slate-blue coveralls and dark boots, holding a small clipboard to her waist, front-three-quarter view right. Center: fictional man with short dark hair, medium brown skin, blue coveralls and dark boots, clear safety glasses, side-three-quarter facing left with both hands low in a relaxed talking pose. Right: fictional short-haired light-skinned man, slightly stocky, muted blue-grey coveralls, dark boots, holding a small torque wrench down by one thigh, side-three-quarter facing right. Every hand has simple clear shape, no duplicated limbs; all whole bodies fully inside the frame. Friendly neutral expressions, same head/body scale and style; no hard hats, no high-visibility vest (quiet factory workwear), no printed badges, readable text, letters, logos, vehicles, machines, floor, wall, scene, props other than the clipboard/wrench, cast shadow, frame or checkerboard. Genuine transparent background.\n",
+    "wall-prompt.txt": "Use case: stylized-concept. Asset type: one production rear-wall background tile for the 2D side-view browser game Tesla Jump.\nInput image A (assembly-line-2012.jpg): real Tesla Fremont factory interior, photographed by Steve Jurvetson. Use its white steel posts, horizontal roof trusses, pale industrial wall panels, lighting fixtures and manufacturing-hall scale as the physical reference. Do not reproduce the camera's deep one-point perspective or its machines.\nInput image B (style-spaceport-atlas.png): the CURRENT GAME background-sprite style. Match its tactile cut-cardstock collage, subtle fibrous paper grain, restrained flat shading, slightly irregular polygon edges, cool graphite blue-grey structural parts, and quiet details. It is style reference only; do not include rockets or spaceport objects.\nCreate ONE wide horizontal rear hangar wall, a flat side elevation at eye level, for a side-scrolling factory interior. Landscape panorama about 3:1. Fill the whole rectangular canvas; this is an opaque far background, no transparency. A charcoal grey roof-truss/ceiling band across the top quarter; the main lower wall is warm pale grey folded paper with evenly spaced grey steel columns, shallow high clerestory panels and a few restrained red conduit lines and small closed maintenance panels. Brighter than the night spaceport while still muted enough to sit behind the game characters. Use the same cut-paper material as B. Vertical columns stay vertical, major beams horizontal, very shallow orthographic depth. No vanishing-point corridor. Left and right edges have compatible wall-panel/beam heights for repeated horizontal placement. Ground-contact seam lies along the very bottom edge; do not draw a floor plane or a foreground road.\nKeep the broad middle/lower wall relatively uncluttered so a separate moving assembly line and distant stunt zone can be layered in front. No robots, vehicles, people, conveyors, ramp, rocket, outdoor landscape, sun, moon, text, letters, logos or white sticker outline. No mockup, labels, grid, watermark or border. Crisp readable paper shapes, not photorealistic, not a 3D render.\n",
+    "body-prompt.txt": "Use case: stylized-concept. One isolated unfinished Tesla Model S first-generation 2012 aluminium body-in-white shell sprite, a BACKGROUND manufacturing component for Tesla Jump. Photo A is Steve Jurvetson's real 2012 Tesla Fremont assembly line: use the bare silver car shell on its assembly fixtures as the physical reference. Photo B is the current GAME BACKGROUND atlas: match its tactile cut-paper collage, muted steel-blue/silver cardstock, shallow flat shading and quiet polygon edges, no white character sticker outline, not a photographic foreground car. Perfect level SIDE ELEVATION FACING RIGHT, whole silhouette including nose and rear fully inside frame with 6 percent transparent margin. Recognisable Model S sedan's low fastback roof, four door apertures with simple structural pillars, empty window openings and bare wheel arches, unpainted metal shell. No glass, tyres, wheels, engine, seats or passenger, no glowing lamps, no branded grille, no text or logo. Empty open apertures truly transparent where no bodywork is present. Simplify industrial details so it reads at 120 CSS pixels wide. No conveyor or separate support (that is another sprite), robot, person, floor, wall, scene, cast shadow, border or checkerboard. Truly transparent alpha. ONE coherent car shell only.\n",
+    "line-prompt.txt": "Use case: stylized-concept. Production game asset, one isolated factory conveyor section, very wide horizontal composition about 3:1. Photo A shows the real Tesla Fremont assembly line (Steve Jurvetson, 2012). Use the low steel conveyor and transport fixtures beneath the bare car bodies as physical references; photo B is the current game's background atlas, defining muted graphite/blue-grey tactile cut-cardstock collage, slight paper grain and simple readable layered silhouettes, NO white character sticker outline. Create a long, low, straight assembly-line conveyor section viewed in perfectly level SIDE ELEVATION. A slate-grey steel rectangular frame on five broad legs, simple dark rollers along its top, two small pale-grey electrical cabinets below and restrained red machine-service accents. Whole object including every foot fully inside frame with 4 percent transparent margins. Flat horizontal top, all feet share one bottom baseline, believable machinery proportions. Render as a background prop, not as an obstacle, intended display width 360 CSS pixels and height about 60. Low detail at that size, limited flat shading and clear paper cut edges. NO cars, car bodies, robots, people, floor plane, road, wall, ramp, perspective corridor, separate decorations, text, letters, logos, border or cast shadow outside the object. Transparent background with actual alpha. No checkerboard. Single coherent isolated conveyor only.\n",
+    "robot-prompt.txt": "Use case: stylized-concept. Asset: a single modular robot sprite kit on a genuinely transparent 2 by 2 square sheet. Photo A is Steve Jurvetson's real Tesla Fremont Robot Dance photograph (2012): take the RED automotive assembly robot's heavy rounded cast-metal links, dark circular joint covers and base as real physical references; do not infer an exact robot model. Image B is the CURRENT GAME background atlas: match tactile construction-paper collage, restrained flat shading, muted brick red links and graphite blue-grey joints, subtle paper grain, clean chunky silhouettes. No white sticker edge. This is a BACKGROUND assembly robot, intended complete assembled height about 110 CSS pixels. Produce exactly FOUR SEPARATE rigid side-view parts, one centered in each equally sized quadrant with large transparent gutters: TOP LEFT a squat steel floor pedestal and red shoulder housing, shoulder's circular axle centered in upper portion; TOP RIGHT a single long red upper-arm link, perfectly horizontal, circular dark pivot centered at each end; BOTTOM LEFT one narrower red forearm link perfectly horizontal with circular pivot at each end; BOTTOM RIGHT a compact dark-grey welding/clamping wrist tool pointing right, short cylindrical mount left and small fork-shaped nose right. All parts in the same orthographic SIDE ELEVATION and material/lighting, ready to assemble by rotating the links around their pivot centers. Each component whole and separate, do not connect neighboring cells, no duplicate components, no full assembled robot anywhere. Fill most of each cell but keep at least 10 percent empty gutter; pivots unobscured and unambiguous. No scene, machinery beyond these four parts, people, cables between parts, floor, words, letters, numbers, labels, logos, borders, shadows outside each piece or checkerboard. Genuine alpha.\n"
+  },
+  "photoReferences": [
+    {
+      "title": "File:FANUC Robot Assembly Demo.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/FANUC_Robot_Assembly_Demo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/FANUC_Robot_Assembly_Demo.jpg/1280px-FANUC_Robot_Assembly_Demo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:FANUC_Robot_Assembly_Demo.jpg",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/44124348109@N01\">Steve Jurvetson</a>",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "localFile": "references/fanuc-demo-2010.jpg",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/FANUC_Robot_Assembly_Demo.jpg/1280px-FANUC_Robot_Assembly_Demo.jpg",
+      "accessDate": "2026-10-20",
+      "normalization": "Wikimedia-hosted proportional 1280px photographic preview; original full-resolution URL retained",
+      "authorPlain": "Steve Jurvetson"
+    },
+    {
+      "title": "File:Tesla Motors Assembly Line (6858583426).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Tesla_Motors_Assembly_Line_%286858583426%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Tesla_Motors_Assembly_Line_%286858583426%29.jpg/1280px-Tesla_Motors_Assembly_Line_%286858583426%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Tesla_Motors_Assembly_Line_(6858583426).jpg",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/44124348109@N01\">Steve Jurvetson</a> from Los Altos, USA",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "localFile": "references/assembly-line-2012.jpg",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Tesla_Motors_Assembly_Line_%286858583426%29.jpg/1280px-Tesla_Motors_Assembly_Line_%286858583426%29.jpg",
+      "accessDate": "2026-10-20",
+      "normalization": "Wikimedia-hosted proportional 1280px photographic preview; original full-resolution URL retained",
+      "authorPlain": "Steve Jurvetson"
+    },
+    {
+      "title": "File:Tesla Robot Dance (7408451314).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Tesla_Robot_Dance_%287408451314%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Tesla_Robot_Dance_%287408451314%29.jpg/1280px-Tesla_Robot_Dance_%287408451314%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Tesla_Robot_Dance_(7408451314).jpg",
+      "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/44124348109@N01\">Steve Jurvetson</a> from Los Altos, USA",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "localFile": "references/robot-dance-2012.jpg",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Tesla_Robot_Dance_%287408451314%29.jpg/1280px-Tesla_Robot_Dance_%287408451314%29.jpg",
+      "accessDate": "2026-10-20",
+      "normalization": "Wikimedia-hosted proportional 1280px photographic preview; original full-resolution URL retained",
+      "authorPlain": "Steve Jurvetson"
+    },
+    {
+      "title": "Linde E20-02 electric forklift (2002)",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Linde_E20_Elektrostapler_r.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Linde_E20_Elektrostapler_r.jpg",
+      "authorPlain": "Dieter Arndt",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "localFile": "references/linde-e20-2002.jpg",
+      "accessDate": "2026-10-20",
+      "role": "Physical forklift geometry; source inspected, near side view, whole mast and forks"
+    },
+    {
+      "title": "Blue one-piece boilersuit, 2005 photograph",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Boilersuit.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Boilersuit.jpg",
+      "authorPlain": "Anthony Appleyard",
+      "license": "Public domain, author release",
+      "localFile": "references/boilersuit-2005.jpg",
+      "accessDate": "2026-10-20",
+      "role": "Garment only; generated workers are fictional, not a portrayal of the photographed person or actual Tesla staff"
+    },
+    {
+      "title": "Tesla Roadster Event, ramp and wall drive",
+      "descriptionurl": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "authorPlain": "Tesla",
+      "license": "Not established; documentary reference, not a claim of reuse permission",
+      "localFiles": [
+        "references/presentation-ramp-385s.png",
+        "references/presentation-ramp-395s.png"
+      ],
+      "timestampsSeconds": [
+        385,
+        395
+      ],
+      "accessDate": "2026-10-20",
+      "role": "Actual browser video captures; tall quarter-pipe with upper overhang, not proof of a full convex arch. No new ramp art generated."
+    }
+  ]
+}

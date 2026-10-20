@@ -1,0 +1,305 @@
+{
+  "rear-wall": {
+    "file": "rear-wall.png",
+    "source": "rear-wall-original.png",
+    "size": [
+      1536,
+      512
+    ],
+    "alpha": "opaque intentional",
+    "sha256": "500504f1888d40a023c64c3d31ddbc262bddd2fea977b05bffd65c0045123d60"
+  },
+  "conveyor": {
+    "file": "conveyor.png",
+    "source": "conveyor-original.png",
+    "sourceRegion": null,
+    "cropWithinRegion": [
+      33,
+      253,
+      2140,
+      520
+    ],
+    "size": [
+      964,
+      126
+    ],
+    "scale": 0.45562411010915993,
+    "pivots": {},
+    "sha256": "c9e8a6db8e86cadbbb2fdbd8f3916fef26a040dce1b5972ac23b834319727d36",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "body-shell": {
+    "file": "body-shell.png",
+    "source": "body-shell-original.png",
+    "sourceRegion": null,
+    "cropWithinRegion": [
+      47,
+      211,
+      1732,
+      678
+    ],
+    "size": [
+      404,
+      115
+    ],
+    "scale": 0.23738872403560832,
+    "pivots": {},
+    "sha256": "eeec79e27e72628ebb1e291f71d2f7cd6ddcb49b3686bc07912032a6fc19ea1c",
+    "removedDustComponents": 3,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "forklift": {
+    "file": "forklift.png",
+    "source": "forklift-original.png",
+    "sourceRegion": null,
+    "cropWithinRegion": [
+      109,
+      102,
+      1487,
+      935
+    ],
+    "size": [
+      404,
+      246
+    ],
+    "scale": 0.29027576197387517,
+    "pivots": {},
+    "sha256": "4c9f7d52c6be9c6fb8dc0dd91e9d38985572542e4a25f33d5caed92fc640004b",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "robot-base": {
+    "file": "robot-base.png",
+    "source": "robot-kit-original.png",
+    "sourceRegion": [
+      0,
+      0,
+      580,
+      680
+    ],
+    "cropWithinRegion": [
+      51,
+      133,
+      577,
+      634
+    ],
+    "size": [
+      224,
+      214
+    ],
+    "scale": 0.41825095057034223,
+    "pivots": {
+      "shoulder": [
+        156.753,
+        48.426
+      ]
+    },
+    "sha256": "58e33aeb7aac22fbb56ac52ab5f5aae8b60cf04bd292a76458c3668ca674bfdb",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "robot-upper": {
+    "file": "robot-upper.png",
+    "source": "robot-kit-original.png",
+    "sourceRegion": [
+      580,
+      0,
+      1254,
+      680
+    ],
+    "cropWithinRegion": [
+      19,
+      260,
+      654,
+      464
+    ],
+    "size": [
+      324,
+      107
+    ],
+    "scale": 0.5039370078740157,
+    "pivots": {
+      "start": [
+        44.835,
+        52.394
+      ],
+      "end": [
+        273.622,
+        58.441
+      ]
+    },
+    "sha256": "50e0b962094f776c4cb17fafeefd64f29deda105e196737ef8becfbbc8e6fdb4",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "robot-fore": {
+    "file": "robot-fore.png",
+    "source": "robot-kit-original.png",
+    "sourceRegion": [
+      0,
+      680,
+      650,
+      1254
+    ],
+    "cropWithinRegion": [
+      42,
+      184,
+      630,
+      358
+    ],
+    "size": [
+      284,
+      87
+    ],
+    "scale": 0.47619047619047616,
+    "pivots": {
+      "start": [
+        36.762,
+        36.286
+      ],
+      "end": [
+        241.048,
+        36.286
+      ]
+    },
+    "sha256": "8f58bfa4df73be92aaefe91ac2b48462d099f5b18d1ff130f6c81a3552c3aaf4",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "robot-grip": {
+    "file": "robot-grip.png",
+    "source": "robot-kit-original.png",
+    "sourceRegion": [
+      650,
+      680,
+      1254,
+      1254
+    ],
+    "cropWithinRegion": [
+      56,
+      145,
+      560,
+      403
+    ],
+    "size": [
+      184,
+      96
+    ],
+    "scale": 0.35714285714285715,
+    "pivots": {
+      "mount": [
+        1.286,
+        37.357
+      ]
+    },
+    "sha256": "2b73cb1df0161245ee168ad0a1cd0f4f34e3a237eb9143127a5c41d573715b5d",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "worker-0": {
+    "file": "worker-0.png",
+    "source": "workers-original.png",
+    "sourceRegion": [
+      0,
+      0,
+      591,
+      887
+    ],
+    "cropWithinRegion": [
+      171,
+      82,
+      523,
+      860
+    ],
+    "size": [
+      91,
+      196
+    ],
+    "scale": 0.2467866323907455,
+    "pivots": {},
+    "sha256": "c3601c88960d3a4a5b0cb2b6f4713b6e77a5a634900c7956eb1c6a824aac60b5",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "worker-1": {
+    "file": "worker-1.png",
+    "source": "workers-original.png",
+    "sourceRegion": [
+      591,
+      0,
+      1183,
+      887
+    ],
+    "cropWithinRegion": [
+      101,
+      82,
+      489,
+      860
+    ],
+    "size": [
+      100,
+      196
+    ],
+    "scale": 0.2467866323907455,
+    "pivots": {},
+    "sha256": "d0799d3e2accd1c75f921d646c9383092cd110d55c5a2daec95b8958a24157a2",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  "worker-2": {
+    "file": "worker-2.png",
+    "source": "workers-original.png",
+    "sourceRegion": [
+      1183,
+      0,
+      1774,
+      887
+    ],
+    "cropWithinRegion": [
+      89,
+      88,
+      481,
+      861
+    ],
+    "size": [
+      101,
+      196
+    ],
+    "scale": 0.24838292367399742,
+    "pivots": {},
+    "sha256": "fcc6896355f1f02c7c2be122880f403910f995d0fa390c33b2004ad23dd762b7",
+    "removedDustComponents": 0,
+    "alpha": [
+      0,
+      255
+    ]
+  }
+}

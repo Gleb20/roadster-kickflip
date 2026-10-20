@@ -7,6 +7,7 @@ const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.
  'manifest.webmanifest','icons/icon-192.png','icons/icon-512.png']);
 for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))files.add('src/'+name);
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
+for(const name of await readdir(new URL('assets/factory/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/factory/'+name);
 const core=[];
 for(const file of [...files].sort()){
  const bytes=await readFile(new URL(file,root));

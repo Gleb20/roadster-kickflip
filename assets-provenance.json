@@ -435,5 +435,36 @@
     "sourceProvenance": "roadsterFlipV22",
     "background": "#10151b",
     "safeZone": "Vehicle stays within the central maskable safe area"
+  },
+  "teslaFactoryV360": {
+    "files": [
+      "assets/factory/rear-wall.png",
+      "assets/factory/conveyor.png",
+      "assets/factory/body-shell.png",
+      "assets/factory/forklift.png",
+      "assets/factory/robot-base.png",
+      "assets/factory/robot-upper.png",
+      "assets/factory/robot-fore.png",
+      "assets/factory/robot-grip.png",
+      "assets/factory/worker-0.png",
+      "assets/factory/worker-1.png",
+      "assets/factory/worker-2.png"
+    ],
+    "method": "Byte-for-byte integration of the existing photo-plus-style generated paper packet, no new generation or pixel edits. Runtime uses proportional sprites, bottom anchors and measured robot joints.",
+    "prototypes": {
+      "hallAndRedArms": "Tesla Fremont assembly hall; red arm model unverified",
+      "forklift": "Linde E20-02 (2002); background-only, no claim of Tesla use",
+      "workers": "Fictional characters; real boilersuit reference supplies garment only"
+    },
+    "sources": [
+      "https://commons.wikimedia.org/wiki/File:Tesla_Motors_Assembly_Line_(6858583426).jpg",
+      "https://commons.wikimedia.org/wiki/File:Tesla_Robot_Dance_(7408451314).jpg",
+      "https://commons.wikimedia.org/wiki/File:Linde_E20_Elektrostapler_r.jpg",
+      "https://commons.wikimedia.org/wiki/File:Boilersuit.jpg"
+    ],
+    "credits": "assets/factory/ATTRIBUTION.md",
+    "hashesAndPivots": "assets/factory/manifest.json",
+    "productionProvenance": "assets/factory/production-provenance.json",
+    "notes": "Prepared photo/reference originals remain in the preserved project art-source packet. This release adds factory scenery only, retaining ranked collision/generation rules. Ramp stunt and independent daylight remain separate unfinished stages."
   }
 }
