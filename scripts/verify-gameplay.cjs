@@ -29,7 +29,7 @@ const url=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
  // Replay planner witnesses with real keyboard events through the live game pipeline.
  const routes=[];
  for(const [kind,progress,fuel] of [['single',0,0],['pair',40,0],['hover',65,0],['incoming',80,0],['precision',100,0],['mixed',130,100],['thrust',150,100]]){
-  const fixture=await page.evaluate(async({kind,progress,fuel})=>{const {makePattern,validateRoute}=await import('./src/routes.js');const q=__qa;q.start();q.S.next=1e9;q.pace.progress=progress;q.pace.base=q.pace.speed=360+300*Math.min(1,progress/150);q.P.fuel=fuel;q.syncState();const obs=makePattern(kind,{speed:q.S.speed,dx:1000});const route=validateRoute(obs,{flight:q.P,pace:q.pace,economy:q.E,time:q.S.t});q.S.obs=obs.map((o,i)=>({...o,x:o.x+q.S.anchor,uid:i+1}));return route;},{kind,progress,fuel});
+  const fixture=await page.evaluate(async({kind,progress,fuel})=>{const {makePattern,validateRoute}=await import('./src/routes.js');const q=__qa;q.start();q.S.next=1e9;q.pace.progress=progress;q.pace.base=q.pace.speed=360+300*Math.min(1,progress/150);q.P.fuel=fuel;q.syncState();const obs=makePattern(kind,{speed:q.S.speed,dx:1000});const route=validateRoute(obs,{flight:q.P,pace:q.pace,economy:q.E,time:q.S.t});q.S.obs=obs.map((o,i)=>({...o,x:o.x,uid:i+1}));return route;},{kind,progress,fuel});
   check(`route exists: ${kind}`,!!fixture);let tick=0;
   for(const action of fixture.actions){const at=Math.round(action.at*120);await step(at-tick);tick=at;if(action.action==='hold')await page.keyboard.down('Space');if(action.action==='jump')await page.keyboard.up('Space');if(action.action==='thrust-on')await page.keyboard.down('ShiftLeft');if(action.action==='thrust-off')await page.keyboard.up('ShiftLeft');}
   await step(Math.ceil(fixture.duration*120)+2-tick);await page.keyboard.up('Space');await page.keyboard.up('ShiftLeft');s=await state();check(`live route survives with grounded exit: ${kind}`,s.mode==='playing'&&!s.airborne);routes.push({kind,progress,fixture,state:s});
@@ -40,7 +40,7 @@ const url=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
  // are replayed; no position, obstacle, score or landing state is changed in flight.
  const longRuns=[];
  for(const seed of [17,932]){
-  await page.evaluate(seed=>{let value=seed;Math.random=()=>{value=(value*1664525+1013904223)>>>0;return value/4294967296;};__qa.start();},seed);
+  await page.evaluate(seed=>__qa.start(seed),seed);
   let wave=0,actions=[],epoch=0,index=0;const stages=new Set(),kinds=new Set();let maxFrame=0;
   while(true){
    const info=await page.evaluate(()=>({t:__qa.S.t,mode:__qa.S.mode,wave:__qa.director.state.wave,last:__qa.director.state.last,stage:JSON.parse(render_game_to_text()).stage}));

@@ -1,30 +1,30 @@
-import {createPWA} from './pwa.js?v=3.4.0';
-import {createCollection} from './collection.js?v=3.4.0';
-import {createCollectionUI} from './collection-ui.js?v=3.4.0';
-import {createObstaclePainter} from './obstacle-art.js?v=3.4.0';
-import {loading} from './loading.js?v=3.4.0';
-import {createThrusterEffects} from './thrusters.js?v=3.4.0';
-import {createSound} from './sound.js?v=3.4.0';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.4.0';
-import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.4.0';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.4.0';
-import {createDirector} from './director.js?v=3.4.0';
-import {types} from './catalog.js?v=3.4.0';
-import {obstacleDefinition} from './content.js?v=3.4.0';
-import {START_SPEED, START_KMH} from './physics.js?v=3.4.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.4.0';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,uprightError,sweptCollision,nearWindow} from './gameplay.js?v=3.4.0';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.4.0';
-import {createCoach} from './coaching.js?v=3.4.0';
-import {createHUD,mphFromKmh} from './hud.js?v=3.4.0';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.4.0';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.4.0';
-import {createSlapstick} from './slapstick.js?v=3.4.0';
-import {createClock} from './clock.js?v=3.4.0';
-import {createEnvironmentRenderer} from './environment.js?v=3.4.0';
-import {createCharacterRenderer} from './characters.js?v=3.4.0';
-import {createPropRenderer} from './props.js?v=3.4.0';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.4.0';
+import {createRun,RUN_STEP} from './run.js?v=3.4.1';
+import {createPWA} from './pwa.js?v=3.4.1';
+import {createCollection} from './collection.js?v=3.4.1';
+import {createCollectionUI} from './collection-ui.js?v=3.4.1';
+import {createObstaclePainter} from './obstacle-art.js?v=3.4.1';
+import {loading} from './loading.js?v=3.4.1';
+import {createThrusterEffects} from './thrusters.js?v=3.4.1';
+import {createSound} from './sound.js?v=3.4.1';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.4.1';
+import {createFlipSprite, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.4.1';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.4.1';
+import {types} from './catalog.js?v=3.4.1';
+import {obstacleDefinition} from './content.js?v=3.4.1';
+import {START_SPEED, START_KMH} from './physics.js?v=3.4.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.4.1';
+import {launch,uprightError} from './gameplay.js?v=3.4.1';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.4.1';
+import {createCoach} from './coaching.js?v=3.4.1';
+import {createHUD,mphFromKmh} from './hud.js?v=3.4.1';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.4.1';
+import {fallPose} from './fall.js?v=3.4.1';
+import {createSlapstick} from './slapstick.js?v=3.4.1';
+import {createClock} from './clock.js?v=3.4.1';
+import {createEnvironmentRenderer} from './environment.js?v=3.4.1';
+import {createCharacterRenderer} from './characters.js?v=3.4.1';
+import {createPropRenderer} from './props.js?v=3.4.1';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.4.1';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -42,22 +42,23 @@ const reviewMode=new URLSearchParams(location.search).get('review');
 const flipReview=reviewMode==='flip';
 const spaceportReview=reviewMode==='spaceport';
 const artReview=reviewMode==='obstacles'||flipReview||spaceportReview;
-const S={mode:'menu',t:0,distance:0,score:0,bonus:0,flips:0,y:0,vy:0,jumpTime:0,speed:START_SPEED,next:1.8,obs:[],particles:[],toast:0,lastCharge:0};
+const run=createRun({reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}),S=run.S;
+Object.assign(S,{bonus:0,flips:0,y:0,vy:0,jumpTime:0,particles:[],toast:0,lastCharge:0});
 let best=0;try{best=Number(localStorage.getItem(C.bestKey))||0}catch{}$('best').textContent=String(best).padStart(5,'0');
 let W,H,scale,ground,px,sceneTime=0,screenRoadDistance=0;
-const P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall();
+const {P,E,pace,F,input}=run;
 let storage;try{storage=localStorage;}catch{}
 const collection=createCollection(storage,types.map(o=>o.id));let collectionUI,pwa;
 const coach=createCoach(storage);
 const hud=createHUD();
 const B={state:'ready',charge:0,left:0,duration:0,level:1,factor:1};
 const primaryInputs=new Set(),thrustInputs=new Set();
-let spinning=false,chargingInput=false,lateTarget=null,lastLanding=null;
-let chargeValue=0,cameraLift=0;
+let lastLanding=null;
+let cameraLift=0;
 Object.assign(S,{charging:false,charge:0,anchor:0,entityId:0});
 function syncState(){
  const fallen=F.active?fallPose(F):null;
- S.falling=F.active;S.fallCrouch=fallen?.crouch||0;S.fallSeat=fallen?.rider.seat||0;S.fallPush=fallen?.push||0;S.fallFlail=fallen?.flail||0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=chargeValue;S.charging=chargingInput;
+ S.falling=F.active;S.fallCrouch=fallen?.crouch||0;S.fallSeat=fallen?.rider.seat||0;S.fallPush=fallen?.push||0;S.fallFlail=fallen?.flail||0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=input.charge;S.charging=input.charging;
  S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);S.baseSpeed=pace.base;S.speed=pace.speed;
  const progress=Math.min(1,pace.progress/C.rampSeconds),cruise=C.startSpeed+(C.maxSpeed-C.startSpeed)*progress;
  S.kmh=(130+270*progress)*S.speed/cruise;Object.assign(B,speedFeedback(pace,E.streak));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
@@ -67,7 +68,7 @@ function boostUI(){
  const lesson=F.active?null:coach.next(pace.progress,S.mode==='playing');$('jump').classList.toggle('hidden',!lesson);
  if(lesson){$('coach-title').textContent=lesson.text;$('coach-detail').textContent=lesson.detail;}
 }
-function obstacleDx(o){return o.x-S.anchor;}
+function obstacleDx(o){return o.x;}
 function gestureTarget(){
  if(F.active)return null;
  let nearest=null,distance=300;
@@ -88,7 +89,6 @@ function playerPose(){
 const iconPaths={arrow:'M5 19 19 5M5 5h14v14',restart:'M4 11a8 8 0 1 1 2 7M4 4v7h7',play:'m8 5 11 7-11 7Z',pause:'M8 5v14M16 5v14',sound:'M4 10h4l5-5v14l-5-5H4ZM17 8q5 4 0 8',jump:'M5 17q7-14 14-10M13 5l6 2-2 6'};
 function icon(name){return `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${iconPaths[name]}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`}
 function resize(){
-  const previousAnchor=scale?S.anchor:null;
   W=innerWidth;H=innerHeight;
   const cap=matchMedia('(pointer:coarse)').matches?1.5:2;
   const d=Math.min(devicePixelRatio||1,cap,Math.sqrt(3000000/(W*H)));
@@ -97,7 +97,7 @@ function resize(){
   scale=viewScale(W,H,pace.progress);
   ground=H*.84;px=W<600?W*.24:W*.29;
   S.anchor=px/scale;
-  if(previousAnchor!==null){const delta=S.anchor-previousAnchor;for(const o of S.obs)o.x+=delta;}
+  // Camera/resize never changes simulation coordinates.
   clock.reset();
 }
 addEventListener('resize',resize);resize();
@@ -113,30 +113,19 @@ soundUI();
 // Capture touch completion before game handlers prevent default or stop bubbling.
 for(const event of ['pointerup','touchend','keydown'])addEventListener(event,()=>sound.unlock(),{capture:true,passive:true});
 function ui(){for(const [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);boostUI();}
-function cancelCharge(){primaryInputs.clear();thrustInputs.clear();spinning=false;chargingInput=false;chargeValue=0;P.thrusting=false;sound.setThrust(false);syncState();}
-function start(){
+function cancelCharge(){primaryInputs.clear();thrustInputs.clear();run.command('cancel');sound.setThrust(false);syncState();}
+function start(seed){
  if(!spritesReady||artReview||$('game').inert||pwa?.locked)return;
- sound.unlock();cancelCharge();Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());
- Object.assign(S,{mode:'playing',t:0,distance:0,score:0,bonus:0,flips:0,next:1.7,obs:[],particles:[],toast:0,entityId:0});
- lateTarget=null;lastLanding=null;cameraLift=0;scale=viewScale(W,H,0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();characters.reset();
+ sound.unlock();cancelCharge();const nextSeed=typeof seed==='number'?seed:crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed);sceneTime=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
+ cameraLift=0;scale=viewScale(W,H,0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();characters.reset();
  Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();projectiles.length=0;clock.reset();syncState();ui();tone(500);
 }
-function beginCharge(){
- if(S.mode!=='playing'||F.active||pace.stumble>0)return false;
- if(P.airborne){P.trickStarted=true;spinning=true;}else{chargingInput=true;chargeValue=0;}
- syncState();return true;
-}
-function jump(){
- if(S.mode!=='playing'||P.airborne||F.active||pace.stumble>0)return;
- lateTarget=null;
- for(const o of S.obs){if(o.altitude||o.passed)continue;const gap=obstacleDx(o)+(o.inset||5)-47;if(nearWindow(gap,S.speed+(o.approachSpeed||0))){lateTarget=o;break;}}
- launch(P,chargeValue);S.lastCharge=chargeValue;chargingInput=false;chargeValue=0;spinning=false;
- coach.complete('jump');if(S.lastCharge>=.5)coach.complete('charge');syncState();tone(660,.18,'triangle');
-}
-function releaseCharge(){if(chargingInput)jump();spinning=false;}
+function beginCharge(){const started=run.command('primary-down');syncState();return started;}
+function jump(){const started=run.jump();consumeRunEvents();syncState();return started;}
+function releaseCharge(){run.command('primary-up');consumeRunEvents();syncState();}
 function pause(){if(S.mode==='paused'&&pwa?.locked)return;cancelCharge();clock.reset();if(S.mode==='playing')S.mode='paused';else if(S.mode==='paused'){sound.unlock();S.mode='playing';}ui();}
-function pressPrimary(token){if(primaryInputs.has(token))return;const empty=primaryInputs.size===0;primaryInputs.add(token);if(empty){if(F.active)hastenFall(F);else beginCharge();}}
-function releasePrimary(token,cancel=false){if(!primaryInputs.delete(token)||primaryInputs.size)return;if(cancel){spinning=false;chargingInput=false;chargeValue=0;}else releaseCharge();}
+function pressPrimary(token){if(primaryInputs.has(token))return;const empty=primaryInputs.size===0;primaryInputs.add(token);if(empty)beginCharge();}
+function releasePrimary(token,cancel=false){if(!primaryInputs.delete(token)||primaryInputs.size)return;if(cancel)run.command('primary-cancel');else releaseCharge();}
 $('boost').onclick=e=>e.preventDefault();
 $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$('pause').onclick=pause;
 $('replay-tutorial').onclick=()=>{coach.reset();start();};
@@ -175,50 +164,35 @@ addEventListener('keydown',e=>{
 addEventListener('keyup',e=>{if(jumpKeys.includes(e.code)){if(S.mode==='playing')e.preventDefault();releasePrimary(e.code);}if(thrustKeys.includes(e.code)||e.code==='Enter')thrustInputs.delete(e.code);});
 addEventListener('blur',()=>{if(S.mode==='playing')pause();else cancelCharge();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='playing')pause();});
-const director=createDirector({S,flight:P,pace,economy:E,sceneTime:()=>sceneTime,spawnDistance:()=>Math.max((W-px)/scale+120,S.speed*1.5+180)});
+const director=run.director;
 function die(o){cancelCharge();syncState();S.mode='dead';tone(90,.35,'sawtooth');const record=S.score>best;if(record){best=S.score;try{localStorage.setItem(C.bestKey,best);}catch{}}$('best').textContent=String(best).padStart(5,'0');$('finalScore').textContent=S.score;$('finalBest').textContent=best;$('flips').textContent=E.flips;$('reason').textContent='You hit '+o.name+'. Ready for another launch?';$('endlabel').textContent=record?'NEW PERSONAL BEST!':'NOT EVERYTHING TAKES OFF.';$('toast').textContent='';ui();}
 function toast(message){$('toast').textContent=message;S.toast=1.5;}
+function consumeRunEvents(){
+ for(const event of run.drainEvents()){
+  if(event.type==='jump'){coach.complete('jump');if(event.charge>=.5)coach.complete('charge');tone(660,.18,'triangle');}
+  if(event.type==='death')die(event.obstacle);
+  if(event.type==='recovered'){primaryInputs.clear();thrustInputs.clear();toast('BACK ON BOARD');}
+  if(event.type==='air-passed')coach.complete('air');
+  if(event.type==='landing'){
+   const {landed,result,oldMultiplier,late,near}=event;lastLanding=result;
+   if(!landed.good){hud.dropMultiplier(oldMultiplier/10);primaryInputs.clear();thrustInputs.clear();sound.setThrust(false);toast('ROUGH LANDING · TAP TO GET UP');S.toast=F.duration+.3;tone(100,.2);}
+   else{if(landed.turns)coach.complete('flip');if(late||near)coach.complete('near');if(result.points)toast(`${landed.turns?landed.turns+' FLIP'+(landed.turns>1?'S':'')+' · ':''}${late?'LATE +25 · ':''}${near?'CLOSE +25 · ':''}+${Math.round(result.points)}`);tone(130,.08);}
+  }
+ }
+}
 function update(dt){
  if(S.mode!=='playing')return;
- S.t+=dt;
- if(chargingInput)chargeValue=Math.min(1,chargeValue+dt/C.chargeSeconds);
- advanceEconomy(E,dt);advanceStreak(E,dt);
- const wasFalling=F.active,before={...P,fallPose:F.active?fallPose(F):null};
- let landed=null,fallStep={impacts:0,finished:false};
- if(wasFalling){fallStep=advanceFall(F,dt);if(fallStep.finished){cancelCharge();S.next=Math.max(S.next,.8);toast('BACK ON BOARD');}}
- else landed=advanceFlight(P,dt,{spin:spinning,thrust:thrustInputs.size>0});
- pace.falling=F.active;
- advancePace(pace,E,P,dt);
- sound.setThrust(P.thrusting);
- if(P.thrusting)coach.complete('thrust');
- S.distance+=pace.speed*dt;screenRoadDistance+=pace.speed*scale*dt;syncState();
- const collisionPose=wasFalling?{...P,fallPose:fallPose(F)}:landed?{...P,angle:landed.angle}:P;
- for(const o of S.obs){
-  const old=obstacleDx(o);o.x-=(S.speed+(o.approachSpeed||0))*dt;const dx=obstacleDx(o);
-  const sx=px+dx*scale,sy=ground+cameraLift-(o.altitude||0)*scale;
-  if(sx+o.w*scale>0&&sx<W&&sy>0&&sy-o.h*scale<H)collection.discover(o.id);
-  if(sweptCollision(before,collisionPose,o,old,dx,sceneTime,dt)){die(o);return;}
-  if(!o.passed&&dx+o.w< -50){o.passed=true;passObstacle(E);if(o.altitude)coach.complete('air');}
- }
- if(landed){
-  let late=0,near=0;
-  if(lateTarget&&!lateTarget.latePaid&&obstacleDx(lateTarget)+lateTarget.w-(lateTarget.inset||5)< -47){late=1;lateTarget.latePaid=true;}
-  for(const o of S.obs){if(o.altitude||o.nearPaid)continue;const gap=-47-(obstacleDx(o)+o.w-(o.inset||5));if(nearWindow(gap,S.speed)){near++;o.nearPaid=true;}}
-  const oldMultiplier=E.multiplier;
-  lastLanding=settleLanding(E,P,landed,{late,near});
-  if(!landed.good){hud.dropMultiplier(oldMultiplier/10);stumble(pace);beginFall(F,landed,{reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,speed:pace.recovery.target});pace.falling=true;P.angle=0;P.omega=0;P.vx=0;P.grab=0;cancelCharge();advancePace(pace,E,P,0);toast('ROUGH LANDING · TAP TO GET UP');S.toast=F.duration+.3;tone(100,.2);}
-  else{if(landed.turns)coach.complete('flip');if(late||near)coach.complete('near');if(lastLanding.points)toast(`${landed.turns?landed.turns+' FLIP'+(landed.turns>1?'S':'')+' · ':''}${late?'LATE +25 · ':''}${near?'CLOSE +25 · ':''}+${Math.round(lastLanding.points)}`);tone(130,.08);}
-  lateTarget=null;
- }
- if(!P.airborne&&Math.abs(P.angle)>.001){P.angle*=Math.exp(-dt*18);P.omega=0;}
- thrusters.update(dt,{impactSpeed:landed?.impact||(fallStep.impacts?180:0),speed:S.speed});
- advanceRoadsterMotion(roadsterMotion,dt,{grounded:!P.airborne,speed:S.speed,charge:chargeValue,impactSpeed:landed?.impact||0});
- S.obs=S.obs.filter(o=>o===lateTarget||obstacleDx(o)+o.w>(o.id==='joe'?-480:-400));
- S.next-=dt;if(S.next<=0)director.spawn();
+ if(input.thrust!==(thrustInputs.size>0))run.command(thrustInputs.size?'thrust-on':'thrust-off');
+ const previousDistance=S.distance,result=run.step();screenRoadDistance+=(S.distance-previousDistance)*scale;syncState();
+ // Discover visible encounters before presenting a collision result.
+ for(const o of S.obs){const sx=px+o.x*scale,sy=ground+cameraLift-(o.altitude||0)*scale;if(sx+o.w*scale>0&&sx<W&&sy>0&&sy-o.h*scale<H)collection.discover(o.id);}
+ consumeRunEvents();if(S.mode==='dead')return;
+ sound.setThrust(P.thrusting);if(P.thrusting)coach.complete('thrust');
+ thrusters.update(dt,{impactSpeed:result.landed?.impact||(result.impacts?180:0),speed:S.speed});
+ advanceRoadsterMotion(roadsterMotion,dt,{grounded:!P.airborne,speed:S.speed,charge:input.charge,impactSpeed:result.landed?.impact||0});
  if(S.toast>0){S.toast-=dt;if(S.toast<=0)$('toast').textContent='';}
  updateCameo(dt);syncState();
- const desiredScale=viewScale(W,H,pace.progress);
- scale+=(desiredScale-scale)*(1-Math.exp(-dt*2));
+ const desiredScale=viewScale(W,H,pace.progress);scale+=(desiredScale-scale)*(1-Math.exp(-dt*2));
  const targetLift=Math.max(0,(P.y+200)*scale-ground+Math.max(140,H*.23));cameraLift+=(targetLift-cameraLift)*(1-Math.exp(-dt*8));
 }
 function poly(points,color,stroke){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.fillStyle=color;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1.5;ctx.stroke()}}
@@ -382,10 +356,10 @@ function render(dt,time){
  const {phase,gap,cosmetic}=playerPose();
  if(E.streak>0)boostFlame(-2,-11.5+roadsterMotion.compression);
  if(cosmetic)thrusters.drawJets(ctx,{phase,time:sceneTime,airborne:true,groundDistance:P.y-gap});
- else thrusters.drawFlightJets(ctx,{active:P.thrusting,assisting:P.airborne&&!spinning&&Math.abs(uprightError(P.angle))>.02,time:sceneTime,gap});
+ else thrusters.drawFlightJets(ctx,{active:P.thrusting,assisting:P.airborne&&!input.spin&&Math.abs(uprightError(P.angle))>.02,time:sceneTime,gap});
  car(0,gap,phase);
  elon(0,-29.5+roadsterMotion.compression,P.airborne,time);
- if(chargingInput){rect(-28,17,56,5,'#45574f',2);rect(-28,17,56*chargeValue,5,'#d9ff62',2);line([[0,17],[0,22]],'#fff',1);}
+ if(input.charging){rect(-28,17,56,5,'#45574f',2);rect(-28,17,56*input.charge,5,'#d9ff62',2);line([[0,17],[0,22]],'#fff',1);}
  ctx.restore();}drawMoneyStreams();
  for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c);}
  ctx.globalAlpha=1;
@@ -425,11 +399,11 @@ function frame(ts){
   requestAnimationFrame(frame);
 }
 ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
-window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,collection:{discovered:types.filter(o=>collection.state(o.id)!=='locked').length,new:types.filter(o=>collection.state(o.id)==='new').length},y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:chargingInput,charge:chargeValue,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+window.render_game_to_text=()=>JSON.stringify({version:C.version,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,collection:{discovered:types.filter(o=>collection.state(o.id)!=='locked').length,new:types.filter(o=>collection.state(o.id)==='new').length},y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning:input.spin,cosmeticFlip:playerPose().cosmetic,grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:input.charging,charge:input.charge,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
 if(['localhost','127.0.0.1'].includes(location.hostname)){
- window.__qa={S,B,P,E,F,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
- setTime(t){S.t=t;pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
- spawn(id,dx=260){const type=[...types,...AIR_TYPES].find(o=>o.id===id);S.obs.push({...type,x:S.anchor+dx,uid:++S.entityId,passed:false});},
+ window.__qa={run,S,B,P,E,F,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
+ setTime(t){S.t=t;S.tick=Math.round(t/RUN_STEP);pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
+ spawn(id,dx=260){const type=[...types,...AIR_TYPES].find(o=>o.id===id);S.obs.push({...type,x:dx,uid:++S.entityId,passed:false});},
  rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound,
  launch(charge){launch(P,charge);syncState();},get lastLanding(){return lastLanding;}};
 }

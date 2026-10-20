@@ -1,6 +1,6 @@
-import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.4.0';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.4.0';
-import {joeReaction} from './encounter.js?v=3.4.0';
+import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.4.1';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.4.1';
+import {joeReaction} from './encounter.js?v=3.4.1';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;

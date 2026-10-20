@@ -39,7 +39,7 @@
 @keyframes loader-orbit { to { transform: rotate(360deg); } }
 @media (max-height: 560px) { .loader-console { width: min(240px, 100%); } #loading-title { margin-bottom: 4px; font-size: 14px; } .loader-instrument { width: 184px; margin-bottom: 8px; } .loader-log-window { height: 38px; margin-top: 12px; } #loading-status { margin-top: 8px; } }
 @media (prefers-reduced-motion: reduce) { #loading-screen, .loader-console { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
-</style><link id="game-style" rel="preload" as="style" href="./style.css?v=3.4.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"></head><body>
+</style><link id="game-style" rel="preload" as="style" href="./style.css?v=3.4.1"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"></head><body>
 <section id="loading-screen" aria-labelledby="loading-title" aria-hidden="true">
   <div class="loader-console">
     <h2 id="loading-title">Loading</h2>
@@ -75,7 +75,7 @@ const waiting = setTimeout(() => {
   screen.classList.add('is-visible');
   screen.removeAttribute('aria-hidden');
 }, 180);
-import('./src/loading.js?v=3.4.0').then(() => clearTimeout(waiting)).catch(() => {
+import('./src/loading.js?v=3.4.1').then(() => clearTimeout(waiting)).catch(() => {
   clearTimeout(waiting);
   document.getElementById('loading-title').textContent = 'Loading failed';
   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';

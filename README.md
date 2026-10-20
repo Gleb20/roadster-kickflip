@@ -1,3 +1,7 @@
+## 3.4.1 — Reproducible runs
+
+The browser and verifier share the same seeded fixed-tick simulation. Resizing changes the view only. [Replay contract and measurements](docs/replay.md). Online submission is the next separate increment.
+
 ## 3.4.0 — Reusable paper-rider animation
 
 Named joints, shared arm/leg pose sampling and replaceable appearance configuration. [Animation contract](docs/hero-animation.md). Current controls and collision remain the baseline.
