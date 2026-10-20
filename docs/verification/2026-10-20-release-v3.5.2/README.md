@@ -1,0 +1,5 @@
+# Release3.5.2 — grab and encounters
+
+User explicitly authorised publication for phone acceptance on20 October2026. Base main210a26a (3.5.0). This release combines the accepted local3.5.1 encounter/cash work with the3.5.2 corrections: one compact roof-supported grab, fixed front-left grip/rear-right encounter arm, normal-jump nine-frame kickflip, directed/self-contained reactions and Joe drag/withdraw/exhale with facial phases. No new collision, scoring, fuel or ranking rules. Immutable roadster-v3.4.2 sources stay unchanged. No backend/schema deployment or score deletion.
+
+Pre-publication source checks and verified inverse are recorded in the local release packet. Public acceptance must confirm the release commit's Pages deployment, version/resource hashes and actual browser sequences. Physical iPhone/Safari acceptance is the user's test. See ../../hero-animation.md for the rig/reaction contract and ../../gameplay-v3.md for current mechanics. Route-search performance debt remains separate; the next bounded debt proposal is remeasurement only.

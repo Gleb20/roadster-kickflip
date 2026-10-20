@@ -63,3 +63,8 @@ The rider now bounces on his bottom at three shared contact beats and pushes off
 ## 3.0.4 — falling pose refinement
 
 Backward torso lean, asymmetric raised/forward bent legs and spread arms follow the user-supplied pose reference. Existing paper parts only; no new art/reference pixels. Palms plant for get-up. Recovery duration, tapping and car animation unchanged. Parent 6fbc8657c1b007cee9183192da3d24454c3d1754 is the rollback target. See docs/releases/2026-10-18-v3.0.4.md.
+
+
+## Release3.5.2
+
+User authorised frontend publication on20 October2026. Base main210a26a /3.5.0. Scope: compact roof-supported grab, normal kickflip, continuous directed/self-contained encounters and persistent falling cash. Restore only from the frozen release patch on its recorded clean tree; preserve player scores/collection and backend data. Original dirty checkout is not the release source. Release evidence under docs/verification/2026-10-20-release-v3.5.2/; physical-phone acceptance remains open.

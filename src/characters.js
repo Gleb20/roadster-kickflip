@@ -1,6 +1,8 @@
-import {HERO_RIG,HERO_APPEARANCE,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation} from './hero-rig.js?v=3.5.0';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.5.0';
-import {joeReaction} from './encounter.js?v=3.5.0';
+import {obstacleDefinition} from './content.js?v=3.5.2';
+import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.5.2';
+import {createCash,advanceCash} from './cash.js?v=3.5.2';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.5.2';
+import {joeReaction} from './encounter.js?v=3.5.2';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;
@@ -25,7 +27,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const color=canvas(w*R,h*R),white=canvas(w*R,h*R),result=canvas(w*R,h*R);
     return {w,h,ox,oy,color,white,result,c:color.getContext('2d'),m:white.getContext('2d'),r:result.getContext('2d')};
   }
-  const heroSurface=surface(170,214,85,178),humanSurface=surface(102,102,51,98),amberSurface=surface(102,112,51,108);
+  const heroSurface=surface(240,240,120,186),humanSurface=surface(102,102,51,98),amberSurface=surface(102,112,51,108);
   function line(c,points,color,width=1){c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=width;c.lineJoin='round';c.lineCap='round';c.stroke()}
   function poly(c,p,color,stroke=INK,width=1){c.beginPath();p.forEach((v,i)=>i?c.lineTo(...v):c.moveTo(...v));c.closePath();c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.lineJoin='round';c.stroke()}}
   function oval(c,x,y,rx,ry,color,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=color;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=.8;c.stroke()}}
@@ -103,7 +105,13 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
       line(c,[[-17,-49],[-8,-53],[0,-49]],'#66503d',2);line(c,[[7,-48],[14,-44],[22,-47]],'#66503d',2);
       oval(c,4,-10,4,6,'#49332e');return;
     }
-    if(reaction.laugh){faceBase(c,'head');laugh(c,3,-30,1.05);return;}
+    if(reaction.laugh){
+      // TV-paper grammar: oval whites/tiny pupils, small mouth, a single tooth band.
+      faceBase(c,'head');eyes(c,[[-7,-33],[13,-34]],target||{x:50,y:-25},9,11);
+      line(c,[[-16,-49],[-2,-51]],'#66503d',2);line(c,[[5,-51],[22,-49]],'#66503d',2);
+      const beat=reducedMotion?.5:(1+Math.sin(getState().sceneTime*14))*.5;
+      oval(c,4,-12,9,6+beat*2,'#482e2b');poly(c,[[-3,-17],[11,-17],[10,-14],[-2,-14]],'#fff7e5',null);return;
+    }
     if(reaction.meme>.05||reaction.inhale>.15){
       faceBase(c,'head');
       // Sideways glance, pursed lips and the raised brow from the podcast meme.
@@ -113,7 +121,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
         line(c,[[x-7,-26],[x,-24],[x+6,-26]],'#b48660',1);
       }
       line(c,[[1,-30],[-1,-22],[5,-21]],'#b48660',1);
-      if(reaction.meme>.05){
+      if(reaction.meme>.05&&reaction.inhale<=.01){
         line(c,[[-9,-10],[-3,-14],[7,-14],[16,-9]],INK,1.8);
         line(c,[[-3,-8],[6,-7],[12,-9]],'#b48660',1.2);
       }else oval(c,14,-11,3,2.5,'#624337',INK);
@@ -187,8 +195,6 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     }
     line(c,[[2,1],[3,4]],'#ba8b68',.65);c.restore();
   }
-  const muzzles={elon:[],zuck:[]};
-  function beginFrame(){muzzles.elon.length=0;muzzles.zuck.length=0;}
   function laugh(c,x,y,size=1){
     const {sceneTime}=getState(),beat=reducedMotion?.5:(1+Math.sin(sceneTime*22))*.5;
     c.save();c.translate(x,y);c.scale(size,size);
@@ -203,7 +209,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     oval(c,0,0,5,5,SKIN,INK);limb(c,[[1,-3],[15,-3]],SKIN,3.2);
     for(const fy of [0,3])oval(c,1,fy,2,1.7,SKIN,'#ba8b68');c.restore();
   }
-  function moneyGun(c,x,y,target,size,who,surface){
+  function moneyGun(c,x,y,target,size){
     const angle=Math.atan2(target.y-y,target.x-x);
     c.save();c.translate(x,y);c.rotate(angle);c.scale(size,size);
     // Boxy gold cash cannon, top-loading banknotes and a separate grip.
@@ -211,75 +217,109 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     poly(c,[[-6,0],[2,0],[-1,12],[-7,11]],'#886839');
     poly(c,[[1,-14],[14,-14],[14,-10],[0,-10]],'#c5e3ab','#568267');
     line(c,[[18,-9],[18,-1]],'#563e2e',2);line(c,[[-7,-7],[12,-7]],'#fff0a5',1.5);
-    const p=c.getTransform().transformPoint({x:21,y:-5});
-    muzzles[who].push(ctx.getTransform().transformPoint({x:p.x/R-surface.ox,y:p.y/R-surface.oy}));
     c.restore();hand(c,x,y,1,0,0,size*.75);
   }
+  const cash=createCash({reduced:reducedMotion});
   function drawMoneyStreams(){
-    const {sceneTime}=getState();
-    if(muzzles.elon.length!==2||muzzles.zuck.length!==2)return;
-    for(const [from,to] of [['elon','zuck'],['zuck','elon']])for(let gun=0;gun<2;gun++){
-      const a=muzzles[from][gun],b=muzzles[to][gun],dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1;
-      const count=reducedMotion?4:13,k=Math.hypot(ctx.getTransform().a,ctx.getTransform().b)*getState().scale;
-      ctx.save();ctx.setTransform(1,0,0,1,0,0);
-      for(let i=0;i<count;i++){
-        const t=reducedMotion?(i+.5)/count:(sceneTime*1.7+i/count+gun*.17)%1;
-        const spread=Math.sin(t*Math.PI)*Math.sin(i*2.4+gun)*18*k;
-        const x=a.x+dx*t-dy/length*spread,y=a.y+dy*t+dx/length*spread-18*k*Math.sin(t*Math.PI);
-        ctx.save();ctx.translate(x,y);ctx.rotate(Math.atan2(dy,dx)+(reducedMotion?0:Math.sin(sceneTime*8+i)*.9));
-        ctx.scale(k,k*(reducedMotion?1:.4+.6*Math.abs(Math.sin(t*9+i))));ctx.globalAlpha=.85;
-        poly(ctx,[[-6,-3],[6,-3],[6,3],[-6,3]],i%2?'#bfdb9d':'#e2e8b8','#416549',.7);
-        oval(ctx,0,0,1.5,2,'#759b69');line(ctx,[[-4,-1],[-3,-1],[3,1],[4,1]],'#759b69',.7);ctx.restore();
-      }
-      ctx.restore();
+    for(const p of cash.notes){
+      const flutter=reducedMotion?0:Math.sin(cash.time*(p.falling?2.2:5)+p.phase)*(p.falling?10:3);
+      ctx.save();ctx.translate(p.x+flutter,p.y);
+      ctx.rotate(reducedMotion?0:p.falling?p.phase+Math.sin(cash.time*1.8+p.phase)*.8:Math.atan2(p.vy,p.vx)+Math.sin(p.age*8+p.phase)*.4);
+      ctx.scale(1,reducedMotion?.7:.45+.5*Math.abs(Math.sin(cash.time*1.8+p.phase)));
+      ctx.globalAlpha=.88*clamp((p.life-p.age)/.7);
+      poly(ctx,[[-5,-2.5],[5,-2.5],[5,2.5],[-5,2.5]],p.id%2?'#bfdb9d':'#e2e8b8','#416549',.65);
+      oval(ctx,0,0,1.3,1.7,'#759b69');line(ctx,[[-3,-1],[-2,-1],[2,1],[3,1]],'#759b69',.65);ctx.restore();
     }
   }
   const motion=createHeroAnimation();
-  function reset(){Object.assign(motion,createHeroAnimation());}
-  function update(dt){const {CAMEO}=getState(),target=CAMEO.active?null:gestureTarget(),distance=target?obstacleDx(target)+target.w/2:0;advanceHeroAnimation(motion,dt,{target:!!target,distance,cameo:CAMEO.active});}
+  const rotate=(p,a)=>unrotate(p,-a);
+  function layout(){
+    const state=getState(),{S,B,CAMEO}=state,flight=state.flight||{y:S.y||0,angle:0,airborne:S.y>0,time:S.jumpTime||0};
+    const air=flight.airborne,grab=S.falling?0:clamp(S.grab||0),podcast=CAMEO.active?null:joeTarget?.(),reaction=joeReaction(podcast?obstacleDx(podcast)+podcast.w/2:NaN);
+    const target=CAMEO.active||podcast?null:gestureTarget(),dx=target?obstacleDx(target)+target.w/2:0,facing=target?Math.sign(dx)||1:0;
+    const crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab;
+    const tilt=S.falling?0:mix((air?-.085:Math.sin(state.sceneTime*4)*.012)+(B.lean||0),(HERO_TRICKS[motion.trick]||HERO_TRICKS[0]).tilt,grab);
+    const offset=state.heroOffset??-29.5,car=trickCarPose(motion.trick,grab,air?flight.time:0),edge=rotate({x:14,y:-18},car.angle);
+    const grabPoint=unrotate({x:car.x+edge.x,y:car.y+edge.y-offset},tilt);
+    const opponent=target?unrotate(worldToHero({x:dx,y:-71-(target.altitude||0)},flight,offset),tilt):null;
+    const definition=obstacleDefinition((podcast||target)?.id)?.reactions.hero,reactionSpace=definition?.enabled?definition.space:null;
+    const headAngle=S.falling?.07*clamp(S.fallImpact||0):motion.facing*.09+(air?.08:Math.sin(state.sceneTime*3)*.018);
+    const lip=rotate({x:14,y:-11},headAngle),mouth={x:lip.x,y:lip.y-92+6*clamp(S.fallImpact||0)};
+    const aim=opponent&&reactionSpace==='target'?unrotate({x:opponent.x-4*crouch,y:opponent.y-drop},.09*crouch):null;
+    const taunt=S.falling?0:motion.taunt,wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave;
+    const armOptions={air,crouch,drop,wave,taunt,aim,special:!!target&&target.id!=='trump',guns:target?.id==='zuck',facing,reaction,reactionSpace,mouth,grab,grabPoint,parentAngle:(flight.angle||0)+tilt+.09*crouch,seat:clamp(S.fallSeat||0),push:clamp(S.fallPush||0),flail:clamp(S.fallFlail||0),time:state.sceneTime,falling:S.falling,impact:clamp(S.fallImpact||0),fallAngle:S.fallAngle||0};
+    const arms=[-1,1].map(side=>sampleHeroArm(side,armOptions,heroRig));
+    return {...state,flight,air,grab,podcast,reaction,target,dx,facing,crouch,drop,tilt,offset,car,grabPoint,opponent,aim,taunt,wave,armOptions,arms,reactionSpace,mouth,headAngle};
+  }
+  function torsoToHero(p,h){const q=rotate(p,.09*h.crouch);return rotate({x:q.x+4*h.crouch,y:q.y+h.drop},h.tilt);}
+  function markHands(o,h){
+    const dx=obstacleDx(o)+o.w/2,target={x:-dx,y:h.offset-h.flight.y-80+(o.altitude||0)};
+    return [-1,1].map(side=>{const a=Math.atan2(target.y+48,target.x-side*17),wrist={x:side*17+Math.cos(a)*27,y:-48+Math.sin(a)*27+side*5},angle=Math.atan2(target.y-wrist.y,target.x-wrist.x),m=rotate({x:21*.7,y:-5*.7},angle);return {wrist,target,muzzle:{x:dx+wrist.x+m.x,y:-(o.altitude||0)+wrist.y+m.y}};});
+  }
+  function streams(h){
+    if(h.target?.id!=='zuck'||!h.air||h.S.falling)return [];
+    const wrist=h.arms[0].wrist,a=Math.atan2(h.aim.y-wrist.y,h.aim.x-wrist.x),m=rotate({x:21,y:-5},a);
+    const hero=heroToWorld(torsoToHero({x:wrist.x+m.x,y:wrist.y+m.y},h),h.flight,h.offset),mark=markHands(h.target,h);
+    return [{id:'hero',from:hero,to:mark[0].muzzle,targetMoves:true},...mark.map((p,i)=>({id:'mark'+i,from:p.muzzle,to:hero,targetMoves:false}))];
+  }
+  function reset(){Object.assign(motion,createHeroAnimation());Object.assign(cash,createCash({reduced:reducedMotion}));}
+  function update(dt){const state=getState(),target=state.CAMEO.active?null:gestureTarget(),distance=target?obstacleDx(target)+target.w/2:0;advanceHeroAnimation(motion,dt,{target:!!target,distance,cameo:state.CAMEO.active,airborne:!!state.flight?.airborne,seed:state.seed||0});advanceCash(cash,dt,{streams:streams(layout()),speed:state.S.speed||0});}
+  function legs(h){return [-1,1].map(side=>sampleHeroLeg(side,{air:h.air,crouch:h.crouch,drop:h.drop,seat:clamp(h.S.fallSeat||0),tilt:h.tilt,impact:clamp(h.S.fallImpact||0),grab:h.grab,car:h.car,offset:h.offset},heroRig));}
+  function inspect(){const h=layout(),near=torsoToHero(h.arms[1].wrist,h),goal=rotate(h.grabPoint,h.tilt);
+    const feet=legs(h).map((p,i)=>{const foot=rotate(p.foot,h.tilt),roof=rotate({x:(i?1:-1)*25,y:h.offset+(i?4.8:1.6)},h.car.angle);return {side:i?1:-1,roofError:Math.hypot(foot.x-h.car.x-roof.x,foot.y+h.offset-h.car.y-roof.y),knee:p.knee,foot:p.foot};});
+    const rear=h.arms[0],v={x:rear.wrist.x-rear.shoulder.x,y:rear.wrist.y-rear.shoulder.y},target=h.aim&&{x:h.aim.x-rear.shoulder.x,y:h.aim.y-rear.shoulder.y};
+    return {feet,reactionSpace:h.reactionSpace,aimCosine:target?(v.x*target.x+v.y*target.y)/(Math.hypot(v.x,v.y)*Math.hypot(target.x,target.y)):null,jointMouthDistance:h.podcast?Math.hypot(rear.wrist.x+17-h.mouth.x,rear.wrist.y-h.mouth.y):null,reaction:h.reaction,gripError:h.grab>.999?Math.hypot(near.x-goal.x,near.y-goal.y):null,trick:HERO_TRICKS[motion.trick].id,grabSide:HERO_HANDS.grab,interactionSide:HERO_HANDS.interaction,grab:h.grab,car:h.car,expression:h.podcast?(h.reaction.inhale>.15?'inhale':h.reaction.meme>.05?'podcast-meme':'podcast'):h.target?(h.target.id==='trump'?'angry':'laugh'):h.B.impossibru?'impossibru':'neutral',cash:{count:cash.notes.length,falling:cash.notes.filter(p=>p.falling).length},nearWrist:h.arms[1].wrist,rearWrist:h.arms[0].wrist};}
+  function carPose(){return layout().car;}
   function elon(x,y,air,pose=0){
-    const {S,B,CAMEO,sceneTime,heroY}=getState(),podcast=CAMEO.active?null:joeTarget?.();
-    const reaction=joeReaction(podcast?obstacleDx(podcast)+podcast.w/2:NaN);
-    const target=CAMEO.active||podcast?null:gestureTarget();
-    const dx=target?obstacleDx(target)+target.w/2:0,facing=target?Math.sign(dx)||1:0;
-    const grab=clamp(S.grab||0),crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab,taunt=S.falling?0:motion.taunt*(1-grab),wave=S.falling?.5*(S.fallCrouch||0)/.7:motion.wave*(1-grab);
-    const seat=clamp(S.fallSeat||0),push=clamp(S.fallPush||0),flail=clamp(S.fallFlail||0),impact=clamp(S.fallImpact||0);
-    const tilt=(S.falling?0:((air?-.085:Math.sin(pose*4)*.012)+(B.lean||0))*(1-grab));
-    const opponent=target?unrotate({x:dx,y:-71-heroY},tilt):null;
+    const h=layout(),{S,B,sceneTime,reaction,target,grab,crouch,drop,taunt,tilt,opponent}=h;
+    const impact=clamp(S.fallImpact||0),legPoses=legs(h);
     ctx.save();ctx.translate(x,y);ctx.rotate(tilt);
     drawFigure(heroSurface,c=>{
       let jointHand;
-      for(const side of [-1,1]){
-        const {hip,knee,ankle,foot,angle:shoeAngle}=sampleHeroLeg(side,{air,crouch,drop,seat,tilt,impact},heroRig);
+      for(const [i,side] of [-1,1].entries()){
+        const {hip,knee,ankle,foot,angle:shoeAngle}=legPoses[i];
         limb(c,[[hip.x,hip.y],[knee.x,knee.y],[ankle.x,ankle.y]],side<0?appearance.rearLeg:appearance.frontLeg,14);
         c.save();c.translate(foot.x,foot.y);c.rotate(shoeAngle);sneaker(c,0,0,side,1,appearance.shoes);c.restore();
       }
       c.save();c.translate(4*crouch,drop);c.rotate(.09*crouch);
+      const drawArm=side=>{
+        const activeSide=air||grab>0?HERO_HANDS.interaction:h.facing;
+        const special=h.reactionSpace==='target'&&target&&target.id!=='trump'&&side===activeSide,guns=special&&target.id==='zuck',aim=h.aim;
+        const arm=h.arms[side<0?0:1];
+        const {x:ex,y:ey}=arm.elbow,{x:hx,y:hy}=arm.wrist,k=arm.taunt,armWave=arm.wave;
+        const wristAngle=k?uprightWristAngle(h.armOptions.parentAngle,side,k):0;
+        limb(c,[[arm.shoulder.x,arm.shoulder.y],[ex,ey],[hx,hy]],appearance.arms,11);
+        if(guns)moneyGun(c,hx,hy,aim,1);
+        else if(special)pointingHand(c,hx,hy,aim);
+        else if(side===HERO_HANDS.grab&&grab>.05){
+          c.save();c.translate(hx,hy);c.rotate(-.09*crouch-tilt+h.car.angle);oval(c,0,-1,5.2,5,SKIN,INK);
+          for(const fx of [-3,0,3])oval(c,fx,2.5,1.5,3.4,SKIN,INK);line(c,[[-4,-3],[-7,-1]],SKIN,3);c.restore();
+        }else hand(c,hx,hy,side,k*(1-armWave),armWave,1,wristAngle);
+        if(side===HERO_HANDS.interaction&&reaction.reach>.08)jointHand={x:hx,y:hy};
+      };
+      // Far arm is occluded by torso; the anatomical left grip is the near layer.
+      drawArm(HERO_HANDS.interaction);
       poly(c,[[-25,-92],[18,-92],[27,-55],[18,-40],[-20,-42],[-28,-67]],appearance.shirt);
       c.save();c.translate(-12,-84);c.fillStyle='#f9f4e5';if(appearance.emblem)c.fill(companyX,'evenodd');c.restore();
-      for(const side of [-1,1]){
-        const special=target&&target.id!=='trump'&&grab<.5,guns=target?.id==='zuck'&&grab<.5,aim=opponent?localPoint(c,opponent,heroSurface):null;
-        const arm=sampleHeroArm(side,{air,crouch,drop,wave,taunt,aim,special,guns,facing,reaction,grab,seat,push,flail,time:sceneTime,falling:S.falling,impact,fallAngle:S.fallAngle||0},heroRig);
-        const {x:ex,y:ey}=arm.elbow,{x:hx,y:hy}=arm.wrist,k=arm.taunt,armWave=arm.wave;
-        const wristAngle=k?uprightWristAngle(tilt+.09*crouch,side,k):0;
-        limb(c,[[arm.shoulder.x,arm.shoulder.y],[ex,ey],[hx,hy]],appearance.arms,11);
-        if(guns)moneyGun(c,hx,hy,aim,1,'elon',heroSurface);
-        else if(special&&side===facing)pointingHand(c,hx,hy,aim);
-        else hand(c,hx,hy,side,special?0:k*(1-armWave),armWave,1,wristAngle);
-        if(side===1&&reaction.reach>.08&&grab<.5)jointHand={x:hx,y:hy};
-      }
-      c.save();c.translate(0,-92+6*impact);c.rotate(S.falling?.07*impact:motion.facing*.09+(air?.08:Math.sin(pose*3)*.018));heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,fall:S.falling,laugh:target&&target.id!=='trump'});
+      drawArm(HERO_HANDS.grab);
+      c.save();c.translate(0,-92+6*impact);c.rotate(h.headAngle);heroHead(c,!!B.impossibru,opponent?localPoint(c,opponent,heroSurface):null,taunt,{...reaction,fall:S.falling,laugh:target&&target.id!=='trump'});
       c.restore();
       if(jointHand){
         const {x,y}=jointHand;
-        line(c,[[x-2,y-2],[x-17,y-4]],'#e6dbc3',3);
-        line(c,[[x-17,y-4],[x-20,y-4.5]],'#e99356',2.5);
+        // The far upper arm stays behind the shirt; its folded forearm and grip
+        // pass in front of the face during the drag, rather than disappearing.
+        const rear=h.arms[0];
+        if(reaction.inhale>.5)limb(c,[[rear.elbow.x,rear.elbow.y],[x,y]],appearance.arms,11);
+        oval(c,x,y,5.3,6.1,SKIN,INK);
+        for(const fx of [-3,0,3])oval(c,x+fx,y-2,1.4,2.1,SKIN,'#ba8b68');
+        line(c,[[x+17,y],[x-17,y]],'#e6dbc3',3);
+        line(c,[[x-17,y],[x-20,y]],'#e99356',2.5);
       }
       if(reaction.smoke>.01){
         c.save();c.globalAlpha=.35*reaction.smoke;
         for(let i=0;i<6;i++){
           const age=reducedMotion?i/6:(sceneTime*.45+i/6)%1;
-          oval(c,19+age*48+Math.sin(i*2)*6,-107-age*47,4+age*12,3+age*8,'#c1c8c3');
+          oval(c,h.mouth.x+age*48+Math.sin(i*2)*6,h.mouth.y-age*47,4+age*12,3+age*8,'#c1c8c3');
         }c.restore();
       }
       c.restore();
@@ -291,7 +331,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   }
   function trumpPose(o,bob=0){
     const {S,CAMEO,heroY}=getState(),dx=obstacleDx(o)+o.w/2,side=dx>=0?-1:1;
-    const blend=CAMEO.active?0:ease((300-Math.abs(dx))/100);
+    const blend=CAMEO.active?0:ease((360-Math.abs(dx))/110);
     const crouch=S.charging?(.3+.7*S.charge):0;
     const target=blend>0?unrotate({x:-dx,y:heroY-125+27*crouch},bob*.008):null;
     drawFigure(humanSurface,c=>{body(c,'#25374e','#1d293c');poly(c,[[-7,-54],[7,-54],[0,-29]],'#f2eddf');poly(c,[[0,-53],[4,-48],[2,-25],[-2,-29],[-3,-48]],'#bc3536');
@@ -314,16 +354,16 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     ctx.restore();
   }
   function zuckerberg(o){
-    const {S,CAMEO,heroY}=getState(),dx=obstacleDx(o)+o.w/2;
+    const h=layout(),{S,CAMEO}=h,dx=obstacleDx(o)+o.w/2,marks=markHands(o,h);
     const active=S.y>0&&!CAMEO.active&&gestureTarget()===o;
     drawFigure(active?heroSurface:humanSurface,c=>{
       body(c,'#7e8587','#40566b');
       for(const side of [-1,1]){
         let hx=side*23,hy=-25;
-        const target={x:-dx,y:heroY-80};
-        if(active){const angle=Math.atan2(target.y+48,target.x-side*17);hx=side*17+Math.cos(angle)*27;hy=-48+Math.sin(angle)*27+side*5;}
+        const {target,wrist}=marks[side<0?0:1];
+        if(active){hx=wrist.x;hy=wrist.y;}
         limb(c,[[side*17,-48],[(side*17+hx)/2,-43],[hx,hy]],'#7e8587',7);
-        if(active)moneyGun(c,hx,hy,target,.7,'zuck',heroSurface);else hand(c,hx,hy,side,0,0,.6);
+        if(active)moneyGun(c,hx,hy,target,.7);else hand(c,hx,hy,side,0,0,.6);
       }
       head(c,'zuckHead',-23,-94,46,43);
       if(active){oval(c,0,-72,18,17,'#efc49d');laugh(c,0,-74,.72);}
@@ -366,5 +406,5 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   }
   function cameoLeg(headKey,x,y){seatedSprite(headKey,x,y,true);}
   function cameoRider(headKey,x,y){seatedSprite(headKey,x,y);}
-  return {update,reset,elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,beginFrame,drawMoneyStreams};
+  return {update,reset,elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,drawMoneyStreams,carPose,inspect};
 }

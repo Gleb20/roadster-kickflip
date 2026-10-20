@@ -4,7 +4,7 @@ import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {webcrypto} from 'node:crypto';
 
-const root=new URL('../',import.meta.url),code=await readFile(new URL('sw.js',root),'utf8');
+const root=new URL('../',import.meta.url),code=await readFile(new URL('sw.js',root),'utf8'),version=JSON.parse(await readFile(new URL('package.json',root),'utf8')).version;
 function harness(){
  const handlers=new Map(),buckets=new Map(),messages=[];let clients=[{id:'a',url:'https://game.test/roadster-kickflip/',postMessage:m=>messages.push(m)}],skips=0,network=true,tamper=false;
  const prefix='tesla-jump:/roadster-kickflip/:';
@@ -24,14 +24,14 @@ function harness(){
  return {run,buckets,messages,get skips(){return skips;},set clients(value){clients=value;},set network(value){network=value;},set tamper(value){tamper=value;}};
 }
 test('offline installation verifies bytes and retains other applications',async()=>{
- const h=harness();await h.run('install');assert.equal(h.skips,0);const current=[...h.buckets.keys()].find(k=>k.endsWith(':3.5.0'));assert.ok(h.buckets.get(current).size>=40);
+ const h=harness();await h.run('install');assert.equal(h.skips,0);const current=[...h.buckets.keys()].find(k=>k.endsWith(':'+version));assert.ok(h.buckets.get(current).size>=40);
  await h.run('activate');assert.ok(h.buckets.has('another-app'));assert.ok(!h.buckets.has('tesla-jump:/roadster-kickflip/:old-1'));assert.ok(h.buckets.has('tesla-jump:/roadster-kickflip/:old-2'));
- h.network=false;const response=await h.run('fetch',{request:{url:'https://game.test/roadster-kickflip/?v=3.5.0',method:'GET',mode:'navigate'}});assert.match(await response.text(),/id="game"/);
+ h.network=false;const response=await h.run('fetch',{request:{url:'https://game.test/roadster-kickflip/?v='+version,method:'GET',mode:'navigate'}});assert.match(await response.text(),/id="game"/);
  assert.equal(await h.run('fetch',{request:{url:'https://api.test/scores',method:'GET',mode:'cors'}}),undefined);
  assert.equal(await h.run('fetch',{request:{url:'https://game.test/roadster-kickflip/scores',method:'POST',mode:'cors'}}),undefined);
 });
 test('an incomplete or mixed-version install cannot replace a working offline copy',async()=>{
- const h=harness();h.tamper=true;await assert.rejects(h.run('install'),/incomplete/);assert.ok(h.buckets.has('tesla-jump:/roadster-kickflip/:old-2'));assert.ok(h.buckets.has('another-app'));assert.equal([...h.buckets.keys()].some(k=>k.endsWith(':3.5.0')),false);assert.equal(h.skips,0);
+ const h=harness();h.tamper=true;await assert.rejects(h.run('install'),/incomplete/);assert.ok(h.buckets.has('tesla-jump:/roadster-kickflip/:old-2'));assert.ok(h.buckets.has('another-app'));assert.equal([...h.buckets.keys()].some(k=>k.endsWith(':'+version)),false);assert.equal(h.skips,0);
 });
 test('explicit activation is limited to a safe single window',async()=>{
  const h=harness(),source={id:'a',postMessage:m=>h.messages.push(m)};

@@ -8,6 +8,12 @@ export function flipFrameAt(jumpPhase) {
   }
   return 0;
 }
+/** Ordinary jumps retain the independent nine-frame kickflip; grabs share one hull. */
+export function jumpCarPose(flight,gravity){
+ const cosmetic=!!flight.airborne&&!flight.trickStarted&&!flight.latched;
+ const phase=cosmetic?Math.min(1,flight.time/(2*flight.launchVelocity/gravity)):0;
+ return {cosmetic,phase,frame:flipFrameAt(phase),gap:cosmetic?Math.sin(phase*Math.PI)*24:0};
+}
 // Measured on upright frame 0. Both tyre contact patches share this baseline.
 export const ROADSTER_BASELINE = 112.5;
 export const ROADSTER_WIDTH = 108;

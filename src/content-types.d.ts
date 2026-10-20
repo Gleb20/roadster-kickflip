@@ -1,4 +1,4 @@
-export type Reaction = {enabled:false} | {enabled:true; animationId:string; trigger:'near'|'airborne-near'|'passage'; range:number};
+export type Reaction = {enabled:false} | {enabled:true; animationId:string; trigger:'near'|'airborne-near'|'passage'; range:number; space:'target'|'self'};
 export interface LegacyObstacle {id:string; name:string; w:number; h:number; inset?:number; altitude?:number; approachSpeed?:number}
 export interface Visual {renderer:'photo'|'cutout'|'character'|'prop'|'drone'; key:string; assets:string[]; bob:boolean}
 export interface ObstacleDefinition extends LegacyObstacle {

@@ -18,8 +18,8 @@ export const ASSETS=freeze({
 });
 /** @type {Reaction} */
 const none={enabled:false};
-/** @param {string} animationId @param {'near'|'airborne-near'|'passage'} trigger @param {number} range @returns {Reaction} */
-const reaction=(animationId,trigger='near',range=300)=>({enabled:true,animationId,trigger,range});
+/** @param {string} animationId @param {'near'|'airborne-near'|'passage'} trigger @param {number} range @param {'target'|'self'} space @returns {Reaction} */
+const reaction=(animationId,trigger='near',range=300,space='target')=>({enabled:true,animationId,trigger,range,space});
 /** @param {import('./content-types.js').LegacyObstacle} base @param {import('./content-types.js').DefinitionOptions} options @returns {ObstacleDefinition} */
 function define(base,options={}){
  return freeze({...base,definitionVersion:1,category:options.category||'object',placement:base.altitude?'air':'ground',
@@ -41,7 +41,7 @@ export const OBSTACLES=freeze([
  define({id:'gemini',name:'GEMINI',w:58,h:78,inset:4},{category:'emblem'}),
  define({id:'rogozin',name:'ROGOZIN / TRAMPOLINE',w:88,h:130,inset:4},{renderer:'character',assets:['cast'],category:'person',biomes:['spaceport'],collision:'trampoline',hero:reaction('point-and-laugh','airborne-near'),obstacle:reaction('trampoline-bounce','passage')}),
  define({id:'amber',name:'AMBER HEARD',w:58,h:94,inset:9},{renderer:'character',assets:['amber'],category:'person',obstacle:reaction('throw','passage')}),
- define({id:'joe',name:'JOE ROGAN',w:76,h:94,inset:10},{renderer:'character',assets:['joe'],category:'person',hero:reaction('podcast','passage',650),obstacle:reaction('podcast','passage',650)}),
+ define({id:'joe',name:'JOE ROGAN',w:76,h:94,inset:10},{renderer:'character',assets:['joe'],category:'person',hero:reaction('podcast','passage',650,'self'),obstacle:reaction('podcast','passage',650,'self')}),
  define({id:'muscleCoupe',name:'AMERICAN MUSCLE',w:138,h:45,inset:6},{renderer:'photo',assets:['photos'],category:'vehicle'}),
  define({id:'muscleCompact',name:'SMALL BLOCK / BIG EGO',w:112,h:38,inset:5},{renderer:'photo',assets:['photos'],category:'vehicle'}),
  define({id:'pickup',name:'BIG TRUCK ENERGY',w:140,h:57,inset:6},{renderer:'photo',assets:['photos'],category:'vehicle'}),
@@ -75,7 +75,7 @@ export function validateContent(definitions=OBSTACLES){
   for(const direction of /** @type {const} */ (['hero','obstacle'])){
    const r=o.reactions?.[direction];
    if(!r||typeof r.enabled!=='boolean')errors.push(`${o.id}: missing ${direction} reaction`);
-   else if(r.enabled&&(!ANIMATIONS.includes(r.animationId)||!['near','airborne-near','passage'].includes(r.trigger)||!(r.range>0)))errors.push(`${o.id}: missing animation ${r.animationId}`);
+   else if(r.enabled&&(!ANIMATIONS.includes(r.animationId)||!['near','airborne-near','passage'].includes(r.trigger)||!(r.range>0)||!['target','self'].includes(r.space)))errors.push(`${o.id}: missing animation ${r.animationId}`);
   }
  }
  return errors;

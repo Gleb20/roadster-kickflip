@@ -7,7 +7,7 @@ test('Joe encounter raises the hand, inhales, reacts while passing, then settles
  assert.ok(joeReaction(500).reach>0);
  assert.ok(joeReaction(200).inhale>.99);
  assert.ok(joeReaction(-100).meme>.99);
- assert.ok(joeReaction(-100).smoke>.99);
+ assert.ok(joeReaction(-120).smoke>.99);
  assert.ok(joeReaction(-400).reach<.3);
  // No temporal jumps at phase boundaries, regardless of boost or draw cadence.
  for(let dx=650;dx>-480;dx-=1)for(const key of ['reach','inhale','meme','smoke']){

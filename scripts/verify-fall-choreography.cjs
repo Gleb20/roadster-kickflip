@@ -39,8 +39,8 @@ fs.mkdirSync(out,{recursive:true});
    check(`${width}: car docks before feet land`,samples.find(s=>s.fraction===.93).pose.car.x===0&&samples.find(s=>s.fraction===.97).pose.rider.y===95);
    check(`${width}: no longitudinal squash/flip frames during somersault`,samples.every(s=>s.pose.car.phase===0));
    await page.evaluate(()=>{__qa.F.age=__qa.F.duration*.36;__qa.syncState();__qa.refreshHUD();__qa.render();});
-   const first=await page.locator('#scene').screenshot();await page.evaluate(()=>__qa.render());
-   check(`${width}: rendering does not advance contact pose`,first.equals(await page.locator('#scene').screenshot()));
+   const redraw=await page.evaluate(()=>{const canvas=document.querySelector('#scene'),c=canvas.getContext('2d');__qa.render();const a=c.getImageData(0,0,canvas.width,canvas.height).data;__qa.render();const b=c.getImageData(0,0,canvas.width,canvas.height).data;let different=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i])different++;return different;});
+   check(`${width}: rendering does not advance contact pose`,redraw===0);
    fs.writeFileSync(path.join(out,`${width}-samples.json`),JSON.stringify(samples,null,2));await context.close();
   }
   check('no JS/console errors',errors.length===0);
