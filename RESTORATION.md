@@ -1,6 +1,6 @@
 ## Factory3.9.1 inverse
 
-Parent main42d234632d895888f105f50b6588e9aec6346361 / published3.9.0. Frozen root diff/status/index/head and affected-file copies are retained locally in `docs/verification/2026-10-21-factory-v391/before/`. Work was isolated from the dirty root. A bounded binary patch and its exact inverse are rehearsed against the parent tree; root HEAD/index and foreign art remain untouched. Restore public runtime using a fresh cache version; keep the existing compatible backend, scores and sessions.
+Published game6069f71f83a5e487814943bd3552a0cf70fee15b / tree8005de2cda548280ef958d513d90ad583edd65a2. Parent main42d234632d895888f105f50b6588e9aec6346361 / published3.9.0. Exact inverse restores parent treed3cf51a31c253b670ee7301941aaf9ae5751f88e with121 parent tests and all checks. Frozen root diff/status/index/head and affected-file copies are retained locally in `docs/verification/2026-10-21-factory-v391/before/`. Work was isolated from the dirty root. A bounded binary patch and its exact inverse are rehearsed against the parent tree; root HEAD/index and foreign art remain untouched. Restore public runtime using a fresh cache version; keep the existing compatible backend, scores and sessions.
 
 ## Factory3.9.0 inverse — isolated release
 

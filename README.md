@@ -1,8 +1,8 @@
-## Factory polish3.9.1
+## Published factory polish3.9.1
 
-[Play3.9.1](https://gleb20.github.io/roadster-kickflip/?v=3.9.1). Robots, wrists and tools render in front of the body; each station reaches and retracts smoothly across stage boundaries. Body stages blend briefly. Model-name plates are removed. The production plane is22% smaller and less contrasty, with occasional fast passes by the existing small forklift in the closer aisle. Wall and storage parallax are much slower. The rider remains the foreground focus.
+[Play3.9.1](https://gleb20.github.io/roadster-kickflip/?v=3.9.1). Commit6069f71; Pages39666878920 succeeded. Robots, wrists and tools render in front of the body; each station reaches and retracts smoothly across stage boundaries. Body stages blend briefly. Model-name plates are removed. The production plane is22% smaller and less contrasty, with occasional fast passes by the existing small forklift in the closer aisle. Wall and storage parallax are much slower. The rider remains the foreground focus.
 
-7,000-point alternation, models/colours, concrete aisle and3.8.0 ranked physics stay unchanged.123 game tests,50 assembly checks and17 focused motion/depth checks pass at320/390 portrait,844 landscape and1440 desktop. [Release evidence](docs/verification/2026-10-21-factory-v391/release-status.json). Physical phone/Safari review remains with the user.
+7,000-point alternation, models/colours, concrete aisle and3.8.0 ranked physics stay unchanged.123 game tests,50 assembly checks and17 focused motion/depth checks pass at320/390 portrait,844 landscape and1440 desktop. [Release evidence](docs/verification/2026-10-21-factory-v391/release-status.json). 27 public native keyboard/touch/pause/two-finger/offline checks pass; all133 core resources and worker hashes match. Physical phone/Safari review remains with the user.
 
 ## Published3.9.0 — factory assembly
 

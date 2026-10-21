@@ -1,4 +1,6 @@
-## Factory polish3.9.1 —21 October2026
+## Published factory polish3.9.1 —21 October2026
+
+[Play3.9.1](https://gleb20.github.io/roadster-kickflip/?v=3.9.1). Commit6069f71f83a5e487814943bd3552a0cf70fee15b / tree8005de2cda548280ef958d513d90ad583edd65a2; Pages39666878920 succeeded.27 public native keyboard/touch/pause/two-finger/offline checks pass;133 public core resources plus worker hash match. Root123 tests/checks pass with byte-identical runtime and original HEAD/index preserved. Close old tabs/app and reopen if the existing old PWA updater stays on3.9.0. Physical iPhone/Safari review remains with the user.
 
 User feedback: manipulators appeared to act behind the car, assembly stole attention from Elon, labels were unwanted, and depth needed faster near logistics / slower hangar wall. This bounded renderer update is based on main42d234632d895888f105f50b6588e9aec6346361.
 

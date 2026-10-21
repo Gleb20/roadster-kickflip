@@ -1,6 +1,6 @@
 {
   "version": "3.9.1",
-  "published": false,
+  "published": true,
   "parent": "42d234632d895888f105f50b6588e9aec6346361",
   "gameTests": 123,
   "factoryBrowserChecks": 50,
@@ -12,5 +12,17 @@
   "ruleset": "roadster-v3.8.0 unchanged; no backend deployment or public test-score writes",
   "oldPWAUpdate": "Existing Restart activation intermittency remains; close old tabs/app and reopen if it stays on the older release",
   "biomeBrowserChecks": 64,
-  "rollback": "Exact forward/inverse restores parent tree d3cf51a31c253b670ee7301941aaf9ae5751f88e with121 parent tests and all checks"
+  "rollback": "Exact forward/inverse restores parent tree d3cf51a31c253b670ee7301941aaf9ae5751f88e with121 parent tests and all checks",
+  "gameCommit": "6069f71f83a5e487814943bd3552a0cf70fee15b",
+  "gameTree": "8005de2cda548280ef958d513d90ad583edd65a2",
+  "pagesRun": 39666878920,
+  "pagesConclusion": "success",
+  "publicChecks": 27,
+  "publicRuntimeErrors": [],
+  "publicCoreResources": 133,
+  "publicWorkerMatches": true,
+  "rootTests": 123,
+  "rootChecks": "pass",
+  "rootRuntimeMatches": 133,
+  "rootHeadAndIndex": "preserved"
 }
