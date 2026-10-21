@@ -1,3 +1,7 @@
+## Published3.8.0 verified inverse
+
+Feature commit2a4061309e1a5b1d6c2ad17683410136fba9c846 / treedf68cbc4ba97557e7c16d9d5937f983d504b399a. Forward and exact inverse were verified in isolation: parent tree7393ac6dd2f656f6ad2ed88cba1bc4cb991a4efc is restored, with111 passing parent tests and all checks. The original dirty checkout/index and foreign art packet remain preserved. Apply any inverse only in isolation; a public frontend rollback needs a fresh cache version. Retain the deployed additive dual-ruleset backend after rollback for already-cached3.8.0 clients; never restore an older database or delete accepted results. See the flight verification packet and its public/hash/hosted/upgrade evidence.
+
 ## Flight3.8.0 candidate restore
 
 Parent c2cfa916c14645cedd1f4d17b9b4f83c1a6ee054 / tree7393ac6dd2f656f6ad2ed88cba1bc4cb991a4efc. Freeze the bounded diff, apply its inverse in isolation and compare the exact parent tree, then run the111 parent tests/checks. The original dirty checkout must retain its historical index and foreign files. Do not reset it.

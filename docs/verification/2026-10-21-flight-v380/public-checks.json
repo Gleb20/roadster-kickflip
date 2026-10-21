@@ -1,0 +1,56 @@
+{
+  "checks": [
+    "desktop: actual published3.8.0",
+    "desktop: QA mutation API absent",
+    "desktop: no overflow",
+    "desktop: native hold tucks and reaches faster spin",
+    "desktop: both feet and grip follow the roof",
+    "desktop: release opens legs and slows ongoing rotation",
+    "desktop: native released flip lands safely",
+    "desktop: actual ideal bonus settles correctly",
+    "desktop: pause freezes flight/pose",
+    "desktop: coherent new offline cache installed",
+    "desktop: cold offline reload keeps3.8.0",
+    "desktop: starts offline",
+    "mobile: actual published3.8.0",
+    "mobile: QA mutation API absent",
+    "mobile: no overflow",
+    "mobile: native hold tucks and reaches faster spin",
+    "mobile: both feet and grip follow the roof",
+    "mobile: release opens legs and slows ongoing rotation",
+    "mobile: native released flip lands safely",
+    "mobile: actual ideal bonus settles correctly",
+    "mobile: pause freezes flight/pose",
+    "mobile: independent two-finger thrust retained",
+    "mobile: coherent new offline cache installed",
+    "mobile: cold offline reload keeps3.8.0",
+    "mobile: starts offline",
+    "at least one real-input ideal landing observed",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "landings": [
+    {
+      "tag": "desktop",
+      "landing": {
+        "points": 150,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": true,
+        "good": true
+      }
+    },
+    {
+      "tag": "mobile",
+      "landing": {
+        "points": 150,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": true,
+        "good": true
+      }
+    }
+  ]
+}

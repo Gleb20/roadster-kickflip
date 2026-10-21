@@ -1,3 +1,7 @@
+## Published3.8.0
+
+[Play on your phone](https://gleb20.github.io/roadster-kickflip/?v=3.8.0). Hold in flight to grab/spin faster; release to straighten and slow. Ideal landing±10° earns50 base points, safe±40° remains, and knees compress on touchdown. Backend verification is updated without losing old scores. Public native keyboard/touch and offline checks pass. [Release evidence](docs/verification/2026-10-21-flight-v380/release-status.json). Earlier candidate notes are historical.
+
 ## Flight3.8.0 candidate
 
 Hold in flight to grab and spin faster; release to straighten and slow rotation. Perfect landing±10° earns50 base points; safe±40° remains. Touchdown has a short leg-compression pulse. Candidate verification and deployment status: docs/verification/2026-10-21-flight-v380/. Compatible server verification is deployed; Pages publication status is recorded there.

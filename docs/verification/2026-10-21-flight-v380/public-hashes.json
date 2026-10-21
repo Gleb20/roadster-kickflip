@@ -1,0 +1,428 @@
+[
+  {
+    "file": "assets/audio/thrust-pressure-hiss.mp3",
+    "status": 200,
+    "match": true,
+    "sha256": "52a44ebb1f814b5cb16446326d852cadaa9134b2d7fa48ea985f06313d5f345c"
+  },
+  {
+    "file": "assets/characters/amber-head-v247.png",
+    "status": 200,
+    "match": true,
+    "sha256": "e063808cd0b31b8c49547fa2f63e49b67e73542d2542c38650ac5d60ab4a44fe"
+  },
+  {
+    "file": "assets/characters/bezos-v247.png",
+    "status": 200,
+    "match": true,
+    "sha256": "b78d60b0557823644c871ea44aae88213f333d03cae3ceb64357c7386907dc22"
+  },
+  {
+    "file": "assets/characters/joe-rogan.png",
+    "status": 200,
+    "match": true,
+    "sha256": "7a6e0986e48260b1769a5da9caa414d0bad4a001a9ad34e52944944d9e62fa5b"
+  },
+  {
+    "file": "assets/characters/katy-v247.png",
+    "status": 200,
+    "match": true,
+    "sha256": "a064c19b5310aaecf28574cc0beee0bfc018ff9ef27ad266c9149e97f5829b6b"
+  },
+  {
+    "file": "assets/factory/ATTRIBUTION.md",
+    "status": 200,
+    "match": true,
+    "sha256": "826c2d43ed63b0c21106c0dd36ae437900d682fafb182c7a546d208a4e886f03"
+  },
+  {
+    "file": "assets/factory/body-shell.png",
+    "status": 200,
+    "match": true,
+    "sha256": "eeec79e27e72628ebb1e291f71d2f7cd6ddcb49b3686bc07912032a6fc19ea1c"
+  },
+  {
+    "file": "assets/factory/conveyor.png",
+    "status": 200,
+    "match": true,
+    "sha256": "c9e8a6db8e86cadbbb2fdbd8f3916fef26a040dce1b5972ac23b834319727d36"
+  },
+  {
+    "file": "assets/factory/forklift.png",
+    "status": 200,
+    "match": true,
+    "sha256": "4c9f7d52c6be9c6fb8dc0dd91e9d38985572542e4a25f33d5caed92fc640004b"
+  },
+  {
+    "file": "assets/factory/machine-v362.png",
+    "status": 200,
+    "match": true,
+    "sha256": "d973d2b2b4c5cd90c75a77fa9cde62839c6e6b033810c35bc52b4fad4d42f87b"
+  },
+  {
+    "file": "assets/factory/rack-v362.png",
+    "status": 200,
+    "match": true,
+    "sha256": "1dd2fdb6efdd555864c2aba5fc14d99e3b9450af267ac280dde749c1c1b4f977"
+  },
+  {
+    "file": "assets/factory/rear-wall.png",
+    "status": 200,
+    "match": true,
+    "sha256": "500504f1888d40a023c64c3d31ddbc262bddd2fea977b05bffd65c0045123d60"
+  },
+  {
+    "file": "assets/factory/robot-base.png",
+    "status": 200,
+    "match": true,
+    "sha256": "58e33aeb7aac22fbb56ac52ab5f5aae8b60cf04bd292a76458c3668ca674bfdb"
+  },
+  {
+    "file": "assets/factory/robot-fore.png",
+    "status": 200,
+    "match": true,
+    "sha256": "8f58bfa4df73be92aaefe91ac2b48462d099f5b18d1ff130f6c81a3552c3aaf4"
+  },
+  {
+    "file": "assets/factory/robot-grip.png",
+    "status": 200,
+    "match": true,
+    "sha256": "2b73cb1df0161245ee168ad0a1cd0f4f34e3a237eb9143127a5c41d573715b5d"
+  },
+  {
+    "file": "assets/factory/robot-upper.png",
+    "status": 200,
+    "match": true,
+    "sha256": "50e0b962094f776c4cb17fafeefd64f29deda105e196737ef8becfbbc8e6fdb4"
+  },
+  {
+    "file": "assets/obstacles/phantom-v3.png",
+    "status": 200,
+    "match": true,
+    "sha256": "1a43a47d9e1d47441b7a35d18ba2f4284ea9b36312267129383cd636895623f4"
+  },
+  {
+    "file": "assets/roadster-flip/atlas.png",
+    "status": 200,
+    "match": true,
+    "sha256": "8dd912225478ba0541a45a1b094ad3acc6be6d8bd951c2255e84bea8540e9cfd"
+  },
+  {
+    "file": "assets/spaceport/spaceport-atlas.png",
+    "status": 200,
+    "match": true,
+    "sha256": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25"
+  },
+  {
+    "file": "assets/ui/ATTRIBUTION.md",
+    "status": 200,
+    "match": true,
+    "sha256": "deb8cd82a7fd47805dd22f07f75cd690447e75bb1dce26258085e5575b809383"
+  },
+  {
+    "file": "assets/ui/collection-mystery.png",
+    "status": 200,
+    "match": true,
+    "sha256": "deee4491bd44e99ea1b7a5b45eef41d405cf4334e77bb0c929e315a4a4ce60c3"
+  },
+  {
+    "file": "collage-atlas.png",
+    "status": 200,
+    "match": true,
+    "sha256": "f21defd92580de776cf924cfb9f58dd744750b2537ec4626609602bc8a7edd66"
+  },
+  {
+    "file": "collage-extras.png",
+    "status": 200,
+    "match": true,
+    "sha256": "950289b239aa5cfd49fc4d6acc3c0b07125760c538a817cbb73255e7a3f5e461"
+  },
+  {
+    "file": "icons/icon-192.png",
+    "status": 200,
+    "match": true,
+    "sha256": "b8643e73d2402c30049c662ec096068bd210408b4c5493734781f7442776bfd7"
+  },
+  {
+    "file": "icons/icon-512.png",
+    "status": 200,
+    "match": true,
+    "sha256": "82a8a2c05856c62cde93fabce958f86375506ac63428769d6eacce8737b3da46"
+  },
+  {
+    "file": "index.html",
+    "status": 200,
+    "match": true,
+    "sha256": "49701d17adc61c6ac1dbc8f43b7e1e42525c5e5ac108de848b740676e6921d4b"
+  },
+  {
+    "file": "manifest.webmanifest",
+    "status": 200,
+    "match": true,
+    "sha256": "c93944d35c2ef6b0ed48d2d13f79b0854c49a19b050acbaa5803b2138c9390cd"
+  },
+  {
+    "file": "obstacle-photos.png",
+    "status": 200,
+    "match": true,
+    "sha256": "c4f1b6ca7c95e006c21e1b8ca5252ccafda91e808cdf836b638338c00ae44714"
+  },
+  {
+    "file": "paper-cast.png",
+    "status": 200,
+    "match": true,
+    "sha256": "03a60ba2884f00f02a94bc98052e71361778a4768df5fd21928aedde2aa23290"
+  },
+  {
+    "file": "src/biomes.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "ddc11860153b72d0ce0e180a16fee03674d23420ee09c6fe89e9299a3e79c17a"
+  },
+  {
+    "file": "src/cash.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "4c85bccc29978d33bf1bcab3f1bff5aecb371eb1d9ff3c9c1a7828f98171e578"
+  },
+  {
+    "file": "src/catalog.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "c3fd836f1da96333c23de56d2fdd84d383149e9fa8bb8b8d20af503a15284cd4"
+  },
+  {
+    "file": "src/characters.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "16b3ef0a78eddb8f48e3b30ae763e6766ff2098dbaa231361e780c8f583517af"
+  },
+  {
+    "file": "src/clock.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "cae3660e453672dc6dc5cae661fe90e48036ee8c6604d43dbceada3eea1710ea"
+  },
+  {
+    "file": "src/coaching.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "c329ee2f84a57dbb28c13f991629e6eab48b64562dd645feb31074bb83e3bf46"
+  },
+  {
+    "file": "src/collection-copy.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "a4c3357cf6d69c1f290874197a64046e5d3963f8ad347369cb5040827c42c56c"
+  },
+  {
+    "file": "src/collection-ui.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "dee4c730d8a9bca824b214ea43394b50728f5d2b748a11b9b66c3889eda38aa5"
+  },
+  {
+    "file": "src/collection.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "c9c7359c6cd1bc2a9e19a9ca236088be662f2a76e467dd3ebb52ed1207b61653"
+  },
+  {
+    "file": "src/content.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "280b93931a85f2122de4efe94619ca4e3eb10ae5a0dbe1fdfb2577d8c3be9cf7"
+  },
+  {
+    "file": "src/director.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "1c9198f7cdcb0bb5215393361a8f80e45dd5b3e1978cf80a9e2d888ff3b78f05"
+  },
+  {
+    "file": "src/encounter.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "ae74baddef380c9a84c5587df11ab1cfd2fa4d3e7f0b00d81a20e46f7954b7c6"
+  },
+  {
+    "file": "src/environment.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "4faed5ee5cb12cefa7f1442751f13a45ba05c065ffa37028cdaa65a7f3a7ba36"
+  },
+  {
+    "file": "src/factory.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "60aa050fc62a25ec07f817f25cfd60c46577ceb522f811b9f8c4d3b2c7a351da"
+  },
+  {
+    "file": "src/fall.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "447713c6fcf08f1822a78125cd20b5509c211052cbe8cba38237b2a690359b4d"
+  },
+  {
+    "file": "src/gameplay-config.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "fc71202d21db1dd740cb70fb4c70043d1b4833542296934c99ce9a7009f4bd77"
+  },
+  {
+    "file": "src/gameplay.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "5649f2c6d06408c0dacf4451b04aea2204a0fdf1c5ba7da2d36442a85abdbb8f"
+  },
+  {
+    "file": "src/hero-rig.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "6aae3ae43c10f28e268ec26e71177e6eccefeb2bf408044d9e53bb8e4ded3469"
+  },
+  {
+    "file": "src/hud.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "d02ca61dae95cec2b5c5a3f801c154e8f2079bef9df89621ca86ac970d972cca"
+  },
+  {
+    "file": "src/loading.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "fc03b81ef961cc022dafeed03c6c7456204446622a6768d1fe69dff3b62e5991"
+  },
+  {
+    "file": "src/main.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "1537482016ce352970f9466e15dab8db75b984b1f2a10424c3c437df0f22b1ae"
+  },
+  {
+    "file": "src/obstacle-art.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "46f463723cf74cb7e048eb0f244332b24ee47853cabe213c6ac942a08f1a334f"
+  },
+  {
+    "file": "src/online-config.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "270190af96c0f506382dfa22419fddfb0f82b4dedd41f31917e5eb3182ad400f"
+  },
+  {
+    "file": "src/online-ui.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "931f64d04df1586a519b6dcdeb12536c7c19920d860088a365b7e4eedfef6c1d"
+  },
+  {
+    "file": "src/online.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "4a2fedd1b3a936c197f15db4967abf7f416c5ad7efec48e3c4eaaeda7ce6ef0b"
+  },
+  {
+    "file": "src/photo-cutouts.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "374bdccdad1947dafc5db107d17bf4336ac1f5b7731ff4c20c402c11d34abbed"
+  },
+  {
+    "file": "src/physics.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "37c0cdfaea20c4e2fc2bd5443ee9ee5e7de7151eb09a51c89200aad34891b2cc"
+  },
+  {
+    "file": "src/props.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "140a44abbfceebee37d3d5be7a85d8674b53c4c76e4e6d39da1ad32352315914"
+  },
+  {
+    "file": "src/pwa.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "f7f5f5aa7b8d4cd6258bcd3e776022fd50976548e096eccbd0e494b001fdd515"
+  },
+  {
+    "file": "src/random.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1"
+  },
+  {
+    "file": "src/roadster-flip.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "ec5679ac22ca99dc0063a0a1a5b1bd49d8274db91d70b1a7d05945e40369ea5c"
+  },
+  {
+    "file": "src/rocket.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "f5ccc6ea27cfdae64a64ddbc609b210d5104ee7bc83461dea7c3828bfc3e833d"
+  },
+  {
+    "file": "src/routes.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "1a31a147777eefac5041656e0eaa03dcac753ce93ba91d210ddeff08ec6dcf46"
+  },
+  {
+    "file": "src/run.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "ed7e06332e508bb2b98bb953287594b3822968fce11f497498393421842d8de9"
+  },
+  {
+    "file": "src/score-record.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "504cb583325e854fcfd84b797d35333040ca38326060a60402f454c1bb55a0d3"
+  },
+  {
+    "file": "src/slapstick.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "d627ace249f2d6d81f81b1eeca9f087cf5933dd7701d8affc4a1fe76f912708e"
+  },
+  {
+    "file": "src/sound.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "8f3bbc840fc29ab15fb56c12e0dc2f19d9dc15a4105d01de4ba9fb163c60ed63"
+  },
+  {
+    "file": "src/spaceport-sprites.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "1809b3fbc0737df4fb95df2aa5f0a8319654d05c300cc07c95b57362f3796384"
+  },
+  {
+    "file": "src/speed-feedback.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "95ab436c8c7923cf3732e041b279156f97d1de787608381f35d023d751b4bd82"
+  },
+  {
+    "file": "src/thrusters.js?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "40b8c8bab5ab81008c081f96481e4b965a0c37113e535aafcc4647ba715316eb"
+  },
+  {
+    "file": "style.css?v=3.8.0",
+    "status": 200,
+    "match": true,
+    "sha256": "8a25f095b8acaf46b168d646c4317c9d3bd07d63b07bafdfd1a18e435906c388"
+  },
+  {
+    "file": "sw.js",
+    "status": 200,
+    "match": true,
+    "sha256": "c74811f82e4fecc21c9048f09a1cee82ed571ce10f9c6937926ccffa97d70021"
+  }
+]

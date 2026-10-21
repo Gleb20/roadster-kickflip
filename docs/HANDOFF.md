@@ -1,3 +1,11 @@
+## Published3.8.0 — grab, release and ideal landing
+
+[Play3.8.0](https://gleb20.github.io/roadster-kickflip/?v=3.8.0). Game commit2a4061309e1a5b1d6c2ad17683410136fba9c846, tested treedf68cbc4ba97557e7c16d9d5937f983d504b399a; Pages39656822040 succeeded. The new hold/release physics, visible extension,±10° PERFECT+50 bonus, retained±40° safe zone and touchdown leg compression are public. Compatible dual-ruleset backend is deployed; old records/pending sessions remain supported.10 existing scores retained; no fake public test scores added.
+
+117 game tests,8 server tests and all source/content/type/cache checks pass.27 public native keyboard/touch/pause/two-finger/offline checks pass with no runtime errors. Both real-input paths landed one ideal flip for150 points. All70 public core resources and the worker match.8 exact old-PWA→new-PWA checks preserve best, collection and old finished record. A synthetic repeated-update Home timeout reproduces on the old release and remains separately recorded; explicit restart and actual-version migration pass. Physical phone feel remains the user's review. Evidence: [release-status.json](verification/2026-10-21-flight-v380/release-status.json).
+
+Earlier candidate/pending entries below are history. The separate unapproved factory assembly art is excluded; its cancelled ramp is not an open feature. After phone acceptance, the bounded debt proposal remains a fresh route-search timing measurement.
+
 ## Flight3.8.0 — authorized release,21 October2026
 
 The user approved updating the server together with the game if a simpler exchange cannot resist request tampering through browser Network tools. Hidden fields, browser-computed hashes/signatures and duration limits do not establish that a claimed score came from play. Keep the existing server replay verifier for this release; there is no authorized switch to client-trusted totals or obligation to build a second verification scheme.
