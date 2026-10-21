@@ -3,15 +3,16 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('n
 const out=path.resolve(process.argv[2]||'docs/verification/2026-10-18-hud-v301/gameplay');fs.mkdirSync(out,{recursive:true});
 const url=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
 (async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH||undefined});const checks=[],errors=[];try{
+ const freezeSetup=()=>{const raf=requestAnimationFrame.bind(window),cancel=cancelAnimationFrame.bind(window),pending=new Set();window.requestAnimationFrame=callback=>{const id=raf(time=>{pending.delete(id);callback(time);});pending.add(id);return id;};window.__stopDisplayClock=()=>{for(const id of pending)cancel(id);pending.clear();window.requestAnimationFrame=()=>0;};};
  const context=await browser.newContext({viewport:{width:1440,height:900}});const page=await context.newPage();
- page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});await page.route('**/favicon.ico',r=>r.fulfill({status:204,body:''}));
+ await page.addInitScript(freezeSetup);page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});await page.route('**/favicon.ico',r=>r.fulfill({status:204,body:''}));
  await page.goto(url);await page.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&document.querySelector('#loading-screen').hidden);
  const state=()=>page.evaluate(()=>JSON.parse(render_game_to_text()));
  const check=(name,condition)=>{assert.ok(condition,name);checks.push(name);};
  const checkSilent=(condition,name)=>assert.ok(condition,name);
  const step=async ticks=>page.evaluate(ticks=>{for(let i=0;i<ticks;i++)__qa.step(1/120);__qa.refreshHUD();__qa.render();},ticks);
  // Stop only the display clock: all game steps still use the production update pipeline.
- await page.evaluate(()=>{requestAnimationFrame=()=>0;});await page.waitForTimeout(40);
+ await page.evaluate(()=>__stopDisplayClock());
  await page.click('#start');await page.evaluate(()=>{__qa.S.next=1e9;});
  await page.keyboard.down('Space');await step(24);check('real Space charges halfway',(await state()).charge>=.499);
  await page.keyboard.up('Space');await page.keyboard.down('Space');await step(104);await page.keyboard.up('Space');
@@ -61,7 +62,7 @@ const url=process.env.GAME_BASE_URL||'http://127.0.0.1:8766/';
 
 
  // Native multi-touch via Chromium input, never dispatchEvent.
- const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const touch=await mobile.newPage();touch.on('pageerror',e=>errors.push(e.message));await touch.route('**/favicon.ico',r=>r.fulfill({status:204,body:''}));await touch.goto(url);await touch.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&document.querySelector('#loading-screen').hidden);await touch.evaluate(()=>{requestAnimationFrame=()=>0;});await touch.waitForTimeout(40);await touch.locator('#start').tap();await touch.evaluate(()=>{__qa.S.next=1e9;});
+ const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const touch=await mobile.newPage();await touch.addInitScript(freezeSetup);touch.on('pageerror',e=>errors.push(e.message));await touch.route('**/favicon.ico',r=>r.fulfill({status:204,body:''}));await touch.goto(url);await touch.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&document.querySelector('#loading-screen').hidden);await touch.evaluate(()=>__stopDisplayClock());await touch.locator('#start').tap();await touch.evaluate(()=>{__qa.S.next=1e9;});
  const cdp=await mobile.newCDPSession(touch);const tpoint=(id,x,y)=>({id,x,y,radiusX:5,radiusY:5,force:1});const send=async(type,points)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints:points});const mstep=async n=>touch.evaluate(n=>{for(let i=0;i<n;i++)__qa.step(1/120);__qa.refreshHUD();__qa.render();},n);const mstate=()=>touch.evaluate(()=>JSON.parse(render_game_to_text()));
  const primary=tpoint(1,180,430);await send('touchStart',[primary]);await mstep(48);await send('touchEnd',[]);await mstep(1);
  const bounds=await touch.locator('#boost').boundingBox(),thrust=tpoint(2,bounds.x+bounds.width/2,bounds.y+bounds.height/2);

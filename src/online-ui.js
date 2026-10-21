@@ -1,4 +1,4 @@
-import {validNickname,onlineMessage} from './online.js?v=3.7.1';
+import {validNickname,onlineMessage} from './online.js?v=3.7.3';
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
 export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
  const dialog=document.getElementById('online-dialog'),content=document.getElementById('online-content'),title=document.getElementById('online-title'),back=document.getElementById('online-close');
@@ -32,7 +32,7 @@ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
   catch(error){if(serial!==request||!dialog.open)return;content.replaceChildren(status(onlineMessage(error.code),true));const retry=el('button','primary','RETRY LOADING');retry.onclick=()=>void showRank(id);content.append(retry);appendBack();}
  }
  function success(entry){
-  if(!dialog.open)return;view='success';request++;title.textContent='SCORE POSTED';highlight=entry.id;
+  if(!dialog.open)return;view='success';request++;title.textContent='SCORE SUBMITTED';highlight=entry.id;
   content.replaceChildren(el('div','online-posted-score',entry.score.toLocaleString()),el('h3','online-posted-name',entry.nickname),status('Your verified score is now on the world leaderboard.'));
   const button=el('button','primary','VIEW MY RANK');button.type='button';button.onclick=()=>void showRank(entry.id);
   const share=el('button','text-button','SHARE SCORE ↗'),feedback=status('');share.type='button';feedback.hidden=true;
@@ -53,7 +53,7 @@ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
   if(!activeResult?.session||!activeResult.replay){content.append(status(onlineMessage(activeResult?.session?'invalid_replay':'local_run'),true));appendBack();return;}
   if(activeResult.entry){success(activeResult.entry);return;}
   const {score}=activeResult;content.append(el('div','online-posted-score',score.toLocaleString()),el('p','online-hint','Post this finished run with a public nickname. No account, email or real name is needed.'));
-  const existing=client.pending.find(j=>j.session.id===activeResult.session.id),form=el('form','online-form'),label=el('label','','ARCADE NAME'),input=el('input'),hint=el('p','online-hint','3–12 letters or numbers. Spaces, - and _ are welcome.'),error=status('',true),button=el('button','primary',existing?'RETRY THIS RESULT':'POST SCORE');
+  const existing=client.pending.find(j=>j.session.id===activeResult.session.id),form=el('form','online-form'),label=el('label','','ARCADE NAME'),input=el('input'),hint=el('p','online-hint','3–12 letters or numbers. Spaces, - and _ are welcome.'),error=status('',true),button=el('button','primary',existing?'RETRY THIS RESULT':'SUBMIT SCORE');
   input.id='online-nickname';input.name='nickname';input.type='text';input.autocomplete='off';input.setAttribute('autocapitalize','characters');input.setAttribute('autocorrect','off');input.spellcheck=false;input.maxLength=24;input.value=existing?.nickname||draft;input.readOnly=!!existing;label.htmlFor=input.id;hint.id='online-name-hint';error.id='online-name-error';input.setAttribute('aria-describedby',hint.id+' '+error.id);error.hidden=true;button.type='submit';
   const validate=()=>{const valid=validNickname(input.value);error.hidden=valid;error.textContent=valid?'':onlineMessage('invalid_nickname');input.setAttribute('aria-invalid',String(!valid));fieldError=!valid;return valid;};input.onblur=validate;input.oninput=()=>{draft=input.value;if(fieldError)validate();};
   const progress=status(''),warning=status('Retry history is available for this window only. Keep it open until your result is confirmed.');warning.hidden=client.persistent;progress.hidden=true;

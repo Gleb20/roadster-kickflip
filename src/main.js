@@ -1,36 +1,36 @@
-import {createBiomeScene,biomeEdge} from './biomes.js?v=3.7.1';
-import {createFactoryRenderer} from './factory.js?v=3.7.1';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.7.1';
-import {createOnline} from './online.js?v=3.7.1';
-import {createScoreRecord} from './score-record.js?v=3.7.1';
-import {createOnlineUI} from './online-ui.js?v=3.7.1';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=3.7.1';
-import {createPWA} from './pwa.js?v=3.7.1';
-import {createCollection} from './collection.js?v=3.7.1';
-import {createCollectionUI} from './collection-ui.js?v=3.7.1';
-import {createObstaclePainter} from './obstacle-art.js?v=3.7.1';
-import {loading} from './loading.js?v=3.7.1';
-import {createThrusterEffects} from './thrusters.js?v=3.7.1';
-import {createSound} from './sound.js?v=3.7.1';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.7.1';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.7.1';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.7.1';
-import {types} from './catalog.js?v=3.7.1';
-import {obstacleDefinition} from './content.js?v=3.7.1';
-import {START_SPEED, START_KMH} from './physics.js?v=3.7.1';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.7.1';
-import {launch,uprightError} from './gameplay.js?v=3.7.1';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.7.1';
-import {createCoach} from './coaching.js?v=3.7.1';
-import {createHUD,mphFromKmh} from './hud.js?v=3.7.1';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.7.1';
-import {fallPose,fallSeatContact} from './fall.js?v=3.7.1';
-import {createSlapstick} from './slapstick.js?v=3.7.1';
-import {createClock} from './clock.js?v=3.7.1';
-import {createEnvironmentRenderer} from './environment.js?v=3.7.1';
-import {createCharacterRenderer} from './characters.js?v=3.7.1';
-import {createPropRenderer} from './props.js?v=3.7.1';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.7.1';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=3.7.3';
+import {createFactoryRenderer} from './factory.js?v=3.7.3';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.7.3';
+import {createOnline} from './online.js?v=3.7.3';
+import {createScoreRecord} from './score-record.js?v=3.7.3';
+import {createOnlineUI} from './online-ui.js?v=3.7.3';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=3.7.3';
+import {createPWA} from './pwa.js?v=3.7.3';
+import {createCollection} from './collection.js?v=3.7.3';
+import {createCollectionUI} from './collection-ui.js?v=3.7.3';
+import {createObstaclePainter} from './obstacle-art.js?v=3.7.3';
+import {loading} from './loading.js?v=3.7.3';
+import {createThrusterEffects} from './thrusters.js?v=3.7.3';
+import {createSound} from './sound.js?v=3.7.3';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.7.3';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.7.3';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.7.3';
+import {types} from './catalog.js?v=3.7.3';
+import {obstacleDefinition} from './content.js?v=3.7.3';
+import {START_SPEED, START_KMH} from './physics.js?v=3.7.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.7.3';
+import {launch,uprightError} from './gameplay.js?v=3.7.3';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.7.3';
+import {createCoach} from './coaching.js?v=3.7.3';
+import {createHUD,mphFromKmh} from './hud.js?v=3.7.3';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.7.3';
+import {fallPose,fallSeatContact} from './fall.js?v=3.7.3';
+import {createSlapstick} from './slapstick.js?v=3.7.3';
+import {createClock} from './clock.js?v=3.7.3';
+import {createEnvironmentRenderer} from './environment.js?v=3.7.3';
+import {createCharacterRenderer} from './characters.js?v=3.7.3';
+import {createPropRenderer} from './props.js?v=3.7.3';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.7.3';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -62,27 +62,29 @@ let onlineUI,activeOnline=null,completedOnline=null,onlineTarget=null;
 const scoreRecord=createScoreRecord({storage,ruleset:RULESET});
 let recordRank=null,rankRequest=0;
 function refreshScoreActions(){
- const saved=scoreRecord.matching(best),posted=!!saved?.entry,canPost=scoreRecord.canPost(saved);
+ const saved=scoreRecord.matching(best),posted=!!saved?.entry,canPost=scoreRecord.canPost(saved),rank=$('best-rank');
  $('best').textContent=String(best).padStart(5,'0');
- $('best-rank').textContent=posted?(recordRank?.id===saved.entry.id?recordRank.text:'POSTED · CHECKING WORLD RANK…'):!best?'Your next launch starts here.':canPost?(scoreRecord.persistent?'LOCAL BEST · Give it a world ranking.':'LOCAL BEST · Keep this window open to post.'):saved?.session?'LOCAL BEST · Posting window expired.':'LOCAL BEST · Set a connected best to post it.';
- $('post-best').hidden=!posted&&!canPost;$('post-best').textContent=posted?'VIEW WORLD RANK ↗':'POST PERSONAL BEST ↗';
- $('pause-score').textContent=S.score.toLocaleString();$('pause-post').disabled=!posted&&!canPost;
- $('pause-post').innerHTML=(posted?'VIEW POSTED BEST':'POST PERSONAL BEST')+icon('arrow');
- $('pause-post-hint').textContent=posted||canPost?`Saved best: ${best.toLocaleString()}. This run stays paused.`:'Finish this run to post its score. Restart and Home end this attempt.';
+ rank.replaceChildren();rank.setAttribute('aria-busy',String(best>0&&!recordRank));
+ if(!best)rank.textContent='Your next launch starts here.';
+ else if(recordRank?.score===best&&recordRank.rank){
+  if(!posted)rank.append('Would rank ');
+  const number=document.createElement('b');number.textContent='#'+recordRank.rank.toLocaleString();rank.append(number,' globally');
+ }else rank.textContent=recordRank?.error?'Global rank unavailable':'Checking global rank…';
+ $('post-best').hidden=!canPost;$('post-best').textContent='SUBMIT BEST ↗';
+ $('pause-score').textContent=S.score.toLocaleString();
  if(completedOnline){
   const eligible=!!completedOnline.session&&!!completedOnline.replay;
-  $('post-score').hidden=!eligible;$('post-score').innerHTML=(completedOnline.entry?'VIEW POSTED SCORE':'POST SCORE')+icon('arrow');
-  $('restart').classList.toggle('retry-primary',!eligible);
-  $('online-run-status').textContent=completedOnline.entry?'POSTED · Your verified score is on the world leaderboard.':!completedOnline.session?'LOCAL RUN · Connect before starting a run to post its score.':!completedOnline.replay?'LOCAL SCORE · This replay exceeds the online recording limit.':'WORLD LEADERBOARD · Post with an arcade name. No account needed.';
+  $('post-score').hidden=!eligible;$('post-score').textContent=completedOnline.entry?'VIEW SCORE ↗':'SUBMIT SCORE ↗';
  }
 }
 async function refreshRecordRank(){
- const saved=scoreRecord.matching(best),id=saved?.entry?.id,serial=++rankRequest;if(!id){recordRank=null;refreshScoreActions();return;}
- try{const data=await online.entry(id);if(serial!==rankRequest||scoreRecord.matching(best)?.entry?.id!==id)return;recordRank={id,text:`WORLD #${data.rank.toLocaleString()} · ${data.entry.nickname}`};}
- catch{if(serial!==rankRequest)return;recordRank={id,text:'POSTED · Rank unavailable. Reconnect to refresh.'};}
+ const score=best,saved=scoreRecord.matching(score),id=saved?.entry?.id,serial=++rankRequest;
+ recordRank=null;refreshScoreActions();if(!score)return;
+ try{const data=await(id?online.entry(id):online.estimateRank(score));if(serial!==rankRequest||best!==score)return;recordRank={score,rank:data.rank};}
+ catch{if(serial!==rankRequest)return;recordRank={score,error:true};}
  refreshScoreActions();
 }
-const online=createOnline({apiUrl:ONLINE_API,apiKey:ONLINE_PUBLIC_KEY,ruleset:RULESET,storage,enabled:!localHost||new URLSearchParams(location.search).get('online')==='1',onAccepted:(id,entry)=>{scoreRecord.accepted(id,entry);if(completedOnline?.session?.id===id)completedOnline.entry=entry;refreshScoreActions();void refreshRecordRank();},onChange:()=>{onlineUI?.refresh();const label=$('online-availability');label.textContent=online.ready?'ONLINE SCORE READY':online.prepareError?'LOCAL PLAY · RANKING UNAVAILABLE':'CONNECTING TO RANKING…';}});
+const online=createOnline({apiUrl:ONLINE_API,apiKey:ONLINE_PUBLIC_KEY,ruleset:RULESET,storage,enabled:!localHost||new URLSearchParams(location.search).get('online')==='1',onAccepted:(id,entry)=>{scoreRecord.accepted(id,entry);if(completedOnline?.session?.id===id)completedOnline.entry=entry;refreshScoreActions();void refreshRecordRank();},onChange:()=>{onlineUI?.refresh();}});
 const coach=createCoach(storage);
 const hud=createHUD();
 const B={state:'ready',charge:0,left:0,duration:0,level:1,factor:1};
@@ -143,10 +145,11 @@ function soundUI(){
 soundUI();
 // Capture touch completion before game handlers prevent default or stop bubbling.
 for(const event of ['pointerup','touchend','keydown'])addEventListener(event,()=>sound.unlock(),{capture:true,passive:true});
-function ui(){refreshScoreActions();for(const [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);boostUI();}
+function ui(){if(S.mode==='menu')pwa?.checkpoint();refreshScoreActions();for(const [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);boostUI();}
 function cancelCharge(){primaryInputs.clear();thrustInputs.clear();run.command('cancel');sound.setThrust(false);syncState();}
 function start(seed){
  if(!spritesReady||artReview||$('game').inert||pwa?.locked)return;
+ if(pwa?.beforeRun())return;
  sound.unlock();if($('replay-tutorial').checked){coach.reset();$('replay-tutorial').checked=false;}cancelCharge();activeOnline=typeof seed==='number'?null:online.takeSession();completedOnline=null;const nextSeed=typeof seed==='number'?seed:activeOnline?.seed??crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed);biomeScene.reset();sceneTime=0;rocketLeg=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
  cameraLift=0;scale=viewScale(W,H,0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();characters.reset();
  Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();projectiles.length=0;clock.reset();syncState();ui();tone(500);
@@ -300,16 +303,15 @@ function collectionPortrait(def){
 collectionUI=createCollectionUI({store:collection,definitions:types,preview:collectionPortrait,
  beforeOpen:()=>{if(!spritesReady||$('game').inert||S.mode==='playing')return false;cancelCharge();clock.reset();},afterClose:()=>{cancelCharge();clock.reset();collectionTeaser();}});
 onlineUI=createOnlineUI({client:online,currentRun:()=>onlineTarget,beforeOpen:()=>{if(!spritesReady||$('game').inert||S.mode==='playing')return false;cancelCharge();clock.reset();},afterClose:()=>{cancelCharge();clock.reset();}});
-for(const id of ['leaderboard-menu','leaderboard-pause','leaderboard-result'])$(id).onclick=()=>onlineUI.open($(id));
+$('leaderboard-menu').onclick=()=>onlineUI.open($('leaderboard-menu'));
 function openScore(trigger,attempt){onlineTarget=attempt;onlineUI.open(trigger,'submit');}
 $('post-score').onclick=()=>openScore($('post-score'),completedOnline);
 $('post-best').onclick=()=>openScore($('post-best'),scoreRecord.matching(best));
-$('pause-post').onclick=()=>openScore($('pause-post'),scoreRecord.matching(best));
 addEventListener('online',()=>{void online.prepare();void refreshRecordRank();});
-pwa=createPWA({mode:()=>S.mode,lock:locked=>{cancelCharge();for(const id of ['start','restart','resume','pause-restart','pause-home','result-home'])$(id).disabled=locked;}});
-$('game').addEventListener('tesla-ready',()=>{if(!artReview){collectionUI.restore();onlineUI.restore();void online.prepare();void refreshRecordRank();pwa.init();}},{once:true});
+pwa=createPWA({mode:()=>S.mode,canReload:()=>!document.querySelector('dialog[open]'),restart:()=>start(),lock:locked=>{cancelCharge();for(const id of ['start','restart','resume','pause-restart','pause-home','result-home'])$(id).disabled=locked;}});
+$('game').addEventListener('tesla-ready',async()=>{if(!artReview){collectionUI.restore();onlineUI.restore();void online.prepare();void refreshRecordRank();await pwa.init();if(pwa.consumeStart()){await online.prepare();if(S.mode==='menu')start();}}},{once:true});
 $('collection-menu').onclick=()=>collectionUI.open($('collection-menu'));
-function collectionTeaser(){const found=types.filter(o=>collection.state(o.id)!=='locked').length,fresh=types.filter(o=>collection.state(o.id)==='new').length;$('collection-teaser-count').textContent=`${found} / ${types.length} FOUND${fresh?' · '+fresh+' NEW':''}`;}
+function collectionTeaser(){const found=types.filter(o=>collection.state(o.id)!=='locked').length;$('collection-menu').setAttribute('aria-label',`Legend: ${found} of ${types.length} encounters found`);}
 collectionTeaser();
 
 function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground+cameraLift-(o.altitude||0)*scale);ctx.scale(scale,scale);const bob=obstacleDefinition(o.id)?.visual.bob?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}

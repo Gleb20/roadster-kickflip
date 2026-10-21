@@ -1,3 +1,7 @@
+## UI refinement 3.7.3 — phone feedback, 21 October2026
+
+User phone feedback incorporated in3.7.3: compact orange Legend/install shortcuts, actual/possible global rank, quieter menu, simplified pause/results and automatic safe-boundary PWA updates. [Evidence](verification/2026-10-21-ui-v373/README.md). Earlier UI states are release history.
+
 # Release3.7.1 - UI and PWA icon
 
 User authorized publication of the completed menu/HUD refinements and corrected kickflip preview to the existing Pages URL. This bounded presentation release does not complete the older3.7 programme's full turntables or metallic head trophies. Sharing of verified scores and the app icon are implemented. Earlier open programme items remain individually unresolved.

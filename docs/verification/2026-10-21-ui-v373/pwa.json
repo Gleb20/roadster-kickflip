@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "verified offline copy installed",
+    "first installation never reloads the active page",
+    "no manual update control exists",
+    "installation instructions remain available",
+    "guide keys never start a run",
+    "cold offline navigation works and saves survive",
+    "offline game starts immediately",
+    "new worker waits during active attempt",
+    "pause retains the attempt and waiting release",
+    "other game window blocks activation without blocking restart",
+    "explicit restart automatically updates and resumes a fresh run",
+    "automatic restart upgrade preserves best and collection",
+    "finished score stays visible while a release waits",
+    "returning Home applies the ready update automatically",
+    "open dialog defers automatic update",
+    "closing installation guide applies menu update without a prompt",
+    "mixed deployment is rejected without replacing complete cache",
+    "last complete release still works offline after failed update",
+    "no runtime errors"
+  ],
+  "errors": []
+}

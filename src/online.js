@@ -51,7 +51,19 @@ export function createOnline({apiUrl,apiKey=null,ruleset,storage,fetcher=fetch,n
   if(!job){if(jobs.length>=20)throw new OnlineError('pending_limit');job={session:{...session},replay:structuredClone(replay),nickname:normalName(nickname),createdAt:now(),status:'pending',error:null};jobs.push(job);save();}
   return send(job);
  }
- return {prepare,takeSession,submit,retry:job=>send(jobs.find(j=>j.session.id===job.session.id)||job),remove,list:(page=1,snapshot)=>request(`/scores?page=${page}${snapshot===undefined?'':'&snapshot='+snapshot}`),entry:id=>request('/scores/'+id),get pending(){return jobs.map(j=>({...j}));},get persistent(){return persistent;},get ready(){return !!next;},get prepareError(){return lastPrepareError;}};
+ async function estimateRank(score){
+  if(!Number.isSafeInteger(score)||score<0)throw new OnlineError('invalid_score');
+  const first=await request('/scores?page=1');
+  if(!first.entries.length)return {rank:1,snapshot:first.snapshot};
+  const inspect=data=>data.entries.find(entry=>entry.score<score)?.rank;
+  const top=inspect(first);if(top)return {rank:top,snapshot:first.snapshot};
+  let low=2,high=first.pages,rank=first.total+1;
+  while(low<=high){const page=Math.floor((low+high)/2),data=await request(`/scores?page=${page}&snapshot=${first.snapshot}`),found=inspect(data);
+   if(found!==undefined){rank=found;high=page-1;}else low=page+1;
+  }
+  return {rank,snapshot:first.snapshot};
+ }
+ return {estimateRank,prepare,takeSession,submit,retry:job=>send(jobs.find(j=>j.session.id===job.session.id)||job),remove,list:(page=1,snapshot)=>request(`/scores?page=${page}${snapshot===undefined?'':'&snapshot='+snapshot}`),entry:id=>request('/scores/'+id),get pending(){return jobs.map(j=>({...j}));},get persistent(){return persistent;},get ready(){return !!next;},get prepareError(){return lastPrepareError;}};
 }
 export function onlineMessage(code){return ({
  invalid_nickname:'Use 3–12 letters or numbers. Spaces, - and _ are welcome.',

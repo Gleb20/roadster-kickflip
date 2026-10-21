@@ -49,3 +49,20 @@ test('accepted callback persists an explicitly retried score independently of di
  const accepted=[],client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:memory(),now:()=>1000,onAccepted:(id,entry)=>accepted.push({id,entry}),fetcher:async()=>Response.json({status:'accepted',entry:{id:'public-best',score:400}})});
  await client.submit(session,record,'PILOT');assert.deepEqual(accepted,[{id:session.id,entry:{id:'public-best',score:400}}]);
 });
+
+test('possible rank uses one snapshot, puts a new tie last, and searches large tables logarithmically',async()=>{
+ const scores=Array.from({length:5000},(_,i)=>Math.floor((5000-i)/4)*10),calls=[];
+ const client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,fetcher:async(url,options)=>{
+  assert.equal(options.method,'GET');const page=Number(url.searchParams.get('page'));calls.push(page);
+  if(page!==1)assert.equal(url.searchParams.get('snapshot'),'77');
+  return Response.json({page,pages:Math.ceil(scores.length/10),total:scores.length,snapshot:77,entries:scores.slice((page-1)*10,page*10).map((score,i)=>({score,rank:(page-1)*10+i+1}))});
+ }});
+ for(const score of [99999,12500,10000,9990,30,0]){
+  calls.length=0;const result=await client.estimateRank(score);assert.equal(result.rank,scores.filter(s=>s>=score).length+1);assert.equal(result.snapshot,77);assert.ok(calls.length<=10);
+ }
+});
+test('possible rank distinguishes empty ranking, network failure and invalid score',async()=>{
+ const c=createOnline({apiUrl:'https://api.test',fetcher:async()=>Response.json({entries:[],snapshot:0,pages:1,total:0})});assert.equal((await c.estimateRank(100)).rank,1);
+ await assert.rejects(c.estimateRank(-1),e=>e.code==='invalid_score');
+ const offline=createOnline({apiUrl:'https://api.test',fetcher:async()=>{throw Error('offline');}});await assert.rejects(offline.estimateRank(100),e=>e.code==='network');
+});

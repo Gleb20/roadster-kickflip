@@ -1,3 +1,7 @@
+# Tesla Jump3.7.3 — phone UI refinement
+
+Compact Legend/install shortcuts, actual or possible global rank, focused pause/results and automatic PWA updates between attempts. [Play3.7.3](https://gleb20.github.io/roadster-kickflip/?v=3.7.3). [Verification and restore](docs/verification/2026-10-21-ui-v373/README.md). Release status is recorded in that packet; earlier headings below describe historical versions.
+
 # Tesla Jump 3.7.1
 
 [Play on GitHub Pages](https://gleb20.github.io/roadster-kickflip/?v=3.7.1)

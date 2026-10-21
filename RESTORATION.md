@@ -1,3 +1,7 @@
+## UI3.7.3 restore
+
+Parent `15f7693bbebd46bb6af601c88dc197b56711a6f1`, tree `d333eceb6e8f615c69cfe5b5f5ba68498a4b3c08`. Bounded release diff and exact reverse application are retained with the verification packet. Use an isolated checkout, reproduce the exact parent tree and pass its109 tests/checks. A deployed rollback needs a fresh cache version. Preserve local best, encounter collection, accepted score identity and pending results; no database rollback is part of this UI release. Do not reset the original dirty workspace. Check release-status.json for publication and restore evidence.
+
 ## Factory3.6.2 restore
 
 Snapshot parent: public3.6.1 commit d83b2434fc64bb88c55d1cf158a29431140f0592, tree a2b2ed46f07c9183fc7aadec2836c6d5d0a549d8. Apply the release inverse in an isolated checkout and verify the exact parent tree before any rollback. Existing installation rollback requires a fresh frontend version and regenerated PWA hashes. Do not reset the original dirty workspace or replace the separate3.7.x UI candidate. Frozen diff, source hashes, checks and actual isolated restoration evidence: docs/verification/2026-10-20-v3.6.2/.
