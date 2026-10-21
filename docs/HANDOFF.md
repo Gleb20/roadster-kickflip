@@ -1,3 +1,15 @@
+## Factory3.9.2 — varied robot life,21 October2026
+
+The user approved the line composition, asked for varied initial poses and more believable pickup/fitting, explicitly removed the foreground forklift because it read as an obstacle, and requested floor texture and shadows instead. Based on main5cccc45e8693c0d11bbae135300956da7e576db7.
+
+Stable world-station indices alternate four rest targets and claw angles. Independent continuous10-phase handling loops pick from a small stack, lift/inspect and return the part. Four main stations use a distinct pickup → clear/lift → fit → release/retract sequence, blending from/to the moving idle pose. Existing approved part sprites are instanced on the production plane; no new illustration. Wrist tools rotate around their joint, carried parts follow the actual IK tip, and the elbow branch folds above the supply rather than dipping through the floor.
+
+The foreground aisle has no logistics sprite. Forklift is removed from active renderer, motion helper and offline cache; its historical file and credits are preserved. The conveyor retains3.9.1 scale/contrast/parallax/camera continuity. Subtle contact/cast shadows sit under the line; world-anchored concrete grain and low-alpha slab variation treat the existing ground surface. No added signs, obstacles, collision or score rules.
+
+124 game tests plus source/content/type/PWA checks pass; four-model/color/stage and focused motion/supply/clear-aisle/reduced-motion checks are recorded in [release-status.json](verification/2026-10-21-factory-v392/release-status.json). Reduced motion keeps four varied static rest poses. Pause and resize retain the same decorative state; no frame-time RNG.7,000-point progression and roadster-v3.8.0 physics/verifier are preserved. Physical iPhone/Safari acceptance remains with the user.
+
+Rechecked open topics: existing old-PWA Restart activation intermittency, route-search stalls, independent daylight and biome obstacle pools remain separate; ramps stay cancelled. The bounded debt proposal after phone acceptance remains route-search timing measurement. Earlier3.9.1 foreground-forklift settings are superseded.
+
 ## Published factory polish3.9.1 —21 October2026
 
 [Play3.9.1](https://gleb20.github.io/roadster-kickflip/?v=3.9.1). Commit6069f71f83a5e487814943bd3552a0cf70fee15b / tree8005de2cda548280ef958d513d90ad583edd65a2; Pages39666878920 succeeded.27 public native keyboard/touch/pause/two-finger/offline checks pass;133 public core resources plus worker hash match. Root123 tests/checks pass with byte-identical runtime and original HEAD/index preserved. Close old tabs/app and reopen if the existing old PWA updater stays on3.9.0. Physical iPhone/Safari review remains with the user.

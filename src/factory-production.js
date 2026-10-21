@@ -24,14 +24,23 @@ export function createFactoryProduction(random=Math.random){
 }
 
 const smooth=n=>{const x=Math.max(0,Math.min(1,n));return x*x*x*(x*(x*6-15)+10);};
-// A station reaches, releases its fitted part, then retracts over the next stage.
+// Pick from the station tray, lift clear, fit, then retract continuously.
 export function assemblyAction(time,index){
- const age=time-index*5;
- return {reach:smooth((age-1.4)/3.6)*(1-smooth((age-5)/1.25)),carry:smooth((age-1.4)/.45)*(1-smooth((age-4.8)/.2))};
+ const age=time-index*5,back=1-smooth((age-5)/1.25);
+ return {pickup:smooth((age-.3)/1.4)*back,reach:smooth((age-2)/2.4)*back,carry:smooth((age-1.8)/.2)*(1-smooth((age-4.8)/.2))};
 }
-export const FACTORY_DEPTH=Object.freeze({wall:.002,storage:.006,lineScale:.78,forklift:.5});
-export function forkliftPlacement(distance,time,width,scale){
- const travel=distance*FACTORY_DEPTH.forklift-time*12,period=3200;
- const x=width+140*scale-((travel%period+period)%period)*scale;
- return x < -140*scale||x>width+140*scale?null:x;
+export const FACTORY_DEPTH=Object.freeze({wall:.002,storage:.006,lineScale:.78});
+const restPoses=[[-10,-100,-.4],[35,-118,.3],[-20,-72,-.85],[65,-104,-1.35]];
+// Stable station identity; no frame-time random calls or shared replay state.
+export function robotIdlePose(index,time,reducedMotion=false){
+ const variant=((index%4)+4)%4,[x,y,angle]=restPoses[variant];
+ if(reducedMotion)return {x,y,angle,carry:0,variant};
+ const phase=((time*.82+index*2.13)%10+10)%10;
+ let pickup=0;
+ if(phase<2.5)pickup=smooth((phase-.8)/1.3);
+ else if(phase<6)pickup=1-smooth((phase-2.5)/1.7);
+ else if(phase<8)pickup=smooth((phase-6)/1.4);
+ else pickup=1-smooth((phase-8)/1.5);
+ const idle=1-pickup,wave=time*.65+index*1.7;
+ return {x:x*idle+76*pickup+Math.sin(wave)*3*idle,y:y*idle-22*pickup+Math.cos(wave*.8)*2.5*idle,angle:angle*idle+Math.sin(wave+.9)*.07*idle,carry:smooth((phase-2.15)/.25)*(1-smooth((phase-7.4)/.3)),variant};
 }

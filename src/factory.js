@@ -1,5 +1,5 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,forkliftPlacement} from './factory-production.js?v=3.9.1';
-const equipment=['forklift','rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=3.9.2';
+const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
  ...['door','glass','wheel'].map(part=>`${model}-part-${part}`),
@@ -14,27 +14,30 @@ function grade(image,saturation,brightness,offset=0){
  x.putImageData(data,0,0);return c;
 }
 export function createFactoryRenderer({random=Math.random}={}){
- const images=new Map(),production=createFactoryProduction(random);let ready=false;
+ const images=new Map(),production=createFactoryProduction(random),patterns=new WeakMap();let ready=false,grain;
+ function part(ctx,id,x,y,width,angle=0){const img=images.get(id),h=width*img.height/img.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.drawImage(img,-width/2,-h/2,width,h);ctx.restore();}
+ function concreteGrain(){const tile=document.createElement('canvas');tile.width=128;tile.height=96;const x=tile.getContext('2d');for(let i=0;i<440;i++){const px=(i*73+19)%128,py=(i*47+Math.floor(i/128)*13)%96;x.fillStyle=i%3?'#152e3611':'#bcc5bd12';x.fillRect(px,py,i%7===0?2:1,1);}return tile;}
+
  function sprite(ctx,id,x,bottom,width){const img=images.get(id),h=width*img.height/img.width;ctx.drawImage(img,x-width/2,bottom-h,width,h);}
  function link(ctx,id,a,b,start,end,s){
   ctx.save();ctx.translate(...start);ctx.rotate(Math.atan2(end[1]-start[1],end[0]-start[0])-Math.atan2(b[1]-a[1],b[0]-a[0]));ctx.scale(s,s);ctx.drawImage(images.get(id),-a[0],-a[1]);ctx.restore();
  }
- function robot(ctx,x,base,z,target,tool='grip'){
+ function robot(ctx,x,base,z,target,tool='grip',angle=0){
   const s=.18*z,img=images.get('assembly-robot-base');ctx.drawImage(img,x-img.width*s/2,base-img.height*s,img.width*s,img.height*s);
   const shoulder=[x+40*s,base-214*s],l1=297*s,l2=279*s;
   let dx=target[0]-shoulder[0],dy=target[1]-shoulder[1],d=clamp(Math.hypot(dx,dy),Math.abs(l1-l2)+.01,l1+l2-.01);
-  const direction=Math.atan2(dy,dx),a=direction+Math.acos(clamp((l1*l1+d*d-l2*l2)/(2*l1*d),-1,1));
+  const direction=Math.atan2(dy,dx),a=direction-Math.acos(clamp((l1*l1+d*d-l2*l2)/(2*l1*d),-1,1));
   const elbow=[shoulder[0]+Math.cos(a)*l1,shoulder[1]+Math.sin(a)*l1],wrist=[shoulder[0]+Math.cos(direction)*d,shoulder[1]+Math.sin(direction)*d];
   link(ctx,'assembly-robot-upper',[66,76],[363,87],shoulder,elbow,s);link(ctx,'assembly-robot-fore',[56,56],[335,55],elbow,wrist,s);
   const ts=.105*z,grip=images.get('assembly-tool-'+tool),pivot=tool==='paint'?[20,150]:[20,80];
-  ctx.drawImage(grip,wrist[0]-pivot[0]*ts,wrist[1]-pivot[1]*ts,grip.width*ts,grip.height*ts);
-  return [wrist[0]+37*z,wrist[1]];
+  ctx.save();ctx.translate(...wrist);ctx.rotate(angle);ctx.drawImage(grip,-pivot[0]*ts,-pivot[1]*ts,grip.width*ts,grip.height*ts);ctx.restore();
+  return [wrist[0]+Math.cos(angle)*37*z,wrist[1]+Math.sin(angle)*37*z];
  }
  return {
   async load(){await Promise.all(FACTORY_ASSETS.map(async id=>{
    const img=new Image();img.src=`assets/factory/${id}.png`;await img.decode();
-   images.set(id,id==='rear-wall'?grade(img,.4,.30,32):id==='machine-v362'||id==='assembly-rack-cutout'?grade(img,.55,.47,18):grade(img,.62,id==='forklift'?.67:.60,12));
-  }));ready=true;},
+   images.set(id,id==='rear-wall'?grade(img,.4,.30,32):id==='machine-v362'||id==='assembly-rack-cutout'?grade(img,.55,.47,18):grade(img,.62,.60,12));
+  }));grain=concreteGrain();ready=true;},
   get ready(){return ready;},get production(){return production.state;},
   reset(){production.reset();},update(biome,time){production.update(biome,time);},
   draw(ctx,{W,H,ground,scale,screenDistance,worldDistance,activeTime,reducedMotion=false}){
@@ -57,6 +60,10 @@ export function createFactoryRenderer({random=Math.random}={}){
    const carWorld=-120+48*absolute,carX=W*(.42+.05*Math.sin(absolute*Math.PI/60)),camera=carWorld-carX/q;
    const beltBottom=ground-138*z,beltTop=beltBottom-60*q;
    const beltWidth=480*q,beltOffset=wrap(camera*q,beltWidth);
+   // Broad low-contrast contact/cast shadows tie the line to the hangar floor.
+   const shadow=ctx.createLinearGradient(0,beltBottom-3*q,0,beltBottom+58*z);shadow.addColorStop(0,'#10272f55');shadow.addColorStop(.3,'#10272f2b');shadow.addColorStop(1,'#10272f00');ctx.fillStyle=shadow;ctx.fillRect(0,beltBottom-3*q,W,58*z+3*q);
+   for(let x=-beltOffset;x<W+beltWidth;x+=120*q){ctx.fillStyle='#122b3216';ctx.beginPath();ctx.moveTo(x-9*q,beltBottom-3*q);ctx.lineTo(x+10*q,beltBottom-3*q);ctx.lineTo(x+39*z,beltBottom+42*z);ctx.lineTo(x+9*z,beltBottom+42*z);ctx.fill();}
+
    for(let x=-beltOffset-beltWidth;x<W+beltWidth;x+=beltWidth)sprite(ctx,'assembly-conveyor-cutout',x+beltWidth*.5,beltBottom,beltWidth+.5);
    ctx.strokeStyle='#5a686d';ctx.lineWidth=.7*q;
    for(let x=-wrap((camera+(reducedMotion?0:absolute*22))*q,18*q);x<W;x+=18*q){ctx.beginPath();ctx.moveTo(x,beltTop+9*q);ctx.lineTo(x+5*q,beltTop+9*q);ctx.stroke();}
@@ -73,22 +80,28 @@ export function createFactoryRenderer({random=Math.random}={}){
     const first=Math.floor((camera-200)/240),last=Math.ceil((camera+W/q+200)/240);
     for(let index=first;index<=last;index++){
      const station=120+index*240,x=(station-camera)*q,i=index-(reducedMotion?0:state.cycle||0)*6;
-     const action=!reducedMotion&&i>=0&&i<4?assemblyAction(t,i):{reach:0,carry:0};
-     const height=i===3?5:i===2?(model==='roadster'?28:model==='cybertruck'?38:44):(model==='roadster'?18:28);
-     // After installation the wrist stays at its station while the car carries on.
-     const contactX=t-i*5<=5?carX:x;
-     const destination=[contactX+(i===3?cw*.33:i===2?cw*.03:0)-37*q,carBottom-height*q];
-     const wrist=[mix(x-40*q,destination[0],action.reach),mix(beltTop-65*q,destination[1],action.reach)-Math.sin(action.reach*Math.PI)*7*q];
-     const tip=robot(ctx,x+20*q,beltBottom-2*q,q,wrist,i===1&&model!=='cybertruck'?'paint':'grip');
-     if(action.carry>0){
-      ctx.save();ctx.globalAlpha*=alpha*action.carry;
-      if(i===1&&model!=='cybertruck'){
-       const color={red:'215,70,62',blue:'76,128,211',white:'216,223,220'}[state.color];
-       const mist=ctx.createRadialGradient(...tip,0,...tip,17*q);mist.addColorStop(0,`rgba(${color},.22)`);mist.addColorStop(1,`rgba(${color},0)`);ctx.fillStyle=mist;ctx.fillRect(tip[0]-17*q,tip[1]-17*q,34*q,34*q);
-      }else{
-       const part=i===3?'wheel':i===2?'glass':'door',width=(part==='wheel'?29:part==='glass'?62:48)*q,img=images.get(`${model}-part-${part}`);
-       sprite(ctx,`${model}-part-${part}`,tip[0],tip[1]+width*img.height/img.width/2,width);
-      }ctx.restore();
+     const action=!reducedMotion&&i>=0&&i<4?assemblyAction(t,i):{pickup:0,reach:0,carry:0};
+     const idle=robotIdlePose(index,absolute,reducedMotion),step=wrap(index,6),partName=step===3||step===5?'wheel':step===2?'glass':'door';
+     const partId=`${model}-part-${partName}`,partWidth=(partName==='wheel'?29:partName==='glass'?62:48)*q,paint=step===1&&model!=='cybertruck';
+     // A small supply stack sits on the production plane, outside the travel aisle.
+     const supply=[x+76*q,beltBottom-22*q];
+     ctx.fillStyle='#192f3655';ctx.beginPath();ctx.ellipse(supply[0],beltBottom+q,35*q,5*q,0,0,Math.PI*2);ctx.fill();
+     for(let n=0;n<3;n++)part(ctx,partId,supply[0]+(n-1)*3*q,supply[1]+(2-n)*4*q,partWidth*.83,(n-1)*.065);
+     const height=i===3?5:i===2?(model==='roadster'?28:model==='cybertruck'?38:44):(model==='roadster'?18:28),contactX=t-i*5<=5?carX:x;
+     const contact=[contactX+(i===3?cw*.33:i===2?cw*.03:0),carBottom-height*q],contactAngle=i===2?-.14:i===1?.15:0;
+     const home=[x+idle.x*q,beltBottom+idle.y*q],fromIdle=action.pickup,fit=action.reach;
+     const tipTarget=[home[0]*(1-fromIdle)+supply[0]*(fromIdle-fit)+contact[0]*fit,home[1]*(1-fromIdle)+supply[1]*(fromIdle-fit)+contact[1]*fit];
+     const transit=clamp((t-i*5-2)/2.4),retreat=1-clamp((t-i*5-5)/1.25);
+     if(action.pickup>0)tipTarget[1]-=Math.sin(transit*Math.PI)*28*q*retreat;
+     const angle=idle.angle*(1-fromIdle)+contactAngle*fit,wrist=[tipTarget[0]-Math.cos(angle)*37*q,tipTarget[1]-Math.sin(angle)*37*q];
+     const tip=robot(ctx,x+20*q,beltBottom-2*q,q,wrist,paint?'paint':'grip',angle);
+     const carry=action.carry+(1-fromIdle)*idle.carry;
+     if(carry>0){
+      ctx.save();ctx.globalAlpha*=alpha*carry;
+      if(paint){
+       if(action.reach>.65){const color={red:'215,70,62',blue:'76,128,211',white:'216,223,220'}[state.color];const mist=ctx.createRadialGradient(...tip,0,...tip,17*q);mist.addColorStop(0,`rgba(${color},.22)`);mist.addColorStop(1,`rgba(${color},0)`);ctx.fillStyle=mist;ctx.fillRect(tip[0]-17*q,tip[1]-17*q,34*q,34*q);}
+      }else part(ctx,partId,...tip,partWidth,angle*.45);
+      ctx.restore();
      }
     }
    }
@@ -99,8 +112,14 @@ export function createFactoryRenderer({random=Math.random}={}){
    ctx.strokeStyle='#35494f';ctx.lineWidth=.8*z;const slab=360*z;
    for(let x=-wrap(screenDistance,slab);x<W+slab;x+=slab){ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x-42*z,H);ctx.stroke();}
    ctx.strokeStyle='#78818455';ctx.beginPath();ctx.moveTo(0,ground+(H-ground)*.62);ctx.lineTo(W,ground+(H-ground)*.62);ctx.stroke();
-   // Close logistics aisle: a short, fast pass, behind the rider and in front of production.
-   if(!reducedMotion){const x=forkliftPlacement(distance,activeTime||0,W,z);if(x!==null)sprite(ctx,'forklift',x,ground-34*z,126*z);}
+   // Fine, world-anchored concrete grain and gently different slab tones.
+   let texture=patterns.get(ctx);if(!texture){texture=ctx.createPattern(grain,'repeat');patterns.set(ctx,texture);}
+   const scroll=wrap(screenDistance,128);ctx.save();ctx.translate(-scroll,0);ctx.fillStyle=texture;ctx.fillRect(scroll,ground-10*z,W,H-ground+10*z);ctx.restore();
+   const firstSlab=Math.floor(screenDistance/slab);
+   for(let x=-wrap(screenDistance,slab),n=firstSlab;x<W;x+=slab,n++){
+    ctx.fillStyle=['#a1aba904','#162e3605','#a1aba908','#162e3603'][wrap(n,4)];ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x+slab,ground-10*z);ctx.lineTo(x+slab-42*z,H);ctx.lineTo(x-42*z,H);ctx.fill();
+    const y=ground+(H-ground)*(.37+wrap(n,3)*.14);ctx.fillStyle='#142f3609';ctx.beginPath();ctx.ellipse(x+slab*.54,y,26*z,4*z,-.06,0,Math.PI*2);ctx.fill();
+   }
 
   },
   drawEntrance(ctx,{W,H,ground,scale},edge,toFactory){

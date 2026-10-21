@@ -35,13 +35,25 @@ test('tool contact survives each body-stage boundary and returns continuously',a
   assert.equal(at.carry,0);assert.equal(after.carry,0);
  }
 });
-test('near logistics passes quickly with travel while deep scenery moves much slower',async()=>{
- const {FACTORY_DEPTH:depth,forkliftPlacement}=await import('../src/factory-production.js');
- assert.ok(depth.wall<depth.storage&&depth.storage<depth.forklift/20);
- const width=390,z=.68,time=10,distance=(width/2+140*z+time*12*z)/(depth.forklift*z);
- const a=forkliftPlacement(distance,time,width,z),b=forkliftPlacement(distance+500,time+1,width,z);
- assert.ok(a>0&&a<width);assert.ok(b<a-100);
- assert.equal(forkliftPlacement(distance,time,width,z),a);
- assert.equal(forkliftPlacement(distance+3200/depth.forklift,time,width,z),a);
- assert.equal(forkliftPlacement(distance+3000,time,width,z),null);
+test('neighboring robots have distinct stable poses and asynchronous supply handling',async()=>{
+ const {robotIdlePose,FACTORY_DEPTH:depth}=await import('../src/factory-production.js');
+ const initial=Array.from({length:4},(_,i)=>robotIdlePose(i,0));
+ assert.equal(new Set(initial.map(p=>p.variant)).size,4);
+ assert.ok(new Set(initial.map(p=>Math.round(p.angle*10))).size>=3);
+ assert.ok(depth.wall<depth.storage);
+ for(let i=-3;i<7;i++){
+  const frozen=robotIdlePose(i,0,true);assert.deepEqual(robotIdlePose(i,50,true),frozen);
+  assert.notDeepEqual(robotIdlePose(i,4),robotIdlePose(i,0));
+  const poses=Array.from({length:120},(_,n)=>robotIdlePose(i,n/10));
+  assert.ok(poses.some(p=>p.carry>.99)&&poses.some(p=>p.carry===0));
+  for(const p of poses)assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y)&&Number.isFinite(p.angle));
+ }
+});
+test('a station reaches its supply before carrying the part toward the body',async()=>{
+ const {assemblyAction}=await import('../src/factory-production.js');
+ for(let i=0;i<4;i++){
+  const start=i*5,pick=assemblyAction(start+1.7,i),grip=assemblyAction(start+1.95,i),fit=assemblyAction(start+4.5,i);
+  assert.ok(Math.abs(pick.pickup-1)<1e-12);assert.equal(pick.reach,0);assert.equal(pick.carry,0);
+  assert.ok(grip.carry>.8&&grip.reach===0);assert.equal(fit.reach,1);assert.equal(fit.carry,1);
+ }
 });

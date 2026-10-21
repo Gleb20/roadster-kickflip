@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.1';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=3.9.1';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.9.1';
-import {createDirector} from './director.js?v=3.9.1';
-import {createRandom} from './random.js?v=3.9.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.2';
+import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=3.9.2';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=3.9.2';
+import {createDirector} from './director.js?v=3.9.2';
+import {createRandom} from './random.js?v=3.9.2';
 export const RULESET='roadster-v3.8.0',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;

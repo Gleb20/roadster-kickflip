@@ -731,5 +731,13 @@
     "stageChanges": "Layer order, quintic reach/retract, body blend, continuous camera lattice, no model labels, smaller quieter production plane and nearer forklift passes",
     "geometry": "Proportional transforms only; no sprite distortion",
     "ruleset": "roadster-v3.8.0 unchanged"
+  },
+  "factoryLifeV392": {
+    "version": "3.9.2",
+    "method": "Existing approved robot and model-specific part sprites instanced with proportional transforms; no new illustration or photo inputs.",
+    "changes": "Four varied rest/claw poses, asynchronous supply/inspection loops, staged pickup/fitting, no foreground forklift. Existing floor renderer gains subtle grain/slab tones and conveyor shadows.",
+    "spriteSources": "factoryAssemblyArt20261021, factoryLineupArt20261021 and factoryProductionV390 retained unchanged",
+    "historicalForklift": "Original asset and attribution retained; removed from active renderer/cache",
+    "ruleset": "roadster-v3.8.0 unchanged"
   }
 }

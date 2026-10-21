@@ -1,0 +1,16 @@
+{
+  "version": "3.9.2",
+  "published": false,
+  "parent": "5cccc45e8693c0d11bbae135300956da7e576db7",
+  "gameTests": 124,
+  "factoryBrowserChecks": 50,
+  "coreResources": 132,
+  "runtimeErrors": [],
+  "physicalPhoneAcceptance": "pending user iPhone/Safari review",
+  "artwork": "Approved sprite instances only; existing procedural floor surface treatment",
+  "ruleset": "roadster-v3.8.0 retained; no backend deployment or public test-score writes",
+  "oldPWAUpdate": "If the old updater stays on the older release, close old tabs/app and reopen",
+  "depthBrowserChecks": 25,
+  "biomeBrowserChecks": 64,
+  "rollback": "Exact forward/inverse restores parent tree075404c8ffe037eda8ff608099dc8db06e759dda with123 parent tests and all checks"
+}

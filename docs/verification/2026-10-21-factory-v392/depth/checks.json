@@ -1,0 +1,161 @@
+{
+  "checks": [
+    "portrait: no model labels",
+    "portrait: hands and body frames do not snap at stage/cycle boundaries",
+    "portrait: forklift absent and near travel aisle remains clear",
+    "portrait: neighboring robots have distinct poses",
+    "portrait: wall remains slower than storage",
+    "portrait: reduced motion freezes varied poses and cosmetic movement",
+    "small: no model labels",
+    "small: hands and body frames do not snap at stage/cycle boundaries",
+    "small: forklift absent and near travel aisle remains clear",
+    "small: neighboring robots have distinct poses",
+    "small: wall remains slower than storage",
+    "small: reduced motion freezes varied poses and cosmetic movement",
+    "landscape: no model labels",
+    "landscape: hands and body frames do not snap at stage/cycle boundaries",
+    "landscape: forklift absent and near travel aisle remains clear",
+    "landscape: neighboring robots have distinct poses",
+    "landscape: wall remains slower than storage",
+    "landscape: reduced motion freezes varied poses and cosmetic movement",
+    "desktop: no model labels",
+    "desktop: hands and body frames do not snap at stage/cycle boundaries",
+    "desktop: forklift absent and near travel aisle remains clear",
+    "desktop: neighboring robots have distinct poses",
+    "desktop: wall remains slower than storage",
+    "desktop: reduced motion freezes varied poses and cosmetic movement",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "results": [
+    {
+      "label": "portrait",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.00401628387410378
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.0034177907400656216
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.004371734111070604
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.004095272815651962
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.004739336492890996
+        }
+      ],
+      "noForkliftAsset": true,
+      "clearAisle": true,
+      "poseVariants": 4,
+      "poseAngles": 4,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "small",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.006849691901408451
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.005985915492957746
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.007669454225352113
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.006855193661971831
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.007729973591549296
+        }
+      ],
+      "noForkliftAsset": true,
+      "clearAisle": true,
+      "poseVariants": 4,
+      "poseAngles": 4,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "landscape",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.008685745534086766
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.008840685380969741
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.009326771175112407
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.010174383278648681
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.010687811398711873
+        }
+      ],
+      "noForkliftAsset": true,
+      "clearAisle": true,
+      "poseVariants": 4,
+      "poseAngles": 4,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "desktop",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.00375
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.0037430555555555555
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.003924382716049383
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.004286265432098766
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.004374228395061728
+        }
+      ],
+      "noForkliftAsset": true,
+      "clearAisle": true,
+      "poseVariants": 4,
+      "poseAngles": 4,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    }
+  ],
+  "fixture": "Arranged production state and distance; actual painter. Pixel continuity is checked across nearby frames, not whole-screen screenshot equality."
+}

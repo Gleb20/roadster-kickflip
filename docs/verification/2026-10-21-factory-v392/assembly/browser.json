@@ -1,0 +1,74 @@
+{
+  "checks": [
+    "desktop: entering factory selects a model",
+    "desktop: cycle 2s stable model",
+    "desktop: cycle 4.8s stable model",
+    "desktop: cycle 9.8s stable model",
+    "desktop: cycle 14.8s stable model",
+    "desktop: cycle 19.8s stable model",
+    "desktop: cycle 24s stable model",
+    "desktop: cycle 32s stable model",
+    "desktop: next body changes color or keeps Cybertruck steel",
+    "desktop: resize preserves the exact body",
+    "desktop: reentry chooses a different model",
+    "desktop: no horizontal overflow",
+    "portrait: entering factory selects a model",
+    "portrait: cycle 2s stable model",
+    "portrait: cycle 4.8s stable model",
+    "portrait: cycle 9.8s stable model",
+    "portrait: cycle 14.8s stable model",
+    "portrait: cycle 19.8s stable model",
+    "portrait: cycle 24s stable model",
+    "portrait: cycle 32s stable model",
+    "portrait: next body changes color or keeps Cybertruck steel",
+    "portrait: resize preserves the exact body",
+    "portrait: reentry chooses a different model",
+    "all ten model/color combinations complete five production stages",
+    "portrait: no horizontal overflow",
+    "small-phone: entering factory selects a model",
+    "small-phone: cycle 2s stable model",
+    "small-phone: cycle 4.8s stable model",
+    "small-phone: cycle 9.8s stable model",
+    "small-phone: cycle 14.8s stable model",
+    "small-phone: cycle 19.8s stable model",
+    "small-phone: cycle 24s stable model",
+    "small-phone: cycle 32s stable model",
+    "small-phone: next body changes color or keeps Cybertruck steel",
+    "small-phone: resize preserves the exact body",
+    "small-phone: reentry chooses a different model",
+    "small-phone: no horizontal overflow",
+    "landscape: entering factory selects a model",
+    "landscape: cycle 2s stable model",
+    "landscape: cycle 4.8s stable model",
+    "landscape: cycle 9.8s stable model",
+    "landscape: cycle 14.8s stable model",
+    "landscape: cycle 19.8s stable model",
+    "landscape: cycle 24s stable model",
+    "landscape: cycle 32s stable model",
+    "landscape: next body changes color or keeps Cybertruck steel",
+    "landscape: resize preserves the exact body",
+    "landscape: reentry chooses a different model",
+    "landscape: no horizontal overflow",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "label": "desktop",
+      "meanFactoryDrawMs": 0.24800000031789143
+    },
+    {
+      "label": "portrait",
+      "meanFactoryDrawMs": 0.14199999968210855
+    },
+    {
+      "label": "small-phone",
+      "meanFactoryDrawMs": 0.08200000047683716
+    },
+    {
+      "label": "landscape",
+      "meanFactoryDrawMs": 0.19
+    }
+  ],
+  "fixture": "Arranged score/time/distance; real production painter, assets, IK and cycle state. Not a physical-device acceptance."
+}
