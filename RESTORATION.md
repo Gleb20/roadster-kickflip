@@ -1,3 +1,9 @@
+## Factory3.9.0 inverse — isolated release
+
+Parent main72403dc4ca0eb0a90cdbc25604d361708fcc84c6 (published3.8.0). Frozen original dirty-tree status, diff and affected-file hashes are retained locally in `docs/verification/2026-10-21-factory-v390/before/`. Integration was prepared in a clean clone, preserving the original HEAD/index, approved art packets and unrelated work.
+
+The bounded `candidate.patch` is applied and reversed in an isolated parent checkout; the inverse must reproduce the exact parent tree and pass117 parent tests/checks. Never apply historical whole-file snapshots over concurrent work. Restore a public build using a fresh cache version, keeping the deployed compatible backend and all scores/sessions. No server/database rollback is part of this feature. Runtime file hashes, candidate tree and inverse-check evidence are retained in the verification packet.
+
 ## Published3.8.0 verified inverse
 
 Feature commit2a4061309e1a5b1d6c2ad17683410136fba9c846 / treedf68cbc4ba97557e7c16d9d5937f983d504b399a. Forward and exact inverse were verified in isolation: parent tree7393ac6dd2f656f6ad2ed88cba1bc4cb991a4efc is restored, with111 passing parent tests and all checks. The original dirty checkout/index and foreign art packet remain preserved. Apply any inverse only in isolation; a public frontend rollback needs a fresh cache version. Retain the deployed additive dual-ruleset backend after rollback for already-cached3.8.0 clients; never restore an older database or delete accepted results. See the flight verification packet and its public/hash/hosted/upgrade evidence.

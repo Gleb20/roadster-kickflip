@@ -1,3 +1,13 @@
+## Factory3.9.0 — approved art integrated,21 October2026
+
+User approved the assembly and four-model sprite packets and requested earlier entry at7,000 points, then alternating every7,000. Production runtime is based on remote main72403dc. Location changes keep the physical world doorway and gameplay state. The whole ground plane becomes concrete slabs inside the hangar, separated from production by one continuous yellow line; there is no interior lane marking.
+
+A30-second decorative production cycle carries a proportionate car along the conveyor: shell, panels, paint (metal trim for Cybertruck), glass/lights and wheels. Four IK robot stations use approved cropped tools and model-specific parts. Car follows slowly right on narrow screens; distant racks and CNC share a slower parallax plane. S/X/Roadster choose red/blue/white per body excluding the previous colour; Cybertruck stays steel. A different model is chosen each entry. State freezes on pause, survives resizing and progresses through the outgoing doorway. Choices use separate cosmetic randomness and persist in memory across retry/Home.
+
+121 game and8 server tests plus source/content/type/PWA checks pass.50 factory checks cover all50 model/color/stage drawings and320/390 portrait,844 landscape,1440 desktop.64 biome checks include an unmodified-obstacle310-second route: first factory at52.31s/7,146 points, then14k/21k/etc. This is one route, not a guaranteed entry time.8 actual3.8.0-to3.9.0 upgrade checks retain best, collection, finished3.8.0 record and cold offline launch. Physical iPhone/Safari acceptance remains with the user. Current publication evidence: [release-status.json](verification/2026-10-21-factory-v390/release-status.json).
+
+The3.8.0 physics, score epoch, saved scores, compatible dual-ruleset backend and frozen verifier remain unchanged. No backend deployment or public test-score writes. Older approval-pending art entries are superseded by this integration. Ramps remain cancelled. Rechecked open topics: route-search stalls, independent daylight and biome-specific obstacle pools remain outside this scope; after phone acceptance, the bounded debt proposal remains a fresh route-search timing measurement.
+
 ## Published3.8.0 — grab, release and ideal landing
 
 [Play3.8.0](https://gleb20.github.io/roadster-kickflip/?v=3.8.0). Game commit2a4061309e1a5b1d6c2ad17683410136fba9c846, tested treedf68cbc4ba97557e7c16d9d5937f983d504b399a; Pages39656822040 succeeded. The new hold/release physics, visible extension,±10° PERFECT+50 bonus, retained±40° safe zone and touchdown leg compression are public. Compatible dual-ruleset backend is deployed; old records/pending sessions remain supported.10 existing scores retained; no fake public test scores added.

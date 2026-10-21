@@ -1,6 +1,6 @@
 // Static paper props are rasterised once, including their shared outer cut line.
 // All coordinates are authored at the declared aspect ratio; draw() fits, never stretches.
-import {PROP_TYPES, OBSTACLES} from './content.js?v=3.8.0';
+import {PROP_TYPES, OBSTACLES} from './content.js?v=3.9.0';
 export {PROP_TYPES};
 
 const INK = '#282c2c';

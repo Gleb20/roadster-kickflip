@@ -1,0 +1,13 @@
+# Factory assembly integration — 21 October 2026
+
+User approved the assembly and four-model art packets, then authorized integration, 7,000-point alternation and a concrete factory aisle. No new AI drawing at this stage. Ramps/stunts remain cancelled.
+
+`prepare.cjs SOURCE_WORKSPACE DESTINATION_WORKSPACE` takes the retained approved `assets/concepts/factory-{assembly,lineup}-20261021` packets. Set `SHARP_MODULE` when Sharp is outside normal module resolution. Body frames and equipment are byte copies. Parts use proportional crops and isolation of the largest separated alpha island inside a measured atlas cell, including a dedicated triangular Cybertruck window cell. Original colour/alpha within that island is retained. No model is stretched. The source packets, prompts, real photographic inputs and rejected variants remain preserved in the original workspace; research photographs with unknown redistribution licences are not published.
+
+`assets/factory/assembly-provenance.json` records all69 files, source cells and hashes. The canonical provenance registry retains both original art packet records. Generated fictional assembly order is not a technical depiction of Tesla manufacturing or a claim that the Roadster prototype is mass-produced.
+
+Runtime geometry: cars202/216/232 units long, articulated arms at .18 of their approved joint pieces, conveyor segments480 wide. All use one responsive scale (.68–1.05) with no per-frame image filters. Wall-side racks365 and CNC220 units sit on a farther, slower parallax plane. Shells use short skids and a calibrated bottom offset until wheels touch the common belt line. Four fixed stations use inverse-kinematics contact targets; model-specific door/glass/wheel pieces travel with the gripper. Cybertruck skips coloured spray. A30-second cycle keeps the car in view, moving slowly to the right, then introduces another body with a different colour.
+
+`factory-production.js` owns decorative state: one random model per factory entry excluding the previous model, a fixed colour during each body, and red/blue/white rotation excluding the previous body colour. Cybertruck is always steel. Choices persist in memory across retry and Home; a page reload starts a new session. No director/replay RNG, score, physics or backend ruleset changes. The existing `roadster-v3.8.0` verifier remains compatible.
+
+Acceptance: model contact sheet plus real painter snapshots at320/390 portrait,844 landscape and1440 desktop; a natural310-second replay through repeated score boundaries; native jump/pause/resize checks; actual3.8.0-to3.9.0 PWA upgrade and cold offline launch. Physical iPhone/Safari review remains with the user. CPU canvas submission measurements are diagnostic, not phone FPS claims.

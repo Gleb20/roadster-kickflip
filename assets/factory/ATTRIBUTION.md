@@ -14,3 +14,9 @@ Current game background atlas and paper-person sprite were passed as style refer
 - Machining centre: generated paper adaptation informed by a [Haas VF-2 (2013) auction photograph](https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c), United Asset Sales listing; photographer unspecified.
 
 Photograph redistribution licences were not established; original photos remain local research inputs and are not distributed here. Generated sprites are fictional arrangements in the existing factory paper style, with omitted branding; no claim these models are used by Tesla. Prompts, actual visual input hashes, generated output hashes and proportional preparation: organic-v362-provenance.json. Workers are absent from the active renderer/cache; historical garment credits remain above.
+
+## Approved assembly line additions (3.9.0)
+
+Model S2012, Model X2021, Roadster2.0 prototype2017 and Cybertruck2024 are generated paper adaptations of the real side-view photos documented in the canonical `assets-provenance.json` art-packet records. Vehicle photographic inputs from MotorAuthority, CarExpert, Petersen Automotive Museum and Cars & Bids remain local research references; redistribution licences were not established. No original research photographs are distributed with the game. Robot, conveyor and rack style/source records are retained from the approved assembly packet and earlier factory work.
+
+Generated sprites are fictional assembly arrangements, proportionally cropped and graded for the background. All69 active new files and hashes: `assembly-provenance.json`. Roadster production and assembly order are game fiction. No claim of Tesla endorsement.

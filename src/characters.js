@@ -1,8 +1,8 @@
-import {obstacleDefinition} from './content.js?v=3.8.0';
-import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.8.0';
-import {createCash,advanceCash} from './cash.js?v=3.8.0';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.8.0';
-import {joeReaction} from './encounter.js?v=3.8.0';
+import {obstacleDefinition} from './content.js?v=3.9.0';
+import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.9.0';
+import {createCash,advanceCash} from './cash.js?v=3.9.0';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.9.0';
+import {joeReaction} from './encounter.js?v=3.9.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;

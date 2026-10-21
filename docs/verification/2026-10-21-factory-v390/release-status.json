@@ -1,0 +1,23 @@
+{
+  "version": "3.9.0",
+  "published": false,
+  "parent": "72403dc4ca0eb0a90cdbc25604d361708fcc84c6",
+  "gameTests": 121,
+  "serverTests": 8,
+  "factoryBrowserChecks": 50,
+  "biomeBrowserChecks": 64,
+  "actualPWAUpgradeChecks": 8,
+  "coreResources": 132,
+  "runtimeErrors": [],
+  "phoneAcceptance": "pending physical iPhone/Safari user review",
+  "backend": "unchanged deployed dual-ruleset backend; roadster-v3.8.0 ruleset retained",
+  "publicFixtureWrites": 0,
+  "normalRunFirstFactory": {
+    "seconds": 52.3083,
+    "score": 7146
+  },
+  "sourceArt": "approved factory-assembly-20261021 and factory-lineup-20261021",
+  "rollback": "Exact forward/inverse rehearsal restores parent tree8ecdefcbb03f0ba103dcfad8020fbc1d50341f0a;117 parent tests and all checks pass",
+  "originalWorkspace": "foreign work and historical index preserved",
+  "upgradeRerun": "Actual3.8.0\u21923.9.0 checks pass with seeded-before-boot storage. Old PWA restart activation intermittent; timeout evidence retained. Closed-tab activation is the fallback. Local rank read has existing origin CORS restrictions."
+}

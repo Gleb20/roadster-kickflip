@@ -672,5 +672,56 @@
     "uiSourceRecord": "uiStabilization370",
     "iconSourceRecord": "pwaKickflipV2",
     "researchInputs": "Photo and TV references are local-only research, not runtime assets."
+  },
+  "factoryAssemblyArt20261021": {
+    "status": "approved-integrated-v3.9.0",
+    "date": "2026-10-21",
+    "category": "factory background assembly scenery",
+    "prototype": "2012 Tesla Model S; Tesla Fremont red industrial arms (model unverified); Dexion Speedlock P90; reused Haas VF-2 sprite",
+    "method": "Built-in image_gen with inspected real photographs and current category sprites; transparent alpha; proportional atlas extraction only",
+    "packet": "art-source/factory-assembly-20261021/brief.md",
+    "prompts": "art-source/factory-assembly-20261021/generation-jobs.json",
+    "corrections": "art-source/factory-assembly-20261021/correction-jobs.json",
+    "manifest": "assets/concepts/factory-assembly-20261021/manifest.json",
+    "review": "assets/concepts/factory-assembly-20261021/review.html",
+    "runtimeFiles": [],
+    "notes": "New art candidate only. User cancelled ramp/wall stunt. Car/joint alignment and animated cycles await art approval. Existing 3.7.3 resources remain untouched.",
+    "initialStatus": "approval-pending-not-integrated",
+    "runtimeManifest": "assets/factory/assembly-provenance.json"
+  },
+  "factoryLineupArt20261021": {
+    "status": "approved-integrated-v3.9.0",
+    "date": "2026-10-21",
+    "prototypes": [
+      "Tesla Model S2012",
+      "Tesla Model X2021",
+      "Tesla Roadster2.0 prototype2017",
+      "Tesla Cybertruck2024"
+    ],
+    "method": "Built-in image_gen with real profile reference images and current paper category; image-generated colour variants; proportional alpha crops only",
+    "packet": "art-source/factory-lineup-20261021/brief.md",
+    "generations": "art-source/factory-lineup-20261021/generations.json",
+    "manifest": "assets/concepts/factory-lineup-20261021/manifest.json",
+    "review": "assets/concepts/factory-lineup-20261021/review.html",
+    "runtimeFiles": [],
+    "selection": "Future proposal only: different random model per entry, colour alternation per body; Cybertruck always steel",
+    "sourcePolicy": "Source authors/licenses and museum restrictions retained in brief; no commercial image rights asserted",
+    "initialStatus": "art-approval-pending-not-integrated",
+    "runtimeManifest": "assets/factory/assembly-provenance.json"
+  },
+  "factoryProductionV390": {
+    "status": "integrated-user-approved-art",
+    "version": "3.9.0",
+    "sourcePackets": [
+      "factory-assembly-20261021",
+      "factory-lineup-20261021"
+    ],
+    "method": "Approved art copies plus proportional alpha-island crops; runtime grading at load; no new generation",
+    "runtimeManifest": "assets/factory/assembly-provenance.json",
+    "productionNotes": "art-source/factory-production-v390/README.md",
+    "biomeScoreStep": 7000,
+    "roadSurface": "Concrete slabs with continuous yellow production-zone boundary",
+    "ruleset": "roadster-v3.8.0; unchanged",
+    "physicalPhoneAcceptance": "pending user testing"
   }
 }

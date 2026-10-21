@@ -1,0 +1,7 @@
+{
+  "checks": [
+    "real published parent installed",
+    "actual upgrade waits with old paused run"
+  ],
+  "errors": []
+}

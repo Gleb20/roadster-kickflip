@@ -1,0 +1,840 @@
+{
+  "method": "Approved generated art: byte-preserving copies and proportional alpha crops. Original photo/prompt provenance retained in art-source packets. No new generation.",
+  "packets": [
+    "factory-assembly-20261021",
+    "factory-lineup-20261021"
+  ],
+  "records": [
+    {
+      "id": "assembly-robot-base",
+      "file": "assets/factory/assembly-robot-base.png",
+      "source": "assets/concepts/factory-assembly-20261021/robot-base.png",
+      "region": null,
+      "size": [
+        408,
+        304
+      ],
+      "sha256": "5581732c949967aa472e58ddb68dfb487401305e1fd123f8a5695d45c407fcaa"
+    },
+    {
+      "id": "assembly-robot-upper",
+      "file": "assets/factory/assembly-robot-upper.png",
+      "source": "assets/concepts/factory-assembly-20261021/robot-upper.png",
+      "region": null,
+      "size": [
+        408,
+        165
+      ],
+      "sha256": "9a0905c6a1a6b7490a337719e529b9994fdc8cf2bfe68830bdc13c285b8e6d26"
+    },
+    {
+      "id": "assembly-robot-fore",
+      "file": "assets/factory/assembly-robot-fore.png",
+      "source": "assets/concepts/factory-assembly-20261021/robot-fore.png",
+      "region": null,
+      "size": [
+        408,
+        127
+      ],
+      "sha256": "cee4d60dd6d5231cda34cbff038f2656f09dc6a0644e03f6a6e21829052c11fc"
+    },
+    {
+      "id": "assembly-tool-grip",
+      "file": "assets/factory/assembly-tool-grip.png",
+      "source": "assets/concepts/factory-assembly-20261021/tool-grip.png",
+      "region": null,
+      "size": [
+        408,
+        164
+      ],
+      "sha256": "e9e30bed159447f89b7d722121445dd9102ef605aa4ec4aca0b2fa1160c7f879"
+    },
+    {
+      "id": "assembly-tool-paint",
+      "file": "assets/factory/assembly-tool-paint.png",
+      "source": "assets/concepts/factory-assembly-20261021/tool-paint.png",
+      "region": null,
+      "size": [
+        408,
+        315
+      ],
+      "sha256": "b504aa6294a0fcef46d371462a47317ba6d257026f202922cc25e36a33aa9179"
+    },
+    {
+      "id": "assembly-conveyor-cutout",
+      "file": "assets/factory/assembly-conveyor-cutout.png",
+      "source": "assets/concepts/factory-assembly-20261021/conveyor-cutout.png",
+      "region": null,
+      "size": [
+        1408,
+        195
+      ],
+      "sha256": "fe80a68bcc47750b2af00dbc15ced03f2dedf633965e82a7c52a6945a508db8d"
+    },
+    {
+      "id": "assembly-rack-cutout",
+      "file": "assets/factory/assembly-rack-cutout.png",
+      "source": "assets/concepts/factory-assembly-20261021/rack-cutout.png",
+      "region": null,
+      "size": [
+        908,
+        458
+      ],
+      "sha256": "dd5bcd11b8ff60761112b266872f253feea0e1db1c3d4463e54dbd2eb914d3f2"
+    },
+    {
+      "id": "model-s-red-0",
+      "file": "assets/factory/model-s-red-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-red-0.png",
+      "region": null,
+      "size": [
+        520,
+        152
+      ],
+      "sha256": "32731905c2a7b049d396643360743a91c432b8c2b9653d25fa22cad713c8b437"
+    },
+    {
+      "id": "model-s-red-1",
+      "file": "assets/factory/model-s-red-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-red-1.png",
+      "region": null,
+      "size": [
+        520,
+        154
+      ],
+      "sha256": "10f954962fdd4539f5c85cee4abbb2dacdd5d1708a8460f03cd8de6a04dd3b7c"
+    },
+    {
+      "id": "model-s-red-2",
+      "file": "assets/factory/model-s-red-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-red-2.png",
+      "region": null,
+      "size": [
+        520,
+        151
+      ],
+      "sha256": "b01febc7b2a4abb5178ff08ff7105ba4590126f94c30123e3466575f329f1d83"
+    },
+    {
+      "id": "model-s-red-3",
+      "file": "assets/factory/model-s-red-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-red-3.png",
+      "region": null,
+      "size": [
+        520,
+        150
+      ],
+      "sha256": "bdba12d7a126a71fa61fb566ad127a32994edb7def11282b2d866a5931f746fd"
+    },
+    {
+      "id": "model-s-red-4",
+      "file": "assets/factory/model-s-red-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-red-4.png",
+      "region": null,
+      "size": [
+        520,
+        168
+      ],
+      "sha256": "260a50e2cc02f9972b7cbf0509d1d5b8c20fe6c3acc1036cc72b8e9302a2e7c4"
+    },
+    {
+      "id": "model-s-blue-0",
+      "file": "assets/factory/model-s-blue-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-blue-0.png",
+      "region": null,
+      "size": [
+        520,
+        153
+      ],
+      "sha256": "fbf83d220201627057d218de8e01c3de9723384f4ffc42bbfdfa34281a2a2983"
+    },
+    {
+      "id": "model-s-blue-1",
+      "file": "assets/factory/model-s-blue-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-blue-1.png",
+      "region": null,
+      "size": [
+        520,
+        154
+      ],
+      "sha256": "f823640326162117dd8a65aa0bf1ca532bb24587c0eda7ba3c7c217660f3ac5f"
+    },
+    {
+      "id": "model-s-blue-2",
+      "file": "assets/factory/model-s-blue-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-blue-2.png",
+      "region": null,
+      "size": [
+        520,
+        152
+      ],
+      "sha256": "c621677cb9963396491427e5f5907fe32e6896f1d2b2135497b73594334e41d9"
+    },
+    {
+      "id": "model-s-blue-3",
+      "file": "assets/factory/model-s-blue-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-blue-3.png",
+      "region": null,
+      "size": [
+        520,
+        151
+      ],
+      "sha256": "70f3b069d3b683c7833a9ba7669ec760f477a15b96b6bc9fd84d523901bdec00"
+    },
+    {
+      "id": "model-s-blue-4",
+      "file": "assets/factory/model-s-blue-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-blue-4.png",
+      "region": null,
+      "size": [
+        520,
+        168
+      ],
+      "sha256": "de0d9cbbc5c8e84b0ceb13ba9a0f82a95bff6d33b72e340d8c0c97da9a6cbeca"
+    },
+    {
+      "id": "model-s-white-0",
+      "file": "assets/factory/model-s-white-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-white-0.png",
+      "region": null,
+      "size": [
+        520,
+        152
+      ],
+      "sha256": "734f22d80fbc9ea31b9d6262ed66ce6fd64a549f9be86b81926982bb5abccffd"
+    },
+    {
+      "id": "model-s-white-1",
+      "file": "assets/factory/model-s-white-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-white-1.png",
+      "region": null,
+      "size": [
+        520,
+        154
+      ],
+      "sha256": "c6e8fd9aa254cdba3e4d3cb20260c0bead6739a7e0c174b4aa6e3858c75cf08c"
+    },
+    {
+      "id": "model-s-white-2",
+      "file": "assets/factory/model-s-white-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-white-2.png",
+      "region": null,
+      "size": [
+        520,
+        152
+      ],
+      "sha256": "fbb839d57bc33f095dc57982e68e25101ae1e735448e31b5efb64d3c784526f7"
+    },
+    {
+      "id": "model-s-white-3",
+      "file": "assets/factory/model-s-white-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-white-3.png",
+      "region": null,
+      "size": [
+        520,
+        151
+      ],
+      "sha256": "e605f540e9a30ea4441e8b35dd180c3c68618f6a16a26ff2e6370459cbb27eaa"
+    },
+    {
+      "id": "model-s-white-4",
+      "file": "assets/factory/model-s-white-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-white-4.png",
+      "region": null,
+      "size": [
+        520,
+        169
+      ],
+      "sha256": "0d6c26a38ec8aed72e795420f2dbcb6d4cef10e85dbc0749d272e3e6ac5ee1a8"
+    },
+    {
+      "id": "model-s-part-door",
+      "file": "assets/factory/model-s-part-door.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 0,
+        "width": 553,
+        "height": 553
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        214
+      ],
+      "sha256": "6f40acd9f9b888b6498cebffd31b163251ae20a2d4e54f03ded930bc82188dab"
+    },
+    {
+      "id": "model-s-part-glass",
+      "file": "assets/factory/model-s-part-glass.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-parts.png",
+      "cell": {
+        "left": 399,
+        "top": 553,
+        "width": 645,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        82
+      ],
+      "sha256": "edff9a3081566b85c4cad06b9d1ad55fda7ea82cfdbd7c7b6097385b830c373e"
+    },
+    {
+      "id": "model-s-part-wheel",
+      "file": "assets/factory/model-s-part-wheel.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-s-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 553,
+        "width": 399,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        259
+      ],
+      "sha256": "6db5c417f241485517856ec0f2134d0b69183295e99003c09debf91e47fb5e33"
+    },
+    {
+      "id": "model-x-red-0",
+      "file": "assets/factory/model-x-red-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-red-0.png",
+      "region": null,
+      "size": [
+        520,
+        144
+      ],
+      "sha256": "978ca1d9d8848b943ee181438dfbe6a27bd2fc004a69e94daeedf66a9fd5ae01"
+    },
+    {
+      "id": "model-x-red-1",
+      "file": "assets/factory/model-x-red-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-red-1.png",
+      "region": null,
+      "size": [
+        520,
+        149
+      ],
+      "sha256": "dc2a25f398a59b947bbee3b34eb6724caf130ca74a0a598fb97dadda3647f8ea"
+    },
+    {
+      "id": "model-x-red-2",
+      "file": "assets/factory/model-x-red-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-red-2.png",
+      "region": null,
+      "size": [
+        520,
+        148
+      ],
+      "sha256": "f8270179764741d7c4c2c356559864dbda377bca9566edc7bf99136a9973f953"
+    },
+    {
+      "id": "model-x-red-3",
+      "file": "assets/factory/model-x-red-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-red-3.png",
+      "region": null,
+      "size": [
+        520,
+        148
+      ],
+      "sha256": "5b99410f5115f970baf5da5dbd0c300b01e843ebf5d5be3404c764105a3dc9f2"
+    },
+    {
+      "id": "model-x-red-4",
+      "file": "assets/factory/model-x-red-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-red-4.png",
+      "region": null,
+      "size": [
+        520,
+        166
+      ],
+      "sha256": "a57e6b6a9e357c763d31b2a8bab8f01b39fa8cf917df91db3b8f7d09d31efcf4"
+    },
+    {
+      "id": "model-x-blue-0",
+      "file": "assets/factory/model-x-blue-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-blue-0.png",
+      "region": null,
+      "size": [
+        520,
+        145
+      ],
+      "sha256": "dae8f08ae9e1f0c7562ce6cf7b4db57ff88d59ad963cde85447de8273f325dda"
+    },
+    {
+      "id": "model-x-blue-1",
+      "file": "assets/factory/model-x-blue-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-blue-1.png",
+      "region": null,
+      "size": [
+        520,
+        150
+      ],
+      "sha256": "27e728aa12e397b4cac739e51363d85d33ceb5eaae9dbb7ca0f142827cc87468"
+    },
+    {
+      "id": "model-x-blue-2",
+      "file": "assets/factory/model-x-blue-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-blue-2.png",
+      "region": null,
+      "size": [
+        520,
+        150
+      ],
+      "sha256": "9832f82e83529029bbb24abf3c7d5817d6a5e2e82d3dabf1d0cc3c0d31f24fb5"
+    },
+    {
+      "id": "model-x-blue-3",
+      "file": "assets/factory/model-x-blue-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-blue-3.png",
+      "region": null,
+      "size": [
+        520,
+        149
+      ],
+      "sha256": "5a877a71ba33b330015c9c79bb21f3964f77d8aaae604bc2d542a8dcf97e01ea"
+    },
+    {
+      "id": "model-x-blue-4",
+      "file": "assets/factory/model-x-blue-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-blue-4.png",
+      "region": null,
+      "size": [
+        520,
+        166
+      ],
+      "sha256": "fc74bb55c9b65de06a95bdd421d67d011d4edd3b0da2754cefdf5b8551d9c71b"
+    },
+    {
+      "id": "model-x-white-0",
+      "file": "assets/factory/model-x-white-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-white-0.png",
+      "region": null,
+      "size": [
+        520,
+        146
+      ],
+      "sha256": "b3bfaddbe776a5c9ed5c30d0c619134b329f5ba4a4c908b5c6afa3ba07dcebca"
+    },
+    {
+      "id": "model-x-white-1",
+      "file": "assets/factory/model-x-white-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-white-1.png",
+      "region": null,
+      "size": [
+        520,
+        151
+      ],
+      "sha256": "2ce5619f4151ab3582f90504948116ec4598ba84930e344a0f6d6cc6ff9e8587"
+    },
+    {
+      "id": "model-x-white-2",
+      "file": "assets/factory/model-x-white-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-white-2.png",
+      "region": null,
+      "size": [
+        520,
+        150
+      ],
+      "sha256": "7b613ef91bfd433da8f0e966ea9a3b192ba3dbe9ebbd5031724b2521b781203f"
+    },
+    {
+      "id": "model-x-white-3",
+      "file": "assets/factory/model-x-white-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-white-3.png",
+      "region": null,
+      "size": [
+        520,
+        149
+      ],
+      "sha256": "2567e0789c7596268136eaa660fae5b063c523bf5dc5a2a1b878b4b514fffd53"
+    },
+    {
+      "id": "model-x-white-4",
+      "file": "assets/factory/model-x-white-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-white-4.png",
+      "region": null,
+      "size": [
+        520,
+        167
+      ],
+      "sha256": "08046528a257307f5ed5c148524ed0939c34873d8094fbca4ed6f19f85dc96b6"
+    },
+    {
+      "id": "model-x-part-door",
+      "file": "assets/factory/model-x-part-door.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 0,
+        "width": 538,
+        "height": 553
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        225
+      ],
+      "sha256": "271588e894d092a3c7a299e8bf9eae89612acd31413fd5941567d335cc47c8f8"
+    },
+    {
+      "id": "model-x-part-glass",
+      "file": "assets/factory/model-x-part-glass.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-parts.png",
+      "cell": {
+        "left": 399,
+        "top": 553,
+        "width": 645,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        88
+      ],
+      "sha256": "fd33c7745fa1036d28da91812fe79431933ab7a40b256d0dec260f2bb4cd4396"
+    },
+    {
+      "id": "model-x-part-wheel",
+      "file": "assets/factory/model-x-part-wheel.png",
+      "source": "assets/concepts/factory-lineup-20261021/model-x-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 553,
+        "width": 399,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        258
+      ],
+      "sha256": "7cfe9199d51cdc65b3fb10ea3e362a73f768f1e0568906b9cbe152fc1d7bf014"
+    },
+    {
+      "id": "roadster-red-0",
+      "file": "assets/factory/roadster-red-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-red-0.png",
+      "region": null,
+      "size": [
+        520,
+        119
+      ],
+      "sha256": "ba283184c8819a65fb13521c06afbdc07f9aa658950ac7cf04773994ab497c88"
+    },
+    {
+      "id": "roadster-red-1",
+      "file": "assets/factory/roadster-red-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-red-1.png",
+      "region": null,
+      "size": [
+        520,
+        116
+      ],
+      "sha256": "505fe0d792113ae876345ccc28ac983d059ae93c997d6fc6a0c1ba4e601cc3c4"
+    },
+    {
+      "id": "roadster-red-2",
+      "file": "assets/factory/roadster-red-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-red-2.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "abc74681e7fd1ca1d316647656bbacd04b9cf798818ab3c34616c930474ddbea"
+    },
+    {
+      "id": "roadster-red-3",
+      "file": "assets/factory/roadster-red-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-red-3.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "a42e88c48e64fab864e74a424ce97958a2d5f866dfd9ac1b00a9f33f4aac579d"
+    },
+    {
+      "id": "roadster-red-4",
+      "file": "assets/factory/roadster-red-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-red-4.png",
+      "region": null,
+      "size": [
+        520,
+        118
+      ],
+      "sha256": "9e2545727ab86cb0fa0a4b9a55683df81d10f28b8cd89c3efe0189352595fa37"
+    },
+    {
+      "id": "roadster-blue-0",
+      "file": "assets/factory/roadster-blue-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-blue-0.png",
+      "region": null,
+      "size": [
+        520,
+        119
+      ],
+      "sha256": "335632b0279e883493cb860a3b6784d621a21ca6c6a4a17b3a3de6cd88936323"
+    },
+    {
+      "id": "roadster-blue-1",
+      "file": "assets/factory/roadster-blue-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-blue-1.png",
+      "region": null,
+      "size": [
+        520,
+        116
+      ],
+      "sha256": "87b351fbfc6c0fc8e4bc3bb135cb4f35672abf90bf17783ab162188db1af4d74"
+    },
+    {
+      "id": "roadster-blue-2",
+      "file": "assets/factory/roadster-blue-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-blue-2.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "5bcd2b4d1c8aca8907003e33669f34354fe923bd0b1b066e23b4f878068ff90c"
+    },
+    {
+      "id": "roadster-blue-3",
+      "file": "assets/factory/roadster-blue-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-blue-3.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "8710682a9096f5d98cb06d54b12b726f2585a46005796d1ec4f08c8b969c2513"
+    },
+    {
+      "id": "roadster-blue-4",
+      "file": "assets/factory/roadster-blue-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-blue-4.png",
+      "region": null,
+      "size": [
+        520,
+        118
+      ],
+      "sha256": "50dd0b2b1fb05c362b7f033ca05590adf6ad8f567d4d81eb8721912d5e628ce8"
+    },
+    {
+      "id": "roadster-white-0",
+      "file": "assets/factory/roadster-white-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-white-0.png",
+      "region": null,
+      "size": [
+        520,
+        119
+      ],
+      "sha256": "d34fab1a7c2674487687a8cbea735509543c5077db559a5944619c3d4104d294"
+    },
+    {
+      "id": "roadster-white-1",
+      "file": "assets/factory/roadster-white-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-white-1.png",
+      "region": null,
+      "size": [
+        520,
+        116
+      ],
+      "sha256": "9417123797f9aa8a2503acddc44e5d114bf2937bdd564c1b74bdcfc29050d4bc"
+    },
+    {
+      "id": "roadster-white-2",
+      "file": "assets/factory/roadster-white-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-white-2.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "0c771fc4e98e6a01d2c491eff5b56b4f7e9d4eee92986c8da6a63d003d3b0833"
+    },
+    {
+      "id": "roadster-white-3",
+      "file": "assets/factory/roadster-white-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-white-3.png",
+      "region": null,
+      "size": [
+        520,
+        113
+      ],
+      "sha256": "235f9f9af47565508f205b4a61fcce3e35df2703fcd375a8fceec61c7af78444"
+    },
+    {
+      "id": "roadster-white-4",
+      "file": "assets/factory/roadster-white-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-white-4.png",
+      "region": null,
+      "size": [
+        520,
+        118
+      ],
+      "sha256": "77ca66b55402cf5ed15cc7290d848030a25c680bc2ec39f45d59addc68c9fe5c"
+    },
+    {
+      "id": "roadster-part-door",
+      "file": "assets/factory/roadster-part-door.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 0,
+        "width": 630,
+        "height": 553
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        172
+      ],
+      "sha256": "c26a957faedf2edaf02b1276db333aae387f7d7c5610f3de6008e4b4812aca60"
+    },
+    {
+      "id": "roadster-part-glass",
+      "file": "assets/factory/roadster-part-glass.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-parts.png",
+      "cell": {
+        "left": 399,
+        "top": 553,
+        "width": 645,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        71
+      ],
+      "sha256": "b1cee6a18ef83d6c7faedb8b173e7354b0ad463cc6ff12623775962610032bda"
+    },
+    {
+      "id": "roadster-part-wheel",
+      "file": "assets/factory/roadster-part-wheel.png",
+      "source": "assets/concepts/factory-lineup-20261021/roadster-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 553,
+        "width": 399,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        253
+      ],
+      "sha256": "4c2610fe4184dabf39adceac7827aab70305c9c2d69a372e732d3ae39a5208ca"
+    },
+    {
+      "id": "cybertruck-steel-0",
+      "file": "assets/factory/cybertruck-steel-0.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-steel-0.png",
+      "region": null,
+      "size": [
+        520,
+        122
+      ],
+      "sha256": "570c0a48fdbfbb4cc00dafe0bc3055f03cfea46ccabb58801573dcd63b8b991b"
+    },
+    {
+      "id": "cybertruck-steel-1",
+      "file": "assets/factory/cybertruck-steel-1.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-steel-1.png",
+      "region": null,
+      "size": [
+        520,
+        125
+      ],
+      "sha256": "1f6161326ea8482f0db0c1bf788f96b0389422288b5bf17a05a03cab013c44ef"
+    },
+    {
+      "id": "cybertruck-steel-2",
+      "file": "assets/factory/cybertruck-steel-2.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-steel-2.png",
+      "region": null,
+      "size": [
+        520,
+        126
+      ],
+      "sha256": "502e26d0b2f3c508b986b6d7297803d0955de5c753614843dd87417f609da19d"
+    },
+    {
+      "id": "cybertruck-steel-3",
+      "file": "assets/factory/cybertruck-steel-3.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-steel-3.png",
+      "region": null,
+      "size": [
+        520,
+        125
+      ],
+      "sha256": "4205a4e01fa11ea8adcca17915d7cac08689c35793889f2865bb92aa03e8d75f"
+    },
+    {
+      "id": "cybertruck-steel-4",
+      "file": "assets/factory/cybertruck-steel-4.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-steel-4.png",
+      "region": null,
+      "size": [
+        520,
+        134
+      ],
+      "sha256": "76b417dbd7294970fbb8aeace61ace6f709c462628a7982929edabeb86480fec"
+    },
+    {
+      "id": "cybertruck-part-door",
+      "file": "assets/factory/cybertruck-part-door.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 0,
+        "width": 576,
+        "height": 553
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        211
+      ],
+      "sha256": "933271151ab4f4aeedb4abf96a6a189492cab4e6409cb60e2c85ad03ec56f549"
+    },
+    {
+      "id": "cybertruck-part-glass",
+      "file": "assets/factory/cybertruck-part-glass.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-parts.png",
+      "cell": {
+        "left": 430,
+        "top": 553,
+        "width": 399,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        127
+      ],
+      "sha256": "e84be343456a29ec1816ee5987ec9f6d6c525368f14b657ecc3aefebd7e8f3ed"
+    },
+    {
+      "id": "cybertruck-part-wheel",
+      "file": "assets/factory/cybertruck-part-wheel.png",
+      "source": "assets/concepts/factory-lineup-20261021/cybertruck-parts.png",
+      "cell": {
+        "left": 0,
+        "top": 553,
+        "width": 399,
+        "height": 471
+      },
+      "method": "Largest separate alpha island, original alpha/colour retained; proportional crop",
+      "size": [
+        256,
+        267
+      ],
+      "sha256": "95a81c43c826b693bb073c6b25de2156e37b5936f66b46ba55b7902ae4c7924a"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-import {BIOME_CYCLE} from './content.js?v=3.8.0';
+import {BIOME_CYCLE} from './content.js?v=3.9.0';
 // Score selects scenery; a fixed world boundary is driven past the rider.
 // Ranked obstacle generation, scoring and physics stay unchanged.
-export const BIOME_SCORE_STEP=10000;
+export const BIOME_SCORE_STEP=7000;
 export const SCENERY_CYCLE=BIOME_CYCLE;
 export function biomeAt(score=0){
  const points=Number.isFinite(score)?Math.max(0,score):0;
