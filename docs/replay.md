@@ -1,4 +1,8 @@
-# Reproducible runs — ruleset roadster-v3.4.2
+# New flight rules3.8.0
+
+The current browser and frozen server simulation use roadster-v3.8.0 for the new hold/release rotation, changing grab silhouette, and ideal-landing rewards. rulesets.mjs explicitly preserves the old roadster-v3.4.2 implementation for cached clients and pending submissions. Backend compatibility is additive; do not change old frozen files. Score epochv3 and stored data are preserved. Deployment status is recorded in verification/2026-10-21-flight-v380/release-status.json.
+
+# Reproducible runs — ruleset roadster-v3.8.0
 
 Factory scenery in 3.6.2 reads active distance for spatial entry and the run clock for decorative machinery without changing the obstacle stream, commands, collision geometry or score. Versioned import URLs change for the coherent PWA package; frozen server ruleset files are untouched. Both biome boundaries are covered by a completed browser replay checked against the immutable server simulator.
 
@@ -19,3 +23,7 @@ Local Node 20, seed 93817, real director/witness-driven runs: 30 s (actual 32.03
 This exceeds Workers Free's 10 ms CPU budget, so the leaderboard must use a suitable verifier service rather than trusting client scores. A Node verifier on a test/free service is the current candidate, with API/D1 persistence separated from its ephemeral filesystem. Provider workspace/budget remains an open deployment choice.
 
 Confirmed performance debt: worst-case synchronous route search occasionally exceeds one display frame. After the shared-run/ranking stage, a bounded follow-up should remeasure route-search spikes and evaluate a worker or cached witnesses without changing accepted route/fuel guarantees. This does not justify an engine rewrite. Historical v2 encounter/contact scripts also still contain obsolete control assumptions; current gameplay/fall/collection/replay suites are the release gates.
+
+## Rechecked update boundary,21 October2026
+
+The existing3.7.3 PWA test times out waiting for Home-triggered activation after a synthetic second worker update, both on Chrome and Chromium. The same13 preceding checks pass in3.8.0, including cold offline navigation, preserved best/collection and explicit restart activation. This is an existing automatic-update-boundary issue requiring a separate focused investigation; it is not reported as a fully passed PWA suite. Extended legacy visual snapshot equality is also not counted as passed; focused held/open/grounded states are visually verified.

@@ -1,3 +1,20 @@
+var __defProp = Object.defineProperty;
+var __export = (target, all) => {
+  for (var name2 in all)
+    __defProp(target, name2, { get: all[name2], enumerable: true });
+};
+
+// supabase/rulesets/roadster-v342/run.js
+var run_exports = {};
+__export(run_exports, {
+  RULESET: () => RULESET,
+  RUN_COMMANDS: () => RUN_COMMANDS,
+  RUN_STEP: () => RUN_STEP,
+  createRun: () => createRun,
+  validateReplay: () => validateReplay,
+  verifyReplay: () => verifyReplay
+});
+
 // supabase/rulesets/roadster-v342/gameplay-config.js?v=3.4.2
 var GAMEPLAY = Object.freeze({
   version: "3.4.2",
@@ -806,10 +823,864 @@ function validateReplay(value) {
   }
   return value;
 }
+function verifyReplay(value) {
+  const replay = validateReplay(value), run = createRun({ seed: replay.seed, record: false });
+  run.reset();
+  let event = 0;
+  while (run.S.tick < replay.ticks && run.S.mode === "playing") {
+    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS[replay.events[event++][1]]);
+    run.step();
+    run.drainEvents();
+  }
+  if (run.S.mode !== "dead" || run.S.tick !== replay.ticks || event !== replay.events.length) throw Error("Replay does not end at its first collision");
+  return { score: run.S.score, flips: run.E.flips, ticks: run.S.tick };
+}
+
+// supabase/rulesets/roadster-v380/run.js
+var run_exports2 = {};
+__export(run_exports2, {
+  RULESET: () => RULESET2,
+  RUN_COMMANDS: () => RUN_COMMANDS2,
+  RUN_STEP: () => RUN_STEP2,
+  createRun: () => createRun2,
+  validateReplay: () => validateReplay2,
+  verifyReplay: () => verifyReplay2
+});
+
+// supabase/rulesets/roadster-v380/gameplay-config.js
+var GAMEPLAY2 = Object.freeze({
+  version: "3.8.0",
+  gravity: 1550,
+  jumpSpeed: 560,
+  chargedSpeed: 440,
+  chargeSeconds: 0.4,
+  spinSpeed: 7.2,
+  spinAcceleration: 60,
+  releaseSpeed: 1.8,
+  releaseDeceleration: 24,
+  landingAngle: Math.PI * 2 / 9,
+  landingOmega: Math.PI * 4 / 3,
+  perfectAngle: Math.PI / 18,
+  perfectPoints: 50,
+  thrustAcceleration: 2100,
+  horizontalDrag: 1.8,
+  maxHorizontal: 260,
+  tank: 100,
+  initialFuel: 50,
+  fuelPerSecond: 80,
+  fuelPerFlip: 25,
+  attachSeconds: 0.12,
+  obstaclePoints: 50,
+  flipFactor: 50,
+  nearPoints: 25,
+  nearSeconds: 0.12,
+  maxMultiplier: 50,
+  multiplierStep: 1,
+  comboDuration: 8,
+  comboFalloff: 1.2,
+  comboDecaySeconds: 0.5,
+  streakStep: 0.05,
+  maxStreak: 0.25,
+  streakHold: 4,
+  streakDecay: 0.1,
+  fallSeconds: 2.8,
+  fallSpeedSeconds: 0.65,
+  fallMaxRate: 1.6,
+  fallTapRate: 0.15,
+  routeTimingMargin: 0.035,
+  routeFuelReserve: 20,
+  stumbleSeconds: 0.3,
+  recoveryRatio: 0.55,
+  recoveryMin: 1.2,
+  recoveryExtra: 2.8,
+  startSpeed: 360,
+  maxSpeed: 660,
+  rampSeconds: 150,
+  stages: Object.freeze([0, 15, 35, 60, 90, 120, 150]),
+  bestKey: "roadster-best-v3",
+  tutorialKey: "roadster-coach-v3"
+});
+
+// supabase/rulesets/roadster-v380/content.js
+function freeze2(value) {
+  if (value && typeof value === "object") {
+    for (const item of Object.values(value)) freeze2(item);
+    Object.freeze(value);
+  }
+  return value;
+}
+var BIOMES2 = freeze2(["spaceport", "tesla-factory"]);
+var BIOME_CYCLE2 = freeze2(["spaceport", "tesla-factory"]);
+var ANIMATIONS2 = freeze2(["taunt", "angry-look", "point-and-laugh", "trampoline-bounce", "money-guns", "podcast", "throw"]);
+var ASSETS2 = freeze2({
+  collage: { file: "collage-atlas.png" },
+  extras: { file: "collage-extras.png" },
+  cast: { file: "paper-cast.png" },
+  photos: { file: "obstacle-photos.png" },
+  joe: { file: "assets/characters/joe-rogan.png" },
+  amber: { file: "assets/characters/amber-head-v247.png" },
+  drone: { file: "assets/obstacles/phantom-v3.png" }
+});
+var none2 = { enabled: false };
+var reaction2 = (animationId, trigger = "near", range = 300, space = "target") => ({ enabled: true, animationId, trigger, range, space });
+function define2(base, options = {}) {
+  return freeze2({
+    ...base,
+    definitionVersion: 1,
+    category: options.category || "object",
+    placement: base.altitude ? "air" : "ground",
+    anchor: base.altitude ? "air-bottom-center" : "ground-center",
+    biomes: options.biomes || "all",
+    visual: { renderer: options.renderer || "prop", key: options.key || base.id, assets: options.assets || [], bob: options.bob || false },
+    collision: options.collision || "box",
+    reactions: { hero: options.hero || none2, obstacle: options.obstacle || none2 },
+    collectible: true,
+    provenance: "assets-provenance.json"
+  });
+}
+var OBSTACLES2 = freeze2([
+  define2({ id: "v8", name: "V8 \u2022 VERY LOUD", w: 108, h: 36 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define2({ id: "trump", name: "TARIFF MAN", w: 54, h: 94 }, { renderer: "character", assets: ["collage"], category: "person", bob: true, hero: reaction2("taunt"), obstacle: reaction2("angry-look") }),
+  define2({ id: "protest", name: "COUCH CRITICS", w: 102, h: 94 }, { renderer: "cutout", assets: ["extras"], bob: true, category: "group" }),
+  define2({ id: "truck", name: "CYBERBRICK", w: 110, h: 41 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define2({ id: "doge", name: "MUCH WOW", w: 52, h: 64 }, { renderer: "cutout", assets: ["extras"], bob: true, category: "animal" }),
+  define2({ id: "pump", name: "BIG OIL", w: 54, h: 78 }, {}),
+  define2({ id: "zuck", name: "ZUCK", w: 62, h: 94, inset: 5 }, { renderer: "character", assets: ["cast"], category: "person", hero: reaction2("money-guns", "airborne-near"), obstacle: reaction2("money-guns", "airborne-near") }),
+  define2({ id: "openai", name: "OPENAI", w: 70, h: 68, inset: 5 }, { category: "emblem" }),
+  define2({ id: "claude", name: "CLAUDE", w: 84, h: 73, inset: 6 }, { category: "emblem" }),
+  define2({ id: "gemini", name: "GEMINI", w: 58, h: 78, inset: 4 }, { category: "emblem" }),
+  define2({ id: "rogozin", name: "ROGOZIN / TRAMPOLINE", w: 88, h: 130, inset: 4 }, { renderer: "character", assets: ["cast"], category: "person", biomes: ["spaceport"], collision: "trampoline", hero: reaction2("point-and-laugh", "airborne-near"), obstacle: reaction2("trampoline-bounce", "passage") }),
+  define2({ id: "amber", name: "AMBER HEARD", w: 58, h: 94, inset: 9 }, { renderer: "character", assets: ["amber"], category: "person", obstacle: reaction2("throw", "passage") }),
+  define2({ id: "joe", name: "JOE ROGAN", w: 76, h: 94, inset: 10 }, { renderer: "character", assets: ["joe"], category: "person", hero: reaction2("podcast", "passage", 650, "self"), obstacle: reaction2("podcast", "passage", 650, "self") }),
+  define2({ id: "muscleCoupe", name: "AMERICAN MUSCLE", w: 138, h: 45, inset: 6 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define2({ id: "muscleCompact", name: "SMALL BLOCK / BIG EGO", w: 112, h: 38, inset: 5 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define2({ id: "pickup", name: "BIG TRUCK ENERGY", w: 140, h: 57, inset: 6 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define2({ id: "simpsonsCouch", name: "EVERGREEN TERRACE", w: 136, h: 88, inset: 6 }, { category: "group" }),
+  define2({ id: "hoverDrone", name: "HOVER DRONE", w: 92, h: 40, inset: 8, altitude: 300, approachSpeed: 0 }, { renderer: "drone", assets: ["drone"], category: "drone" }),
+  define2({ id: "incomingDrone", name: "INCOMING DRONE", w: 92, h: 40, inset: 8, altitude: 220, approachSpeed: 110 }, { renderer: "drone", assets: ["drone"], category: "drone" })
+]);
+var PROP_TYPES2 = freeze2(OBSTACLES2.filter((o) => ["muscleCoupe", "muscleCompact", "pickup", "simpsonsCouch"].includes(o.id)));
+var AIR_TYPES2 = freeze2(OBSTACLES2.filter((o) => o.placement === "air"));
+var definitionsById2 = new Map(OBSTACLES2.map((o) => [o.id, o]));
+var obstacleDefinition2 = (id2) => definitionsById2.get(id2);
+function validateContent2(definitions = OBSTACLES2) {
+  const errors = [], ids = /* @__PURE__ */ new Set();
+  for (const o of definitions) {
+    if (!o.id || ids.has(o.id)) errors.push(`duplicate or missing id: ${o.id}`);
+    ids.add(o.id);
+    if (!Number.isFinite(o.w) || !Number.isFinite(o.h) || o.w <= 0 || o.h <= 6) errors.push(`${o.id}: invalid size`);
+    if (!["ground", "air"].includes(o.placement)) errors.push(`${o.id}: invalid placement`);
+    if (o.placement === "air" && (!Number.isFinite(o.altitude) || !(Number(o.altitude) > 0))) errors.push(`${o.id}: invalid altitude`);
+    if (o.placement === "ground" && o.altitude) errors.push(`${o.id}: ground altitude`);
+    if (!["ground-center", "air-bottom-center"].includes(o.anchor)) errors.push(`${o.id}: invalid anchor`);
+    if (o.biomes !== "all" && (!Array.isArray(o.biomes) || !o.biomes.length || o.biomes.some((b) => !BIOMES2.includes(b)))) errors.push(`${o.id}: unknown biome`);
+    if (!o.visual || !["photo", "cutout", "character", "prop", "drone"].includes(o.visual.renderer)) errors.push(`${o.id}: missing renderer`);
+    for (const id2 of o.visual?.assets || []) if (!Object.hasOwn(ASSETS2, id2)) errors.push(`${o.id}: unknown asset ${id2}`);
+    if (!["box", "trampoline"].includes(o.collision)) errors.push(`${o.id}: missing collision profile`);
+    if (o.inset !== void 0 && (!Number.isFinite(o.inset) || o.inset < 0 || o.inset * 2 >= o.w)) errors.push(`${o.id}: invalid inset`);
+    for (
+      const direction of
+      /** @type {const} */
+      ["hero", "obstacle"]
+    ) {
+      const r = o.reactions?.[direction];
+      if (!r || typeof r.enabled !== "boolean") errors.push(`${o.id}: missing ${direction} reaction`);
+      else if (r.enabled && (!ANIMATIONS2.includes(r.animationId) || !["near", "airborne-near", "passage"].includes(r.trigger) || !(r.range > 0) || !["target", "self"].includes(r.space))) errors.push(`${o.id}: missing animation ${r.animationId}`);
+    }
+  }
+  return errors;
+}
+var contentErrors2 = validateContent2();
+if (contentErrors2.length) throw new Error(`Invalid content: ${contentErrors2.join("; ")}`);
+
+// supabase/rulesets/roadster-v380/physics.js
+var STEP2 = 1 / 120;
+function rogozinBounce2(time) {
+  return 20 * Math.abs(Math.sin(time * 4.5));
+}
+function obstacleBoxes2(o, time = 0) {
+  if ((o.collision || obstacleDefinition2(o.id)?.collision) === "trampoline") {
+    return [
+      { left: 6, right: o.w - 6, top: 16 },
+      { left: o.w / 2 - 18, right: o.w / 2 + 18, top: 108 + rogozinBounce2(time) }
+    ];
+  }
+  const inset = o.inset ?? 5;
+  return [{ left: inset, right: o.w - inset, top: o.h - 6 }];
+}
+
+// supabase/rulesets/roadster-v380/fall.js
+var clamp3 = (x) => Math.max(0, Math.min(1, x));
+var ease2 = (x) => {
+  x = clamp3(x);
+  return x * x * (3 - 2 * x);
+};
+var mix2 = (a, b, t) => a + (b - a) * t;
+var FALL_CONTACTS2 = Object.freeze([0.14, 0.36, 0.56]);
+var FALL_CAR_CONTACTS2 = Object.freeze([0.16, 0.38]);
+var FALL_CAR_HULL2 = Object.freeze([[-49, -7], [-8, -15], [8, -15], [48.5, 0], [47, 6], [27, 12], [-34, 12], [-46, 5]].map(Object.freeze));
+function fallCarSupport2(angle) {
+  return Math.max(...FALL_CAR_HULL2.map(([x, y]) => x * Math.sin(angle) + y * Math.cos(angle)));
+}
+var arc2 = (p, a, b, height) => {
+  const t = clamp3((p - a) / (b - a));
+  return t < 1e-12 || t > 1 - 1e-12 ? 0 : height * 4 * t * (1 - t);
+};
+var pulse2 = (p, hit) => ease2((p - hit + 0.035) / 0.035) * (1 - ease2((p - hit) / 0.055));
+function track2(keys, p) {
+  let i = 1;
+  while (i < keys.length - 1 && p > keys[i][0]) i++;
+  const [a, b] = [keys[i - 1], keys[i]];
+  return mix2(a[1], b[1], ease2((p - a[0]) / (b[0] - a[0])));
+}
+function createFall2() {
+  return { active: false, age: 0, duration: GAMEPLAY2.fallSeconds, rate: 1, taps: 0, angle: 0, reduced: false };
+}
+function beginFall2(f, result, { reduced = false, speed = GAMEPLAY2.startSpeed } = {}) {
+  const angle = Math.atan2(Math.sin(result.angle), Math.cos(result.angle));
+  const severity = clamp3((speed - GAMEPLAY2.startSpeed) / (GAMEPLAY2.maxSpeed - GAMEPLAY2.startSpeed));
+  Object.assign(f, { active: true, age: 0, duration: GAMEPLAY2.fallSeconds + GAMEPLAY2.fallSpeedSeconds * severity, rate: 1, taps: 0, angle, reduced });
+}
+function hastenFall2(f) {
+  if (!f.active) return false;
+  f.taps++;
+  f.rate = Math.min(GAMEPLAY2.fallMaxRate, f.rate + GAMEPLAY2.fallTapRate);
+  return true;
+}
+function advanceFall2(f, dt) {
+  if (!f.active) return { impacts: 0, finished: false };
+  const previous = f.age;
+  f.age = Math.min(f.duration, f.age + dt * f.rate);
+  const impacts = FALL_CONTACTS2.filter((t) => previous < f.duration * t && f.age >= f.duration * t).length;
+  f.active = f.age < f.duration;
+  return { impacts, finished: !f.active };
+}
+function fallPose2(f) {
+  const p = clamp3(f.age / f.duration), sit = ease2(p / 0.14), stand = ease2((p - 0.68) / 0.16), gather = ease2((p - 0.7) / 0.22), settle = clamp3((p - 0.97) / 0.03);
+  const impact = Math.max(...FALL_CONTACTS2.map((hit) => pulse2(p, hit))), seat = sit * (1 - stand);
+  const crouch = (0.72 + 0.18 * impact) * seat + (settle === 1 ? 0 : 0.1 * Math.sin(settle * Math.PI));
+  const lift = p < 0.36 ? arc2(p, 0.14, 0.36, 32) : p < 0.56 ? arc2(p, 0.36, 0.56, 28) : arc2(p, 0.56, 0.97, 112);
+  const angle = mix2(f.angle, -0.64, sit) * (1 - stand);
+  const seatAnchor = -11 * Math.sin(angle) + (22.5 + 27 * crouch) * Math.cos(angle) + 9;
+  const rider = { x: 34 * sit * (1 - gather), y: mix2(95, seatAnchor, seat) + lift, angle, seat, crouch, lift };
+  const entry = (y) => ({ x: Math.sin(f.angle) * (y - 65), y: 65 + Math.cos(f.angle) * (y - 65) });
+  const e = entry(95), c = entry(12);
+  rider.x += e.x * (1 - sit);
+  rider.y += (e.y - 95) * (1 - sit);
+  const carAngle = track2([[0, f.angle], [0.16, 0.95], [0.29, Math.PI], [0.38, 2 * Math.PI - 1.02], [0.54, 2 * Math.PI], [1, 2 * Math.PI]], p);
+  const carHop = p < 0.16 ? arc2(p, 0, 0.16, 20) : p < 0.38 ? arc2(p, 0.16, 0.38, 22) : arc2(p, 0.38, 0.54, 8);
+  const car = { x: gather === 1 ? 0 : mix2(c.x, -88, ease2(p / 0.16)) * (1 - gather), y: p >= 0.54 ? 12 : mix2(c.y, fallCarSupport2(carAngle) + carHop, ease2(p / 0.06)), angle: carAngle, phase: 0 };
+  let shake = 0;
+  for (const hit of FALL_CONTACTS2) if (p >= hit) shake = Math.max(shake, Math.exp(-(p - hit) * 40));
+  const pose = { car, rider, crouch, impact, flail: sit * (1 - ease2((p - 0.82) / 0.12)), push: 0, shake: shake * 2.4, progress: p };
+  if (f.reduced) {
+    pose.car = { x: 0, y: 12, angle: 0, phase: 0 };
+    pose.rider = { x: 0, y: 95, angle: 0, seat: 0, crouch };
+    pose.shake = 0;
+    pose.push = 0;
+    pose.flail = 0;
+  }
+  return pose;
+}
+function fallPolygons2(pose) {
+  const seat = pose.rider.seat || 0, crouch = pose.rider.crouch || 0;
+  const rider = [[-23, -70 + 4 * seat], [23 + 48 * seat, -70 + 4 * seat], [23 + 48 * seat, 68 - 27 * crouch], [-23, 68 - 27 * crouch]];
+  return [[pose.car, FALL_CAR_HULL2.map(([x, y]) => [x, -y])], [pose.rider, rider]].map(([body2, vertices]) => {
+    const c = Math.cos(body2.angle), s = Math.sin(body2.angle);
+    return vertices.map(([x, y]) => ({ x: body2.x + c * x + s * y, y: body2.y - s * x + c * y }));
+  });
+}
+function interpolateFall2(a, b, t) {
+  const pose = {};
+  for (const part of ["car", "rider"]) {
+    pose[part] = {};
+    for (const k of ["x", "y", "angle", "seat", "crouch", "phase"]) pose[part][k] = mix2(a[part][k] || 0, b[part][k] || 0, t);
+  }
+  return pose;
+}
+
+// supabase/rulesets/roadster-v380/gameplay.js
+var TAU2 = Math.PI * 2;
+var clamp4 = (x, a, b) => Math.max(a, Math.min(b, x));
+var approach2 = (x, target, amount) => x < target ? Math.min(target, x + amount) : Math.max(target, x - amount);
+function uprightError2(angle, direction = -1) {
+  let e = ((angle + Math.PI) % TAU2 + TAU2) % TAU2 - Math.PI;
+  if (Math.abs(Math.abs(e) - Math.PI) < 1e-9) e = -Math.sign(direction || -1) * Math.PI;
+  return e;
+}
+function createFlight2(fuel = GAMEPLAY2.initialFuel) {
+  return { y: 0, vy: 0, vx: 0, angle: 0, omega: 0, airborne: false, time: 0, fuel, thrusting: false, latched: false, attach: 0, maxTurn: 0, turns: 0, lastDirection: -1, trickStarted: false, grab: 0, launchVelocity: 0 };
+}
+function launch2(p, charge = 0) {
+  if (p.airborne) return false;
+  Object.assign(p, { y: 1e-3, vy: GAMEPLAY2.jumpSpeed + GAMEPLAY2.chargedSpeed * clamp4(charge, 0, 1), angle: 0, omega: 0, airborne: true, time: 0, latched: false, attach: 0, maxTurn: 0, turns: 0, trickStarted: false, grab: 0, launchVelocity: GAMEPLAY2.jumpSpeed + GAMEPLAY2.chargedSpeed * clamp4(charge, 0, 1) });
+  return true;
+}
+function advanceFlight2(p, dt, { spin = false, thrust = false } = {}) {
+  p.thrusting = false;
+  const gripTarget = p.airborne && spin ? 1 : 0;
+  p.grab = approach2(p.grab, gripTarget, dt / (gripTarget ? 0.12 : 0.18));
+  if (!p.airborne) {
+    p.vx *= Math.exp(-GAMEPLAY2.horizontalDrag * dt);
+    return null;
+  }
+  p.time += dt;
+  if (spin) {
+    p.trickStarted = true;
+    p.lastDirection = -1;
+    p.omega = approach2(p.omega, -GAMEPLAY2.spinSpeed, GAMEPLAY2.spinAcceleration * dt);
+  } else {
+    const target = Math.sign(p.omega) * Math.min(Math.abs(p.omega), GAMEPLAY2.releaseSpeed);
+    p.omega = approach2(p.omega, target, GAMEPLAY2.releaseDeceleration * dt);
+  }
+  p.angle += p.omega * dt;
+  p.maxTurn = Math.max(p.maxTurn, -p.angle);
+  p.turns = Math.floor((p.maxTurn + 1e-7) / TAU2);
+  const burn = thrust ? Math.min(dt, p.fuel / GAMEPLAY2.fuelPerSecond) : 0;
+  if (burn > 0) {
+    p.fuel = Math.max(0, p.fuel - burn * GAMEPLAY2.fuelPerSecond);
+    p.thrusting = true;
+    p.latched = true;
+    p.vx += Math.sin(p.angle) * GAMEPLAY2.thrustAcceleration * burn;
+    p.vy += Math.cos(p.angle) * GAMEPLAY2.thrustAcceleration * burn;
+  }
+  if (p.latched) p.attach = Math.min(1, p.attach + dt / GAMEPLAY2.attachSeconds);
+  p.vx = clamp4(p.vx * Math.exp(-GAMEPLAY2.horizontalDrag * dt), -GAMEPLAY2.maxHorizontal, GAMEPLAY2.maxHorizontal);
+  p.y += p.vy * dt - 0.5 * GAMEPLAY2.gravity * dt * dt;
+  p.vy -= GAMEPLAY2.gravity * dt;
+  if (p.y > 0) return null;
+  const good = Math.abs(uprightError2(p.angle)) <= GAMEPLAY2.landingAngle + 1e-9 && Math.abs(p.omega) <= GAMEPLAY2.landingOmega;
+  const turns = good ? Math.max(p.turns, Math.round(-p.angle / TAU2)) : p.turns;
+  const perfect = good && Math.abs(uprightError2(p.angle)) <= GAMEPLAY2.perfectAngle + 1e-9;
+  const result = { good, perfect, turns, impact: Math.abs(p.vy), angle: p.angle, omega: p.omega };
+  p.turns = turns;
+  p.y = 0;
+  p.vy = 0;
+  p.airborne = false;
+  p.thrusting = false;
+  if (result.good) {
+    p.angle = 0;
+    p.omega = 0;
+  }
+  return result;
+}
+function createEconomy2() {
+  return { bonus: 0, multiplier: 10, meter: 0, decay: 0, streak: 0, streakLeft: 0, flips: 0 };
+}
+function comboSeconds2(e) {
+  return GAMEPLAY2.comboDuration - GAMEPLAY2.comboFalloff * (e.multiplier / 10 - 1);
+}
+function rewardAction2(e, count = 1) {
+  e.multiplier = Math.min(GAMEPLAY2.maxMultiplier, e.multiplier + count * GAMEPLAY2.multiplierStep);
+  e.meter = 1;
+  e.decay = 0;
+}
+function advanceEconomy2(e, dt) {
+  if (e.meter > 0) {
+    const used = Math.min(dt, e.meter * comboSeconds2(e));
+    e.meter = Math.max(0, e.meter - used / comboSeconds2(e));
+    dt -= used;
+  }
+  if (e.meter === 0 && e.multiplier > 10) {
+    e.decay += dt;
+    while (e.decay + 1e-9 >= GAMEPLAY2.comboDecaySeconds && e.multiplier > 10) {
+      e.multiplier--;
+      e.decay -= GAMEPLAY2.comboDecaySeconds;
+    }
+  }
+}
+function advanceStreak2(e, dt) {
+  const used = Math.min(dt, e.streakLeft);
+  e.streakLeft -= used;
+  e.streak = Math.max(0, e.streak - (dt - used) * GAMEPLAY2.streakDecay);
+}
+function passObstacle2(e) {
+  const points = GAMEPLAY2.obstaclePoints * e.multiplier / 10;
+  e.bonus += points;
+  return points;
+}
+function settleLanding2(e, p, result, { late = 0, near = 0 } = {}) {
+  if (!result.good) {
+    e.multiplier = 10;
+    e.meter = 0;
+    e.decay = 0;
+    e.streak = 0;
+    e.streakLeft = 0;
+    return { points: 0, turns: 0, late: 0, near: 0, perfect: false, good: false };
+  }
+  const n = result.turns, perfect = !!result.perfect, points = (GAMEPLAY2.flipFactor * n * (n + 1) + GAMEPLAY2.nearPoints * (late + near) + GAMEPLAY2.perfectPoints * Number(perfect)) * e.multiplier / 10;
+  e.bonus += points;
+  e.flips += n;
+  p.fuel = Math.min(GAMEPLAY2.tank, p.fuel + GAMEPLAY2.fuelPerFlip * n);
+  if (n + late + near + Number(perfect)) rewardAction2(e, n + late + near + Number(perfect));
+  if (n || near) {
+    e.streak = Math.min(GAMEPLAY2.maxStreak, e.streak + GAMEPLAY2.streakStep);
+    e.streakLeft = GAMEPLAY2.streakHold;
+  }
+  return { points, turns: n, late, near, perfect, good: true };
+}
+function createPace2() {
+  return { progress: 0, base: GAMEPLAY2.startSpeed, speed: GAMEPLAY2.startSpeed, recovery: null, stumble: 0, falling: false };
+}
+function stumble2(pace) {
+  const target = pace.recovery?.target ?? pace.base, r = clamp4((target - GAMEPLAY2.startSpeed) / (GAMEPLAY2.maxSpeed - GAMEPLAY2.startSpeed), 0, 1);
+  pace.recovery = { target, age: 0, duration: GAMEPLAY2.recoveryMin + GAMEPLAY2.recoveryExtra * r ** 1.5 };
+  pace.stumble = GAMEPLAY2.stumbleSeconds;
+  pace.base = target * GAMEPLAY2.recoveryRatio;
+}
+function recoverySpeed2(r, t) {
+  const T = r.duration, d = r.target * (1 - GAMEPLAY2.recoveryRatio), v0 = r.target * GAMEPLAY2.recoveryRatio, h = 0.15, a = T - h;
+  if (t <= a) return v0 + d * (t / T) ** 2;
+  const u = clamp4((t - a) / h, 0, 1), start = v0 + d * (a / T) ** 2, slope = 2 * d * a / T ** 2, endSlope = r.target >= GAMEPLAY2.maxSpeed ? 0 : (GAMEPLAY2.maxSpeed - GAMEPLAY2.startSpeed) / GAMEPLAY2.rampSeconds;
+  return (2 * u ** 3 - 3 * u * u + 1) * start + (u ** 3 - 2 * u * u + u) * h * slope + (-2 * u ** 3 + 3 * u * u) * r.target + (u ** 3 - u * u) * h * endSlope;
+}
+function advancePace2(pace, e, p, dt) {
+  if (pace.recovery) {
+    pace.stumble = Math.max(0, pace.stumble - dt);
+    const r = pace.recovery;
+    r.age = Math.min(r.duration, r.age + dt);
+    pace.base = recoverySpeed2(r, r.age);
+    if (r.age >= r.duration) {
+      pace.base = r.target;
+      pace.recovery = null;
+    }
+  } else if (!pace.falling) {
+    pace.progress += dt;
+    pace.base = GAMEPLAY2.startSpeed + (GAMEPLAY2.maxSpeed - GAMEPLAY2.startSpeed) * Math.min(1, pace.progress / GAMEPLAY2.rampSeconds);
+  }
+  pace.speed = Math.max(60, pace.base * (1 + e.streak) + p.vx);
+  return pace.speed;
+}
+function playerPolygons2(p) {
+  if (p.fallPose) return fallPolygons2(p.fallPose);
+  const c = Math.cos(p.angle), s = Math.sin(p.angle);
+  return [[-47, 0, 47, 25], [-23, 25, 23, 163 - 32 * (p.grab || 0)]].map(([l, b, r, t]) => [[l, b], [r, b], [r, t], [l, t]].map(([x, y]) => ({ x: c * x + s * (y - 65), y: p.y + 65 - s * x + c * (y - 65) })));
+}
+function overlaps2(poly, rect) {
+  const axes = [{ x: 1, y: 0 }, { x: 0, y: 1 }];
+  for (let i = 0; i < (poly.length === 4 ? 2 : poly.length); i++) {
+    const a = poly[i], b = poly[(i + 1) % poly.length];
+    axes.push({ x: -(b.y - a.y), y: b.x - a.x });
+  }
+  for (const a of axes) {
+    const ps = poly.map((p) => p.x * a.x + p.y * a.y), rs = rect.map((p) => p.x * a.x + p.y * a.y);
+    if (Math.max(...ps) <= Math.min(...rs) || Math.max(...rs) <= Math.min(...ps)) return false;
+  }
+  return true;
+}
+function collisionAt2(p, o, dx, time = 0) {
+  if (dx > 180 || dx + o.w < -180) return false;
+  const polygons = playerPolygons2(p);
+  return obstacleBoxes2(o, time).some((b) => {
+    const bottom = o.altitude || 0, top = bottom + b.top;
+    const rect = [{ x: dx + b.left, y: bottom }, { x: dx + b.right, y: bottom }, { x: dx + b.right, y: top }, { x: dx + b.left, y: top }];
+    return polygons.some((poly) => overlaps2(poly, rect));
+  });
+}
+function sweptCollision2(before, after, o, dxBefore, dxAfter, time, dt) {
+  const fallTravel = before.fallPose && after.fallPose ? Math.max(...["rider", "car"].map((part) => Math.abs(after.fallPose[part].angle - before.fallPose[part].angle) * (part === "car" ? 55 : 170) + Math.abs(after.fallPose[part].y - before.fallPose[part].y) + Math.abs(after.fallPose[part].x - before.fallPose[part].x))) : 0;
+  const n = Math.max(1, Math.ceil((Math.abs(dxAfter - dxBefore) + Math.abs(after.y - before.y) + Math.abs(after.angle - before.angle) * 170 + fallTravel) / 4));
+  for (let i = 0; i <= n; i++) {
+    const f = i / n, p = { y: before.y + (after.y - before.y) * f, angle: before.angle + (after.angle - before.angle) * f, grab: (before.grab || 0) + ((after.grab || 0) - (before.grab || 0)) * f };
+    if (before.fallPose && after.fallPose) p.fallPose = interpolateFall2(before.fallPose, after.fallPose, f);
+    if (collisionAt2(p, o, dxBefore + (dxAfter - dxBefore) * f, time - dt + dt * f)) return true;
+  }
+  return false;
+}
+function nearWindow2(distance, speed) {
+  return distance >= 0 && distance <= Math.max(0, speed) * GAMEPLAY2.nearSeconds + 1e-8;
+}
+
+// supabase/rulesets/roadster-v380/routes.js
+var STAGES2 = GAMEPLAY2.stages;
+function stageAt2(progress) {
+  return STAGES2.filter((t) => progress >= t).length - 1;
+}
+function makePattern2(kind, { speed = 360, type = { id: "truck", w: 110, h: 41 }, dx = 900 } = {}) {
+  const item = (o, offset = 0) => ({ ...o, x: dx + offset, passed: false });
+  if (kind === "hover") return [item(AIR_TYPES2[0])];
+  if (kind === "incoming") return [item(AIR_TYPES2[1])];
+  if (kind === "precision") {
+    const span = Math.min(200, Math.max(110, speed * 0.4 - 94)), cars = [], n = Math.min(2, Math.ceil(span / 110)), width = (span - 20 * (n - 1)) / n;
+    for (let i = 0; i < n; i++) cars.push(item({ id: "truck", name: "CYBERBRICK", w: width, h: 41 * width / 110, inset: 4 }, i * (width + 20)));
+    cars.push(item({ id: "truck", name: "CYBERBRICK", w: 110, h: 41, inset: 5 }, speed * 1.15));
+    cars.push(item({ ...AIR_TYPES2[0], altitude: 400 }, span * 0.5));
+    return cars;
+  }
+  if (kind === "mixed") return [item(type), item(AIR_TYPES2[1], speed * 0.65), item(type.h <= 57 ? type : { id: "truck", name: "CYBERBRICK", w: 110, h: 41, inset: 5 }, speed * 1.65)];
+  if (kind === "thrust") {
+    const n = Math.min(6, Math.max(4, Math.ceil(speed * 1.65 / 165)));
+    return Array.from({ length: n }, (_, i) => item({ id: "truck", name: "CYBERBRICK", w: 110, h: 41, inset: 5 }, i * 165));
+  }
+  if (kind === "pair") return [item(type), item(type, speed * 1.5)];
+  return [item(type)];
+}
+function validateRoute2(obstacles, { flight = createFlight2(), pace = createPace2(), economy = createEconomy2(), time = 0, allowThrust = true, burns = null, timingMargin = 0, leads = [0.1, 0.11, 0.115, 0.12, 0.125, 0.14, 0.16, 0.2, 0.3, 0.4, 0.5, 0.65], charges = [0, 0.5, 1] } = {}) {
+  if (flight.airborne || pace.stumble > 0) return null;
+  for (const charge of charges) for (const lead of leads) for (const burn of burns ?? (allowThrust && flight.fuel > 0 ? [0, 0.35, 0.65, 1.1] : [0])) {
+    const p = { ...flight }, r = structuredClone(pace), e = { ...economy }, obs = obstacles.map((o) => ({ ...o })), actions = [];
+    let charging = false, held = 0, elapsed = 0, lateTarget = null, lastThrust = false, nearLandings = 0, lateTakeoffs = 0;
+    const dt = 1 / 120;
+    for (let tick = 0; tick < 1440; tick++) {
+      elapsed = tick * dt;
+      const next = obs.find((o) => o.x + o.w > -47 && (!o.altitude || o.altitude < 163));
+      if (!p.airborne && next) {
+        const ttc = (next.x + (next.inset || 5) - 47) / Math.max(1, r.speed + (next.approachSpeed || 0));
+        if (!charging && ttc <= lead + charge * GAMEPLAY2.chargeSeconds) {
+          charging = true;
+          held = 0;
+          actions.push({ at: elapsed, action: "hold" });
+        }
+        if (charging) {
+          held += dt;
+          if (held + 1e-9 >= charge * GAMEPLAY2.chargeSeconds + (charge > 0 ? dt : 0)) {
+            lateTarget = nearWindow2(next.x + (next.inset || 5) - 47, r.speed + (next.approachSpeed || 0)) ? next : null;
+            launch2(p, charge);
+            charging = false;
+            actions.push({ at: elapsed, action: "jump", charge });
+          }
+        }
+      }
+      const before = { ...p }, useThrust = p.airborne && p.time >= 0.18 && p.time < 0.18 + burn;
+      if (useThrust !== lastThrust) {
+        actions.push({ at: elapsed, action: useThrust ? "thrust-on" : "thrust-off" });
+        lastThrust = useThrust;
+      }
+      const landed = advanceFlight2(p, dt, { thrust: useThrust });
+      advanceEconomy2(e, dt);
+      advanceStreak2(e, dt);
+      advancePace2(r, e, p, dt);
+      const after = landed ? { ...p, angle: landed.angle } : p;
+      let alive = true;
+      for (const o of obs) {
+        const old = o.x;
+        o.x -= (r.speed + (o.approachSpeed || 0)) * dt;
+        if (sweptCollision2(before, after, o, old, o.x, time + elapsed, dt)) {
+          alive = false;
+          break;
+        }
+        if (!o.passed && o.x + o.w < -50) {
+          o.passed = true;
+          passObstacle2(e);
+        }
+      }
+      if (!alive || landed && !landed.good) break;
+      if (landed) {
+        let near = 0;
+        const late = lateTarget && lateTarget.x + lateTarget.w - (lateTarget.inset || 5) < -47 ? 1 : 0;
+        for (const o of obs) if (!o.altitude && !o.nearPaid && nearWindow2(-47 - (o.x + o.w - (o.inset || 5)), r.speed)) {
+          near++;
+          o.nearPaid = true;
+        }
+        settleLanding2(e, p, landed, { late, near });
+        nearLandings += near;
+        lateTakeoffs += late;
+        lateTarget = null;
+      }
+      if (obs.every((o) => o.x + o.w < -180) && !p.airborne) {
+        if (timingMargin > 0 && (!validateRoute2(obstacles, { flight, pace, economy, time, charges: [charge], leads: [lead - timingMargin], burns: [burn] }) || !validateRoute2(obstacles, { flight, pace, economy, time, charges: [charge], leads: [lead + timingMargin], burns: [burn] }))) break;
+        return { charge, lead, burn, actions, nearLandings, lateTakeoffs, duration: elapsed, fuelUsed: flight.fuel - p.fuel, exit: { y: 0, angle: 0, vx: p.vx }, clearanceVerified: true, timingMargin };
+      }
+    }
+  }
+  return null;
+}
+
+// supabase/rulesets/roadster-v380/director.js
+function createDirector2({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random = Math.random, relative = false }) {
+  const state = { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 };
+  function reset() {
+    Object.assign(state, { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 });
+  }
+  function spawn() {
+    if (flight.airborne || pace.recovery || pace.falling || S.obs.some((o) => !o.passed)) {
+      S.next = 0.18;
+      state.waiting = true;
+      return;
+    }
+    state.waiting = false;
+    const stage = stageAt2(pace.progress), breath = state.wave % 5 === 4 || state.hardStreak >= 2;
+    const pools = [["single"], ["single"], ["pair", "single"], ["hover", "incoming", "pair"], ["precision", "incoming", "pair"], ["mixed", "precision", "thrust"], ["mixed", "precision", "thrust", "incoming"]];
+    let kind = breath ? "single" : pools[stage][Math.floor(random() * pools[stage].length)];
+    if (!breath && stage === 3 && pace.progress < 72) kind = "hover";
+    const choices = OBSTACLES2.filter((o) => !o.altitude && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    if (kind === "thrust" && flight.fuel < 65) kind = "pair";
+    const type = choices[Math.floor(random() * choices.length)], dx = spawnDistance();
+    let obstacles = makePattern2(kind, { speed: S.speed, type, dx });
+    let route = validateRoute2(obstacles, { flight, pace, economy, time: sceneTime(), timingMargin: GAMEPLAY2.routeTimingMargin });
+    if (route && route.fuelUsed > 0 && flight.fuel - route.fuelUsed < GAMEPLAY2.routeFuelReserve) route = null;
+    if (!route) {
+      state.fallbacks++;
+      kind = "single";
+      obstacles = makePattern2(kind, { speed: S.speed, type: OBSTACLES2.find((o) => o.id === "truck"), dx });
+      route = validateRoute2(obstacles, { flight, pace, economy, time: sceneTime(), timingMargin: GAMEPLAY2.routeTimingMargin });
+    }
+    if (!route) {
+      S.next = 0.3;
+      return;
+    }
+    state.hardStreak = ["precision", "mixed", "thrust"].includes(kind) ? state.hardStreak + 1 : 0;
+    state.wave++;
+    state.last = { kind, stage, route, startedAt: S.t };
+    for (const o of obstacles) S.obs.push({ ...o, x: o.x + (relative ? 0 : S.anchor), uid: ++S.entityId, passed: false, nearPaid: false, latePaid: false });
+    S.next = breath ? 2.3 : 1.2;
+  }
+  return { reset, spawn, state };
+}
+
+// supabase/rulesets/roadster-v380/random.js
+function createRandom2(seed) {
+  if (!Number.isInteger(seed) || seed < 0 || seed > 4294967295) throw Error("Invalid run seed");
+  let state = seed;
+  return { next() {
+    state = state + 1831565813 >>> 0;
+    let t = state;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }, get state() {
+    return state;
+  }, restore(value) {
+    if (!Number.isInteger(value) || value < 0 || value > 4294967295) throw Error("Invalid random state");
+    state = value;
+  } };
+}
+
+// supabase/rulesets/roadster-v380/run.js
+var RULESET2 = "roadster-v3.8.0";
+var RUN_STEP2 = 1 / 120;
+var RUN_COMMANDS2 = Object.freeze(["primary-down", "primary-up", "primary-cancel", "thrust-on", "thrust-off", "cancel"]);
+var MAX_RECORDED_TICKS2 = 120 * 60 * 60;
+var MAX_RECORDED_EVENTS2 = 24e3;
+function createRun2({ seed = 0, record = true, reducedMotion = false } = {}) {
+  const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY2.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, P = createFlight2(), E = createEconomy2(), pace = createPace2(), F = createFall2(), input = { charging: false, charge: 0, spin: false, thrust: false };
+  let random = createRandom2(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector2({ S, flight: P, pace, economy: E, random: () => random.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  function clear() {
+    Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
+    P.thrusting = false;
+  }
+  function sync() {
+    S.t = S.tick * RUN_STEP2;
+    S.speed = pace.speed;
+    S.score = Math.floor(S.distance / 20 + E.bonus);
+  }
+  function reset(nextSeed = seed) {
+    seed = nextSeed;
+    random = createRandom2(seed);
+    Object.assign(P, createFlight2());
+    Object.assign(E, createEconomy2());
+    Object.assign(pace, createPace2());
+    Object.assign(F, createFall2());
+    Object.assign(S, { mode: "playing", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY2.startSpeed, next: 1.7, obs: [], entityId: 0, lastCharge: 0 });
+    clear();
+    events = [];
+    log = [];
+    lateId = null;
+    lastLanding = null;
+    recordable = true;
+    director.reset();
+  }
+  function jump() {
+    if (S.mode !== "playing" || P.airborne || F.active || pace.stumble > 0) return false;
+    lateId = null;
+    for (const o of S.obs) {
+      if (o.altitude || o.passed) continue;
+      if (nearWindow2(o.x + (o.inset || 5) - 47, S.speed + (o.approachSpeed || 0))) {
+        lateId = o.uid;
+        break;
+      }
+    }
+    const charge = input.charge;
+    launch2(P, charge);
+    S.lastCharge = charge;
+    input.charging = false;
+    input.charge = 0;
+    input.spin = false;
+    events.push({ type: "jump", charge });
+    return true;
+  }
+  function command(action) {
+    if (!RUN_COMMANDS2.includes(action)) throw Error("Unknown run command");
+    if (S.mode !== "playing") return false;
+    if (record && recordable) {
+      if (log.length >= MAX_RECORDED_EVENTS2) recordable = false;
+      else log.push([S.tick, RUN_COMMANDS2.indexOf(action)]);
+    }
+    if (action === "cancel") {
+      clear();
+      return true;
+    }
+    if (action === "primary-cancel") {
+      input.spin = false;
+      input.charging = false;
+      input.charge = 0;
+      return true;
+    }
+    if (action === "thrust-off") {
+      input.thrust = false;
+      return true;
+    }
+    if (action === "thrust-on") {
+      if (!F.active) input.thrust = true;
+      return true;
+    }
+    if (action === "primary-up") {
+      if (input.charging) jump();
+      input.spin = false;
+      return true;
+    }
+    if (F.active) return hastenFall2(F);
+    if (pace.stumble > 0) return false;
+    if (P.airborne) {
+      P.trickStarted = true;
+      input.spin = true;
+    } else {
+      input.charging = true;
+      input.charge = 0;
+    }
+    return true;
+  }
+  function step() {
+    if (S.mode !== "playing") return { landed: null, impacts: 0 };
+    S.tick++;
+    if (S.tick > MAX_RECORDED_TICKS2) recordable = false;
+    sync();
+    if (input.charging) input.charge = Math.min(1, input.charge + RUN_STEP2 / GAMEPLAY2.chargeSeconds);
+    advanceEconomy2(E, RUN_STEP2);
+    advanceStreak2(E, RUN_STEP2);
+    const physicsFall = () => fallPose2({ ...F, reduced: false }), wasFalling = F.active, before = { ...P, fallPose: F.active ? physicsFall() : null };
+    let landed = null, fallStep = { impacts: 0, finished: false };
+    if (wasFalling) {
+      fallStep = advanceFall2(F, RUN_STEP2);
+      if (fallStep.finished) {
+        clear();
+        S.next = Math.max(S.next, 0.8);
+        events.push({ type: "recovered" });
+      }
+    } else landed = advanceFlight2(P, RUN_STEP2, { spin: input.spin, thrust: input.thrust });
+    pace.falling = F.active;
+    advancePace2(pace, E, P, RUN_STEP2);
+    S.distance += pace.speed * RUN_STEP2;
+    sync();
+    const after = wasFalling ? { ...P, fallPose: physicsFall() } : landed ? { ...P, angle: landed.angle } : P;
+    for (const o of S.obs) {
+      const old = o.x;
+      o.x -= (S.speed + (o.approachSpeed || 0)) * RUN_STEP2;
+      if (sweptCollision2(before, after, o, old, o.x, S.t, RUN_STEP2)) {
+        S.mode = "dead";
+        clear();
+        sync();
+        events.push({ type: "death", obstacle: o });
+        return { landed, impacts: fallStep.impacts };
+      }
+      if (!o.passed && o.x + o.w < -50) {
+        o.passed = true;
+        passObstacle2(E);
+        if (o.altitude) events.push({ type: "air-passed" });
+      }
+    }
+    if (landed) {
+      let late = 0, near = 0;
+      const target = S.obs.find((o) => o.uid === lateId);
+      if (target && !target.latePaid && target.x + target.w - (target.inset || 5) < -47) {
+        late = 1;
+        target.latePaid = true;
+      }
+      for (const o of S.obs) {
+        if (o.altitude || o.nearPaid) continue;
+        if (nearWindow2(-47 - (o.x + o.w - (o.inset || 5)), S.speed)) {
+          near++;
+          o.nearPaid = true;
+        }
+      }
+      const oldMultiplier = E.multiplier;
+      lastLanding = settleLanding2(E, P, landed, { late, near });
+      if (!landed.good) {
+        stumble2(pace);
+        beginFall2(F, landed, { reduced: reducedMotion, speed: pace.recovery.target });
+        pace.falling = true;
+        P.angle = 0;
+        P.omega = 0;
+        P.vx = 0;
+        P.grab = 0;
+        clear();
+        advancePace2(pace, E, P, 0);
+      }
+      events.push({ type: "landing", landed, result: lastLanding, late, near, oldMultiplier });
+      lateId = null;
+    }
+    if (!P.airborne && Math.abs(P.angle) > 1e-3) {
+      P.angle *= Math.exp(-RUN_STEP2 * 18);
+      P.omega = 0;
+    }
+    S.obs = S.obs.filter((o) => o.uid === lateId || o.x + o.w > (o.id === "joe" ? -480 : -400));
+    S.next -= RUN_STEP2;
+    if (S.next <= 0) director.spawn();
+    sync();
+    return { landed, impacts: fallStep.impacts };
+  }
+  function snapshot() {
+    return structuredClone({ seed, S, P, E, pace, F, input, random: random.state, director: director.state, lateId, lastLanding });
+  }
+  function restore(saved) {
+    seed = saved.seed;
+    for (const [a, b] of [[S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
+    random = createRandom2(seed);
+    random.restore(saved.random);
+    lateId = saved.lateId;
+    lastLanding = structuredClone(saved.lastLanding);
+    events = [];
+  }
+  function replay() {
+    return recordable ? { format: 1, ruleset: RULESET2, seed, ticks: S.tick, events: log.map((e) => [...e]) } : null;
+  }
+  return { S, P, E, pace, F, input, director, reset, jump, command, step, sync, snapshot, restore, replay, drainEvents() {
+    const next = events;
+    events = [];
+    return next;
+  }, get lastLanding() {
+    return lastLanding;
+  }, get seed() {
+    return seed;
+  }, get recordable() {
+    return recordable;
+  } };
+}
+function validateReplay2(value) {
+  if (!value || value.format !== 1 || value.ruleset !== RULESET2 || !Number.isInteger(value.seed) || value.seed < 0 || value.seed > 4294967295 || !Number.isInteger(value.ticks) || value.ticks < 1 || value.ticks > MAX_RECORDED_TICKS2 || !Array.isArray(value.events) || value.events.length > MAX_RECORDED_EVENTS2) throw Error("Invalid or unsupported replay");
+  let previous = -1;
+  for (const event of value.events) {
+    if (!Array.isArray(event) || event.length !== 2 || !Number.isInteger(event[0]) || event[0] < previous || event[0] < 0 || event[0] >= value.ticks || !Number.isInteger(event[1]) || event[1] < 0 || event[1] >= RUN_COMMANDS2.length) throw Error("Invalid replay input");
+    previous = event[0];
+  }
+  return value;
+}
+function verifyReplay2(value) {
+  const replay = validateReplay2(value), run = createRun2({ seed: replay.seed, record: false });
+  run.reset();
+  let event = 0;
+  while (run.S.tick < replay.ticks && run.S.mode === "playing") {
+    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS2[replay.events[event++][1]]);
+    run.step();
+    run.drainEvents();
+  }
+  if (run.S.mode !== "dead" || run.S.tick !== replay.ticks || event !== replay.events.length) throw Error("Replay does not end at its first collision");
+  return { score: run.S.score, flips: run.E.flips, ticks: run.S.tick };
+}
+
+// supabase/rulesets.mjs
+var supported = new Map([run_exports, run_exports2].map((r) => [r.RULESET, r]));
+function ruleset(id2) {
+  const r = supported.get(id2);
+  if (!r) throw Error("Unsupported ruleset");
+  return r;
+}
 
 // supabase/chunk.mjs
 function verifyChunk(value, checkpoint = null, { maxTicks = 6e3, budgetMs = 400, now = () => performance.now() } = {}) {
-  const replay = validateReplay(value), run = createRun({ seed: replay.seed, record: false });
+  const { createRun: createRun3, validateReplay: validateReplay3, RUN_COMMANDS: RUN_COMMANDS3 } = ruleset(value?.ruleset);
+  const replay = validateReplay3(value), run = createRun3({ seed: replay.seed, record: false });
   run.reset();
   let event = 0;
   if (checkpoint) {
@@ -818,7 +1689,7 @@ function verifyChunk(value, checkpoint = null, { maxTicks = 6e3, budgetMs = 400,
   }
   const start = run.S.tick, started = now();
   while (run.S.tick < replay.ticks && run.S.mode === "playing" && run.S.tick - start < maxTicks) {
-    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS[replay.events[event++][1]]);
+    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS3[replay.events[event++][1]]);
     run.step();
     run.drainEvents();
     if ((run.S.tick - start) % 32 === 0 && now() - started >= budgetMs) break;
@@ -909,8 +1780,12 @@ function createHandler({ rpc, chunk = verifyChunk } = {}) {
       if (path.startsWith("/scores/") && req.method === "GET") return json(await rpc("entry", { id: id(path.slice(8)) }));
       if (path === "/sessions" && req.method === "POST") {
         const b = await body(req, 1024);
-        if (b.ruleset !== RULESET) throw new ApiError("ruleset_unavailable", 409);
-        const capability = hex(crypto.getRandomValues(new Uint8Array(32))), value = await rpc("create", { id: crypto.randomUUID(), publicId: crypto.randomUUID(), tokenHash: await hash(capability), seed: crypto.getRandomValues(new Uint32Array(1))[0], ruleset: RULESET });
+        try {
+          ruleset(b.ruleset);
+        } catch {
+          throw new ApiError("ruleset_unavailable", 409);
+        }
+        const capability = hex(crypto.getRandomValues(new Uint8Array(32))), value = await rpc("create", { id: crypto.randomUUID(), publicId: crypto.randomUUID(), tokenHash: await hash(capability), seed: crypto.getRandomValues(new Uint32Array(1))[0], ruleset: b.ruleset });
         return json({ ...value, capability }, 201);
       }
       const match = path.match(/^\/sessions\/([^/]+)$/);
@@ -923,7 +1798,7 @@ function createHandler({ rpc, chunk = verifyChunk } = {}) {
         if (req.method !== "POST") throw new ApiError("method_not_allowed", 405);
         const b = await body(req), nickname = name(b.nickname);
         try {
-          validateReplay(b.replay);
+          ruleset(b.replay?.ruleset).validateReplay(b.replay);
         } catch {
           throw new ApiError("invalid_replay");
         }

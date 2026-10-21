@@ -1,3 +1,9 @@
+## Flight3.8.0 candidate restore
+
+Parent c2cfa916c14645cedd1f4d17b9b4f83c1a6ee054 / tree7393ac6dd2f656f6ad2ed88cba1bc4cb991a4efc. Freeze the bounded diff, apply its inverse in isolation and compare the exact parent tree, then run the111 parent tests/checks. The original dirty checkout must retain its historical index and foreign files. Do not reset it.
+
+After any3.8.0 client has shipped, retain additive dual-ruleset backend support even during a frontend rollback; do not restore an older database or reject new-version pending runs. A deployed frontend rollback needs a fresh cache identifier. Best score, collection, submitted identity and pending tokens survive. See docs/verification/2026-10-21-flight-v380/.
+
 ## UI3.7.3 restore
 
 Parent `15f7693bbebd46bb6af601c88dc197b56711a6f1`, tree `d333eceb6e8f615c69cfe5b5f5ba68498a4b3c08`. Bounded release diff and exact reverse application are retained with the verification packet. Use an isolated checkout, reproduce the exact parent tree and pass its109 tests/checks. A deployed rollback needs a fresh cache version. Preserve local best, encounter collection, accepted score identity and pending results; no database rollback is part of this UI release. Do not reset the original dirty workspace. Check release-status.json for publication and restore evidence.

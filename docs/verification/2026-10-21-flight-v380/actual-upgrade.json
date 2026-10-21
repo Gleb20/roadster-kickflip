@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "real published parent installed",
+    "actual upgrade waits with old paused run",
+    "native restart activates actual3.8.0 and starts a fresh run",
+    "best and collection survive actual update",
+    "old finished best remains available for submission",
+    "new version cold-loads offline",
+    "new version starts with native touch offline",
+    "no runtime errors"
+  ],
+  "errors": []
+}

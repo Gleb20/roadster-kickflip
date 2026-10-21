@@ -1,6 +1,7 @@
-import {createRun,validateReplay,RUN_COMMANDS} from './rulesets/roadster-v342/run.js';
+import {ruleset} from './rulesets.mjs';
 /** Checkpoints originate only from the service-owned database, never the browser. */
 export function verifyChunk(value,checkpoint=null,{maxTicks=6000,budgetMs=400,now=()=>performance.now()}={}){
+ const {createRun,validateReplay,RUN_COMMANDS}=ruleset(value?.ruleset);
  const replay=validateReplay(value),run=createRun({seed:replay.seed,record:false});run.reset();let event=0;
  if(checkpoint){run.restore(checkpoint.run);event=checkpoint.event;}
  const start=run.S.tick,started=now();

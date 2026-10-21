@@ -1,3 +1,23 @@
+## Flight3.8.0 — authorized release,21 October2026
+
+The user approved updating the server together with the game if a simpler exchange cannot resist request tampering through browser Network tools. Hidden fields, browser-computed hashes/signatures and duration limits do not establish that a claimed score came from play. Keep the existing server replay verifier for this release; there is no authorized switch to client-trusted totals or obligation to build a second verification scheme.
+
+Backend deployed with both frozen rulesets. Its downloaded bundle matches the tested source SHA256b13297aa39747b21410e9918ccde22e771853a0c6f8dccf1b818a4a8ff4b70e4. RPC body matchesc42da7aa4a1b64b9ebf8fffbd68ba630;10 accepted scores and263 pre-existing sessions preserved, epochv3 and enabled JWT gateway unchanged.13 hosted checks pass, including old/new session support and rejection of an incomplete replay with a fabricated huge total. No public QA scores were added.8 exact3.7.3→3.8.0 upgrade checks pass, including native-touch restart, retained best/collection/old finished best and cold offline start. Earlier synthetic repeated-update Home timeout remains recorded separately.
+
+Frontend publication is in progress. Check release-status.json before claiming it live. The separate unapproved factory-assembly art stays outside this release; the ramp has been cancelled in that separate brief. Route-search timing, independent daylight and obstacle pools remain outside this task.
+
+## Flight3.8.0 candidate acceptance state
+
+117 game tests and all source/content/type/cache checks pass;8 server tests;23 native keyboard/touch landing checks;40 general gameplay;11 replay;73 menu/disposable-database checks. Exact inverse reproduces public3.7.3 tree7393ac6dd2f656f6ad2ed88cba1bc4cb991a4efc and111 tests/checks.13 PWA checks pass before the same Home-activation timeout seen on unchanged3.7.3; explicit restart and cold offline pass. Legacy extended screenshot equality is not a green whole-suite claim. Earlier Supabase authorization blocker is resolved by direct human approval. Backend is deployed; Pages publication follows. Runtime source is ready and snapshotted; preserve the old public release until server compatibility is applied or the user explicitly chooses an offline-only trial.
+
+## Flight3.8.0 — candidate for phone acceptance
+
+Based on public3.7.3 c2cfa916c14645cedd1f4d17b9b4f83c1a6ee054. Hold in the air: one compact grab, 7.2rad/s. Release: extend over0.18s, brake at24rad/s² toward existing-direction1.8rad/s; there is no automatic upright targeting. Reholding restores the grab over0.12s. Safe landing remains±40° and≤240°/s; ideal is±10° and pays+50 base points, including ordinary upright jumps. The pre-landing multiplier applies once; ideal adds0.1 combo, never fuel or an extra speed-streak increment by itself. Overholding still falls. A grounded0.28s leg-compression pulse absorbs touchdown and freezes on pause.
+
+New immutable ruleset roadster-v3.8.0 accompanies the changed rotation, silhouette timing and scoring. The old roadster-v3.4.2 verifier remains byte-identical. Prepared server dispatcher and additive RPC update accept both versions, preserve score epochv3, accepted scores and old pending sessions. Old saved bests remain usable after upgrade. Server deployment is authorized and complete; both old and new online session creation were verified. Current publication/verification state: [release-status.json](verification/2026-10-21-flight-v380/release-status.json).
+
+Recorded synchronous route-search stalls and independent daylight and biome-specific pools remain open and outside this feature. After physical-phone acceptance, propose a bounded measurement of route-search stalls before choosing an optimisation.
+
 ## UI refinement 3.7.3 — phone feedback, 21 October2026
 
 Based on published3.7.1 `15f7693bbebd46bb6af601c88dc197b56711a6f1`. Equal compact square shortcuts sit under the header: Install app left, orange Legend right; Legend reuses the approved silhouette. Main menu shows Personal Best and a fetched global rank, centered Leaderboard, then a centered Let's Go / next-run tips dock. Removed local/online readiness copy. Verified bests use their actual entry rank; unsubmitted/legacy bests use “Would rank #N globally”, counting existing equal scores before the new result in one leaderboard snapshot. Lookup uses existing read-only pages with logarithmic requests; no backend/schema/ruleset change and no automatic public submission. Loading and unavailable states never invent a rank.

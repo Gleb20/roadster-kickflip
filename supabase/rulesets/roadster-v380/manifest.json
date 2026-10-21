@@ -1,0 +1,16 @@
+{
+  "ruleset": "roadster-v3.8.0",
+  "sourceCommit": "c2cfa916c14645cedd1f4d17b9b4f83c1a6ee054 + bounded 3.8.0 gameplay delta",
+  "files": {
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "run.js": "08cd5114cdf24a1e2391d4e401bf7779f92ed7208f88c1b8797fbe42a5d07d68",
+    "catalog.js": "db222e71f0fdbf4b133fc9b238f5ece3a3d1f674916f16a61e722b7482ca49ab",
+    "director.js": "d1ac22dfa0e3147af6cec3cdb201f745e8958a537a72107ffb759c63c9c9cc39",
+    "routes.js": "caba0ba6dd613d9182755eddc1b048c444eb9b1ec824e2ac77cbad84530f4859",
+    "content.js": "280b93931a85f2122de4efe94619ca4e3eb10ae5a0dbe1fdfb2577d8c3be9cf7",
+    "gameplay.js": "3bcfe528b8d66e71fc2600e66913fa156f1b4d916911502391cac7dd74139ee2",
+    "physics.js": "80f9b52244904f73729cac369a60804d395f9feac5e6023147a1b01745a53e9f",
+    "fall.js": "cee2006e4ddcc28bc61c08cf5c0a79e67e220b283348b74e4fabeb6242c34413",
+    "gameplay-config.js": "fc71202d21db1dd740cb70fb4c70043d1b4833542296934c99ce9a7009f4bd77"
+  }
+}

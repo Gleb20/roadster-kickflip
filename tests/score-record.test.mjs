@@ -28,3 +28,11 @@ test('corrupt or newer saves are preserved; blocked storage still retains curren
  for(const raw of ['bad',JSON.stringify({version:2,result:attempt()})]){const storage=memory();storage.setItem(SCORE_RECORD_KEY,raw);const r=create(storage);r.keep(attempt(),400);assert.equal(r.persistent,false);assert.equal(r.canPost(r.matching(400)),true);assert.equal(storage.getItem(SCORE_RECORD_KEY),raw);}
  const r=create({getItem(){throw Error();},setItem(){throw Error();}});r.keep(attempt(),400);assert.equal(r.persistent,false);assert.equal(r.matching(400).score,400);
 });
+
+test('gameplay upgrade preserves old finished best and can store a new-version record afterwards',()=>{
+ const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v)},now=()=>100;
+ const old={score:123,session:{id:'00000000-0000-4000-8000-000000000001',capability:'a'.repeat(64),ruleset:'roadster-v3.4.2',localExpiresAt:1000},replay:{ruleset:'roadster-v3.4.2',ticks:100,events:[]}};
+ createScoreRecord({storage,ruleset:'roadster-v3.4.2',now}).keep(old,123);
+ const next=createScoreRecord({storage,ruleset:'roadster-v3.8.0',compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0'],now});assert.equal(next.persistent,true);assert.equal(next.canPost(next.matching(123)),true);assert.deepEqual(next.matching(123),old);
+ const current={...old,score:150,session:{...old.session,ruleset:'roadster-v3.8.0'},replay:{...old.replay,ruleset:'roadster-v3.8.0'}};next.keep(current,150);assert.deepEqual(next.matching(150),current);assert.equal(createScoreRecord({storage,ruleset:'roadster-v3.8.0',now}).matching(150).score,150);
+});

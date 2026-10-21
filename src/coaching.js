@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.7.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.8.0';
 export const LESSONS=[
   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
-  {id:'flip',at:20,text:'IN THE AIR: HOLD TO FLIP',detail:'Release early. Small jets help you land upright.'},
+  {id:'flip',at:20,text:'IN THE AIR: HOLD TO FLIP',detail:'Grab to spin faster. Release to straighten and slow down.'},
   {id:'thrust',at:35,text:'HOLD THRUST / SHIFT IN THE AIR',detail:'Jets push away from the underbody. Land flips to refuel.'},
   {id:'air',at:60,text:'WATCH THE SKY',detail:'Fly above or below drones. Incoming drones close faster.'},
   {id:'near',at:90,text:'LAND CLOSE. JUMP LATE.',detail:'Tight landings and late takeoffs earn +25 base points.'},

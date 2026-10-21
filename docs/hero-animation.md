@@ -1,3 +1,9 @@
+## Flight3.8.0
+
+Grab follows the current airborne hold, rather than the historical trickStarted flag. Opening after release raises the torso and extends both legs over0.18s while the current angular momentum slows. Reholding tucks over0.12s. Existing procedural limbs and the approved front-left grip are reused; no artwork is generated. The ordinary independent kickflip stays disabled once a manual trick has begun, including after release.
+
+advanceHeroAnimation detects a safe air-to-ground transition, samples the previous downward velocity, and triggers a0.28s sin² compression pulse with maximum crouch0.48. The two feet remain on their measured roof supports; hips/head/arms descend and return. A new flight, fall or reset clears the pulse. Rendering is read-only; pause freezes animation. This pulse is cosmetic; the changed airborne tuck timing is represented in the new frozen collision verifier.
+
 # Paper rider animation contract
 
 `src/hero-rig.js` contains logical joint coordinates, a two-bone reach solver, declarative pose clips and pure arm/leg samplers. The renderer only paints the resulting limbs and hands. The origin is the riding soles, x right/y down. `HERO_RIG` names shoulders, hips, arm/leg lengths, sole offset and board reach. `HERO_APPEARANCE` supplies head cutout, clothing/shoe colours and emblem. A replacement cutout must be registered in the existing cutout adapter and keep the same logical head box; changing anatomy requires a matching rig. This is a development contract, not a player-facing character selector.

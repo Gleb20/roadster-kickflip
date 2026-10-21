@@ -1,3 +1,9 @@
+## Prepared3.8.0 compatibility update
+
+rulesets.mjs dispatches explicitly to the untouched roadster-v3.4.2 and newly frozen roadster-v3.8.0 implementations. Session creation, replay parsing and resumed chunks use the declared version. Apply migrations/20261021110000_tuck_landing_v380.sql once to the existing project, then deploy the bundled tesla-ranking function with JWT gateway unchanged. The migration replaces the same service-only RPC body with two bounded changes: allow either ruleset on creation and store the requested supported ruleset in the new session. It preserves config flags, score epochv3, every row, grants and old checkpoints. No initial schema reapplication, score reset or data migration.
+
+Deployment was separately authorized and completed on21 October2026; the downloaded bundle is byte-identical to the tested source. Local disposable PostgreSQL and dual-version verifier tests pass. For a frontend rollback, leave this additive server compatibility deployed, because it is required by clients that already cached3.8.0; keep all accepted data authoritative.
+
 # Supabase staging ranking
 
 Game hosting stays on GitHub Pages. This directory replaces the earlier Cloudflare/Render draft for the new candidate. That draft and its immutable 3.4.1 ruleset remain in their original clone/source branch. No existing Cloudflare staging resource is removed.

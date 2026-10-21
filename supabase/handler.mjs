@@ -1,4 +1,4 @@
-import {RULESET,validateReplay} from './rulesets/roadster-v342/run.js';
+import {ruleset} from './rulesets.mjs';
 import {verifyChunk} from './chunk.mjs';
 const enc=new TextEncoder(),ORIGINS=['https://gleb20.github.io','http://127.0.0.1:8766','http://127.0.0.1:8767','http://localhost:8767'];
 class ApiError extends Error{constructor(code,status=400){super(code);this.code=code;this.status=status;}}
@@ -31,8 +31,8 @@ export function createHandler({rpc,chunk=verifyChunk}={}){
    }
    if(path.startsWith('/scores/')&&req.method==='GET')return json(await rpc('entry',{id:id(path.slice(8))}));
    if(path==='/sessions'&&req.method==='POST'){
-    const b=await body(req,1024);if(b.ruleset!==RULESET)throw new ApiError('ruleset_unavailable',409);
-    const capability=hex(crypto.getRandomValues(new Uint8Array(32))),value=await rpc('create',{id:crypto.randomUUID(),publicId:crypto.randomUUID(),tokenHash:await hash(capability),seed:crypto.getRandomValues(new Uint32Array(1))[0],ruleset:RULESET});
+    const b=await body(req,1024);try{ruleset(b.ruleset);}catch{throw new ApiError('ruleset_unavailable',409);}
+    const capability=hex(crypto.getRandomValues(new Uint8Array(32))),value=await rpc('create',{id:crypto.randomUUID(),publicId:crypto.randomUUID(),tokenHash:await hash(capability),seed:crypto.getRandomValues(new Uint32Array(1))[0],ruleset:b.ruleset});
     return json({...value,capability},201);
    }
    const match=path.match(/^\/sessions\/([^/]+)$/);
@@ -42,7 +42,7 @@ export function createHandler({rpc,chunk=verifyChunk}={}){
     const p={id:id(match[1]),tokenHash:await hash(cap)};
     if(req.method==='GET')return json(decorate(await rpc('get',p)));
     if(req.method!=='POST')throw new ApiError('method_not_allowed',405);
-    const b=await body(req),nickname=name(b.nickname);try{validateReplay(b.replay);}catch{throw new ApiError('invalid_replay');}
+    const b=await body(req),nickname=name(b.nickname);try{ruleset(b.replay?.ruleset).validateReplay(b.replay);}catch{throw new ApiError('invalid_replay');}
     const replay={format:1,ruleset:b.replay.ruleset,seed:b.replay.seed,ticks:b.replay.ticks,events:b.replay.events.map(e=>[e[0],e[1]])};
     return json(decorate(await rpc('submit',{...p,nickname,replay,payloadHash:await hash(JSON.stringify({nickname,replay}))})),202);
    }

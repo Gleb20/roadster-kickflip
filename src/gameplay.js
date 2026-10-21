@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.7.3';
-import {obstacleBoxes} from './physics.js?v=3.7.3';
-import {fallPolygons,interpolateFall} from './fall.js?v=3.7.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.8.0';
+import {obstacleBoxes} from './physics.js?v=3.8.0';
+import {fallPolygons,interpolateFall} from './fall.js?v=3.8.0';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -18,17 +18,16 @@ export function launch(p,charge=0){
 // Shared by live play and route validation. No DOM, audio, timers or randomness.
 export function advanceFlight(p,dt,{spin=false,thrust=false}={}){
   p.thrusting=false;
-  const gripTarget=p.airborne&&p.trickStarted?1:0;
-  p.grab=approach(p.grab,gripTarget,dt/ .16);
+  const gripTarget=p.airborne&&spin?1:0;
+  p.grab=approach(p.grab,gripTarget,dt/(gripTarget?.12:.18));
   if(!p.airborne){p.vx*=Math.exp(-C.horizontalDrag*dt);return null;}
   p.time+=dt;
-  const error=uprightError(p.angle,p.lastDirection);
   if(spin){p.trickStarted=true;p.lastDirection=-1;p.omega=approach(p.omega,-C.spinSpeed,C.spinAcceleration*dt);}
   else {
-    // Braking distance makes the assistance settle without an instantaneous snap.
-    const target=-Math.sign(error)*Math.min(C.assistSpeed,Math.sqrt(2*C.assistAcceleration*Math.abs(error)));
-    p.omega=approach(p.omega,target,C.assistAcceleration*dt);
-    if(Math.abs(error)<.002&&Math.abs(p.omega)<.15)p.omega=-error/dt;
+    // Opening the body brakes the existing rotation, without reversing or
+    // choosing an upright target. Untouched ordinary jumps remain upright.
+    const target=Math.sign(p.omega)*Math.min(Math.abs(p.omega),C.releaseSpeed);
+    p.omega=approach(p.omega,target,C.releaseDeceleration*dt);
   }
   p.angle+=p.omega*dt;
   p.maxTurn=Math.max(p.maxTurn,-p.angle);
@@ -44,11 +43,12 @@ export function advanceFlight(p,dt,{spin=false,thrust=false}={}){
   // Exact constant-acceleration position update; fixed-step input remains deterministic.
   p.y+=p.vy*dt-.5*C.gravity*dt*dt;p.vy-=C.gravity*dt;
   if(p.y>0)return null;
-  const good=Math.abs(uprightError(p.angle))<=C.landingAngle&&Math.abs(p.omega)<=C.landingOmega;
+  const good=Math.abs(uprightError(p.angle))<=C.landingAngle+1e-9&&Math.abs(p.omega)<=C.landingOmega;
   // A wheel-aligned landing completes the last few degrees within the accepted
   // landing tolerance. Do not lose a whole turn at 358 degrees, or count jitter.
   const turns=good?Math.max(p.turns,Math.round(-p.angle/TAU)):p.turns;
-  const result={good,turns,impact:Math.abs(p.vy),angle:p.angle,omega:p.omega};
+  const perfect=good&&Math.abs(uprightError(p.angle))<=C.perfectAngle+1e-9;
+  const result={good,perfect,turns,impact:Math.abs(p.vy),angle:p.angle,omega:p.omega};
   p.turns=turns;
   p.y=0;p.vy=0;p.airborne=false;p.thrusting=false;
   if(result.good){p.angle=0;p.omega=0;}
@@ -64,12 +64,12 @@ export function advanceEconomy(e,dt){
 export function advanceStreak(e,dt){const used=Math.min(dt,e.streakLeft);e.streakLeft-=used;e.streak=Math.max(0,e.streak-(dt-used)*C.streakDecay);}
 export function passObstacle(e){const points=C.obstaclePoints*e.multiplier/10;e.bonus+=points;return points;}
 export function settleLanding(e,p,result,{late=0,near=0}={}){
-  if(!result.good){e.multiplier=10;e.meter=0;e.decay=0;e.streak=0;e.streakLeft=0;return {points:0,turns:0,late:0,near:0,good:false};}
-  const n=result.turns,points=(C.flipFactor*n*(n+1)+C.nearPoints*(late+near))*e.multiplier/10;
+  if(!result.good){e.multiplier=10;e.meter=0;e.decay=0;e.streak=0;e.streakLeft=0;return {points:0,turns:0,late:0,near:0,perfect:false,good:false};}
+  const n=result.turns,perfect=!!result.perfect,points=(C.flipFactor*n*(n+1)+C.nearPoints*(late+near)+C.perfectPoints*Number(perfect))*e.multiplier/10;
   e.bonus+=points;e.flips+=n;p.fuel=Math.min(C.tank,p.fuel+C.fuelPerFlip*n);
-  if(n+late+near)rewardAction(e,n+late+near);
+  if(n+late+near+Number(perfect))rewardAction(e,n+late+near+Number(perfect));
   if(n||near){e.streak=Math.min(C.maxStreak,e.streak+C.streakStep);e.streakLeft=C.streakHold;}
-  return {points,turns:n,late,near,good:true};
+  return {points,turns:n,late,near,perfect,good:true};
 }
 export function createPace(){return {progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
 export function stumble(pace){

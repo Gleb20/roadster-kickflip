@@ -103,9 +103,19 @@ export function sampleHeroArm(side,{air=false,crouch=0,drop=0,wave=0,taunt=0,aim
  }
  return {shoulder,elbow,wrist,taunt:k,wave:armWave};
 }
-export function createHeroAnimation(){return {taunt:0,wave:0,facing:0,airborne:false,flightIndex:0,trick:0};}
-export function advanceHeroAnimation(state,dt,{target=false,distance=0,cameo=false,airborne=false,seed=0}={}){
+export function createHeroAnimation(){return {taunt:0,wave:0,facing:0,airborne:false,flightIndex:0,trick:0,landingAge:1,landingStrength:0,lastVy:0};}
+export function advanceHeroAnimation(state,dt,{target=false,distance=0,cameo=false,airborne=false,falling=false,vy=0,seed=0}={}){
+ if(!airborne&&state.airborne&&!falling){state.landingAge=0;state.landingStrength=clamp(Math.abs(state.lastVy)/1000,.35,1);}
+ else state.landingAge+=Math.max(0,dt);
+ if(airborne||falling)state.landingAge=1;
+ state.lastVy=vy;
  if(airborne&&!state.airborne){state.trick=selectTrick(seed,state.flightIndex++,state.flightIndex>1?state.trick:-1);}state.airborne=airborne;
  const weight=1-Math.exp(-Math.max(0,dt)*15),ease=t=>{t=clamp(t);return t*t*(3-2*t);};
  state.taunt=mix(state.taunt,target?ease((360-Math.abs(distance))/110):0,weight);state.wave=mix(state.wave,cameo?1:0,weight);state.facing=mix(state.facing,target?Math.sign(distance)||1:0,weight);return state;
+}
+
+/** One grounded compression pulse; simulation time freezes it during pause. */
+export function landingCrouch(state){
+ const phase=clamp(state.landingAge/.28);
+ return .48*state.landingStrength*Math.sin(Math.PI*phase)**2;
 }

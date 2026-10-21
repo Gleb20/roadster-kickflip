@@ -1,8 +1,8 @@
-import {obstacleDefinition} from './content.js?v=3.7.3';
-import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.7.3';
-import {createCash,advanceCash} from './cash.js?v=3.7.3';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.7.3';
-import {joeReaction} from './encounter.js?v=3.7.3';
+import {obstacleDefinition} from './content.js?v=3.8.0';
+import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.8.0';
+import {createCash,advanceCash} from './cash.js?v=3.8.0';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.8.0';
+import {joeReaction} from './encounter.js?v=3.8.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;
@@ -237,7 +237,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const state=getState(),{S,B,CAMEO}=state,flight=state.flight||{y:S.y||0,angle:0,airborne:S.y>0,time:S.jumpTime||0};
     const air=flight.airborne,grab=S.falling?0:clamp(S.grab||0),podcast=CAMEO.active?null:joeTarget?.(),reaction=joeReaction(podcast?obstacleDx(podcast)+podcast.w/2:NaN);
     const target=CAMEO.active||podcast?null:gestureTarget(),dx=target?obstacleDx(target)+target.w/2:0,facing=target?Math.sign(dx)||1:0;
-    const crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0),drop=27*crouch+5*grab;
+    const crouch=Math.max(S.charging?(.3+.7*S.charge):0,grab,S.fallCrouch||0,air||S.falling?0:landingCrouch(motion)),drop=27*crouch+5*grab;
     const tilt=S.falling?0:mix((air?-.085:Math.sin(state.sceneTime*4)*.012)+(B.lean||0),(HERO_TRICKS[motion.trick]||HERO_TRICKS[0]).tilt,grab);
     const offset=state.heroOffset??-29.5,car=trickCarPose(motion.trick,grab,air?flight.time:0),edge=rotate({x:14,y:-18},car.angle);
     const grabPoint=unrotate({x:car.x+edge.x,y:car.y+edge.y-offset},tilt);
@@ -263,12 +263,12 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     return [{id:'hero',from:hero,to:mark[0].muzzle,targetMoves:true},...mark.map((p,i)=>({id:'mark'+i,from:p.muzzle,to:hero,targetMoves:false}))];
   }
   function reset(){Object.assign(motion,createHeroAnimation());Object.assign(cash,createCash({reduced:reducedMotion}));}
-  function update(dt){const state=getState(),target=state.CAMEO.active?null:gestureTarget(),distance=target?obstacleDx(target)+target.w/2:0;advanceHeroAnimation(motion,dt,{target:!!target,distance,cameo:state.CAMEO.active,airborne:!!state.flight?.airborne,seed:state.seed||0});advanceCash(cash,dt,{streams:streams(layout()),speed:state.S.speed||0});}
+  function update(dt){const state=getState(),target=state.CAMEO.active?null:gestureTarget(),distance=target?obstacleDx(target)+target.w/2:0;advanceHeroAnimation(motion,dt,{target:!!target,distance,cameo:state.CAMEO.active,airborne:!!state.flight?.airborne,falling:!!state.S.falling,vy:state.flight?.vy||0,seed:state.seed||0});advanceCash(cash,dt,{streams:streams(layout()),speed:state.S.speed||0});}
   function legs(h){return [-1,1].map(side=>sampleHeroLeg(side,{air:h.air,crouch:h.crouch,drop:h.drop,seat:clamp(h.S.fallSeat||0),tilt:h.tilt,impact:clamp(h.S.fallImpact||0),grab:h.grab,car:h.car,offset:h.offset},heroRig));}
   function inspect(){const h=layout(),near=torsoToHero(h.arms[1].wrist,h),goal=rotate(h.grabPoint,h.tilt);
     const feet=legs(h).map((p,i)=>{const foot=rotate(p.foot,h.tilt),roof=rotate({x:(i?1:-1)*25,y:h.offset+(i?4.8:1.6)},h.car.angle);return {side:i?1:-1,roofError:Math.hypot(foot.x-h.car.x-roof.x,foot.y+h.offset-h.car.y-roof.y),knee:p.knee,foot:p.foot};});
     const rear=h.arms[0],v={x:rear.wrist.x-rear.shoulder.x,y:rear.wrist.y-rear.shoulder.y},target=h.aim&&{x:h.aim.x-rear.shoulder.x,y:h.aim.y-rear.shoulder.y};
-    return {feet,reactionSpace:h.reactionSpace,aimCosine:target?(v.x*target.x+v.y*target.y)/(Math.hypot(v.x,v.y)*Math.hypot(target.x,target.y)):null,jointMouthDistance:h.podcast?Math.hypot(rear.wrist.x+17-h.mouth.x,rear.wrist.y-h.mouth.y):null,reaction:h.reaction,gripError:h.grab>.999?Math.hypot(near.x-goal.x,near.y-goal.y):null,trick:HERO_TRICKS[motion.trick].id,grabSide:HERO_HANDS.grab,interactionSide:HERO_HANDS.interaction,grab:h.grab,car:h.car,expression:h.podcast?(h.reaction.inhale>.15?'inhale':h.reaction.meme>.05?'podcast-meme':'podcast'):h.target?(h.target.id==='trump'?'angry':'laugh'):h.B.impossibru?'impossibru':'neutral',cash:{count:cash.notes.length,falling:cash.notes.filter(p=>p.falling).length},nearWrist:h.arms[1].wrist,rearWrist:h.arms[0].wrist};}
+    return {feet,crouch:h.crouch,bodyDrop:h.drop,landingCrouch:landingCrouch(motion),reactionSpace:h.reactionSpace,aimCosine:target?(v.x*target.x+v.y*target.y)/(Math.hypot(v.x,v.y)*Math.hypot(target.x,target.y)):null,jointMouthDistance:h.podcast?Math.hypot(rear.wrist.x+17-h.mouth.x,rear.wrist.y-h.mouth.y):null,reaction:h.reaction,gripError:h.grab>.999?Math.hypot(near.x-goal.x,near.y-goal.y):null,trick:HERO_TRICKS[motion.trick].id,grabSide:HERO_HANDS.grab,interactionSide:HERO_HANDS.interaction,grab:h.grab,car:h.car,expression:h.podcast?(h.reaction.inhale>.15?'inhale':h.reaction.meme>.05?'podcast-meme':'podcast'):h.target?(h.target.id==='trump'?'angry':'laugh'):h.B.impossibru?'impossibru':'neutral',cash:{count:cash.notes.length,falling:cash.notes.filter(p=>p.falling).length},nearWrist:h.arms[1].wrist,rearWrist:h.arms[0].wrist};}
   function carPose(){return layout().car;}
   function elon(x,y,air,pose=0){
     const h=layout(),{S,B,sceneTime,reaction,target,grab,crouch,drop,taunt,tilt,opponent}=h;

@@ -8,20 +8,20 @@ import {createDirector} from '../src/director.js';
 const dt=1/120,near=(a,b,eps=1e-7)=>assert.ok(Math.abs(a-b)<eps,`${a} != ${b}`);
 function flight(q,hold,{fuel=0,burn=0,delay=0,spinDelay=0}={}){const p=createFlight(fuel);launch(p,q);for(let t=0;t<6;t+=dt){const r=advanceFlight(p,dt,{spin:t>=spinDelay&&t<spinDelay+hold,thrust:t>=delay&&t<delay+burn});if(r)return {p,r,t};}throw Error('Flight did not land');}
 
-test('tap and short charge cannot land a flip; half charge can, with bounded timing',()=>{
- for(const q of [0,.25,.4])for(let hold=.3;hold<1.4;hold+=.01){const {r}=flight(q,hold);assert.ok(!r.good||r.turns===0,`unexpected flip at ${q}/${hold}`);}
- const {r}=flight(.5,.87);assert.equal(r.good,true);assert.equal(r.turns,1);
+test('tap cannot land a flip; charged grabs have bounded release windows',()=>{
+ for(const q of [0])for(let hold=.3;hold<1.4;hold+=.01){const {r}=flight(q,hold);assert.ok(!r.good||r.turns===0,`unexpected flip at ${q}/${hold}`);}
+ const {r}=flight(.5,.8);assert.equal(r.good,true);assert.equal(r.turns,1);
  assert.equal(flight(.5,2).r.good,false,'assistance must not guarantee a landing');
- const double=flight(1,1.9,{fuel:100,delay:0,burn:.65,spinDelay:.65});assert.equal(double.r.good,true);assert.equal(double.r.turns,2);
+ const double=flight(1,1.55,{fuel:100,delay:0,burn:.65,spinDelay:.65});assert.equal(double.r.good,true);assert.equal(double.r.turns,2);
 });
 test('thrust has local roof direction, finite fuel and no ground consumption',()=>{
  for(const angle of [0,Math.PI/2,Math.PI,3*Math.PI/2]){const p=createFlight(50);launch(p,1);p.angle=angle;const baseline={...p};advanceFlight(p,dt,{thrust:true});advanceFlight(baseline,dt);const vy=p.vy-baseline.vy,vx=p.vx-baseline.vx;if(angle===0)assert.ok(vy>0);if(angle===Math.PI/2)assert.ok(vx>0);if(angle===Math.PI)assert.ok(vy<0);if(angle===3*Math.PI/2)assert.ok(vx<0);near(p.fuel,50-C.fuelPerSecond*dt);assert.equal(p.latched,true);}
  const grounded=createFlight(50);advanceFlight(grounded,1,{thrust:true});assert.equal(grounded.fuel,50);
  const p=createFlight(.1);launch(p,1);advanceFlight(p,dt,{thrust:true});assert.equal(p.fuel,0);advanceFlight(p,dt,{thrust:true});assert.equal(p.thrusting,false);assert.equal(p.latched,true);
 });
-test('assistance chooses shortest direction and preserves direction on the 180 degree tie',()=>{
+test('upright error preserves tie direction; releasing never invents rotation or duplicates turns',()=>{
  near(uprightError(Math.PI,-1),Math.PI);near(uprightError(Math.PI,1),-Math.PI);
- for(const angle of [.8,-.8]){const p=createFlight();launch(p,1);p.angle=angle;advanceFlight(p,dt);assert.ok(Math.abs(p.angle)<Math.abs(angle));assert.ok(Math.abs(p.angle)>.7,'no instantaneous correction');}
+ for(const angle of [.8,-.8]){const p=createFlight();launch(p,1);p.angle=angle;advanceFlight(p,dt);near(p.angle,angle);near(p.omega,0);}
  const p=createFlight();launch(p,1);p.angle=-TAU*2;p.maxTurn=TAU*2;p.turns=2;for(let i=0;i<20;i++)advanceFlight(p,dt);assert.equal(p.turns,2,'no duplicate turn from boundary jitter');
 });
 test('only landed flips refill fuel; failed landing resets series but preserves tank',()=>{

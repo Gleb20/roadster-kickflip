@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "keyboard: hold visibly tucks and rotates faster",
+    "keyboard: release opens both legs and brakes while airborne",
+    "keyboard: ideal flip settles once with bonus",
+    "keyboard: PERFECT feedback is shown",
+    "keyboard: legs absorb ground contact",
+    "keyboard: pause freezes impact pose",
+    "keyboard: springs back upright",
+    "keyboard: forgiving landing gives flip without ideal bonus",
+    "keyboard: overhold falls and clears held controls",
+    "keyboard: restart clears compression",
+    "keyboard: rehold tucks again",
+    "touch: hold visibly tucks and rotates faster",
+    "touch: release opens both legs and brakes while airborne",
+    "touch: ideal flip settles once with bonus",
+    "touch: PERFECT feedback is shown",
+    "touch: legs absorb ground contact",
+    "touch: pause freezes impact pose",
+    "touch: springs back upright",
+    "touch: forgiving landing gives flip without ideal bonus",
+    "touch: overhold falls and clears held controls",
+    "touch: restart clears compression",
+    "touch: rehold tucks again",
+    "no runtime errors"
+  ],
+  "errors": []
+}
