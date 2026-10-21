@@ -1,6 +1,6 @@
 {
   "version": "3.9.0",
-  "published": false,
+  "published": true,
   "parent": "72403dc4ca0eb0a90cdbc25604d361708fcc84c6",
   "gameTests": 121,
   "serverTests": 8,
@@ -19,5 +19,18 @@
   "sourceArt": "approved factory-assembly-20261021 and factory-lineup-20261021",
   "rollback": "Exact forward/inverse rehearsal restores parent tree8ecdefcbb03f0ba103dcfad8020fbc1d50341f0a;117 parent tests and all checks pass",
   "originalWorkspace": "foreign work and historical index preserved",
-  "upgradeRerun": "Actual3.8.0\u21923.9.0 checks pass with seeded-before-boot storage. Old PWA restart activation intermittent; timeout evidence retained. Closed-tab activation is the fallback. Local rank read has existing origin CORS restrictions."
+  "upgradeRerun": "Actual3.8.0\u21923.9.0 checks pass with seeded-before-boot storage. Old PWA restart activation intermittent; timeout evidence retained. Closed-tab activation is the fallback. Local rank read has existing origin CORS restrictions.",
+  "gameCommit": "e83a69e8902afb8814f77eec150bd0fe8a740103",
+  "gameTree": "74968132c6ca488dfc1b1f762b57918de633598c",
+  "pagesRun": 39663279071,
+  "pagesConclusion": "success",
+  "publicChecks": 27,
+  "publicRuntimeErrors": [],
+  "publicCoreResources": 132,
+  "publicWorkerMatches": true,
+  "rootTests": 121,
+  "rootChecks": "pass",
+  "originalIndexAndHead": "preserved",
+  "rootRuntimeResourcesMatch": 132,
+  "publicPhoneEmulation": "native touch, two-finger thrust, ideal landing and cold offline launch pass; physical phone remains user acceptance"
 }

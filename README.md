@@ -1,8 +1,8 @@
-## Factory3.9.0 — ready for phone testing
+## Published3.9.0 — factory assembly
 
-[Play3.9.0](https://gleb20.github.io/roadster-kickflip/?v=3.9.0). Locations alternate every7,000 current-run points. The factory has a concrete aisle with a yellow production boundary, a continuous assembly conveyor, proportionate articulated robots, and distant parts racks/CNC. Each visit selects a different Model S, Model X, Roadster2.0 or steel Cybertruck; successive bodies vary red/blue/white where applicable. Physics, replay ruleset and records retain3.8.0 behavior.
+[Play3.9.0](https://gleb20.github.io/roadster-kickflip/?v=3.9.0). Commit e83a69e; Pages39663279071 succeeded. Locations alternate every7,000 current-run points. The factory has a concrete aisle with a yellow production boundary, a continuous assembly conveyor, proportionate articulated robots, and distant parts racks/CNC. Each visit selects a different Model S, Model X, Roadster2.0 or steel Cybertruck; successive bodies vary red/blue/white where applicable. Physics, replay ruleset and records retain3.8.0 behavior.
 
-121 game tests,8 server tests,50 factory browser checks,64 biome checks and8 actual PWA upgrade checks pass. Tested320/390 portrait,844 landscape and1440 desktop. Physical phone review remains with the user. [Evidence](docs/verification/2026-10-21-factory-v390/release-status.json). Earlier entries below are history.
+121 game tests,8 server tests,50 factory browser checks,64 biome checks and8 actual PWA upgrade checks pass. Tested320/390 portrait,844 landscape and1440 desktop. Physical phone review remains with the user. [Evidence](docs/verification/2026-10-21-factory-v390/release-status.json). 27 public keyboard/touch/pause/two-finger/offline checks pass; all132 public resources and worker hashes match. If the installed old PWA stays on3.8.0 after Restart, close its tabs/app and open the game again. Earlier entries below are history.
 
 ## Published3.8.0
 

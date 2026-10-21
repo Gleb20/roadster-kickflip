@@ -1,4 +1,6 @@
-## Factory3.9.0 — approved art integrated,21 October2026
+## Published factory3.9.0 —21 October2026
+
+[Play3.9.0](https://gleb20.github.io/roadster-kickflip/?v=3.9.0). Commit e83a69e8902afb8814f77eec150bd0fe8a740103 / tested tree74968132c6ca488dfc1b1f762b57918de633598c; Pages39663279071 succeeded.27 public keyboard/touch/pause/two-finger/offline checks pass, all132 public core files and worker hashes match. Root121 tests/checks pass with identical runtime, original HEAD/index and foreign art preserved. Old PWA Restart activation is intermittent: close its tabs/app and reopen to activate a waiting verified copy; best and collection survive.
 
 User approved the assembly and four-model sprite packets and requested earlier entry at7,000 points, then alternating every7,000. Production runtime is based on remote main72403dc. Location changes keep the physical world doorway and gameplay state. The whole ground plane becomes concrete slabs inside the hangar, separated from production by one continuous yellow line; there is no interior lane marking.
 

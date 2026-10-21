@@ -1,6 +1,6 @@
 ## Factory3.9.0 inverse — isolated release
 
-Parent main72403dc4ca0eb0a90cdbc25604d361708fcc84c6 (published3.8.0). Frozen original dirty-tree status, diff and affected-file hashes are retained locally in `docs/verification/2026-10-21-factory-v390/before/`. Integration was prepared in a clean clone, preserving the original HEAD/index, approved art packets and unrelated work.
+Published game commit e83a69e8902afb8814f77eec150bd0fe8a740103 / tree74968132c6ca488dfc1b1f762b57918de633598c. Parent main72403dc4ca0eb0a90cdbc25604d361708fcc84c6 (published3.8.0). Frozen original dirty-tree status, diff and affected-file hashes are retained locally in `docs/verification/2026-10-21-factory-v390/before/`. Integration was prepared in a clean clone, preserving the original HEAD/index, approved art packets and unrelated work.
 
 The bounded `candidate.patch` is applied and reversed in an isolated parent checkout; the inverse must reproduce the exact parent tree and pass117 parent tests/checks. Never apply historical whole-file snapshots over concurrent work. Restore a public build using a fresh cache version, keeping the deployed compatible backend and all scores/sessions. No server/database rollback is part of this feature. Runtime file hashes, candidate tree and inverse-check evidence are retained in the verification packet.
 
