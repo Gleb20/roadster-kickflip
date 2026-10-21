@@ -1,3 +1,9 @@
+## Factory polish3.9.1
+
+[Play3.9.1](https://gleb20.github.io/roadster-kickflip/?v=3.9.1). Robots, wrists and tools render in front of the body; each station reaches and retracts smoothly across stage boundaries. Body stages blend briefly. Model-name plates are removed. The production plane is22% smaller and less contrasty, with occasional fast passes by the existing small forklift in the closer aisle. Wall and storage parallax are much slower. The rider remains the foreground focus.
+
+7,000-point alternation, models/colours, concrete aisle and3.8.0 ranked physics stay unchanged.123 game tests,50 assembly checks and17 focused motion/depth checks pass at320/390 portrait,844 landscape and1440 desktop. [Release evidence](docs/verification/2026-10-21-factory-v391/release-status.json). Physical phone/Safari review remains with the user.
+
 ## Published3.9.0 — factory assembly
 
 [Play3.9.0](https://gleb20.github.io/roadster-kickflip/?v=3.9.0). Commit e83a69e; Pages39663279071 succeeded. Locations alternate every7,000 current-run points. The factory has a concrete aisle with a yellow production boundary, a continuous assembly conveyor, proportionate articulated robots, and distant parts racks/CNC. Each visit selects a different Model S, Model X, Roadster2.0 or steel Cybertruck; successive bodies vary red/blue/white where applicable. Physics, replay ruleset and records retain3.8.0 behavior.

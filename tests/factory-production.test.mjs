@@ -23,3 +23,25 @@ test('the outgoing line keeps assembling until the physical factory doorway has 
  const line=createFactoryProduction(()=>0);line.update(factory(1),50);line.update({...space(2),from:'tesla-factory',moving:true},57);assert.equal(line.state.elapsed,7);assert.equal(line.state.stage,1);
  line.update({...space(2),from:'spaceport',moving:false},60);assert.equal(line.state.elapsed,7);
 });
+
+// At a fitted-panel boundary, the hand must still be at contact and then retreat.
+test('tool contact survives each body-stage boundary and returns continuously',async()=>{
+ const {assemblyAction}=await import('../src/factory-production.js');
+ for(let station=0;station<4;station++){
+  const boundary=(station+1)*5,before=assemblyAction(boundary-1/120,station),at=assemblyAction(boundary,station),after=assemblyAction(boundary+1/120,station);
+  assert.ok(before.reach>.999&&at.reach===1&&after.reach>.999);
+  assert.ok(assemblyAction(boundary+.6,station).reach>0);
+  assert.equal(assemblyAction(boundary+1.3,station).reach,0);
+  assert.equal(at.carry,0);assert.equal(after.carry,0);
+ }
+});
+test('near logistics passes quickly with travel while deep scenery moves much slower',async()=>{
+ const {FACTORY_DEPTH:depth,forkliftPlacement}=await import('../src/factory-production.js');
+ assert.ok(depth.wall<depth.storage&&depth.storage<depth.forklift/20);
+ const width=390,z=.68,time=10,distance=(width/2+140*z+time*12*z)/(depth.forklift*z);
+ const a=forkliftPlacement(distance,time,width,z),b=forkliftPlacement(distance+500,time+1,width,z);
+ assert.ok(a>0&&a<width);assert.ok(b<a-100);
+ assert.equal(forkliftPlacement(distance,time,width,z),a);
+ assert.equal(forkliftPlacement(distance+3200/depth.forklift,time,width,z),a);
+ assert.equal(forkliftPlacement(distance+3000,time,width,z),null);
+});

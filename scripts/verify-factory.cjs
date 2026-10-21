@@ -15,7 +15,7 @@ for(const [label,width,height] of [['desktop',1440,900],['portrait',390,844],['s
  await page.evaluate(()=>{__qa.E.bonus=14000-__qa.S.distance/20;__qa.syncState();__qa.E.bonus=21000-__qa.S.distance/20;__qa.syncState();});const next=await page.evaluate(()=>__qa.factory.production);check(label+': reentry chooses a different model',next.leg===3&&next.model!==first.model);
  // Production painter fixtures cover every approved color/stage; actual game assets and IK rig.
  const review=label==='portrait'?await page.evaluate(async()=>{
-  const {createFactoryRenderer}=await import('./src/factory.js?v=3.9.0');const {FACTORY_MODELS}=await import('./src/factory-production.js?v=3.9.0');
+  const {createFactoryRenderer}=await import('./src/factory.js?v=3.9.1');const {FACTORY_MODELS}=await import('./src/factory-production.js?v=3.9.1');
   const c=document.createElement('canvas');c.width=1200;c.height=720;const ctx=c.getContext('2d');const views=[];
   for(let m=0;m<4;m++)for(let color=0;color<(m===3?1:3);color++){
    let call=0;const r=createFactoryRenderer({random:()=>call++===0?(m+.1)/4:(color+.1)/3});await r.load();r.update({id:'tesla-factory',leg:1},0);

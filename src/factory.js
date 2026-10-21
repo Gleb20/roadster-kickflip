@@ -1,11 +1,10 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS} from './factory-production.js?v=3.9.0';
-const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,forkliftPlacement} from './factory-production.js?v=3.9.1';
+const equipment=['forklift','rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
  ...['door','glass','wheel'].map(part=>`${model}-part-${part}`),
 ])]);
 const wrap=(n,d)=>((n%d)+d)%d,clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n)),mix=(a,b,t)=>a+(b-a)*t;
-const names={'model-s':'MODEL S','model-x':'MODEL X',roadster:'ROADSTER',cybertruck:'CYBERTRUCK'};
 // The same axle/belt line is used for all five frames; wheel-less shells hang on skids.
 const bodyLift={'model-s':[12,12,12,12,0],'model-x':[12,12,12,12,0],roadster:[9,9,9,9,0],cybertruck:[13,13,13,13,0]};
 function grade(image,saturation,brightness,offset=0){
@@ -34,7 +33,7 @@ export function createFactoryRenderer({random=Math.random}={}){
  return {
   async load(){await Promise.all(FACTORY_ASSETS.map(async id=>{
    const img=new Image();img.src=`assets/factory/${id}.png`;await img.decode();
-   images.set(id,id==='rear-wall'?grade(img,.4,.30,32):id==='machine-v362'||id==='assembly-rack-cutout'?grade(img,.55,.47,18):grade(img,.80,.78,7));
+   images.set(id,id==='rear-wall'?grade(img,.4,.30,32):id==='machine-v362'||id==='assembly-rack-cutout'?grade(img,.55,.47,18):grade(img,.62,id==='forklift'?.67:.60,12));
   }));ready=true;},
   get ready(){return ready;},get production(){return production.state;},
   reset(){production.reset();},update(biome,time){production.update(biome,time);},
@@ -43,57 +42,55 @@ export function createFactoryRenderer({random=Math.random}={}){
    const z=clamp(scale,.68,1.05),distance=worldDistance??screenDistance/z;
    const state=production.state,t=reducedMotion?22:state?.elapsed||0;
    ctx.fillStyle='#293a43';ctx.fillRect(0,0,W,H);
-   const wall=images.get('rear-wall'),wallBase=ground-185*z,wh=Math.max(300,wallBase),ww=wh*wall.width/wall.height;
-   for(let x=-wrap(distance*.025*z,ww);x<W;x+=ww)ctx.drawImage(wall,x,wallBase-wh,ww+.5,wh);
+   const wall=images.get('rear-wall'),wallBase=ground-222*z,wh=Math.max(300,wallBase),ww=wh*wall.width/wall.height;
+   for(let x=-wrap(distance*FACTORY_DEPTH.wall*z,ww);x<W;x+=ww)ctx.drawImage(wall,x,wallBase-wh,ww+.5,wh);
    ctx.fillStyle='#35454b';ctx.fillRect(0,wallBase,W,H-wallBase);
    // Wall-side storage and CNC alternate on a slower parallax plane behind production.
-   const bay=620*z,offset=wrap(distance*.055*z,bay*2);
+   const bay=620*z,offset=wrap(distance*FACTORY_DEPTH.storage*z,bay*2);
    for(let x=-offset-bay;x<W+bay;x+=bay){
     const index=Math.round((x+offset)/bay);
-    if(wrap(index,2)===0)sprite(ctx,'assembly-rack-cutout',x+bay*.5,ground-186*z,365*z);
-    else sprite(ctx,'machine-v362',x+bay*.5,ground-186*z,220*z);
+    if(wrap(index,2)===0)sprite(ctx,'assembly-rack-cutout',x+bay*.5,ground-226*z,290*z);
+    else sprite(ctx,'machine-v362',x+bay*.5,ground-226*z,180*z);
    }
-   // The production camera follows each body slowly, so a whole assembly is legible on phones.
-   const p=t/30,carWorld=-120+1440*p,carX=W*(.32+.32*p),camera=carWorld-carX/z;
-   const beltBottom=ground-91*z,beltTop=beltBottom-60*z;
-   const beltWidth=480*z,beltOffset=wrap(camera*z,beltWidth);
+   // A quieter, smaller production plane; its camera and repeated stations never reset at a new body.
+   const q=z*FACTORY_DEPTH.lineScale,absolute=reducedMotion?22:(state?.cycle||0)*30+t;
+   const carWorld=-120+48*absolute,carX=W*(.42+.05*Math.sin(absolute*Math.PI/60)),camera=carWorld-carX/q;
+   const beltBottom=ground-138*z,beltTop=beltBottom-60*q;
+   const beltWidth=480*q,beltOffset=wrap(camera*q,beltWidth);
    for(let x=-beltOffset-beltWidth;x<W+beltWidth;x+=beltWidth)sprite(ctx,'assembly-conveyor-cutout',x+beltWidth*.5,beltBottom,beltWidth+.5);
-   // Small moving rollers preserve belt motion without moving its structural legs.
-   ctx.strokeStyle='#69767a';ctx.lineWidth=1*z;
-   for(let x=-wrap((camera+(reducedMotion?0:t*22))*z,18*z);x<W;x+=18*z){ctx.beginPath();ctx.moveTo(x,beltTop+9*z);ctx.lineTo(x+5*z,beltTop+9*z);ctx.stroke();}
+   ctx.strokeStyle='#5a686d';ctx.lineWidth=.7*q;
+   for(let x=-wrap((camera+(reducedMotion?0:absolute*22))*q,18*q);x<W;x+=18*q){ctx.beginPath();ctx.moveTo(x,beltTop+9*q);ctx.lineTo(x+5*q,beltTop+9*q);ctx.stroke();}
    if(state){
-    const stage=reducedMotion?4:state.stage,model=state.model,cw=(model==='cybertruck'?232:model==='roadster'?202:216)*z;
-    const carBottom=beltTop+3*z-bodyLift[model][stage]*z;
-    // Floor-mounted bases and elbow joints stay behind the car, with tool contact in front.
-    const stations=[120,360,600,840],current=Math.min(3,state.stage),phase=clamp((t%5-2.2)/2.8),eased=phase*phase*(3-2*phase);
-    let tip=null;
-    for(let i=0;i<stations.length;i++){
-     const x=(stations[i]-camera)*z;if(x < -150*z||x>W+150*z)continue;
-     const active=i===current&&state.stage<4&&!reducedMotion;
+    const stage=reducedMotion?4:state.stage,model=state.model,cw=(model==='cybertruck'?232:model==='roadster'?202:216)*q;
+    const blend=reducedMotion||stage===0?1:clamp((t-stage*5)/.32),fade=blend*blend*(3-2*blend);
+    const lift=stage===0?bodyLift[model][0]:mix(bodyLift[model][stage-1],bodyLift[model][stage],fade),carBottom=beltTop+3*q-lift*q;
+    const alpha=reducedMotion?1:clamp(Math.min(t/1.4,(30-t)/1.4));
+    if(stage<4){ctx.fillStyle='#606e73';for(const x of [-.30,.30])ctx.fillRect(carX+cw*x-4*q,carBottom-q,8*q,beltTop-carBottom+6*q);}
+    ctx.save();ctx.globalAlpha*=alpha;
+    // The body is behind every articulated arm, wrist, tool and carried part.
+    if(blend<1){ctx.save();ctx.globalAlpha*=1-fade;sprite(ctx,`${model}-${state.color}-${stage-1}`,carX,carBottom,cw);ctx.restore();}
+    ctx.save();ctx.globalAlpha*=fade;sprite(ctx,`${model}-${state.color}-${stage}`,carX,carBottom,cw);ctx.restore();ctx.restore();
+    const first=Math.floor((camera-200)/240),last=Math.ceil((camera+W/q+200)/240);
+    for(let index=first;index<=last;index++){
+     const station=120+index*240,x=(station-camera)*q,i=index-(reducedMotion?0:state.cycle||0)*6;
+     const action=!reducedMotion&&i>=0&&i<4?assemblyAction(t,i):{reach:0,carry:0};
      const height=i===3?5:i===2?(model==='roadster'?28:model==='cybertruck'?38:44):(model==='roadster'?18:28);
-     const destination=[carX+(i===3?cw*.33:i===2?cw*.03:0),carBottom-height*z];
-     const wrist=active?[mix(x-45*z,destination[0]-37*z,eased),mix(beltTop-75*z,destination[1],eased)]:[x-40*z,beltTop-65*z];
-     const end=robot(ctx,x+20*z,beltBottom-2*z,z,wrist,i===1&&model!=='cybertruck'?'paint':'grip');
-     if(active)tip=end;
-    }
-    // Skids support the shell up to wheel installation.
-    if(stage<4){ctx.fillStyle='#707d80';for(const x of [-.30,.30])ctx.fillRect(carX+cw*x-5*z,carBottom-1*z,10*z,beltTop-carBottom+6*z);}
-    const alpha=reducedMotion?1:Math.min(1,t/1.4,(30-t)/1.4);ctx.save();ctx.globalAlpha*=clamp(alpha);
-    sprite(ctx,`${model}-${state.color}-${stage}`,carX,carBottom,cw);
-    if(tip&&phase>0&&phase<1){
-     if(current===1&&model!=='cybertruck'){
-      // Soft paint spray is confined to the panel being worked on.
-      const color={red:'215,70,62',blue:'76,128,211',white:'216,223,220'}[state.color];
-      const mist=ctx.createRadialGradient(...tip,0,...tip,21*z);mist.addColorStop(0,`rgba(${color},.35)`);mist.addColorStop(1,`rgba(${color},0)`);ctx.fillStyle=mist;ctx.fillRect(tip[0]-21*z,tip[1]-21*z,42*z,42*z);
-     }else{
-      const part=current===3?'wheel':current===2?'glass':'door',width=(part==='wheel'?29:part==='glass'?62:48)*z;
-      const img=images.get(`${model}-part-${part}`);
-      sprite(ctx,`${model}-part-${part}`,tip[0],tip[1]+width*img.height/img.width/2,width);
+     // After installation the wrist stays at its station while the car carries on.
+     const contactX=t-i*5<=5?carX:x;
+     const destination=[contactX+(i===3?cw*.33:i===2?cw*.03:0)-37*q,carBottom-height*q];
+     const wrist=[mix(x-40*q,destination[0],action.reach),mix(beltTop-65*q,destination[1],action.reach)-Math.sin(action.reach*Math.PI)*7*q];
+     const tip=robot(ctx,x+20*q,beltBottom-2*q,q,wrist,i===1&&model!=='cybertruck'?'paint':'grip');
+     if(action.carry>0){
+      ctx.save();ctx.globalAlpha*=alpha*action.carry;
+      if(i===1&&model!=='cybertruck'){
+       const color={red:'215,70,62',blue:'76,128,211',white:'216,223,220'}[state.color];
+       const mist=ctx.createRadialGradient(...tip,0,...tip,17*q);mist.addColorStop(0,`rgba(${color},.22)`);mist.addColorStop(1,`rgba(${color},0)`);ctx.fillStyle=mist;ctx.fillRect(tip[0]-17*q,tip[1]-17*q,34*q,34*q);
+      }else{
+       const part=i===3?'wheel':i===2?'glass':'door',width=(part==='wheel'?29:part==='glass'?62:48)*q,img=images.get(`${model}-part-${part}`);
+       sprite(ctx,`${model}-part-${part}`,tip[0],tip[1]+width*img.height/img.width/2,width);
+      }ctx.restore();
      }
     }
-    ctx.restore();
-    // A modest physical sign identifies the model without competing with the HUD.
-    ctx.fillStyle='#1c2b32';ctx.fillRect(16*z,wallBase-34*z,158*z,24*z);ctx.fillStyle='#aab9b9';ctx.font=`${10*z}px system-ui`;ctx.fillText('TESLA  /  '+names[model],25*z,wallBase-18*z);
    }
    // Open concrete travel aisle. One continuous yellow safety boundary, no traffic markings.
    const veil=ctx.createLinearGradient(0,ground-80*z,0,ground-16*z);veil.addColorStop(0,'#253b4400');veil.addColorStop(1,'#253b4477');ctx.fillStyle=veil;ctx.fillRect(0,ground-80*z,W,64*z);
@@ -102,6 +99,9 @@ export function createFactoryRenderer({random=Math.random}={}){
    ctx.strokeStyle='#35494f';ctx.lineWidth=.8*z;const slab=360*z;
    for(let x=-wrap(screenDistance,slab);x<W+slab;x+=slab){ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x-42*z,H);ctx.stroke();}
    ctx.strokeStyle='#78818455';ctx.beginPath();ctx.moveTo(0,ground+(H-ground)*.62);ctx.lineTo(W,ground+(H-ground)*.62);ctx.stroke();
+   // Close logistics aisle: a short, fast pass, behind the rider and in front of production.
+   if(!reducedMotion){const x=forkliftPlacement(distance,activeTime||0,W,z);if(x!==null)sprite(ctx,'forklift',x,ground-34*z,126*z);}
+
   },
   drawEntrance(ctx,{W,H,ground,scale},edge,toFactory){
    if(!ready)return;const z=Math.max(.72,Math.min(1.15,scale)),width=46*z;

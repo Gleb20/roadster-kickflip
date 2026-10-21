@@ -723,5 +723,13 @@
     "roadSurface": "Concrete slabs with continuous yellow production-zone boundary",
     "ruleset": "roadster-v3.8.0; unchanged",
     "physicalPhoneAcceptance": "pending user testing"
+  },
+  "factoryPolishV391": {
+    "version": "3.9.1",
+    "method": "Existing approved sprites reused byte-for-byte; renderer depth/scale/colour grading and animation changes only. No new artwork or photo inputs.",
+    "forklift": "Existing assets/factory/forklift.png; Linde E20-02 adaptation and CC BY-SA3.0 attribution retained under teslaFactoryV360 and assets/factory/ATTRIBUTION.md.",
+    "stageChanges": "Layer order, quintic reach/retract, body blend, continuous camera lattice, no model labels, smaller quieter production plane and nearer forklift passes",
+    "geometry": "Proportional transforms only; no sprite distortion",
+    "ruleset": "roadster-v3.8.0 unchanged"
   }
 }

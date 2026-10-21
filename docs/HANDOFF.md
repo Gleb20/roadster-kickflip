@@ -1,3 +1,15 @@
+## Factory polish3.9.1 —21 October2026
+
+User feedback: manipulators appeared to act behind the car, assembly stole attention from Elon, labels were unwanted, and depth needed faster near logistics / slower hangar wall. This bounded renderer update is based on main42d234632d895888f105f50b6588e9aec6346361.
+
+Draw order: distant wall → racks/CNC → conveyor/skids → blended body stages → all robot bases/arms/wrists/tools/carried parts → concrete floor → rare closer forklift → existing gameplay rider/obstacles. The line scale is.78 of3.9.0 with quieter load-time grading and higher/farther placement. Nameplates/text drawing are removed entirely from this painter. Tool reach uses quintic easing, a1.25s retract across the next stage, and a short release fade. Body stages blend over.32s. Conveyor camera and repeated robot lattice continue across body cycles, avoiding a30s reset snap.
+
+Wall parallax.002, storage.006; line follows its continuous production camera; forklift relative travel.5×world distance minus small own forward motion, with3200-unit gaps and126-unit width. It passes in front of the conveyor and behind Elon, without collision/scoring/discovery. Existing licensed Linde sprite is reused byte-for-byte and added to the verified offline cache. Reduced motion has a static assembled body/arms and hides forklift passes. Pause/resize are time/distance based and preserve choices.
+
+123 tests and source/content/type/PWA checks pass.50 assembly and17 focused motion/depth browser checks cover320/390 portrait,844 landscape,1440 desktop; all50 body drawings exercised. No gameplay/replay RNG, controls, scoring, backend or7,000-point progression change. Runtime evidence and publication state: [release-status.json](verification/2026-10-21-factory-v391/release-status.json).
+
+Rechecked open topics: existing PWA restart activation intermittency, route-search stalls, independent daylight and biome-specific obstacle pools remain separate; ramps stay cancelled. After phone acceptance, the bounded debt proposal remains fresh route-search timing measurement. Earlier3.9.0 sign/background settings below are superseded by this polish.
+
 ## Published factory3.9.0 —21 October2026
 
 [Play3.9.0](https://gleb20.github.io/roadster-kickflip/?v=3.9.0). Commit e83a69e8902afb8814f77eec150bd0fe8a740103 / tested tree74968132c6ca488dfc1b1f762b57918de633598c; Pages39663279071 succeeded.27 public keyboard/touch/pause/two-finger/offline checks pass, all132 public core files and worker hashes match. Root121 tests/checks pass with identical runtime, original HEAD/index and foreign art preserved. Old PWA Restart activation is intermittent: close its tabs/app and reopen to activate a waiting verified copy; best and collection survive.

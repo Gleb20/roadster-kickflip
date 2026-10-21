@@ -1,0 +1,141 @@
+{
+  "checks": [
+    "portrait: no model labels",
+    "portrait: hands and body frames do not snap at stage/cycle boundaries",
+    "portrait: foreground is faster than storage and wall",
+    "portrait: reduced motion removes logistics and cosmetic movement",
+    "small: no model labels",
+    "small: hands and body frames do not snap at stage/cycle boundaries",
+    "small: foreground is faster than storage and wall",
+    "small: reduced motion removes logistics and cosmetic movement",
+    "landscape: no model labels",
+    "landscape: hands and body frames do not snap at stage/cycle boundaries",
+    "landscape: foreground is faster than storage and wall",
+    "landscape: reduced motion removes logistics and cosmetic movement",
+    "desktop: no model labels",
+    "desktop: hands and body frames do not snap at stage/cycle boundaries",
+    "desktop: foreground is faster than storage and wall",
+    "desktop: reduced motion removes logistics and cosmetic movement",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "results": [
+    {
+      "label": "portrait",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.0036790618544173047
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.0033722201968647467
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.003666909709563738
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.003515007898894155
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.003912990642848463
+        }
+      ],
+      "nearTravel": 161.84000000000003,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "small",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.00566681338028169
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.005507262323943662
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.006002420774647887
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.005644806338028169
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.006404049295774648
+        }
+      ],
+      "nearTravel": 161.84,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "landscape",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.007260906550006076
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.00737635192611496
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.007898894154818325
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.008093328472475392
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.008612832664965367
+        }
+      ],
+      "nearTravel": 161.8399999999998,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    },
+    {
+      "label": "desktop",
+      "labels": 0,
+      "differences": [
+        {
+          "boundary": 5,
+          "changedFraction": 0.0030617283950617282
+        },
+        {
+          "boundary": 10,
+          "changedFraction": 0.003097222222222222
+        },
+        {
+          "boundary": 15,
+          "changedFraction": 0.003334104938271605
+        },
+        {
+          "boundary": 20,
+          "changedFraction": 0.0033271604938271606
+        },
+        {
+          "boundary": 30,
+          "changedFraction": 0.0038001543209876545
+        }
+      ],
+      "nearTravel": 161.84000000000003,
+      "wallTravel": 0.68,
+      "storageTravel": 2.04
+    }
+  ],
+  "fixture": "Arranged production state and distance; actual painter. Pixel continuity is checked across nearby frames, not whole-screen screenshot equality."
+}

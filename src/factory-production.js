@@ -22,3 +22,16 @@ export function createFactoryProduction(random=Math.random){
   get state(){return visit?{...visit,stage:Math.min(4,Math.floor(visit.elapsed/5))}:null;},
  };
 }
+
+const smooth=n=>{const x=Math.max(0,Math.min(1,n));return x*x*x*(x*(x*6-15)+10);};
+// A station reaches, releases its fitted part, then retracts over the next stage.
+export function assemblyAction(time,index){
+ const age=time-index*5;
+ return {reach:smooth((age-1.4)/3.6)*(1-smooth((age-5)/1.25)),carry:smooth((age-1.4)/.45)*(1-smooth((age-4.8)/.2))};
+}
+export const FACTORY_DEPTH=Object.freeze({wall:.002,storage:.006,lineScale:.78,forklift:.5});
+export function forkliftPlacement(distance,time,width,scale){
+ const travel=distance*FACTORY_DEPTH.forklift-time*12,period=3200;
+ const x=width+140*scale-((travel%period+period)%period)*scale;
+ return x < -140*scale||x>width+140*scale?null:x;
+}

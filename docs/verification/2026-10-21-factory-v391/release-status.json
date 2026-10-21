@@ -1,0 +1,16 @@
+{
+  "version": "3.9.1",
+  "published": false,
+  "parent": "42d234632d895888f105f50b6588e9aec6346361",
+  "gameTests": 123,
+  "factoryBrowserChecks": 50,
+  "depthBrowserChecks": 17,
+  "coreResources": 133,
+  "runtimeErrors": [],
+  "physicalPhoneAcceptance": "pending user iPhone/Safari review",
+  "artwork": "No new artwork; existing licensed forklift reused",
+  "ruleset": "roadster-v3.8.0 unchanged; no backend deployment or public test-score writes",
+  "oldPWAUpdate": "Existing Restart activation intermittency remains; close old tabs/app and reopen if it stays on the older release",
+  "biomeBrowserChecks": 64,
+  "rollback": "Exact forward/inverse restores parent tree d3cf51a31c253b670ee7301941aaf9ae5751f88e with121 parent tests and all checks"
+}

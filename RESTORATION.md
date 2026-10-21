@@ -1,3 +1,7 @@
+## Factory3.9.1 inverse
+
+Parent main42d234632d895888f105f50b6588e9aec6346361 / published3.9.0. Frozen root diff/status/index/head and affected-file copies are retained locally in `docs/verification/2026-10-21-factory-v391/before/`. Work was isolated from the dirty root. A bounded binary patch and its exact inverse are rehearsed against the parent tree; root HEAD/index and foreign art remain untouched. Restore public runtime using a fresh cache version; keep the existing compatible backend, scores and sessions.
+
 ## Factory3.9.0 inverse — isolated release
 
 Published game commit e83a69e8902afb8814f77eec150bd0fe8a740103 / tree74968132c6ca488dfc1b1f762b57918de633598c. Parent main72403dc4ca0eb0a90cdbc25604d361708fcc84c6 (published3.8.0). Frozen original dirty-tree status, diff and affected-file hashes are retained locally in `docs/verification/2026-10-21-factory-v390/before/`. Integration was prepared in a clean clone, preserving the original HEAD/index, approved art packets and unrelated work.
