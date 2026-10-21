@@ -1,36 +1,36 @@
-import {createBiomeScene,biomeEdge} from './biomes.js?v=3.9.2';
-import {createFactoryRenderer} from './factory.js?v=3.9.2';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.9.2';
-import {createOnline} from './online.js?v=3.9.2';
-import {createScoreRecord} from './score-record.js?v=3.9.2';
-import {createOnlineUI} from './online-ui.js?v=3.9.2';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=3.9.2';
-import {createPWA} from './pwa.js?v=3.9.2';
-import {createCollection} from './collection.js?v=3.9.2';
-import {createCollectionUI} from './collection-ui.js?v=3.9.2';
-import {createObstaclePainter} from './obstacle-art.js?v=3.9.2';
-import {loading} from './loading.js?v=3.9.2';
-import {createThrusterEffects} from './thrusters.js?v=3.9.2';
-import {createSound} from './sound.js?v=3.9.2';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=3.9.2';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.9.2';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.9.2';
-import {types} from './catalog.js?v=3.9.2';
-import {obstacleDefinition} from './content.js?v=3.9.2';
-import {START_SPEED, START_KMH} from './physics.js?v=3.9.2';
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.2';
-import {launch,uprightError} from './gameplay.js?v=3.9.2';
-import {AIR_TYPES,stageAt} from './routes.js?v=3.9.2';
-import {createCoach} from './coaching.js?v=3.9.2';
-import {createHUD,mphFromKmh} from './hud.js?v=3.9.2';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=3.9.2';
-import {fallPose,fallSeatContact} from './fall.js?v=3.9.2';
-import {createSlapstick} from './slapstick.js?v=3.9.2';
-import {createClock} from './clock.js?v=3.9.2';
-import {createEnvironmentRenderer} from './environment.js?v=3.9.2';
-import {createCharacterRenderer} from './characters.js?v=3.9.2';
-import {createPropRenderer} from './props.js?v=3.9.2';
-import {createPhotoRenderer} from './photo-cutouts.js?v=3.9.2';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=3.9.3';
+import {createFactoryRenderer} from './factory.js?v=3.9.3';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=3.9.3';
+import {createOnline} from './online.js?v=3.9.3';
+import {createScoreRecord} from './score-record.js?v=3.9.3';
+import {createOnlineUI} from './online-ui.js?v=3.9.3';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=3.9.3';
+import {createPWA} from './pwa.js?v=3.9.3';
+import {createCollection} from './collection.js?v=3.9.3';
+import {createCollectionUI} from './collection-ui.js?v=3.9.3';
+import {createObstaclePainter} from './obstacle-art.js?v=3.9.3';
+import {loading} from './loading.js?v=3.9.3';
+import {createThrusterEffects} from './thrusters.js?v=3.9.3';
+import {createSound} from './sound.js?v=3.9.3';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=3.9.3';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=3.9.3';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=3.9.3';
+import {types} from './catalog.js?v=3.9.3';
+import {obstacleDefinition} from './content.js?v=3.9.3';
+import {START_SPEED, START_KMH} from './physics.js?v=3.9.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.3';
+import {launch,uprightError} from './gameplay.js?v=3.9.3';
+import {AIR_TYPES,stageAt} from './routes.js?v=3.9.3';
+import {createCoach} from './coaching.js?v=3.9.3';
+import {createHUD,mphFromKmh} from './hud.js?v=3.9.3';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=3.9.3';
+import {fallPose,fallSeatContact} from './fall.js?v=3.9.3';
+import {createSlapstick} from './slapstick.js?v=3.9.3';
+import {createClock} from './clock.js?v=3.9.3';
+import {createEnvironmentRenderer} from './environment.js?v=3.9.3';
+import {createCharacterRenderer} from './characters.js?v=3.9.3';
+import {createPropRenderer} from './props.js?v=3.9.3';
+import {createPhotoRenderer} from './photo-cutouts.js?v=3.9.3';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -165,12 +165,13 @@ $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$(
 $('pause-restart').onclick=start;
 function home(){if(pwa?.locked)return;cancelCharge();run.reset();S.mode='menu';biomeScene.reset();factory.reset();characters.reset();thrusters.reset();projectiles.length=0;activeOnline=null;completedOnline=null;sceneTime=0;cameraLift=0;clock.reset();syncState();ui();collectionTeaser();$('start').focus({preventScroll:true});void refreshRecordRank();}
 $('pause-home').onclick=home;$('result-home').onclick=home;
-$('jump').onclick=()=>coach.dismiss(pace.progress);
+$('tip-dismiss').onclick=()=>{coach.dismiss(pace.progress);boostUI();};
+function gameplayTarget(target){return !!target.closest('#boost')||!target.closest('button,a,input,textarea,select,[contenteditable]');}
 $('game').addEventListener('pointerdown',e=>{
  if(e.button!==0||S.mode!=='playing')return;
  const token='p'+e.pointerId;
  if(e.target.closest('#boost')){e.preventDefault();if(!F.active)thrustInputs.add(token);}
- else if(e.target.closest('button,a'))return;
+ else if(!gameplayTarget(e.target))return;
  else{e.preventDefault();pressPrimary(token);}
  try{$('game').setPointerCapture(e.pointerId);}catch{}
 });
@@ -182,10 +183,17 @@ function clearGameSelection(){const selection=getSelection();if(selection&&!sele
 for(const event of ['selectstart','dragstart','contextmenu'])$('game').addEventListener(event,e=>e.preventDefault(),{capture:true});
 document.addEventListener('selectionchange',clearGameSelection);
 $('game').addEventListener('pointerdown',clearGameSelection,{capture:true});
-$('game').addEventListener('touchstart',clearGameSelection,{capture:true,passive:true});
+// Cancel the native long-press gesture before Safari starts its loupe. Pointer
+// events remain the sole source of game commands; native UI clicks stay intact.
+function preventGameGesture(e){
+ clearGameSelection();
+ if(S.mode==='playing'&&!$('game').inert&&gameplayTarget(e.target)&&e.cancelable)e.preventDefault();
+}
+for(const event of ['touchstart','touchmove'])$('game').addEventListener(event,preventGameGesture,{capture:true,passive:false});
 $('sound').onclick=()=>{sound.toggle();soundUI();tone(600);};
 const thrustKeys=['KeyB','ShiftLeft','ShiftRight'];const jumpKeys=['Space','ArrowUp','KeyW'];
 addEventListener('keydown',e=>{
+ if(e.target?.closest?.('#tip-dismiss')&&['Space','Enter'].includes(e.code))return;
  if(document.querySelector('dialog[open]'))return;
  if($('game').inert)return;
  if(e.target?.closest?.('input,textarea,select')||S.mode!=='playing'&&jumpKeys.includes(e.code)&&e.target?.closest?.('button,a')?.getClientRects().length)return;
@@ -198,7 +206,7 @@ addEventListener('keydown',e=>{
  }
  if(['Escape','KeyP'].includes(e.code)&&!e.repeat)pause();
 });
-addEventListener('keyup',e=>{if(jumpKeys.includes(e.code)){if(S.mode==='playing')e.preventDefault();releasePrimary(e.code);}if(thrustKeys.includes(e.code)||e.code==='Enter')thrustInputs.delete(e.code);});
+addEventListener('keyup',e=>{if(jumpKeys.includes(e.code)){if(S.mode==='playing'&&!e.target?.closest?.('#tip-dismiss'))e.preventDefault();releasePrimary(e.code);}if(thrustKeys.includes(e.code)||e.code==='Enter')thrustInputs.delete(e.code);});
 addEventListener('blur',()=>{if(S.mode==='playing')pause();else cancelCharge();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&S.mode==='playing')pause();});
 const director=run.director;

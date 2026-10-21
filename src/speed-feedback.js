@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.3';
 
 // Frame the normal ramp; temporary bonuses must remain visible as faster motion.
 export function viewScale(width,height,progress){

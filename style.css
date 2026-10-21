@@ -323,7 +323,7 @@ button.primary {
 #jump { z-index: 5; bottom: max(24px, calc(env(safe-area-inset-bottom) + 16px)); max-width: min(390px, calc(100% - 144px)); left: 20px; transform: none; border-radius: 16px; animation: none; padding: 12px 15px; }
 #coach-title { display: block; font-size: 11px; }
 #coach-detail { margin-top: 4px; }
-.tip-dismiss { align-self: flex-start; font-size: 18px; line-height: 1; color: var(--secondary); }
+.tip-dismiss { align-self: flex-start; font-size: 18px; line-height: 1; color: var(--secondary); border: 0; padding: 0; background: none; }
 .menu-controls { color: var(--secondary); font-size: 10px; line-height: 1.8; margin-top: 20px; }
 .text-button { display: block; margin: 12px auto 0; border: 0; background: transparent; color: var(--primary); min-height: 44px; font-size: 10px; letter-spacing: .5px; }
 @media (max-width: 600px) { #combo { top: calc(var(--edge-top) + 106px); width: 105px; } #multiplier { font-size: 23px; } #series-speed { font-size: 7px; } #jump { font-size: 10px; } #coach-title { font-size: 9px; } #coach-detail { font-size: 9px; } }

@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.2';
-import {types} from './catalog.js?v=3.9.2';
-import {stageAt,makePattern,validateRoute} from './routes.js?v=3.9.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.3';
+import {types} from './catalog.js?v=3.9.3';
+import {stageAt,makePattern,validateRoute} from './routes.js?v=3.9.3';
 export function createDirector({S,flight,pace,economy,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
  const state={wave:0,last:null,fallbacks:0,waiting:false,hardStreak:0};
  function reset(){Object.assign(state,{wave:0,last:null,fallbacks:0,waiting:false,hardStreak:0});}

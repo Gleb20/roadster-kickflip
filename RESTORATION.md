@@ -1,3 +1,7 @@
+## Mobile input 3.9.3 rollback
+
+Parent main dbe300ca753e0669dd4dbf00baf70fe0a321d709 / published3.9.2. Bounded forward and inverse patches are rehearsed in isolation; the inverse reproduces the exact parent tree and its124 passing tests/checks. Preserve all saved scores, collection, backend data and frozen server rulesets. Do not reset the dirty original checkout or its index. A public rollback must use a fresh frontend/cache version. Local release evidence: docs/verification/2026-10-22-input-v393/.
+
 ## Factory3.9.2 inverse
 
 Published game1694beedb9d0a7b4198eb14443843b04e2b343fb / tree2df8592dd23aea4d5b154de15b8842caa1bc6e9f. Parent main5cccc45e8693c0d11bbae135300956da7e576db7 / published3.9.1. Exact forward/inverse restores parent tree075404c8ffe037eda8ff608099dc8db06e759dda with123 parent tests/checks. Original root diff/status/index/head and affected-file copies are retained locally in `docs/verification/2026-10-21-factory-v392/before/`. Prepare and reverse the bounded binary patch in isolation, verify the exact parent tree and123 parent tests/checks. Preserve original root HEAD/index and unrelated art. A public inverse needs a new cache version; backend, scores and sessions stay intact.

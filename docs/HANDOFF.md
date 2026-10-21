@@ -1,3 +1,9 @@
+## Mobile input 3.9.3
+
+Expanded THRUST hit area retained. Gameplay tip text now receives normal jump/rotation input; its separate cross remains visually identical and supports keyboard dismissal. Active field/thrust touch gestures are cancelled before native long-press handling; Pointer Events remain the only game input source. Pause, Sound and menus retain their controls. Each finger keeps its role until release; no input buffering or minimum duration is added.
+
+Collision calculations skip only the existing outside-window misses and avoid temporary projection arrays. The frozen server rulesets, physics constants, scoring, fuel, RNG and obstacle generation results are preserved. Paired CPU4× route-search mean23.24→11.55ms and p9547.5→21.0ms with120 identical snapshots.128 game tests,8 server tests and all source/content/type/PWA checks pass.97 native input checks cover320/390 portrait and844 landscape; three DOM captures match baseline bytes. Physical iPhone/Safari loupe and responsiveness remain device acceptance. Remaining bounded debt proposal: real-phone event/step/render measurement before further optimization. Details: [release notes](releases/3.9.3.md).
+
 ## Published factory3.9.2 —21 October2026
 
 [Play3.9.2](https://gleb20.github.io/roadster-kickflip/?v=3.9.2). Commit1694beedb9d0a7b4198eb14443843b04e2b343fb / tree2df8592dd23aea4d5b154de15b8842caa1bc6e9f; Pages39669942139 succeeded.27 public native keyboard/touch/pause/two-finger/offline checks pass.132 public core resources and the worker match, with no active forklift cache entry. Root124 tests/checks pass with byte-identical runtime and original HEAD/index preserved. Close old tabs/app and reopen if the old PWA updater stays on3.9.1. Physical iPhone/Safari review remains with the user.

@@ -1,3 +1,7 @@
+## Mobile input 3.9.3
+
+THRUST retains its enlarged hit area. Tip text/background receive normal gameplay input; only the independently accessible cross dismisses it. Active field/thrust touchstart and touchmove suppress native long-press handling. Each finger keeps its role until release; rotation and thrust remain independent. Charge/release, physics, scoring, collisions and replay results retain the3.8.0 rules. Collision calculations avoid identical outside-window work and temporary projection arrays. Physical iPhone/Safari acceptance remains open.
+
 # Current flight update3.8.0
 
 Based on public3.7.3 c2cfa916c14645cedd1f4d17b9b4f83c1a6ee054. Hold in the air: one compact grab, 7.2rad/s. Release: extend over0.18s, brake at24rad/s² toward existing-direction1.8rad/s; there is no automatic upright targeting. Reholding restores the grab over0.12s. Safe landing remains±40° and≤240°/s; ideal is±10° and pays+50 base points, including ordinary upright jumps. The pre-landing multiplier applies once; ideal adds0.1 combo, never fuel or an extra speed-streak increment by itself. Overholding still falls. A grounded0.28s leg-compression pulse absorbs touchdown and freezes on pause.
