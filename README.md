@@ -1,8 +1,8 @@
-## Factory3.9.2 — varied robot life
+## Published factory3.9.2 — varied robot life
 
-[Play3.9.2](https://gleb20.github.io/roadster-kickflip/?v=3.9.2). The approved line composition stays. Neighboring robots alternate four resting poses, claw angles and independent handling phases. Small stacks of existing panels/glass/wheels make pickup, lift, fitting and return legible. The foreground forklift is removed. Quiet concrete grain, slight slab-tone variation and conveyor contact/cast shadows add depth without objects in the rider's aisle.
+[Play3.9.2](https://gleb20.github.io/roadster-kickflip/?v=3.9.2). Commit1694bee; Pages39669942139 succeeded. The approved line composition stays. Neighboring robots alternate four resting poses, claw angles and independent handling phases. Small stacks of existing panels/glass/wheels make pickup, lift, fitting and return legible. The foreground forklift is removed. Quiet concrete grain, slight slab-tone variation and conveyor contact/cast shadows add depth without objects in the rider's aisle.
 
-124 game tests and source/content/type/PWA checks pass. Mobile/desktop production and motion checks are recorded in [release evidence](docs/verification/2026-10-21-factory-v392/release-status.json). Physical phone/Safari acceptance remains with the user.
+124 game tests and source/content/type/PWA checks pass. Mobile/desktop production and motion checks are recorded in [release evidence](docs/verification/2026-10-21-factory-v392/release-status.json). 27 public keyboard/touch/pause/two-finger/offline checks pass; all132 core resources and worker hashes match. The active cache excludes the forklift. Physical phone/Safari acceptance remains with the user.
 
 ## Published factory polish3.9.1
 

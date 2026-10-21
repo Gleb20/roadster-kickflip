@@ -1,6 +1,6 @@
 {
   "version": "3.9.2",
-  "published": false,
+  "published": true,
   "parent": "5cccc45e8693c0d11bbae135300956da7e576db7",
   "gameTests": 124,
   "factoryBrowserChecks": 50,
@@ -12,5 +12,18 @@
   "oldPWAUpdate": "If the old updater stays on the older release, close old tabs/app and reopen",
   "depthBrowserChecks": 25,
   "biomeBrowserChecks": 64,
-  "rollback": "Exact forward/inverse restores parent tree075404c8ffe037eda8ff608099dc8db06e759dda with123 parent tests and all checks"
+  "rollback": "Exact forward/inverse restores parent tree075404c8ffe037eda8ff608099dc8db06e759dda with123 parent tests and all checks",
+  "gameCommit": "1694beedb9d0a7b4198eb14443843b04e2b343fb",
+  "gameTree": "2df8592dd23aea4d5b154de15b8842caa1bc6e9f",
+  "pagesRun": 39669942139,
+  "pagesConclusion": "success",
+  "publicChecks": 27,
+  "publicRuntimeErrors": [],
+  "publicCoreResources": 132,
+  "publicWorkerMatches": true,
+  "publicForkliftCached": false,
+  "rootTests": 124,
+  "rootChecks": "pass",
+  "rootRuntimeMatches": 132,
+  "rootHeadAndIndex": "preserved"
 }

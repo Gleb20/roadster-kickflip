@@ -1,4 +1,6 @@
-## Factory3.9.2 — varied robot life,21 October2026
+## Published factory3.9.2 —21 October2026
+
+[Play3.9.2](https://gleb20.github.io/roadster-kickflip/?v=3.9.2). Commit1694beedb9d0a7b4198eb14443843b04e2b343fb / tree2df8592dd23aea4d5b154de15b8842caa1bc6e9f; Pages39669942139 succeeded.27 public native keyboard/touch/pause/two-finger/offline checks pass.132 public core resources and the worker match, with no active forklift cache entry. Root124 tests/checks pass with byte-identical runtime and original HEAD/index preserved. Close old tabs/app and reopen if the old PWA updater stays on3.9.1. Physical iPhone/Safari review remains with the user.
 
 The user approved the line composition, asked for varied initial poses and more believable pickup/fitting, explicitly removed the foreground forklift because it read as an obstacle, and requested floor texture and shadows instead. Based on main5cccc45e8693c0d11bbae135300956da7e576db7.
 
