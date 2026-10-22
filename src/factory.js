@@ -1,4 +1,4 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.0.0';
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.1.0';
 const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
@@ -40,7 +40,7 @@ export function createFactoryRenderer({random=Math.random}={}){
   }));grain=concreteGrain();ready=true;},
   get ready(){return ready;},get production(){return production.state;},
   reset(){production.reset();},update(biome,time){production.update(biome,time);},
-  draw(ctx,{W,H,ground,scale,screenDistance,worldDistance,activeTime,reducedMotion=false}){
+  draw(ctx,{W,H,ground,scale,screenDistance,worldDistance,activeTime,reducedMotion=false,drawBehindLine=()=>{}}){
    if(!ready)return;
    const z=clamp(scale,.68,1.05),distance=worldDistance??screenDistance/z;
    const state=production.state,t=reducedMotion?22:state?.elapsed||0;
@@ -55,6 +55,7 @@ export function createFactoryRenderer({random=Math.random}={}){
     if(wrap(index,2)===0)sprite(ctx,'assembly-rack-cutout',x+bay*.5,ground-226*z,290*z);
     else sprite(ctx,'machine-v362',x+bay*.5,ground-226*z,180*z);
    }
+   drawBehindLine();
    // A quieter, smaller production plane; its camera and repeated stations never reset at a new body.
    const q=z*FACTORY_DEPTH.lineScale,absolute=reducedMotion?22:(state?.cycle||0)*30+t;
    const carWorld=-120+48*absolute,carX=W*(.42+.05*Math.sin(absolute*Math.PI/60)),camera=carWorld-carX/q;

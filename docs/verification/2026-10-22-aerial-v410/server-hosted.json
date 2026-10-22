@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "existing scores remain readable",
+    "unknown ruleset rejected",
+    "foreign origin rejected",
+    "roadster-v3.4.2: session supported",
+    "roadster-v3.4.2: replay parsed by matching version",
+    "roadster-v3.4.2: fabricated total with incomplete replay rejected",
+    "roadster-v3.4.2: rejected status persists without public entry",
+    "roadster-v3.8.0: session supported",
+    "roadster-v3.8.0: replay parsed by matching version",
+    "roadster-v3.8.0: fabricated total with incomplete replay rejected",
+    "roadster-v3.8.0: rejected status persists without public entry",
+    "roadster-v4.0.0: session supported",
+    "roadster-v4.0.0: replay parsed by matching version",
+    "roadster-v4.0.0: fabricated total with incomplete replay rejected",
+    "roadster-v4.0.0: rejected status persists without public entry",
+    "roadster-v4.1.0: session supported",
+    "fixture naturally earns ideal flip under new rules",
+    "roadster-v4.1.0: replay parsed by matching version",
+    "roadster-v4.1.0: fabricated total with incomplete replay rejected",
+    "roadster-v4.1.0: rejected status persists without public entry",
+    "no public fixture results added"
+  ],
+  "publicScores": 20,
+  "publicFixtureWrites": 0
+}

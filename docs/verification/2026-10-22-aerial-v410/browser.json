@@ -1,0 +1,32 @@
+{
+  "checks": [
+    "native first input 390",
+    "render xi 390",
+    "render ufo 390",
+    "render sikorsky 390",
+    "render homelessRow 390",
+    "pause 390",
+    "native first input 320",
+    "render xi 320",
+    "render ufo 320",
+    "render sikorsky 320",
+    "render homelessRow 320",
+    "pause 320",
+    "native first input 844",
+    "render xi 844",
+    "render ufo 844",
+    "render sikorsky 844",
+    "render homelessRow 844",
+    "pause 844",
+    "native first input 1440",
+    "render xi 1440",
+    "render ufo 1440",
+    "render sikorsky 1440",
+    "render homelessRow 1440",
+    "pause 1440",
+    "gallery 15 assets decoded",
+    "gallery switches scenario"
+  ],
+  "errors": [],
+  "scope": "Native jump input with deterministic local arranged encounter screenshots; browser emulation only."
+}

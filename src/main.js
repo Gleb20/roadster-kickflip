@@ -1,38 +1,38 @@
-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.0.0';
-import {createEnemySprites} from './enemy-sprites.js?v=4.0.0';
-import {createEncounters,xiHands,lightningPaths} from './encounters.js?v=4.0.0';
-import {createFactoryRenderer} from './factory.js?v=4.0.0';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.0.0';
-import {createOnline} from './online.js?v=4.0.0';
-import {createScoreRecord} from './score-record.js?v=4.0.0';
-import {createOnlineUI} from './online-ui.js?v=4.0.0';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.0.0';
-import {createPWA} from './pwa.js?v=4.0.0';
-import {createCollection} from './collection.js?v=4.0.0';
-import {createCollectionUI} from './collection-ui.js?v=4.0.0';
-import {createObstaclePainter} from './obstacle-art.js?v=4.0.0';
-import {loading} from './loading.js?v=4.0.0';
-import {createThrusterEffects} from './thrusters.js?v=4.0.0';
-import {createSound} from './sound.js?v=4.0.0';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.0.0';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.0.0';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.0.0';
-import {types} from './catalog.js?v=4.0.0';
-import {obstacleDefinition} from './content.js?v=4.0.0';
-import {START_SPEED, START_KMH} from './physics.js?v=4.0.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.0.0';
-import {launch,uprightError} from './gameplay.js?v=4.0.0';
-import {AIR_TYPES,stageAt} from './routes.js?v=4.0.0';
-import {createCoach} from './coaching.js?v=4.0.0';
-import {createHUD,mphFromKmh} from './hud.js?v=4.0.0';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=4.0.0';
-import {fallPose,fallSeatContact} from './fall.js?v=4.0.0';
-import {createSlapstick} from './slapstick.js?v=4.0.0';
-import {createClock} from './clock.js?v=4.0.0';
-import {createEnvironmentRenderer} from './environment.js?v=4.0.0';
-import {createCharacterRenderer} from './characters.js?v=4.0.0';
-import {createPropRenderer} from './props.js?v=4.0.0';
-import {createPhotoRenderer} from './photo-cutouts.js?v=4.0.0';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=4.1.0';
+import {createEnemySprites} from './enemy-sprites.js?v=4.1.0';
+import {createEncounters,xiHands,lightningPaths} from './encounters.js?v=4.1.0';
+import {createFactoryRenderer} from './factory.js?v=4.1.0';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.1.0';
+import {createOnline} from './online.js?v=4.1.0';
+import {createScoreRecord} from './score-record.js?v=4.1.0';
+import {createOnlineUI} from './online-ui.js?v=4.1.0';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=4.1.0';
+import {createPWA} from './pwa.js?v=4.1.0';
+import {createCollection} from './collection.js?v=4.1.0';
+import {createCollectionUI} from './collection-ui.js?v=4.1.0';
+import {createObstaclePainter} from './obstacle-art.js?v=4.1.0';
+import {loading} from './loading.js?v=4.1.0';
+import {createThrusterEffects} from './thrusters.js?v=4.1.0';
+import {createSound} from './sound.js?v=4.1.0';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=4.1.0';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.1.0';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.1.0';
+import {types} from './catalog.js?v=4.1.0';
+import {obstacleDefinition} from './content.js?v=4.1.0';
+import {START_SPEED, START_KMH} from './physics.js?v=4.1.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.0';
+import {launch,uprightError} from './gameplay.js?v=4.1.0';
+import {AIR_TYPES,stageAt} from './routes.js?v=4.1.0';
+import {createCoach} from './coaching.js?v=4.1.0';
+import {createHUD,mphFromKmh} from './hud.js?v=4.1.0';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=4.1.0';
+import {fallPose,fallSeatContact} from './fall.js?v=4.1.0';
+import {createSlapstick} from './slapstick.js?v=4.1.0';
+import {createClock} from './clock.js?v=4.1.0';
+import {createEnvironmentRenderer} from './environment.js?v=4.1.0';
+import {createCharacterRenderer} from './characters.js?v=4.1.0';
+import {createPropRenderer} from './props.js?v=4.1.0';
+import {createPhotoRenderer} from './photo-cutouts.js?v=4.1.0';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -63,7 +63,7 @@ let storage;try{storage=localStorage;}catch{}
 const collection=createCollection(storage,types.map(o=>o.id));let collectionUI,pwa;
 const localHost=['localhost','127.0.0.1'].includes(location.hostname);
 let onlineUI,activeOnline=null,completedOnline=null,onlineTarget=null;
-const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0',RULESET]});
+const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0',RULESET]});
 let recordRank=null,rankRequest=0;
 function refreshScoreActions(){
  const saved=scoreRecord.matching(best),posted=!!saved?.entry,canPost=scoreRecord.canPost(saved),rank=$('best-rank');
@@ -107,13 +107,13 @@ function boostUI(){
  hud.update({mode:S.mode,falling:F.active,score:S.score,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,kmh:S.kmh||START_KMH,fuel:P.fuel,thrusting:P.thrusting,turns:P.turns,pending:P.airborne?C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10:0});
  const location=biomeScene.state.id==='tesla-factory'?'TESLA FACTORY':'SPACEPORT';
  if($('biome-label').textContent!==location)$('biome-label').textContent=location;
- const lesson=F.active?null:coach.next(pace.progress,S.mode==='playing');$('jump').classList.toggle('hidden',!lesson);
+ const lesson=F.active?null:coach.next(pace.progress,S.mode==='playing',{air:S.obs.some(o=>o.altitude&&!o.passed)});$('jump').classList.toggle('hidden',!lesson);
  if(lesson){$('coach-title').textContent=lesson.text;$('coach-detail').textContent=lesson.detail;}
 }
 function obstacleDx(o){return o.x;}
 function gestureTarget(){
  if(F.active)return null;
- const xi=encounters.state.actors.find(o=>o.id==='xi'&&Math.abs(o.x+o.w/2)<360);
+ const xi=S.obs.find(o=>o.id==='xi'&&Math.abs(o.x+o.w/2)<360);
  if(xi)return xi;
  let nearest=null,distance=360;
  for(const o of [...S.obs,...encounters.state.actors]){const r=obstacleDefinition(o.id)?.reactions.hero,dx=Math.abs(obstacleDx(o)+o.w/2);if(r?.enabled&&r.trigger!=='passage'&&(r.trigger!=='airborne-near'||S.y>0)&&dx<Math.min(distance,r.range+60)){nearest=o;distance=dx;}}
@@ -244,7 +244,7 @@ function update(dt){
  if(S.mode!=='playing')return;
  if(input.thrust!==(thrustInputs.size>0))run.command(thrustInputs.size?'thrust-on':'thrust-off');
  const previousDistance=S.distance,result=run.step();screenRoadDistance+=(S.distance-previousDistance)*scale;syncState();
- encounters.update(dt,{seed:run.seed,wave:director.state.wave,route:director.state.last?.route,speed:S.speed,distance:S.distance,biome:biomeScene.state.id,leg:biomeScene.state.leg,moving:biomeScene.state.moving,obstacles:S.obs});
+ encounters.update(dt,{speed:S.speed,distance:S.distance,biome:biomeScene.state.id,leg:biomeScene.state.leg,moving:biomeScene.state.moving});
  // Discover visible encounters before presenting a collision result.
  for(const o of [...S.obs,...encounters.state.actors]){const sx=px+o.x*scale,sy=ground+cameraLift-(o.altitude||0)*scale;if(sx+o.w*scale>0&&sx<W&&sy>0&&sy-o.h*scale<H)collection.discover(o.id);}
  consumeRunEvents();if(S.mode==='dead')return;
@@ -331,14 +331,11 @@ function collectionTeaser(){const found=types.filter(o=>collection.state(o.id)!=
 collectionTeaser();
 
 
-function drawEncounters(){
+function drawFactoryVats(){
+ const z=Math.max(.68,Math.min(1.05,scale));
  for(const a of encounters.state.actors){
-  const vat=a.id==='moltenVat';
-  ctx.save();ctx.translate(px+(a.x+a.w/2)*scale,ground+cameraLift-(a.altitude||0)*scale);ctx.scale(scale,scale);
-  const bob=reducedScenery.matches?0:Math.sin(sceneTime*(a.id==='sikorsky'?5:3))*2;
-  ctx.translate(0,vat||a.id==='xi'?0:bob);
-  if(a.id==='xi'){ctx.save();ctx.fillStyle='rgba(0,0,0,.14)';ctx.beginPath();ctx.ellipse(0,0,a.w*.42,3,0,0,Math.PI*2);ctx.fill();ctx.restore();}
-  enemySprites.draw(ctx,a.id,a.w,a.h,{flip:a.id==='xi'&&a.x+a.w/2<0,alpha:vat?.55:a.id==='xi'?.94:.8});ctx.restore();
+  ctx.save();ctx.translate(px+(a.x+a.w/2)*scale,ground+cameraLift-126*z);ctx.scale(z,z);
+  enemySprites.draw(ctx,a.id,a.w,a.h,{alpha:.64});ctx.restore();
  }
 }
 function drawLightning(){
@@ -354,7 +351,7 @@ function drawLightning(){
  bolt(hand,hands[0],'#78dfff',0);bolt(hands[1],hand,'#bb9bff',3);ctx.restore();
 }
 
-function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground+cameraLift-(o.altitude||0)*scale);ctx.scale(scale,scale);const bob=obstacleDefinition(o.id)?.visual.bob?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}
+function obstacle(o){ctx.save();ctx.translate(px+obstacleDx(o)*scale,ground+cameraLift-(o.altitude||0)*scale);ctx.scale(scale,scale);const bob=obstacleDefinition(o.id)?.visual.bob?Math.sin(Math.floor(sceneTime*7)+o.x*.01)*1.1:0;ctx.translate(o.w/2,0);if(o.id==='xi'&&o.x+o.w/2<0)ctx.scale(-1,1);ctx.rotate(bob*.008);drawObstacleArt(o,bob);ctx.rotate(-bob*.008);ctx.restore()}
 
 const CAMEO={active:false,t:0,nextScore:5000,milestone:0};
 function updateCameo(dt){
@@ -383,7 +380,7 @@ const R=rocket.state;
 const ease=v=>{v=Math.max(0,Math.min(1,v));return v*v*(3-2*v)};
 function background(){
  ctx.fillStyle='#172b34';ctx.fillRect(0,0,W,H);
- const biome=biomeScene.state,view={W,H,ground:ground+cameraLift,scale,screenDistance:screenRoadDistance,worldDistance:S.distance,sceneTime,activeTime:S.t,reducedMotion:reducedScenery.matches,rocketScene:rocket.draw};
+ const biome=biomeScene.state,view={W,H,ground:ground+cameraLift,scale,screenDistance:screenRoadDistance,worldDistance:S.distance,sceneTime,activeTime:S.t,reducedMotion:reducedScenery.matches,rocketScene:rocket.draw,drawBehindLine:drawFactoryVats};
  const draw=id=>id==='tesla-factory'?factory.draw(ctx,view):environment.draw(ctx,view);
  if(biome.moving){
   const edge=biomeEdge(biome,S.distance,px,scale),cut=Math.max(0,Math.min(W,edge));
@@ -449,12 +446,11 @@ function prepareEncounterReview(time){
  if(!def)return;
  const phase=reducedScenery.matches?2.5:time%8;
  encounters.state.actors=[];const x=250-phase*70;
- if(def.collision==='none')encounters.show(id,x,id==='xi'?96:205);
- else S.obs=[{...def,x:180,passed:false}];
+ S.obs=[{...def,x,passed:false}];
  const factoryMode=id==='xi'||id==='t800'||id==='bydSeal'||id==='xiaomiSu7'||id==='batteryAgv'||id==='qualitySkull';
  if(factoryMode){biomeScene.update(7500,0);biomeScene.update(7500,4000);factory.update(biomeScene.state,time);}
  else biomeScene.reset();
- if(factoryMode)encounters.state.actors.push({id:'moltenVat',x:390,w:164,h:135,altitude:115});
+ if(factoryMode)encounters.state.actors.push({id:'moltenVat',x:(W*.72-px)/scale-160,w:320,h:320*134.745/164});
  Object.assign(P,{airborne:false,y:0,angle:0,grab:0});Object.assign(S,{y:0,grab:0,falling:false});CAMEO.active=false;
  characters.update(1/120);
 }
@@ -469,7 +465,6 @@ function render(dt,time){
  const demo=S.mode==='menu',x=px,ds=scale,hop=P.y;
  const worldGround=ground+cameraLift;
  ellipse(x,worldGround+1.5*ds,46*ds,Math.max(1.3,3.5-hop*.012)*ds,'#0007');
- drawEncounters();
  for(const o of S.obs)obstacle(o);
  ctx.save();ctx.translate(0,cameraLift);drawProjectiles();ctx.restore();
  ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);thrusters.drawDust(ctx);ctx.restore();

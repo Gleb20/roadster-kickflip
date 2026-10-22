@@ -1,0 +1,9 @@
+{
+  "gameTests": 138,
+  "serverTests": 10,
+  "sourceContentTypePwa": "pass",
+  "frozenRulesets": 4,
+  "localBrowserChecks": 26,
+  "actualUpgradeChecks": 9,
+  "physicalPhoneAcceptance": "Not verified on physical iPhone/Safari"
+}

@@ -5,7 +5,7 @@ import {createDirector} from '../src/director.js';
 import {createFlight,createPace,createEconomy,collisionAt} from '../src/gameplay.js';
 import {obstacleDefinition} from '../src/content.js';
 import {createCollection,COLLECTION_KEY} from '../src/collection.js';
-import {createEncounters,encounterChoice,xiHands,lightningPaths} from '../src/encounters.js';
+import {createEncounters,xiHands,lightningPaths} from '../src/encounters.js';
 import {createRun} from '../src/run.js';
 
 test('current patterns never form an aerial ceiling or a solitary air wave',()=>{
@@ -29,14 +29,6 @@ test('factory and spaceport generation use their own eligible ground pools',()=>
  }
 });
 
-test('flybys and roadside Xi cannot hit grounded, jumping or spinning players',()=>{
- for(const id of ['ufo','sikorsky','primeDrone','twitterBird','starlink','regulatorDrone','qualitySkull','xi']){
-  const o=obstacleDefinition(id);assert.ok(o,id);assert.equal(o.collision,'none');
-  for(const y of [0,100,220,400])for(const angle of [0,1,2,3])assert.equal(collisionAt({...createFlight(),y,angle},o,0),false,id);
- }
- assert.ok(obstacleDefinition('homelessRow').h<50);
-});
-
 test('Simpsons discovery migrates once while historical and viewed entries survive',()=>{
  let raw=JSON.stringify({version:1,entries:{simpsonsCouch:{firstEncounteredAt:10,firstViewedAt:20}}});
  const storage={getItem:k=>k===COLLECTION_KEY?raw:null,setItem:(k,v)=>{raw=v;}};
@@ -52,26 +44,12 @@ test('decorative updates never consume run RNG, score, fuel or commands',()=>{
   a.step();b.step();effects.update(1/120,{seed:42,wave:a.director.state.wave,route:a.director.state.last?.route,speed:a.S.speed,distance:a.S.distance,biome:'spaceport',obstacles:a.S.obs});
   assert.deepEqual(a.snapshot(),b.snapshot());
  }
- const score=a.S.score;effects.show('ufo',1);effects.show('xi',1);assert.equal(a.S.score,score);
- for(let wave=1;wave<40;wave++)assert.ok(encounterChoice(42,wave,'tesla-factory').biomes==='all'||encounterChoice(42,wave,'tesla-factory').biomes.includes('tesla-factory'));
- const factoryVariety=new Set(Array.from({length:40},(_,i)=>encounterChoice(42,i*4+1,'tesla-factory').id));
- assert.ok(factoryVariety.has('qualitySkull'));assert.equal(factoryVariety.size,4);
-});
-
-test('flyby clears before the sampled jump preparation and never occupies a whole hazard wave',()=>{
- for(const speed of [360,510,660,825]){
-  const fx=createEncounters(),route={charge:1,lead:.2},obstacle={id:'truck',x:1200,w:110,h:41,inset:5};
-  fx.update(0,{seed:1,wave:1,route,speed,distance:0,biome:'spaceport',obstacles:[obstacle]});
-  if(speed===825){assert.equal(fx.state.actors.length,0);continue;}
-  assert.equal(fx.state.actors.length,1);
-  const a=fx.state.actors[0],pass=(a.x+a.w)/(speed+a.approachSpeed),ttc=(1200+5-47)/speed;
-  assert.ok(ttc-pass>=.4+.2+.74);
- }
+ assert.equal(effects.state.actors.length,0);
 });
 
 test('two-way lightning endpoints follow both Xi hands through the pass and stay finite',()=>{
  for(const x of [-200,0,200]){
-  const actor={...obstacleDefinition('xi'),x,altitude:24},hands=xiHands(actor),hero={x:20,y:-110};
+  const actor={...obstacleDefinition('xi'),x,altitude:0},hands=xiHands(actor),hero={x:20,y:-110};
   assert.equal(hands.length,2);assert.notDeepEqual(hands[0],hands[1]);
   for(const reduced of [false,true])for(const time of [0,.3,1]){
    for(const [from,to] of [[hero,hands[0]],[hands[1],hero]]){const points=lightningPaths(from,to,time,{reduced});assert.deepEqual(points[0],from);assert.deepEqual(points.at(-1),to);assert.ok(points.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)));}

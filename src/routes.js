@@ -1,12 +1,13 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.0.0';
-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.0.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.0';
+import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.1.0';
 export const STAGES=C.stages;
 export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
-import {AIR_TYPES} from './content.js?v=4.0.0';
+import {AIR_TYPES} from './content.js?v=4.1.0';
 export {AIR_TYPES};
 export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900}={}){
   const item=(o,offset=0)=>({...o,x:dx+offset,passed:false});
-  // Old pattern names now resolve to readable ground waves; flybys are cosmetic.
+  // Air challenges are isolated incoming hazards, never a ceiling above ground pairs.
+  if(kind==='air')return [item(type)];
   if(kind==='hover'||kind==='incoming')return [item(type)];
   if(kind==='precision'){
     // Two low cars at most, with room to prepare the next ground jump.

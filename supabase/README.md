@@ -1,3 +1,7 @@
+## Ruleset4.1.0 —late colliding aerial waves
+
+Four-version dispatch preserves3.4.2,3.8.0 and4.0.0 and adds frozen4.1.0. `20261022140000_aerial_challenge_v410.sql` extends only the current deployed RPC ruleset guard, aborting on unexpected source. No table rows, permissions or security settings change. The current client retains old4.0 finished-score submission support. Xi and moving air hazards live in the ranked simulation; the vat remains decorative. Check all four manifests, chunk replay checkpoints and hosted incomplete-replay rejection before frontend publication.
+
 ## Ruleset4.0.0 encounters update —22October2026
 
 `rulesets.mjs` dispatches frozen3.4.2,3.8.0 and4.0.0. The new frozen generator has ground-only templates and biome-eligible pools. Cosmetic encounters/lightning do not enter ranked simulation. `20261022130000_encounters_v400.sql` expands only the deployed RPC guard, aborting if the expected guard is absent; existing tables, data, role grants and gateway settings remain intact. The function bundle was deployed before the frontend.17 hosted checks confirm three-version sessions and rejection of incomplete fabricated-score replays; public scores remain19, fixture writes0. Reproduce using `node supabase/test-encounters-remote.mjs <output.json>`.

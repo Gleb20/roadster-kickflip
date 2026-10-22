@@ -1,0 +1,6 @@
+{
+  "migrationPreservesAllTables": true,
+  "fourVersionsSupported": true,
+  "anonymousRpcDenied": true,
+  "scope": "Disposable local PGlite, not hosted DB"
+}

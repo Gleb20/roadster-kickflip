@@ -1,3 +1,13 @@
+## Aerial challenge4.1.0 —22October2026
+
+Supersedes the4.0.0 harmless-flyby direction at the user's request. Xi is an ordinary colliding ground opponent in the factory pool, on the same baseline as cars and people. His mutual lightning reaction remains visual; body contact ends the run normally.
+
+All seven flying models have box collision and belong to the ranked obstacle stream. Unlock is leg>=2: initial spaceport → first factory → return spaceport, beginning at14000 points. Allow8 seconds after each score-selected leg change before an air wave. A wave contains one low incoming aircraft, with no ground obstacle beneath it. It follows a single ground wave and forces a single ground breather afterward. Require at least6 ground waves and28 seconds between air spawns. First two air encounters use small models, altitude24 and approach80; later encounters use altitude32/approach110. Spawn at least2 seconds of approach distance away. Every admitted air wave has a shared production-physics route with no thrust, no fuel cost and timing margin±90ms. After its witnessed grounded exit, wait at least1.25seconds before the next wave. Failed route validation falls back to the ordinary ground single. Existing ground physics, rewards and input roles remain intact.
+
+The foundry vat retains its approved source sprite, is320 units wide (formerly164), and is drawn inside the factory renderer after storage but before conveyor/shadows/robots, so production occludes its lower part. It stays background scenery. All three historical frozen rulesets remain unchanged;4.1.0 is additive. Preserve old finished4.0 records, best score and collection. Snapshot `/tmp/tesla-enemies-v410-before-20261022` protects the dirty source checkout and index. See `docs/verification/2026-10-22-aerial-v410/` for current verification and release evidence.
+
+Rechecked debt: biome pools were fixed in4.0 and are no longer open; this task replaces safe flybys. Existing real-phone route-search/input timing and independent daylight remain separate. Proposed bounded debt follow-up is a real-phone event→step→render measurement after play acceptance.
+
 ## Encounters 4.0.0 — 22 October 2026
 
 Approved and implemented: seven harmless timed flybys (UFO, Prime delivery drone, bluebird, Starlink, regulator drone, Sikorsky VS-300 with Igor Sikorsky, and factory quality servo-skull). Their state is cosmetic, independent of ranked RNG, fuel, score and collisions. A whole silhouette clears at least0.75 seconds before the route's charge/lead preparation; short approaches skip the encounter. No solitary aerial scoring wave or aerial ceiling remains.

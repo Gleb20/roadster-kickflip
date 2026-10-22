@@ -1,0 +1,18 @@
+{
+  "ruleset": "roadster-v4.1.0",
+  "sourceCommit": "2ebba66 + approved colliding late aerial challenges",
+  "files": {
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "run.js": "afa3d0e95b4560264e54a50561dea8c8242d3b4695d9e2d820a2cc241a88d59a",
+    "catalog.js": "a7689ff252f64ced6376d0fc63938b0efdd81b26295f0a37c90b802f8b934a4c",
+    "director.js": "fe1b41ebee1feaaa12854879265645de0620952d945dec6278bafd41af9c3a0c",
+    "routes.js": "c37cce3d96dd6096323e9a719fa49b57197e875fbb06e9a30b744666e334175c",
+    "content.js": "c141527bfdd5e1f81e54ee477627736bb32a046da69ae4fc8ea9c3f0de41800f",
+    "gameplay.js": "0414ee64e8bebb3717269542d3bce07d4991d8a3e1baa56055683a3d52180489",
+    "physics.js": "6f61ddfd729a099919cb0e525041d6f179e58d52f98f33ffbffaec275be4c06e",
+    "fall.js": "f7260c60fa6097600315e77415156ddcec6141b616047d076b352a53279a117b",
+    "gameplay-config.js": "3864669bbfa00639f07274a503a82e33da519127bfda322ddad70b36372e43fa",
+    "biomes.js": "52d16f34bc2104bf6ca5551f87b59741419133da1e311ae664efb50f8712f27b",
+    "enemy-sprite-data.js": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d"
+  }
+}

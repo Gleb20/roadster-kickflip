@@ -1,0 +1,124 @@
+{
+  "runs": [
+    {
+      "seed": 17,
+      "time": 180.48333333333332,
+      "score": 42546,
+      "waves": 58,
+      "actors": [
+        "xi",
+        "moltenVat",
+        "twitterBird"
+      ],
+      "biomes": [
+        "spaceport",
+        "tesla-factory"
+      ],
+      "ground": [
+        "truck",
+        "pickup",
+        "muscleCoupe",
+        "doge",
+        "amber",
+        "openai",
+        "rogozin",
+        "zuck",
+        "trump",
+        "muscleCompact",
+        "xi",
+        "t800",
+        "batteryAgv",
+        "protest",
+        "homelessRow",
+        "twitterBird",
+        "xiaomiSu7",
+        "v8",
+        "pump",
+        "bydSeal"
+      ],
+      "factoryShot": true,
+      "flyShot": false,
+      "airWaves": [
+        {
+          "wave": 36,
+          "time": 108.39999999999999,
+          "score": 20013,
+          "leg": 2,
+          "id": "twitterBird",
+          "margin": 0.09
+        },
+        {
+          "wave": 49,
+          "time": 148.39166666666665,
+          "score": 32867,
+          "leg": 4,
+          "id": "twitterBird",
+          "margin": 0.09
+        }
+      ]
+    },
+    {
+      "seed": 932,
+      "time": 180.03333333333333,
+      "score": 46697,
+      "waves": 57,
+      "actors": [
+        "moltenVat",
+        "primeDrone",
+        "ufo",
+        "regulatorDrone"
+      ],
+      "biomes": [
+        "spaceport",
+        "tesla-factory"
+      ],
+      "ground": [
+        "doge",
+        "muscleCompact",
+        "truck",
+        "bydSeal",
+        "batteryAgv",
+        "protest",
+        "primeDrone",
+        "openai",
+        "v8",
+        "trump",
+        "xiaomiSu7",
+        "ufo",
+        "claude",
+        "regulatorDrone",
+        "gemini"
+      ],
+      "factoryShot": false,
+      "flyShot": true,
+      "airWaves": [
+        {
+          "wave": 31,
+          "time": 89.54166666666667,
+          "score": 17644,
+          "leg": 2,
+          "id": "primeDrone",
+          "margin": 0.09
+        },
+        {
+          "wave": 41,
+          "time": 122.43333333333334,
+          "score": 27959,
+          "leg": 3,
+          "id": "ufo",
+          "margin": 0.09
+        },
+        {
+          "wave": 51,
+          "time": 156.175,
+          "score": 39410,
+          "leg": 5,
+          "id": "regulatorDrone",
+          "margin": 0.09
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "method": "Native keyboard witness actions through unchanged production step; no obstacle, score, fuel, position or collision overrides."
+}

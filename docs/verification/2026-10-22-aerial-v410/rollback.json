@@ -1,0 +1,8 @@
+{
+  "parent": "2ebba66c4018b4ffe4e6a91a83904786860ef50c",
+  "parentTree": "e05d198d6b6480d53b9c0ad0e2691a7b3c9096d2",
+  "inverseRehearsal": "Exact parent tree reproduced by forward+inverse patch in isolated checkout",
+  "parentTests": 135,
+  "parentChecks": "pass",
+  "serverPolicy": "Keep additive4.1 verifier and all public/private ranking data; preserve old finished records and collection."
+}
