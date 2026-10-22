@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "factory render 1440x1000",
+    "reduced-motion 1440x1000",
+    "factory render 390x844",
+    "reduced-motion 390x844",
+    "factory render 320x740",
+    "reduced-motion 320x740",
+    "factory render 844x390",
+    "reduced-motion 844x390",
+    "gallery uses v411 vat and all15 sprites decode",
+    "alpha edges captured on light and dark"
+  ],
+  "errors": []
+}

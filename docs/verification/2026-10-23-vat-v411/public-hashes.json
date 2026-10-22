@@ -1,0 +1,914 @@
+[
+  {
+    "url": "assets/audio/thrust-pressure-hiss.mp3",
+    "expected": "52a44ebb1f814b5cb16446326d852cadaa9134b2d7fa48ea985f06313d5f345c",
+    "actual": "52a44ebb1f814b5cb16446326d852cadaa9134b2d7fa48ea985f06313d5f345c",
+    "matches": true
+  },
+  {
+    "url": "assets/characters/amber-head-v247.png",
+    "expected": "e063808cd0b31b8c49547fa2f63e49b67e73542d2542c38650ac5d60ab4a44fe",
+    "actual": "e063808cd0b31b8c49547fa2f63e49b67e73542d2542c38650ac5d60ab4a44fe",
+    "matches": true
+  },
+  {
+    "url": "assets/characters/bezos-v247.png",
+    "expected": "b78d60b0557823644c871ea44aae88213f333d03cae3ceb64357c7386907dc22",
+    "actual": "b78d60b0557823644c871ea44aae88213f333d03cae3ceb64357c7386907dc22",
+    "matches": true
+  },
+  {
+    "url": "assets/characters/joe-rogan.png",
+    "expected": "7a6e0986e48260b1769a5da9caa414d0bad4a001a9ad34e52944944d9e62fa5b",
+    "actual": "7a6e0986e48260b1769a5da9caa414d0bad4a001a9ad34e52944944d9e62fa5b",
+    "matches": true
+  },
+  {
+    "url": "assets/characters/katy-v247.png",
+    "expected": "a064c19b5310aaecf28574cc0beee0bfc018ff9ef27ad266c9149e97f5829b6b",
+    "actual": "a064c19b5310aaecf28574cc0beee0bfc018ff9ef27ad266c9149e97f5829b6b",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/ATTRIBUTION.md",
+    "expected": "565dde384bed64e6e388961b15981df21a5fbd31e7febb5dff832e79122ec512",
+    "actual": "565dde384bed64e6e388961b15981df21a5fbd31e7febb5dff832e79122ec512",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/batteryAgv.png",
+    "expected": "82d12e8efdb89038ea0351b7dc942754be9ab9f78aed29a88b2c4a12a8cc6d79",
+    "actual": "82d12e8efdb89038ea0351b7dc942754be9ab9f78aed29a88b2c4a12a8cc6d79",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/bydSeal.png",
+    "expected": "840376084d808030f6900dbad884a825703c1dd7736fc147db457098759d8b69",
+    "actual": "840376084d808030f6900dbad884a825703c1dd7736fc147db457098759d8b69",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/homelessRow.png",
+    "expected": "03ed702ddb2d5cd06d2c6174b8e88edce01a22adbae68570d268de367ea49806",
+    "actual": "03ed702ddb2d5cd06d2c6174b8e88edce01a22adbae68570d268de367ea49806",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/primeDrone.png",
+    "expected": "a46783dc00dd76be690c29c72f92fa834a02b2522aac366058cc2972822ab681",
+    "actual": "a46783dc00dd76be690c29c72f92fa834a02b2522aac366058cc2972822ab681",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/qualitySkull.png",
+    "expected": "955bb780f34142f0f9302839283022730bfd1c7688c48c46ac59cc18ad994d4b",
+    "actual": "955bb780f34142f0f9302839283022730bfd1c7688c48c46ac59cc18ad994d4b",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/regulatorDrone.png",
+    "expected": "99140365f63c6e6af46fafbfd90380459ae5e0a4e5709dfc371ebd1c3a5cf830",
+    "actual": "99140365f63c6e6af46fafbfd90380459ae5e0a4e5709dfc371ebd1c3a5cf830",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/reptileHead.png",
+    "expected": "dc627f44d9efbaae3b93c44c5377ce25b518751b691071cf11a26f3670bcfa49",
+    "actual": "dc627f44d9efbaae3b93c44c5377ce25b518751b691071cf11a26f3670bcfa49",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/sikorsky.png",
+    "expected": "5619dd383d0bbb6ed7115f767f21f1e86e720d2aeb9ce3f0f41a182f15da3520",
+    "actual": "5619dd383d0bbb6ed7115f767f21f1e86e720d2aeb9ce3f0f41a182f15da3520",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/starlink.png",
+    "expected": "3988083ecbf0294a0c50b44df0bd8283347a56d5d9ffabe36ff6aa3a281d9e08",
+    "actual": "3988083ecbf0294a0c50b44df0bd8283347a56d5d9ffabe36ff6aa3a281d9e08",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/t800.png",
+    "expected": "1661f9bf004a65db0c178ca6d7b17e42d9963299f627f450016e9443125495f8",
+    "actual": "1661f9bf004a65db0c178ca6d7b17e42d9963299f627f450016e9443125495f8",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/twitterBird.png",
+    "expected": "46436e2c78ac2ac104426b8bc898f047cb8ee934a9b1a5dd08631a554f5ee94e",
+    "actual": "46436e2c78ac2ac104426b8bc898f047cb8ee934a9b1a5dd08631a554f5ee94e",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/ufo.png",
+    "expected": "926e3e760155afe3acbc9215b35465a78e3a49039762c7ff89f8bf1c1e8ec358",
+    "actual": "926e3e760155afe3acbc9215b35465a78e3a49039762c7ff89f8bf1c1e8ec358",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/xi.png",
+    "expected": "56f56642f4f29a2b3c6655a442be59d4df5f781327c20299fa9ff596f69c6ac0",
+    "actual": "56f56642f4f29a2b3c6655a442be59d4df5f781327c20299fa9ff596f69c6ac0",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v400/xiaomiSu7.png",
+    "expected": "3187a0f29bc97d4a73a1186cc1fbd60785ac6beea61dc55a10d7d70184e20bab",
+    "actual": "3187a0f29bc97d4a73a1186cc1fbd60785ac6beea61dc55a10d7d70184e20bab",
+    "matches": true
+  },
+  {
+    "url": "assets/encounters/v411/moltenVat.png",
+    "expected": "64013fbbdd9669c44e4ad1b88e5a1e1cbd660dcf6c1779dcc65529878eb319d4",
+    "actual": "64013fbbdd9669c44e4ad1b88e5a1e1cbd660dcf6c1779dcc65529878eb319d4",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/ATTRIBUTION.md",
+    "expected": "447218edcbad8f8f9ea808dc037fe5b5f99e1701e718c773ba481424c60666a0",
+    "actual": "447218edcbad8f8f9ea808dc037fe5b5f99e1701e718c773ba481424c60666a0",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-conveyor-cutout.png",
+    "expected": "fe80a68bcc47750b2af00dbc15ced03f2dedf633965e82a7c52a6945a508db8d",
+    "actual": "fe80a68bcc47750b2af00dbc15ced03f2dedf633965e82a7c52a6945a508db8d",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-rack-cutout.png",
+    "expected": "dd5bcd11b8ff60761112b266872f253feea0e1db1c3d4463e54dbd2eb914d3f2",
+    "actual": "dd5bcd11b8ff60761112b266872f253feea0e1db1c3d4463e54dbd2eb914d3f2",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-robot-base.png",
+    "expected": "5581732c949967aa472e58ddb68dfb487401305e1fd123f8a5695d45c407fcaa",
+    "actual": "5581732c949967aa472e58ddb68dfb487401305e1fd123f8a5695d45c407fcaa",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-robot-fore.png",
+    "expected": "cee4d60dd6d5231cda34cbff038f2656f09dc6a0644e03f6a6e21829052c11fc",
+    "actual": "cee4d60dd6d5231cda34cbff038f2656f09dc6a0644e03f6a6e21829052c11fc",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-robot-upper.png",
+    "expected": "9a0905c6a1a6b7490a337719e529b9994fdc8cf2bfe68830bdc13c285b8e6d26",
+    "actual": "9a0905c6a1a6b7490a337719e529b9994fdc8cf2bfe68830bdc13c285b8e6d26",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-tool-grip.png",
+    "expected": "e9e30bed159447f89b7d722121445dd9102ef605aa4ec4aca0b2fa1160c7f879",
+    "actual": "e9e30bed159447f89b7d722121445dd9102ef605aa4ec4aca0b2fa1160c7f879",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/assembly-tool-paint.png",
+    "expected": "b504aa6294a0fcef46d371462a47317ba6d257026f202922cc25e36a33aa9179",
+    "actual": "b504aa6294a0fcef46d371462a47317ba6d257026f202922cc25e36a33aa9179",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-part-door.png",
+    "expected": "933271151ab4f4aeedb4abf96a6a189492cab4e6409cb60e2c85ad03ec56f549",
+    "actual": "933271151ab4f4aeedb4abf96a6a189492cab4e6409cb60e2c85ad03ec56f549",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-part-glass.png",
+    "expected": "e84be343456a29ec1816ee5987ec9f6d6c525368f14b657ecc3aefebd7e8f3ed",
+    "actual": "e84be343456a29ec1816ee5987ec9f6d6c525368f14b657ecc3aefebd7e8f3ed",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-part-wheel.png",
+    "expected": "95a81c43c826b693bb073c6b25de2156e37b5936f66b46ba55b7902ae4c7924a",
+    "actual": "95a81c43c826b693bb073c6b25de2156e37b5936f66b46ba55b7902ae4c7924a",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-steel-0.png",
+    "expected": "570c0a48fdbfbb4cc00dafe0bc3055f03cfea46ccabb58801573dcd63b8b991b",
+    "actual": "570c0a48fdbfbb4cc00dafe0bc3055f03cfea46ccabb58801573dcd63b8b991b",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-steel-1.png",
+    "expected": "1f6161326ea8482f0db0c1bf788f96b0389422288b5bf17a05a03cab013c44ef",
+    "actual": "1f6161326ea8482f0db0c1bf788f96b0389422288b5bf17a05a03cab013c44ef",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-steel-2.png",
+    "expected": "502e26d0b2f3c508b986b6d7297803d0955de5c753614843dd87417f609da19d",
+    "actual": "502e26d0b2f3c508b986b6d7297803d0955de5c753614843dd87417f609da19d",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-steel-3.png",
+    "expected": "4205a4e01fa11ea8adcca17915d7cac08689c35793889f2865bb92aa03e8d75f",
+    "actual": "4205a4e01fa11ea8adcca17915d7cac08689c35793889f2865bb92aa03e8d75f",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/cybertruck-steel-4.png",
+    "expected": "76b417dbd7294970fbb8aeace61ace6f709c462628a7982929edabeb86480fec",
+    "actual": "76b417dbd7294970fbb8aeace61ace6f709c462628a7982929edabeb86480fec",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/machine-v362.png",
+    "expected": "d973d2b2b4c5cd90c75a77fa9cde62839c6e6b033810c35bc52b4fad4d42f87b",
+    "actual": "d973d2b2b4c5cd90c75a77fa9cde62839c6e6b033810c35bc52b4fad4d42f87b",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-blue-0.png",
+    "expected": "fbf83d220201627057d218de8e01c3de9723384f4ffc42bbfdfa34281a2a2983",
+    "actual": "fbf83d220201627057d218de8e01c3de9723384f4ffc42bbfdfa34281a2a2983",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-blue-1.png",
+    "expected": "f823640326162117dd8a65aa0bf1ca532bb24587c0eda7ba3c7c217660f3ac5f",
+    "actual": "f823640326162117dd8a65aa0bf1ca532bb24587c0eda7ba3c7c217660f3ac5f",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-blue-2.png",
+    "expected": "c621677cb9963396491427e5f5907fe32e6896f1d2b2135497b73594334e41d9",
+    "actual": "c621677cb9963396491427e5f5907fe32e6896f1d2b2135497b73594334e41d9",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-blue-3.png",
+    "expected": "70f3b069d3b683c7833a9ba7669ec760f477a15b96b6bc9fd84d523901bdec00",
+    "actual": "70f3b069d3b683c7833a9ba7669ec760f477a15b96b6bc9fd84d523901bdec00",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-blue-4.png",
+    "expected": "de0d9cbbc5c8e84b0ceb13ba9a0f82a95bff6d33b72e340d8c0c97da9a6cbeca",
+    "actual": "de0d9cbbc5c8e84b0ceb13ba9a0f82a95bff6d33b72e340d8c0c97da9a6cbeca",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-part-door.png",
+    "expected": "6f40acd9f9b888b6498cebffd31b163251ae20a2d4e54f03ded930bc82188dab",
+    "actual": "6f40acd9f9b888b6498cebffd31b163251ae20a2d4e54f03ded930bc82188dab",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-part-glass.png",
+    "expected": "edff9a3081566b85c4cad06b9d1ad55fda7ea82cfdbd7c7b6097385b830c373e",
+    "actual": "edff9a3081566b85c4cad06b9d1ad55fda7ea82cfdbd7c7b6097385b830c373e",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-part-wheel.png",
+    "expected": "6db5c417f241485517856ec0f2134d0b69183295e99003c09debf91e47fb5e33",
+    "actual": "6db5c417f241485517856ec0f2134d0b69183295e99003c09debf91e47fb5e33",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-red-0.png",
+    "expected": "32731905c2a7b049d396643360743a91c432b8c2b9653d25fa22cad713c8b437",
+    "actual": "32731905c2a7b049d396643360743a91c432b8c2b9653d25fa22cad713c8b437",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-red-1.png",
+    "expected": "10f954962fdd4539f5c85cee4abbb2dacdd5d1708a8460f03cd8de6a04dd3b7c",
+    "actual": "10f954962fdd4539f5c85cee4abbb2dacdd5d1708a8460f03cd8de6a04dd3b7c",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-red-2.png",
+    "expected": "b01febc7b2a4abb5178ff08ff7105ba4590126f94c30123e3466575f329f1d83",
+    "actual": "b01febc7b2a4abb5178ff08ff7105ba4590126f94c30123e3466575f329f1d83",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-red-3.png",
+    "expected": "bdba12d7a126a71fa61fb566ad127a32994edb7def11282b2d866a5931f746fd",
+    "actual": "bdba12d7a126a71fa61fb566ad127a32994edb7def11282b2d866a5931f746fd",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-red-4.png",
+    "expected": "260a50e2cc02f9972b7cbf0509d1d5b8c20fe6c3acc1036cc72b8e9302a2e7c4",
+    "actual": "260a50e2cc02f9972b7cbf0509d1d5b8c20fe6c3acc1036cc72b8e9302a2e7c4",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-white-0.png",
+    "expected": "734f22d80fbc9ea31b9d6262ed66ce6fd64a549f9be86b81926982bb5abccffd",
+    "actual": "734f22d80fbc9ea31b9d6262ed66ce6fd64a549f9be86b81926982bb5abccffd",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-white-1.png",
+    "expected": "c6e8fd9aa254cdba3e4d3cb20260c0bead6739a7e0c174b4aa6e3858c75cf08c",
+    "actual": "c6e8fd9aa254cdba3e4d3cb20260c0bead6739a7e0c174b4aa6e3858c75cf08c",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-white-2.png",
+    "expected": "fbb839d57bc33f095dc57982e68e25101ae1e735448e31b5efb64d3c784526f7",
+    "actual": "fbb839d57bc33f095dc57982e68e25101ae1e735448e31b5efb64d3c784526f7",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-white-3.png",
+    "expected": "e605f540e9a30ea4441e8b35dd180c3c68618f6a16a26ff2e6370459cbb27eaa",
+    "actual": "e605f540e9a30ea4441e8b35dd180c3c68618f6a16a26ff2e6370459cbb27eaa",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-s-white-4.png",
+    "expected": "0d6c26a38ec8aed72e795420f2dbcb6d4cef10e85dbc0749d272e3e6ac5ee1a8",
+    "actual": "0d6c26a38ec8aed72e795420f2dbcb6d4cef10e85dbc0749d272e3e6ac5ee1a8",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-blue-0.png",
+    "expected": "dae8f08ae9e1f0c7562ce6cf7b4db57ff88d59ad963cde85447de8273f325dda",
+    "actual": "dae8f08ae9e1f0c7562ce6cf7b4db57ff88d59ad963cde85447de8273f325dda",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-blue-1.png",
+    "expected": "27e728aa12e397b4cac739e51363d85d33ceb5eaae9dbb7ca0f142827cc87468",
+    "actual": "27e728aa12e397b4cac739e51363d85d33ceb5eaae9dbb7ca0f142827cc87468",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-blue-2.png",
+    "expected": "9832f82e83529029bbb24abf3c7d5817d6a5e2e82d3dabf1d0cc3c0d31f24fb5",
+    "actual": "9832f82e83529029bbb24abf3c7d5817d6a5e2e82d3dabf1d0cc3c0d31f24fb5",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-blue-3.png",
+    "expected": "5a877a71ba33b330015c9c79bb21f3964f77d8aaae604bc2d542a8dcf97e01ea",
+    "actual": "5a877a71ba33b330015c9c79bb21f3964f77d8aaae604bc2d542a8dcf97e01ea",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-blue-4.png",
+    "expected": "fc74bb55c9b65de06a95bdd421d67d011d4edd3b0da2754cefdf5b8551d9c71b",
+    "actual": "fc74bb55c9b65de06a95bdd421d67d011d4edd3b0da2754cefdf5b8551d9c71b",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-part-door.png",
+    "expected": "271588e894d092a3c7a299e8bf9eae89612acd31413fd5941567d335cc47c8f8",
+    "actual": "271588e894d092a3c7a299e8bf9eae89612acd31413fd5941567d335cc47c8f8",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-part-glass.png",
+    "expected": "fd33c7745fa1036d28da91812fe79431933ab7a40b256d0dec260f2bb4cd4396",
+    "actual": "fd33c7745fa1036d28da91812fe79431933ab7a40b256d0dec260f2bb4cd4396",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-part-wheel.png",
+    "expected": "7cfe9199d51cdc65b3fb10ea3e362a73f768f1e0568906b9cbe152fc1d7bf014",
+    "actual": "7cfe9199d51cdc65b3fb10ea3e362a73f768f1e0568906b9cbe152fc1d7bf014",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-red-0.png",
+    "expected": "978ca1d9d8848b943ee181438dfbe6a27bd2fc004a69e94daeedf66a9fd5ae01",
+    "actual": "978ca1d9d8848b943ee181438dfbe6a27bd2fc004a69e94daeedf66a9fd5ae01",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-red-1.png",
+    "expected": "dc2a25f398a59b947bbee3b34eb6724caf130ca74a0a598fb97dadda3647f8ea",
+    "actual": "dc2a25f398a59b947bbee3b34eb6724caf130ca74a0a598fb97dadda3647f8ea",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-red-2.png",
+    "expected": "f8270179764741d7c4c2c356559864dbda377bca9566edc7bf99136a9973f953",
+    "actual": "f8270179764741d7c4c2c356559864dbda377bca9566edc7bf99136a9973f953",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-red-3.png",
+    "expected": "5b99410f5115f970baf5da5dbd0c300b01e843ebf5d5be3404c764105a3dc9f2",
+    "actual": "5b99410f5115f970baf5da5dbd0c300b01e843ebf5d5be3404c764105a3dc9f2",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-red-4.png",
+    "expected": "a57e6b6a9e357c763d31b2a8bab8f01b39fa8cf917df91db3b8f7d09d31efcf4",
+    "actual": "a57e6b6a9e357c763d31b2a8bab8f01b39fa8cf917df91db3b8f7d09d31efcf4",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-white-0.png",
+    "expected": "b3bfaddbe776a5c9ed5c30d0c619134b329f5ba4a4c908b5c6afa3ba07dcebca",
+    "actual": "b3bfaddbe776a5c9ed5c30d0c619134b329f5ba4a4c908b5c6afa3ba07dcebca",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-white-1.png",
+    "expected": "2ce5619f4151ab3582f90504948116ec4598ba84930e344a0f6d6cc6ff9e8587",
+    "actual": "2ce5619f4151ab3582f90504948116ec4598ba84930e344a0f6d6cc6ff9e8587",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-white-2.png",
+    "expected": "7b613ef91bfd433da8f0e966ea9a3b192ba3dbe9ebbd5031724b2521b781203f",
+    "actual": "7b613ef91bfd433da8f0e966ea9a3b192ba3dbe9ebbd5031724b2521b781203f",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-white-3.png",
+    "expected": "2567e0789c7596268136eaa660fae5b063c523bf5dc5a2a1b878b4b514fffd53",
+    "actual": "2567e0789c7596268136eaa660fae5b063c523bf5dc5a2a1b878b4b514fffd53",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/model-x-white-4.png",
+    "expected": "08046528a257307f5ed5c148524ed0939c34873d8094fbca4ed6f19f85dc96b6",
+    "actual": "08046528a257307f5ed5c148524ed0939c34873d8094fbca4ed6f19f85dc96b6",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/rear-wall.png",
+    "expected": "500504f1888d40a023c64c3d31ddbc262bddd2fea977b05bffd65c0045123d60",
+    "actual": "500504f1888d40a023c64c3d31ddbc262bddd2fea977b05bffd65c0045123d60",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-blue-0.png",
+    "expected": "335632b0279e883493cb860a3b6784d621a21ca6c6a4a17b3a3de6cd88936323",
+    "actual": "335632b0279e883493cb860a3b6784d621a21ca6c6a4a17b3a3de6cd88936323",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-blue-1.png",
+    "expected": "87b351fbfc6c0fc8e4bc3bb135cb4f35672abf90bf17783ab162188db1af4d74",
+    "actual": "87b351fbfc6c0fc8e4bc3bb135cb4f35672abf90bf17783ab162188db1af4d74",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-blue-2.png",
+    "expected": "5bcd2b4d1c8aca8907003e33669f34354fe923bd0b1b066e23b4f878068ff90c",
+    "actual": "5bcd2b4d1c8aca8907003e33669f34354fe923bd0b1b066e23b4f878068ff90c",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-blue-3.png",
+    "expected": "8710682a9096f5d98cb06d54b12b726f2585a46005796d1ec4f08c8b969c2513",
+    "actual": "8710682a9096f5d98cb06d54b12b726f2585a46005796d1ec4f08c8b969c2513",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-blue-4.png",
+    "expected": "50dd0b2b1fb05c362b7f033ca05590adf6ad8f567d4d81eb8721912d5e628ce8",
+    "actual": "50dd0b2b1fb05c362b7f033ca05590adf6ad8f567d4d81eb8721912d5e628ce8",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-part-door.png",
+    "expected": "c26a957faedf2edaf02b1276db333aae387f7d7c5610f3de6008e4b4812aca60",
+    "actual": "c26a957faedf2edaf02b1276db333aae387f7d7c5610f3de6008e4b4812aca60",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-part-glass.png",
+    "expected": "b1cee6a18ef83d6c7faedb8b173e7354b0ad463cc6ff12623775962610032bda",
+    "actual": "b1cee6a18ef83d6c7faedb8b173e7354b0ad463cc6ff12623775962610032bda",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-part-wheel.png",
+    "expected": "4c2610fe4184dabf39adceac7827aab70305c9c2d69a372e732d3ae39a5208ca",
+    "actual": "4c2610fe4184dabf39adceac7827aab70305c9c2d69a372e732d3ae39a5208ca",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-red-0.png",
+    "expected": "ba283184c8819a65fb13521c06afbdc07f9aa658950ac7cf04773994ab497c88",
+    "actual": "ba283184c8819a65fb13521c06afbdc07f9aa658950ac7cf04773994ab497c88",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-red-1.png",
+    "expected": "505fe0d792113ae876345ccc28ac983d059ae93c997d6fc6a0c1ba4e601cc3c4",
+    "actual": "505fe0d792113ae876345ccc28ac983d059ae93c997d6fc6a0c1ba4e601cc3c4",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-red-2.png",
+    "expected": "abc74681e7fd1ca1d316647656bbacd04b9cf798818ab3c34616c930474ddbea",
+    "actual": "abc74681e7fd1ca1d316647656bbacd04b9cf798818ab3c34616c930474ddbea",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-red-3.png",
+    "expected": "a42e88c48e64fab864e74a424ce97958a2d5f866dfd9ac1b00a9f33f4aac579d",
+    "actual": "a42e88c48e64fab864e74a424ce97958a2d5f866dfd9ac1b00a9f33f4aac579d",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-red-4.png",
+    "expected": "9e2545727ab86cb0fa0a4b9a55683df81d10f28b8cd89c3efe0189352595fa37",
+    "actual": "9e2545727ab86cb0fa0a4b9a55683df81d10f28b8cd89c3efe0189352595fa37",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-white-0.png",
+    "expected": "d34fab1a7c2674487687a8cbea735509543c5077db559a5944619c3d4104d294",
+    "actual": "d34fab1a7c2674487687a8cbea735509543c5077db559a5944619c3d4104d294",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-white-1.png",
+    "expected": "9417123797f9aa8a2503acddc44e5d114bf2937bdd564c1b74bdcfc29050d4bc",
+    "actual": "9417123797f9aa8a2503acddc44e5d114bf2937bdd564c1b74bdcfc29050d4bc",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-white-2.png",
+    "expected": "0c771fc4e98e6a01d2c491eff5b56b4f7e9d4eee92986c8da6a63d003d3b0833",
+    "actual": "0c771fc4e98e6a01d2c491eff5b56b4f7e9d4eee92986c8da6a63d003d3b0833",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-white-3.png",
+    "expected": "235f9f9af47565508f205b4a61fcce3e35df2703fcd375a8fceec61c7af78444",
+    "actual": "235f9f9af47565508f205b4a61fcce3e35df2703fcd375a8fceec61c7af78444",
+    "matches": true
+  },
+  {
+    "url": "assets/factory/roadster-white-4.png",
+    "expected": "77ca66b55402cf5ed15cc7290d848030a25c680bc2ec39f45d59addc68c9fe5c",
+    "actual": "77ca66b55402cf5ed15cc7290d848030a25c680bc2ec39f45d59addc68c9fe5c",
+    "matches": true
+  },
+  {
+    "url": "assets/obstacles/phantom-v3.png",
+    "expected": "1a43a47d9e1d47441b7a35d18ba2f4284ea9b36312267129383cd636895623f4",
+    "actual": "1a43a47d9e1d47441b7a35d18ba2f4284ea9b36312267129383cd636895623f4",
+    "matches": true
+  },
+  {
+    "url": "assets/roadster-flip/atlas.png",
+    "expected": "8dd912225478ba0541a45a1b094ad3acc6be6d8bd951c2255e84bea8540e9cfd",
+    "actual": "8dd912225478ba0541a45a1b094ad3acc6be6d8bd951c2255e84bea8540e9cfd",
+    "matches": true
+  },
+  {
+    "url": "assets/spaceport/spaceport-atlas.png",
+    "expected": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25",
+    "actual": "fae0cee4ec8021b82f3916c2e81deb606a9100cbe4a92a48277b188356294b25",
+    "matches": true
+  },
+  {
+    "url": "assets/ui/ATTRIBUTION.md",
+    "expected": "deb8cd82a7fd47805dd22f07f75cd690447e75bb1dce26258085e5575b809383",
+    "actual": "deb8cd82a7fd47805dd22f07f75cd690447e75bb1dce26258085e5575b809383",
+    "matches": true
+  },
+  {
+    "url": "assets/ui/collection-mystery.png",
+    "expected": "deee4491bd44e99ea1b7a5b45eef41d405cf4334e77bb0c929e315a4a4ce60c3",
+    "actual": "deee4491bd44e99ea1b7a5b45eef41d405cf4334e77bb0c929e315a4a4ce60c3",
+    "matches": true
+  },
+  {
+    "url": "collage-atlas.png",
+    "expected": "f21defd92580de776cf924cfb9f58dd744750b2537ec4626609602bc8a7edd66",
+    "actual": "f21defd92580de776cf924cfb9f58dd744750b2537ec4626609602bc8a7edd66",
+    "matches": true
+  },
+  {
+    "url": "collage-extras.png",
+    "expected": "950289b239aa5cfd49fc4d6acc3c0b07125760c538a817cbb73255e7a3f5e461",
+    "actual": "950289b239aa5cfd49fc4d6acc3c0b07125760c538a817cbb73255e7a3f5e461",
+    "matches": true
+  },
+  {
+    "url": "icons/icon-192.png",
+    "expected": "b8643e73d2402c30049c662ec096068bd210408b4c5493734781f7442776bfd7",
+    "actual": "b8643e73d2402c30049c662ec096068bd210408b4c5493734781f7442776bfd7",
+    "matches": true
+  },
+  {
+    "url": "icons/icon-512.png",
+    "expected": "82a8a2c05856c62cde93fabce958f86375506ac63428769d6eacce8737b3da46",
+    "actual": "82a8a2c05856c62cde93fabce958f86375506ac63428769d6eacce8737b3da46",
+    "matches": true
+  },
+  {
+    "url": "index.html",
+    "expected": "4b6997fe011b6aacaa7b37efe6efa144f5a452667b2c30576f755260776b0037",
+    "actual": "4b6997fe011b6aacaa7b37efe6efa144f5a452667b2c30576f755260776b0037",
+    "matches": true
+  },
+  {
+    "url": "manifest.webmanifest",
+    "expected": "c93944d35c2ef6b0ed48d2d13f79b0854c49a19b050acbaa5803b2138c9390cd",
+    "actual": "c93944d35c2ef6b0ed48d2d13f79b0854c49a19b050acbaa5803b2138c9390cd",
+    "matches": true
+  },
+  {
+    "url": "obstacle-photos.png",
+    "expected": "c4f1b6ca7c95e006c21e1b8ca5252ccafda91e808cdf836b638338c00ae44714",
+    "actual": "c4f1b6ca7c95e006c21e1b8ca5252ccafda91e808cdf836b638338c00ae44714",
+    "matches": true
+  },
+  {
+    "url": "paper-cast.png",
+    "expected": "03a60ba2884f00f02a94bc98052e71361778a4768df5fd21928aedde2aa23290",
+    "actual": "03a60ba2884f00f02a94bc98052e71361778a4768df5fd21928aedde2aa23290",
+    "matches": true
+  },
+  {
+    "url": "src/biomes.js?v=4.1.1",
+    "expected": "d03a2955929c6e617aa1ccc0e3d038f4f73215652d30239ebfe89cadcd8ccb26",
+    "actual": "d03a2955929c6e617aa1ccc0e3d038f4f73215652d30239ebfe89cadcd8ccb26",
+    "matches": true
+  },
+  {
+    "url": "src/cash.js?v=4.1.1",
+    "expected": "4c85bccc29978d33bf1bcab3f1bff5aecb371eb1d9ff3c9c1a7828f98171e578",
+    "actual": "4c85bccc29978d33bf1bcab3f1bff5aecb371eb1d9ff3c9c1a7828f98171e578",
+    "matches": true
+  },
+  {
+    "url": "src/catalog.js?v=4.1.1",
+    "expected": "773c90ca4eb47cbe36a1b0e9ecf10316631180c1ce484085bfbce1ef846d85ac",
+    "actual": "773c90ca4eb47cbe36a1b0e9ecf10316631180c1ce484085bfbce1ef846d85ac",
+    "matches": true
+  },
+  {
+    "url": "src/characters.js?v=4.1.1",
+    "expected": "92384d21f9efe89d277da2ef948c7bbf7827e7d061dd1087a1ee8ab9d7350c31",
+    "actual": "92384d21f9efe89d277da2ef948c7bbf7827e7d061dd1087a1ee8ab9d7350c31",
+    "matches": true
+  },
+  {
+    "url": "src/clock.js?v=4.1.1",
+    "expected": "6f19f8aaba5858bd94c1ebcde49a99bde0433a8adead6eda4303636778f94180",
+    "actual": "6f19f8aaba5858bd94c1ebcde49a99bde0433a8adead6eda4303636778f94180",
+    "matches": true
+  },
+  {
+    "url": "src/coaching.js?v=4.1.1",
+    "expected": "51af542c1fbf9f4a2c029e3a28bf70a52895599512f843407bf0325465b9c695",
+    "actual": "51af542c1fbf9f4a2c029e3a28bf70a52895599512f843407bf0325465b9c695",
+    "matches": true
+  },
+  {
+    "url": "src/collection-copy.js?v=4.1.1",
+    "expected": "60bcf60c455af720e4529442383009c3a5f53677837eb61bf72d94e8fb03dbb2",
+    "actual": "60bcf60c455af720e4529442383009c3a5f53677837eb61bf72d94e8fb03dbb2",
+    "matches": true
+  },
+  {
+    "url": "src/collection-ui.js?v=4.1.1",
+    "expected": "23f8a41e25d7eda99cd7f7f967fa3e11ab02a365960956bcf8d4b760f6282421",
+    "actual": "23f8a41e25d7eda99cd7f7f967fa3e11ab02a365960956bcf8d4b760f6282421",
+    "matches": true
+  },
+  {
+    "url": "src/collection.js?v=4.1.1",
+    "expected": "19f4a25ea83b897df2e2849e2071b1eff6eb6817058ed532e4f6db9ad28ef7cf",
+    "actual": "19f4a25ea83b897df2e2849e2071b1eff6eb6817058ed532e4f6db9ad28ef7cf",
+    "matches": true
+  },
+  {
+    "url": "src/content.js?v=4.1.1",
+    "expected": "c66768e9ddcbd7b51ad2045a3a14e858be3217dbfb1c27ac127619d207aa276f",
+    "actual": "c66768e9ddcbd7b51ad2045a3a14e858be3217dbfb1c27ac127619d207aa276f",
+    "matches": true
+  },
+  {
+    "url": "src/director.js?v=4.1.1",
+    "expected": "f0c38c8df1cdb014a6746e492842e85154d3bebc4012c49d56dabac69d263c3f",
+    "actual": "f0c38c8df1cdb014a6746e492842e85154d3bebc4012c49d56dabac69d263c3f",
+    "matches": true
+  },
+  {
+    "url": "src/encounter.js?v=4.1.1",
+    "expected": "ae74baddef380c9a84c5587df11ab1cfd2fa4d3e7f0b00d81a20e46f7954b7c6",
+    "actual": "ae74baddef380c9a84c5587df11ab1cfd2fa4d3e7f0b00d81a20e46f7954b7c6",
+    "matches": true
+  },
+  {
+    "url": "src/encounters.js?v=4.1.1",
+    "expected": "4a40d8506a7eb17467ad5375a75871a32d2075240ae660375f5304386a91ba94",
+    "actual": "4a40d8506a7eb17467ad5375a75871a32d2075240ae660375f5304386a91ba94",
+    "matches": true
+  },
+  {
+    "url": "src/enemy-sprite-data.js",
+    "expected": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d",
+    "actual": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d",
+    "matches": true
+  },
+  {
+    "url": "src/enemy-sprites.js?v=4.1.1",
+    "expected": "721259707db5e68f87084626b7bec0a36c964b5bb5e3e36d8fe45138ebf06954",
+    "actual": "721259707db5e68f87084626b7bec0a36c964b5bb5e3e36d8fe45138ebf06954",
+    "matches": true
+  },
+  {
+    "url": "src/environment.js?v=4.1.1",
+    "expected": "4faed5ee5cb12cefa7f1442751f13a45ba05c065ffa37028cdaa65a7f3a7ba36",
+    "actual": "4faed5ee5cb12cefa7f1442751f13a45ba05c065ffa37028cdaa65a7f3a7ba36",
+    "matches": true
+  },
+  {
+    "url": "src/factory-production.js?v=4.1.1",
+    "expected": "d41b6b415aa5c157f1fb36dd85beb6943ae15ec046fe0124caf49665bdfef1bc",
+    "actual": "d41b6b415aa5c157f1fb36dd85beb6943ae15ec046fe0124caf49665bdfef1bc",
+    "matches": true
+  },
+  {
+    "url": "src/factory.js?v=4.1.1",
+    "expected": "6326741397d485de06a5bb0dc231adcc16ca57cfecb2fb1f96be1e11710f8b03",
+    "actual": "6326741397d485de06a5bb0dc231adcc16ca57cfecb2fb1f96be1e11710f8b03",
+    "matches": true
+  },
+  {
+    "url": "src/fall.js?v=4.1.1",
+    "expected": "749af3059c32d588631ed20496350d49ddcbc073df6143cb8366c9a14f3872ec",
+    "actual": "749af3059c32d588631ed20496350d49ddcbc073df6143cb8366c9a14f3872ec",
+    "matches": true
+  },
+  {
+    "url": "src/gameplay-config.js?v=4.1.1",
+    "expected": "7bcfa48f42b8278941fcd037f14d70ca69fa0f730380a97ec64e17bce92e31e6",
+    "actual": "7bcfa48f42b8278941fcd037f14d70ca69fa0f730380a97ec64e17bce92e31e6",
+    "matches": true
+  },
+  {
+    "url": "src/gameplay.js?v=4.1.1",
+    "expected": "80e8e5c4e0ddee86dbe5ceb66c04a9327154a42a5dfb7fa7a0065050e97dbb62",
+    "actual": "80e8e5c4e0ddee86dbe5ceb66c04a9327154a42a5dfb7fa7a0065050e97dbb62",
+    "matches": true
+  },
+  {
+    "url": "src/hero-rig.js?v=4.1.1",
+    "expected": "6aae3ae43c10f28e268ec26e71177e6eccefeb2bf408044d9e53bb8e4ded3469",
+    "actual": "6aae3ae43c10f28e268ec26e71177e6eccefeb2bf408044d9e53bb8e4ded3469",
+    "matches": true
+  },
+  {
+    "url": "src/hud.js?v=4.1.1",
+    "expected": "d02ca61dae95cec2b5c5a3f801c154e8f2079bef9df89621ca86ac970d972cca",
+    "actual": "d02ca61dae95cec2b5c5a3f801c154e8f2079bef9df89621ca86ac970d972cca",
+    "matches": true
+  },
+  {
+    "url": "src/loading.js?v=4.1.1",
+    "expected": "ddfc60cd77cb88c5cab770f38cd7f90c156cf57bb3728d6de9a85455f0ded73f",
+    "actual": "ddfc60cd77cb88c5cab770f38cd7f90c156cf57bb3728d6de9a85455f0ded73f",
+    "matches": true
+  },
+  {
+    "url": "src/main.js?v=4.1.1",
+    "expected": "09dd2a498a91275a4ae23880d2dceec666c506420f1b4c66bbede604dac84c68",
+    "actual": "09dd2a498a91275a4ae23880d2dceec666c506420f1b4c66bbede604dac84c68",
+    "matches": true
+  },
+  {
+    "url": "src/obstacle-art.js?v=4.1.1",
+    "expected": "245a314cb7733d39f899d280bf24b616da8f0e544d4a53d6d43ea32aa6165c18",
+    "actual": "245a314cb7733d39f899d280bf24b616da8f0e544d4a53d6d43ea32aa6165c18",
+    "matches": true
+  },
+  {
+    "url": "src/online-config.js?v=4.1.1",
+    "expected": "270190af96c0f506382dfa22419fddfb0f82b4dedd41f31917e5eb3182ad400f",
+    "actual": "270190af96c0f506382dfa22419fddfb0f82b4dedd41f31917e5eb3182ad400f",
+    "matches": true
+  },
+  {
+    "url": "src/online-ui.js?v=4.1.1",
+    "expected": "7735629bdaf39c7df58f4eb99110d4effed402f1a4c4d95a82ea3d3a50ac7e50",
+    "actual": "7735629bdaf39c7df58f4eb99110d4effed402f1a4c4d95a82ea3d3a50ac7e50",
+    "matches": true
+  },
+  {
+    "url": "src/online.js?v=4.1.1",
+    "expected": "4a2fedd1b3a936c197f15db4967abf7f416c5ad7efec48e3c4eaaeda7ce6ef0b",
+    "actual": "4a2fedd1b3a936c197f15db4967abf7f416c5ad7efec48e3c4eaaeda7ce6ef0b",
+    "matches": true
+  },
+  {
+    "url": "src/photo-cutouts.js?v=4.1.1",
+    "expected": "374bdccdad1947dafc5db107d17bf4336ac1f5b7731ff4c20c402c11d34abbed",
+    "actual": "374bdccdad1947dafc5db107d17bf4336ac1f5b7731ff4c20c402c11d34abbed",
+    "matches": true
+  },
+  {
+    "url": "src/physics.js?v=4.1.1",
+    "expected": "7fa5598f63d348bbcccfc78f9c7f9b329502a70df222b562e5f8c600c7d290fc",
+    "actual": "7fa5598f63d348bbcccfc78f9c7f9b329502a70df222b562e5f8c600c7d290fc",
+    "matches": true
+  },
+  {
+    "url": "src/props.js?v=4.1.1",
+    "expected": "937fe9173f695a2ebd4ecaba4d0e64ca468db130991ed4054da5d3da10d97ad6",
+    "actual": "937fe9173f695a2ebd4ecaba4d0e64ca468db130991ed4054da5d3da10d97ad6",
+    "matches": true
+  },
+  {
+    "url": "src/pwa.js?v=4.1.1",
+    "expected": "f7f5f5aa7b8d4cd6258bcd3e776022fd50976548e096eccbd0e494b001fdd515",
+    "actual": "f7f5f5aa7b8d4cd6258bcd3e776022fd50976548e096eccbd0e494b001fdd515",
+    "matches": true
+  },
+  {
+    "url": "src/random.js?v=4.1.1",
+    "expected": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "actual": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "matches": true
+  },
+  {
+    "url": "src/roadster-flip.js?v=4.1.1",
+    "expected": "ec5679ac22ca99dc0063a0a1a5b1bd49d8274db91d70b1a7d05945e40369ea5c",
+    "actual": "ec5679ac22ca99dc0063a0a1a5b1bd49d8274db91d70b1a7d05945e40369ea5c",
+    "matches": true
+  },
+  {
+    "url": "src/rocket.js?v=4.1.1",
+    "expected": "f5ccc6ea27cfdae64a64ddbc609b210d5104ee7bc83461dea7c3828bfc3e833d",
+    "actual": "f5ccc6ea27cfdae64a64ddbc609b210d5104ee7bc83461dea7c3828bfc3e833d",
+    "matches": true
+  },
+  {
+    "url": "src/routes.js?v=4.1.1",
+    "expected": "a7b893200ad8862086eafdc2fe12277cb05db8a03fd7e1be8c6a152e18d52bab",
+    "actual": "a7b893200ad8862086eafdc2fe12277cb05db8a03fd7e1be8c6a152e18d52bab",
+    "matches": true
+  },
+  {
+    "url": "src/run.js?v=4.1.1",
+    "expected": "777611144d06f8b6a3d2fa66b3e24269d457f0f48e6321cec0b1ebd5144d78ae",
+    "actual": "777611144d06f8b6a3d2fa66b3e24269d457f0f48e6321cec0b1ebd5144d78ae",
+    "matches": true
+  },
+  {
+    "url": "src/score-record.js?v=4.1.1",
+    "expected": "504cb583325e854fcfd84b797d35333040ca38326060a60402f454c1bb55a0d3",
+    "actual": "504cb583325e854fcfd84b797d35333040ca38326060a60402f454c1bb55a0d3",
+    "matches": true
+  },
+  {
+    "url": "src/slapstick.js?v=4.1.1",
+    "expected": "d627ace249f2d6d81f81b1eeca9f087cf5933dd7701d8affc4a1fe76f912708e",
+    "actual": "d627ace249f2d6d81f81b1eeca9f087cf5933dd7701d8affc4a1fe76f912708e",
+    "matches": true
+  },
+  {
+    "url": "src/sound.js?v=4.1.1",
+    "expected": "8f3bbc840fc29ab15fb56c12e0dc2f19d9dc15a4105d01de4ba9fb163c60ed63",
+    "actual": "8f3bbc840fc29ab15fb56c12e0dc2f19d9dc15a4105d01de4ba9fb163c60ed63",
+    "matches": true
+  },
+  {
+    "url": "src/spaceport-sprites.js?v=4.1.1",
+    "expected": "1809b3fbc0737df4fb95df2aa5f0a8319654d05c300cc07c95b57362f3796384",
+    "actual": "1809b3fbc0737df4fb95df2aa5f0a8319654d05c300cc07c95b57362f3796384",
+    "matches": true
+  },
+  {
+    "url": "src/speed-feedback.js?v=4.1.1",
+    "expected": "414d86185286ce1e3f1ff21afc1ddb87d072e3aa325b76534de5cf5b6b6b5917",
+    "actual": "414d86185286ce1e3f1ff21afc1ddb87d072e3aa325b76534de5cf5b6b6b5917",
+    "matches": true
+  },
+  {
+    "url": "src/thrusters.js?v=4.1.1",
+    "expected": "eaa382cb09213e150676191427e554b7c3056266d1f39b1631d1c608eae02fe3",
+    "actual": "eaa382cb09213e150676191427e554b7c3056266d1f39b1631d1c608eae02fe3",
+    "matches": true
+  },
+  {
+    "url": "style.css?v=4.1.1",
+    "expected": "5f58911f10f64de7253cde5d4e5502404cbdb88d961d6c1e7e4ff3a1f85e56e7",
+    "actual": "5f58911f10f64de7253cde5d4e5502404cbdb88d961d6c1e7e4ff3a1f85e56e7",
+    "matches": true
+  },
+  {
+    "url": "sw.js",
+    "expected": "3238051d850a7fa1e656534912f3929b3c7bd93813ee5632a80e5ac9e1724cea",
+    "actual": "3238051d850a7fa1e656534912f3929b3c7bd93813ee5632a80e5ac9e1724cea",
+    "matches": true
+  }
+]

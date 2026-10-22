@@ -1,6 +1,6 @@
 {
   "version": "4.1.1",
-  "status": "candidate-validated-awaiting-pages",
+  "status": "published-verified",
   "baseline": "45b55a525466071cca22170fa9682d5859303be4",
   "ruleset": "roadster-v4.1.0",
   "backendChanged": false,
@@ -11,12 +11,49 @@
   "evidence": [
     "local/checks.json",
     "upgrade/checks.json",
-    "runtime-manifest.json"
+    "runtime-manifest.json",
+    "public-hashes.json",
+    "public/input-checks.json",
+    "public/visual-checks.json"
   ],
   "rollback": {
     "forwardInverse": "exact parent tree5014308de9963d2305b5c6b6bcf6b87567b7fbe0 restored",
     "parentTests": 138,
     "parentChecks": "pass",
     "patch": "/tmp/tesla-vat-v411-candidate.patch"
-  }
+  },
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.1.1",
+  "gameCommit": "015f16d25421e3c665731f2b690fe86cc027913d",
+  "gameTree": "492a272c127022138e3bd9d2b9c9dc037e7f7a85",
+  "pagesRun": 39855674473,
+  "pagesConclusion": "success",
+  "publicResources": 151,
+  "publicWorkerMatches": true,
+  "publicInputChecks": 28,
+  "publicSceneChecks": 10,
+  "publicRuntimeErrors": [],
+  "publicLandings": [
+    {
+      "tag": "desktop",
+      "landing": {
+        "points": 150,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": true,
+        "good": true
+      }
+    },
+    {
+      "tag": "mobile",
+      "landing": {
+        "points": 100,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": false,
+        "good": true
+      }
+    }
+  ]
 }
