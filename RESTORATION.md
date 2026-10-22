@@ -1,3 +1,9 @@
+## Published4.0.0 — verified release
+
+[Play4.0.0](https://gleb20.github.io/roadster-kickflip/?v=4.0.0) · [Interactive cast gallery](https://gleb20.github.io/roadster-kickflip/assets/concepts/enemies-v400/review.html). Game commit2ee9a877cd5318dbaf1a2d4ae238c8bfcdcf1cf9 / tree9fd035c8b08f3cb6686fd1168f27dab113476dca. Pages39833251084 succeeded.151 public core resources and worker match;29 public native keyboard/touch/two-finger/pause/offline checks and6 public gallery checks pass with no runtime errors. Both public input paths earned PERFECT. One initial grab-state wait timed out; the diagnostic rerun passed unchanged.135 game tests,9 server tests,26 local browser checks,9 actual PWA upgrade checks, two180-second production runs and17 hosted verifier checks pass. Best, viewed Simpsons→lying-character collection and old finished record survive. No public fixture result was added. Original HEAD/index remain intact. Physical iPhone/Safari review remains open. Evidence: `docs/verification/2026-10-22-enemies-v400/release-status.json`.
+
+For an older installed PWA, close old game windows/app and reopen the versioned link; existing saves remain. Bounded debt follow-up proposed: measure real-phone event→step→render latency before any further route-search optimization.
+
 ## Encounters4.0.0 restore point —22October2026
 
 Before snapshot: `/tmp/tesla-enemies-v400-before-20261022/before.tar.gz` plus `hashes.json`, status and diff. Original HEAD/index remain untouched. Publish from `/tmp/tesla-enemies-v400-release-20261022`; inverse patch and exact-parent rehearsal are recorded in `docs/verification/2026-10-22-enemies-v400/rollback.json`. Apply rollback in an isolated checkout and allocate a fresh PWA version when publicly rolling back; never restore3.9.3 bytes over an existing4.0.0 cache. Keep additive three-ruleset server support and all ranking/collection records. No SQL data rollback is required.
