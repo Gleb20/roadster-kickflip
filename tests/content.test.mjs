@@ -2,10 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {OBSTACLES,BIOMES,ASSETS,validateContent,obstacleDefinition,eligibleObstacles} from '../src/content.js';
 
-test('all 19 legacy types retain their geometry, IDs and stable order',()=>{
- assert.deepEqual(OBSTACLES.map(o=>o.id),['v8','trump','protest','truck','doge','pump','zuck','openai','claude','gemini','rogozin','amber','joe','muscleCoupe','muscleCompact','pickup','simpsonsCouch','hoverDrone','incomingDrone']);
- assert.deepEqual(OBSTACLES.map(o=>[o.w,o.h]),[[108,36],[54,94],[102,94],[110,41],[52,64],[54,78],[62,94],[70,68],[84,73],[58,78],[88,130],[58,94],[76,94],[138,45],[112,38],[140,57],[136,88],[92,40],[92,40]]);
- assert.deepEqual(validateContent(),[]);
+test('retained legacy types preserve geometry and replacement IDs are explicit',async()=>{
+ const {OBSTACLES:legacy}=await import('../supabase/rulesets/roadster-v380/content.js');
+ const removed=new Set(['simpsonsCouch','hoverDrone','incomingDrone']);
+ for(const old of legacy.filter(o=>!removed.has(o.id))){const current=obstacleDefinition(old.id);assert.deepEqual([current.w,current.h],[old.w,old.h]);}
+ for(const id of removed)assert.equal(obstacleDefinition(id),undefined);
+ assert.equal(OBSTACLES.length,29);assert.deepEqual(validateContent(),[]);
 });
 test('invalid content cannot enter the game silently',()=>{
  const base=obstacleDefinition('truck');
@@ -25,7 +27,7 @@ test('reaction direction, anchors and biome membership are explicit and immutabl
  assert.equal(obstacleDefinition('v8').anchor,'ground-center');
  assert.ok(Object.isFrozen(obstacleDefinition('trump').reactions.hero));
  assert.ok(Object.isFrozen(BIOMES));assert.ok(Object.isFrozen(ASSETS));
- assert.equal(eligibleObstacles('spaceport').length,19);
+ assert.equal(eligibleObstacles('spaceport').length,23);
  assert.ok(eligibleObstacles('tesla-factory').every(o=>o.biomes==='all'||o.biomes.includes('tesla-factory')));
  assert.equal(eligibleObstacles('missing').length,0);
 });

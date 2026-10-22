@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ufo",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: small retro Adamski-style alien flying saucer, shape based on physical silver model photograph. Low silver disc, small domed cabin on top, three oval windows, short green light accents. Nearly side-on with slight overhead visibility. Flying LEFT, readable wide silhouette at 110 game units. No stand, no landing legs, no exhaust plume, no surrounding effects. Real toy photo defines shape; current cast defines compatibility. Friendly ominous sci-fi parody, not photoreal.",
+    "refs": [
+      "references/ufo-model.jpg",
+      "style/current-cast.png"
+    ]
+  },
+  {
+    "id": "primeDrone",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: Amazon Prime Air MK30-inspired delivery drone from actual hardware photograph, flying LEFT in side elevation. White rounded central fuselage, blue struts and motors, compact cardboard package hanging securely underneath with a simple dark curved smile. Keep realistic mechanical proportions from photo but simplify into crafted paper/plastic game cutout. Clearly different from small plain phantom drone: bold BLUE arms, delivery box. No bomb, no dropped objects, no full text. Wide composition, readable at 105 game units.",
+    "refs": [
+      "references/amazon.jpg",
+      "style/current-cast.png",
+      "style/drone.png"
+    ]
+  },
+  {
+    "id": "twitterBird",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: blue mountain-bluebird transformed into a satirical old-Twitter bird character. Use real bird photo for recognisable blue plumage, tiny black beak and bird anatomy; use current cast for cartoon paper grammar. Flying LEFT, short rounded body, two large simple raised flapping wings, pointed tail, oversized slightly angry eyes and annoyed eyebrows. Pale sky-blue body and stronger cyan wing shapes. No human body, no perch, no logo text. Simple iconic silhouette readable at 75 game units.",
+    "refs": [
+      "references/bluebird.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png"
+    ]
+  },
+  {
+    "id": "homelessRow",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: TWO adult fictional homeless spectators lying flat on their backs side-by-side as one low ground obstacle, South Park-like paper animation. Actual source VIDEO STILL is pose/composition reference for lying people being jumped; CURRENT GAME CAST gives facial proportions and warm cutout edge. One wears a faded olive padded jacket and navy knit cap, the other a muted rust jacket with a shaggy brown beard. Heads on the LEFT, shoes toward RIGHT; slightly stagger bodies vertically so both heads, torsos and shoes are visible in side elevation. Hands rest on bellies, peaceful unimpressed expressions, fully clothed. One small flat cardboard scrap by them, no text. No injury, no ragdoll, no dirt stereotype details. Very LOW and WIDE horizontal silhouette, no standing figure, no raised knees; at game size about 140 wide x 38 high. No Cartman, skateboard, fence or planks from reference.",
+    "refs": [
+      "references/southpark-homeless.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png"
+    ]
+  }
+]

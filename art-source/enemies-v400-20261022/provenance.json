@@ -1,0 +1,522 @@
+{
+  "method": "Built-in image_gen, one generation per asset; actual images supplied using referenced_image_paths",
+  "jobs": [
+    {
+      "id": "sikorsky",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: Igor Sikorsky piloting his VS-300 open-cockpit helicopter, flying toward the LEFT in clean side elevation. Aircraft geometry from the historic wide photo, pilot face and trademark brown fedora/dark suit from the close photo. Long slender exposed tail boom extending RIGHT, single main rotor, small tail rotor, landing wheels, compact exposed engine frame. Make his oversized paper head and upper torso clearly visible above the open front seat, looking toward viewer with a proud amused expression. Do not add a modern enclosed cabin. Simplify tubular frame into readable chunky braces, grey metal and olive-grey body, pale rotor blades horizontal. Wide 3:2 composition, object occupying about 85% width; pilot is large enough to read at overall width 170 game units. Still rotor blade graphic; animation is handled in game.",
+      "refs": [
+        "references/sikorsky-heli.jpg",
+        "references/sikorsky-pilot.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png"
+      ]
+    },
+    {
+      "id": "xi",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: recognisable Xi Jinping from portrait reference, full body, oversized round paper head, small stocky body, dark navy suit, white shirt and subdued red tie. Face with characteristic neat black side-parted hair, broad cheeks and small self-satisfied smile, satirical but recognisable. Three-quarter view facing LEFT. Both forearms raised toward LEFT with elbows bent, palms forward and separated, fingers extended in an Emperor Palpatine force-lightning pose. Feet flat on same baseline, full body shoes included. IMPORTANT do not paint any lightning or glow: game renders the two-way animated lightning from his fingertips. No weapons, podium or flags. Portrait 2:3 composition.",
+      "refs": [
+        "references/xi.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png"
+      ]
+    },
+    {
+      "id": "t800",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: recognisable Arnold Schwarzenegger as T-800 in Terminator 2; full-body satirical paper character with oversized square head, short brown hair, black leather motorcycle jacket, black trousers and sturdy black boots. Reference still gives likeness, wardrobe and blue-grey steel palette. Three-quarter facing LEFT, standing squarely. One sunglass lens is damaged or absent showing a small glowing RED mechanical eye, a small clean exposed metallic cheek panel without blood or gore. Serious deadpan expression. Hands down, empty, no gun or motorcycle. Portrait 2:3 composition.",
+      "refs": [
+        "references/t800.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png"
+      ]
+    },
+    {
+      "id": "ufo",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: small retro Adamski-style alien flying saucer, shape based on physical silver model photograph. Low silver disc, small domed cabin on top, three oval windows, short green light accents. Nearly side-on with slight overhead visibility. Flying LEFT, readable wide silhouette at 110 game units. No stand, no landing legs, no exhaust plume, no surrounding effects. Real toy photo defines shape; current cast defines compatibility. Friendly ominous sci-fi parody, not photoreal.",
+      "refs": [
+        "references/ufo-model.jpg",
+        "style/current-cast.png"
+      ]
+    },
+    {
+      "id": "primeDrone",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: Amazon Prime Air MK30-inspired delivery drone from actual hardware photograph, flying LEFT in side elevation. White rounded central fuselage, blue struts and motors, compact cardboard package hanging securely underneath with a simple dark curved smile. Keep realistic mechanical proportions from photo but simplify into crafted paper/plastic game cutout. Clearly different from small plain phantom drone: bold BLUE arms, delivery box. No bomb, no dropped objects, no full text. Wide composition, readable at 105 game units.",
+      "refs": [
+        "references/amazon.jpg",
+        "style/current-cast.png",
+        "style/drone.png"
+      ]
+    },
+    {
+      "id": "twitterBird",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: blue mountain-bluebird transformed into a satirical old-Twitter bird character. Use real bird photo for recognisable blue plumage, tiny black beak and bird anatomy; use current cast for cartoon paper grammar. Flying LEFT, short rounded body, two large simple raised flapping wings, pointed tail, oversized slightly angry eyes and annoyed eyebrows. Pale sky-blue body and stronger cyan wing shapes. No human body, no perch, no logo text. Simple iconic silhouette readable at 75 game units.",
+      "refs": [
+        "references/bluebird.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png"
+      ]
+    },
+    {
+      "id": "homelessRow",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent side-view game sprite. Flat paper cutout with clean graphic shapes, restrained details, narrow warm off-white cut edge matching actual CURRENT CAST reference. No background, text, scene, watermark, shadow, glow, blur or halo. Preserve actual transparent alpha up to the object's crisp edge. Full silhouette with 6% transparent margin. Subject: TWO adult fictional homeless spectators lying flat on their backs side-by-side as one low ground obstacle, South Park-like paper animation. Actual source VIDEO STILL is pose/composition reference for lying people being jumped; CURRENT GAME CAST gives facial proportions and warm cutout edge. One wears a faded olive padded jacket and navy knit cap, the other a muted rust jacket with a shaggy brown beard. Heads on the LEFT, shoes toward RIGHT; slightly stagger bodies vertically so both heads, torsos and shoes are visible in side elevation. Hands rest on bellies, peaceful unimpressed expressions, fully clothed. One small flat cardboard scrap by them, no text. No injury, no ragdoll, no dirt stereotype details. Very LOW and WIDE horizontal silhouette, no standing figure, no raised knees; at game size about 140 wide x 38 high. No Cartman, skateboard, fence or planks from reference.",
+      "refs": [
+        "references/southpark-homeless.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png"
+      ]
+    },
+    {
+      "id": "bydSeal",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: silver BYD Seal electric sedan from actual manufacturer photos, full clean SIDE PROFILE, nose facing RIGHT. Real photographic bodywork and glazing, accurate distinct long low curved roof, door handles and wheels, two visible wheels, no perspective deformation. Follow supplied existing car-obstacle atlas and CURRENT CAST for game compatibility: realistic cutout, modest dark contours and narrow cream sticker edge; NOT a cartoon paper vehicle. Crop to vehicle only, no pavement. At runtime about 135 wide and 39 high; preserve full car aspect ratio.",
+      "refs": [
+        "references/byd-side.jpg",
+        "references/byd-profile.webp",
+        "references/byd.webp",
+        "style/vehicles.png",
+        "style/current-cast.png"
+      ]
+    },
+    {
+      "id": "xiaomiSu7",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: turquoise Xiaomi SU7 2024 electric sedan from actual side-view reference photo. Exact pure SIDE PROFILE, nose facing RIGHT; mirror reference direction if needed. Real photographic bodywork, cyan paint, dark glass and yellow brake calipers, both wheels visible. Follow supplied existing car-obstacle atlas and CURRENT CAST for game compatibility: realistic cutout and narrow warm cream sticker edge. Preserve sleek low roof and wheelbase. NO invented 3D angle, no cartoon. At runtime 135 world units wide.",
+      "refs": [
+        "references/xiaomi.jpg",
+        "style/vehicles.png",
+        "style/current-cast.png"
+      ]
+    },
+    {
+      "id": "batteryAgv",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: LOW factory autonomous cart based on photographed MiR250 chassis, simple side elevation facing LEFT. Squat grey mobile platform with dark wheel cutouts and small blue status strip. One flat rectangular EV battery pack is strapped horizontally on top with two yellow straps; battery has subtle dark grid panels and small high-voltage triangle pictogram, no readable text. Keep low and wide: 120 game units wide, about 40 high. Game cutout with softly photographic metal surfaces, chunky simple shapes, narrow off-white edge consistent current obstacles. This is a fictional battery logistics attachment, do not imply a real product photograph.",
+      "refs": [
+        "references/agv.png",
+        "style/current-cast.png",
+        "style/vehicles.png"
+      ]
+    },
+    {
+      "id": "qualitySkull",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: floating factory quality-control servo-skull inspired by the photographed physical Warhammer decoration. Bone-coloured stylised small skull, one mechanical RED camera eye, brass attachment on one temple, a compact black scanner under jaw, two short coiled cables trailing RIGHT as it flies LEFT. No hanging ribbon, no holiday ornament, no halo ring, no weapon, no beam. Satirical benign industrial robot. Flat cut-paper grammar, little detail, wide silhouette readable at 65 world units; narrow warm cream edge like current cast. No gore.",
+      "refs": [
+        "references/servo.png",
+        "style/current-cast.png",
+        "style/drone.png"
+      ]
+    },
+    {
+      "id": "starlink",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: small stray Starlink satellite. Real cleanroom HARDWARE PHOTO is primary mechanical object reference, supporting satellite depiction shows deployed array arrangement and is only a secondary geometric illustration, not a real flight photograph. Simplified flat rectangular silver bus and ONE broad dark-blue grid solar array extending diagonally to RIGHT, small dark antenna corners. Flying LEFT, slightly tilted about 12 degrees. Follow CURRENT CAST for compact readable paper cutout design and narrow warm-cream edge; do not add eyes, wings or rocket exhaust. Readable at width 110 world units.",
+      "refs": [
+        "references/starlink-photo.jpg",
+        "references/starlink-hardware.jpg",
+        "references/starlink-array.jpg",
+        "style/current-cast.png"
+      ]
+    },
+    {
+      "id": "regulatorDrone",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: bureaucratic inspector drone, fictional attachment on real MK30-inspired white/grey camera drone hardware. Side elevation flying LEFT. Small four-rotor camera chassis, two understated orange side panels, a tan document folder and squat red rubber approval stamp securely attached UNDERNEATH. No readable lettering or actual agency seal. Follow CURRENT CAST and existing drone for simple crafted paper/mechanical sprite; clearly distinct from BLUE delivery drone, here grey/orange with paperwork and round camera eye. No beams, no falling objects.",
+      "refs": [
+        "references/amazon.jpg",
+        "style/current-cast.png",
+        "style/drone.png"
+      ]
+    },
+    {
+      "id": "reptileHead",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: ONLY Elon Musk's head transformed into a green reptilian humanoid, comedic conspiracy gag. Actual Elon portrait supplies characteristic short swept brown hair, jaw and self-satisfied smile; actual iguana photo supplies green scales and amber slit pupils. CURRENT HERO screenshot is exact STYLE and head proportion reference: South Park-like flat paper head, two big simple white eyes, small nose, little smug mouth. Preserve recognisable Elon hairstyle and human face outline, add olive-green skin, 5\u20138 large scale shapes on cheeks/forehead, small amber vertical pupils. Almost front-facing with slight gaze RIGHT exactly like current hero. NO neck, no body, no costume, no long reptile snout, no horns, no whole lizard. Keep full face and hair with transparent margin. Game drawn head size 68x78 world units.",
+      "refs": [
+        "references/elon.jpg",
+        "references/iguana.jpg",
+        "style/hero.png",
+        "style/current-cast.png"
+      ]
+    },
+    {
+      "id": "moltenVat",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: distant factory ladle/vat of molten metal with ONE metallic robotic forearm sticking out giving a very clear THUMBS-UP gesture, affectionate Terminator 2 end-scene reference. Real foundry ladle photograph supplies cylindrical heavy metal vessel, brackets and steel surface, T800 reference supplies metallic robot theme. A low broad dark grey industrial vat, open elliptical top with muted burnt-orange molten surface, simple cream/silver robot hand rising at centre with four curled fingers and one unmistakably upright thumb. Small yellow-black caution stripe near base and a short safety railing along bottom. No human body, no gore, no splashes or flames outside vat. Must use muted layered construction-paper illustration matching supplied ACTUAL FACTORY background screenshot; NO WHITE STICKER OUTLINE for this background asset. Quiet contrast, readable at 160 world units wide. Whole static scene prop only, no factory room or floor.",
+      "refs": [
+        "references/vat.jpg",
+        "references/t800.jpg",
+        "style/current-cast.png",
+        "style/paper-person.png",
+        "style/current-factory.png"
+      ]
+    }
+  ],
+  "outputs": {
+    "sikorsky": {
+      "file": "assets/encounters/v400/sikorsky.png",
+      "w": 176,
+      "h": 89.146,
+      "pixels": [
+        768,
+        389
+      ],
+      "sourcePixels": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        13,
+        146,
+        1520,
+        909
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "5619dd383d0bbb6ed7115f767f21f1e86e720d2aeb9ce3f0f41a182f15da3520"
+    },
+    "xi": {
+      "file": "assets/encounters/v400/xi.png",
+      "w": 72,
+      "h": 109.281,
+      "pixels": [
+        506,
+        768
+      ],
+      "sourcePixels": [
+        1024,
+        1536
+      ],
+      "sourceCrop": [
+        51,
+        65,
+        978,
+        1471
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "56f56642f4f29a2b3c6655a442be59d4df5f781327c20299fa9ff596f69c6ac0"
+    },
+    "t800": {
+      "file": "assets/encounters/v400/t800.png",
+      "w": 57,
+      "h": 109.44,
+      "pixels": [
+        400,
+        768
+      ],
+      "sourcePixels": [
+        1024,
+        1536
+      ],
+      "sourceCrop": [
+        183,
+        66,
+        925,
+        1489
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "1661f9bf004a65db0c178ca6d7b17e42d9963299f627f450016e9443125495f8"
+    },
+    "ufo": {
+      "file": "assets/encounters/v400/ufo.png",
+      "w": 104,
+      "h": 47.26,
+      "pixels": [
+        768,
+        349
+      ],
+      "sourcePixels": [
+        1672,
+        940
+      ],
+      "sourceCrop": [
+        141,
+        130,
+        1535,
+        763
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "926e3e760155afe3acbc9215b35465a78e3a49039762c7ff89f8bf1c1e8ec358"
+    },
+    "primeDrone": {
+      "file": "assets/encounters/v400/primeDrone.png",
+      "w": 110,
+      "h": 48.984,
+      "pixels": [
+        768,
+        342
+      ],
+      "sourcePixels": [
+        1821,
+        864
+      ],
+      "sourceCrop": [
+        10,
+        31,
+        1812,
+        833
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "a46783dc00dd76be690c29c72f92fa834a02b2522aac366058cc2972822ab681"
+    },
+    "twitterBird": {
+      "file": "assets/encounters/v400/twitterBird.png",
+      "w": 76,
+      "h": 50.568,
+      "pixels": [
+        768,
+        511
+      ],
+      "sourcePixels": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        85,
+        50,
+        1460,
+        964
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "46436e2c78ac2ac104426b8bc898f047cb8ee934a9b1a5dd08631a554f5ee94e"
+    },
+    "homelessRow": {
+      "file": "assets/encounters/v400/homelessRow.png",
+      "w": 142,
+      "h": 40.122,
+      "pixels": [
+        768,
+        217
+      ],
+      "sourcePixels": [
+        2073,
+        758
+      ],
+      "sourceCrop": [
+        79,
+        124,
+        2012,
+        670
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "03ed702ddb2d5cd06d2c6174b8e88edce01a22adbae68570d268de367ea49806"
+    },
+    "bydSeal": {
+      "file": "assets/encounters/v400/bydSeal.png",
+      "w": 138,
+      "h": 44.562,
+      "pixels": [
+        768,
+        248
+      ],
+      "sourcePixels": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        144,
+        74,
+        2061,
+        693
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "840376084d808030f6900dbad884a825703c1dd7736fc147db457098759d8b69"
+    },
+    "xiaomiSu7": {
+      "file": "assets/encounters/v400/xiaomiSu7.png",
+      "w": 138,
+      "h": 42.047,
+      "pixels": [
+        768,
+        234
+      ],
+      "sourcePixels": [
+        1903,
+        826
+      ],
+      "sourceCrop": [
+        26,
+        190,
+        1877,
+        753
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "3187a0f29bc97d4a73a1186cc1fbd60785ac6beea61dc55a10d7d70184e20bab"
+    },
+    "batteryAgv": {
+      "file": "assets/encounters/v400/batteryAgv.png",
+      "w": 118,
+      "h": 41.177,
+      "pixels": [
+        768,
+        268
+      ],
+      "sourcePixels": [
+        2012,
+        782
+      ],
+      "sourceCrop": [
+        131,
+        113,
+        1878,
+        722
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "82d12e8efdb89038ea0351b7dc942754be9ab9f78aed29a88b2c4a12a8cc6d79"
+    },
+    "qualitySkull": {
+      "file": "assets/encounters/v400/qualitySkull.png",
+      "w": 76,
+      "h": 40.87,
+      "pixels": [
+        768,
+        413
+      ],
+      "sourcePixels": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        183,
+        152,
+        1413,
+        814
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "955bb780f34142f0f9302839283022730bfd1c7688c48c46ac59cc18ad994d4b"
+    },
+    "starlink": {
+      "file": "assets/encounters/v400/starlink.png",
+      "w": 112,
+      "h": 69.271,
+      "pixels": [
+        768,
+        475
+      ],
+      "sourcePixels": [
+        1559,
+        1009
+      ],
+      "sourceCrop": [
+        76,
+        97,
+        1491,
+        973
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "3988083ecbf0294a0c50b44df0bd8283347a56d5d9ffabe36ff6aa3a281d9e08"
+    },
+    "regulatorDrone": {
+      "file": "assets/encounters/v400/regulatorDrone.png",
+      "w": 106,
+      "h": 47.065,
+      "pixels": [
+        768,
+        341
+      ],
+      "sourcePixels": [
+        1536,
+        1024
+      ],
+      "sourceCrop": [
+        15,
+        176,
+        1521,
+        845
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "99140365f63c6e6af46fafbfd90380459ae5e0a4e5709dfc371ebd1c3a5cf830"
+    },
+    "reptileHead": {
+      "file": "assets/encounters/v400/reptileHead.png",
+      "w": 68,
+      "h": 79.416,
+      "pixels": [
+        274,
+        320
+      ],
+      "sourcePixels": [
+        1173,
+        1341
+      ],
+      "sourceCrop": [
+        121,
+        97,
+        1077,
+        1212
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "dc627f44d9efbaae3b93c44c5377ce25b518751b691071cf11a26f3670bcfa49"
+    },
+    "moltenVat": {
+      "file": "assets/encounters/v400/moltenVat.png",
+      "w": 164,
+      "h": 134.745,
+      "pixels": [
+        768,
+        631
+      ],
+      "sourcePixels": [
+        1351,
+        1164
+      ],
+      "sourceCrop": [
+        54,
+        71,
+        1298,
+        1093
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "f7fe4d31e0588da095c2647e5548d3b8bebdd67aa9cbdcfe6e619963bd1198ca"
+    }
+  },
+  "references": "references.json",
+  "normalization": "prepare.py: threshold 215, 5px median mask to remove low-opacity generated halos and isolated flecks, proportional Lanczos downsize, crop to actual alpha bounds; originals preserved",
+  "style": "Current runtime style/current-cast.png and style/current-factory.png; paper people, photographic car cutouts, quiet unoutlined factory background",
+  "limitations": "Manufacturer product captures are labelled where photo/render method is unknown. Fictional composite assets are generated adaptations, never documentary images.",
+  "refinement": {
+    "prompt": "Use case: precise-object-edit. Transparent game-sprite refinement. Image 1 is the existing battery AGV sprite: preserve its entire composition, low wide proportions, side elevation, grey chassis, blue status light, visible wheels, flat battery, yellow straps and cream cut edge. Image 2 is a VERIFIED actual warehouse photograph of the physical MiR-family mobile robot with a Dreamland Robots carrier, from manufacturer MiR250 page: use the real low wheeled base, mounting construction and industrial materials only as physical calibration, do NOT copy its tall shelving or warehouse. Image 3 is the manufacturer product view as supporting geometry; Image 4 is the current game style. Produce ONE low wide fictional battery-cart sprite, full silhouette, exact side profile, no text or logos. Retain the same apparent width:height about 2.57:1 and complete wheels on a straight baseline. No background, floor, shadow, glow, blur, halo or scene. True clean alpha around edges. Do not add perspective. Keep battery height and silhouette stable.",
+    "refs": [
+      "generated/batteryAgv-original.png",
+      "references/agv-factory.png",
+      "references/agv.png",
+      "style/current-cast.png"
+    ],
+    "output": "/Users/liubavskii/.codex/generated_images/01a164a8-9466-7801-bd24-20836bf546d1/exec-d0b9da33-29d1-40f4-aa31-afa1123611d5.png"
+  }
+}

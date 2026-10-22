@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=3.9.3';
-import {obstacleBoxes} from './physics.js?v=3.9.3';
-import {fallPolygons,interpolateFall} from './fall.js?v=3.9.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.0.0';
+import {obstacleBoxes} from './physics.js?v=4.0.0';
+import {fallPolygons,interpolateFall} from './fall.js?v=4.0.0';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -107,6 +107,7 @@ function overlaps(poly,rect){
   return true;
 }
 export function collisionAt(p,o,dx,time=0){
+  if(o.collision==='none')return false;
   if(dx>180||dx+o.w < -180)return false;
   const polygons=playerPolygons(p);
   return obstacleBoxes(o,time).some(b=>{const bottom=o.altitude||0,top=bottom+b.top;const rect=[{x:dx+b.left,y:bottom},{x:dx+b.right,y:bottom},{x:dx+b.right,y:top},{x:dx+b.left,y:top}];return polygons.some(poly=>overlaps(poly,rect));});

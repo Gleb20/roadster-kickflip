@@ -1,3 +1,7 @@
+## Ruleset4.0.0 encounters update —22October2026
+
+`rulesets.mjs` dispatches frozen3.4.2,3.8.0 and4.0.0. The new frozen generator has ground-only templates and biome-eligible pools. Cosmetic encounters/lightning do not enter ranked simulation. `20261022130000_encounters_v400.sql` expands only the deployed RPC guard, aborting if the expected guard is absent; existing tables, data, role grants and gateway settings remain intact. The function bundle was deployed before the frontend.17 hosted checks confirm three-version sessions and rejection of incomplete fabricated-score replays; public scores remain19, fixture writes0. Reproduce using `node supabase/test-encounters-remote.mjs <output.json>`.
+
 ## Prepared3.8.0 compatibility update
 
 rulesets.mjs dispatches explicitly to the untouched roadster-v3.4.2 and newly frozen roadster-v3.8.0 implementations. Session creation, replay parsing and resumed chunks use the declared version. Apply migrations/20261021110000_tuck_landing_v380.sql once to the existing project, then deploy the bundled tesla-ranking function with JWT gateway unchanged. The migration replaces the same service-only RPC body with two bounded changes: allow either ruleset on creation and store the requested supported ruleset in the new session. It preserves config flags, score epochv3, every row, grants and old checkpoints. No initial schema reapplication, score reset or data migration.

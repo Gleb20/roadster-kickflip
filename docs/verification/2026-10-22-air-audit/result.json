@@ -1,0 +1,685 @@
+{
+  "date": "2026-10-22",
+  "version": "3.9.3",
+  "scope": "Deterministic current-core characterization, not browser/phone playtesting. No-spin, zero-fuel controls. Grid measures sampled action plans, not probability or continuous safe-window width.",
+  "groundedHeroTop": 163,
+  "routeTimingMargin": 0.035,
+  "rows": [
+    {
+      "speed": 360,
+      "kind": "hover",
+      "obstacles": [
+        {
+          "id": "hoverDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 300,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 3.6916666666666664,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 360,
+      "kind": "incoming",
+      "obstacles": [
+        {
+          "id": "incomingDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 2.841666666666667,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 360,
+      "kind": "precision",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "truck",
+          "x": 1614,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "hoverDrone",
+          "x": 1255,
+          "w": 92,
+          "h": 40,
+          "altitude": 400,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 3.1916666666666664,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0.5,
+        "lead": 0.2,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 16,
+        "groundOnly": 3,
+        "fullOnly": 0,
+        "neither": 41,
+        "example": {
+          "charge": 0.75,
+          "lead": 0.4
+        }
+      }
+    },
+    {
+      "speed": 360,
+      "kind": "mixed",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "incomingDrone",
+          "x": 1434,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        },
+        {
+          "id": "truck",
+          "x": 1794,
+          "w": 110,
+          "h": 41
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 3.1916666666666664,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 1,
+        "lead": 0.65,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 1,
+        "groundOnly": 38,
+        "fullOnly": 0,
+        "neither": 21,
+        "example": {
+          "charge": 0,
+          "lead": 0.08
+        }
+      }
+    },
+    {
+      "speed": 510,
+      "kind": "hover",
+      "obstacles": [
+        {
+          "id": "hoverDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 300,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 2.625,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 510,
+      "kind": "incoming",
+      "obstacles": [
+        {
+          "id": "incomingDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 2.158333333333333,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 510,
+      "kind": "precision",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "truck",
+          "x": 1786.5,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "hoverDrone",
+          "x": 1255,
+          "w": 92,
+          "h": 40,
+          "altitude": 400,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 2.2666666666666666,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 25,
+        "groundOnly": 4,
+        "fullOnly": 0,
+        "neither": 31,
+        "example": {
+          "charge": 0.75,
+          "lead": 0.4
+        }
+      }
+    },
+    {
+      "speed": 510,
+      "kind": "mixed",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "incomingDrone",
+          "x": 1531.5,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        },
+        {
+          "id": "truck",
+          "x": 2041.5,
+          "w": 110,
+          "h": 41
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 2.2666666666666666,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 1,
+        "lead": 0.3,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 4,
+        "groundOnly": 43,
+        "fullOnly": 0,
+        "neither": 13,
+        "example": {
+          "charge": 0,
+          "lead": 0.08
+        }
+      }
+    },
+    {
+      "speed": 660,
+      "kind": "hover",
+      "obstacles": [
+        {
+          "id": "hoverDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 300,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 2.0416666666666665,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 660,
+      "kind": "incoming",
+      "obstacles": [
+        {
+          "id": "incomingDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 1.75,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 660,
+      "kind": "precision",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 75,
+          "h": 27.954545454545453
+        },
+        {
+          "id": "truck",
+          "x": 1295,
+          "w": 75,
+          "h": 27.954545454545453
+        },
+        {
+          "id": "truck",
+          "x": 1959,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "hoverDrone",
+          "x": 1285,
+          "w": 92,
+          "h": 40,
+          "altitude": 400,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 1.7583333333333333,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 26,
+        "groundOnly": 4,
+        "fullOnly": 0,
+        "neither": 30,
+        "example": {
+          "charge": 0.75,
+          "lead": 0.4
+        }
+      }
+    },
+    {
+      "speed": 660,
+      "kind": "mixed",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "incomingDrone",
+          "x": 1629,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        },
+        {
+          "id": "truck",
+          "x": 2289,
+          "w": 110,
+          "h": 41
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 1.7583333333333333,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.3,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 13,
+        "groundOnly": 41,
+        "fullOnly": 0,
+        "neither": 6,
+        "example": {
+          "charge": 0,
+          "lead": 0.08
+        }
+      }
+    },
+    {
+      "speed": 825,
+      "kind": "hover",
+      "obstacles": [
+        {
+          "id": "hoverDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 300,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 1.6333333333333333,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 825,
+      "kind": "incoming",
+      "obstacles": [
+        {
+          "id": "incomingDrone",
+          "x": 1200,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        }
+      ],
+      "noInput": {
+        "alive": true,
+        "allPassed": true,
+        "time": 1.4416666666666667,
+        "bonus": 50
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 60,
+        "groundOnly": 0,
+        "fullOnly": 0,
+        "neither": 0,
+        "example": null
+      }
+    },
+    {
+      "speed": 825,
+      "kind": "precision",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 90,
+          "h": 33.54545454545455
+        },
+        {
+          "id": "truck",
+          "x": 1310,
+          "w": 90,
+          "h": 33.54545454545455
+        },
+        {
+          "id": "truck",
+          "x": 2148.75,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "hoverDrone",
+          "x": 1300,
+          "w": 92,
+          "h": 40,
+          "altitude": 400,
+          "approachSpeed": 0
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 1.4083333333333332,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 26,
+        "groundOnly": 4,
+        "fullOnly": 0,
+        "neither": 30,
+        "example": {
+          "charge": 0.75,
+          "lead": 0.4
+        }
+      }
+    },
+    {
+      "speed": 825,
+      "kind": "mixed",
+      "obstacles": [
+        {
+          "id": "truck",
+          "x": 1200,
+          "w": 110,
+          "h": 41
+        },
+        {
+          "id": "incomingDrone",
+          "x": 1736.25,
+          "w": 92,
+          "h": 40,
+          "altitude": 220,
+          "approachSpeed": 110
+        },
+        {
+          "id": "truck",
+          "x": 2561.25,
+          "w": 110,
+          "h": 41
+        }
+      ],
+      "noInput": {
+        "alive": false,
+        "allPassed": false,
+        "time": 1.4083333333333332,
+        "bonus": 0
+      },
+      "witness": {
+        "charge": 0,
+        "lead": 0.3,
+        "burn": 0,
+        "timingMargin": 0.035
+      },
+      "grid": {
+        "count": 60,
+        "both": 19,
+        "groundOnly": 36,
+        "fullOnly": 0,
+        "neither": 5,
+        "example": {
+          "charge": 0,
+          "lead": 0.08
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "53ced2df0e8e964dcf7f1daf03f9c96785d4e0e5",
+  "parentTree": "5b828fd521ae9633e08d09c150f2cc3513e64f69",
+  "rehearsal": "/tmp/tesla-enemies-v400-rollback-20261022",
+  "forwardThenInverse": "exact parent tree confirmed",
+  "patch": "/tmp/tesla-enemies-v400-before-20261022/release-final.patch",
+  "parentTests": 128,
+  "parentChecks": "pass",
+  "serverPolicy": "Keep additive verifier compatibility and all public data; do not revert SQL tables or old rulesets."
+}

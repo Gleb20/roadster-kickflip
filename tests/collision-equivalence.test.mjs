@@ -8,13 +8,13 @@ import {createRandom} from '../src/random.js';
 import {createFall,beginFall,advanceFall,fallPose} from '../src/fall.js';
 import {sweptCollision as originalCollision} from '../supabase/rulesets/roadster-v380/gameplay.js';
 import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v380/routes.js';
-import {createRun as originalRun,verifyReplay as originalVerify} from '../supabase/rulesets/roadster-v380/run.js';
+import {createRun as originalRun,verifyReplay as originalVerify} from '../supabase/rulesets/roadster-v400/run.js';
 
 test('sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel',()=>{
  const random=createRandom(5873),dxs=[180,180+1e-9,180-1e-9,-400,-180,-180-1e-9,900,0];
  for(let i=0;i<2400;i++){
   const before={y:random.next()*1000,angle:(random.next()-.5)*12,grab:random.next()},after={y:before.y+(random.next()-.5)*160,angle:before.angle+(random.next()-.5)*2,grab:random.next()};
-  const obstacle={...types[i%types.length]},dx=i<dxs.length*types.length?dxs[i%dxs.length]:random.next()*1800-900,move=(random.next()-.5)*800,time=random.next()*200;
+  const hazards=types.filter(o=>o.collision!=='none'),obstacle={...hazards[i%hazards.length]},dx=i<dxs.length*types.length?dxs[i%dxs.length]:random.next()*1800-900,move=(random.next()-.5)*800,time=random.next()*200;
   assert.equal(sweptCollision(before,after,obstacle,dx,dx+move,time,1/120),originalCollision(before,after,obstacle,dx,dx+move,time,1/120),`sample ${i}`);
  }
  const p={y:0,angle:0},o={id:'truck',w:110,h:41};
@@ -26,7 +26,7 @@ test('falling rider and car retain exact swept collision results',()=>{
  const fall=createFall();beginFall(fall,{angle:-1.2,omega:-7.2,impact:800},{speed:450});
  for(let i=0;i<420;i++){
   const before={y:0,angle:0,fallPose:fallPose(fall)};advanceFall(fall,1/120);const after={y:0,angle:0,fallPose:fallPose(fall)};
-  for(const dx of [-500,-200,-50,50,180,181,500])for(const obstacle of types.filter(o=>!o.altitude))assert.equal(sweptCollision(before,after,obstacle,dx,dx-5,i/120,1/120),originalCollision(before,after,obstacle,dx,dx-5,i/120,1/120));
+  for(const dx of [-500,-200,-50,50,180,181,500])for(const obstacle of types.filter(o=>!o.altitude&&o.collision!=='none'))assert.equal(sweptCollision(before,after,obstacle,dx,dx-5,i/120,1/120),originalCollision(before,after,obstacle,dx,dx-5,i/120,1/120));
  }
 });
 

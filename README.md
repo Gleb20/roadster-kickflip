@@ -1,3 +1,9 @@
+## Encounters4.0.0
+
+[Play4.0.0](https://gleb20.github.io/roadster-kickflip/?v=4.0.0) · [Cast gallery](https://gleb20.github.io/roadster-kickflip/assets/concepts/enemies-v400/review.html)
+
+Safe timed flybys replace airborne jump ceilings. New cast includes Sikorsky in a VS-300, a UFO with reptile-Elon reaction, factory T-800/Chinese EVs/AGV/servo-skull, and Xi exchanging two-way cosmetic lightning with Elon. Two lying paper characters replace the Simpsons couch. Old collection discoveries and ranked records remain compatible. [Implementation and verification](docs/verification/2026-10-22-enemies-v400/README.md).
+
 ## Mobile input 3.9.3
 
 [Play3.9.3](https://gleb20.github.io/roadster-kickflip/?v=3.9.3). Expanded THRUST target preserved. Tip text responds to game input, the same-looking cross dismisses it, and active gameplay suppresses native long-press gestures. Route-search calculations run faster while retaining identical results and frozen ranked rules.128 game tests,8 server tests and97 native mobile checks pass; physical iPhone/Safari verification remains open. [Release notes](docs/releases/3.9.3.md).

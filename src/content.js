@@ -1,4 +1,5 @@
 // @ts-check
+import {ENEMY_SPRITES} from './enemy-sprite-data.js';
 /** One content definition per stable ID. Pixel storage never defines world size. */
 /** @typedef {import('./content-types.js').ObstacleDefinition} ObstacleDefinition */
 /** @typedef {import('./content-types.js').Reaction} Reaction */
@@ -10,8 +11,9 @@ function freeze(value){
 }
 export const BIOMES=freeze(['spaceport','tesla-factory']);
 export const BIOME_CYCLE=freeze(['spaceport','tesla-factory']);
-export const ANIMATIONS=freeze(['taunt','angry-look','point-and-laugh','trampoline-bounce','money-guns','podcast','throw']);
+export const ANIMATIONS=freeze(['taunt','angry-look','point-and-laugh','trampoline-bounce','money-guns','podcast','throw','lightning','reptile','look']);
 export const ASSETS=freeze({
+ ...Object.fromEntries(Object.entries(ENEMY_SPRITES).map(([id,s])=>['encounter_'+id,{file:s.file}])),
  collage:{file:'collage-atlas.png'},extras:{file:'collage-extras.png'},cast:{file:'paper-cast.png'},
  photos:{file:'obstacle-photos.png'},joe:{file:'assets/characters/joe-rogan.png'},
  amber:{file:'assets/characters/amber-head-v247.png'},drone:{file:'assets/obstacles/phantom-v3.png'},
@@ -27,6 +29,11 @@ function define(base,options={}){
   visual:{renderer:options.renderer||'prop',key:options.key||base.id,assets:options.assets||[],bob:options.bob||false},
   collision:options.collision||'box',reactions:{hero:options.hero||none,obstacle:options.obstacle||none},
   collectible:true,provenance:'assets-provenance.json'});
+}
+/** @param {string} id @param {string} name @param {import('./content-types.js').DefinitionOptions} options @param {number} [altitude] */
+function spriteDefinition(id,name,options,altitude=0){
+ const s=ENEMY_SPRITES[/** @type {keyof typeof ENEMY_SPRITES} */ (id)];
+ return define({id,name,w:s.w,h:s.h,inset:id==='t800'?10:5,...(altitude?{altitude}: {})},{...options,renderer:'sprite',assets:['encounter_'+id]});
 }
 export const OBSTACLES=freeze([
  define({id:'v8',name:'V8 • VERY LOUD',w:108,h:36},{renderer:'photo',assets:['photos'],category:'vehicle'}),
@@ -45,11 +52,25 @@ export const OBSTACLES=freeze([
  define({id:'muscleCoupe',name:'AMERICAN MUSCLE',w:138,h:45,inset:6},{renderer:'photo',assets:['photos'],category:'vehicle'}),
  define({id:'muscleCompact',name:'SMALL BLOCK / BIG EGO',w:112,h:38,inset:5},{renderer:'photo',assets:['photos'],category:'vehicle'}),
  define({id:'pickup',name:'BIG TRUCK ENERGY',w:140,h:57,inset:6},{renderer:'photo',assets:['photos'],category:'vehicle'}),
- define({id:'simpsonsCouch',name:'EVERGREEN TERRACE',w:136,h:88,inset:6},{category:'group'}),
- define({id:'hoverDrone',name:'HOVER DRONE',w:92,h:40,inset:8,altitude:300,approachSpeed:0},{renderer:'drone',assets:['drone'],category:'drone'}),
- define({id:'incomingDrone',name:'INCOMING DRONE',w:92,h:40,inset:8,altitude:220,approachSpeed:110},{renderer:'drone',assets:['drone'],category:'drone'}),
+ ...[
+  ['homelessRow','SPARE CHANGE','group','all'],
+  ['t800','T-800 / AUTOMATION','person',['tesla-factory']],
+  ['bydSeal','BYD SEAL','vehicle',['tesla-factory']],
+  ['xiaomiSu7','XIAOMI SU7','vehicle',['tesla-factory']],
+  ['batteryAgv','BATTERY SWAP','vehicle',['tesla-factory']],
+ ].map(([id,name,category,biomes])=>spriteDefinition(String(id),String(name),{category:String(category),biomes:Array.isArray(biomes)?biomes:'all'})),
+ ...[
+  ['ufo','UNIDENTIFIED FLYING OPPORTUNITY','all'],
+  ['primeDrone','PRIME PERSONAL SPACE','all'],
+  ['twitterBird','THE FORMER BIRD',['spaceport']],
+  ['starlink','STARLINK / WRONG ORBIT',['spaceport']],
+  ['regulatorDrone','APPROVAL PENDING','all'],
+  ['sikorsky','SIKORSKY / VS-300',['spaceport']],
+  ['qualitySkull','QUALITY CONTROL',['tesla-factory']],
+ ].map(([id,name,biomes])=>spriteDefinition(String(id),String(name),{category:'flyby',biomes:Array.isArray(biomes)?biomes:'all',collision:'none',hero:reaction(id==='ufo'?'reptile':'look','near',320)},240)),
+ spriteDefinition('xi','COMRADE XI',{category:'person',biomes:['tesla-factory'],collision:'none',hero:reaction('lightning','near',380),obstacle:reaction('lightning','near',380)}),
 ]);
-export const PROP_TYPES=freeze(OBSTACLES.filter(o=>['muscleCoupe','muscleCompact','pickup','simpsonsCouch'].includes(o.id)));
+export const PROP_TYPES=freeze(OBSTACLES.filter(o=>['muscleCoupe','muscleCompact','pickup'].includes(o.id)));
 export const AIR_TYPES=freeze(OBSTACLES.filter(o=>o.placement==='air'));
 const definitionsById=new Map(OBSTACLES.map(o=>[o.id,o]));
 /** @param {string} id */
@@ -68,9 +89,9 @@ export function validateContent(definitions=OBSTACLES){
   if(o.placement==='ground'&&o.altitude)errors.push(`${o.id}: ground altitude`);
   if(!['ground-center','air-bottom-center'].includes(o.anchor))errors.push(`${o.id}: invalid anchor`);
   if(o.biomes!=='all'&&(!Array.isArray(o.biomes)||!o.biomes.length||o.biomes.some(b=>!BIOMES.includes(b))))errors.push(`${o.id}: unknown biome`);
-  if(!o.visual||!['photo','cutout','character','prop','drone'].includes(o.visual.renderer))errors.push(`${o.id}: missing renderer`);
+  if(!o.visual||!['photo','cutout','character','prop','drone','sprite'].includes(o.visual.renderer))errors.push(`${o.id}: missing renderer`);
   for(const id of o.visual?.assets||[])if(!Object.hasOwn(ASSETS,id))errors.push(`${o.id}: unknown asset ${id}`);
-  if(!['box','trampoline'].includes(o.collision))errors.push(`${o.id}: missing collision profile`);
+  if(!['box','trampoline','none'].includes(o.collision))errors.push(`${o.id}: missing collision profile`);
   if(o.inset!==undefined&&(!Number.isFinite(o.inset)||o.inset<0||o.inset*2>=o.w))errors.push(`${o.id}: invalid inset`);
   for(const direction of /** @type {const} */ (['hero','obstacle'])){
    const r=o.reactions?.[direction];

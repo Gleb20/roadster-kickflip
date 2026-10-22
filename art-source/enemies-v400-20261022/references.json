@@ -1,0 +1,130 @@
+{
+  "accessed": "2026-10-22",
+  "sources": {
+    "sikorsky-heli.jpg": {
+      "page": "https://sikorskyarchives.com/vs-300-helicopter-design/",
+      "image": "https://sikorskyarchives.com/wp-content/uploads/2021/02/VS-300-First-Flight-9-1939-005-VS-546-4.jpg",
+      "role": "Historic VS-300 photograph; aircraft shape",
+      "credit": "Igor I Sikorsky Historical Archives; rights not established"
+    },
+    "sikorsky-pilot.jpg": {
+      "page": "https://www.prnewswire.com/news-releases/igor-sikorskys-vs-300-helicopter-transformed-aviation-75-years-ago-274964421.html",
+      "image": "https://photos.prnewswire.com/prnfull/20140912/NE11678-b",
+      "role": "Historic photograph; Sikorsky likeness and fedora",
+      "credit": "Sikorsky Aircraft release, PR Newswire; rights not established"
+    },
+    "xi.jpg": {
+      "page": "https://commons.wikimedia.org/wiki/File:Xi_Jinping_portrait_2019.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/59/Xi_Jinping_portrait_2019.jpg",
+      "role": "Xi Jinping processed photographic portrait",
+      "credit": "Kremlin.ru / Press Service of the President of the Russian Federation; processing Roman Kubanskiy; CC BY 4.0"
+    },
+    "byd-side.jpg": {
+      "page": "https://www.bydauto.nl/elektrische-autos/seal/",
+      "image": "https://www.bydauto.nl/content/uploads/2026/04/BYD-SEAL-zijaanzicht.jpg",
+      "role": "Manufacturer/distributor studio side view; primary Seal shape",
+      "credit": "BYD / Louwman BYD; rights not established"
+    },
+    "byd-profile.webp": {
+      "page": "https://www.byd.com/eu/electric-cars/seal",
+      "image": "https://www.byd.com/material/byd-site/eu-v3/model/seal2026/pc/exterior-gallery/atlantisgrey/1.webp",
+      "role": "Manufacturer three-quarter view; supporting body details",
+      "credit": "BYD; rights not established"
+    },
+    "byd.webp": {
+      "page": "https://www.byd.com/eu/electric-cars/seal",
+      "image": "https://www.byd.com/material/byd-site/eu-v3/model/seal2026/pc/herobanner/car-1.webp",
+      "role": "Supplementary manufacturer image",
+      "credit": "BYD; rights not established"
+    },
+    "xiaomi.jpg": {
+      "page": "https://www.automobile-propre.com/voitures/xiaomi-su7/",
+      "image": "https://cdn.automobile-propre.com/uploads/2024/04/Xiaomi-SU7-8-1640x923.jpg",
+      "role": "Xiaomi SU7 studio side profile photograph",
+      "credit": "Xiaomi promotional image via Automobile Propre; rights not established"
+    },
+    "t800.jpg": {
+      "page": "https://www.espinof.com/otros/los-retoques-digitales-de-james-cameron-para-terminator-2-3d-del-tratamiento-del-color-al-escroto-del-t-1000",
+      "image": "https://i.blogs.es/3559fa/terminator-2/840_560.jpg",
+      "role": "Actual Terminator 2 still; Arnold likeness, leather costume",
+      "credit": "Film still via Espinof; rights not established"
+    },
+    "amazon.jpg": {
+      "page": "https://www.aboutamazon.com/news/operations/mk30-drone-amazon-delivery-packages",
+      "image": "https://amazon-blogs-brightspot.s3.amazonaws.com/9d/b8/137ca3ef490b9be1e44597b10bdd/about-amazon-inline-inline007-aboutamazon-mk30-drone-cmd-2024-take-off-junkremoved-copy-6498x7945-1.jpg",
+      "role": "Amazon MK30 actual runway hardware photo",
+      "credit": "Amazon; rights not established"
+    },
+    "bluebird.jpg": {
+      "page": "https://www.csusb.edu/biology/birds/view/221746",
+      "image": "https://www.csusb.edu/sites/default/files/upload/image/mountain_bluebird2.jpg",
+      "role": "Real mountain bluebird anatomy and colour; fictional Twitter character",
+      "credit": "CSUSB Biology; photographer/rights not established"
+    },
+    "ufo-model.jpg": {
+      "page": "https://www.1999.co.jp/eng/10259147",
+      "image": "https://www.1999.co.jp/itbig25/10259147a3.jpg",
+      "role": "Photograph of physical WAVE 1/48 Adamski saucer model, not a real alien craft",
+      "credit": "WAVE / Hobby Search; rights not established"
+    },
+    "southpark-homeless.jpg": {
+      "page": "https://southpark.cc.com/news/tkxzmo/i-did-it-i-jumped-over-the-homeless",
+      "image": "https://images.paramount.tech/uri/mgid%3Aarc%3Aimageassetref%3Ashared.southpark.us.en%3A401439cd-7ebd-4aa3-90f6-16ad89fcbf96?crop=true&format=jpg&gen=ntrn&height=630&quality=0.7&width=1200",
+      "role": "Authentic animated episode still; user-requested pose/composition reference, not documentary human photo",
+      "credit": "South Park / Paramount; generated distinct two-person group"
+    },
+    "servo.png": {
+      "page": "https://merch.warhammer.com/products/warhammer-40000-servo-skull-with-halo-hanging-decoration",
+      "image": "https://merch.warhammer.com/cdn/shop/files/2_786a8b7f-05a4-4182-bb8d-221cd1740f3d.png?v=1760445576",
+      "role": "Physical servo-skull decoration product image; silhouette adapted as fictional quality robot",
+      "credit": "Warhammer Officially Licensed Merchandise / Games Workshop; rights not established"
+    },
+    "agv.png": {
+      "page": "https://mobile-industrial-robots.com/products/robots/mir250",
+      "image": "https://a.storyblok.com/f/230581/2000x1248/71f728b230/mir250-transparent.png",
+      "role": "Manufacturer MiR250 product image; fictional battery attachment",
+      "credit": "Mobile Industrial Robots; product image capture method not established"
+    },
+    "iguana.jpg": {
+      "page": "https://www.nationalgeographic.com/animals/reptiles/facts/green-iguana",
+      "image": "https://i.natgeofe.com/n/34b9d763-a5ef-434b-8d13-48f4919ca078/green-iguana_thumb_16x9.jpg?w=1200",
+      "role": "Real iguana close-up; scales and amber pupils",
+      "credit": "National Geographic; photographer/rights not established"
+    },
+    "elon.jpg": {
+      "page": "https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg",
+      "role": "Existing project photographic reference; Elon identity, from pwa-kickflip-v2 provenance",
+      "credit": "Royal Society / Duncan.Hull, see existing source provenance"
+    },
+    "vat.jpg": {
+      "page": "https://sirpl.in/",
+      "image": "https://sirpl.in/LDreal.png",
+      "role": "Actual foundry ladle photo; steel surface and vessel form",
+      "credit": "Samwha India Refractories; rights not established"
+    },
+    "starlink-photo.jpg": {
+      "page": "https://newatlas.com/technology/starlink-direct-to-phone-satellites-orbit/",
+      "image": "https://newatlas-brightspot.s3.amazonaws.com/82/f3/2f664a3446a38b2a83d0db89bfba/starlinks-six-direct-to-cell-satellites-ready-for-launch.jpg",
+      "role": "Actual cleanroom photograph of Starlink stack; physical hardware primary",
+      "credit": "SpaceX via New Atlas; rights not established"
+    },
+    "starlink-hardware.jpg": {
+      "page": "https://www.businessinsider.com/spacex-starlink-satellite-internet-service-summer-beta-signup-application-website-2020-6",
+      "image": "https://i.insider.com/5ee7c3cff0f4191fa10d9a34?auto=webp&format=jpeg&width=800",
+      "role": "Supporting hardware depiction; photographic/rendered status not established",
+      "credit": "SpaceX depiction via Business Insider; rights not established"
+    },
+    "starlink-array.jpg": {
+      "page": "https://hothardware.com/news/spacex-starlink-beta",
+      "image": "https://images.hothardware.com/contentimages/newsitem/53072/content/starlink-satellite.JPG",
+      "role": "Supporting solar-array visualization; not claimed as flight photograph",
+      "credit": "SpaceX depiction via HotHardware; rights not established"
+    },
+    "agv-factory.png": {
+      "page": "https://mobile-industrial-robots.com/products/robots/mir250",
+      "image": "https://a.storyblok.com/f/230581/4096x2731/d8de3ce145/mir250_forvia-3.png",
+      "role": "Actual MiR warehouse photograph; physical chassis primary reference for final refinement",
+      "credit": "Mobile Industrial Robots; rights not established"
+    }
+  }
+}

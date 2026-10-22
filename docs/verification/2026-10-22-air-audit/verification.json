@@ -1,0 +1,17 @@
+{
+  "scope": "Documentation and deterministic core audit only; no artwork, gameplay change or publication.",
+  "baselineSnapshot": "/tmp/tesla-air-audit-before-20261022",
+  "gameTests": {
+    "passed": 128,
+    "failed": 0
+  },
+  "npmCheck": {
+    "exitCode": 0,
+    "contentDefinitions": 19,
+    "pwaResources": 132
+  },
+  "runtimeFilesUnchanged": 384,
+  "headAndIndexUnchanged": true,
+  "documentationRollback": "Passed isolated rehearsal: three baseline documents restored and exact new candidate files removed; guards reject modified candidates.",
+  "phoneAcceptance": "Not performed by this audit."
+}

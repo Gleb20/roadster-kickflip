@@ -1,3 +1,7 @@
+## Encounters4.0.0 restore point —22October2026
+
+Before snapshot: `/tmp/tesla-enemies-v400-before-20261022/before.tar.gz` plus `hashes.json`, status and diff. Original HEAD/index remain untouched. Publish from `/tmp/tesla-enemies-v400-release-20261022`; inverse patch and exact-parent rehearsal are recorded in `docs/verification/2026-10-22-enemies-v400/rollback.json`. Apply rollback in an isolated checkout and allocate a fresh PWA version when publicly rolling back; never restore3.9.3 bytes over an existing4.0.0 cache. Keep additive three-ruleset server support and all ranking/collection records. No SQL data rollback is required.
+
 ## Mobile input 3.9.3 rollback
 
 Parent main dbe300ca753e0669dd4dbf00baf70fe0a321d709 / published3.9.2. Bounded forward and inverse patches are rehearsed in isolation; the inverse reproduces the exact parent tree and its124 passing tests/checks. Preserve all saved scores, collection, backend data and frozen server rulesets. Do not reset the dirty original checkout or its index. A public rollback must use a fresh frontend/cache version. Local release evidence: docs/verification/2026-10-22-input-v393/.

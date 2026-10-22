@@ -1,0 +1,362 @@
+{
+  "sikorsky": {
+    "file": "assets/encounters/v400/sikorsky.png",
+    "w": 176,
+    "h": 89.146,
+    "pixels": [
+      768,
+      389
+    ],
+    "sourcePixels": [
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      13,
+      146,
+      1520,
+      909
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "5619dd383d0bbb6ed7115f767f21f1e86e720d2aeb9ce3f0f41a182f15da3520"
+  },
+  "xi": {
+    "file": "assets/encounters/v400/xi.png",
+    "w": 72,
+    "h": 109.281,
+    "pixels": [
+      506,
+      768
+    ],
+    "sourcePixels": [
+      1024,
+      1536
+    ],
+    "sourceCrop": [
+      51,
+      65,
+      978,
+      1471
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "56f56642f4f29a2b3c6655a442be59d4df5f781327c20299fa9ff596f69c6ac0"
+  },
+  "t800": {
+    "file": "assets/encounters/v400/t800.png",
+    "w": 57,
+    "h": 109.44,
+    "pixels": [
+      400,
+      768
+    ],
+    "sourcePixels": [
+      1024,
+      1536
+    ],
+    "sourceCrop": [
+      183,
+      66,
+      925,
+      1489
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "1661f9bf004a65db0c178ca6d7b17e42d9963299f627f450016e9443125495f8"
+  },
+  "ufo": {
+    "file": "assets/encounters/v400/ufo.png",
+    "w": 104,
+    "h": 47.26,
+    "pixels": [
+      768,
+      349
+    ],
+    "sourcePixels": [
+      1672,
+      940
+    ],
+    "sourceCrop": [
+      141,
+      130,
+      1535,
+      763
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "926e3e760155afe3acbc9215b35465a78e3a49039762c7ff89f8bf1c1e8ec358"
+  },
+  "primeDrone": {
+    "file": "assets/encounters/v400/primeDrone.png",
+    "w": 110,
+    "h": 48.984,
+    "pixels": [
+      768,
+      342
+    ],
+    "sourcePixels": [
+      1821,
+      864
+    ],
+    "sourceCrop": [
+      10,
+      31,
+      1812,
+      833
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "a46783dc00dd76be690c29c72f92fa834a02b2522aac366058cc2972822ab681"
+  },
+  "twitterBird": {
+    "file": "assets/encounters/v400/twitterBird.png",
+    "w": 76,
+    "h": 50.568,
+    "pixels": [
+      768,
+      511
+    ],
+    "sourcePixels": [
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      85,
+      50,
+      1460,
+      964
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "46436e2c78ac2ac104426b8bc898f047cb8ee934a9b1a5dd08631a554f5ee94e"
+  },
+  "homelessRow": {
+    "file": "assets/encounters/v400/homelessRow.png",
+    "w": 142,
+    "h": 40.122,
+    "pixels": [
+      768,
+      217
+    ],
+    "sourcePixels": [
+      2073,
+      758
+    ],
+    "sourceCrop": [
+      79,
+      124,
+      2012,
+      670
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "03ed702ddb2d5cd06d2c6174b8e88edce01a22adbae68570d268de367ea49806"
+  },
+  "bydSeal": {
+    "file": "assets/encounters/v400/bydSeal.png",
+    "w": 138,
+    "h": 44.562,
+    "pixels": [
+      768,
+      248
+    ],
+    "sourcePixels": [
+      2172,
+      724
+    ],
+    "sourceCrop": [
+      144,
+      74,
+      2061,
+      693
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "840376084d808030f6900dbad884a825703c1dd7736fc147db457098759d8b69"
+  },
+  "xiaomiSu7": {
+    "file": "assets/encounters/v400/xiaomiSu7.png",
+    "w": 138,
+    "h": 42.047,
+    "pixels": [
+      768,
+      234
+    ],
+    "sourcePixels": [
+      1903,
+      826
+    ],
+    "sourceCrop": [
+      26,
+      190,
+      1877,
+      753
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "3187a0f29bc97d4a73a1186cc1fbd60785ac6beea61dc55a10d7d70184e20bab"
+  },
+  "batteryAgv": {
+    "file": "assets/encounters/v400/batteryAgv.png",
+    "w": 118,
+    "h": 41.177,
+    "pixels": [
+      768,
+      268
+    ],
+    "sourcePixels": [
+      2012,
+      782
+    ],
+    "sourceCrop": [
+      131,
+      113,
+      1878,
+      722
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "82d12e8efdb89038ea0351b7dc942754be9ab9f78aed29a88b2c4a12a8cc6d79"
+  },
+  "qualitySkull": {
+    "file": "assets/encounters/v400/qualitySkull.png",
+    "w": 76,
+    "h": 40.87,
+    "pixels": [
+      768,
+      413
+    ],
+    "sourcePixels": [
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      183,
+      152,
+      1413,
+      814
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "955bb780f34142f0f9302839283022730bfd1c7688c48c46ac59cc18ad994d4b"
+  },
+  "starlink": {
+    "file": "assets/encounters/v400/starlink.png",
+    "w": 112,
+    "h": 69.271,
+    "pixels": [
+      768,
+      475
+    ],
+    "sourcePixels": [
+      1559,
+      1009
+    ],
+    "sourceCrop": [
+      76,
+      97,
+      1491,
+      973
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "3988083ecbf0294a0c50b44df0bd8283347a56d5d9ffabe36ff6aa3a281d9e08"
+  },
+  "regulatorDrone": {
+    "file": "assets/encounters/v400/regulatorDrone.png",
+    "w": 106,
+    "h": 47.065,
+    "pixels": [
+      768,
+      341
+    ],
+    "sourcePixels": [
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      15,
+      176,
+      1521,
+      845
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "99140365f63c6e6af46fafbfd90380459ae5e0a4e5709dfc371ebd1c3a5cf830"
+  },
+  "reptileHead": {
+    "file": "assets/encounters/v400/reptileHead.png",
+    "w": 68,
+    "h": 79.416,
+    "pixels": [
+      274,
+      320
+    ],
+    "sourcePixels": [
+      1173,
+      1341
+    ],
+    "sourceCrop": [
+      121,
+      97,
+      1077,
+      1212
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "dc627f44d9efbaae3b93c44c5377ce25b518751b691071cf11a26f3670bcfa49"
+  },
+  "moltenVat": {
+    "file": "assets/encounters/v400/moltenVat.png",
+    "w": 164,
+    "h": 134.745,
+    "pixels": [
+      768,
+      631
+    ],
+    "sourcePixels": [
+      1351,
+      1164
+    ],
+    "sourceCrop": [
+      54,
+      71,
+      1298,
+      1093
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "sha256": "f7fe4d31e0588da095c2647e5548d3b8bebdd67aa9cbdcfe6e619963bd1198ca"
+  }
+}

@@ -1,8 +1,8 @@
-import {obstacleDefinition} from './content.js?v=3.9.3';
-import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=3.9.3';
-import {createCash,advanceCash} from './cash.js?v=3.9.3';
-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=3.9.3';
-import {joeReaction} from './encounter.js?v=3.9.3';
+import {obstacleDefinition} from './content.js?v=4.0.0';
+import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=4.0.0';
+import {createCash,advanceCash} from './cash.js?v=4.0.0';
+export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=4.0.0';
+import {joeReaction} from './encounter.js?v=4.0.0';
 /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
 export function uprightWristAngle(parentAngle,side,strength){
   const limit=Math.PI/12;
@@ -12,7 +12,7 @@ export function pupilOffset(target,eye,rx,ry){
   const dx=target.x-eye.x,dy=target.y-eye.y,distance=Math.hypot(dx,dy)||1;
   return {x:dx/distance*rx,y:dy/distance*ry};
 }
-export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites, heroRig=HERO_RIG, heroAppearance={}}) {
+export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, joeTarget, obstacleDx, joeSprite, castSprites, enemySprites, heroRig=HERO_RIG, heroAppearance={}}) {
   const appearance={...HERO_APPEARANCE,...heroAppearance};
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INK='#282b2d', PAPER='#f4eedf', SKIN='#edbf96';
@@ -99,6 +99,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     }
   }
   function heroHead(c,boosted,target,angry,reaction){
+    if(gestureTarget()?.id==='ufo'&&enemySprites?.head(c))return;
     if(appearance.head!=='head'){head(c,appearance.head,-33,-74,68,78);return;}
     if(reaction.fall){
       faceBase(c,'head');eyes(c,[[-8,-33],[14,-33]],{x:5,y:-42},9,12);
@@ -270,6 +271,7 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
     const rear=h.arms[0],v={x:rear.wrist.x-rear.shoulder.x,y:rear.wrist.y-rear.shoulder.y},target=h.aim&&{x:h.aim.x-rear.shoulder.x,y:h.aim.y-rear.shoulder.y};
     return {feet,crouch:h.crouch,bodyDrop:h.drop,landingCrouch:landingCrouch(motion),reactionSpace:h.reactionSpace,aimCosine:target?(v.x*target.x+v.y*target.y)/(Math.hypot(v.x,v.y)*Math.hypot(target.x,target.y)):null,jointMouthDistance:h.podcast?Math.hypot(rear.wrist.x+17-h.mouth.x,rear.wrist.y-h.mouth.y):null,reaction:h.reaction,gripError:h.grab>.999?Math.hypot(near.x-goal.x,near.y-goal.y):null,trick:HERO_TRICKS[motion.trick].id,grabSide:HERO_HANDS.grab,interactionSide:HERO_HANDS.interaction,grab:h.grab,car:h.car,expression:h.podcast?(h.reaction.inhale>.15?'inhale':h.reaction.meme>.05?'podcast-meme':'podcast'):h.target?(h.target.id==='trump'?'angry':'laugh'):h.B.impossibru?'impossibru':'neutral',cash:{count:cash.notes.length,falling:cash.notes.filter(p=>p.falling).length},nearWrist:h.arms[1].wrist,rearWrist:h.arms[0].wrist};}
   function carPose(){return layout().car;}
+  function interactionHand(){const h=layout(),side=h.air||h.grab>0?HERO_HANDS.interaction:h.facing;const a=h.arms[side<0?0:1];const angle=h.aim?Math.atan2(h.aim.y-a.wrist.y,h.aim.x-a.wrist.x):0;const tip=rotate({x:15,y:-3},angle);return heroToWorld(torsoToHero({x:a.wrist.x+tip.x,y:a.wrist.y+tip.y},h),h.flight,h.offset);}
   function elon(x,y,air,pose=0){
     const h=layout(),{S,B,sceneTime,reaction,target,grab,crouch,drop,taunt,tilt,opponent}=h;
     const impact=clamp(S.fallImpact||0),legPoses=legs(h);
@@ -406,5 +408,5 @@ export function createCharacterRenderer({ctx, cutout, getState, gestureTarget, j
   }
   function cameoLeg(headKey,x,y){seatedSprite(headKey,x,y,true);}
   function cameoRider(headKey,x,y){seatedSprite(headKey,x,y);}
-  return {update,reset,elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,drawMoneyStreams,carPose,inspect};
+  return {update,reset,elon,trumpPose,zuckerberg,rogozin,amber,joe,rogozinBounce,cameoRider,cameoLeg,drawMoneyStreams,carPose,interactionHand,inspect};
 }

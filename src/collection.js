@@ -13,7 +13,9 @@ export function createCollection(storage,ids,now=Date.now){
    }
   }
  }catch{persistent=false;writable=false;}
+ let migrated=false;if(known.has('homelessRow')&&entries.simpsonsCouch&&!entries.homelessRow){entries.homelessRow={...entries.simpsonsCouch};migrated=true;}
  function save(){if(!writable)return;try{storage.setItem(COLLECTION_KEY,JSON.stringify({version:1,entries}));}catch{persistent=false;writable=false;}}
+ if(migrated)save();
  return {
   get persistent(){return persistent;},
   state(id){return !known.has(id)||!entries[id]?'locked':entries[id].firstViewedAt===null?'new':'viewed';},

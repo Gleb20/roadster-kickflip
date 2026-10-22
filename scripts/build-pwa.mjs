@@ -11,10 +11,11 @@ for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))fi
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
 for(const id of FACTORY_ASSETS)files.add('assets/factory/'+id+'.png');
 files.add('assets/factory/ATTRIBUTION.md');
+files.add('assets/encounters/v400/ATTRIBUTION.md');
 const core=[];
 for(const file of [...files].sort()){
  const bytes=await readFile(new URL(file,root));
- core.push({url:file+(file.startsWith('src/')&&file.endsWith('.js')||file==='style.css'?'?v='+pkg.version:''),sha256:createHash('sha256').update(bytes).digest('hex')});
+ core.push({url:file+(file.startsWith('src/')&&file.endsWith('.js')&&file!=='src/enemy-sprite-data.js'||file==='style.css'?'?v='+pkg.version:''),sha256:createHash('sha256').update(bytes).digest('hex')});
 }
 const template=await readFile(new URL('scripts/sw-template.js',root),'utf8');
 const result=template.replace('__VERSION__',pkg.version).replace('__CORE__',JSON.stringify(core,null,1));

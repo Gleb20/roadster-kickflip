@@ -1,0 +1,30 @@
+[
+  {
+    "id": "sikorsky",
+    "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: Igor Sikorsky piloting his VS-300 open-cockpit helicopter, flying toward the LEFT in clean side elevation. Aircraft geometry from the historic wide photo, pilot face and trademark brown fedora/dark suit from the close photo. Long slender exposed tail boom extending RIGHT, single main rotor, small tail rotor, landing wheels, compact exposed engine frame. Make his oversized paper head and upper torso clearly visible above the open front seat, looking toward viewer with a proud amused expression. Do not add a modern enclosed cabin. Simplify tubular frame into readable chunky braces, grey metal and olive-grey body, pale rotor blades horizontal. Wide 3:2 composition, object occupying about 85% width; pilot is large enough to read at overall width 170 game units. Still rotor blade graphic; animation is handled in game.",
+    "refs": [
+      "references/sikorsky-heli.jpg",
+      "references/sikorsky-pilot.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png"
+    ]
+  },
+  {
+    "id": "xi",
+    "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: recognisable Xi Jinping from portrait reference, full body, oversized round paper head, small stocky body, dark navy suit, white shirt and subdued red tie. Face with characteristic neat black side-parted hair, broad cheeks and small self-satisfied smile, satirical but recognisable. Three-quarter view facing LEFT. Both forearms raised toward LEFT with elbows bent, palms forward and separated, fingers extended in an Emperor Palpatine force-lightning pose. Feet flat on same baseline, full body shoes included. IMPORTANT do not paint any lightning or glow: game renders the two-way animated lightning from his fingertips. No weapons, podium or flags. Portrait 2:3 composition.",
+    "refs": [
+      "references/xi.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png"
+    ]
+  },
+  {
+    "id": "t800",
+    "prompt": "Use case: stylized-concept. Asset type: transparent 2D side-view game sprite for Tesla Jump. Use the photograph(s) for exact object/identity recognition and the supplied CURRENT GAME CAST screenshot plus Joe sprite for paper character proportions, outline and colour. South Park-like flat cut-paper shapes, readable at small size, few details, warm off-white narrow sticker edge. Entire silhouette in frame with clear transparent margin. No background, no ground, no cast shadow, no text, no labels, no watermark. True alpha. One asset only. Subject: recognisable Arnold Schwarzenegger as T-800 in Terminator 2; full-body satirical paper character with oversized square head, short brown hair, black leather motorcycle jacket, black trousers and sturdy black boots. Reference still gives likeness, wardrobe and blue-grey steel palette. Three-quarter facing LEFT, standing squarely. One sunglass lens is damaged or absent showing a small glowing RED mechanical eye, a small clean exposed metallic cheek panel without blood or gore. Serious deadpan expression. Hands down, empty, no gun or motorcycle. Portrait 2:3 composition.",
+    "refs": [
+      "references/t800.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png"
+    ]
+  }
+]

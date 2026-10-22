@@ -739,5 +739,36 @@
     "spriteSources": "factoryAssemblyArt20261021, factoryLineupArt20261021 and factoryProductionV390 retained unchanged",
     "historicalForklift": "Original asset and attribution retained; removed from active renderer/cache",
     "ruleset": "roadster-v3.8.0 unchanged"
+  },
+  "encountersV400": {
+    "files": [
+      "assets/encounters/v400/sikorsky.png",
+      "assets/encounters/v400/xi.png",
+      "assets/encounters/v400/t800.png",
+      "assets/encounters/v400/ufo.png",
+      "assets/encounters/v400/primeDrone.png",
+      "assets/encounters/v400/twitterBird.png",
+      "assets/encounters/v400/homelessRow.png",
+      "assets/encounters/v400/bydSeal.png",
+      "assets/encounters/v400/xiaomiSu7.png",
+      "assets/encounters/v400/batteryAgv.png",
+      "assets/encounters/v400/qualitySkull.png",
+      "assets/encounters/v400/starlink.png",
+      "assets/encounters/v400/regulatorDrone.png",
+      "assets/encounters/v400/reptileHead.png",
+      "assets/encounters/v400/moltenVat.png"
+    ],
+    "method": "Built-in image_gen, one generation per asset; actual images supplied using referenced_image_paths",
+    "provenance": "art-source/enemies-v400-20261022/provenance.json",
+    "sources": "art-source/enemies-v400-20261022/references.json",
+    "originals": "art-source/enemies-v400-20261022/generated/",
+    "prompts": [
+      "art-source/enemies-v400-20261022/jobs-first.json",
+      "art-source/enemies-v400-20261022/jobs-second.json",
+      "art-source/enemies-v400-20261022/jobs-third.json",
+      "art-source/enemies-v400-20261022/jobs-fourth.json"
+    ],
+    "normalization": "prepare.py: threshold 215, 5px median mask to remove low-opacity generated halos and isolated flecks, proportional Lanczos downsize, crop to actual alpha bounds; originals preserved",
+    "alpha": "RGBA; no opaque backdrop, exact visible geometry used for world aspect ratio"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "bundleSha256": "8a5b63a666dad984de3969152c4d91630a89ea2f317b8c6cd4317f9f71c10d6a",
+  "sqlSha256": "ce2f24134f7adcedc8bb0ce084f870fa7f6e343a7b34a0fb1da0d8a107bdaa6e",
+  "newRuleset": "roadster-v4.0.0",
+  "retainedRulesets": [
+    "roadster-v3.4.2",
+    "roadster-v3.8.0"
+  ]
+}

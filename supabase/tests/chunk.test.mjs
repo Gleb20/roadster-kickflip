@@ -33,7 +33,7 @@ test('hosted gateway rewritten path and custom capability header are supported',
 });
 
 test('new gameplay freezes independently and both rulesets verify interrupted checkpoints exactly',async()=>{
- const current=await import('../../src/run.js'),frozen=await import('../rulesets/roadster-v380/run.js');
+ const current=await import('../../src/run.js'),frozen=await import('../rulesets/roadster-v400/run.js');
  for(const module of [current,frozen]){
   const r=module.createRun({seed:73});r.reset();const actions=new Map([[0,'primary-down'],[24,'primary-up'],[25,'primary-down'],[121,'primary-up']]);
   while(r.S.mode==='playing'){const a=actions.get(r.S.tick);if(a)r.command(a);r.step();r.drainEvents();}
@@ -43,9 +43,11 @@ test('new gameplay freezes independently and both rulesets verify interrupted ch
  }
 });
 test('session creation and replay submission explicitly support both versions, with no unknown fallback',async()=>{
- for(const ruleset of ['roadster-v3.4.2','roadster-v3.8.0']){
+ for(const ruleset of ['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0']){
   const handle=createHandler({rpc:async(action,p)=>{assert.equal(action,'create');assert.equal(p.ruleset,ruleset);return {ruleset};}});
   const res=await handle(new Request('https://x.test/tesla-ranking/sessions',{method:'POST',headers:{Origin:'https://gleb20.github.io','Content-Type':'application/json'},body:JSON.stringify({ruleset})}));assert.equal(res.status,201);assert.equal((await res.json()).ruleset,ruleset);
  }
  assert.throws(()=>verifyChunk({...fixture(),ruleset:'unknown'}));
 });
+
+test('legacy 3.8 finished records still verify through version dispatch',async()=>{const m=await import('../rulesets/roadster-v380/run.js');const r=m.createRun({seed:19});r.reset();while(r.S.mode==='playing')r.step();const replay=r.replay(),expected=m.verifyReplay(replay);let checkpoint=null,result;do{result=verifyChunk(replay,checkpoint,{maxTicks:73,budgetMs:Infinity});checkpoint=result.checkpoint?structuredClone(result.checkpoint):null;}while(result.outcome==='pending');assert.deepEqual(result.result,expected);});

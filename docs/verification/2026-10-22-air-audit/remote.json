@@ -1,0 +1,40 @@
+{
+  "remoteMain": "53ced2df0e8e964dcf7f1daf03f9c96785d4e0e5",
+  "files": [
+    {
+      "file": "src/director.js",
+      "matchesRemoteMain": true,
+      "sha256": "4042b0487b8fd3b5220ef6b3f38e683ddf7875d634d55e313792f04ad2540513"
+    },
+    {
+      "file": "src/routes.js",
+      "matchesRemoteMain": true,
+      "sha256": "55d0efa9956dc80d141ef8a65e9323706d618fec4879b5226e3e5ce2a0664528"
+    },
+    {
+      "file": "src/gameplay-config.js",
+      "matchesRemoteMain": true,
+      "sha256": "106f8285ba68ef94a7e1c0596fc03a8cac6142d4ef0114a5bd3ab4c94eaa3634"
+    },
+    {
+      "file": "src/gameplay.js",
+      "matchesRemoteMain": true,
+      "sha256": "f35acd76081c9233b3fbe71c510d26214fb44fa3ab0decdeb1dc6de129d62c81"
+    },
+    {
+      "file": "src/run.js",
+      "matchesRemoteMain": true,
+      "sha256": "79dbda8729f15e48335c5ad2a8352b057a66f3e97a7e3c3b15463aa263f2d682"
+    },
+    {
+      "file": "src/content.js",
+      "matchesRemoteMain": true,
+      "sha256": "280b93931a85f2122de4efe94619ca4e3eb10ae5a0dbe1fdfb2577d8c3be9cf7"
+    },
+    {
+      "file": "src/collection-copy.js",
+      "matchesRemoteMain": true,
+      "sha256": "a4c3357cf6d69c1f290874197a64046e5d3963f8ad347369cb5040827c42c56c"
+    }
+  ]
+}

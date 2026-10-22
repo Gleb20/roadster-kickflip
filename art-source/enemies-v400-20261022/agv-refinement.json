@@ -1,0 +1,10 @@
+{
+  "prompt": "Use case: precise-object-edit. Transparent game-sprite refinement. Image 1 is the existing battery AGV sprite: preserve its entire composition, low wide proportions, side elevation, grey chassis, blue status light, visible wheels, flat battery, yellow straps and cream cut edge. Image 2 is a VERIFIED actual warehouse photograph of the physical MiR-family mobile robot with a Dreamland Robots carrier, from manufacturer MiR250 page: use the real low wheeled base, mounting construction and industrial materials only as physical calibration, do NOT copy its tall shelving or warehouse. Image 3 is the manufacturer product view as supporting geometry; Image 4 is the current game style. Produce ONE low wide fictional battery-cart sprite, full silhouette, exact side profile, no text or logos. Retain the same apparent width:height about 2.57:1 and complete wheels on a straight baseline. No background, floor, shadow, glow, blur, halo or scene. True clean alpha around edges. Do not add perspective. Keep battery height and silhouette stable.",
+  "refs": [
+    "generated/batteryAgv-original.png",
+    "references/agv-factory.png",
+    "references/agv.png",
+    "style/current-cast.png"
+  ],
+  "output": "/Users/liubavskii/.codex/generated_images/01a164a8-9466-7801-bd24-20836bf546d1/exec-d0b9da33-29d1-40f4-aa31-afa1123611d5.png"
+}

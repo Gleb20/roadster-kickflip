@@ -1,0 +1,83 @@
+{
+  "runs": [
+    {
+      "seed": 17,
+      "time": 180.21666666666667,
+      "score": 46104,
+      "waves": 57,
+      "actors": [
+        "ufo",
+        "sikorsky",
+        "regulatorDrone",
+        "starlink",
+        "xi",
+        "moltenVat",
+        "qualitySkull",
+        "primeDrone"
+      ],
+      "biomes": [
+        "spaceport",
+        "tesla-factory"
+      ],
+      "ground": [
+        "truck",
+        "pickup",
+        "muscleCoupe",
+        "doge",
+        "amber",
+        "openai",
+        "rogozin",
+        "zuck",
+        "trump",
+        "muscleCompact",
+        "batteryAgv",
+        "xiaomiSu7",
+        "t800",
+        "protest",
+        "bydSeal",
+        "homelessRow",
+        "v8",
+        "claude"
+      ],
+      "factoryShot": true,
+      "flyShot": false
+    },
+    {
+      "seed": 932,
+      "time": 180.475,
+      "score": 48087,
+      "waves": 58,
+      "actors": [
+        "twitterBird",
+        "ufo",
+        "primeDrone",
+        "xi",
+        "moltenVat",
+        "regulatorDrone",
+        "starlink"
+      ],
+      "biomes": [
+        "spaceport",
+        "tesla-factory"
+      ],
+      "ground": [
+        "doge",
+        "muscleCompact",
+        "truck",
+        "bydSeal",
+        "xiaomiSu7",
+        "batteryAgv",
+        "protest",
+        "openai",
+        "claude",
+        "joe",
+        "rogozin",
+        "pickup"
+      ],
+      "factoryShot": false,
+      "flyShot": true
+    }
+  ],
+  "errors": [],
+  "method": "Native keyboard witness actions through unchanged production step; no obstacle, score, fuel, position or collision overrides."
+}

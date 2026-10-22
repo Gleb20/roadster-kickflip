@@ -1,0 +1,42 @@
+[
+  {
+    "id": "starlink",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: small stray Starlink satellite. Real cleanroom HARDWARE PHOTO is primary mechanical object reference, supporting satellite depiction shows deployed array arrangement and is only a secondary geometric illustration, not a real flight photograph. Simplified flat rectangular silver bus and ONE broad dark-blue grid solar array extending diagonally to RIGHT, small dark antenna corners. Flying LEFT, slightly tilted about 12 degrees. Follow CURRENT CAST for compact readable paper cutout design and narrow warm-cream edge; do not add eyes, wings or rocket exhaust. Readable at width 110 world units.",
+    "refs": [
+      "references/starlink-photo.jpg",
+      "references/starlink-hardware.jpg",
+      "references/starlink-array.jpg",
+      "style/current-cast.png"
+    ]
+  },
+  {
+    "id": "regulatorDrone",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: bureaucratic inspector drone, fictional attachment on real MK30-inspired white/grey camera drone hardware. Side elevation flying LEFT. Small four-rotor camera chassis, two understated orange side panels, a tan document folder and squat red rubber approval stamp securely attached UNDERNEATH. No readable lettering or actual agency seal. Follow CURRENT CAST and existing drone for simple crafted paper/mechanical sprite; clearly distinct from BLUE delivery drone, here grey/orange with paperwork and round camera eye. No beams, no falling objects.",
+    "refs": [
+      "references/amazon.jpg",
+      "style/current-cast.png",
+      "style/drone.png"
+    ]
+  },
+  {
+    "id": "reptileHead",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: ONLY Elon Musk's head transformed into a green reptilian humanoid, comedic conspiracy gag. Actual Elon portrait supplies characteristic short swept brown hair, jaw and self-satisfied smile; actual iguana photo supplies green scales and amber slit pupils. CURRENT HERO screenshot is exact STYLE and head proportion reference: South Park-like flat paper head, two big simple white eyes, small nose, little smug mouth. Preserve recognisable Elon hairstyle and human face outline, add olive-green skin, 5\u20138 large scale shapes on cheeks/forehead, small amber vertical pupils. Almost front-facing with slight gaze RIGHT exactly like current hero. NO neck, no body, no costume, no long reptile snout, no horns, no whole lizard. Keep full face and hair with transparent margin. Game drawn head size 68x78 world units.",
+    "refs": [
+      "references/elon.jpg",
+      "references/iguana.jpg",
+      "style/hero.png",
+      "style/current-cast.png"
+    ]
+  },
+  {
+    "id": "moltenVat",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view sprite for Tesla Jump. Entire silhouette with 6% transparent margin. No background, scenery, shadow, glow, halo, blur, watermark or text. True transparent alpha to crisp edges. Subject: distant factory ladle/vat of molten metal with ONE metallic robotic forearm sticking out giving a very clear THUMBS-UP gesture, affectionate Terminator 2 end-scene reference. Real foundry ladle photograph supplies cylindrical heavy metal vessel, brackets and steel surface, T800 reference supplies metallic robot theme. A low broad dark grey industrial vat, open elliptical top with muted burnt-orange molten surface, simple cream/silver robot hand rising at centre with four curled fingers and one unmistakably upright thumb. Small yellow-black caution stripe near base and a short safety railing along bottom. No human body, no gore, no splashes or flames outside vat. Must use muted layered construction-paper illustration matching supplied ACTUAL FACTORY background screenshot; NO WHITE STICKER OUTLINE for this background asset. Quiet contrast, readable at 160 world units wide. Whole static scene prop only, no factory room or floor.",
+    "refs": [
+      "references/vat.jpg",
+      "references/t800.jpg",
+      "style/current-cast.png",
+      "style/paper-person.png",
+      "style/current-factory.png"
+    ]
+  }
+]

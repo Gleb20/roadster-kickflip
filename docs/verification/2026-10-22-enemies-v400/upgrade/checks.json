@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "real published parent installed",
+    "actual upgrade waits with old paused run",
+    "actual4.0.0 activates at restart or closed-tab boundary and starts a fresh run",
+    "best and collection survive actual update",
+    "old finished best remains available for submission",
+    "new version cold-loads offline",
+    "all new sprites decoded offline",
+    "new version starts with native touch offline",
+    "no runtime errors"
+  ],
+  "errors": []
+}

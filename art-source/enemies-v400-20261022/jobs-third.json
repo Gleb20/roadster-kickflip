@@ -1,0 +1,40 @@
+[
+  {
+    "id": "bydSeal",
+    "prompt": "Use case: photorealistic-natural. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: silver BYD Seal electric sedan from actual manufacturer photos, full clean SIDE PROFILE, nose facing RIGHT. Real photographic bodywork and glazing, accurate distinct long low curved roof, door handles and wheels, two visible wheels, no perspective deformation. Follow supplied existing car-obstacle atlas and CURRENT CAST for game compatibility: realistic cutout, modest dark contours and narrow cream sticker edge; NOT a cartoon paper vehicle. Crop to vehicle only, no pavement. At runtime about 135 wide and 39 high; preserve full car aspect ratio.",
+    "refs": [
+      "references/byd-side.jpg",
+      "references/byd-profile.webp",
+      "references/byd.webp",
+      "style/vehicles.png",
+      "style/current-cast.png"
+    ]
+  },
+  {
+    "id": "xiaomiSu7",
+    "prompt": "Use case: photorealistic-natural. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: turquoise Xiaomi SU7 2024 electric sedan from actual side-view reference photo. Exact pure SIDE PROFILE, nose facing RIGHT; mirror reference direction if needed. Real photographic bodywork, cyan paint, dark glass and yellow brake calipers, both wheels visible. Follow supplied existing car-obstacle atlas and CURRENT CAST for game compatibility: realistic cutout and narrow warm cream sticker edge. Preserve sleek low roof and wheelbase. NO invented 3D angle, no cartoon. At runtime 135 world units wide.",
+    "refs": [
+      "references/xiaomi.jpg",
+      "style/vehicles.png",
+      "style/current-cast.png"
+    ]
+  },
+  {
+    "id": "batteryAgv",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: LOW factory autonomous cart based on photographed MiR250 chassis, simple side elevation facing LEFT. Squat grey mobile platform with dark wheel cutouts and small blue status strip. One flat rectangular EV battery pack is strapped horizontally on top with two yellow straps; battery has subtle dark grid panels and small high-voltage triangle pictogram, no readable text. Keep low and wide: 120 game units wide, about 40 high. Game cutout with softly photographic metal surfaces, chunky simple shapes, narrow off-white edge consistent current obstacles. This is a fictional battery logistics attachment, do not imply a real product photograph.",
+    "refs": [
+      "references/agv.png",
+      "style/current-cast.png",
+      "style/vehicles.png"
+    ]
+  },
+  {
+    "id": "qualitySkull",
+    "prompt": "Use case: stylized-concept. Asset type: ONE transparent 2D side-view game sprite for Tesla Jump. Fully isolated, entire silhouette with 6% transparent margin. True alpha; NO background, floor, shadow, blur, halo, glow, text, labels or watermark. All wheels/feet on one horizontal baseline. Subject: floating factory quality-control servo-skull inspired by the photographed physical Warhammer decoration. Bone-coloured stylised small skull, one mechanical RED camera eye, brass attachment on one temple, a compact black scanner under jaw, two short coiled cables trailing RIGHT as it flies LEFT. No hanging ribbon, no holiday ornament, no halo ring, no weapon, no beam. Satirical benign industrial robot. Flat cut-paper grammar, little detail, wide silhouette readable at 65 world units; narrow warm cream edge like current cast. No gore.",
+    "refs": [
+      "references/servo.png",
+      "style/current-cast.png",
+      "style/drone.png"
+    ]
+  }
+]

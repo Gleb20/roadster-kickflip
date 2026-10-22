@@ -1,3 +1,13 @@
+## Encounters 4.0.0 — 22 October 2026
+
+Approved and implemented: seven harmless timed flybys (UFO, Prime delivery drone, bluebird, Starlink, regulator drone, Sikorsky VS-300 with Igor Sikorsky, and factory quality servo-skull). Their state is cosmetic, independent of ranked RNG, fuel, score and collisions. A whole silhouette clears at least0.75 seconds before the route's charge/lead preparation; short approaches skip the encounter. No solitary aerial scoring wave or aerial ceiling remains.
+
+UFO proximity temporarily replaces Elon’s head with a reptile head. Factory-only Xi exchanges two animated lightning paths with Elon's active hand; the scene is harmless and reduced-motion aware. A quieter background molten-metal vat contains a robotic thumbs-up arm. The factory ground pool uses truck, T-800 Arnold, BYD Seal, Xiaomi SU7 and battery AGV; the floating quality inspector supplies the fifth new factory opponent. Simpsons are replaced by two low lying South Park-style spectators. Existing Simpsons discovery/viewed timestamps migrate to the replacement while the historical entry is preserved.
+
+New ranked generator is `roadster-v4.0.0`. Frozen3.4.2/3.8.0 remain byte-identical, and the hosted verifier supports all three. SQL migration only expands the existing RPC ruleset guard; no ranking rows, RLS or authentication settings change.15 photo/reference-guided generated assets, originals, prompts and provenance are retained in `art-source/enemies-v400-20261022/`. [Playable cast gallery](../assets/concepts/enemies-v400/review.html). [Verification evidence](verification/2026-10-22-enemies-v400/README.md).
+
+135 game tests,9 server tests and source/content/type/PWA checks pass. Local browser coverage includes320/390 portrait,844 landscape,1440 desktop, native first jump, pause, reduced motion, two180-second production runs and actual3.9.3→4.0.0 upgrade/offline preservation. These are browser checks; physical iPhone/Safari acceptance remains open. Existing route-search performance and real-phone timing debt remain separate; no general refactor is added.
+
 ## Mobile input 3.9.3
 
 THRUST retains its enlarged hit area. Tip text/background receive normal gameplay input; only the independently accessible cross dismisses it. Active field/thrust touchstart and touchmove suppress native long-press handling. Each finger keeps its role until release; rotation and thrust remain independent. Charge/release, physics, scoring, collisions and replay results retain the3.8.0 rules. Collision calculations avoid identical outside-window work and temporary projection arrays. Physical iPhone/Safari acceptance remains open.
