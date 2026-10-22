@@ -8,7 +8,7 @@ import {createCollection,COLLECTION_KEY} from '../src/collection.js';
 import {createEncounters,xiHands,lightningPaths} from '../src/encounters.js';
 import {createRun} from '../src/run.js';
 
-test('current patterns never form an aerial ceiling or a solitary air wave',()=>{
+test('ground compatibility templates never form an aerial ceiling',()=>{
  for(const speed of [360,510,660,825])for(const kind of ['single','pair','precision','mixed','hover','incoming']){
   const obs=makePattern(kind,{speed,dx:1200});
   assert.ok(obs.length>0,kind);

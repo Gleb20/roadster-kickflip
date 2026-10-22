@@ -1,0 +1,38 @@
+{
+  "version": "4.1.0",
+  "published": true,
+  "stage": "Pages, public native input, offline and gallery passed",
+  "parent": "2ebba66c4018b4ffe4e6a91a83904786860ef50c",
+  "gameCommit": "729e584508adfb2604174eb2275dd65cb61672c7",
+  "gameTree": "83a681669e180e68c82addf0168ce175bd28b093",
+  "gameTests": 138,
+  "serverTests": 10,
+  "localBrowserChecks": 26,
+  "upgradeChecks": 9,
+  "naturalRuns": 2,
+  "naturalSeconds": 180,
+  "airWavesInNaturalRuns": [
+    2,
+    3
+  ],
+  "naturalFirstAirSeconds": [
+    108.4,
+    89.54
+  ],
+  "hostedChecks": 21,
+  "publicScoresBeforeAfter": 20,
+  "publicFixtureWrites": 0,
+  "frozenRulesets": 4,
+  "physicalPhoneAcceptance": "Pending actual iPhone/Safari review",
+  "rootHeadAndIndex": "preserved",
+  "rollback": "Exact parent tree and135 parent tests/checks pass",
+  "pagesRun": 39852888504,
+  "pagesConclusion": "success",
+  "publicChecks": 29,
+  "publicRuntimeErrors": [],
+  "publicIdealLandings": 2,
+  "publicCoreResources": 151,
+  "publicWorkerMatches": true,
+  "publicGalleryChecks": 6,
+  "publicGalleryRuntimeErrors": []
+}

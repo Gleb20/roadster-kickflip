@@ -1,3 +1,7 @@
+## Published4.1.0 —late colliding aircraft and ordinary Xi
+
+[Play4.1.0](https://gleb20.github.io/roadster-kickflip/?v=4.1.0). Game commit729e584508adfb2604174eb2275dd65cb61672c7 / tree83a681669e180e68c82addf0168ce175bd28b093. Pages39852888504 succeeded; all151 core resources and worker match.138 game tests,10 server tests,26 local browser checks,9 actual4.0→4.1 upgrade checks,29 public native input/offline checks and6 public gallery checks pass. Both public input paths earned PERFECT. Two180-second witness runs contain2/3 isolated air waves; their first air encounters occur on leg2 (third section), with zero runtime errors. A no-jump late-air collision is reproduced through server JSON checkpoints.21 hosted checks support all four rulesets and add0 public fixture results. Xi is a colliding factory ground opponent; the enlarged vat is behind the production line. Old finished4.0 record, best and collection survive. Original HEAD/index remain intact; physical iPhone/Safari acceptance remains open. Evidence: `docs/verification/2026-10-22-aerial-v410/release-status.json`.
+
 ## Aerial challenge4.1.0 —22October2026
 
 Supersedes the4.0.0 harmless-flyby direction at the user's request. Xi is an ordinary colliding ground opponent in the factory pool, on the same baseline as cars and people. His mutual lightning reaction remains visual; body contact ends the run normally.

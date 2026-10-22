@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "public gallery decodes15 alpha sprites",
+    "public real-renderer scene xi",
+    "public real-renderer scene sikorsky",
+    "public real-renderer scene ufo",
+    "public real-renderer scene homelessRow",
+    "Xi live factory scene"
+  ],
+  "errors": []
+}
