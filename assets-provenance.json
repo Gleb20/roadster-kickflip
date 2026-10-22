@@ -770,5 +770,41 @@
     ],
     "normalization": "prepare.py: threshold 215, 5px median mask to remove low-opacity generated halos and isolated flecks, proportional Lanczos downsize, crop to actual alpha bounds; originals preserved",
     "alpha": "RGBA; no opaque backdrop, exact visible geometry used for world aspect ratio"
+  },
+  "factoryVatV411": {
+    "date": "2026-10-23",
+    "version": "4.1.1",
+    "files": [
+      "assets/encounters/v411/moltenVat.png"
+    ],
+    "prototype": "Samwha India Refractories foundry ladle with small fictional T-800 thumbs-up arm",
+    "photo": {
+      "page": "https://sirpl.in/",
+      "image": "https://sirpl.in/LDreal.png",
+      "credit": "Samwha India Refractories",
+      "license": "unknown",
+      "local": "art-source/enemies-v400-20261022/references/vat.jpg"
+    },
+    "target": "assets/encounters/v400/moltenVat.png",
+    "style": "docs/verification/2026-10-22-aerial-v410/public/xi-lightning-live.png",
+    "method": "Built-in image_gen precise edit with actual target, foundry photo and current game scene supplied as three images; complete arm reduced to about one third",
+    "packet": "art-source/factory-vat-v411-20261023/brief.md",
+    "job": "art-source/factory-vat-v411-20261023/job.json",
+    "original": "art-source/factory-vat-v411-20261023/original.png",
+    "prepared": {
+      "file": "assets/encounters/v411/moltenVat.png",
+      "pixels": [
+        768,
+        414
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "sha256": "64013fbbdd9669c44e4ad1b88e5a1e1cbd660dcf6c1779dcc65529878eb319d4",
+      "normalization": "remove alpha<10 generated flecks; alpha crop; proportional Lanczos max768; remaining alpha preserved"
+    },
+    "runtime": "Far wall plane, before storage and production; 0.8 perspective, 0.5 alpha, 0.12 parallax. No ranked mechanics changes."
   }
 }

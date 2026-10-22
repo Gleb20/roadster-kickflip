@@ -1,12 +1,11 @@
-import {ENEMY_SPRITES} from './enemy-sprite-data.js';
 export const VAT_WIDTH=320;
-const VAT_HEIGHT=VAT_WIDTH*ENEMY_SPRITES.moltenVat.h/ENEMY_SPRITES.moltenVat.w;
+export const VAT_HEIGHT=VAT_WIDTH*414/768;
 // Only background scenery lives here. Every opponent belongs to the ranked run.
 export function createEncounters(){
  const state={actors:[],leg:-1,nextVat:0};
  function reset(){Object.assign(state,{actors:[],leg:-1,nextVat:0});}
  function update(dt,{speed,distance,biome,leg=0,moving=false}){
-  for(const a of state.actors)a.x-=speed*.3*dt;
+  for(const a of state.actors)a.x-=speed*.12*dt;
   state.actors=state.actors.filter(a=>a.x+a.w>-450);
   if(leg!==state.leg){state.leg=leg;state.nextVat=distance+speed*5;}
   if(biome==='tesla-factory'&&!moving&&distance>=state.nextVat){

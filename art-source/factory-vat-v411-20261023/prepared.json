@@ -1,0 +1,14 @@
+{
+  "file": "assets/encounters/v411/moltenVat.png",
+  "pixels": [
+    768,
+    414
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "sha256": "64013fbbdd9669c44e4ad1b88e5a1e1cbd660dcf6c1779dcc65529878eb319d4",
+  "normalization": "remove alpha<10 generated flecks; alpha crop; proportional Lanczos max768; remaining alpha preserved"
+}

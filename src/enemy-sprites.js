@@ -1,8 +1,9 @@
+import {ASSETS} from './content.js?v=4.1.1';
 import {ENEMY_SPRITES} from './enemy-sprite-data.js';
 export function createEnemySprites(){
  const images=new Map();
  return {
-  async load(){await Promise.all(Object.entries(ENEMY_SPRITES).map(async([id,data])=>{const image=new Image();image.src=data.file;await image.decode();images.set(id,image);}));},
+  async load(){await Promise.all(Object.keys(ENEMY_SPRITES).map(async id=>{const image=new Image();image.src=ASSETS['encounter_'+id].file;await image.decode();images.set(id,image);}));},
   draw(ctx,id,w,h,{flip=false,alpha=1}={}){
    const image=images.get(id);if(!image)return false;
    ctx.save();ctx.globalAlpha*=alpha;if(flip)ctx.scale(-1,1);ctx.drawImage(image,-w/2,-h,w,h);ctx.restore();return true;

@@ -1,4 +1,4 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.1.0';
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.1.1';
 const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
@@ -48,6 +48,8 @@ export function createFactoryRenderer({random=Math.random}={}){
    const wall=images.get('rear-wall'),wallBase=ground-222*z,wh=Math.max(300,wallBase),ww=wh*wall.width/wall.height;
    for(let x=-wrap(distance*FACTORY_DEPTH.wall*z,ww);x<W;x+=ww)ctx.drawImage(wall,x,wallBase-wh,ww+.5,wh);
    ctx.fillStyle='#35454b';ctx.fillRect(0,wallBase,W,H-wallBase);
+   // Far-wall scenery is occluded by both storage and the production line.
+   drawBehindLine();
    // Wall-side storage and CNC alternate on a slower parallax plane behind production.
    const bay=620*z,offset=wrap(distance*FACTORY_DEPTH.storage*z,bay*2);
    for(let x=-offset-bay;x<W+bay;x+=bay){
@@ -55,7 +57,6 @@ export function createFactoryRenderer({random=Math.random}={}){
     if(wrap(index,2)===0)sprite(ctx,'assembly-rack-cutout',x+bay*.5,ground-226*z,290*z);
     else sprite(ctx,'machine-v362',x+bay*.5,ground-226*z,180*z);
    }
-   drawBehindLine();
    // A quieter, smaller production plane; its camera and repeated stations never reset at a new body.
    const q=z*FACTORY_DEPTH.lineScale,absolute=reducedMotion?22:(state?.cycle||0)*30+t;
    const carWorld=-120+48*absolute,carX=W*(.42+.05*Math.sin(absolute*Math.PI/60)),camera=carWorld-carX/q;

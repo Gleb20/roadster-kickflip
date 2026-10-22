@@ -1,0 +1,12 @@
+{
+  "prompt": "Precise sprite edit. Image 1 is the EDIT TARGET: the existing transparent dark-steel foundry vat with a robotic thumbs-up arm. Image 2 is an actual Samwha India Refractories foundry ladle photograph, supporting vessel geometry/material only. Image 3 is the current Tesla Jump factory scene, STYLE/compatibility reference only. Preserve the entire existing vat's body, elliptical molten surface, rim, steel bands, brackets, front rail, caution stripe, paper-cutout texture and palette as faithfully as possible. ONLY change the projecting robot arm and hand: shrink the whole forearm plus thumbs-up hand to ONE THIRD of its existing linear size relative to the unchanged vat. It must look like a tiny robotic hand on a short wrist barely sticking out of the middle-right of the molten metal, still a clear thumbs-up. The old large arm's former area should become transparent above the vat and ordinary molten metal within the vat. Do not shrink the vat to match the hand. No extra limbs, no people, no factory scene, no ground, no labels, no white outline, no glow halo. Entire prop fits in frame. True transparent background, preserve alpha. Same side-view angle and muted industrial paper illustration. Save as a single transparent PNG sprite.",
+  "referenced_image_paths": [
+    "/Users/liubavskii/Desktop/work/Codex/Tesla Jump/assets/encounters/v400/moltenVat.png",
+    "/Users/liubavskii/Desktop/work/Codex/Tesla Jump/art-source/enemies-v400-20261022/references/vat.jpg",
+    "/Users/liubavskii/Desktop/work/Codex/Tesla Jump/docs/verification/2026-10-22-aerial-v410/public/xi-lightning-live.png"
+  ],
+  "transparent_background": true,
+  "tool": "image_gen.imagegen",
+  "original": "art-source/factory-vat-v411-20261023/original.png",
+  "date": "2026-10-23"
+}

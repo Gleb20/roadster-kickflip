@@ -1,38 +1,38 @@
-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.1.0';
-import {createEnemySprites} from './enemy-sprites.js?v=4.1.0';
-import {createEncounters,xiHands,lightningPaths} from './encounters.js?v=4.1.0';
-import {createFactoryRenderer} from './factory.js?v=4.1.0';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.1.0';
-import {createOnline} from './online.js?v=4.1.0';
-import {createScoreRecord} from './score-record.js?v=4.1.0';
-import {createOnlineUI} from './online-ui.js?v=4.1.0';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.1.0';
-import {createPWA} from './pwa.js?v=4.1.0';
-import {createCollection} from './collection.js?v=4.1.0';
-import {createCollectionUI} from './collection-ui.js?v=4.1.0';
-import {createObstaclePainter} from './obstacle-art.js?v=4.1.0';
-import {loading} from './loading.js?v=4.1.0';
-import {createThrusterEffects} from './thrusters.js?v=4.1.0';
-import {createSound} from './sound.js?v=4.1.0';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.1.0';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.1.0';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.1.0';
-import {types} from './catalog.js?v=4.1.0';
-import {obstacleDefinition} from './content.js?v=4.1.0';
-import {START_SPEED, START_KMH} from './physics.js?v=4.1.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.0';
-import {launch,uprightError} from './gameplay.js?v=4.1.0';
-import {AIR_TYPES,stageAt} from './routes.js?v=4.1.0';
-import {createCoach} from './coaching.js?v=4.1.0';
-import {createHUD,mphFromKmh} from './hud.js?v=4.1.0';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=4.1.0';
-import {fallPose,fallSeatContact} from './fall.js?v=4.1.0';
-import {createSlapstick} from './slapstick.js?v=4.1.0';
-import {createClock} from './clock.js?v=4.1.0';
-import {createEnvironmentRenderer} from './environment.js?v=4.1.0';
-import {createCharacterRenderer} from './characters.js?v=4.1.0';
-import {createPropRenderer} from './props.js?v=4.1.0';
-import {createPhotoRenderer} from './photo-cutouts.js?v=4.1.0';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=4.1.1';
+import {createEnemySprites} from './enemy-sprites.js?v=4.1.1';
+import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.1.1';
+import {createFactoryRenderer} from './factory.js?v=4.1.1';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.1.1';
+import {createOnline} from './online.js?v=4.1.1';
+import {createScoreRecord} from './score-record.js?v=4.1.1';
+import {createOnlineUI} from './online-ui.js?v=4.1.1';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=4.1.1';
+import {createPWA} from './pwa.js?v=4.1.1';
+import {createCollection} from './collection.js?v=4.1.1';
+import {createCollectionUI} from './collection-ui.js?v=4.1.1';
+import {createObstaclePainter} from './obstacle-art.js?v=4.1.1';
+import {loading} from './loading.js?v=4.1.1';
+import {createThrusterEffects} from './thrusters.js?v=4.1.1';
+import {createSound} from './sound.js?v=4.1.1';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=4.1.1';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.1.1';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.1.1';
+import {types} from './catalog.js?v=4.1.1';
+import {obstacleDefinition} from './content.js?v=4.1.1';
+import {START_SPEED, START_KMH} from './physics.js?v=4.1.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.1';
+import {launch,uprightError} from './gameplay.js?v=4.1.1';
+import {AIR_TYPES,stageAt} from './routes.js?v=4.1.1';
+import {createCoach} from './coaching.js?v=4.1.1';
+import {createHUD,mphFromKmh} from './hud.js?v=4.1.1';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=4.1.1';
+import {fallPose,fallSeatContact} from './fall.js?v=4.1.1';
+import {createSlapstick} from './slapstick.js?v=4.1.1';
+import {createClock} from './clock.js?v=4.1.1';
+import {createEnvironmentRenderer} from './environment.js?v=4.1.1';
+import {createCharacterRenderer} from './characters.js?v=4.1.1';
+import {createPropRenderer} from './props.js?v=4.1.1';
+import {createPhotoRenderer} from './photo-cutouts.js?v=4.1.1';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -334,8 +334,8 @@ collectionTeaser();
 function drawFactoryVats(){
  const z=Math.max(.68,Math.min(1.05,scale));
  for(const a of encounters.state.actors){
-  ctx.save();ctx.translate(px+(a.x+a.w/2)*scale,ground+cameraLift-126*z);ctx.scale(z,z);
-  enemySprites.draw(ctx,a.id,a.w,a.h,{alpha:.64});ctx.restore();
+  ctx.save();ctx.translate(px+(a.x+a.w/2)*scale,ground+cameraLift-236*z);ctx.scale(z*.8,z*.8);
+  enemySprites.draw(ctx,a.id,a.w,a.h,{alpha:.50});ctx.restore();
  }
 }
 function drawLightning(){
@@ -450,7 +450,7 @@ function prepareEncounterReview(time){
  const factoryMode=id==='xi'||id==='t800'||id==='bydSeal'||id==='xiaomiSu7'||id==='batteryAgv'||id==='qualitySkull';
  if(factoryMode){biomeScene.update(7500,0);biomeScene.update(7500,4000);factory.update(biomeScene.state,time);}
  else biomeScene.reset();
- if(factoryMode)encounters.state.actors.push({id:'moltenVat',x:(W*.72-px)/scale-160,w:320,h:320*134.745/164});
+ if(factoryMode)encounters.state.actors.push({id:'moltenVat',x:(W*.72-px)/scale-VAT_WIDTH/2,w:VAT_WIDTH,h:VAT_HEIGHT});
  Object.assign(P,{airborne:false,y:0,angle:0,grab:0});Object.assign(S,{y:0,grab:0,falling:false});CAMEO.active=false;
  characters.update(1/120);
 }

@@ -1,0 +1,22 @@
+{
+  "version": "4.1.1",
+  "status": "candidate-validated-awaiting-pages",
+  "baseline": "45b55a525466071cca22170fa9682d5859303be4",
+  "ruleset": "roadster-v4.1.0",
+  "backendChanged": false,
+  "gameTests": 138,
+  "sceneChecks": 10,
+  "upgradeChecks": 9,
+  "physicalPhoneAcceptance": "not performed",
+  "evidence": [
+    "local/checks.json",
+    "upgrade/checks.json",
+    "runtime-manifest.json"
+  ],
+  "rollback": {
+    "forwardInverse": "exact parent tree5014308de9963d2305b5c6b6bcf6b87567b7fbe0 restored",
+    "parentTests": 138,
+    "parentChecks": "pass",
+    "patch": "/tmp/tesla-vat-v411-candidate.patch"
+  }
+}

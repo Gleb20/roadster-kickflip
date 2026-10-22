@@ -14,6 +14,7 @@ export const BIOME_CYCLE=freeze(['spaceport','tesla-factory']);
 export const ANIMATIONS=freeze(['taunt','angry-look','point-and-laugh','trampoline-bounce','money-guns','podcast','throw','lightning','reptile','look']);
 export const ASSETS=freeze({
  ...Object.fromEntries(Object.entries(ENEMY_SPRITES).map(([id,s])=>['encounter_'+id,{file:s.file}])),
+ encounter_moltenVat:{file:'assets/encounters/v411/moltenVat.png'},
  collage:{file:'collage-atlas.png'},extras:{file:'collage-extras.png'},cast:{file:'paper-cast.png'},
  photos:{file:'obstacle-photos.png'},joe:{file:'assets/characters/joe-rogan.png'},
  amber:{file:'assets/characters/amber-head-v247.png'},drone:{file:'assets/obstacles/phantom-v3.png'},
