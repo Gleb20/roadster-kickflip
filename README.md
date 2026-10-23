@@ -1,5 +1,7 @@
 ## Smooth background 4.6.4 —24 October2026
 
+Published [4.6.4](https://gleb20.github.io/roadster-kickflip/?v=4.6.4), runtime `012a3fb`; Pages40038092772 succeeded. All192 live hashes and39 public controls/offline checks pass; native1433-frame run has5 successful flips and zero reverse building frames. No runtime errors or score writes. Physical iPhone/Safari remains unverified.
+
 Background tiles keep a fixed scale and smoothly follow actual speed, preventing backward movement and scale pulses on booster changes or flip landings. Whole-canvas fall shake is removed; near-road speed feedback, gameplay camera, mechanics and immutable roadster-v4.6.3 are preserved. 227 tests, all source/content/type/PWA checks, 116 focused browser checks, 41 camera regressions and 18 real PWA upgrade checks pass. Physical iPhone/Safari remains unverified. [Evidence](docs/verification/2026-10-24-background/README.md). Release source: `/tmp/tesla-background-v464-20261024`; original dirty root/index retained.
 
 ## Director liveness4.6.3 —24 October2026

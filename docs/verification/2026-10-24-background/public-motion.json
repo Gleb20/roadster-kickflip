@@ -1,0 +1,13 @@
+{
+  "frames": 1433,
+  "attempts": 3,
+  "reverse": 0,
+  "successfulFlips": 5,
+  "fallObserved": false,
+  "boosterObserved": false,
+  "errors": [],
+  "physicalPhone": false,
+  "nativeInputs": true,
+  "qaMutations": false,
+  "publicScoreSubmissions": 0
+}

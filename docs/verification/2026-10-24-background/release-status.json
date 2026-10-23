@@ -1,0 +1,20 @@
+{
+  "version": "4.6.4",
+  "runtimeCommit": "012a3fb9c0686d15f3d189fd71325ca8ab352565",
+  "runtimeTree": "d695d68512d146c2f16712f5b63a65b5d424f19f",
+  "parent": "28e02f4c5a409cd09d9b17ed33143dc2b180ee1a",
+  "pagesRun": 40038092772,
+  "pages": "success",
+  "liveHashes": 192,
+  "publicChecks": 39,
+  "nativeMotionFrames": 1433,
+  "nativeSuccessfulFlips": 5,
+  "nativeReverseFrames": 0,
+  "publicScoreSubmissions": 0,
+  "physicalDevice": false,
+  "rollbackParentTree": "f71dd6f69aba4ce1923cd2fcbbc7a3285594726f",
+  "rollbackExactTree": true,
+  "rollbackTests": 223,
+  "rollbackCheck": "pass",
+  "originalDirtyRootAndIndexPreserved": true
+}

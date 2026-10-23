@@ -1,5 +1,7 @@
 ## Smooth background 4.6.4 —bounded inverse
 
+Published runtime `012a3fb`; its exact inverse restores parent tree `f71dd6f69aba4ce1923cd2fcbbc7a3285594726f` with223 parent tests and all parent checks passing.
+
 Parent `28e02f4c5a409cd09d9b17ed33143dc2b180ee1a` is the exact 4.6.3 release. Revert only this frontend delta in an isolated checkout, compare the parent tree and run its tests/checks. Public reversal needs a new PWA identity. Keep all eleven immutable replay versions, accepted scores, pending/finished replay packets and preferences. Do not restore over the original dirty root. [Evidence](docs/verification/2026-10-24-background/README.md).
 
 ## Director liveness4.6.3 —bounded inverse
