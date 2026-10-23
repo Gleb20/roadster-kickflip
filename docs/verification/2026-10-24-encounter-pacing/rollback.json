@@ -1,0 +1,11 @@
+{
+  "parent": "2cf618771f1d34c4a21c2b6cd256b2db9887a545",
+  "parentTree": "40818fa0f04070b08e1569bb9fc59657da051f9a",
+  "inverseTree": "40818fa0f04070b08e1569bb9fc59657da051f9a",
+  "exactInverse": true,
+  "parentTests": 227,
+  "parentCheck": "pass",
+  "keepTwelveBackendRulesets": true,
+  "noDataRollback": true,
+  "patchSha256": "5bababdfc58c0c1c3a2ff11050d3ee8e1575c15367671abc5ca1ca762f7e8bd9"
+}

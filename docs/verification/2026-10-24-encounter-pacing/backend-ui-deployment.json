@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-10-23T23:21:26.358205+00:00",
+  "project": "anzybyamdtouzxouhziu",
+  "method": "authorized dashboard UI, Monaco whole-source clipboard verification after reload",
+  "worker": {
+    "baselineExact": true,
+    "deployedExact": true,
+    "sha256": "473d663b53a9a5823c5e24421682ae6d69379b68ef4a8979aab2d636d6f61e8a"
+  },
+  "api": {
+    "baselineExact": true,
+    "deployedExact": true,
+    "sha256": "7752f643164290a9aaebe5943f324d8f148469fe5bbcf980cc1e23559019a362"
+  },
+  "migration": {
+    "sha256": "52b8dc76b8c00066806ed18a61bce721cf0fb4851668df969e5ae37a7ff44053",
+    "result": "Success. No rows returned"
+  },
+  "realScoreBaseline": {
+    "epoch": "v3",
+    "rows": 22,
+    "maxSeq": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4",
+    "pending": 0,
+    "query": "select count(*) as n,coalesce(max(seq),0) as max_seq,md5(coalesce(string_agg(to_jsonb(r)::text,'' order by seq),'')) as digest,(select count(*) from tesla_ranking.sessions where status='pending') as pending from tesla_ranking.runs r where score_epoch='v3';"
+  },
+  "realScoreAfterMigration": {
+    "rows": 22,
+    "maxSeq": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4",
+    "pending": 0,
+    "exactBaselineMatch": true
+  },
+  "fixtures": {
+    "count": 14,
+    "epoch": "qa-v470-20261024",
+    "setup": "14 owned ready sessions updated and verified in SQL UI",
+    "publicEpochModified": false
+  },
+  "uiNote": "One subsequent read-only audit query was malformed by Monaco partial-input fill and rejected at SQL parse; full-source clipboard replacement then passed. No migration or app change was made in response.",
+  "hostedSqlResults": {
+    "accepted": 12,
+    "rejected": 2,
+    "pending": 0,
+    "publicScoreBaselineAfterFixturesExact": true,
+    "realRows": 22,
+    "watermark": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4"
+  }
+}

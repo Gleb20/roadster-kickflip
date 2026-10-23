@@ -1,0 +1,26 @@
+{
+  "version": "4.7.0",
+  "ruleset": "roadster-v4.7.0",
+  "baseCommit": "2cf618771f1d34c4a21c2b6cd256b2db9887a545",
+  "phoneUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.7.0",
+  "gameTests": 235,
+  "serverTests": 16,
+  "sqlChecks": 27,
+  "pwaResources": 191,
+  "historicalFilesUnchanged": 159,
+  "supportedRulesets": 12,
+  "actualUpgradeChecks": {
+    "463to470": 18,
+    "464to470": 18
+  },
+  "hosted": {
+    "validAccepted": 12,
+    "forgedRejected": 2,
+    "publicFixtureWrites": 0,
+    "clientVerifyCalls": 0,
+    "publicRowsPreserved": 22,
+    "watermark": 65,
+    "digest": "446374e07d6d835b2a7e80a8230c8ff4"
+  },
+  "physicalDevice": false
+}

@@ -1,0 +1,29 @@
+{
+  "concurrentParent": "2cf618771f1d34c4a21c2b6cd256b2db9887a545",
+  "rendererModules": [
+    {
+      "file": "src/environment.js",
+      "concurrentBehaviorPreserved": true
+    },
+    {
+      "file": "src/factory.js",
+      "concurrentBehaviorPreserved": true
+    },
+    {
+      "file": "src/scenery-motion.js",
+      "concurrentBehaviorPreserved": true
+    },
+    {
+      "file": "src/main.js",
+      "concurrentBehaviorPreserved": true
+    }
+  ],
+  "onlyMainExceptions": [
+    "version querystrings",
+    "readonly obstacle uid",
+    "retained463 finished record compatibility"
+  ],
+  "historicalVerifierFiles": 159,
+  "allHistoricalBytesUnchanged": true,
+  "generationGraphUnaffectedByRendererIntegration": true
+}

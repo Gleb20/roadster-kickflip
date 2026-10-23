@@ -1,3 +1,9 @@
+## Encounter pacing4.7.0 —24 October2026
+
+Pairs remain available at full streak and speed pickups. Rails offer an optional route alongside ground or aerial opponents, with four real lengths and shorter late-game slide duration. First safe air appears around22–24s in the measured runs, including a timely factory-specific introduction. The director validates complete mixed paths and keeps a normal jump/ground bypass available without fuel or mandatory grind.
+
+235 game tests,16 server tests,27 SQL checks and191-resource PWA checks pass. Four five-minute observational runs and another four with actual390px forward visibility plus120ms recognition complete alive, without route-action reads. They show17–25 pairs and6–8 rail-air encounters per run, rather than the earlier all-single pattern. Independent installed offline native touch completes180s alive. Desktop CPU spikes up to27.21ms remain a bounded phone-profiling debt; these tests do not establish human enjoyment or physical iPhone/Safari acceptance. Twelve verifiers accept exact valid replays, reject forged results and preserve all records. Both actual4.6.3/4.6.4-to4.7.0 PWA upgrades pass18checks. Publication uses expected-head protection. [Play4.7.0](https://gleb20.github.io/roadster-kickflip/?v=4.7.0). [Evidence](docs/verification/2026-10-24-encounter-pacing/README.md).
+
 ## Smooth background 4.6.4 —24 October2026
 
 Published [4.6.4](https://gleb20.github.io/roadster-kickflip/?v=4.6.4), runtime `012a3fb`; Pages40038092772 succeeded. All192 live hashes and39 public controls/offline checks pass; native1433-frame run has5 successful flips and zero reverse building frames. No runtime errors or score writes. Physical iPhone/Safari remains unverified.

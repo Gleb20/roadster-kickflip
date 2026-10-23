@@ -1,0 +1,256 @@
+[
+  {
+    "seed": 17,
+    "alive": true,
+    "seconds": 300,
+    "flips": 80,
+    "counts": {
+      "single": 34,
+      "spaced-pair": 23,
+      "air-pass": 8,
+      "rail": 3,
+      "rail-air": 7,
+      "rail-ground": 6
+    },
+    "firstAir": 23.383333333333333,
+    "factoryWave": 40.24166666666667,
+    "factoryAir": 42.61666666666667,
+    "groundObjects": 86,
+    "groundJumpInputs": 80,
+    "earlySlideMedian": 1.4500000000000028,
+    "lateSlideMedian": 1.1083333333333485,
+    "widths": [
+      880,
+      1120,
+      1440
+    ],
+    "windows": [
+      {
+        "from": 0,
+        "groundObjects": 17,
+        "pairs": 3,
+        "mixedRails": 2,
+        "groundJumpInputs": 16
+      },
+      {
+        "from": 60,
+        "groundObjects": 16,
+        "pairs": 3,
+        "mixedRails": 4,
+        "groundJumpInputs": 12
+      },
+      {
+        "from": 120,
+        "groundObjects": 18,
+        "pairs": 5,
+        "mixedRails": 3,
+        "groundJumpInputs": 18
+      },
+      {
+        "from": 180,
+        "groundObjects": 17,
+        "pairs": 6,
+        "mixedRails": 2,
+        "groundJumpInputs": 16
+      },
+      {
+        "from": 240,
+        "groundObjects": 18,
+        "pairs": 6,
+        "mixedRails": 2,
+        "groundJumpInputs": 18
+      }
+    ]
+  },
+  {
+    "seed": 932,
+    "alive": true,
+    "seconds": 300,
+    "flips": 78,
+    "counts": {
+      "single": 34,
+      "rail": 6,
+      "air-pass": 9,
+      "spaced-pair": 22,
+      "rail-air": 7,
+      "rail-ground": 5
+    },
+    "firstAir": 22.541666666666668,
+    "factoryWave": 29.8,
+    "factoryAir": 33.725,
+    "groundObjects": 83,
+    "groundJumpInputs": 76,
+    "earlySlideMedian": 1.5,
+    "lateSlideMedian": 1.125,
+    "widths": [
+      880,
+      1120,
+      1440,
+      1680
+    ],
+    "windows": [
+      {
+        "from": 0,
+        "groundObjects": 11,
+        "pairs": 1,
+        "mixedRails": 0,
+        "groundJumpInputs": 11
+      },
+      {
+        "from": 60,
+        "groundObjects": 16,
+        "pairs": 4,
+        "mixedRails": 3,
+        "groundJumpInputs": 15
+      },
+      {
+        "from": 120,
+        "groundObjects": 18,
+        "pairs": 5,
+        "mixedRails": 4,
+        "groundJumpInputs": 14
+      },
+      {
+        "from": 180,
+        "groundObjects": 21,
+        "pairs": 7,
+        "mixedRails": 2,
+        "groundJumpInputs": 20
+      },
+      {
+        "from": 240,
+        "groundObjects": 17,
+        "pairs": 5,
+        "mixedRails": 3,
+        "groundJumpInputs": 16
+      }
+    ]
+  },
+  {
+    "seed": 9,
+    "alive": true,
+    "seconds": 300,
+    "flips": 76,
+    "counts": {
+      "single": 36,
+      "rail": 4,
+      "spaced-pair": 22,
+      "air-pass": 10,
+      "rail-air": 7,
+      "rail-ground": 5
+    },
+    "firstAir": 22.183333333333334,
+    "factoryWave": 25.28333333333333,
+    "factoryAir": 31.833333333333332,
+    "groundObjects": 85,
+    "groundJumpInputs": 80,
+    "earlySlideMedian": 1.399999999999995,
+    "lateSlideMedian": 1.125,
+    "widths": [
+      880,
+      1120,
+      1440
+    ],
+    "windows": [
+      {
+        "from": 0,
+        "groundObjects": 17,
+        "pairs": 3,
+        "mixedRails": 0,
+        "groundJumpInputs": 17
+      },
+      {
+        "from": 60,
+        "groundObjects": 12,
+        "pairs": 3,
+        "mixedRails": 4,
+        "groundJumpInputs": 10
+      },
+      {
+        "from": 120,
+        "groundObjects": 18,
+        "pairs": 4,
+        "mixedRails": 3,
+        "groundJumpInputs": 17
+      },
+      {
+        "from": 180,
+        "groundObjects": 20,
+        "pairs": 6,
+        "mixedRails": 2,
+        "groundJumpInputs": 18
+      },
+      {
+        "from": 240,
+        "groundObjects": 18,
+        "pairs": 6,
+        "mixedRails": 3,
+        "groundJumpInputs": 18
+      }
+    ]
+  },
+  {
+    "seed": 56,
+    "alive": true,
+    "seconds": 300,
+    "flips": 76,
+    "counts": {
+      "single": 38,
+      "rail": 9,
+      "air-pass": 9,
+      "spaced-pair": 17,
+      "rail-air": 6,
+      "rail-ground": 5
+    },
+    "firstAir": 22.883333333333333,
+    "factoryWave": 33.225,
+    "factoryAir": 33.225,
+    "groundObjects": 77,
+    "groundJumpInputs": 72,
+    "earlySlideMedian": 1.7249999999999996,
+    "lateSlideMedian": 0.9249999999999545,
+    "widths": [
+      880,
+      1120,
+      1440,
+      1680
+    ],
+    "windows": [
+      {
+        "from": 0,
+        "groundObjects": 8,
+        "pairs": 1,
+        "mixedRails": 0,
+        "groundJumpInputs": 7
+      },
+      {
+        "from": 60,
+        "groundObjects": 16,
+        "pairs": 3,
+        "mixedRails": 3,
+        "groundJumpInputs": 15
+      },
+      {
+        "from": 120,
+        "groundObjects": 17,
+        "pairs": 4,
+        "mixedRails": 2,
+        "groundJumpInputs": 17
+      },
+      {
+        "from": 180,
+        "groundObjects": 20,
+        "pairs": 6,
+        "mixedRails": 2,
+        "groundJumpInputs": 18
+      },
+      {
+        "from": 240,
+        "groundObjects": 16,
+        "pairs": 3,
+        "mixedRails": 4,
+        "groundJumpInputs": 15
+      }
+    ]
+  }
+]

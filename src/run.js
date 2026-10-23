@@ -1,11 +1,11 @@
-import {RAIL,createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.6.4';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.6.4';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.4';
-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.6.4';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.6.4';
-import {createDirector} from './director.js?v=4.6.4';
-import {createRandom} from './random.js?v=4.6.4';
-export const RULESET='roadster-v4.6.3',RUN_STEP=1/120;
+import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.7.0';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.7.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.0';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.7.0';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.7.0';
+import {createDirector} from './director.js?v=4.7.0';
+import {createRandom} from './random.js?v=4.7.0';
+export const RULESET='roadster-v4.7.0',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
 /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
@@ -71,7 +71,7 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
    if(!Q.spoiledFlight)landed={...landed,turns:landed.turns+G.turns};
    const grindPoints=landed.good&&!Q.spoiledFlight?G.pending:0,grindDistance=landed.good&&!Q.spoiledFlight?G.distance:0;
    const oldMultiplier=E.multiplier;lastLanding=settleLanding(E,P,Q.spoiledFlight?{...landed,turns:0,perfect:false}:landed,Q.spoiledFlight?{late:0,near:0}:{late,near});Q.spoiledFlight=false;
-   E.bonus+=grindPoints;lastLanding.points+=grindPoints;Object.assign(lastLanding,{grindPoints,grindDistance});if(grindDistance>0){rewardAction(E);S.next=Math.max(S.next,RAIL.exitSeconds);}Object.assign(G,createGrind());
+   E.bonus+=grindPoints;lastLanding.points+=grindPoints;Object.assign(lastLanding,{grindPoints,grindDistance});if(grindDistance>0)rewardAction(E);Object.assign(G,createGrind());
    if(!landed.good){stumble(pace);beginFall(F,landed,{reduced:reducedMotion,speed:pace.recovery.target});pace.falling=true;director.recover();P.angle=0;P.omega=0;P.vx=0;P.grab=0;clear();advancePace(pace,E,P,0);}
    events.push({type:'landing',landed,result:lastLanding,late,near,oldMultiplier});lateId=null;
   }

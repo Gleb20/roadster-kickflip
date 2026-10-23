@@ -1,0 +1,37 @@
+{
+  "version": "4.7.0",
+  "seconds": 180,
+  "alive": true,
+  "waves": 47,
+  "groundObjects": 43,
+  "airObjects": 8,
+  "flips": 23,
+  "firstAir": 24.258333333333333,
+  "firstFactoryAir": 65.35833333333333,
+  "sceneCounts": {
+    "single": 21,
+    "spaced-pair": 8,
+    "rail": 4,
+    "air-pass": 4,
+    "rail-ground": 6,
+    "rail-air": 4
+  },
+  "widths": [
+    880,
+    1120,
+    1440
+  ],
+  "actualCatches": 14,
+  "medianSlide": 1.0749999999999957,
+  "framePauseResumes": 1,
+  "fallSamples": 0,
+  "physicalReleaseOnFall": 0,
+  "nativeTouch": true,
+  "coldOffline": true,
+  "visibleObjectsOnly": true,
+  "recognitionDelay": 0.12,
+  "routeActionReads": 0,
+  "publicScoreSubmissions": 0,
+  "physicalDevice": false,
+  "errors": []
+}

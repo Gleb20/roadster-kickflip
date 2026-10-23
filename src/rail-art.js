@@ -3,7 +3,12 @@ export function createRailPainter(){
  const image=new Image();
  return {
   load(){image.src=new URL('../assets/rails/v440/rail.png',import.meta.url).href;return image.decode();},
-  draw(ctx,rails,{px,ground,scale}){for(const r of rails){const x=px+r.x*scale,w=r.w*scale;if(x+w< -10||x>ctx.canvas.width)continue;const h=w*image.height/image.width;ctx.drawImage(image,x,ground-r.h*scale,w,h);}},
+  draw(ctx,rails,{px,ground,scale}){for(const r of rails){const x=px+r.x*scale,w=r.w*scale;if(x+w< -10||x>ctx.canvas.width)continue;// Preserve the photographed caps/posts and190-unit vertical geometry.
+   // Only the clear middle span stretches horizontally for the discrete widths.
+   const h=720*scale*image.height/image.width,cap=180*scale,sourceCap=image.width/4,y=ground-r.h*scale;
+   ctx.drawImage(image,0,0,sourceCap,image.height,x,y,cap,h);
+   ctx.drawImage(image,sourceCap,0,image.width-2*sourceCap,image.height,x+cap,y,w-2*cap,h);
+   ctx.drawImage(image,image.width-sourceCap,0,sourceCap,image.height,x+w-cap,y,cap,h);}},
   sparks(ctx,g,{px,ground,scale,time,flight,reduced}){
    if(!g.support)return;
    ctx.save();ctx.translate(px,ground-(flight.y+8)*scale);ctx.scale(scale,scale);ctx.lineCap='round';

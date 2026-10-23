@@ -1,3 +1,7 @@
+## Encounter pacing4.7.0
+
+The existing enemy art, canonical sizes, collision profiles and biome identity are unchanged. Air remains airborne; introductions occur earlier and respect the current biome. Optional rails now share a validated encounter with ground or air opponents and use four physical widths880/1120/1440/1680. The existing rail raster is drawn in three horizontal slices so posts/caps keep their height. No new image was generated. [Current rules](gameplay-v3.md).
+
 ## Air and encounter content 4.6.0 — current
 
 All seven models retain their original world size, sprite and box collision. Their lower collision/render edge clears the upright163-unit ground rider with at least47units of space. Each air-pass leaves a genuine safe ground underpass; jumping remains a voluntary risk. Rail-air uses an already introduced small model only. Large Sikorsky and Starlink stay eligible as separate air-passes. Biome memberships are unchanged.

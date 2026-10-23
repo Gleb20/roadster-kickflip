@@ -1,0 +1,78 @@
+TAP version 13
+# Subtest: spaced pairs remain a validated whole at full streak and speed pickup
+not ok 1 - spaced pairs remain a validated whole at full streak and speed pickup
+  ---
+  duration_ms: 9.726125
+  location: '/private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:3:1'
+  failureType: 'testCodeFailure'
+  error: 'pair 825'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: ~
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:3:498)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    node:internal/test_runner/harness:255:12
+    node:internal/process/task_queues:140:7
+    AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:137:8)
+  ...
+# Subtest: rail length is physical geometry, with a discrete explicit width
+not ok 2 - rail length is physical geometry, with a discrete explicit width
+  ---
+  duration_ms: 0.4905
+  location: '/private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:4:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    720 !== 640
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 640
+  actual: 720
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:4:120)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: first safe air is introduced before thirty seconds, including ordinary no-trick play
+not ok 3 - first safe air is introduced before thirty seconds, including ordinary no-trick play
+  ---
+  duration_ms: 61.158125
+  location: '/private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:5:1'
+  failureType: 'testCodeFailure'
+  error: 'firstair null'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-director-v460-20261023/tests/encounter-pacing.test.mjs:5:518)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 0
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 179.060917

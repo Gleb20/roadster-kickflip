@@ -1,0 +1,19 @@
+{
+  "result": {
+    "score": 66141,
+    "flips": 50,
+    "ticks": 22984
+  },
+  "chunks": 23,
+  "checkpoint": true,
+  "kinds": {
+    "single": 24,
+    "spaced-pair": 11,
+    "air-pass": 4,
+    "rail": 1,
+    "rail-air": 4,
+    "rail-ground": 5
+  },
+  "routeActionReads": 0,
+  "thrustUses": 0
+}

@@ -1,3 +1,7 @@
+## Encounter pacing4.7.0 — bounded inverse
+
+Parent `2cf618771f1d34c4a21c2b6cd256b2db9887a545` is published4.6.4 scenery, retaining4.6.3 replay semantics. Reverse only this bounded release delta in an isolated checkout with an exact-tree check; publish any frontend reversal with a fresh PWA identity. Retain all twelve backend verifiers for cached clients and pending records. Never reverse the additive migration, delete scores/queue/settings, overwrite the dirty original or remove the concurrent scenery fix. [Proof](docs/verification/2026-10-24-encounter-pacing/README.md).
+
 ## Smooth background 4.6.4 —bounded inverse
 
 Published runtime `012a3fb`; its exact inverse restores parent tree `f71dd6f69aba4ce1923cd2fcbbc7a3285594726f` with223 parent tests and all parent checks passing.

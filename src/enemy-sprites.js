@@ -1,4 +1,4 @@
-import {ASSETS} from './content.js?v=4.6.4';
+import {ASSETS} from './content.js?v=4.7.0';
 import {ENEMY_SPRITES} from './enemy-sprite-data.js';
 export function createEnemySprites(){
  const images=new Map();

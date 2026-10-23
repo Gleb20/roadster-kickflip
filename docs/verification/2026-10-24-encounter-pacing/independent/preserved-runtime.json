@@ -1,0 +1,10 @@
+{
+  "baseline": "28e02f4c5a409cd09d9b17ed33143dc2b180ee1a",
+  "normalizedIdentical": {
+    "src/gameplay.js": true,
+    "src/gameplay-config.js": true,
+    "src/physics.js": true,
+    "src/speed-feedback.js": true,
+    "src/audio-controls.js": true
+  }
+}

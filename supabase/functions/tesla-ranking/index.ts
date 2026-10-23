@@ -554,7 +554,7 @@ function validateRoute(obstacles, { flight = createFlight(), pace = createPace()
 }
 
 // supabase/rulesets/roadster-v342/director.js?v=3.4.2
-function createDirector({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const state = { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 };
   function reset() {
     Object.assign(state, { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 });
@@ -568,11 +568,11 @@ function createDirector({ S, flight, pace, economy, spawnDistance, sceneTime = (
     state.waiting = false;
     const stage = stageAt(pace.progress), breath = state.wave % 5 === 4 || state.hardStreak >= 2;
     const pools = [["single"], ["single"], ["pair", "single"], ["hover", "incoming", "pair"], ["precision", "incoming", "pair"], ["mixed", "precision", "thrust"], ["mixed", "precision", "thrust", "incoming"]];
-    let kind = breath ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
+    let kind = breath ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
     if (!breath && stage === 3 && pace.progress < 72) kind = "hover";
     const choices = OBSTACLES.filter((o) => !o.altitude && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    const type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    const type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     let obstacles = makePattern(kind, { speed: S.speed, type, dx });
     let route = validateRoute(obstacles, { flight, pace, economy, time: sceneTime(), timingMargin: GAMEPLAY.routeTimingMargin });
     if (route && route.fuelUsed > 0 && flight.fuel - route.fuelUsed < GAMEPLAY.routeFuelReserve) route = null;
@@ -621,8 +621,8 @@ var MAX_RECORDED_TICKS = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS = 24e3;
 function createRun({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, P = createFlight(), E = createEconomy(), pace = createPace(), F = createFall(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector({ S, flight: P, pace, economy: E, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector({ S, flight: P, pace, economy: E, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -634,7 +634,7 @@ function createRun({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom(seed);
+    random9 = createRandom(seed);
     Object.assign(P, createFlight());
     Object.assign(E, createEconomy());
     Object.assign(pace, createPace());
@@ -788,13 +788,13 @@ function createRun({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom(seed);
-    random8.restore(saved.random);
+    random9 = createRandom(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -1387,7 +1387,7 @@ function validateRoute2(obstacles, { flight = createFlight2(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v380/director.js
-function createDirector2({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector2({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const state = { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 };
   function reset() {
     Object.assign(state, { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 });
@@ -1401,11 +1401,11 @@ function createDirector2({ S, flight, pace, economy, spawnDistance, sceneTime = 
     state.waiting = false;
     const stage = stageAt2(pace.progress), breath = state.wave % 5 === 4 || state.hardStreak >= 2;
     const pools = [["single"], ["single"], ["pair", "single"], ["hover", "incoming", "pair"], ["precision", "incoming", "pair"], ["mixed", "precision", "thrust"], ["mixed", "precision", "thrust", "incoming"]];
-    let kind = breath ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
+    let kind = breath ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
     if (!breath && stage === 3 && pace.progress < 72) kind = "hover";
     const choices = OBSTACLES2.filter((o) => !o.altitude && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    const type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    const type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     let obstacles = makePattern2(kind, { speed: S.speed, type, dx });
     let route = validateRoute2(obstacles, { flight, pace, economy, time: sceneTime(), timingMargin: GAMEPLAY2.routeTimingMargin });
     if (route && route.fuelUsed > 0 && flight.fuel - route.fuelUsed < GAMEPLAY2.routeFuelReserve) route = null;
@@ -1454,8 +1454,8 @@ var MAX_RECORDED_TICKS2 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS2 = 24e3;
 function createRun2({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY2.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, P = createFlight2(), E = createEconomy2(), pace = createPace2(), F = createFall2(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom2(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector2({ S, flight: P, pace, economy: E, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom2(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector2({ S, flight: P, pace, economy: E, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -1467,7 +1467,7 @@ function createRun2({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom2(seed);
+    random9 = createRandom2(seed);
     Object.assign(P, createFlight2());
     Object.assign(E, createEconomy2());
     Object.assign(pace, createPace2());
@@ -1621,13 +1621,13 @@ function createRun2({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom2(seed);
-    random8.restore(saved.random);
+    random9 = createRandom2(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -2264,7 +2264,7 @@ function validateRoute3(obstacles, { flight = createFlight3(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v400/director.js?v=4.0.0
-function createDirector3({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector3({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const state = { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 };
   function reset() {
     Object.assign(state, { wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0 });
@@ -2278,12 +2278,12 @@ function createDirector3({ S, flight, pace, economy, spawnDistance, sceneTime = 
     state.waiting = false;
     const stage = stageAt3(pace.progress), breath = state.wave % 5 === 4 || state.hardStreak >= 2;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
+    let kind = breath ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
     const biome = biomeAt(S.score || 0).id;
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv"];
-    const choices = OBSTACLES3.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv"];
+    const choices = OBSTACLES3.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    const type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    const type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     let obstacles = makePattern3(kind, { speed: S.speed, type, dx });
     let route = validateRoute3(obstacles, { flight, pace, economy, time: sceneTime(), timingMargin: GAMEPLAY3.routeTimingMargin });
     if (route && route.fuelUsed > 0 && flight.fuel - route.fuelUsed < GAMEPLAY3.routeFuelReserve) route = null;
@@ -2332,8 +2332,8 @@ var MAX_RECORDED_TICKS3 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS3 = 24e3;
 function createRun3({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY3.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, P = createFlight3(), E = createEconomy3(), pace = createPace3(), F = createFall3(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom3(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector3({ S, flight: P, pace, economy: E, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom3(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector3({ S, flight: P, pace, economy: E, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -2345,7 +2345,7 @@ function createRun3({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom3(seed);
+    random9 = createRandom3(seed);
     Object.assign(P, createFlight3());
     Object.assign(E, createEconomy3());
     Object.assign(pace, createPace3());
@@ -2499,13 +2499,13 @@ function createRun3({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom3(seed);
-    random8.restore(saved.random);
+    random9 = createRandom3(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -3143,7 +3143,7 @@ function validateRoute4(obstacles, { flight = createFlight4(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v410/director.js?v=4.1.0
-function createDirector4({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector4({ S, flight, pace, economy, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0, leg: -1, legStartedAt: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9 });
   const state = initial();
   function reset() {
@@ -3164,15 +3164,15 @@ function createDirector4({ S, flight, pace, economy, spawnDistance, sceneTime = 
     const stage = stageAt4(pace.progress), afterAir = state.last?.kind === "air", breath = afterAir || state.wave % 5 === 4 || state.hardStreak >= 2;
     const airDue = leg >= 2 && S.t - state.legStartedAt >= 8 && state.groundSinceAir >= 6 && S.t - state.lastAirAt >= 28;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
-    const choices = OBSTACLES4.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+    const choices = OBSTACLES4.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    let type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    let type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     if (airDue && !breath && state.last?.kind === "single") {
       const first = state.airCount < 2;
       const pool = AIR_TYPES4.filter((o) => (o.biomes === "all" || o.biomes.includes(biome)) && (!first || o.h <= 55 && o.w <= 110));
-      const model = pool[Math.floor(random8() * pool.length)];
+      const model = pool[Math.floor(random9() * pool.length)];
       type = { ...model, altitude: first ? 24 : 32, approachSpeed: first ? 80 : 110 };
       kind = "air";
       dx = Math.max(dx, (S.speed + type.approachSpeed) * 2);
@@ -3230,8 +3230,8 @@ var MAX_RECORDED_TICKS4 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS4 = 24e3;
 function createRun4({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY4.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, P = createFlight4(), E = createEconomy4(), pace = createPace4(), F = createFall4(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom4(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector4({ S, flight: P, pace, economy: E, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom4(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector4({ S, flight: P, pace, economy: E, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -3243,7 +3243,7 @@ function createRun4({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom4(seed);
+    random9 = createRandom4(seed);
     Object.assign(P, createFlight4());
     Object.assign(E, createEconomy4());
     Object.assign(pace, createPace4());
@@ -3397,13 +3397,13 @@ function createRun4({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom4(seed);
-    random8.restore(saved.random);
+    random9 = createRandom4(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -3502,8 +3502,8 @@ function offerBooster(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -3511,7 +3511,7 @@ function offerBooster(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -4114,7 +4114,7 @@ function validateRoute5(obstacles, { flight = createFlight5(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v430/director.js
-function createDirector5({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector5({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0, leg: -1, legStartedAt: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9 });
   const state = initial();
   function reset() {
@@ -4135,15 +4135,15 @@ function createDirector5({ S, flight, pace, economy, boosters, spawnDistance, sc
     const stage = stageAt5(pace.progress), afterAir = state.last?.kind === "air", breath = afterAir || state.wave % 5 === 4 || state.hardStreak >= 2;
     const airDue = leg >= 2 && S.t - state.legStartedAt >= 8 && state.groundSinceAir >= 6 && S.t - state.lastAirAt >= 28;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
-    const choices = OBSTACLES5.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+    const choices = OBSTACLES5.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    let type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    let type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     if (airDue && !breath && state.last?.kind === "single") {
       const first = state.airCount < 2;
       const pool = AIR_TYPES5.filter((o) => (o.biomes === "all" || o.biomes.includes(biome)) && (!first || o.h <= 55 && o.w <= 110));
-      const model = pool[Math.floor(random8() * pool.length)];
+      const model = pool[Math.floor(random9() * pool.length)];
       type = { ...model, altitude: first ? 24 : 32, approachSpeed: first ? 80 : 110 };
       kind = "air";
       dx = Math.max(dx, (S.speed + type.approachSpeed) * 2);
@@ -4201,8 +4201,8 @@ var MAX_RECORDED_TICKS5 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS5 = 24e3;
 function createRun5({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY5.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, Q = createBoosters(seed), P = createFlight5(), E = createEconomy5(), pace = createPace5(), F = createFall5(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom5(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector5({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom5(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector5({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -4214,7 +4214,7 @@ function createRun5({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom5(seed);
+    random9 = createRandom5(seed);
     Object.assign(Q, createBoosters(seed));
     Object.assign(P, createFlight5());
     Object.assign(E, createEconomy5());
@@ -4418,13 +4418,13 @@ function createRun5({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom5(seed);
-    random8.restore(saved.random);
+    random9 = createRandom5(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -4526,8 +4526,8 @@ function offerBooster2(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster2(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster2(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -4535,7 +4535,7 @@ function offerBooster2(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random2(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random2(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -5138,7 +5138,7 @@ function validateRoute6(obstacles, { flight = createFlight6(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v432/director.js
-function createDirector6({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector6({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0, leg: -1, legStartedAt: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9 });
   const state = initial();
   function reset() {
@@ -5159,15 +5159,15 @@ function createDirector6({ S, flight, pace, economy, boosters, spawnDistance, sc
     const stage = stageAt6(pace.progress), afterAir = state.last?.kind === "air", breath = afterAir || state.wave % 5 === 4 || state.hardStreak >= 2;
     const airDue = leg >= 2 && S.t - state.legStartedAt >= 8 && state.groundSinceAir >= 6 && S.t - state.lastAirAt >= 28;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
-    const choices = OBSTACLES6.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+    const choices = OBSTACLES6.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    let type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    let type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     if (airDue && !breath && state.last?.kind === "single") {
       const first = state.airCount < 2;
       const pool = AIR_TYPES6.filter((o) => (o.biomes === "all" || o.biomes.includes(biome)) && (!first || o.h <= 55 && o.w <= 110));
-      const model = pool[Math.floor(random8() * pool.length)];
+      const model = pool[Math.floor(random9() * pool.length)];
       type = { ...model, altitude: first ? 24 : 32, approachSpeed: first ? 80 : 110 };
       kind = "air";
       dx = Math.max(dx, (S.speed + type.approachSpeed) * 2);
@@ -5225,8 +5225,8 @@ var MAX_RECORDED_TICKS6 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS6 = 24e3;
 function createRun6({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY6.startSpeed, next: 1.7, obs: [], entityId: 0, anchor: 0 }, Q = createBoosters2(seed), P = createFlight6(), E = createEconomy6(), pace = createPace6(), F = createFall6(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom6(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector6({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom6(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector6({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -5238,7 +5238,7 @@ function createRun6({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom6(seed);
+    random9 = createRandom6(seed);
     Object.assign(Q, createBoosters2(seed));
     Object.assign(P, createFlight6());
     Object.assign(E, createEconomy6());
@@ -5442,13 +5442,13 @@ function createRun6({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom6(seed);
-    random8.restore(saved.random);
+    random9 = createRandom6(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -6032,8 +6032,8 @@ function offerBooster3(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster3(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster3(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -6041,7 +6041,7 @@ function offerBooster3(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random3(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random3(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -6306,7 +6306,7 @@ function validateRoute7(obstacles, { flight = createFlight7(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v440/director.js?v=4.4.0
-function createDirector7({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector7({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0, leg: -1, legStartedAt: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9 });
   const state = initial();
   function reset() {
@@ -6338,15 +6338,15 @@ function createDirector7({ S, flight, pace, economy, boosters, spawnDistance, sc
     const stage = stageAt7(pace.progress), afterAir = state.last?.kind === "air", breath = afterAir || state.wave % 5 === 4 || state.hardStreak >= 2;
     const airDue = leg >= 2 && S.t - state.legStartedAt >= 8 && state.groundSinceAir >= 6 && S.t - state.lastAirAt >= 28;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
-    const choices = OBSTACLES7.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+    const choices = OBSTACLES7.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    let type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    let type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     if (airDue && !breath && state.last?.kind === "single") {
       const first = state.airCount < 2;
       const pool = AIR_TYPES7.filter((o) => (o.biomes === "all" || o.biomes.includes(biome)) && (!first || o.h <= 55 && o.w <= 110));
-      const model = pool[Math.floor(random8() * pool.length)];
+      const model = pool[Math.floor(random9() * pool.length)];
       type = { ...model, altitude: first ? 24 : 32, approachSpeed: first ? 80 : 110 };
       kind = "air";
       dx = Math.max(dx, (S.speed + type.approachSpeed) * 2);
@@ -6404,8 +6404,8 @@ var MAX_RECORDED_TICKS7 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS7 = 24e3;
 function createRun7({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY7.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters3(seed), G = createGrind(), P = createFlight7(), E = createEconomy7(), pace = createPace7(), F = createFall7(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom7(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector7({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom7(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector7({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -6417,7 +6417,7 @@ function createRun7({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom7(seed);
+    random9 = createRandom7(seed);
     Object.assign(Q, createBoosters3(seed));
     Object.assign(G, createGrind());
     Object.assign(P, createFlight7());
@@ -6643,13 +6643,13 @@ function createRun7({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom7(seed);
-    random8.restore(saved.random);
+    random9 = createRandom7(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -7234,8 +7234,8 @@ function offerBooster4(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster4(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster4(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -7243,7 +7243,7 @@ function offerBooster4(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random4(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random4(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -7508,7 +7508,7 @@ function validateRoute8(obstacles, { flight = createFlight8(), pace = createPace
 }
 
 // supabase/rulesets/roadster-v442/director.js
-function createDirector8({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector8({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, hardStreak: 0, leg: -1, legStartedAt: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9 });
   const state = initial();
   function reset() {
@@ -7540,15 +7540,15 @@ function createDirector8({ S, flight, pace, economy, boosters, spawnDistance, sc
     const stage = stageAt8(pace.progress), afterAir = state.last?.kind === "air", breath = afterAir || state.wave % 5 === 4 || state.hardStreak >= 2;
     const airDue = leg >= 2 && S.t - state.legStartedAt >= 8 && state.groundSinceAir >= 6 && S.t - state.lastAirAt >= 28;
     const pools = [["single"], ["single"], ["pair", "single"], ["single", "pair"], ["precision", "single", "pair"], ["pair", "precision", "thrust"], ["pair", "precision", "thrust"]];
-    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random8() * pools[stage].length)];
-    const factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
-    const choices = OBSTACLES8.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
+    let kind = breath || airDue ? "single" : pools[stage][Math.floor(random9() * pools[stage].length)];
+    const factoryIds5 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+    const choices = OBSTACLES8.filter((o) => !o.altitude && o.collision !== "none" && (o.biomes === "all" || o.biomes.includes(biome)) && (biome !== "tesla-factory" || factoryIds5.includes(o.id)) && (stage === 0 ? o.h <= 64 : stage < 2 ? o.h <= 94 : true));
     if (kind === "thrust" && flight.fuel < 65) kind = "pair";
-    let type = choices[Math.floor(random8() * choices.length)], dx = spawnDistance();
+    let type = choices[Math.floor(random9() * choices.length)], dx = spawnDistance();
     if (airDue && !breath && state.last?.kind === "single") {
       const first = state.airCount < 2;
       const pool = AIR_TYPES8.filter((o) => (o.biomes === "all" || o.biomes.includes(biome)) && (!first || o.h <= 55 && o.w <= 110));
-      const model = pool[Math.floor(random8() * pool.length)];
+      const model = pool[Math.floor(random9() * pool.length)];
       type = { ...model, altitude: first ? 24 : 32, approachSpeed: first ? 80 : 110 };
       kind = "air";
       dx = Math.max(dx, (S.speed + type.approachSpeed) * 2);
@@ -7606,8 +7606,8 @@ var MAX_RECORDED_TICKS8 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS8 = 24e3;
 function createRun8({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY8.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters4(seed), G = createGrind2(), P = createFlight8(), E = createEconomy8(), pace = createPace8(), F = createFall8(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom8(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector8({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom8(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector8({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -7619,7 +7619,7 @@ function createRun8({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom8(seed);
+    random9 = createRandom8(seed);
     Object.assign(Q, createBoosters4(seed));
     Object.assign(G, createGrind2());
     Object.assign(P, createFlight8());
@@ -7845,13 +7845,13 @@ function createRun8({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom8(seed);
-    random8.restore(saved.random);
+    random9 = createRandom8(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -8436,8 +8436,8 @@ function offerBooster5(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster5(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster5(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -8445,7 +8445,7 @@ function offerBooster5(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random5(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random5(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -8766,7 +8766,7 @@ function validateEncounter(obstacles, options = {}) {
 var factoryIds = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
 var eligible = (o, biome) => o.biomes === "all" || o.biomes.includes(biome);
 var airSpeed = { ufo: 65, primeDrone: 70, twitterBird: 95, starlink: 45, regulatorDrone: 60, sikorsky: 35, qualitySkull: 75 };
-function createDirector9({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector9({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, leg: -1, legStartedAt: 0, legDistance: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9, railCount: 0, lastRailAirAt: -1e9, phase: "introduce", flow: 0, active: false, restUntil: null, restSeconds: ENCOUNTER.rest, recoveryWaves: 0, history: [], seen: [], sinceTall: 2, budget: null });
   const state = initial();
   function reset() {
@@ -8813,7 +8813,7 @@ function createDirector9({ S, flight, pace, economy, boosters, spawnDistance, sc
     const opts = { flight, pace, economy, boosterState: boosters, time: sceneTime(), budget };
     const dx = Math.max(spawnDistance(), S.speed * 1.8 + 180), railDue = state.wave >= RAIL3.firstWave && (state.wave - RAIL3.firstWave) % RAIL3.every === 0;
     let kind = "single", obstacles = [], rail = null, route = null;
-    const airPool = AIR_TYPES9.filter((o) => eligible(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random8() * pool.length))];
+    const airPool = AIR_TYPES9.filter((o) => eligible(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random9() * pool.length))];
     if (railDue && !state.recoveryWaves) {
       rail = makeRail3(dx);
       kind = "rail";
@@ -8934,8 +8934,8 @@ var MAX_RECORDED_TICKS9 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS9 = 24e3;
 function createRun9({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY9.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters5(seed), G = createGrind3(), P = createFlight9(), E = createEconomy9(), pace = createPace9(), F = createFall9(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom9(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector9({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom9(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector9({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -8947,7 +8947,7 @@ function createRun9({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom9(seed);
+    random9 = createRandom9(seed);
     Object.assign(Q, createBoosters5(seed));
     Object.assign(G, createGrind3());
     Object.assign(P, createFlight9());
@@ -9176,13 +9176,13 @@ function createRun9({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom9(seed);
-    random8.restore(saved.random);
+    random9 = createRandom9(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -9793,8 +9793,8 @@ function offerBooster6(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster6(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster6(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -9802,7 +9802,7 @@ function offerBooster6(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random6(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random6(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -10125,7 +10125,7 @@ function validateEncounter2(obstacles, options = {}) {
 var factoryIds2 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
 var eligible2 = (o, biome) => o.biomes === "all" || o.biomes.includes(biome);
 var airSpeed2 = { ufo: 65, primeDrone: 70, twitterBird: 95, starlink: 45, regulatorDrone: 60, sikorsky: 35, qualitySkull: 75 };
-function createDirector10({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector10({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, fallbacks: 0, waiting: false, leg: -1, legStartedAt: 0, legDistance: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9, railCount: 0, lastRailAirAt: -1e9, phase: "introduce", flow: 0, active: false, restUntil: null, restSeconds: ENCOUNTER2.rest, recoveryWaves: 0, history: [], seen: [], sinceTall: 2, budget: null });
   const state = initial();
   function reset() {
@@ -10172,7 +10172,7 @@ function createDirector10({ S, flight, pace, economy, boosters, spawnDistance, s
     const opts = { flight, pace, economy, boosterState: boosters, time: sceneTime(), budget };
     const dx = Math.max(spawnDistance(), S.speed * 1.8 + 180), railDue = state.wave >= RAIL4.firstWave && (state.wave - RAIL4.firstWave) % RAIL4.every === 0;
     let kind = "single", obstacles = [], rail = null, route = null;
-    const airPool = AIR_TYPES10.filter((o) => eligible2(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random8() * pool.length))];
+    const airPool = AIR_TYPES10.filter((o) => eligible2(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random9() * pool.length))];
     if (railDue && !state.recoveryWaves) {
       rail = makeRail4(dx);
       kind = "rail";
@@ -10293,8 +10293,8 @@ var MAX_RECORDED_TICKS10 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS10 = 24e3;
 function createRun10({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY10.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters6(seed), G = createGrind4(), P = createFlight10(), E = createEconomy10(), pace = createPace10(), F = createFall10(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom10(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector10({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom10(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector10({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -10306,7 +10306,7 @@ function createRun10({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom10(seed);
+    random9 = createRandom10(seed);
     Object.assign(Q, createBoosters6(seed));
     Object.assign(G, createGrind4());
     Object.assign(P, createFlight10());
@@ -10537,13 +10537,13 @@ function createRun10({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom10(seed);
-    random8.restore(saved.random);
+    random9 = createRandom10(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -11154,8 +11154,8 @@ function offerBooster7(q, { time, speed, clear }) {
       [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
     }
   }
-  const eligible4 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster7(q, id3) || Object.keys(q.active).length < 3;
-  let index = q.bag.findIndex(eligible4);
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster7(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
   if (index < 0) {
     q.nextAt = time + 2;
     return null;
@@ -11163,7 +11163,7 @@ function offerBooster7(q, { time, speed, clear }) {
   const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random7(q) < 0.55 ? 104 : 240 };
   q.pickups.push(pickup);
   if (q.serial > 1 && random7(q) < 0.4) {
-    const second = q.bag.findIndex((other) => other !== id2 && eligible4(other));
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
     if (second >= 0) {
       const next = q.bag.splice(second, 1)[0];
       q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
@@ -11325,7 +11325,7 @@ function makePattern11(kind, { speed = 360, type = { id: "truck", w: 110, h: 41 
 // supabase/rulesets/roadster-v463/encounter-routes.js
 var ENCOUNTER3 = Object.freeze({ tickBudget: 18e3, policyBudget: 40, window: 0.18, sample: 0.03, rest: 1.5, accentRest: 1.8, airCooldown: 28, railAirCooldown: 30, tallPreparation: 0.74, tallErrorPreparation: 0.64 });
 var encounterBudget3 = () => ({ ticks: 0, policies: 0, candidates: 0, exhausted: false });
-function simulateEncounter3(obstacles, { flight = createFlight11(), pace = createPace11(), economy = createEconomy11(), boosterState = null, time = 0, rail = null, charge = 0.4, lead = 0.2, secondLead = lead, noInput = false, requireCatch = !!rail, budget = encounterBudget3(), minGroundGap = 0, prefix = null, stopBeforeHold = null, viewStrength: viewStrength4 = 0 } = {}) {
+function simulateEncounter3(obstacles, { flight = createFlight11(), pace = createPace11(), economy = createEconomy11(), boosterState = null, time = 0, rail = null, charge = 0.4, lead = 0.2, secondLead = lead, noInput = false, requireCatch = !!rail, budget = encounterBudget3(), minGroundGap = 0, prefix = null, stopBeforeHold = null, viewStrength: viewStrength5 = 0 } = {}) {
   if (flight.airborne || pace.recovery || pace.falling || pace.stumble > 0 || budget.exhausted) return null;
   if (budget.policies >= ENCOUNTER3.policyBudget) {
     budget.exhausted = true;
@@ -11333,7 +11333,7 @@ function simulateEncounter3(obstacles, { flight = createFlight11(), pace = creat
   }
   budget.policies++;
   const p = { ...prefix?.p || flight }, r = structuredClone(prefix?.r || pace), e = { ...prefix?.e || economy }, q = prefix ? structuredClone(prefix.q) : boosterState ? structuredClone(boosterState) : null, g = prefix ? structuredClone(prefix.g) : createGrind5(), rails = prefix ? structuredClone(prefix.rails) : rail ? [{ ...structuredClone(rail), uid: 1 }] : [], obs = (prefix?.obs || obstacles).map((o) => ({ ...o })), actions = [];
-  const view = { strength: prefix?.view?.strength ?? viewStrength4 }, visibleAt = prefix?.visibleAt ? [...prefix.visibleAt] : obs.map(() => null);
+  const view = { strength: prefix?.view?.strength ?? viewStrength5 }, visibleAt = prefix?.visibleAt ? [...prefix.visibleAt] : obs.map(() => null);
   let charging = false, holdTick = 0, jumps = 0, caught = false, groundSince = null, minGap = Infinity, lateTarget = null, nearLandings = 0, lateTakeoffs = 0, firstPreparation = Infinity;
   const dt = 1 / 120, chargeTicks = Math.round(charge * GAMEPLAY11.chargeSeconds / dt), groundTargets = obs.filter((o) => !o.altitude);
   const horizon = Math.min(1800, Math.ceil((Math.max(0, ...obstacles.map((o) => o.x + o.w), rail ? rail.x + rail.w : 0) + 300) / Math.max(60, Math.min(pace.speed, pace.base)) * 120 + 360));
@@ -11489,7 +11489,7 @@ function validateEncounter3(obstacles, options = {}) {
 var factoryIds3 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
 var eligible3 = (o, biome) => o.biomes === "all" || o.biomes.includes(biome);
 var airSpeed3 = { ufo: 65, primeDrone: 70, twitterBird: 95, starlink: 45, regulatorDrone: 60, sikorsky: 35, qualitySkull: 75 };
-function createDirector11({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random8 = Math.random, relative = false }) {
+function createDirector11({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
   const initial = () => ({ wave: 0, last: null, viewStrength: 0, viewAt: 0, fallbacks: 0, waiting: false, leg: -1, legStartedAt: 0, legDistance: 0, groundSinceAir: 0, airCount: 0, lastAirAt: -1e9, railCount: 0, lastRailAirAt: -1e9, phase: "introduce", flow: 0, active: false, restUntil: null, restSeconds: ENCOUNTER3.rest, recoveryWaves: 0, history: [], seen: [], sinceTall: 2, budget: null });
   const state = initial();
   function reset() {
@@ -11541,7 +11541,7 @@ function createDirector11({ S, flight, pace, economy, boosters, spawnDistance, s
     const opts = { flight, pace, economy, boosterState: boosters, time: sceneTime(), budget, viewStrength: Math.max(0, state.viewStrength - 0.02) };
     const dx = Math.max(spawnDistance(), S.speed * 1.8 + 180), railDue = state.wave >= RAIL5.firstWave && (state.wave - RAIL5.firstWave) % RAIL5.every === 0;
     let kind = "single", obstacles = [], rail = null, route = null, fallbackRail = false;
-    const airPool = AIR_TYPES11.filter((o) => eligible3(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random8() * pool.length))];
+    const airPool = AIR_TYPES11.filter((o) => eligible3(o, biome)), pick = (pool) => pool[Math.min(pool.length - 1, Math.floor(random9() * pool.length))];
     if (railDue && !state.recoveryWaves) {
       rail = makeRail5(dx);
       kind = "rail";
@@ -11669,8 +11669,8 @@ var MAX_RECORDED_TICKS11 = 120 * 60 * 60;
 var MAX_RECORDED_EVENTS11 = 24e3;
 function createRun11({ seed = 0, record = true, reducedMotion = false } = {}) {
   const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY11.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters7(seed), G = createGrind5(), P = createFlight11(), E = createEconomy11(), pace = createPace11(), F = createFall11(), input = { charging: false, charge: 0, spin: false, thrust: false };
-  let random8 = createRandom11(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
-  const director = createDirector11({ S, flight: P, pace, economy: E, boosters: Q, random: () => random8.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  let random9 = createRandom11(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector11({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
   function clear() {
     Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
     P.thrusting = false;
@@ -11682,7 +11682,7 @@ function createRun11({ seed = 0, record = true, reducedMotion = false } = {}) {
   }
   function reset(nextSeed = seed) {
     seed = nextSeed;
-    random8 = createRandom11(seed);
+    random9 = createRandom11(seed);
     Object.assign(Q, createBoosters7(seed));
     Object.assign(G, createGrind5());
     Object.assign(P, createFlight11());
@@ -11913,13 +11913,13 @@ function createRun11({ seed = 0, record = true, reducedMotion = false } = {}) {
     return { landed, impacts: fallStep.impacts };
   }
   function snapshot() {
-    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random8.state, director: director.state, lateId, lastLanding });
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
   }
   function restore(saved) {
     seed = saved.seed;
     for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
-    random8 = createRandom11(seed);
-    random8.restore(saved.random);
+    random9 = createRandom11(seed);
+    random9.restore(saved.random);
     lateId = saved.lateId;
     lastLanding = structuredClone(saved.lastLanding);
     events = [];
@@ -11961,8 +11961,1391 @@ function verifyReplay11(value) {
   return { score: run.S.score, flips: run.E.flips, ticks: run.S.tick };
 }
 
+// supabase/rulesets/roadster-v470/run.js
+var run_exports12 = {};
+__export(run_exports12, {
+  RULESET: () => RULESET12,
+  RUN_COMMANDS: () => RUN_COMMANDS12,
+  RUN_STEP: () => RUN_STEP12,
+  createRun: () => createRun12,
+  validateReplay: () => validateReplay12,
+  verifyReplay: () => verifyReplay12
+});
+
+// supabase/rulesets/roadster-v470/gameplay-config.js
+var GAMEPLAY12 = Object.freeze({
+  version: "4.7.0",
+  gravity: 1550,
+  jumpSpeed: 560,
+  chargedSpeed: 440,
+  chargeSeconds: 0.4,
+  spinSpeed: 7.2,
+  spinAcceleration: 60,
+  releaseSpeed: 1.8,
+  releaseDeceleration: 24,
+  settleMinTurn: Math.PI * 17 / 12,
+  settleApproach: Math.PI * 7 / 12,
+  settleFullAngle: Math.PI * 5 / 36,
+  settleDamping: 16,
+  landingAngle: Math.PI * 2 / 9,
+  landingOmega: Math.PI * 4 / 3,
+  perfectAngle: Math.PI / 18,
+  perfectPoints: 50,
+  thrustAcceleration: 2100,
+  horizontalDrag: 1.8,
+  maxHorizontal: 260,
+  tank: 100,
+  initialFuel: 50,
+  fuelPerSecond: 80,
+  fuelPerFlip: 25,
+  attachSeconds: 0.12,
+  obstaclePoints: 50,
+  flipFactor: 50,
+  nearPoints: 25,
+  nearSeconds: 0.12,
+  maxMultiplier: 50,
+  multiplierStep: 1,
+  comboDuration: 8,
+  comboFalloff: 1.2,
+  comboDecaySeconds: 0.5,
+  streakStep: 0.05,
+  maxStreak: 0.25,
+  streakHold: 4,
+  streakDecay: 0.1,
+  fallSeconds: 2.8,
+  fallSpeedSeconds: 0.65,
+  fallMaxRate: 1.6,
+  fallTapRate: 0.15,
+  routeTimingMargin: 0.035,
+  routeFuelReserve: 20,
+  stumbleSeconds: 0.3,
+  recoveryRatio: 0.55,
+  recoveryMin: 1.2,
+  recoveryExtra: 2.8,
+  startSpeed: 360,
+  maxSpeed: 660,
+  rampSeconds: 150,
+  stages: Object.freeze([0, 15, 35, 60, 90, 120, 150]),
+  bestKey: "roadster-best-v3",
+  tutorialKey: "roadster-coach-v3"
+});
+
+// supabase/rulesets/roadster-v470/enemy-sprite-data.js
+var ENEMY_SPRITES10 = Object.freeze({ "sikorsky": { "file": "assets/encounters/v400/sikorsky.png", "w": 176, "h": 89.146, "pixels": [768, 389], "sourcePixels": [1536, 1024], "sourceCrop": [13, 146, 1520, 909], "alphaExtrema": [0, 255], "sha256": "5619dd383d0bbb6ed7115f767f21f1e86e720d2aeb9ce3f0f41a182f15da3520" }, "xi": { "file": "assets/encounters/v400/xi.png", "w": 72, "h": 109.281, "pixels": [506, 768], "sourcePixels": [1024, 1536], "sourceCrop": [51, 65, 978, 1471], "alphaExtrema": [0, 255], "sha256": "56f56642f4f29a2b3c6655a442be59d4df5f781327c20299fa9ff596f69c6ac0" }, "t800": { "file": "assets/encounters/v400/t800.png", "w": 57, "h": 109.44, "pixels": [400, 768], "sourcePixels": [1024, 1536], "sourceCrop": [183, 66, 925, 1489], "alphaExtrema": [0, 255], "sha256": "1661f9bf004a65db0c178ca6d7b17e42d9963299f627f450016e9443125495f8" }, "ufo": { "file": "assets/encounters/v400/ufo.png", "w": 104, "h": 47.26, "pixels": [768, 349], "sourcePixels": [1672, 940], "sourceCrop": [141, 130, 1535, 763], "alphaExtrema": [0, 255], "sha256": "926e3e760155afe3acbc9215b35465a78e3a49039762c7ff89f8bf1c1e8ec358" }, "primeDrone": { "file": "assets/encounters/v400/primeDrone.png", "w": 110, "h": 48.984, "pixels": [768, 342], "sourcePixels": [1821, 864], "sourceCrop": [10, 31, 1812, 833], "alphaExtrema": [0, 255], "sha256": "a46783dc00dd76be690c29c72f92fa834a02b2522aac366058cc2972822ab681" }, "twitterBird": { "file": "assets/encounters/v400/twitterBird.png", "w": 76, "h": 50.568, "pixels": [768, 511], "sourcePixels": [1536, 1024], "sourceCrop": [85, 50, 1460, 964], "alphaExtrema": [0, 255], "sha256": "46436e2c78ac2ac104426b8bc898f047cb8ee934a9b1a5dd08631a554f5ee94e" }, "homelessRow": { "file": "assets/encounters/v400/homelessRow.png", "w": 142, "h": 40.122, "pixels": [768, 217], "sourcePixels": [2073, 758], "sourceCrop": [79, 124, 2012, 670], "alphaExtrema": [0, 255], "sha256": "03ed702ddb2d5cd06d2c6174b8e88edce01a22adbae68570d268de367ea49806" }, "bydSeal": { "file": "assets/encounters/v400/bydSeal.png", "w": 138, "h": 44.562, "pixels": [768, 248], "sourcePixels": [2172, 724], "sourceCrop": [144, 74, 2061, 693], "alphaExtrema": [0, 255], "sha256": "840376084d808030f6900dbad884a825703c1dd7736fc147db457098759d8b69" }, "xiaomiSu7": { "file": "assets/encounters/v400/xiaomiSu7.png", "w": 138, "h": 42.047, "pixels": [768, 234], "sourcePixels": [1903, 826], "sourceCrop": [26, 190, 1877, 753], "alphaExtrema": [0, 255], "sha256": "3187a0f29bc97d4a73a1186cc1fbd60785ac6beea61dc55a10d7d70184e20bab" }, "batteryAgv": { "file": "assets/encounters/v400/batteryAgv.png", "w": 118, "h": 41.177, "pixels": [768, 268], "sourcePixels": [2012, 782], "sourceCrop": [131, 113, 1878, 722], "alphaExtrema": [0, 255], "sha256": "82d12e8efdb89038ea0351b7dc942754be9ab9f78aed29a88b2c4a12a8cc6d79" }, "qualitySkull": { "file": "assets/encounters/v400/qualitySkull.png", "w": 76, "h": 40.87, "pixels": [768, 413], "sourcePixels": [1536, 1024], "sourceCrop": [183, 152, 1413, 814], "alphaExtrema": [0, 255], "sha256": "955bb780f34142f0f9302839283022730bfd1c7688c48c46ac59cc18ad994d4b" }, "starlink": { "file": "assets/encounters/v400/starlink.png", "w": 112, "h": 69.271, "pixels": [768, 475], "sourcePixels": [1559, 1009], "sourceCrop": [76, 97, 1491, 973], "alphaExtrema": [0, 255], "sha256": "3988083ecbf0294a0c50b44df0bd8283347a56d5d9ffabe36ff6aa3a281d9e08" }, "regulatorDrone": { "file": "assets/encounters/v400/regulatorDrone.png", "w": 106, "h": 47.065, "pixels": [768, 341], "sourcePixels": [1536, 1024], "sourceCrop": [15, 176, 1521, 845], "alphaExtrema": [0, 255], "sha256": "99140365f63c6e6af46fafbfd90380459ae5e0a4e5709dfc371ebd1c3a5cf830" }, "reptileHead": { "file": "assets/encounters/v400/reptileHead.png", "w": 68, "h": 79.416, "pixels": [274, 320], "sourcePixels": [1173, 1341], "sourceCrop": [121, 97, 1077, 1212], "alphaExtrema": [0, 255], "sha256": "dc627f44d9efbaae3b93c44c5377ce25b518751b691071cf11a26f3670bcfa49" }, "moltenVat": { "file": "assets/encounters/v400/moltenVat.png", "w": 164, "h": 134.745, "pixels": [768, 631], "sourcePixels": [1351, 1164], "sourceCrop": [54, 71, 1298, 1093], "alphaExtrema": [0, 255], "sha256": "f7fe4d31e0588da095c2647e5548d3b8bebdd67aa9cbdcfe6e619963bd1198ca" } });
+
+// supabase/rulesets/roadster-v470/content.js
+function freeze12(value) {
+  if (value && typeof value === "object") {
+    for (const item of Object.values(value)) freeze12(item);
+    Object.freeze(value);
+  }
+  return value;
+}
+var BIOMES12 = freeze12(["spaceport", "tesla-factory"]);
+var BIOME_CYCLE12 = freeze12(["spaceport", "tesla-factory"]);
+var ANIMATIONS12 = freeze12(["taunt", "angry-look", "point-and-laugh", "trampoline-bounce", "money-guns", "podcast", "throw", "lightning", "reptile", "look"]);
+var ASSETS12 = freeze12({
+  ...Object.fromEntries(Object.entries(ENEMY_SPRITES10).map(([id2, s]) => ["encounter_" + id2, { file: s.file }])),
+  encounter_moltenVat: { file: "assets/encounters/v411/moltenVat.png" },
+  collage: { file: "collage-atlas.png" },
+  extras: { file: "collage-extras.png" },
+  cast: { file: "paper-cast.png" },
+  photos: { file: "obstacle-photos.png" },
+  joe: { file: "assets/characters/joe-rogan.png" },
+  amber: { file: "assets/characters/amber-head-v247.png" },
+  drone: { file: "assets/obstacles/phantom-v3.png" }
+});
+var none12 = { enabled: false };
+var reaction12 = (animationId, trigger = "near", range = 300, space = "target") => ({ enabled: true, animationId, trigger, range, space });
+function define12(base, options = {}) {
+  return freeze12({
+    ...base,
+    definitionVersion: 1,
+    category: options.category || "object",
+    placement: base.altitude ? "air" : "ground",
+    anchor: base.altitude ? "air-bottom-center" : "ground-center",
+    biomes: options.biomes || "all",
+    visual: { renderer: options.renderer || "prop", key: options.key || base.id, assets: options.assets || [], bob: options.bob || false },
+    collision: options.collision || "box",
+    reactions: { hero: options.hero || none12, obstacle: options.obstacle || none12 },
+    collectible: true,
+    provenance: "assets-provenance.json"
+  });
+}
+function spriteDefinition10(id2, name2, options, altitude = 0) {
+  const s = ENEMY_SPRITES10[
+    /** @type {keyof typeof ENEMY_SPRITES} */
+    id2
+  ];
+  return define12({ id: id2, name: name2, w: s.w, h: s.h, inset: id2 === "t800" ? 10 : 5, ...altitude ? { altitude } : {} }, { ...options, renderer: "sprite", assets: ["encounter_" + id2] });
+}
+var OBSTACLES12 = freeze12([
+  define12({ id: "v8", name: "V8 \u2022 VERY LOUD", w: 108, h: 36 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define12({ id: "trump", name: "TARIFF MAN", w: 54, h: 94 }, { renderer: "character", assets: ["collage"], category: "person", bob: true, hero: reaction12("taunt"), obstacle: reaction12("angry-look") }),
+  define12({ id: "protest", name: "COUCH CRITICS", w: 102, h: 94 }, { renderer: "cutout", assets: ["extras"], bob: true, category: "group" }),
+  define12({ id: "truck", name: "CYBERBRICK", w: 110, h: 41 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define12({ id: "doge", name: "MUCH WOW", w: 52, h: 64 }, { renderer: "cutout", assets: ["extras"], bob: true, category: "animal" }),
+  define12({ id: "pump", name: "BIG OIL", w: 54, h: 78 }, {}),
+  define12({ id: "zuck", name: "ZUCK", w: 62, h: 94, inset: 5 }, { renderer: "character", assets: ["cast"], category: "person", hero: reaction12("money-guns", "airborne-near"), obstacle: reaction12("money-guns", "airborne-near") }),
+  define12({ id: "openai", name: "OPENAI", w: 70, h: 68, inset: 5 }, { category: "emblem" }),
+  define12({ id: "claude", name: "CLAUDE", w: 84, h: 73, inset: 6 }, { category: "emblem" }),
+  define12({ id: "gemini", name: "GEMINI", w: 58, h: 78, inset: 4 }, { category: "emblem" }),
+  define12({ id: "rogozin", name: "ROGOZIN / TRAMPOLINE", w: 88, h: 130, inset: 4 }, { renderer: "character", assets: ["cast"], category: "person", biomes: ["spaceport"], collision: "trampoline", hero: reaction12("point-and-laugh", "airborne-near"), obstacle: reaction12("trampoline-bounce", "passage") }),
+  define12({ id: "amber", name: "AMBER HEARD", w: 58, h: 94, inset: 9 }, { renderer: "character", assets: ["amber"], category: "person", obstacle: reaction12("throw", "passage") }),
+  define12({ id: "joe", name: "JOE ROGAN", w: 76, h: 94, inset: 10 }, { renderer: "character", assets: ["joe"], category: "person", hero: reaction12("podcast", "passage", 650, "self"), obstacle: reaction12("podcast", "passage", 650, "self") }),
+  define12({ id: "muscleCoupe", name: "AMERICAN MUSCLE", w: 138, h: 45, inset: 6 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define12({ id: "muscleCompact", name: "SMALL BLOCK / BIG EGO", w: 112, h: 38, inset: 5 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  define12({ id: "pickup", name: "BIG TRUCK ENERGY", w: 140, h: 57, inset: 6 }, { renderer: "photo", assets: ["photos"], category: "vehicle" }),
+  ...[
+    ["homelessRow", "SPARE CHANGE", "group", "all"],
+    ["t800", "T-800 / AUTOMATION", "person", ["tesla-factory"]],
+    ["bydSeal", "BYD SEAL", "vehicle", ["tesla-factory"]],
+    ["xiaomiSu7", "XIAOMI SU7", "vehicle", ["tesla-factory"]],
+    ["batteryAgv", "BATTERY SWAP", "vehicle", ["tesla-factory"]]
+  ].map(([id2, name2, category, biomes]) => spriteDefinition10(String(id2), String(name2), { category: String(category), biomes: Array.isArray(biomes) ? biomes : "all" })),
+  ...[
+    ["ufo", "UNIDENTIFIED FLYING OPPORTUNITY", "all"],
+    ["primeDrone", "PRIME PERSONAL SPACE", "all"],
+    ["twitterBird", "THE FORMER BIRD", ["spaceport"]],
+    ["starlink", "STARLINK / WRONG ORBIT", ["spaceport"]],
+    ["regulatorDrone", "APPROVAL PENDING", "all"],
+    ["sikorsky", "SIKORSKY / VS-300", ["spaceport"]],
+    ["qualitySkull", "QUALITY CONTROL", ["tesla-factory"]]
+  ].map(([id2, name2, biomes]) => spriteDefinition10(String(id2), String(name2), { category: "flying enemy", biomes: Array.isArray(biomes) ? biomes : "all", collision: "box", hero: reaction12(id2 === "ufo" ? "reptile" : "look", "near", 320) }, { ufo: 225, primeDrone: 215, twitterBird: 215, starlink: 250, regulatorDrone: 220, sikorsky: 245, qualitySkull: 210 }[String(id2)])),
+  spriteDefinition10("xi", "COMRADE XI", { category: "person", biomes: ["tesla-factory"], collision: "box", hero: reaction12("lightning", "near", 380), obstacle: reaction12("lightning", "near", 380) })
+]);
+var PROP_TYPES12 = freeze12(OBSTACLES12.filter((o) => ["muscleCoupe", "muscleCompact", "pickup"].includes(o.id)));
+var AIR_TYPES12 = freeze12(OBSTACLES12.filter((o) => o.placement === "air"));
+var definitionsById12 = new Map(OBSTACLES12.map((o) => [o.id, o]));
+var obstacleDefinition12 = (id2) => definitionsById12.get(id2);
+function validateContent12(definitions = OBSTACLES12) {
+  const errors = [], ids = /* @__PURE__ */ new Set();
+  for (const o of definitions) {
+    if (!o.id || ids.has(o.id)) errors.push(`duplicate or missing id: ${o.id}`);
+    ids.add(o.id);
+    if (!Number.isFinite(o.w) || !Number.isFinite(o.h) || o.w <= 0 || o.h <= 6) errors.push(`${o.id}: invalid size`);
+    if (!["ground", "air"].includes(o.placement)) errors.push(`${o.id}: invalid placement`);
+    if (o.placement === "air" && (!Number.isFinite(o.altitude) || !(Number(o.altitude) > 0))) errors.push(`${o.id}: invalid altitude`);
+    if (o.placement === "ground" && o.altitude) errors.push(`${o.id}: ground altitude`);
+    if (!["ground-center", "air-bottom-center"].includes(o.anchor)) errors.push(`${o.id}: invalid anchor`);
+    if (o.biomes !== "all" && (!Array.isArray(o.biomes) || !o.biomes.length || o.biomes.some((b) => !BIOMES12.includes(b)))) errors.push(`${o.id}: unknown biome`);
+    if (!o.visual || !["photo", "cutout", "character", "prop", "drone", "sprite"].includes(o.visual.renderer)) errors.push(`${o.id}: missing renderer`);
+    for (const id2 of o.visual?.assets || []) if (!Object.hasOwn(ASSETS12, id2)) errors.push(`${o.id}: unknown asset ${id2}`);
+    if (!["box", "trampoline", "none"].includes(o.collision)) errors.push(`${o.id}: missing collision profile`);
+    if (o.inset !== void 0 && (!Number.isFinite(o.inset) || o.inset < 0 || o.inset * 2 >= o.w)) errors.push(`${o.id}: invalid inset`);
+    for (
+      const direction of
+      /** @type {const} */
+      ["hero", "obstacle"]
+    ) {
+      const r = o.reactions?.[direction];
+      if (!r || typeof r.enabled !== "boolean") errors.push(`${o.id}: missing ${direction} reaction`);
+      else if (r.enabled && (!ANIMATIONS12.includes(r.animationId) || !["near", "airborne-near", "passage"].includes(r.trigger) || !(r.range > 0) || !["target", "self"].includes(r.space))) errors.push(`${o.id}: missing animation ${r.animationId}`);
+    }
+  }
+  return errors;
+}
+var contentErrors12 = validateContent12();
+if (contentErrors12.length) throw new Error(`Invalid content: ${contentErrors12.join("; ")}`);
+
+// supabase/rulesets/roadster-v470/physics.js
+var STEP12 = 1 / 120;
+function rogozinBounce12(time) {
+  return 20 * Math.abs(Math.sin(time * 4.5));
+}
+function obstacleBoxes12(o, time = 0) {
+  if ((o.collision || obstacleDefinition12(o.id)?.collision) === "trampoline") {
+    return [
+      { left: 6, right: o.w - 6, top: 16 },
+      { left: o.w / 2 - 18, right: o.w / 2 + 18, top: 108 + rogozinBounce12(time) }
+    ];
+  }
+  const inset = o.inset ?? 5;
+  return [{ left: inset, right: o.w - inset, top: o.h - 6 }];
+}
+
+// supabase/rulesets/roadster-v470/fall.js
+var clamp23 = (x) => Math.max(0, Math.min(1, x));
+var ease12 = (x) => {
+  x = clamp23(x);
+  return x * x * (3 - 2 * x);
+};
+var mix12 = (a, b, t) => a + (b - a) * t;
+var FALL_CONTACTS12 = Object.freeze([0.14, 0.36, 0.56]);
+var FALL_CAR_CONTACTS12 = Object.freeze([0.16, 0.38]);
+var FALL_CAR_HULL12 = Object.freeze([[-49, -7], [-8, -15], [8, -15], [48.5, 0], [47, 6], [27, 12], [-34, 12], [-46, 5]].map(Object.freeze));
+function fallCarSupport12(angle) {
+  return Math.max(...FALL_CAR_HULL12.map(([x, y]) => x * Math.sin(angle) + y * Math.cos(angle)));
+}
+var arc12 = (p, a, b, height) => {
+  const t = clamp23((p - a) / (b - a));
+  return t < 1e-12 || t > 1 - 1e-12 ? 0 : height * 4 * t * (1 - t);
+};
+var pulse12 = (p, hit) => ease12((p - hit + 0.035) / 0.035) * (1 - ease12((p - hit) / 0.055));
+function track12(keys, p) {
+  let i = 1;
+  while (i < keys.length - 1 && p > keys[i][0]) i++;
+  const [a, b] = [keys[i - 1], keys[i]];
+  return mix12(a[1], b[1], ease12((p - a[0]) / (b[0] - a[0])));
+}
+function createFall12() {
+  return { active: false, age: 0, duration: GAMEPLAY12.fallSeconds, rate: 1, taps: 0, angle: 0, reduced: false };
+}
+function beginFall12(f, result, { reduced = false, speed = GAMEPLAY12.startSpeed } = {}) {
+  const angle = Math.atan2(Math.sin(result.angle), Math.cos(result.angle));
+  const severity = clamp23((speed - GAMEPLAY12.startSpeed) / (GAMEPLAY12.maxSpeed - GAMEPLAY12.startSpeed));
+  Object.assign(f, { active: true, age: 0, duration: GAMEPLAY12.fallSeconds + GAMEPLAY12.fallSpeedSeconds * severity, rate: 1, taps: 0, angle, reduced });
+}
+function hastenFall12(f) {
+  if (!f.active) return false;
+  f.taps++;
+  f.rate = Math.min(GAMEPLAY12.fallMaxRate, f.rate + GAMEPLAY12.fallTapRate);
+  return true;
+}
+function advanceFall12(f, dt) {
+  if (!f.active) return { impacts: 0, finished: false };
+  const previous = f.age;
+  f.age = Math.min(f.duration, f.age + dt * f.rate);
+  const impacts = FALL_CONTACTS12.filter((t) => previous < f.duration * t && f.age >= f.duration * t).length;
+  f.active = f.age < f.duration;
+  return { impacts, finished: !f.active };
+}
+function fallPose12(f) {
+  const p = clamp23(f.age / f.duration), sit = ease12(p / 0.14), stand = ease12((p - 0.68) / 0.16), gather = ease12((p - 0.7) / 0.22), settle = clamp23((p - 0.97) / 0.03);
+  const impact = Math.max(...FALL_CONTACTS12.map((hit) => pulse12(p, hit))), seat = sit * (1 - stand);
+  const crouch = (0.72 + 0.18 * impact) * seat + (settle === 1 ? 0 : 0.1 * Math.sin(settle * Math.PI));
+  const lift = p < 0.36 ? arc12(p, 0.14, 0.36, 32) : p < 0.56 ? arc12(p, 0.36, 0.56, 28) : arc12(p, 0.56, 0.97, 112);
+  const angle = mix12(f.angle, -0.64, sit) * (1 - stand);
+  const seatAnchor = -11 * Math.sin(angle) + (22.5 + 27 * crouch) * Math.cos(angle) + 9;
+  const rider = { x: 34 * sit * (1 - gather), y: mix12(95, seatAnchor, seat) + lift, angle, seat, crouch, lift };
+  const entry = (y) => ({ x: Math.sin(f.angle) * (y - 65), y: 65 + Math.cos(f.angle) * (y - 65) });
+  const e = entry(95), c = entry(12);
+  rider.x += e.x * (1 - sit);
+  rider.y += (e.y - 95) * (1 - sit);
+  const carAngle = track12([[0, f.angle], [0.16, 0.95], [0.29, Math.PI], [0.38, 2 * Math.PI - 1.02], [0.54, 2 * Math.PI], [1, 2 * Math.PI]], p);
+  const carHop = p < 0.16 ? arc12(p, 0, 0.16, 20) : p < 0.38 ? arc12(p, 0.16, 0.38, 22) : arc12(p, 0.38, 0.54, 8);
+  const car = { x: gather === 1 ? 0 : mix12(c.x, -88, ease12(p / 0.16)) * (1 - gather), y: p >= 0.54 ? 12 : mix12(c.y, fallCarSupport12(carAngle) + carHop, ease12(p / 0.06)), angle: carAngle, phase: 0 };
+  let shake = 0;
+  for (const hit of FALL_CONTACTS12) if (p >= hit) shake = Math.max(shake, Math.exp(-(p - hit) * 40));
+  const pose = { car, rider, crouch, impact, flail: sit * (1 - ease12((p - 0.82) / 0.12)), push: 0, shake: shake * 2.4, progress: p };
+  if (f.reduced) {
+    pose.car = { x: 0, y: 12, angle: 0, phase: 0 };
+    pose.rider = { x: 0, y: 95, angle: 0, seat: 0, crouch };
+    pose.shake = 0;
+    pose.push = 0;
+    pose.flail = 0;
+  }
+  return pose;
+}
+function fallPolygons12(pose) {
+  const seat = pose.rider.seat || 0, crouch = pose.rider.crouch || 0;
+  const rider = [[-23, -70 + 4 * seat], [23 + 48 * seat, -70 + 4 * seat], [23 + 48 * seat, 68 - 27 * crouch], [-23, 68 - 27 * crouch]];
+  return [[pose.car, FALL_CAR_HULL12.map(([x, y]) => [x, -y])], [pose.rider, rider]].map(([body2, vertices]) => {
+    const c = Math.cos(body2.angle), s = Math.sin(body2.angle);
+    return vertices.map(([x, y]) => ({ x: body2.x + c * x + s * y, y: body2.y - s * x + c * y }));
+  });
+}
+function interpolateFall12(a, b, t) {
+  const pose = {};
+  for (const part of ["car", "rider"]) {
+    pose[part] = {};
+    for (const k of ["x", "y", "angle", "seat", "crouch", "phase"]) pose[part][k] = mix12(a[part][k] || 0, b[part][k] || 0, t);
+  }
+  return pose;
+}
+
+// supabase/rulesets/roadster-v470/gameplay.js
+var TAU12 = Math.PI * 2;
+var clamp24 = (x, a, b) => Math.max(a, Math.min(b, x));
+var approach12 = (x, target, amount) => x < target ? Math.min(target, x + amount) : Math.max(target, x - amount);
+function uprightError12(angle, direction = -1) {
+  let e = ((angle + Math.PI) % TAU12 + TAU12) % TAU12 - Math.PI;
+  if (Math.abs(Math.abs(e) - Math.PI) < 1e-9) e = -Math.sign(direction || -1) * Math.PI;
+  return e;
+}
+function resetAirRotation3(p) {
+  p.spinHeld = false;
+  p.settleTarget = 0;
+}
+function createFlight12(fuel = GAMEPLAY12.initialFuel) {
+  return { spinHeld: false, settleTarget: 0, y: 0, vy: 0, vx: 0, angle: 0, omega: 0, airborne: false, time: 0, fuel, thrusting: false, latched: false, attach: 0, maxTurn: 0, turns: 0, lastDirection: -1, trickStarted: false, grab: 0, launchVelocity: 0, jumpFactor: 1 };
+}
+function launch12(p, charge = 0) {
+  if (p.airborne) return false;
+  resetAirRotation3(p);
+  Object.assign(p, { y: 1e-3, vy: (GAMEPLAY12.jumpSpeed + GAMEPLAY12.chargedSpeed * clamp24(charge, 0, 1)) * (p.jumpFactor || 1), angle: 0, omega: 0, airborne: true, time: 0, latched: false, attach: 0, maxTurn: 0, turns: 0, trickStarted: false, grab: 0, launchVelocity: (GAMEPLAY12.jumpSpeed + GAMEPLAY12.chargedSpeed * clamp24(charge, 0, 1)) * (p.jumpFactor || 1) });
+  return true;
+}
+function advanceFlight12(p, dt, { spin = false, thrust = false } = {}) {
+  p.thrusting = false;
+  const gripTarget = p.airborne && spin ? 1 : 0;
+  p.grab = approach12(p.grab, gripTarget, dt / (gripTarget ? 0.12 : 0.18));
+  if (!p.airborne) {
+    resetAirRotation3(p);
+    p.vx *= Math.exp(-GAMEPLAY12.horizontalDrag * dt);
+    return null;
+  }
+  p.time += dt;
+  if (spin) {
+    p.settleTarget = 0;
+    p.trickStarted = true;
+    p.lastDirection = -1;
+    p.omega = approach12(p.omega, -GAMEPLAY12.spinSpeed, GAMEPLAY12.spinAcceleration * dt);
+  } else {
+    if (p.spinHeld) {
+      const progress = -p.angle, turn = Math.max(1, Math.round(progress / TAU12));
+      const target2 = turn * TAU12, stopping = progress + p.omega * p.omega / (2 * GAMEPLAY12.releaseDeceleration);
+      p.settleTarget = p.omega < 0 && progress >= (turn - 1) * TAU12 + GAMEPLAY12.settleMinTurn && Math.abs(target2 - progress) <= GAMEPLAY12.settleApproach && Math.abs(stopping - target2) <= GAMEPLAY12.landingAngle ? target2 : 0;
+    }
+    const target = Math.sign(p.omega) * Math.min(Math.abs(p.omega), GAMEPLAY12.releaseSpeed);
+    p.omega = approach12(p.omega, target, GAMEPLAY12.releaseDeceleration * dt);
+    if (p.settleTarget) {
+      const past = -p.angle - p.settleTarget;
+      if (p.omega > 0 || past > GAMEPLAY12.landingAngle || past < -GAMEPLAY12.settleApproach) p.settleTarget = 0;
+      else if (Math.abs(p.omega) <= GAMEPLAY12.releaseSpeed + 1e-9) {
+        const u = clamp24((past - GAMEPLAY12.perfectAngle) / (GAMEPLAY12.settleFullAngle - GAMEPLAY12.perfectAngle), 0, 1);
+        p.omega *= Math.exp(-GAMEPLAY12.settleDamping * u * u * (3 - 2 * u) * dt);
+      }
+    }
+  }
+  p.spinHeld = spin;
+  p.angle += p.omega * dt;
+  p.maxTurn = Math.max(p.maxTurn, -p.angle);
+  p.turns = Math.floor((p.maxTurn + 1e-7) / TAU12);
+  const burn = thrust ? Math.min(dt, p.fuel / GAMEPLAY12.fuelPerSecond) : 0;
+  if (burn > 0) {
+    p.fuel = Math.max(0, p.fuel - burn * GAMEPLAY12.fuelPerSecond);
+    p.thrusting = true;
+    p.latched = true;
+    p.vx += Math.sin(p.angle) * GAMEPLAY12.thrustAcceleration * burn;
+    p.vy += Math.cos(p.angle) * GAMEPLAY12.thrustAcceleration * burn;
+  }
+  if (p.latched) p.attach = Math.min(1, p.attach + dt / GAMEPLAY12.attachSeconds);
+  p.vx = clamp24(p.vx * Math.exp(-GAMEPLAY12.horizontalDrag * dt), -GAMEPLAY12.maxHorizontal, GAMEPLAY12.maxHorizontal);
+  p.y += p.vy * dt - 0.5 * GAMEPLAY12.gravity * dt * dt;
+  p.vy -= GAMEPLAY12.gravity * dt;
+  if (p.y > 0) return null;
+  const good = Math.abs(uprightError12(p.angle)) <= GAMEPLAY12.landingAngle + 1e-9 && Math.abs(p.omega) <= GAMEPLAY12.landingOmega;
+  const turns = good ? Math.max(p.turns, Math.round(-p.angle / TAU12)) : p.turns;
+  const perfect = good && Math.abs(uprightError12(p.angle)) <= GAMEPLAY12.perfectAngle + 1e-9;
+  const result = { good, perfect, turns, impact: Math.abs(p.vy), angle: p.angle, omega: p.omega };
+  p.turns = turns;
+  p.y = 0;
+  p.vy = 0;
+  p.airborne = false;
+  p.thrusting = false;
+  resetAirRotation3(p);
+  if (result.good) {
+    p.angle = 0;
+    p.omega = 0;
+  }
+  return result;
+}
+function createEconomy12() {
+  return { scoreFactor: 1, bonus: 0, multiplier: 10, meter: 0, decay: 0, streak: 0, streakLeft: 0, flips: 0 };
+}
+function comboSeconds12(e) {
+  return GAMEPLAY12.comboDuration - GAMEPLAY12.comboFalloff * (e.multiplier / 10 - 1);
+}
+function rewardAction12(e, count = 1) {
+  e.multiplier = Math.min(GAMEPLAY12.maxMultiplier, e.multiplier + count * GAMEPLAY12.multiplierStep);
+  e.meter = 1;
+  e.decay = 0;
+}
+function advanceEconomy12(e, dt) {
+  if (e.meter > 0) {
+    const used = Math.min(dt, e.meter * comboSeconds12(e));
+    e.meter = Math.max(0, e.meter - used / comboSeconds12(e));
+    dt -= used;
+  }
+  if (e.meter === 0 && e.multiplier > 10) {
+    e.decay += dt;
+    while (e.decay + 1e-9 >= GAMEPLAY12.comboDecaySeconds && e.multiplier > 10) {
+      e.multiplier--;
+      e.decay -= GAMEPLAY12.comboDecaySeconds;
+    }
+  }
+}
+function advanceStreak12(e, dt) {
+  const used = Math.min(dt, e.streakLeft);
+  e.streakLeft -= used;
+  e.streak = Math.max(0, e.streak - (dt - used) * GAMEPLAY12.streakDecay);
+}
+function passObstacle12(e) {
+  const points = GAMEPLAY12.obstaclePoints * e.multiplier / 10 * (e.scoreFactor || 1);
+  e.bonus += points;
+  return points;
+}
+function settleLanding12(e, p, result, { late = 0, near = 0 } = {}) {
+  if (!result.good) {
+    e.multiplier = 10;
+    e.meter = 0;
+    e.decay = 0;
+    e.streak = 0;
+    e.streakLeft = 0;
+    return { points: 0, turns: 0, late: 0, near: 0, perfect: false, good: false };
+  }
+  const n = result.turns, perfect = !!result.perfect, points = (GAMEPLAY12.flipFactor * n * (n + 1) + GAMEPLAY12.nearPoints * (late + near) + GAMEPLAY12.perfectPoints * Number(perfect)) * e.multiplier / 10 * (e.scoreFactor || 1);
+  e.bonus += points;
+  e.flips += n;
+  p.fuel = Math.min(GAMEPLAY12.tank, p.fuel + GAMEPLAY12.fuelPerFlip * n);
+  if (n + late + near + Number(perfect)) rewardAction12(e, n + late + near + Number(perfect));
+  if (n || near) {
+    e.streak = Math.min(GAMEPLAY12.maxStreak, e.streak + GAMEPLAY12.streakStep);
+    e.streakLeft = GAMEPLAY12.streakHold;
+  }
+  return { points, turns: n, late, near, perfect, good: true };
+}
+function createPace12() {
+  return { boost: 0, progress: 0, base: GAMEPLAY12.startSpeed, speed: GAMEPLAY12.startSpeed, recovery: null, stumble: 0, falling: false };
+}
+function stumble12(pace) {
+  const target = pace.recovery?.target ?? pace.base, r = clamp24((target - GAMEPLAY12.startSpeed) / (GAMEPLAY12.maxSpeed - GAMEPLAY12.startSpeed), 0, 1);
+  pace.recovery = { target, age: 0, duration: GAMEPLAY12.recoveryMin + GAMEPLAY12.recoveryExtra * r ** 1.5 };
+  pace.stumble = GAMEPLAY12.stumbleSeconds;
+  pace.base = target * GAMEPLAY12.recoveryRatio;
+}
+function recoverySpeed12(r, t) {
+  const T = r.duration, d = r.target * (1 - GAMEPLAY12.recoveryRatio), v0 = r.target * GAMEPLAY12.recoveryRatio, h = 0.15, a = T - h;
+  if (t <= a) return v0 + d * (t / T) ** 2;
+  const u = clamp24((t - a) / h, 0, 1), start = v0 + d * (a / T) ** 2, slope = 2 * d * a / T ** 2, endSlope = r.target >= GAMEPLAY12.maxSpeed ? 0 : (GAMEPLAY12.maxSpeed - GAMEPLAY12.startSpeed) / GAMEPLAY12.rampSeconds;
+  return (2 * u ** 3 - 3 * u * u + 1) * start + (u ** 3 - 2 * u * u + u) * h * slope + (-2 * u ** 3 + 3 * u * u) * r.target + (u ** 3 - u * u) * h * endSlope;
+}
+function advancePace12(pace, e, p, dt) {
+  if (pace.recovery) {
+    pace.stumble = Math.max(0, pace.stumble - dt);
+    const r = pace.recovery;
+    r.age = Math.min(r.duration, r.age + dt);
+    pace.base = recoverySpeed12(r, r.age);
+    if (r.age >= r.duration) {
+      pace.base = r.target;
+      pace.recovery = null;
+    }
+  } else if (!pace.falling) {
+    pace.progress += dt;
+    pace.base = GAMEPLAY12.startSpeed + (GAMEPLAY12.maxSpeed - GAMEPLAY12.startSpeed) * Math.min(1, pace.progress / GAMEPLAY12.rampSeconds);
+  }
+  pace.speed = Math.max(60, pace.base * (1 + e.streak) * (1 + (pace.boost || 0)) + p.vx);
+  return pace.speed;
+}
+function playerPolygons12(p) {
+  if (p.fallPose) return fallPolygons12(p.fallPose);
+  const c = Math.cos(p.angle), s = Math.sin(p.angle);
+  return [[-47, 0, 47, 25], [-23, 25, 23, 163 - 32 * (p.grab || 0)]].map(([l, b, r, t]) => [[l, b], [r, b], [r, t], [l, t]].map(([x, y]) => ({ x: c * x + s * (y - 65), y: p.y + 65 - s * x + c * (y - 65) })));
+}
+function overlaps12(poly, rect) {
+  const axes = [{ x: 1, y: 0 }, { x: 0, y: 1 }];
+  for (let i = 0; i < (poly.length === 4 ? 2 : poly.length); i++) {
+    const a = poly[i], b = poly[(i + 1) % poly.length];
+    axes.push({ x: -(b.y - a.y), y: b.x - a.x });
+  }
+  for (const a of axes) {
+    let pmin = Infinity, pmax = -Infinity, rmin = Infinity, rmax = -Infinity;
+    for (const p of poly) {
+      const value = p.x * a.x + p.y * a.y;
+      pmin = Math.min(pmin, value);
+      pmax = Math.max(pmax, value);
+    }
+    for (const p of rect) {
+      const value = p.x * a.x + p.y * a.y;
+      rmin = Math.min(rmin, value);
+      rmax = Math.max(rmax, value);
+    }
+    if (pmax <= rmin || rmax <= pmin) return false;
+  }
+  return true;
+}
+function collisionAt12(p, o, dx, time = 0) {
+  if (o.collision === "none") return false;
+  if (dx > 180 || dx + o.w < -180) return false;
+  const polygons = playerPolygons12(p);
+  return obstacleBoxes12(o, time).some((b) => {
+    const bottom = o.altitude || 0, top = bottom + b.top;
+    const rect = [{ x: dx + b.left, y: bottom }, { x: dx + b.right, y: bottom }, { x: dx + b.right, y: top }, { x: dx + b.left, y: top }];
+    return polygons.some((poly) => overlaps12(poly, rect));
+  });
+}
+function sweptCollision12(before, after, o, dxBefore, dxAfter, time, dt) {
+  if (Math.min(dxBefore, dxAfter) > 180 || Math.max(dxBefore, dxAfter) + o.w < -180) return false;
+  const fallTravel = before.fallPose && after.fallPose ? Math.max(...["rider", "car"].map((part) => Math.abs(after.fallPose[part].angle - before.fallPose[part].angle) * (part === "car" ? 55 : 170) + Math.abs(after.fallPose[part].y - before.fallPose[part].y) + Math.abs(after.fallPose[part].x - before.fallPose[part].x))) : 0;
+  const n = Math.max(1, Math.ceil((Math.abs(dxAfter - dxBefore) + Math.abs(after.y - before.y) + Math.abs(after.angle - before.angle) * 170 + fallTravel) / 4));
+  for (let i = 0; i <= n; i++) {
+    const f = i / n, p = { y: before.y + (after.y - before.y) * f, angle: before.angle + (after.angle - before.angle) * f, grab: (before.grab || 0) + ((after.grab || 0) - (before.grab || 0)) * f };
+    if (before.fallPose && after.fallPose) p.fallPose = interpolateFall12(before.fallPose, after.fallPose, f);
+    if (collisionAt12(p, o, dxBefore + (dxAfter - dxBefore) * f, time - dt + dt * f)) return true;
+  }
+  return false;
+}
+function nearWindow12(distance, speed) {
+  return distance >= 0 && distance <= Math.max(0, speed) * GAMEPLAY12.nearSeconds + 1e-8;
+}
+
+// supabase/rulesets/roadster-v470/boosters.js
+var BOOSTERS8 = Object.freeze({
+  shield: Object.freeze({ name: "INVINCIBLE", seconds: 8, color: "#7ce5f3" }),
+  speed: Object.freeze({ name: "OVERDRIVE", seconds: 8, color: "#ffad62" }),
+  jump: Object.freeze({ name: "HIGH JUMP", seconds: 12, color: "#d9ff62" }),
+  life: Object.freeze({ name: "EXTRA LIFE", seconds: 0, color: "#ff6a78" }),
+  score: Object.freeze({ name: "SCORE \xD73", seconds: 10, color: "#ffc86d" })
+});
+function createBoosters8(seed = 0) {
+  return { active: {}, hearts: 0, grace: 0, ghostIds: [], speedBlend: 0, pickups: [], nextAt: 8, serial: 0, bag: [], bagCycle: 0, random: (seed ^ 2772213271) >>> 0, spoiledFlight: false };
+}
+var activeBooster8 = (q, id2) => (q?.active[id2] || 0) > 0;
+function canCollectBooster7(q, id2) {
+  return !!BOOSTERS8[id2] && (id2 === "life" ? q.hearts < 2 : activeBooster8(q, id2) || Object.keys(q.active).length < 3);
+}
+function collectBooster8(q, id2) {
+  const def = BOOSTERS8[id2];
+  if (!canCollectBooster7(q, id2)) return false;
+  if (id2 === "life") {
+    if (q.hearts >= 2) return false;
+    q.hearts++;
+    return true;
+  }
+  if (!activeBooster8(q, id2) && Object.keys(q.active).length >= 3) return false;
+  q.active[id2] = def.seconds;
+  return true;
+}
+function advanceBoosters8(q, dt) {
+  for (const id2 of Object.keys(q.active)) {
+    q.active[id2] = Math.max(0, q.active[id2] - dt);
+    if (q.active[id2] === 0) delete q.active[id2];
+  }
+  q.grace = Math.max(0, q.grace - dt);
+  const target = activeBooster8(q, "speed") ? 1 : 0, delta = dt / (target ? 0.6 : 0.8);
+  q.speedBlend = target ? Math.min(1, q.speedBlend + delta) : Math.max(0, q.speedBlend - delta);
+}
+function random8(q) {
+  q.random = Math.imul(q.random, 1664525) + 1013904223 >>> 0;
+  return q.random / 4294967296;
+}
+function offerBooster8(q, { time, speed, clear }) {
+  if (!clear || q.pickups.length || time < q.nextAt) return null;
+  if (!q.bag.length) {
+    q.bagCycle++;
+    q.bag = Object.keys(BOOSTERS8).filter((id3) => id3 !== "life" || q.bagCycle % 3 === 0);
+    for (let i = q.bag.length - 1; i > 0; i--) {
+      const j = Math.floor(random8(q) * (i + 1));
+      [q.bag[i], q.bag[j]] = [q.bag[j], q.bag[i]];
+    }
+  }
+  const eligible5 = (id3) => id3 === "life" ? q.hearts < 2 : activeBooster8(q, id3) || Object.keys(q.active).length < 3;
+  let index = q.bag.findIndex(eligible5);
+  if (index < 0) {
+    q.nextAt = time + 2;
+    return null;
+  }
+  const id2 = q.bag.splice(index, 1)[0], pickup = { id: id2, uid: ++q.serial, x: Math.max(900, speed * 1.9 + 180), y: q.serial === 1 || random8(q) < 0.55 ? 104 : 240 };
+  q.pickups.push(pickup);
+  if (q.serial > 1 && random8(q) < 0.4) {
+    const second = q.bag.findIndex((other) => other !== id2 && eligible5(other));
+    if (second >= 0) {
+      const next = q.bag.splice(second, 1)[0];
+      q.pickups.push({ id: next, uid: ++q.serial, x: pickup.x + 240, y: pickup.y });
+    }
+  }
+  q.nextAt = time + 14 + random8(q) * 6;
+  return pickup;
+}
+
+// supabase/rulesets/roadster-v470/rails.js
+var RAIL6 = Object.freeze({ height: 190, length: 720, belly: 8, pointsPerUnit: 0.1, firstWave: 3, every: 7, exitSeconds: 1.25 });
+var makeRail6 = (x, width = RAIL6.length) => ({ x, w: width, h: RAIL6.height, paid: [], passed: false });
+var createGrind6 = () => ({ support: null, age: 0, exit: null, exitAge: 1, pending: 0, distance: 0, turns: 0 });
+var railContactHeight6 = (p) => p.y + 65 + (RAIL6.belly - 65) * Math.cos(p.angle);
+function leaveRail6(g, p) {
+  resetAirRotation3(p);
+  g.support = null;
+  g.age = 0;
+  g.exit = "end";
+  g.exitAge = 0;
+  p.airborne = true;
+  p.angle = uprightError12(p.angle);
+  p.omega = 0;
+  p.maxTurn = Math.max(0, -p.angle);
+  p.turns = 0;
+  p.time = 0;
+  p.launchVelocity = 0;
+  p.trickStarted = true;
+}
+function jumpFromRail6(g, p, charge) {
+  const y = p.y, angle = uprightError12(p.angle);
+  leaveRail6(g, p);
+  p.airborne = false;
+  launch12(p, charge);
+  p.y += y;
+  p.angle = angle;
+  p.trickStarted = true;
+  g.exit = "jump";
+}
+function newDistance6(rail, a, b) {
+  a = Math.max(0, a);
+  b = Math.min(rail.w, b);
+  if (b <= a) return 0;
+  let fresh = b - a;
+  for (const [l, r] of rail.paid) fresh -= Math.max(0, Math.min(b, r) - Math.max(a, l));
+  const ranges = [...rail.paid, [a, b]].sort((x, y) => x[0] - y[0]), merged = [];
+  for (const range of ranges) {
+    const last = merged.at(-1);
+    if (last && range[0] <= last[1]) last[1] = Math.max(last[1], range[1]);
+    else merged.push([...range]);
+  }
+  rail.paid = merged;
+  return Math.max(0, fresh);
+}
+function advanceRail6(g, p, before, rails, travel, dt, e, { spoiled = false, blocked = false } = {}) {
+  g.exitAge = Math.min(1, g.exitAge + dt);
+  const events = [], oldXs = rails.map((r) => r.x);
+  for (const r of rails) {
+    r.x -= travel;
+    r.passed = r.x + r.w < 0;
+  }
+  let fraction = 0, rail = rails.find((r) => r.uid === g.support);
+  if (g.support && !rail) {
+    leaveRail6(g, p);
+    events.push({ type: "rail-exit", reason: "end" });
+    return events;
+  }
+  if (!rail && !blocked && before.airborne) {
+    const old = railContactHeight6(before), now = railContactHeight6(p);
+    const good = p.vy <= 0 && Math.abs(uprightError12(p.angle)) <= GAMEPLAY12.landingAngle + 1e-9 && Math.abs(p.omega) <= GAMEPLAY12.landingOmega;
+    if (good && old >= RAIL6.height && now <= RAIL6.height && old > now) {
+      fraction = (old - RAIL6.height) / (old - now);
+      rail = rails.find((r, i) => {
+        const x = oldXs[i] - travel * fraction;
+        return x <= 0 && x + r.w >= 0;
+      });
+      if (rail) {
+        resetAirRotation3(p);
+        g.support = rail.uid;
+        g.age = 0;
+        g.turns += Math.max(p.turns, Math.round(-p.angle / (Math.PI * 2)));
+        p.turns = 0;
+        p.airborne = false;
+        p.omega = 0;
+        p.vy = 0;
+        p.thrusting = false;
+        p.grab = 0;
+        events.push({ type: "rail-catch", uid: rail.uid, impact: Math.abs(before.vy) });
+      }
+    }
+  }
+  if (rail) {
+    const i = rails.indexOf(rail), start = -oldXs[i] + travel * fraction, end = -rail.x;
+    const distance = newDistance6(rail, start, end);
+    if (!spoiled) {
+      g.distance += distance;
+      g.pending += distance * RAIL6.pointsPerUnit * e.multiplier / 10 * (e.scoreFactor || 1);
+    }
+    g.age += dt * (1 - fraction);
+    p.y = rail.h - 65 - (RAIL6.belly - 65) * Math.cos(p.angle);
+    p.vy = 0;
+    p.omega = 0;
+    p.thrusting = false;
+    if (distance > 0) events.push({ type: "rail-travel", uid: rail.uid, distance, points: spoiled ? 0 : distance * RAIL6.pointsPerUnit * e.multiplier / 10 * (e.scoreFactor || 1) });
+    if (rail.x + rail.w <= 0) {
+      leaveRail6(g, p);
+      events.push({ type: "rail-exit", reason: "end" });
+    }
+  }
+  return events;
+}
+
+// supabase/rulesets/roadster-v470/speed-feedback.js
+var clamp014 = (value) => Math.max(0, Math.min(1, value));
+var viewStrength4 = (speed) => Math.max(0, Math.min(1.3, (speed - GAMEPLAY12.startSpeed) / (GAMEPLAY12.maxSpeed - GAMEPLAY12.startSpeed)));
+function baseViewScale4(width, height) {
+  const x = width * (width < 600 ? 0.24 : 0.29);
+  return Math.min(1.25, Math.max(0.68, width / 650), height / 430, (width - x - 24) / 550);
+}
+function speedView4(width, height, speed, strength = viewStrength4(speed)) {
+  const baseScale = baseViewScale4(width, height), x = width * ((width < 600 ? 0.24 : 0.29) - 0.08 * strength);
+  return {
+    scale: baseScale / (1 + 0.44 * strength),
+    x,
+    baseScale,
+    strength,
+    energy: clamp014((speed - GAMEPLAY12.startSpeed) / (GAMEPLAY12.maxSpeed * 1.25 - GAMEPLAY12.startSpeed)),
+    sceneryScale: Math.max(0.72, Math.min(1.15, baseScale)) / (1 + 0.18 * strength)
+  };
+}
+function advanceSpeedView2(state, dt, width, height, speed) {
+  const target = viewStrength4(speed);
+  const rate = target > state.strength ? 4 : 1.25;
+  state.strength += (target - state.strength) * (1 - Math.exp(-Math.max(0, dt) * rate));
+  return speedView4(width, height, speed, state.strength);
+}
+
+// supabase/rulesets/roadster-v470/biomes.js
+var BIOME_SCORE_STEP10 = 7e3;
+var SCENERY_CYCLE10 = BIOME_CYCLE12;
+function biomeAt10(score = 0) {
+  const points = Number.isFinite(score) ? Math.max(0, score) : 0;
+  const leg = Math.floor(points / BIOME_SCORE_STEP10), nextAt = (leg + 1) * BIOME_SCORE_STEP10;
+  return { id: SCENERY_CYCLE10[leg % SCENERY_CYCLE10.length], leg, nextAt, nextIn: nextAt - points };
+}
+
+// supabase/rulesets/roadster-v470/routes.js
+var STAGES12 = GAMEPLAY12.stages;
+function stageAt12(progress) {
+  return STAGES12.filter((t) => progress >= t).length - 1;
+}
+function makePattern12(kind, { speed = 360, type = { id: "truck", w: 110, h: 41 }, dx = 900, gapSeconds = 0.65 } = {}) {
+  const item = (offset) => ({ ...type, x: dx + offset, passed: false });
+  if (["pair", "spaced-pair", "mixed"].includes(kind)) return [item(0), item(speed * (0.9 + gapSeconds) + type.w)];
+  if (["precision", "thrust", "low-cluster"].includes(kind)) return [item(0), item(type.w + 35)];
+  return [item(0)];
+}
+
+// supabase/rulesets/roadster-v470/encounter-routes.js
+var ENCOUNTER4 = Object.freeze({ tickBudget: 18e3, policyBudget: 40, window: 0.18, sample: 0.03, rest: 0.25, accentRest: 0.45, airCooldown: 14, railAirCooldown: 16, tallPreparation: 0.74, tallErrorPreparation: 0.64 });
+var encounterBudget4 = () => ({ ticks: 0, policies: 0, candidates: 0, exhausted: false });
+function simulateEncounter4(obstacles, { flight = createFlight12(), pace = createPace12(), economy = createEconomy12(), boosterState = null, time = 0, rail = null, charge = 0.4, lead = 0.2, secondLead = lead, noInput = false, requireCatch = !!rail, budget = encounterBudget4(), minGroundGap = 0, prefix = null, stopBeforeHold = null, viewStrength: viewStrength5 = 0, targetMode = rail ? "rail" : "ground", forbidCatch = false, minSlide = 0 } = {}) {
+  if (flight.airborne || pace.recovery || pace.falling || pace.stumble > 0 || budget.exhausted) return null;
+  if (budget.policies >= ENCOUNTER4.policyBudget) {
+    budget.exhausted = true;
+    return null;
+  }
+  budget.policies++;
+  const p = { ...prefix?.p || flight }, r = structuredClone(prefix?.r || pace), e = { ...prefix?.e || economy }, q = prefix ? structuredClone(prefix.q) : boosterState ? structuredClone(boosterState) : null, g = prefix ? structuredClone(prefix.g) : createGrind6(), rails = prefix ? structuredClone(prefix.rails) : rail ? [{ ...structuredClone(rail), uid: 1 }] : [], obs = (prefix?.obs || obstacles).map((o) => ({ ...o })), actions = [], preparations = [];
+  const view = { strength: prefix?.view?.strength ?? viewStrength5 }, visibleAt = prefix?.visibleAt ? [...prefix.visibleAt] : obs.map(() => null);
+  let charging = false, holdTick = 0, jumps = 0, caught = false, groundSince = null, minGap = Infinity, lateTarget = null, nearLandings = 0, lateTakeoffs = 0, firstPreparation = Infinity, catchAt = null, exitAt = null, grindDistance = 0;
+  const dt = 1 / 120, chargeTicks = Math.round(charge * GAMEPLAY12.chargeSeconds / dt), groundTargets = obs.filter((o) => !o.altitude);
+  const horizon = Math.min(1800, Math.ceil((Math.max(0, ...obstacles.map((o) => o.x + o.w), rail ? rail.x + rail.w : 0) + 300) / Math.max(60, Math.min(pace.speed, pace.base)) * 120 + 360));
+  for (let tick = prefix?.tick || 0; tick < horizon; tick++) {
+    if (budget.ticks >= ENCOUNTER4.tickBudget) {
+      budget.exhausted = true;
+      return null;
+    }
+    budget.ticks++;
+    const t = tick * dt, nextGround = groundTargets.find((o) => !o.targeted && o.x + o.w > -47), target = targetMode === "rail" && rail && jumps === 0 ? rails[0] : nextGround, isRailTarget = target === rails[0];
+    const width = (550 * 1.25 + 24) / 0.71, framing = speedView4(width, 900, r.speed, view.strength), sight = (width - framing.x) / framing.scale;
+    for (let i = 0; i < obs.length; i++) if (visibleAt[i] === null && obs[i].x + obs[i].w <= sight) visibleAt[i] = t;
+    if (stopBeforeHold !== null && target && (target.x + (target.inset || 5) - (isRailTarget ? 0 : 47)) / Math.max(1, r.speed + (target.approachSpeed || 0)) <= stopBeforeHold) return { p, r, e, q, g, rails, obs, tick, view, visibleAt };
+    if (!noInput && !p.airborne && !g.support && target) {
+      const targetLead = jumps > 0 ? secondLead : lead, ttc = (target.x + (target.inset || 5) - (isRailTarget ? 0 : 47)) / Math.max(1, r.speed + (target.approachSpeed || 0));
+      if (!charging && ttc <= targetLead + chargeTicks * dt) {
+        if (groundSince !== null) {
+          const gap = t - groundSince;
+          minGap = Math.min(minGap, gap);
+          if (gap + 1e-8 < minGroundGap) return null;
+        }
+        charging = true;
+        holdTick = tick;
+        actions.push({ at: t, action: "hold" });
+        const indices = isRailTarget ? obs.flatMap((o, i) => o.altitude ? [i] : []) : [obs.indexOf(target)], prep = indices.length ? Math.min(...indices.map((i) => visibleAt[i] === null ? 0 : t - visibleAt[i])) : Infinity;
+        firstPreparation = Math.min(firstPreparation, prep);
+        preparations.push({ target: isRailTarget ? "rail" : target.id, holdAt: t, visibleAt: indices.length ? Math.max(...indices.map((i) => visibleAt[i] ?? t)) : null, seconds: Number.isFinite(prep) ? prep : null });
+      }
+      if (charging && tick - holdTick >= chargeTicks) {
+        const usedCharge = (tick - holdTick) * dt / GAMEPLAY12.chargeSeconds;
+        p.jumpFactor = q && activeBooster8(q, "jump") ? 1.25 : 1;
+        lateTarget = !isRailTarget && nearWindow12(target.x + (target.inset || 5) - 47, r.speed + (target.approachSpeed || 0)) ? target : null;
+        launch12(p, usedCharge);
+        target.targeted = true;
+        jumps++;
+        charging = false;
+        actions.push({ at: t, action: "jump", charge: usedCharge });
+      }
+    }
+    if (q) {
+      advanceBoosters8(q, dt);
+      r.boost = 0.35 * q.speedBlend;
+      e.scoreFactor = activeBooster8(q, "score") ? 3 : 1;
+    }
+    advanceEconomy12(e, dt);
+    advanceStreak12(e, dt);
+    const before = { ...p };
+    let landed = advanceFlight12(p, dt);
+    advancePace12(r, e, p, dt);
+    advanceSpeedView2(view, dt, 1002, 900, r.speed);
+    if (rail) {
+      const events = advanceRail6(g, p, before, rails, r.speed * dt, dt, e);
+      if (events.some((v) => v.type === "rail-catch")) {
+        if (forbidCatch) return null;
+        caught = true;
+        catchAt = t + dt;
+      }
+      if (events.some((v) => v.type === "rail-exit")) exitAt = t + dt;
+      grindDistance = g.distance;
+      if (g.support) landed = null;
+    }
+    const after = landed ? { ...p, angle: landed.angle } : p;
+    for (const o of obs) {
+      const old = o.x;
+      o.x -= (r.speed + (o.approachSpeed || 0)) * dt;
+      if (sweptCollision12(before, after, o, old, o.x, time + t + dt, dt)) return null;
+      if (!o.passed && o.x + o.w < -50) {
+        o.passed = true;
+        passObstacle12(e);
+      }
+    }
+    if (landed) {
+      if (!landed.good) return null;
+      let near = 0;
+      const late = lateTarget && lateTarget.x + lateTarget.w - (lateTarget.inset || 5) < -47 ? 1 : 0;
+      for (const o of obs) if (!o.altitude && !o.nearPaid && nearWindow12(-47 - (o.x + o.w - (o.inset || 5)), r.speed)) {
+        near++;
+        o.nearPaid = true;
+      }
+      settleLanding12(e, p, landed, { late, near });
+      nearLandings += near;
+      lateTakeoffs += late;
+      lateTarget = null;
+      groundSince = t + dt;
+      if (g.distance > 0) {
+        e.bonus += g.pending;
+        rewardAction12(e);
+        Object.assign(g, createGrind6());
+      }
+    }
+    if (obs.every((o) => o.x + o.w < -180) && rails.every((o) => o.x + o.w < -180) && !p.airborne && !g.support) {
+      if (requireCatch && (!caught || exitAt === null || exitAt - catchAt + 1e-8 < minSlide)) return null;
+      return { charge, lead, secondLead, burn: 0, actions, duration: t + dt, fuelUsed: 0, preparations, nearLandings, lateTakeoffs, caught, catchAt, exitAt, slideSeconds: catchAt === null ? 0 : (exitAt ?? t + dt) - catchAt, grindDistance, jumps, minGroundGap: Number.isFinite(minGap) ? minGap : null, preparation: Number.isFinite(firstPreparation) ? firstPreparation : null, clearanceVerified: true, visibility: obs.map((o, i) => ({ id: o.id, at: visibleAt[i] })), exit: { y: 0, angle: 0, vx: p.vx } };
+    }
+  }
+  return null;
+}
+function prepareEncounter4(obstacles, options, policies, budget = encounterBudget4()) {
+  const maxTrigger = Math.max(...policies.map(([charge, lead]) => lead + 0.09 + Math.round(Math.min(1, charge + 0.1) * GAMEPLAY12.chargeSeconds * 120) / 120));
+  return simulateEncounter4(obstacles, { ...options, budget, noInput: true, requireCatch: false, stopBeforeHold: maxTrigger });
+}
+function validateEncounter4(obstacles, options = {}) {
+  const budget = options.budget || encounterBudget4(), rail = options.rail, groundRoute = !rail || options.targetMode === "ground";
+  if (options.noInput) return simulateEncounter4(obstacles, { ...options, budget, requireCatch: false, noInput: true });
+  const type = obstacles.find((o) => !o.altitude), speed = options.pace?.speed || 360, h = type?.h || 0;
+  const lowCharge = Math.max(0, 0.19 - Math.max(0, speed - 360) * 16e-4), lowLead = 0.15 + Math.min(0.03, Math.max(0, speed - 360) * 25e-5);
+  let policies = options.policies || (!groundRoute ? [[0.5, 0.35], [0.5, 0.5], [1, 0.35]] : h <= 45 ? [[lowCharge, lowLead], [speed < 500 ? 0.2 : 0.1, 0.16]] : h <= 78 ? speed >= 760 ? [[0.1, 0.21], [0.2, 0.22]] : [[speed < 410 ? 0.3 : 0.2, h <= 64 ? 0.2 : 0.24], [0.3, 0.24]] : h <= 100 ? [[speed < 460 ? 0.3 : 0.2, 0.27], [0.3, 0.28]] : [[0.3, 0.3], [0.4, 0.28], [0.5, 0.27]]);
+  if (options.tallSingle && groundRoute) policies = [[0.3, 0.32], [0.35, 0.3], [0.4, 0.28]];
+  const fastGround = groundRoute && !!type && !options.tallSingle && h <= 78 && speed >= 760;
+  const fastPreparation = 0.85 - Math.min(1, Math.max(0, (speed - 825) / (1113.75 - 825))) * 0.27;
+  const minPreparation = options.tallSingle ? h > 120 ? 0.72 : ENCOUNTER4.tallPreparation : fastGround ? fastPreparation : 0.9, minErrorPreparation = options.tallSingle ? h > 120 ? 0.62 : ENCOUNTER4.tallErrorPreparation : fastGround ? fastPreparation - 0.1 : 0.8;
+  const prefix = prepareEncounter4(obstacles, options, policies, budget);
+  if (!prefix?.p) return null;
+  const proof = { ...options, budget, prefix };
+  for (const [charge, lead] of policies) {
+    const base = simulateEncounter4(obstacles, { ...proof, charge, lead });
+    if (!base) continue;
+    if ((groundRoute || obstacles.some((o) => o.altitude)) && (base.preparation ?? 0) < minPreparation) continue;
+    let ok = true;
+    for (let i = -3; i <= 3 && ok; i++) {
+      if (i === 0) continue;
+      const shifted = simulateEncounter4(obstacles, { ...proof, charge, lead: lead + i * 0.03 });
+      if (!shifted || (groundRoute || obstacles.some((o) => o.altitude)) && (shifted.preparation ?? 0) < minErrorPreparation) ok = false;
+    }
+    if (ok && base.jumps > 1) {
+      const offsets = [-0.09, -0.06, -0.03, 0.03, 0.06, 0.09];
+      for (const shift of offsets) for (const first of [false, true]) {
+        const sample = simulateEncounter4(obstacles, { ...proof, charge, lead: lead + (first ? shift : 0), secondLead: lead + (first ? 0 : shift) });
+        if (!sample || (sample.preparation ?? 0) < minErrorPreparation) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) for (const first of [-0.09, 0.09]) for (const second of [-0.09, 0.09]) {
+        const sample = simulateEncounter4(obstacles, { ...proof, charge, lead: lead + first, secondLead: lead + second });
+        if (!sample || (sample.preparation ?? 0) < minErrorPreparation) {
+          ok = false;
+          break;
+        }
+      }
+    }
+    if (ok && groundRoute) for (const c of [Math.max(0, charge - 0.1), Math.min(1, charge + 0.1)]) {
+      if (!simulateEncounter4(obstacles, { ...proof, charge: c, lead })) {
+        ok = false;
+        break;
+      }
+    }
+    if (ok && groundRoute) for (const c of [Math.max(0, charge - (options.tallSingle ? 0.1 : 0.05)), Math.min(1, charge + (options.tallSingle ? 0.1 : 0.05))]) for (const offset of options.tallSingle ? [-0.09, 0.09] : [-0.06, 0.06]) {
+      if (!simulateEncounter4(obstacles, { ...proof, charge: c, lead: lead + offset })) {
+        ok = false;
+        break;
+      }
+    }
+    if (ok) return { ...base, preparation: rail && !obstacles.length ? null : base.preparation, preparationTarget: rail && !obstacles.length ? null : minPreparation, errorPreparationTarget: minErrorPreparation, timingMargin: 0.09, timingWindow: 0.18, sampleStep: 0.03 };
+    if (budget.exhausted) return null;
+  }
+  return null;
+}
+
+// supabase/rulesets/roadster-v470/director.js
+var factoryIds4 = ["truck", "t800", "bydSeal", "xiaomiSu7", "batteryAgv", "xi"];
+var eligible4 = (o, biome) => o.biomes === "all" || o.biomes.includes(biome);
+var airSpeed4 = { ufo: 65, primeDrone: 70, twitterBird: 95, starlink: 45, regulatorDrone: 60, sikorsky: 35, qualitySkull: 75 };
+var RAIL_LENGTHS = Object.freeze([880, 1120, 1440, 1680]);
+function railLength(speed, index, lastWidth = null) {
+  const bag = speed >= 1e3 ? [1440, 1680] : speed >= 740 ? [1120, 1440] : [880, 1120], pick = index % bag.length;
+  return bag[pick] === lastWidth ? bag[(pick + 1) % bag.length] : bag[pick];
+}
+function createDirector12({ S, flight, pace, economy, boosters, spawnDistance, sceneTime = () => S.t, random: random9 = Math.random, relative = false }) {
+  const initial = () => ({ wave: 0, groundCount: 0, last: null, viewStrength: 0, viewAt: 0, fallbacks: 0, waiting: false, leg: -1, legStartedAt: 0, legDistance: 0, biomeFirstSeen: {}, airBiomes: [], groundSinceAir: 0, airCount: 0, lastAirAt: -1e9, railCount: 0, lastRailWidth: null, lastRailAirAt: -1e9, phase: "introduce", flow: 0, active: false, restUntil: null, restSeconds: ENCOUNTER4.rest, recoveryWaves: 0, history: [], seen: [], sinceTall: 2, budget: null });
+  const state = initial();
+  function reset() {
+    Object.assign(state, initial());
+  }
+  function recover() {
+    state.recoveryWaves = 2;
+    state.restUntil = null;
+    state.active = true;
+    state.restSeconds = 0.9;
+    state.phase = "rest";
+  }
+  const settled = () => !flight.airborne && flight.y < 1 && !pace.recovery && !pace.falling && pace.stumble <= 0;
+  const clear = () => (S.rails || []).every((r) => r.x + r.w < -100) && S.obs.every((o) => o.x + o.w < -100 || o.smashed);
+  function update() {
+    const view = { strength: state.viewStrength };
+    advanceSpeedView2(view, Math.max(0, S.t - state.viewAt), 1002, 900, S.speed);
+    state.viewStrength = view.strength;
+    state.viewAt = S.t;
+    const target = biomeAt10(S.score || 0);
+    if (target.leg !== state.leg) {
+      state.leg = target.leg;
+      state.legStartedAt = S.t;
+      state.legDistance = S.distance || 0;
+    }
+    state.biomeFirstSeen[target.id] ??= S.t;
+    if (state.active && clear() && !pace.falling && !pace.recovery) {
+      state.active = false;
+      state.restUntil = S.t + state.restSeconds;
+      S.next = Math.max(S.next, state.restSeconds);
+    }
+  }
+  function spawn() {
+    update();
+    if (!clear() || !settled() || state.restUntil !== null && S.t + 1e-8 < state.restUntil) {
+      S.next = 0;
+      state.waiting = true;
+      return;
+    }
+    state.waiting = false;
+    state.restUntil = null;
+    const { id: biome, leg } = biomeAt10(S.score || 0), stage = stageAt12(pace.progress), budget = encounterBudget4();
+    state.budget = budget;
+    const familiar = S.t - state.legStartedAt < 2, simple = state.groundCount < 3 || state.recoveryWaves > 0;
+    const candidate = () => {
+      if (budget.candidates >= 3 || budget.exhausted) return false;
+      budget.candidates++;
+      return true;
+    };
+    const opts = { flight, pace, economy, boosterState: boosters, time: sceneTime(), budget, viewStrength: Math.max(0, state.viewStrength - 0.02) };
+    const dx = Math.max(600, S.speed * 1.45 + 120), pick = (pool) => pool.length ? pool[Math.min(pool.length - 1, Math.floor(random9() * pool.length))] : null;
+    let kind = "single", obstacles = [], rail = null, route = null, fallbackRail = false, bypass = null;
+    const airPool = AIR_TYPES12.filter((o) => eligible4(o, biome)), airIntro = !state.airBiomes.includes(biome) && S.t - state.biomeFirstSeen[biome] >= 3;
+    const airDue = S.t >= 22 && !state.recoveryWaves && state.groundCount >= 3 && (airIntro && S.t - state.lastAirAt >= 8 || !familiar && state.groundSinceAir >= 3 && S.t - state.lastAirAt >= ENCOUNTER4.airCooldown);
+    if (airDue && candidate()) {
+      const small = airPool.filter((o) => o.w <= 110 && o.h <= 60), specific = small.filter((o) => Array.isArray(o.biomes)), model = pick(airIntro && specific.length ? specific : state.airCount < 2 ? small : airPool);
+      if (model) {
+        const combine = !airIntro && state.airCount >= 1 && state.airCount % 2 === 1 && state.groundCount >= 6 && S.t - state.lastRailAirAt >= ENCOUNTER4.railAirCooldown;
+        kind = combine ? "rail-air" : "air-pass";
+        rail = combine ? makeRail6(dx, railLength(S.speed, state.railCount, state.lastRailWidth)) : null;
+        obstacles = [{ ...model, x: combine ? dx - S.speed * 0.6 : dx, approachSpeed: airSpeed4[model.id], passed: false }];
+        if (combine) {
+          route = validateEncounter4(obstacles, { ...opts, rail, policies: [[0.5, 0.15], [0.5, 0.2]], minSlide: S.speed >= 740 ? 0.6 : 0.85 });
+          if (route) {
+            bypass = validateEncounter4(obstacles, { ...opts, rail, noInput: true });
+            if (!bypass) route = null;
+          }
+        } else route = validateEncounter4(obstacles, { ...opts, noInput: true });
+        if (!route) {
+          rail = null;
+          obstacles = [];
+        }
+      }
+    }
+    if (!route) {
+      const recent = state.history.slice(-2), repeat = recent.length === 2 && recent[0] === recent[1] ? recent[0] : null;
+      const choices = OBSTACLES12.filter((o) => !o.altitude && o.collision !== "none" && eligible4(o, biome) && (biome !== "tesla-factory" || factoryIds4.includes(o.id)) && (simple ? o.h <= 64 : true) && (o.h < 90 || state.sinceTall >= 2) && o.id !== repeat);
+      const pairEvery = stage >= 6 ? 2 : stage >= 3 ? 3 : 4, pairDue = !simple && !familiar && state.groundCount % pairEvery === 0, overlayDue = !simple && !familiar && state.groundCount % 3 === 1;
+      for (let attempt = 0; attempt < 2 && !route && candidate(); attempt++) {
+        const lows = choices.filter((o) => o.h <= 45), type = attempt === 0 && pairDue ? lows.find((o) => o.id === "truck") || pick(lows) : attempt === 1 ? lows.find((o) => o.id === (S.speed < 430 && biome === "spaceport" ? "v8" : "truck")) || pick(lows) : pick(choices);
+        if (!type) break;
+        kind = attempt === 0 && pairDue ? "spaced-pair" : "single";
+        obstacles = makePattern12(kind, { speed: S.speed, type, dx, gapSeconds: 0.45 });
+        route = validateEncounter4(obstacles, { ...opts, tallSingle: kind === "single" && type.h >= 90, minGroundGap: kind === "spaced-pair" ? 0.3 : 0 });
+        if (route && attempt === 0 && overlayDue && type.h <= 64 && budget.policies < 18 && candidate()) {
+          const overlay = makeRail6(dx - S.speed * 0.3, railLength(S.speed, state.railCount, state.lastRailWidth)), shared = { ...opts, rail: overlay };
+          const ground = validateEncounter4(obstacles, { ...shared, targetMode: "ground", requireCatch: false, forbidCatch: true });
+          const catchRoute = ground && validateEncounter4(obstacles, { ...shared, minSlide: S.speed >= 740 ? 0.6 : 0.85 });
+          if (catchRoute) {
+            rail = overlay;
+            bypass = ground;
+            route = catchRoute;
+            kind = "rail-ground";
+          }
+        }
+        if (!route) state.fallbacks++;
+      }
+    }
+    if (!route && candidate()) {
+      rail = makeRail6(dx, railLength(S.speed, state.railCount, state.lastRailWidth));
+      obstacles = [];
+      kind = "rail";
+      route = validateEncounter4([], { ...opts, rail, minSlide: S.speed >= 740 ? 0.6 : 0.85 });
+      fallbackRail = !!route;
+    }
+    if (!route) {
+      state.budget = budget;
+      state.phase = "rest";
+      state.restUntil = S.t + 0.25;
+      S.next = 0.25;
+      return;
+    }
+    state.wave++;
+    state.active = true;
+    state.restUntil = null;
+    const grounds = obstacles.filter((o) => !o.altitude), airs = obstacles.filter((o) => o.altitude);
+    if (rail) {
+      state.lastRailWidth = rail.w;
+      state.railCount++;
+      if (kind === "rail-air") state.lastRailAirAt = S.t;
+    }
+    if (airs.length) {
+      state.airCount++;
+      state.groundSinceAir = 0;
+      state.lastAirAt = S.t;
+      if (!state.airBiomes.includes(biome)) state.airBiomes.push(biome);
+    }
+    if (grounds.length) {
+      state.groundCount++;
+      state.groundSinceAir++;
+    }
+    const tallSingle = kind === "single" && grounds[0]?.h >= 90;
+    if (tallSingle) state.sinceTall = 0;
+    else if (grounds.length) state.sinceTall++;
+    state.restSeconds = state.groundCount > 3 && state.groundCount % 7 === 0 ? 0.9 : grounds.length > 1 ? ENCOUNTER4.accentRest : ENCOUNTER4.rest;
+    for (const o of obstacles) if (!state.seen.includes(o.id)) state.seen.push(o.id);
+    if (grounds.length) {
+      state.history.push(grounds[0].id);
+      state.history = state.history.slice(-4);
+    }
+    if (state.recoveryWaves > 0 && grounds.length) state.recoveryWaves--;
+    state.phase = simple ? "introduce" : grounds.length > 1 ? "accent" : "flow";
+    state.last = { kind, fallbackRail, tallSingle, stage, biome, leg, route, bypass, groundDecisions: bypass?.jumps ?? (grounds.length ? route.jumps : 0), airDecisions: airs.length ? 1 : 0, startedAt: S.t, restSeconds: state.restSeconds, railWidth: rail?.w ?? null };
+    for (const o of obstacles) S.obs.push({ ...o, x: o.x + (relative ? 0 : S.anchor), uid: ++S.entityId, passed: false, nearPaid: false, latePaid: false });
+    if (rail) (S.rails ??= []).push({ ...rail, uid: ++S.entityId });
+    S.next = 0;
+  }
+  return { reset, spawn, update, recover, state };
+}
+
+// supabase/rulesets/roadster-v470/random.js
+function createRandom12(seed) {
+  if (!Number.isInteger(seed) || seed < 0 || seed > 4294967295) throw Error("Invalid run seed");
+  let state = seed;
+  return { next() {
+    state = state + 1831565813 >>> 0;
+    let t = state;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }, get state() {
+    return state;
+  }, restore(value) {
+    if (!Number.isInteger(value) || value < 0 || value > 4294967295) throw Error("Invalid random state");
+    state = value;
+  } };
+}
+
+// supabase/rulesets/roadster-v470/run.js
+var RULESET12 = "roadster-v4.7.0";
+var RUN_STEP12 = 1 / 120;
+var RUN_COMMANDS12 = Object.freeze(["primary-down", "primary-up", "primary-cancel", "thrust-on", "thrust-off", "cancel"]);
+var MAX_RECORDED_TICKS12 = 120 * 60 * 60;
+var MAX_RECORDED_EVENTS12 = 24e3;
+function createRun12({ seed = 0, record = true, reducedMotion = false } = {}) {
+  const S = { mode: "menu", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY12.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, anchor: 0 }, Q = createBoosters8(seed), G = createGrind6(), P = createFlight12(), E = createEconomy12(), pace = createPace12(), F = createFall12(), input = { charging: false, charge: 0, spin: false, thrust: false };
+  let random9 = createRandom12(seed), events = [], log = [], lateId = null, lastLanding = null, recordable = true;
+  const director = createDirector12({ S, flight: P, pace, economy: E, boosters: Q, random: () => random9.next(), relative: true, sceneTime: () => S.t, spawnDistance: () => Math.max(900, S.speed * 1.5 + 180) });
+  function clear() {
+    Object.assign(input, { charging: false, charge: 0, spin: false, thrust: false });
+    P.thrusting = false;
+  }
+  function sync() {
+    S.t = S.tick * RUN_STEP12;
+    S.speed = pace.speed;
+    S.score = Math.floor(S.distance / 20 + E.bonus);
+  }
+  function reset(nextSeed = seed) {
+    seed = nextSeed;
+    random9 = createRandom12(seed);
+    Object.assign(Q, createBoosters8(seed));
+    Object.assign(G, createGrind6());
+    Object.assign(P, createFlight12());
+    Object.assign(E, createEconomy12());
+    Object.assign(pace, createPace12());
+    Object.assign(F, createFall12());
+    Object.assign(S, { mode: "playing", tick: 0, t: 0, distance: 0, score: 0, speed: GAMEPLAY12.startSpeed, next: 1.7, obs: [], rails: [], entityId: 0, lastCharge: 0 });
+    clear();
+    events = [];
+    log = [];
+    lateId = null;
+    lastLanding = null;
+    recordable = true;
+    director.reset();
+  }
+  function jump() {
+    if (S.mode !== "playing" || P.airborne || F.active || pace.stumble > 0) return false;
+    lateId = null;
+    for (const o of S.obs) {
+      if (o.altitude || o.passed) continue;
+      if (nearWindow12(o.x + (o.inset || 5) - 47, S.speed + (o.approachSpeed || 0))) {
+        lateId = o.uid;
+        break;
+      }
+    }
+    const charge = input.charge;
+    P.jumpFactor = activeBooster8(Q, "jump") ? 1.25 : 1;
+    if (G.support) jumpFromRail6(G, P, charge);
+    else {
+      Q.spoiledFlight = false;
+      launch12(P, charge);
+    }
+    S.lastCharge = charge;
+    input.charging = false;
+    input.charge = 0;
+    input.spin = false;
+    events.push({ type: "jump", charge });
+    return true;
+  }
+  function command(action) {
+    if (!RUN_COMMANDS12.includes(action)) throw Error("Unknown run command");
+    if (S.mode !== "playing") return false;
+    if (record && recordable) {
+      if (log.length >= MAX_RECORDED_EVENTS12) recordable = false;
+      else log.push([S.tick, RUN_COMMANDS12.indexOf(action)]);
+    }
+    if (action === "cancel") {
+      clear();
+      return true;
+    }
+    if (action === "primary-cancel") {
+      input.spin = false;
+      input.charging = false;
+      input.charge = 0;
+      return true;
+    }
+    if (action === "thrust-off") {
+      input.thrust = false;
+      return true;
+    }
+    if (action === "thrust-on") {
+      if (!F.active) input.thrust = true;
+      return true;
+    }
+    if (action === "primary-up") {
+      if (input.charging) jump();
+      input.spin = false;
+      return true;
+    }
+    if (F.active) return hastenFall12(F);
+    if (pace.stumble > 0) return false;
+    if (P.airborne) {
+      P.trickStarted = true;
+      input.spin = true;
+    } else {
+      input.charging = true;
+      input.charge = 0;
+    }
+    return true;
+  }
+  function step() {
+    if (S.mode !== "playing") return { landed: null, impacts: 0 };
+    S.tick++;
+    if (S.tick > MAX_RECORDED_TICKS12) recordable = false;
+    sync();
+    if (input.charging) input.charge = Math.min(1, input.charge + RUN_STEP12 / GAMEPLAY12.chargeSeconds);
+    advanceBoosters8(Q, RUN_STEP12);
+    E.scoreFactor = activeBooster8(Q, "score") ? 3 : 1;
+    pace.boost = 0.35 * Q.speedBlend;
+    advanceEconomy12(E, RUN_STEP12);
+    advanceStreak12(E, RUN_STEP12);
+    const physicsFall = () => fallPose12({ ...F, reduced: false }), wasFalling = F.active, before = { ...P, fallPose: F.active ? physicsFall() : null };
+    let landed = null, fallStep = { impacts: 0, finished: false };
+    if (wasFalling) {
+      fallStep = advanceFall12(F, RUN_STEP12);
+      if (fallStep.finished) {
+        clear();
+        S.next = Math.max(S.next, 0.8);
+        events.push({ type: "recovered" });
+      }
+    } else landed = advanceFlight12(P, RUN_STEP12, { spin: input.spin, thrust: input.thrust });
+    pace.falling = F.active;
+    advancePace12(pace, E, P, RUN_STEP12);
+    S.distance += pace.speed * RUN_STEP12;
+    E.bonus += pace.speed * RUN_STEP12 / 20 * (E.scoreFactor - 1);
+    sync();
+    events.push(...advanceRail6(G, P, before, S.rails, S.speed * RUN_STEP12, RUN_STEP12, E, { spoiled: Q.spoiledFlight, blocked: wasFalling }));
+    if (G.support) {
+      landed = null;
+      input.spin = false;
+    }
+    const after = wasFalling ? { ...P, fallPose: physicsFall() } : landed ? { ...P, angle: landed.angle } : P;
+    for (const o of S.obs) {
+      const old = o.x;
+      o.x -= (S.speed + (o.approachSpeed || 0)) * RUN_STEP12;
+      if (o.smashed) {
+        o.smashAge += RUN_STEP12;
+        continue;
+      }
+      if (sweptCollision12(before, after, o, old, o.x, S.t, RUN_STEP12)) {
+        if (activeBooster8(Q, "shield")) {
+          o.smashed = true;
+          o.smashAge = 0;
+          if (!o.passed) {
+            o.passed = true;
+            passObstacle12(E);
+          }
+          events.push({ type: "smash", obstacle: { ...o } });
+          continue;
+        }
+        if (Q.grace > 0 || Q.ghostIds.includes(o.uid)) {
+          if (!Q.ghostIds.includes(o.uid)) Q.ghostIds.push(o.uid);
+        } else if (Q.hearts > 0) {
+          const oldMultiplier = E.multiplier;
+          Q.hearts--;
+          resetAirRotation3(P);
+          Q.grace = 2;
+          Q.ghostIds.push(o.uid);
+          Q.spoiledFlight = true;
+          G.pending = G.distance = G.turns = 0;
+          E.multiplier = 10;
+          E.meter = 0;
+          E.decay = 0;
+          E.streak = 0;
+          E.streakLeft = 0;
+          events.push({ type: "rescued", oldMultiplier });
+          director.recover();
+        } else {
+          S.mode = "dead";
+          resetAirRotation3(P);
+          G.pending = G.distance = G.turns = 0;
+          clear();
+          sync();
+          events.push({ type: "death", obstacle: o });
+          return { landed, impacts: fallStep.impacts };
+        }
+      }
+      if (!o.passed && o.x + o.w < -50) {
+        o.passed = true;
+        passObstacle12(E);
+        if (o.altitude) events.push({ type: "air-passed" });
+      }
+    }
+    for (const orb of Q.pickups) {
+      const old = orb.x;
+      orb.x -= S.speed * RUN_STEP12;
+      const inReach = Math.min(old, orb.x) <= 112 && Math.max(old, orb.x) >= -112 && Math.abs(P.y + 78 - orb.y) <= 122;
+      if (!F.active && inReach && collectBooster8(Q, orb.id)) {
+        orb.collected = true;
+        events.push({ type: "pickup", id: orb.id, uid: orb.uid, x: orb.x, y: orb.y });
+      }
+    }
+    Q.pickups = Q.pickups.filter((o) => !o.collected && o.x > -180);
+    Q.ghostIds = Q.ghostIds.filter((id2) => S.obs.some((o) => o.uid === id2 && o.x + o.w > -180));
+    if (landed) {
+      let late = 0, near = 0;
+      const target = S.obs.find((o) => o.uid === lateId);
+      if (target && !target.latePaid && target.x + target.w - (target.inset || 5) < -47) {
+        late = 1;
+        target.latePaid = true;
+      }
+      for (const o of S.obs) {
+        if (o.altitude || o.nearPaid) continue;
+        if (nearWindow12(-47 - (o.x + o.w - (o.inset || 5)), S.speed)) {
+          near++;
+          o.nearPaid = true;
+        }
+      }
+      if (!Q.spoiledFlight) landed = { ...landed, turns: landed.turns + G.turns };
+      const grindPoints = landed.good && !Q.spoiledFlight ? G.pending : 0, grindDistance = landed.good && !Q.spoiledFlight ? G.distance : 0;
+      const oldMultiplier = E.multiplier;
+      lastLanding = settleLanding12(E, P, Q.spoiledFlight ? { ...landed, turns: 0, perfect: false } : landed, Q.spoiledFlight ? { late: 0, near: 0 } : { late, near });
+      Q.spoiledFlight = false;
+      E.bonus += grindPoints;
+      lastLanding.points += grindPoints;
+      Object.assign(lastLanding, { grindPoints, grindDistance });
+      if (grindDistance > 0) rewardAction12(E);
+      Object.assign(G, createGrind6());
+      if (!landed.good) {
+        stumble12(pace);
+        beginFall12(F, landed, { reduced: reducedMotion, speed: pace.recovery.target });
+        pace.falling = true;
+        director.recover();
+        P.angle = 0;
+        P.omega = 0;
+        P.vx = 0;
+        P.grab = 0;
+        clear();
+        advancePace12(pace, E, P, 0);
+      }
+      events.push({ type: "landing", landed, result: lastLanding, late, near, oldMultiplier });
+      lateId = null;
+    }
+    if (!P.airborne && !G.support && Math.abs(P.angle) > 1e-3) {
+      P.angle *= Math.exp(-RUN_STEP12 * 18);
+      P.omega = 0;
+    }
+    S.obs = S.obs.filter((o) => o.smashed ? o.smashAge < 1.2 : o.uid === lateId || o.x + o.w > (o.id === "joe" ? -480 : -400));
+    S.rails = S.rails.filter((r) => r.x + r.w > -200 || r.uid === G.support);
+    offerBooster8(Q, { time: S.t, speed: S.speed, clear: !P.airborne && !G.support && !S.rails.length && !F.active && !pace.recovery && S.obs.every((o) => o.passed) });
+    director.update();
+    S.next -= RUN_STEP12;
+    if (S.next <= 0 && !Q.pickups.length) director.spawn();
+    sync();
+    return { landed, impacts: fallStep.impacts };
+  }
+  function snapshot() {
+    return structuredClone({ seed, S, P, E, pace, F, Q, G, input, random: random9.state, director: director.state, lateId, lastLanding });
+  }
+  function restore(saved) {
+    seed = saved.seed;
+    for (const [a, b] of [[G, saved.G], [Q, saved.Q], [S, saved.S], [P, saved.P], [E, saved.E], [pace, saved.pace], [F, saved.F], [input, saved.input], [director.state, saved.director]]) Object.assign(a, structuredClone(b));
+    random9 = createRandom12(seed);
+    random9.restore(saved.random);
+    lateId = saved.lateId;
+    lastLanding = structuredClone(saved.lastLanding);
+    events = [];
+  }
+  function replay() {
+    return recordable ? { format: 1, ruleset: RULESET12, seed, ticks: S.tick, events: log.map((e) => [...e]) } : null;
+  }
+  return { S, P, E, pace, F, Q, G, input, director, reset, jump, command, step, sync, snapshot, restore, replay, drainEvents() {
+    const next = events;
+    events = [];
+    return next;
+  }, get lastLanding() {
+    return lastLanding;
+  }, get seed() {
+    return seed;
+  }, get recordable() {
+    return recordable;
+  } };
+}
+function validateReplay12(value) {
+  if (!value || value.format !== 1 || value.ruleset !== RULESET12 || !Number.isInteger(value.seed) || value.seed < 0 || value.seed > 4294967295 || !Number.isInteger(value.ticks) || value.ticks < 1 || value.ticks > MAX_RECORDED_TICKS12 || !Array.isArray(value.events) || value.events.length > MAX_RECORDED_EVENTS12) throw Error("Invalid or unsupported replay");
+  let previous = -1;
+  for (const event of value.events) {
+    if (!Array.isArray(event) || event.length !== 2 || !Number.isInteger(event[0]) || event[0] < previous || event[0] < 0 || event[0] >= value.ticks || !Number.isInteger(event[1]) || event[1] < 0 || event[1] >= RUN_COMMANDS12.length) throw Error("Invalid replay input");
+    previous = event[0];
+  }
+  return value;
+}
+function verifyReplay12(value) {
+  const replay = validateReplay12(value), run = createRun12({ seed: replay.seed, record: false });
+  run.reset();
+  let event = 0;
+  while (run.S.tick < replay.ticks && run.S.mode === "playing") {
+    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS12[replay.events[event++][1]]);
+    run.step();
+    run.drainEvents();
+  }
+  if (run.S.mode !== "dead" || run.S.tick !== replay.ticks || event !== replay.events.length) throw Error("Replay does not end at its first collision");
+  return { score: run.S.score, flips: run.E.flips, ticks: run.S.tick };
+}
+
 // supabase/rulesets.mjs
-var supported = new Map([run_exports, run_exports2, run_exports3, run_exports4, run_exports5, run_exports6, run_exports7, run_exports8, run_exports9, run_exports10, run_exports11].map((r) => [r.RULESET, r]));
+var supported = new Map([run_exports, run_exports2, run_exports3, run_exports4, run_exports5, run_exports6, run_exports7, run_exports8, run_exports9, run_exports10, run_exports11, run_exports12].map((r) => [r.RULESET, r]));
 function ruleset(id2) {
   const r = supported.get(id2);
   if (!r) throw Error("Unsupported ruleset");
@@ -11971,8 +13354,8 @@ function ruleset(id2) {
 
 // supabase/chunk.mjs
 function verifyChunk(value, checkpoint = null, { maxTicks = 6e3, budgetMs = 400, now = () => performance.now() } = {}) {
-  const { createRun: createRun12, validateReplay: validateReplay12, RUN_COMMANDS: RUN_COMMANDS12 } = ruleset(value?.ruleset);
-  const replay = validateReplay12(value), run = createRun12({ seed: replay.seed, record: false });
+  const { createRun: createRun13, validateReplay: validateReplay13, RUN_COMMANDS: RUN_COMMANDS13 } = ruleset(value?.ruleset);
+  const replay = validateReplay13(value), run = createRun13({ seed: replay.seed, record: false });
   run.reset();
   let event = 0;
   if (checkpoint) {
@@ -11981,7 +13364,7 @@ function verifyChunk(value, checkpoint = null, { maxTicks = 6e3, budgetMs = 400,
   }
   const start = run.S.tick, started = now();
   while (run.S.tick < replay.ticks && run.S.mode === "playing" && run.S.tick - start < maxTicks) {
-    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS12[replay.events[event++][1]]);
+    while (event < replay.events.length && replay.events[event][0] === run.S.tick) run.command(RUN_COMMANDS13[replay.events[event++][1]]);
     run.step();
     run.drainEvents();
     if ((run.S.tick - start) % 32 === 0 && now() - started >= budgetMs) break;

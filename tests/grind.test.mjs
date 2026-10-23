@@ -45,13 +45,12 @@ test('successive flights on one rail keep turns without banking at either captur
 test('pause freezes rail support and reward; checkpoint roundtrip and restart preserve their contracts',()=>{
  const r=blank();catchRail(r);r.S.mode='paused';const saved=r.snapshot();for(let i=0;i<20;i++)r.step();assert.deepEqual(r.snapshot(),saved);r.S.mode='playing';const c=createRun({record:false});c.restore(JSON.parse(JSON.stringify(r.snapshot())));for(let i=0;i<500;i++){r.step();c.step();r.drainEvents();c.drainEvents();}assert.deepEqual(c.snapshot(),r.snapshot());r.reset();assert.deepEqual(r.G,createGrind());assert.deepEqual(r.S.rails,[]);
 });
-test('rail generator admits safe fuel-free routes at ordinary, boosted and maximum speed',()=>{
- for(const speed of [360,510,660])for(const boosted of [false,true]){const r=blank();r.pace.progress=(speed-360)/2;r.pace.base=r.pace.speed=speed;r.S.speed=speed;if(boosted){r.Q.active={speed:8,jump:8};r.Q.speedBlend=1;r.pace.boost=.35;r.S.speed=r.pace.speed=speed*1.35;}
- r.P.fuel=0;r.director.state.wave=RAIL.firstWave;r.director.spawn();assert.equal(r.director.state.last.kind,'rail');const route=r.director.state.last.route,actions=new Map();for(const a of route.actions){const tick=Math.round(a.at/RUN_STEP);if(!actions.has(tick))actions.set(tick,[]);actions.get(tick).push(a.action==='hold'?'primary-down':'primary-up');}
- let captured=false,landed=false;for(let i=0;i<1500&&!landed;i++){for(const a of actions.get(r.S.tick)||[])r.command(a);r.step();for(const e of r.drainEvents()){if(e.type==='rail-catch')captured=true;if(e.type==='landing'&&captured)landed=e.landed.good;}}
- assert.ok(captured,`capture at ${speed}, boost=${boosted}`);assert.ok(landed);assert.equal(r.P.fuel,0);assert.equal(r.S.obs.length,0);
+test('optional rails admit fuel-free catches at ordinary, boosted and maximum speed',()=>{
+ for(const speed of [360,510,660,825,1113.75]){const r=blank();Object.assign(r.pace,{progress:(Math.min(660,speed)-360)/2,base:Math.min(660,speed),speed});r.S.speed=speed;if(speed>=825){r.E.streak=.25;r.E.streakLeft=4;}if(speed>900){r.Q.active.speed=8;r.Q.speedBlend=1;r.pace.boost=.35;}r.P.fuel=0;
+ const rail=makeRail(Math.max(900,speed*1.5+120),speed>=825?1440:880),route=validateRailRoute(rail,{flight:r.P,pace:r.pace,economy:r.E,boosterState:r.Q});assert.ok(route,'catch '+speed);r.S.rails=[{...rail,uid:++r.S.entityId}];const actions=new Map(route.actions.map(a=>[Math.round(a.at/RUN_STEP),a.action==='hold'?'primary-down':'primary-up']));let captured=false,landed=false;
+ for(let i=0;i<1500&&!landed;i++){if(actions.has(r.S.tick))r.command(actions.get(r.S.tick));r.step();for(const e of r.drainEvents()){if(e.type==='rail-catch')captured=true;if(e.type==='landing'&&captured)landed=e.landed.good;}}assert.ok(captured);assert.ok(landed);assert.equal(r.P.fuel,0);
  }
 });
-test('an actual ground landing leaves a full breather before the next wave',()=>{
- const r=blank();catchRail(r);r.S.next=0;while(!r.lastLanding)r.step();assert.ok(r.S.next>=RAIL.exitSeconds-RUN_STEP-1e-8);assert.equal(r.S.obs.length,0);
+test('grind settlement does not add a second obsolete1.25s spawn pause',()=>{
+ const r=blank();catchRail(r);r.S.next=0;while(!r.lastLanding)r.step();assert.ok(r.S.next<RAIL.exitSeconds-RUN_STEP);assert.ok(r.lastLanding.good);
 });

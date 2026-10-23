@@ -1,0 +1,1189 @@
+
+> roadster-kickflip@4.7.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: speed and bonus open the arrangement; menu, pause, hidden and biome bridge remain restrained
+ok 1 - speed and bonus open the arrangement; menu, pause, hidden and biome bridge remain restrained
+  ---
+  duration_ms: 0.968542
+  ...
+# Subtest: late downloads stay muted; enabling reuses buffers on one shared musical phase with bounded voices
+ok 2 - late downloads stay muted; enabling reuses buffers on one shared musical phase with bounded voices
+  ---
+  duration_ms: 0.937667
+  ...
+# Subtest: music fetch/decode failure is contained and can recover on a later gesture
+ok 3 - music fetch/decode failure is contained and can recover on a later gesture
+  ---
+  duration_ms: 0.583417
+  ...
+# Subtest: canonical events produce exactly one appropriate effect, including perfect, shield and backup rescue
+ok 4 - canonical events produce exactly one appropriate effect, including perfect, shield and backup rescue
+  ---
+  duration_ms: 34.312708
+  ...
+# Subtest: effect floods stay within eight voices; high priority feedback survives and mute clears loops
+ok 5 - effect floods stay within eight voices; high priority feedback survives and mute clears loops
+  ---
+  duration_ms: 2.529
+  ...
+# Subtest: new users get gesture-unlocked audio while an explicit saved mute remains authoritative
+ok 6 - new users get gesture-unlocked audio while an explicit saved mute remains authoritative
+  ---
+  duration_ms: 0.2075
+  ...
+# Subtest: Xi remains a ground hazard while ordinary flying enemies clear an upright ground rider
+ok 7 - Xi remains a ground hazard while ordinary flying enemies clear an upright ground rider
+  ---
+  duration_ms: 2.881708
+  ...
+# Subtest: all air models have zero-input fuel-free underpasses at the complete speed envelope
+ok 8 - all air models have zero-input fuel-free underpasses at the complete speed envelope
+  ---
+  duration_ms: 86.719542
+  ...
+# Subtest: factory generation retains its eligible canonical vehicles
+ok 9 - factory generation retains its eligible canonical vehicles
+  ---
+  duration_ms: 1824.223584
+  ...
+# Subtest: frozen 4.1 late-air replay and checkpoint retain their original collision contract
+ok 10 - frozen 4.1 late-air replay and checkpoint retain their original collision contract
+  ---
+  duration_ms: 421.598166
+  ...
+# Subtest: timely boosted release settles safely without passive overrun on longer flights
+ok 11 - timely boosted release settles safely without passive overrun on longer flights
+  ---
+  duration_ms: 4.483458
+  ...
+# Subtest: release latches one specific reachable turn and cannot rescue an early abort or overhold later
+ok 12 - release latches one specific reachable turn and cannot rescue an early abort or overhold later
+  ---
+  duration_ms: 4.062167
+  ...
+# Subtest: settle only dissipates angular speed, preserves direction and never directly rewrites angle
+ok 13 - settle only dissipates angular speed, preserves direction and never directly rewrites angle
+  ---
+  duration_ms: 0.939791
+  ...
+# Subtest: rehold immediately restores manual acceleration and relatching cannot manufacture turns or fuel
+ok 14 - rehold immediately restores manual acceleration and relatching cannot manufacture turns or fuel
+  ---
+  duration_ms: 0.178583
+  ...
+# Subtest: thrust remains roof-relative, including fuel expiry and starting again after release
+ok 15 - thrust remains roof-relative, including fuel expiry and starting again after release
+  ---
+  duration_ms: 2.180709
+  ...
+# Subtest: active release state survives JSON checkpoints and pause/cancel consumes no physics time
+ok 16 - active release state survives JSON checkpoints and pause/cancel consumes no physics time
+  ---
+  duration_ms: 27.344
+  ...
+# Subtest: landing, launch, rail catch/exit/jump, death, rescue and reset clear transient release state
+ok 17 - landing, launch, rail catch/exit/jump, death, rescue and reset clear transient release state
+  ---
+  duration_ms: 1.038583
+  ...
+# Subtest: production rail jump gets the same bounded settling
+ok 18 - production rail jump gets the same bounded settling
+  ---
+  duration_ms: 0.937542
+  ...
+# Subtest: recorded spin release replays exactly through JSON chunks and forged completion is rejected
+ok 19 - recorded spin release replays exactly through JSON chunks and forged completion is rejected
+  ---
+  duration_ms: 104.680125
+  ...
+# Subtest: free jump and grind arms reach out with soft elbows and fixed limb lengths
+ok 20 - free jump and grind arms reach out with soft elbows and fixed limb lengths
+  ---
+  duration_ms: 1.115583
+  ...
+# Subtest: existing grab and interaction hand targets remain independent of relaxed wrist orientation
+ok 21 - existing grab and interaction hand targets remain independent of relaxed wrist orientation
+  ---
+  duration_ms: 0.6355
+  ...
+# Subtest: ordinary idle proportions are the reference in every animation, including transitions
+ok 22 - ordinary idle proportions are the reference in every animation, including transitions
+  ---
+  duration_ms: 4.219166
+  ...
+# Subtest: quarter boundaries include a distinct zero and put exact25/50/75 in their lower quarter
+ok 23 - quarter boundaries include a distinct zero and put exact25/50/75 in their lower quarter
+  ---
+  duration_ms: 0.941458
+  ...
+# Subtest: legacy saved mute/on migrate; a valid independent mix takes precedence, malformed mixes fall back safely
+ok 24 - legacy saved mute/on migrate; a valid independent mix takes precedence, malformed mixes fall back safely
+  ---
+  duration_ms: 2.102625
+  ...
+# Subtest: changing one channel persists both levels, clamps finite input and rejects invalid values
+ok 25 - changing one channel persists both levels, clamps finite input and rejects invalid values
+  ---
+  duration_ms: 0.46
+  ...
+# Subtest: zero effects stops held and fading thrust without stopping music; zero music stops its voices without disabling effects
+ok 26 - zero effects stops held and fading thrust without stopping music; zero music stops its voices without disabling effects
+  ---
+  duration_ms: 5.321292
+  ...
+# Subtest: late music decode while music alone is muted cannot resurrect sources or silence the other channel
+ok 27 - late music decode while music alone is muted cannot resurrect sources or silence the other channel
+  ---
+  duration_ms: 2.088584
+  ...
+# Subtest: backup is absent from two initial bags and occurs once per twelve ordinary boosts
+ok 28 - backup is absent from two initial bags and occurs once per twelve ordinary boosts
+  ---
+  duration_ms: 4.369917
+  ...
+# Subtest: backup cycle survives JSON checkpoints, resets on restart and never offers a third charge
+ok 29 - backup cycle survives JSON checkpoints, resets on restart and never offers a third charge
+  ---
+  duration_ms: 0.991375
+  ...
+# Subtest: each7000 current-run points advances the scenery cycle
+ok 30 - each7000 current-run points advances the scenery cycle
+  ---
+  duration_ms: 0.701167
+  ...
+# Subtest: score alone starts entry; a fixed world edge moves with distance rather than a timer
+ok 31 - score alone starts entry; a fixed world edge moves with distance rather than a timer
+  ---
+  duration_ms: 0.221417
+  ...
+# Subtest: pause and resize do not move the stored world doorway; retry resets it
+ok 32 - pause and resize do not move the stored world doorway; retry resets it
+  ---
+  duration_ms: 0.493625
+  ...
+# Subtest: bonus jumps select the actual score band without queued or phantom entries
+ok 33 - bonus jumps select the actual score band without queued or phantom entries
+  ---
+  duration_ms: 0.091834
+  ...
+# Subtest: cameos and invalid scores do not trigger factory
+ok 34 - cameos and invalid scores do not trigger factory
+  ---
+  duration_ms: 0.125083
+  ...
+# Subtest: three timed slots, two hearts, refresh without strength stacking
+ok 35 - three timed slots, two hearts, refresh without strength stacking
+  ---
+  duration_ms: 0.764209
+  ...
+# Subtest: shield smashes once, preserves combo and never consumes a heart
+ok 36 - shield smashes once, preserves combo and never consumes a heart
+  ---
+  duration_ms: 3.017958
+  ...
+# Subtest: automatic heart rescue preserves points and active effects and protects through a wide obstacle
+ok 37 - automatic heart rescue preserves points and active effects and protects through a wide obstacle
+  ---
+  duration_ms: 17.432625
+  ...
+# Subtest: no hearts retains lethal collision and paused step freezes all timers
+ok 38 - no hearts retains lethal collision and paused step freezes all timers
+  ---
+  duration_ms: 1.525666
+  ...
+# Subtest: jump strength is captured at takeoff and timed speed fades smoothly
+ok 39 - jump strength is captured at takeoff and timed speed fades smoothly
+  ---
+  duration_ms: 0.916042
+  ...
+# Subtest: x3 applies once above x5 and expires independently of combo
+ok 40 - x3 applies once above x5 and expires independently of combo
+  ---
+  duration_ms: 0.283166
+  ...
+# Subtest: seeded pickup schedule and checkpoint restoration are deterministic
+ok 41 - seeded pickup schedule and checkpoint restoration are deterministic
+  ---
+  duration_ms: 4.619792
+  ...
+# Subtest: real pickup, altered jump and speed replay exactly in the server checkpoint simulation
+ok 42 - real pickup, altered jump and speed replay exactly in the server checkpoint simulation
+  ---
+  duration_ms: 1802.195375
+  ...
+# Subtest: score pickup triples distance earnings without multiplying previously banked points
+ok 43 - score pickup triples distance earnings without multiplying previously banked points
+  ---
+  duration_ms: 0.745
+  ...
+# Subtest: restart clears all temporary state including captured jump strength and score factor
+ok 44 - restart clears all temporary state including captured jump strength and score factor
+  ---
+  duration_ms: 0.182334
+  ...
+# Subtest: heart rescue cancels the impacted flight reward instead of confirming old flips on landing
+ok 45 - heart rescue cancels the impacted flight reward instead of confirming old flips on landing
+  ---
+  duration_ms: 0.669291
+  ...
+# Subtest: expanded pickup capture reaches beyond the sphere, grants once and leaves full or falling riders alone
+ok 46 - expanded pickup capture reaches beyond the sphere, grants once and leaves full or falling riders alone
+  ---
+  duration_ms: 0.71575
+  ...
+# Subtest: enlarged pickup sweep does not miss fast crossings and freezes on pause
+ok 47 - enlarged pickup sweep does not miss fast crossings and freezes on pause
+  ---
+  duration_ms: 0.240875
+  ...
+# Subtest: pickup motion floats, leans toward the rider and flies into a moving torso while shrinking
+ok 48 - pickup motion floats, leans toward the rider and flies into a moving torso while shrinking
+  ---
+  duration_ms: 6.165958
+  ...
+# Subtest: camera widens the late-run horizon through forward space and moderate zoom without changing launch framing
+ok 49 - camera widens the late-run horizon through forward space and moderate zoom without changing launch framing
+  ---
+  duration_ms: 2.724625
+  ...
+# Subtest: road stays above the touch instruments in portrait and landscape independently of zoom
+ok 50 - road stays above the touch instruments in portrait and landscape independently of zoom
+  ---
+  duration_ms: 0.097292
+  ...
+# Subtest: raised arms keep both bone lengths fixed and put the wrist above the shoulder
+ok 51 - raised arms keep both bone lengths fixed and put the wrist above the shoulder
+  ---
+  duration_ms: 2.309708
+  ...
+# Subtest: middle fingers stay within 15 degrees of screen vertical through body lean and crouch
+ok 52 - middle fingers stay within 15 degrees of screen vertical through body lean and crouch
+  ---
+  duration_ms: 0.221
+  ...
+# Subtest: pupils reverse at departure, track jump height and remain inside the eye
+ok 53 - pupils reverse at departure, track jump height and remain inside the eye
+  ---
+  duration_ms: 0.479708
+  ...
+# Subtest: seated fall keeps separate bent legs at fixed lengths with forward feet and distinct bent knees
+ok 54 - seated fall keeps separate bent legs at fixed lengths with forward feet and distinct bent knees
+  ---
+  duration_ms: 0.236375
+  ...
+# Subtest: encounter and first view are separate persistent transitions
+ok 55 - encounter and first view are separate persistent transitions
+  ---
+  duration_ms: 0.863375
+  ...
+# Subtest: unavailable, corrupt and future storage never break play or overwrite unknown versions
+ok 56 - unavailable, corrupt and future storage never break play or overwrite unknown versions
+  ---
+  duration_ms: 0.139458
+  ...
+# Subtest: removed IDs and viewed status survive catalogue changes without exposing mutable state
+ok 57 - removed IDs and viewed status survive catalogue changes without exposing mutable state
+  ---
+  duration_ms: 0.120791
+  ...
+# Subtest: sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel
+ok 58 - sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel
+  ---
+  duration_ms: 552.671417
+  ...
+# Subtest: falling rider and car retain exact swept collision results
+ok 59 - falling rider and car retain exact swept collision results
+  ---
+  duration_ms: 1315.648583
+  ...
+# Subtest: all route patterns retain exact choices, timing margins and action schedules
+ok 60 - all route patterns retain exact choices, timing margins and action schedules
+  ---
+  duration_ms: 650.175125
+  ...
+# Subtest: current seeded runs retain the new frozen server simulation and completed replays
+ok 61 - current seeded runs retain the new frozen server simulation and completed replays
+  ---
+  duration_ms: 759.661875
+  ...
+# Subtest: retained legacy types preserve geometry and replacement IDs are explicit
+ok 62 - retained legacy types preserve geometry and replacement IDs are explicit
+  ---
+  duration_ms: 8.416209
+  ...
+# Subtest: invalid content cannot enter the game silently
+ok 63 - invalid content cannot enter the game silently
+  ---
+  duration_ms: 0.29275
+  ...
+# Subtest: reaction direction, anchors and biome membership are explicit and immutable
+ok 64 - reaction direction, anchors and biome membership are explicit and immutable
+  ---
+  duration_ms: 0.147834
+  ...
+# Subtest: ordinary flips before the first encounter cannot switch off onboarding
+ok 65 - ordinary flips before the first encounter cannot switch off onboarding
+  ---
+  duration_ms: 74.390709
+  ...
+# Subtest: a sustained maximum streak still has real encounters in both biomes
+ok 66 - a sustained maximum streak still has real encounters in both biomes
+  ---
+  duration_ms: 121.222584
+  ...
+# Subtest: clear-road rest runs during a voluntary trick and landing is checked on its exact tick
+ok 67 - clear-road rest runs during a voluntary trick and landing is checked on its exact tick
+  ---
+  duration_ms: 8.127541
+  ...
+# Subtest: serialized camera trajectory uses effective speed and retains real acceleration lag
+ok 68 - serialized camera trajectory uses effective speed and retains real acceleration lag
+  ---
+  duration_ms: 1.053167
+  ...
+# Subtest: every optional plain rail preserves the no-input ground bypass at real fast and boosted states
+ok 69 - every optional plain rail preserves the no-input ground bypass at real fast and boosted states
+  ---
+  duration_ms: 3.232
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 17
+ok 70 - continuous free-flip input keeps encountering real threats: 17
+  ---
+  duration_ms: 147.875334
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 932
+ok 71 - continuous free-flip input keeps encountering real threats: 932
+  ---
+  duration_ms: 147.597334
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 9
+ok 72 - continuous free-flip input keeps encountering real threats: 9
+  ---
+  duration_ms: 205.988375
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 56
+ok 73 - continuous free-flip input keeps encountering real threats: 56
+  ---
+  duration_ms: 69.9
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 2026
+ok 74 - continuous free-flip input keeps encountering real threats: 2026
+  ---
+  duration_ms: 95.320875
+  ...
+# Subtest: continuous free-flip input keeps encountering real threats: 42
+ok 75 - continuous free-flip input keeps encountering real threats: 42
+  ---
+  duration_ms: 91.338
+  ...
+# Subtest: ordinary air enemies clear the full grounded rider and retain air collisions
+ok 76 - ordinary air enemies clear the full grounded rider and retain air collisions
+  ---
+  duration_ms: 1.232667
+  ...
+# Subtest: survival templates never create a train or resize canonical vehicles
+ok 77 - survival templates never create a train or resize canonical vehicles
+  ---
+  duration_ms: 0.121833
+  ...
+# Subtest: legacy route helper searches every zero-thrust policy before burning fuel
+ok 78 - legacy route helper searches every zero-thrust policy before burning fuel
+  ---
+  duration_ms: 16.125417
+  ...
+# Subtest: canonical sight lower bound covers phone, landscape and every intermediate width
+ok 79 - canonical sight lower bound covers phone, landscape and every intermediate width
+  ---
+  duration_ms: 12.935583
+  ...
+# Subtest: one combined rail-air simulation proves the ground bypass, late catch, and timing interior
+ok 80 - one combined rail-air simulation proves the ground bypass, late catch, and timing interior
+  ---
+  duration_ms: 126.570833
+  ...
+# Subtest: spaced pair has independently forgiving jumps and an actual grounded pause
+ok 81 - spaced pair has independently forgiving jumps and an actual grounded pause
+  ---
+  duration_ms: 190.556875
+  ...
+# Subtest: rest starts after the last threat clears while voluntary flight remains free
+ok 82 - rest starts after the last threat clears while voluntary flight remains free
+  ---
+  duration_ms: 86.451417
+  ...
+# Subtest: fast states cannot bypass aerial cooldown, biome grace or post-rescue simplicity
+ok 83 - fast states cannot bypass aerial cooldown, biome grace or post-rescue simplicity
+  ---
+  duration_ms: 41.290417
+  ...
+# Subtest: third identical ground fallback is withheld and recovery admits two simple singles
+ok 84 - third identical ground fallback is withheld and recovery admits two simple singles
+  ---
+  duration_ms: 40.040583
+  ...
+# Subtest: a shared deterministic budget always stops simulation search
+ok 85 - a shared deterministic budget always stops simulation search
+  ---
+  duration_ms: 0.255875
+  ...
+# Subtest: director phase, rest and recovery are serialized by the production checkpoint
+ok 86 - director phase, rest and recovery are serialized by the production checkpoint
+  ---
+  duration_ms: 4.474166
+  ...
+# Subtest: tall single profiles preserve Xi, T800 and Rogozin without widening their colliders or forcing fuel
+ok 87 - tall single profiles preserve Xi, T800 and Rogozin without widening their colliders or forcing fuel
+  ---
+  duration_ms: 265.196834
+  ...
+# Subtest: shared idle prefixes reproduce full simulations for charge/timing corners and independent pairs
+ok 88 - shared idle prefixes reproduce full simulations for charge/timing corners and independent pairs
+  ---
+  duration_ms: 247.1775
+  ...
+# Subtest: onboarding retains an ordinary low-car fallback without long empty retries
+ok 89 - onboarding retains an ordinary low-car fallback without long empty retries
+  ---
+  duration_ms: 959.953667
+  ...
+# Subtest: spaced pairs remain a validated whole at full streak and speed pickup
+ok 90 - spaced pairs remain a validated whole at full streak and speed pickup
+  ---
+  duration_ms: 164.2795
+  ...
+# Subtest: rail length is physical geometry, with a discrete explicit width
+ok 91 - rail length is physical geometry, with a discrete explicit width
+  ---
+  duration_ms: 0.102959
+  ...
+# Subtest: first safe air is introduced before thirty seconds, including ordinary no-trick play
+ok 92 - first safe air is introduced before thirty seconds, including ordinary no-trick play
+  ---
+  duration_ms: 347.657
+  ...
+# Subtest: rail plus ground proves a true ordinary jump bypass and a distinct optional catch through the same objects
+ok 93 - rail plus ground proves a true ordinary jump bypass and a distinct optional catch through the same objects
+  ---
+  duration_ms: 133.890708
+  ...
+# Subtest: aerial rail timing remains separately visible with full streak and speed boost
+ok 94 - aerial rail timing remains separately visible with full streak and speed boost
+  ---
+  duration_ms: 15.981542
+  ...
+# Subtest: both pair preparations and exact camera-prefix corners survive changing pickup speed
+ok 95 - both pair preparations and exact camera-prefix corners survive changing pickup speed
+  ---
+  duration_ms: 494.775833
+  ...
+# Subtest: varying physical rail widths preserve post height and stretch only the clear middle span
+ok 96 - varying physical rail widths preserve post height and stretch only the clear middle span
+  ---
+  duration_ms: 0.281375
+  ...
+# Subtest: ground-target prefixes reproduce full rail bypass physics and forbid real catches in every corner
+ok 97 - ground-target prefixes reproduce full rail bypass physics and forbid real catches in every corner
+  ---
+  duration_ms: 23.393208
+  ...
+# Subtest: Joe encounter raises the hand, inhales, reacts while passing, then settles
+ok 98 - Joe encounter raises the hand, inhales, reacts while passing, then settles
+  ---
+  duration_ms: 28.716958
+  ...
+# Subtest: tower clears the rocket before liftoff and closes only after successful touchdown
+ok 99 - tower clears the rocket before liftoff and closes only after successful touchdown
+  ---
+  duration_ms: 0.214834
+  ...
+# Subtest: mobile spaceport is enlarged without changing the desktop layout
+ok 100 - mobile spaceport is enlarged without changing the desktop layout
+  ---
+  duration_ms: 0.076084
+  ...
+# Subtest: ground compatibility templates never form an aerial ceiling
+ok 101 - ground compatibility templates never form an aerial ceiling
+  ---
+  duration_ms: 484.3605
+  ...
+# Subtest: factory and spaceport generation use their own eligible ground pools
+ok 102 - factory and spaceport generation use their own eligible ground pools
+  ---
+  duration_ms: 1018.5955
+  ...
+# Subtest: Simpsons discovery migrates once while historical and viewed entries survive
+ok 103 - Simpsons discovery migrates once while historical and viewed entries survive
+  ---
+  duration_ms: 0.725416
+  ...
+# Subtest: decorative updates never consume run RNG, score, fuel or commands
+ok 104 - decorative updates never consume run RNG, score, fuel or commands
+  ---
+  duration_ms: 77.060125
+  ...
+# Subtest: two-way lightning endpoints follow both Xi hands through the pass and stay finite
+ok 105 - two-way lightning endpoints follow both Xi hands through the pass and stay finite
+  ---
+  duration_ms: 0.561542
+  ...
+# Subtest: visits vary models; each complete body keeps its color and model
+ok 106 - visits vary models; each complete body keeps its color and model
+  ---
+  duration_ms: 0.890792
+  ...
+# Subtest: pause, repeated render snapshots and resize cannot consume random or mutate a cycle
+ok 107 - pause, repeated render snapshots and resize cannot consume random or mutate a cycle
+  ---
+  duration_ms: 3.232209
+  ...
+# Subtest: Cybertruck stays steel for repeated cycles and skips paint-specific color draws
+ok 108 - Cybertruck stays steel for repeated cycles and skips paint-specific color draws
+  ---
+  duration_ms: 0.107083
+  ...
+# Subtest: the outgoing line keeps assembling until the physical factory doorway has passed
+ok 109 - the outgoing line keeps assembling until the physical factory doorway has passed
+  ---
+  duration_ms: 0.089875
+  ...
+# Subtest: tool contact survives each body-stage boundary and returns continuously
+ok 110 - tool contact survives each body-stage boundary and returns continuously
+  ---
+  duration_ms: 0.257458
+  ...
+# Subtest: neighboring robots have distinct stable poses and asynchronous supply handling
+ok 111 - neighboring robots have distinct stable poses and asynchronous supply handling
+  ---
+  duration_ms: 9.053791
+  ...
+# Subtest: a station reaches its supply before carrying the part toward the body
+ok 112 - a station reaches its supply before carrying the part toward the body
+  ---
+  duration_ms: 0.180125
+  ...
+# Subtest: fall bounces seated three times, returns both figures exactly to riding, and tapping accelerates without a pose jump
+ok 113 - fall bounces seated three times, returns both figures exactly to riding, and tapping accelerates without a pose jump
+  ---
+  duration_ms: 2.613542
+  ...
+# Subtest: fall is deterministic across frame rates; reduced motion keeps feedback without shake/rotation
+ok 114 - fall is deterministic across frame rates; reduced motion keeps feedback without shake/rotation
+  ---
+  duration_ms: 3.708584
+  ...
+# Subtest: fall does not stop world motion or grant obstacle immunity, and freezes progression until rising
+ok 115 - fall does not stop world motion or grant obstacle immunity, and freezes progression until rising
+  ---
+  duration_ms: 1.719458
+  ...
+# Subtest: director alternates breathing space after two complex patterns, keeps fuel reserve and waits during falling
+ok 116 - director alternates breathing space after two complex patterns, keeps fuel reserve and waits during falling
+  ---
+  duration_ms: 38.12525
+  ...
+# Subtest: two seated rebounds lead directly into a stronger third push and an airborne stand
+ok 117 - two seated rebounds lead directly into a stronger third push and an airborne stand
+  ---
+  duration_ms: 0.266334
+  ...
+# Subtest: car hits its nose then rear in one forward somersault, stays behind, and docks before the rider lands
+ok 118 - car hits its nose then rear in one forward somersault, stays behind, and docks before the rider lands
+  ---
+  duration_ms: 0.152125
+  ...
+# Subtest: every impact compresses locally and pose sampling remains continuous across contacts and reunion
+ok 119 - every impact compresses locally and pose sampling remains continuous across contacts and reunion
+  ---
+  duration_ms: 0.441542
+  ...
+# Subtest: the seated rear hip and pitched car hull touch the road without sinking through it
+ok 120 - the seated rear hip and pitched car hull touch the road without sinking through it
+  ---
+  duration_ms: 3.938834
+  ...
+# Subtest: swept collision includes the separated rotating car between endpoint frames
+ok 121 - swept collision includes the separated rotating car between endpoint frames
+  ---
+  duration_ms: 0.613167
+  ...
+# Subtest: tap cannot land a flip; charged grabs have bounded release windows
+ok 122 - tap cannot land a flip; charged grabs have bounded release windows
+  ---
+  duration_ms: 8.451458
+  ...
+# Subtest: thrust has local roof direction, finite fuel and no ground consumption
+ok 123 - thrust has local roof direction, finite fuel and no ground consumption
+  ---
+  duration_ms: 0.183167
+  ...
+# Subtest: upright error preserves tie direction; releasing never invents rotation or duplicates turns
+ok 124 - upright error preserves tie direction; releasing never invents rotation or duplicates turns
+  ---
+  duration_ms: 0.09825
+  ...
+# Subtest: only landed flips refill fuel; failed landing resets series but preserves tank
+ok 125 - only landed flips refill fuel; failed landing resets series but preserves tank
+  ---
+  duration_ms: 0.161
+  ...
+# Subtest: integer tenths cap at x5; support expires faster at high multipliers; refresh resets decay
+ok 126 - integer tenths cap at x5; support expires faster at high multipliers; refresh resets decay
+  ---
+  duration_ms: 0.120416
+  ...
+# Subtest: speed series increases once per landing and expires continuously across a long tick
+ok 127 - speed series increases once per landing and expires continuously across a long tick
+  ---
+  duration_ms: 0.178917
+  ...
+# Subtest: recovery duration grows nonlinearly and rejoins original ramp without hidden progress
+ok 128 - recovery duration grows nonlinearly and rejoins original ramp without hidden progress
+  ---
+  duration_ms: 0.619959
+  ...
+# Subtest: near windows include exact boundary and exclude collision and distant cases
+ok 129 - near windows include exact boundary and exclude collision and distant cases
+  ---
+  duration_ms: 0.075125
+  ...
+# Subtest: air hitboxes include upper/lower bounds and swept collision catches tunnelling
+ok 130 - air hitboxes include upper/lower bounds and swept collision catches tunnelling
+  ---
+  duration_ms: 0.900167
+  ...
+# Subtest: route validation clones state, preserves fuel-free bounded compatibility patterns and validates all stages
+ok 131 - route validation clones state, preserves fuel-free bounded compatibility patterns and validates all stages
+  ---
+  duration_ms: 341.748292
+  ...
+# Subtest: seeded directors use breathers, grounded entrances, recoverable empty-fuel fallback
+ok 132 - seeded directors use breathers, grounded entrances, recoverable empty-fuel fallback
+  ---
+  duration_ms: 1117.974792
+  ...
+# Subtest: coaching is contextual, persistent, dismissible and never blocks controls
+ok 133 - coaching is contextual, persistent, dismissible and never blocks controls
+  ---
+  duration_ms: 0.472291
+  ...
+# Subtest: new flight/pace/economy are invariant under 30/60/120 Hz and uneven display schedules
+ok 134 - new flight/pace/economy are invariant under 30/60/120 Hz and uneven display schedules
+  ---
+  duration_ms: 35.9385
+  ...
+# Subtest: precision patterns retain a short ground group and forgiving timing without an aerial ceiling
+ok 135 - precision patterns retain a short ground group and forgiving timing without an aerial ceiling
+  ---
+  duration_ms: 77.579083
+  ...
+# Subtest: ordinary ground and rail jump keep the existing full nine-frame kickflip
+ok 136 - ordinary ground and rail jump keep the existing full nine-frame kickflip
+  ---
+  duration_ms: 6.612167
+  ...
+# Subtest: rail jump cosmetic flip yields to actual spin and thrust; walking off an edge does not launch a flip
+ok 137 - rail jump cosmetic flip yields to actual spin and thrust; walking off an edge does not launch a flip
+  ---
+  duration_ms: 0.119792
+  ...
+# Subtest: rail is one-way and optional: drive below, rise through and miss bad angles
+ok 138 - rail is one-way and optional: drive below, rise through and miss bad angles
+  ---
+  duration_ms: 5.684
+  ...
+# Subtest: descending capture preserves angle and pending reward until good ground landing
+ok 139 - descending capture preserves angle and pending reward until good ground landing
+  ---
+  duration_ms: 3.768208
+  ...
+# Subtest: held primary does not jump on capture; new press can charge and jump from support
+ok 140 - held primary does not jump on capture; new press can charge and jump from support
+  ---
+  duration_ms: 0.660667
+  ...
+# Subtest: distance reward is independent of speed and cannot pay the same interval twice
+ok 141 - distance reward is independent of speed and cannot pay the same interval twice
+  ---
+  duration_ms: 2.048833
+  ...
+# Subtest: x3 expiry affects only new grind distance; settlement never multiplies it again
+ok 142 - x3 expiry affects only new grind distance; settlement never multiplies it again
+  ---
+  duration_ms: 5.322958
+  ...
+# Subtest: jump booster is captured at rail takeoff; supported thrust spends no fuel
+ok 143 - jump booster is captured at rail takeoff; supported thrust spends no fuel
+  ---
+  duration_ms: 0.597375
+  ...
+# Subtest: chip rescue discards the unfinished grind; shield preserves it; rough ground landing discards it
+ok 144 - chip rescue discards the unfinished grind; shield preserves it; rough ground landing discards it
+  ---
+  duration_ms: 4.341333
+  ...
+# Subtest: successive flights on one rail keep turns without banking at either capture
+ok 145 - successive flights on one rail keep turns without banking at either capture
+  ---
+  duration_ms: 1.881833
+  ...
+# Subtest: pause freezes rail support and reward; checkpoint roundtrip and restart preserve their contracts
+ok 146 - pause freezes rail support and reward; checkpoint roundtrip and restart preserve their contracts
+  ---
+  duration_ms: 12.007125
+  ...
+# Subtest: optional rails admit fuel-free catches at ordinary, boosted and maximum speed
+ok 147 - optional rails admit fuel-free catches at ordinary, boosted and maximum speed
+  ---
+  duration_ms: 100.294584
+  ...
+# Subtest: grind settlement does not add a second obsolete1.25s spawn pause
+ok 148 - grind settlement does not add a second obsolete1.25s spawn pause
+  ---
+  duration_ms: 51.983083
+  ...
+# Subtest: two-bone targets stay finite and preserve lengths outside the reachable ring
+ok 149 - two-bone targets stay finite and preserve lengths outside the reachable ring
+  ---
+  duration_ms: 1.116958
+  ...
+# Subtest: standing sole anchors remain on the photographed board through crouch and lean
+ok 150 - standing sole anchors remain on the photographed board through crouch and lean
+  ---
+  duration_ms: 2.304791
+  ...
+# Subtest: near-arm grab and fall override their own gesture channels
+ok 151 - near-arm grab and fall override their own gesture channels
+  ---
+  duration_ms: 1.011875
+  ...
+# Subtest: animation transitions depend on simulation time and sampling never advances them
+ok 152 - animation transitions depend on simulation time and sampling never advances them
+  ---
+  duration_ms: 1.785041
+  ...
+# Subtest: fall impact lowers the raised hands and shoulders, and folds both forward legs without stretching
+ok 153 - fall impact lowers the raised hands and shoulders, and folds both forward legs without stretching
+  ---
+  duration_ms: 0.460916
+  ...
+# Subtest: speed readout converts km/h to mph and multiplier uses five tier colours
+ok 154 - speed readout converts km/h to mph and multiplier uses five tier colours
+  ---
+  duration_ms: 1.059416
+  ...
+# Subtest: grab uses the idle-sized skeleton and squats with moderate torso lean to reach the roof
+ok 155 - grab uses the idle-sized skeleton and squats with moderate torso lean to reach the roof
+  ---
+  duration_ms: 0.26575
+  ...
+# Subtest: first jump is cosmetic; manual rotation smoothly tucks and launch resets pose
+ok 156 - first jump is cosmetic; manual rotation smoothly tucks and launch resets pose
+  ---
+  duration_ms: 0.515083
+  ...
+# Subtest: 35 degrees / 200deg per second lands safely; inverted and fast tumbles still fail
+ok 157 - 35 degrees / 200deg per second lands safely; inverted and fast tumbles still fail
+  ---
+  duration_ms: 0.147917
+  ...
+# Subtest: hold tucks and speeds up; release opens and brakes without automatic alignment; rehold works
+ok 158 - hold tucks and speeds up; release opens and brakes without automatic alignment; rehold works
+  ---
+  duration_ms: 1.267958
+  ...
+# Subtest: ordinary jump stays upright; controlled release lands a flip, overhold falls
+ok 159 - ordinary jump stays upright; controlled release lands a flip, overhold falls
+  ---
+  duration_ms: 0.489125
+  ...
+# Subtest: perfect +/-10 and safe +/-40 degree boundaries repeat across full turns and reject fast impact
+ok 160 - perfect +/-10 and safe +/-40 degree boundaries repeat across full turns and reject fast impact
+  ---
+  duration_ms: 0.731917
+  ...
+# Subtest: perfect bonus uses current multiplier once; safe has normal rewards; failed has none
+ok 161 - perfect bonus uses current multiplier once; safe has normal rewards; failed has none
+  ---
+  duration_ms: 0.204875
+  ...
+# Subtest: touchdown compresses then extends once, freezes with zero dt, resets and excludes fall/new flight
+ok 162 - touchdown compresses then extends once, freezes with zero dt, resets and excludes fall/new flight
+  ---
+  duration_ms: 0.263959
+  ...
+# Subtest: preparation never posts a score and consumes each session once
+ok 163 - preparation never posts a score and consumes each session once
+  ---
+  duration_ms: 19.234417
+  ...
+# Subtest: submit durably saves and shows the score before any network call completes
+ok 164 - submit durably saves and shows the score before any network call completes
+  ---
+  duration_ms: 1.202625
+  ...
+# Subtest: offline queue survives reload and sends automatically on the next connection
+ok 165 - offline queue survives reload and sends automatically on the next connection
+  ---
+  duration_ms: 0.686583
+  ...
+# Subtest: receipt ends upload; later recovery reads status without uploading replay or calling verify
+ok 166 - receipt ends upload; later recovery reads status without uploading replay or calling verify
+  ---
+  duration_ms: 1.000334
+  ...
+# Subtest: ambiguous upload repeats original identity, nickname and replay, deduplicating in flight
+ok 167 - ambiguous upload repeats original identity, nickname and replay, deduplicating in flight
+  ---
+  duration_ms: 0.527333
+  ...
+# Subtest: rejected row remains for the submitting page, disappears silently after reload and is never resubmitted
+ok 168 - rejected row remains for the submitting page, disappears silently after reload and is never resubmitted
+  ---
+  duration_ms: 0.637458
+  ...
+# Subtest: rejection learned after reload removes an old overlay, while transient errors preserve it
+ok 169 - rejection learned after reload removes an old overlay, while transient errors preserve it
+  ---
+  duration_ms: 1.19775
+  ...
+# Subtest: unavailable or corrupt persistence never claims a saved score or overwrites unknown records
+ok 170 - unavailable or corrupt persistence never claims a saved score or overwrites unknown records
+  ---
+  duration_ms: 0.439625
+  ...
+# Subtest: legacy pending packets migrate without changing replay or losing terminal rejection
+ok 171 - legacy pending packets migrate without changing replay or losing terminal rejection
+  ---
+  duration_ms: 0.604
+  ...
+# Subtest: cached ranking survives restart; preview adds the row with stable tie order and never duplicates confirmed ID
+ok 172 - cached ranking survives restart; preview adds the row with stable tie order and never duplicates confirmed ID
+  ---
+  duration_ms: 0.331541
+  ...
+# Subtest: preview pages contain exactly the server-ranked insertion and adjacent pages omit it
+ok 173 - preview pages contain exactly the server-ranked insertion and adjacent pages omit it
+  ---
+  duration_ms: 0.106458
+  ...
+# Subtest: gateway key and run capability remain separate; field validation retains the public contract
+ok 174 - gateway key and run capability remain separate; field validation retains the public contract
+  ---
+  duration_ms: 1.220958
+  ...
+# Subtest: IndexedDB failure cannot split the durable queue into an invisible fallback store
+ok 175 - IndexedDB failure cannot split the durable queue into an invisible fallback store
+  ---
+  duration_ms: 0.254084
+  ...
+# Subtest: 30, 60, 120 Hz and uneven frames run the same 60 seconds of physics
+ok 176 - 30, 60, 120 Hz and uneven frames run the same 60 seconds of physics
+  ---
+  duration_ms: 9.646583
+  ...
+# Subtest: a long interruption pauses explicitly, while reset discards stale wall time
+ok 177 - a long interruption pauses explicitly, while reset discards stale wall time
+  ---
+  duration_ms: 0.125709
+  ...
+# Subtest: jump apex and landing depend on seconds, and charge is bounded
+ok 178 - jump apex and landing depend on seconds, and charge is bounded
+  ---
+  duration_ms: 0.120416
+  ...
+# Subtest: Rogozin has a bounded silhouette with a narrow body, no invisible charge wall
+ok 179 - Rogozin has a bounded silhouette with a narrow body, no invisible charge wall
+  ---
+  duration_ms: 0.678
+  ...
+# Subtest: each obstacle has a reachable launch window across progression and trampoline phases
+ok 180 - each obstacle has a reachable launch window across progression and trampoline phases
+  ---
+  duration_ms: 1071.866541
+  ...
+# Subtest: every accepted representative pair can be cleared with a normal tap
+ok 181 - every accepted representative pair can be cleared with a normal tap
+  ---
+  duration_ms: 1148.551333
+  ...
+# Subtest: one approved compact grab is used on every flight
+ok 182 - one approved compact grab is used on every flight
+  ---
+  duration_ms: 0.672208
+  ...
+# Subtest: both soles follow photographed roof supports through car bank and rider lean
+ok 183 - both soles follow photographed roof supports through car bank and rider lean
+  ---
+  duration_ms: 1.68325
+  ...
+# Subtest: all directed rear-arm gestures point toward the target in any local quadrant
+ok 184 - all directed rear-arm gestures point toward the target in any local quadrant
+  ---
+  duration_ms: 0.688667
+  ...
+# Subtest: podcast hand holds the joint at the mouth for inhalation, withdraws before smoke, and never aims at Joe
+ok 185 - podcast hand holds the joint at the mouth for inhalation, withdraws before smoke, and never aims at Joe
+  ---
+  duration_ms: 0.878875
+  ...
+# Subtest: ordinary jump plays every kickflip frame while manual grab and latched flight stay roof-up
+ok 186 - ordinary jump plays every kickflip frame while manual grab and latched flight stay roof-up
+  ---
+  duration_ms: 1.289458
+  ...
+# Subtest: offline installation verifies bytes and retains other applications
+ok 187 - offline installation verifies bytes and retains other applications
+  ---
+  duration_ms: 119.154916
+  ...
+# Subtest: an incomplete or mixed-version install cannot replace a working offline copy
+ok 188 - an incomplete or mixed-version install cannot replace a working offline copy
+  ---
+  duration_ms: 97.288958
+  ...
+# Subtest: explicit activation is limited to a safe single window
+ok 189 - explicit activation is limited to a safe single window
+  ---
+  duration_ms: 1.020292
+  ...
+# Subtest: factory sprites are cached together and a corrupt sprite cannot replace the offline game
+ok 190 - factory sprites are cached together and a corrupt sprite cannot replace the offline game
+  ---
+  duration_ms: 154.145333
+  ...
+# Subtest: both tyres touch the shared road anchor, including at the upright flip endpoints
+ok 191 - both tyres touch the shared road anchor, including at the upright flip endpoints
+  ---
+  duration_ms: 0.762208
+  ...
+# Subtest: wheel rotation covers travelled distance, including boost, independently of render frequency
+ok 192 - wheel rotation covers travelled distance, including boost, independently of render frequency
+  ---
+  duration_ms: 1.3955
+  ...
+# Subtest: charge compresses the body; takeoff extends it; landing dips and settles without moving tyres
+ok 193 - charge compresses the body; takeoff extends it; landing dips and settles without moving tyres
+  ---
+  duration_ms: 0.489833
+  ...
+# Subtest: successful launch reaches orbit, lands, settles and waits before relaunch
+ok 194 - successful launch reaches orbit, lands, settles and waits before relaunch
+  ---
+  duration_ms: 3.199042
+  ...
+# Subtest: failed launch and failed landing recover through explosion and delivery
+ok 195 - failed launch and failed landing recover through explosion and delivery
+  ---
+  duration_ms: 1.647375
+  ...
+# Subtest: fresh state clears passage, failure and event counters on restart
+ok 196 - fresh state clears passage, failure and event counters on restart
+  ---
+  duration_ms: 0.40775
+  ...
+# Subtest: failure explosion starts at the actual rocket altitude without a visible teleport
+ok 197 - failure explosion starts at the actual rocket altitude without a visible teleport
+  ---
+  duration_ms: 0.204
+  ...
+# Subtest: seeded random state survives serialisation and rejects invalid seeds
+ok 198 - seeded random state survives serialisation and rejects invalid seeds
+  ---
+  duration_ms: 1.343209
+  ...
+# Subtest: completed run replays to its exact first collision and ignores supplied score claims
+ok 199 - completed run replays to its exact first collision and ignores supplied score claims
+  ---
+  duration_ms: 165.033
+  ...
+# Subtest: charge, spin, thrust, cancellation and recovery use the same recorded commands
+ok 200 - charge, spin, thrust, cancellation and recovery use the same recorded commands
+  ---
+  duration_ms: 77.664583
+  ...
+# Subtest: paused render time, viewport and reduced motion cannot alter replay physics
+ok 201 - paused render time, viewport and reduced motion cannot alter replay physics
+  ---
+  duration_ms: 86.331791
+  ...
+# Subtest: replay parser bounds ticks/events and rejects malformed or unsupported inputs
+ok 202 - replay parser bounds ticks/events and rejects malformed or unsupported inputs
+  ---
+  duration_ms: 0.340583
+  ...
+# Subtest: service recording limit does not end the endless casual simulation
+ok 203 - service recording limit does not end the endless casual simulation
+  ---
+  duration_ms: 0.209333
+  ...
+# Subtest: scenery eases into acceleration and deceleration without overshoot or reversing
+ok 204 - scenery eases into acceleration and deceleration without overshoot or reversing
+  ---
+  duration_ms: 5.121042
+  ...
+# Subtest: filter retains a perceptible boost and responds gently to a landing reward
+ok 205 - filter retains a perceptible boost and responds gently to a landing reward
+  ---
+  duration_ms: 0.117792
+  ...
+# Subtest: distance and response are independent of update frequency
+ok 206 - distance and response are independent of update frequency
+  ---
+  duration_ms: 0.217917
+  ...
+# Subtest: pause freezes both velocity and tile phase; old travel never amplifies a speed change
+ok 207 - pause freezes both velocity and tile phase; old travel never amplifies a speed change
+  ---
+  duration_ms: 0.419792
+  ...
+# Subtest: finished best can be posted after reload; accepted identity survives expired capability
+ok 208 - finished best can be posted after reload; accepted identity survives expired capability
+  ---
+  duration_ms: 1.258917
+  ...
+# Subtest: late acceptance of an older run cannot mark the new best as posted
+ok 209 - late acceptance of an older run cannot mark the new best as posted
+  ---
+  duration_ms: 0.113084
+  ...
+# Subtest: an unrecorded local best never inherits the rank of an earlier posted score; ties preserve a posted best
+ok 210 - an unrecorded local best never inherits the rank of an earlier posted score; ties preserve a posted best
+  ---
+  duration_ms: 0.095875
+  ...
+# Subtest: expired replay is displayed honestly and a tied fresh connected run can replace it
+ok 211 - expired replay is displayed honestly and a tied fresh connected run can replace it
+  ---
+  duration_ms: 0.163833
+  ...
+# Subtest: corrupt or newer saves are preserved; blocked storage still retains current-window best
+ok 212 - corrupt or newer saves are preserved; blocked storage still retains current-window best
+  ---
+  duration_ms: 0.843417
+  ...
+# Subtest: gameplay upgrade preserves old finished best and can store a new-version record afterwards
+ok 213 - gameplay upgrade preserves old finished best and can store a new-version record afterwards
+  ---
+  duration_ms: 0.178416
+  ...
+# Subtest: rejected best cannot be resubmitted after reload and a new equal run can replace it
+ok 214 - rejected best cannot be resubmitted after reload and a new equal run can replace it
+  ---
+  duration_ms: 0.104958
+  ...
+# Subtest: sound opt-in persists, waits for user unlock and mutes immediately
+ok 215 - sound opt-in persists, waits for user unlock and mutes immediately
+  ---
+  duration_ms: 1.245541
+  ...
+# Subtest: unavailable storage and audio never prevent gameplay
+ok 216 - unavailable storage and audio never prevent gameplay
+  ---
+  duration_ms: 0.1065
+  ...
+# Subtest: Safari resumes interrupted audio and keeps the first effect across async unlock
+ok 217 - Safari resumes interrupted audio and keeps the first effect across async unlock
+  ---
+  duration_ms: 0.242791
+  ...
+# Subtest: recorded pressure hiss loads once, loops only during thrust, caps fading nodes and stops on mute
+ok 218 - recorded pressure hiss loads once, loops only during thrust, caps fading nodes and stops on mute
+  ---
+  duration_ms: 0.700375
+  ...
+# Subtest: late audio decode cannot resurrect a released thrust; interruption resumes a held one
+ok 219 - late audio decode cannot resurrect a released thrust; interruption resumes a held one
+  ---
+  duration_ms: 0.233333
+  ...
+# Subtest: quiet pressure recording is normalised without exceeding peak ceiling
+ok 220 - quiet pressure recording is normalised without exceeding peak ceiling
+  ---
+  duration_ms: 0.108458
+  ...
+# Subtest: speed framing preserves the previous maximum phone horizon with larger obstacles
+ok 221 - speed framing preserves the previous maximum phone horizon with larger obstacles
+  ---
+  duration_ms: 0.789208
+  ...
+# Subtest: object motion and near road flow both rise monotonically with real speed
+ok 222 - object motion and near road flow both rise monotonically with real speed
+  ---
+  duration_ms: 2.085458
+  ...
+# Subtest: camera responds to a speed change in under half a second and returns more gently
+ok 223 - camera responds to a speed change in under half a second and returns more gently
+  ---
+  duration_ms: 0.747417
+  ...
+# Subtest: same speed gives the same frame regardless of run age and holds with zero dt
+ok 224 - same speed gives the same frame regardless of run age and holds with zero dt
+  ---
+  duration_ms: 2.057333
+  ...
+# Subtest: damped framing is equivalent across refresh rates and bounded on bonus oscillation
+ok 225 - damped framing is equivalent across refresh rates and bounded on bonus oscillation
+  ---
+  duration_ms: 0.322416
+  ...
+# Subtest: earned landing speed closes the same obstacle sooner at the same camera scale
+ok 226 - earned landing speed closes the same obstacle sooner at the same camera scale
+  ---
+  duration_ms: 2.944625
+  ...
+# Subtest: normal-ramp framing preserves a usable visible approach at maximum earned speed
+ok 227 - normal-ramp framing preserves a usable visible approach at maximum earned speed
+  ---
+  duration_ms: 0.73225
+  ...
+# Subtest: Impossibru needs maximum base pace and full actual earned speed, not the first trick
+ok 228 - Impossibru needs maximum base pace and full actual earned speed, not the first trick
+  ---
+  duration_ms: 0.195291
+  ...
+# Subtest: speed cues follow actual gain, cap flame length and opacity, and lean at most two degrees
+ok 229 - speed cues follow actual gain, cap flame length and opacity, and lean at most two degrees
+  ---
+  duration_ms: 0.107292
+  ...
+# Subtest: exhaust stays attached to each pose and turns upward during the inverted frames
+ok 230 - exhaust stays attached to each pose and turns upward during the inverted frames
+  ---
+  duration_ms: 1.932458
+  ...
+# Subtest: landing clouds scroll with the world, expire, and reset without particle growth
+ok 231 - landing clouds scroll with the world, expire, and reset without particle growth
+  ---
+  duration_ms: 0.286125
+  ...
+# Subtest: airborne tuck folds knees up toward chest rather than down through the car
+ok 232 - airborne tuck folds knees up toward chest rather than down through the car
+  ---
+  duration_ms: 0.913291
+  ...
+# Subtest: front anatomical left grip survives rear-arm interactions and never swaps with target side
+ok 233 - front anatomical left grip survives rear-arm interactions and never swaps with target side
+  ---
+  duration_ms: 2.436542
+  ...
+# Subtest: car roof faces the rider through every trick and complete turns; encounter points transform back to the same world target
+ok 234 - car roof faces the rider through every trick and complete turns; encounter points transform back to the same world target
+  ---
+  duration_ms: 1.454792
+  ...
+# Subtest: emitted cash persists after firing stops, starts falling continuously, scrolls with world and expires with a hard budget
+ok 235 - emitted cash persists after firing stops, starts falling continuously, scrolls with world and expires with a hard budget
+  ---
+  duration_ms: 15.145667
+  ...
+1..235
+# tests 235
+# suites 0
+# pass 235
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3458.708333

@@ -8,7 +8,7 @@ import {createRandom} from '../src/random.js';
 import {createFall,beginFall,advanceFall,fallPose} from '../src/fall.js';
 import {sweptCollision as originalCollision} from '../supabase/rulesets/roadster-v380/gameplay.js';
 import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v460/routes.js';
-import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v463/run.js';
+import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v470/run.js';
 
 test('sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel',()=>{
  const random=createRandom(5873),dxs=[180,180+1e-9,180-1e-9,-400,-180,-180-1e-9,900,0];
