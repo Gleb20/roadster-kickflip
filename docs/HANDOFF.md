@@ -2,7 +2,7 @@
 
 Ground waves contain one or two canonical obstacles. Aircraft remain airborne with a no-input ground bypass; later optional rails combine a comfortable catch route with the same safe bypass. Progression, biome familiarity, two simple recovery waves, air cooldowns and real post-clear rest gate variety. New ranked `roadster-v4.6.0` is additive; eight historical verifier folders and existing records remain intact. Art, controls, physics, camera and adaptive audio are preserved.
 
-203 game tests, 15 server tests, 24 database checks, 8×600-second nominal/imperfect runs, 6,449 timing probes, native browser rail/air checks and 18 actual 4.5.1→4.6 PWA upgrade checks pass. Physical iPhone/Safari remains untested. The known closed-tab PWA activation boundary remains: close old game windows and reopen the versioned link without clearing site data. [Evidence and limits](verification/2026-10-23-director/README.md). [Play 4.6.0](https://gleb20.github.io/roadster-kickflip/?v=4.6.0).
+203 game tests, 15 server tests, 24 database checks, 8×600-second nominal/imperfect runs, 6,449 timing probes, native browser rail/air checks and 18 actual 4.5.1→4.6 PWA upgrade checks pass. Physical iPhone/Safari remains untested. The latest4.5.1→4.6 update activated at Restart without closing the tab; an earlier4.5.0 probe used the historical closed-tab boundary. Reproduce that older issue before any lifecycle fix. [Evidence and limits](verification/2026-10-23-director/README.md). [Play 4.6.0](https://gleb20.github.io/roadster-kickflip/?v=4.6.0). Runtime `afecbfaf`; Pages `40026727638` succeeded. All191 public hashes and39 public native/audio/offline checks pass; no public fixture scores were written.
 
 ## Audio settings4.5.1 — 24 October2026
 

@@ -1,0 +1,153 @@
+{
+  "at": "2026-10-23T21:28:17.532825+00:00",
+  "version": "4.6.0",
+  "matched": 24,
+  "total": 24,
+  "files": [
+    {
+      "path": "index.html",
+      "localSha256": "ceb447283819415f3f24cca564f5178464eba76712a899a403e0c92ca264188e",
+      "liveSha256": "ceb447283819415f3f24cca564f5178464eba76712a899a403e0c92ca264188e",
+      "match": true
+    },
+    {
+      "path": "sw.js",
+      "localSha256": "20b7f931223a75f6596f8b1f4d59f16b964c08c827e60c09ee5b89e1ee1dd2dd",
+      "liveSha256": "20b7f931223a75f6596f8b1f4d59f16b964c08c827e60c09ee5b89e1ee1dd2dd",
+      "match": true
+    },
+    {
+      "path": "src/director.js",
+      "localSha256": "eaf9c03b3d4ecd6a5c6f821fb5b316b4197edb6795d20be19b858642f9586b8d",
+      "liveSha256": "eaf9c03b3d4ecd6a5c6f821fb5b316b4197edb6795d20be19b858642f9586b8d",
+      "match": true
+    },
+    {
+      "path": "src/encounter-routes.js",
+      "localSha256": "5e208e81cd561ffb5a7b617c67b2e8e064ca002babaa60a059ad997cfc654754",
+      "liveSha256": "5e208e81cd561ffb5a7b617c67b2e8e064ca002babaa60a059ad997cfc654754",
+      "match": true
+    },
+    {
+      "path": "src/routes.js",
+      "localSha256": "fb82174358f34f6098453e5ad3bf0f7625d42437473c917075ec890c3e012e04",
+      "liveSha256": "fb82174358f34f6098453e5ad3bf0f7625d42437473c917075ec890c3e012e04",
+      "match": true
+    },
+    {
+      "path": "src/content.js",
+      "localSha256": "f283d984e24bf69626dc3ed91df58539d7a51014e9d2d4eca79bb35571ce0af2",
+      "liveSha256": "f283d984e24bf69626dc3ed91df58539d7a51014e9d2d4eca79bb35571ce0af2",
+      "match": true
+    },
+    {
+      "path": "src/run.js",
+      "localSha256": "128f39a0da3123a9c8fa85efced2c4727f913017999486e1f6057b76c8e6209f",
+      "liveSha256": "128f39a0da3123a9c8fa85efced2c4727f913017999486e1f6057b76c8e6209f",
+      "match": true
+    },
+    {
+      "path": "src/main.js",
+      "localSha256": "72fd8cbb7d43bdcb31ae429ef432618fb5681a9c5029c0578b84032c30974da6",
+      "liveSha256": "72fd8cbb7d43bdcb31ae429ef432618fb5681a9c5029c0578b84032c30974da6",
+      "match": true
+    },
+    {
+      "path": "src/coaching.js",
+      "localSha256": "65f4604c6e60b4f684417de055146af475e1187eba0003a08a3e6bc74e57fad7",
+      "liveSha256": "65f4604c6e60b4f684417de055146af475e1187eba0003a08a3e6bc74e57fad7",
+      "match": true
+    },
+    {
+      "path": "src/collection-copy.js",
+      "localSha256": "01a101d36c6a9eed498799d74bdc9414423e5ded5f4d10b69adf82b10aef0c9d",
+      "liveSha256": "01a101d36c6a9eed498799d74bdc9414423e5ded5f4d10b69adf82b10aef0c9d",
+      "match": true
+    },
+    {
+      "path": "src/gameplay.js",
+      "localSha256": "1455d0d5be8ff7d46610bb41d5c7d1c702fa881c5ddfa94de0fc163850308a60",
+      "liveSha256": "1455d0d5be8ff7d46610bb41d5c7d1c702fa881c5ddfa94de0fc163850308a60",
+      "match": true
+    },
+    {
+      "path": "src/gameplay-config.js",
+      "localSha256": "715d584e01fd97280d0d270cf6ade7b4399483bb54d77474c74896e400fd816c",
+      "liveSha256": "715d584e01fd97280d0d270cf6ade7b4399483bb54d77474c74896e400fd816c",
+      "match": true
+    },
+    {
+      "path": "src/rails.js",
+      "localSha256": "a576cfb9ccb6913233e85808eaaa0626130a0cf7ddbeaaf6a4ba597cd5166c39",
+      "liveSha256": "a576cfb9ccb6913233e85808eaaa0626130a0cf7ddbeaaf6a4ba597cd5166c39",
+      "match": true
+    },
+    {
+      "path": "src/online.js",
+      "localSha256": "14fc72755dbe5e1a82ca933d03c01b21b719cf00835758677ce4b8d611529a13",
+      "liveSha256": "14fc72755dbe5e1a82ca933d03c01b21b719cf00835758677ce4b8d611529a13",
+      "match": true
+    },
+    {
+      "path": "src/sound.js",
+      "localSha256": "84ff83f937daeffd09a291e426e1b8c40dd00af4fc8cf37c9479321098a39d83",
+      "liveSha256": "84ff83f937daeffd09a291e426e1b8c40dd00af4fc8cf37c9479321098a39d83",
+      "match": true
+    },
+    {
+      "path": "src/music.js",
+      "localSha256": "5ec143d62676f6c3e45e5fd127993e04ab6c4c216e856635913bca9508ca3d12",
+      "liveSha256": "5ec143d62676f6c3e45e5fd127993e04ab6c4c216e856635913bca9508ca3d12",
+      "match": true
+    },
+    {
+      "path": "src/speed-feedback.js",
+      "localSha256": "a58bc3eee99445f1560dd128168f8192b5214c417ab9ebdaf1a00c8da40d6d26",
+      "liveSha256": "a58bc3eee99445f1560dd128168f8192b5214c417ab9ebdaf1a00c8da40d6d26",
+      "match": true
+    },
+    {
+      "path": "src/audio-controls.js",
+      "localSha256": "f6b30e53667477699362beb4eeed55304394026f6c8fd3343307ffac22a5ca97",
+      "liveSha256": "f6b30e53667477699362beb4eeed55304394026f6c8fd3343307ffac22a5ca97",
+      "match": true
+    },
+    {
+      "path": "style.css",
+      "localSha256": "534c57f78c3b50569bb9fb0fdb08e16bfe5de7343b4b175dd65ae23b4ea18542",
+      "liveSha256": "534c57f78c3b50569bb9fb0fdb08e16bfe5de7343b4b175dd65ae23b4ea18542",
+      "match": true
+    },
+    {
+      "path": "assets/ui/audio-v470/elon-loud.png",
+      "localSha256": "5c03c4236959ac570c9c5a968a2f6c2c83cc7131a03fec6d72381190559e43ca",
+      "liveSha256": "5c03c4236959ac570c9c5a968a2f6c2c83cc7131a03fec6d72381190559e43ca",
+      "match": true
+    },
+    {
+      "path": "assets/ui/audio-v470/elon-muted.png",
+      "localSha256": "a3b437e31a0acf1a7aef61902389f52ee5800dce9dc1023106ddf8cefe2ba096",
+      "liveSha256": "a3b437e31a0acf1a7aef61902389f52ee5800dce9dc1023106ddf8cefe2ba096",
+      "match": true
+    },
+    {
+      "path": "assets/ui/audio-v470/elon-neutral.png",
+      "localSha256": "855fa99176dda21a920f53aabb40a029aaa9c00fadfd16020a2a2a57e94580dd",
+      "liveSha256": "855fa99176dda21a920f53aabb40a029aaa9c00fadfd16020a2a2a57e94580dd",
+      "match": true
+    },
+    {
+      "path": "assets/ui/audio-v470/elon-quiet.png",
+      "localSha256": "9e6f4fe453464312e48e4e2ee534e1a61a7c949879ccecbac926402180e24ce0",
+      "liveSha256": "9e6f4fe453464312e48e4e2ee534e1a61a7c949879ccecbac926402180e24ce0",
+      "match": true
+    },
+    {
+      "path": "assets/ui/audio-v470/elon-shush.png",
+      "localSha256": "07b1eb59442710b4ad2bf20d2e961b653f3658a11b82e2d457115e8a15e67f13",
+      "liveSha256": "07b1eb59442710b4ad2bf20d2e961b653f3658a11b82e2d457115e8a15e67f13",
+      "match": true
+    }
+  ],
+  "physicalDevice": false
+}

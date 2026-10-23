@@ -1,3 +1,5 @@
+Published runtime `afecbfaf76d668746d756b801f20b2e79359325d`; Pages40026727638 succeeded. [Play4.6.0](https://gleb20.github.io/roadster-kickflip/?v=4.6.0). All191live hashes and39public native/audio/offline checks pass.
+
 # Obstacle director 4.6.0
 
 Initial research base was4.5.0/`44579d2e5d44a5aec3d4f76192d2e2a145b71db7`; final release integrates published audio-controls4.5.1 and uses parent `b7eb5b07f510ba3d7a450e3bbc9d124c0fed43cb`. Work ran in an isolated clone; the original dirty runtime/index were not changed. The adjacent planning document records calibrated preparation thresholds and algorithm details.
@@ -9,13 +11,13 @@ Initial research base was4.5.0/`44579d2e5d44a5aec3d4f76192d2e2a145b71db7`; final
 - Ordinary ground validates the full 180ms lead window plus independent charge±.1 at nominal lead; offline charge±.05/lead±.06 corners also pass. Tall singles validate charge±.1 jointly with lead±.09. Do not describe ordinary ground as the larger full rectangle.
 - Early fallback starvation was reproduced and corrected without changing physics or preparation thresholds. Focused tests require early no-boost/recovery gaps ≤12s; seeds17/932 now present six waves in approximately26 seconds. Simplification during high effective speed remains deliberate.
 - `browser/browser.json`: 17 native browser checks across320/390/844/1002/1440 widths, natural rail-air catch and ground bypass, native touch, zero runtime errors. PNG approach/landing evidence is retained.
-- `upgrade/checks.json`: 18 actual service-worker upgrade checks retain the 4.4.2 best, collection, outbox, mute/tutorial state and cold offline audio. Existing Restart/closed-tab activation limitation remains.
+- `upgrade/checks.json`: 18 actual service-worker upgrade checks retain the 4.4.2 best, collection, outbox, mute/tutorial state and cold offline audio. The latest4.5.1→4.6 probe activated at Restart without closing the tab (`closedTabBoundaryUsed:false`); the older4.5.0 probe used a closed-tab boundary.
 - `performance-before.json`, `performance-after.json`, `browser/browser.json`: same seeds17/932/2026/42 ×240 seconds. Node candidate p95 approximately6.36–13.89ms; browser candidate3.6–9.2ms against old5.7–10.6ms. A browser71.7ms full-spawn-step spike occurred in seed17; that browser protocol retained sorted durations, so its exact encounter kind/budget ticks were not captured; worst-case improvement is not established. The aspirational4ms target is not achieved universally. Matrix timings include extra verification/GC/contention and are not a phone FPS claim.
 - Eight old ruleset directories remain byte-identical. Final API/worker source readback matches local bundles; the new allowlist is additive. Hosted fixtures use a separate QA epoch; private capabilities remain only in `/tmp`, excluded from Git.
 
 ## Limits and next step
 
-Physical iPhone/Safari, subjective difficulty and 60fps on a phone are not established by browser emulation. Use the public4.6.0 link for the phone playtest. A bounded follow-up may reproduce the already-known PWA activation boundary before changing lifecycle code; no unrelated debt sprint was started.
+Physical iPhone/Safari, subjective difficulty and 60fps on a phone are not established by browser emulation. Use the public4.6.0 link for the phone playtest. A bounded follow-up can profile spawn spikes on a physical phone. Reproduce the historical PWA activation boundary before treating it as current debt or changing lifecycle code; the latest4.5.1 probe did not reproduce it. No unrelated debt sprint was started.
 
 ## Rollback
 

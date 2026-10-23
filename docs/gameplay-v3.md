@@ -1,6 +1,6 @@
-## Encounter director 4.6.0 — current release candidate
+## Encounter director 4.6.0 — published current release
 
-Flying opponents now have a real aerial box and a safe no-input ground underpass. `single`, `spaced-pair`, rare `low-cluster`, optional `rail`, `air-pass`, `rail-air` and empty rest replace the long mandatory-thrust trains. A wave has at most two full-size ground objects. Ground survival routes consume no thrust, shield or BACKUP. Score, physics, input, current speed camera, existing art and adaptive4.5.0 audio remain unchanged. The old low-aircraft descriptions below apply only to historical frozen versions.
+Flying opponents now have a real aerial box and a safe no-input ground underpass. `single`, `spaced-pair`, rare `low-cluster`, optional `rail`, `air-pass`, `rail-air` and empty rest replace the long mandatory-thrust trains. A wave has at most two full-size ground objects. Ground survival routes consume no thrust, shield or BACKUP. Score, physics, input, current speed camera, existing art and adaptive audio and the published4.5.1 audio controls remain intact. The old low-aircraft descriptions below apply only to historical frozen versions.
 
 Progress follows active `pace.progress`: simple singles/free rails before35s; pairs thereafter when feasible; isolated air after90s; combined rail-air after150s. Score still selects the unchanged7000-point biome cycle. New legs require8s and2200world units before complex/air situations. Registry biome eligibility and the factory ground whitelist are retained. New ground IDs get a single introduction; the first two rails and first two air encounters are free of rail-air conflicts.
 
