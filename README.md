@@ -1,3 +1,13 @@
+## Backup rarity 4.4.2 - release candidate, 23 October 2026
+
+The backup chip now appears once per three shuffled bags: one chip for twelve ordinary boosters, previously one for four. The first two bags contain no backup. Ordinary booster variety, wave interval, collection animation and two-charge cap are retained. This is a working balance choice for phone playtesting; elapsed encounter time depends on safe gaps, eligibility and collection.
+
+Base: published 4.4.1, remote commit `598198078ed9c0033dbdfe4c68b7e464592461f5`; rails, roof grab, camera and Home cleanup are preserved. New ranked `roadster-v4.4.2` is frozen separately; all seven earlier ruleset folders remain byte-for-byte unchanged. The completed 4.4.0 score record and IndexedDB outbox remain eligible after updating.
+
+174 game tests, 15 server tests, 24 disposable database checks, 35 rail browser checks and 11 actual 4.4.1-to-4.4.2 PWA checks pass. Two 180-second rail witnesses replay exactly through JSON checkpoints. 64 seeded bag tests enforce the reduced chip rate. Physical iPhone/Safari remains untested. Existing Restart activation boundary remains separate; close old game windows and reopen the versioned link if necessary without deleting site data.
+
+[Task evidence and next step](docs/verification/2026-10-23-backup-rarity/README.md). Publication follows the standing user instruction after backend and live verification. Existing debt proposal remains a bounded reproduction of the PWA activation boundary; no unrelated debt sprint is started.
+
 ## Published speed camera 4.4.1
 
 [Play4.4.1](https://gleb20.github.io/roadster-kickflip/?v=4.4.1). Game a82bdfa; Pages39982022190 succeeded,171 public hashes and17 public browser/offline checks pass. Road and all game objects now sit higher above touch controls. The normal speed ramp smoothly widens the road view by up to40% relative to the old camera; Home clears milestone cameos/fireworks and restores initial framing. Rails4.4.0 and ranked rules remain intact. [Evidence](docs/verification/2026-10-23-camera/README.md).

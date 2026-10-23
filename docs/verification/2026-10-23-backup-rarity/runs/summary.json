@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "seed": 17,
+      "seconds": 190.10833333333332,
+      "spawns": 7,
+      "catches": 7,
+      "firstCatch": 17.175,
+      "banked": 1341.852549635605,
+      "expected": {
+        "score": 32758,
+        "flips": 0,
+        "ticks": 22813
+      },
+      "chunks": 134,
+      "midrail": true
+    },
+    {
+      "seed": 932,
+      "seconds": 184.775,
+      "spawns": 7,
+      "catches": 7,
+      "firstCatch": 15.933333333333334,
+      "banked": 1558.3050361593318,
+      "expected": {
+        "score": 41677,
+        "flips": 0,
+        "ticks": 22173
+      },
+      "chunks": 131,
+      "midrail": true
+    }
+  ],
+  "scriptedWitnesses": true,
+  "humanAcceptance": false
+}

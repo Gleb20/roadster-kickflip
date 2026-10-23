@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "id": "848980a1-eeb4-45bc-b178-fb7251a72ca5",
+      "ruleset": "roadster-v3.4.2",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "35b78459-36db-49bb-8eb5-f877c918287d"
+    },
+    {
+      "id": "69aff324-0ae4-47fc-84e4-7aef3a2e053d",
+      "ruleset": "roadster-v3.8.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "2fadfc07-06f3-4a23-b136-91903fc94a58"
+    },
+    {
+      "id": "a5a1f7e1-dea8-4720-98c4-8ba2e4f6191e",
+      "ruleset": "roadster-v4.0.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "31ea3303-4a15-4470-bb9a-388aad6bf8ac"
+    },
+    {
+      "id": "d7b9b1fa-ecf0-4dc1-80d8-19204b5019a4",
+      "ruleset": "roadster-v4.1.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "d8a84ddf-d8fc-40c0-ab2f-832c6523dee0"
+    },
+    {
+      "id": "efc66b73-009e-4997-be9d-8a30e50808fa",
+      "ruleset": "roadster-v4.3.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "ea87f6f1-724e-49b2-b2f0-5a734e6db053"
+    },
+    {
+      "id": "3f376656-032a-4e76-827e-9a0dbc8476cb",
+      "ruleset": "roadster-v4.3.2",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "6cce17e4-6b90-46b6-8754-2cc39f562ef0"
+    },
+    {
+      "id": "9aa80ae1-a75b-409d-953f-82fc30e437a3",
+      "ruleset": "roadster-v4.4.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "c40dabec-35d9-40e0-953b-1ff02ea90ccd"
+    },
+    {
+      "id": "ed13031f-034e-4942-88cd-b15e815f7bff",
+      "ruleset": "roadster-v4.4.2",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 10,
+      "exactResult": true,
+      "publicId": "15d5507e-0096-42fa-8dae-6aa18e89e298"
+    },
+    {
+      "id": "59358fd0-74e7-4585-8814-5fc8d682417a",
+      "ruleset": "roadster-v4.4.2",
+      "kind": "fake-score",
+      "status": "rejected",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "1257c216-e196-4e48-8801-4e4f29dec106"
+    },
+    {
+      "id": "4367156c-3e5e-4432-8e12-954c697729fc",
+      "ruleset": "roadster-v4.4.2",
+      "kind": "fake-end",
+      "status": "rejected",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "94f27450-924c-4409-847b-a5cabc8360a2"
+    }
+  ],
+  "publicScores": 22,
+  "publicFixtureWrites": 0,
+  "clientVerifyRequests": 0,
+  "autonomousCompletion": true
+}

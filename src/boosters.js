@@ -6,7 +6,7 @@ export const BOOSTERS=Object.freeze({
  life:Object.freeze({name:'EXTRA LIFE',seconds:0,color:'#ff6a78'}),
  score:Object.freeze({name:'SCORE ×3',seconds:10,color:'#ffc86d'}),
 });
-export function createBoosters(seed=0){return {active:{},hearts:0,grace:0,ghostIds:[],speedBlend:0,pickups:[],nextAt:8,serial:0,bag:[],random:(seed^0xa53c9e17)>>>0,spoiledFlight:false};}
+export function createBoosters(seed=0){return {active:{},hearts:0,grace:0,ghostIds:[],speedBlend:0,pickups:[],nextAt:8,serial:0,bag:[],bagCycle:0,random:(seed^0xa53c9e17)>>>0,spoiledFlight:false};}
 export const activeBooster=(q,id)=>(q?.active[id]||0)>0;
 export function canCollectBooster(q,id){return !!BOOSTERS[id]&&(id==='life'?q.hearts<2:activeBooster(q,id)||Object.keys(q.active).length<3);}
 export function collectBooster(q,id){
@@ -24,7 +24,8 @@ export function advanceBoosters(q,dt){
 function random(q){q.random=(Math.imul(q.random,1664525)+1013904223)>>>0;return q.random/4294967296;}
 export function offerBooster(q,{time,speed,clear}){
  if(!clear||q.pickups.length||time<q.nextAt)return null;
- if(!q.bag.length){q.bag=Object.keys(BOOSTERS);for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}}
+ if(!q.bag.length){// One backup in every third bag; keep all four ordinary boosts in every bag.
+  q.bagCycle++;q.bag=Object.keys(BOOSTERS).filter(id=>id!=='life'||q.bagCycle%3===0);for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}}
  const eligible=id=>id==='life'?q.hearts<2:activeBooster(q,id)||Object.keys(q.active).length<3;
  let index=q.bag.findIndex(eligible);if(index<0){q.nextAt=time+2;return null;}
  const id=q.bag.splice(index,1)[0],pickup={id,uid:++q.serial,x:Math.max(900,speed*1.9+180),y:q.serial===1||random(q)<.55?104:240};

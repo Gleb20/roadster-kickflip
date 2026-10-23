@@ -1,3 +1,7 @@
+## Backup rarity 4.4.2 - bounded reversal
+
+Parent `598198078ed9c0033dbdfe4c68b7e464592461f5`, published 4.4.1. Preserve the original dirty workspace and historical index. The isolated source delta and exact inverse are rehearsed against that parent. Evidence: `docs/verification/2026-10-23-backup-rarity/rollback.json`. A public reversal needs a fresh frontend/cache identity and retention of eight-version backend compatibility, real records and pending packets; no database rollback.
+
 ## Speed camera4.4.1 — bounded inverse
 
 Released game a82bdfa/tree014a19fb, parent9b9a174. Base is the published4.4.0 rail release. This task changes frontend framing, cameo lifecycle, cache identity and affected verification fixtures only. Original dirty root/index retained. Exact candidate delta and inverse are rehearsed in a disposable parent copy, with source hashes recorded in docs/verification/2026-10-23-camera/rollback.json. Reverting publicly requires a fresh cache identity and retention of seven replay rulesets, pending/accepted records, best and collection. Never revert database data.

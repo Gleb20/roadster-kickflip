@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "exact local 4.4.1 parent installed",
+    "new release waits while the old run is paused",
+    "4.4.2 activates at restart or closed-tab boundary and starts a fresh attempt",
+    "all booster state starts clean",
+    "best and collection survive",
+    "finished 4.4.0 record remains eligible for submission",
+    "IndexedDB queue and immutable replay survive",
+    "cold offline launch loads the new game",
+    "all five sprite files are in the verified offline cache",
+    "offline pickup and aura run without network",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "parentVersion": "4.4.1",
+  "candidateVersion": "4.4.2",
+  "closedTabBoundaryUsed": true,
+  "physicalDevice": false
+}

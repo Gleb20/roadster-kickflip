@@ -37,7 +37,7 @@ test('seeded pickup schedule and checkpoint restoration are deterministic',()=>{
  const c=createRun({record:false});c.restore(JSON.parse(JSON.stringify(a.snapshot())));for(let i=0;i<300;i++){a.step();c.step();}assert.deepEqual(c.snapshot(),a.snapshot());
 });
 test('real pickup, altered jump and speed replay exactly in the server checkpoint simulation',async()=>{
- const {verifyChunk}=await import('../supabase/chunk.mjs');const r=createRun({seed:17}),actions=new Map();r.reset();let wave=0,pickups=0;
+ const {verifyChunk}=await import('../supabase/chunk.mjs');const r=createRun({seed:932}),actions=new Map();r.reset();let wave=0,pickups=0;
  while(r.S.mode==='playing'){
   for(const action of actions.get(r.S.tick)||[])r.command(action);r.step();for(const e of r.drainEvents())if(e.type==='pickup')pickups++;
   if(r.director.state.wave!==wave){wave=r.director.state.wave;if(r.S.t<95)for(const e of r.director.state.last.route.actions){const tick=r.S.tick+Math.round(e.at/RUN_STEP);if(!actions.has(tick))actions.set(tick,[]);actions.get(tick).push({hold:'primary-down',jump:'primary-up','thrust-on':'thrust-on','thrust-off':'thrust-off'}[e.action]);}}

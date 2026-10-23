@@ -1,0 +1,50 @@
+[
+  {
+    "seed": 0,
+    "counts": {
+      "shield": 30,
+      "speed": 30,
+      "jump": 30,
+      "life": 10,
+      "score": 30
+    },
+    "firstBackupTime": 145.97259625559673,
+    "firstBackupIndex": 11
+  },
+  {
+    "seed": 17,
+    "counts": {
+      "shield": 30,
+      "speed": 30,
+      "jump": 30,
+      "life": 10,
+      "score": 30
+    },
+    "firstBackupTime": 147.31362583860755,
+    "firstBackupIndex": 8
+  },
+  {
+    "seed": 932,
+    "counts": {
+      "shield": 30,
+      "speed": 30,
+      "jump": 30,
+      "life": 10,
+      "score": 30
+    },
+    "firstBackupTime": 135.74186804518104,
+    "firstBackupIndex": 10
+  },
+  {
+    "seed": 93817,
+    "counts": {
+      "shield": 30,
+      "speed": 30,
+      "jump": 30,
+      "life": 10,
+      "score": 30
+    },
+    "firstBackupTime": 133.46199723007157,
+    "firstBackupIndex": 11
+  }
+]

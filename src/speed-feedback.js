@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.4.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.4.2';
 
 // Widen the normal ramp horizon; temporary bonuses still read as faster motion.
 export function viewScale(width,height,progress){

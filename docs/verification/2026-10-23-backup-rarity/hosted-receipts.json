@@ -1,0 +1,72 @@
+[
+  {
+    "id": "848980a1-eeb4-45bc-b178-fb7251a72ca5",
+    "kind": "valid",
+    "ms": 1458.3184999999999,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "69aff324-0ae4-47fc-84e4-7aef3a2e053d",
+    "kind": "valid",
+    "ms": 345.79654200000004,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "a5a1f7e1-dea8-4720-98c4-8ba2e4f6191e",
+    "kind": "valid",
+    "ms": 341.5555420000003,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "d7b9b1fa-ecf0-4dc1-80d8-19204b5019a4",
+    "kind": "valid",
+    "ms": 393.4225409999999,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "efc66b73-009e-4997-be9d-8a30e50808fa",
+    "kind": "valid",
+    "ms": 431.66600000000017,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "3f376656-032a-4e76-827e-9a0dbc8476cb",
+    "kind": "valid",
+    "ms": 312.8441250000001,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "9aa80ae1-a75b-409d-953f-82fc30e437a3",
+    "kind": "valid",
+    "ms": 376.30854100000033,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "ed13031f-034e-4942-88cd-b15e815f7bff",
+    "kind": "valid",
+    "ms": 343.73762499999975,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "59358fd0-74e7-4585-8814-5fc8d682417a",
+    "kind": "fake-score",
+    "ms": 585.2827919999995,
+    "status": "pending",
+    "receipt": true
+  },
+  {
+    "id": "4367156c-3e5e-4432-8e12-954c697729fc",
+    "kind": "fake-end",
+    "ms": 508.0389580000001,
+    "status": "pending",
+    "receipt": true
+  }
+]

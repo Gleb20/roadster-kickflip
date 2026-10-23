@@ -1,0 +1,15 @@
+{
+  "apiSha256": "eaff618bfda4ddc49e3097481bb00a2440deba43f1ebf3ba64553539c4d88071",
+  "workerSha256": "78c2720613676a2b98cca8c60a577e5125c74cfe09c0891b64d410c9650fd7ff",
+  "freshEditorReadsMatch": true,
+  "migrationApplied": true,
+  "recordsBefore": {
+    "count": 22,
+    "digest": "14643e2e2e1e784a657038f258b8ba1a"
+  },
+  "recordsAfterMigration": {
+    "count": 22,
+    "digest": "14643e2e2e1e784a657038f258b8ba1a"
+  },
+  "authAndSchedulingUnchanged": true
+}

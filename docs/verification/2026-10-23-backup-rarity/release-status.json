@@ -1,0 +1,15 @@
+{
+  "version": "4.4.2",
+  "parentCommit": "598198078ed9c0033dbdfe4c68b7e464592461f5",
+  "status": "backend-verified-frontend-ready",
+  "gameTests": 174,
+  "serverTests": 15,
+  "databaseChecks": 24,
+  "railBrowserChecks": 35,
+  "upgradeChecks": 11,
+  "seededBagCases": 64,
+  "oldFrozenFoldersUnchanged": 7,
+  "hostedFixtures": 10,
+  "publicFixtureWrites": 0,
+  "physicalPhoneTested": false
+}
