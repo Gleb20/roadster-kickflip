@@ -1,8 +1,8 @@
 ## Speed-responsive camera4.4.3
 
-## Sound settings4.5.1
+## Published sound settings4.5.1
 
-Separate effects/music sliders in the menu balloon and pause. Reacting paper Elon, dancing speaker EQ, native touch/keyboard controls and a Sound→Pause morph. Legacy mute and new levels persist. [Audio contract](docs/audio.md) · [Evidence](docs/verification/2026-10-23-audio-controls-v470/README.md).
+Separate effects/music sliders in the menu balloon and pause. Reacting paper Elon, dancing speaker EQ, native touch/keyboard controls and a Sound→Pause morph. Legacy mute and new levels persist. [Play4.5.1](https://gleb20.github.io/roadster-kickflip/?v=4.5.1). Pages succeeded;190 live resources match and39 public browser/audio/offline checks pass. Physical iPhone/Safari remains for player review. [Audio contract](docs/audio.md) · [Evidence](docs/verification/2026-10-23-audio-controls-v470/README.md).
 
 ## Published adaptive arcade soundtrack 4.5.0
 

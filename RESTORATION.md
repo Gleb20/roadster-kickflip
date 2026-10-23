@@ -1,6 +1,6 @@
 ## Sound settings4.5.1 — bounded inverse
 
-Parent44579d2 is the published4.5.0 audio release. Revert this settings release on an isolated checkout, inspect the exact tree and retain the latest parallel director/spin work before publishing any reversal with a fresh PWA version. Keep `roadster-audio-v2`, the legacy sound key, records, collection, IndexedDB outbox and all frozen replay verifiers. Original music/thrust media are unchanged. Exact candidate/parent hashes, inverse rehearsal and parent tests are recorded in `docs/verification/2026-10-23-audio-controls-v470/`. Never restore the old dirty root over current main.
+Parent44579d2 is the published4.5.0 audio release. Runtime commit `d3e18354b8e83d0d5bd12c47e124e577c5daa4f1` has a rehearsed exact inverse restoring parent tree `336d4a39b18d651852b3b241a4f9b3302c5ec926`;185 parent tests and all parent checks pass. Revert this settings release on an isolated checkout, inspect the exact tree and retain the latest parallel director/spin work before publishing any reversal with a fresh PWA version. Keep `roadster-audio-v2`, the legacy sound key, records, collection, IndexedDB outbox and all frozen replay verifiers. Original music/thrust media are unchanged. Exact candidate/parent hashes, inverse rehearsal and parent tests are recorded in `docs/verification/2026-10-23-audio-controls-v470/`. Never restore the old dirty root over current main.
 
 ## Audio 4.5.0 — bounded rollback
 

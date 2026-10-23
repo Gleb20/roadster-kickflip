@@ -1,0 +1,23 @@
+{
+  "version": "4.5.1",
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.5.1",
+  "runtimeCommit": "d3e18354b8e83d0d5bd12c47e124e577c5daa4f1",
+  "publishedVerifiedHead": "fdc7a35b358f45be80754bb715ceafcb02ba0c36",
+  "parent": "44579d2e5d44a5aec3d4f76192d2e2a145b71db7",
+  "pagesRun": "40025481727",
+  "pagesConclusion": "success",
+  "unitTests": 190,
+  "localBrowserChecks": 182,
+  "actualUpgradeChecks": 17,
+  "rollbackParentTests": 185,
+  "publicBrowserChecks": 39,
+  "publicRuntimeErrors": 0,
+  "liveResources": 190,
+  "liveHashErrors": 0,
+  "physicalDeviceTested": false,
+  "realScreenReaderTested": false,
+  "publicScoreSubmissions": 0,
+  "backendMutations": false,
+  "rankedRuleset": "roadster-v4.4.2",
+  "knownSeparateIssue": "PWA Restart/closed-tab activation boundary; closing old game windows and reopening activates without clearing saved data."
+}
