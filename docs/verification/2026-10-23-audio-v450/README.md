@@ -1,4 +1,6 @@
-# Adaptive arcade audio 4.5.0
+# Published adaptive arcade audio 4.5.0
+
+[Play 4.5.0](https://gleb20.github.io/roadster-kickflip/?v=4.5.0). Runtime `fefb0f9`, published head `f90fe24`, Pages `40012791793` succeeded. All 183 public hashes match; 31 public native-input/audio/offline checks pass with no runtime errors. Exact inverse restores parent tree and passes 179 parent tests/checks. [Release record](release-status.json).
 
 User authorised selected Suno downloads, missing sound creation, integration, full audit and publication. Selected **Spaceport A (R3)** + **Factory B (R3)** are retained; no reason to force matching generation letters. Clean release checkout `/tmp/tesla-audio-v450-20261023` preserves the dirty original root. Parent is published 4.4.3 + its verified release documentation, `0da21eac859b4f1e5853051a99c71fd2811bfe66`; initially cloned runtime `58997d7` was fast-forwarded when the parallel documentation commit appeared.
 
@@ -17,4 +19,4 @@ Eight instrument-layer MP3s add about 5.5 MB. Source tempos measured from 129 dr
 
 The first browser pass caught a removed legacy `tone` binding still referenced by the background rocket. It was corrected to an explicit silent callback in main; decorative rocket sound is intentionally omitted by the new audit. Subsequent false fixture failures came from stepping simulation faster than AudioContext automation and bypassing the input set for thrust; the harness now uses real elapsed audio time/native held input. Final runs above use unmodified application responses.
 
-Physical iPhone/Safari, subjective timbre/volume and long-session repetition still require the user's game listening. Proposed bounded follow-up remains the previously known PWA activation-boundary reproduction; no unrelated debt sprint was started. The final publication, byte verification and exact inverse rehearsal are recorded in `release-status.json` when complete.
+Physical iPhone/Safari, subjective timbre/volume and long-session repetition still require the user's game listening. Proposed bounded follow-up remains the previously known PWA activation-boundary reproduction; no unrelated debt sprint was started. Publication, byte verification and exact inverse rehearsal are recorded in `release-status.json`.

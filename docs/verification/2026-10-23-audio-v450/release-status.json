@@ -1,0 +1,31 @@
+{
+  "version": "4.5.0",
+  "status": "published",
+  "runtimeCommit": "fefb0f9",
+  "publishedCommit": "f90fe249e8e781a82630a55ec36e88ee6fc2633f",
+  "publishedTree": "c06587fcd26a99b3de84b8d32c02ab3d54d0f355",
+  "parentCommit": "0da21eac859b4f1e5853051a99c71fd2811bfe66",
+  "pagesRun": 40012791793,
+  "pagesConclusion": "success",
+  "liveResources": 183,
+  "liveHashErrors": 0,
+  "gameTests": 185,
+  "localBrowserChecks": 23,
+  "upgradeChecks": 15,
+  "publicBrowserChecks": 31,
+  "rollbackTests": 179,
+  "exactInverse": true,
+  "rankedRuleset": "roadster-v4.4.2",
+  "frozenRulesets": 8,
+  "backendChanged": false,
+  "publicScoreSubmissions": 0,
+  "physicalPhoneTested": false,
+  "subjectiveListening": false,
+  "publicUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.5.0",
+  "knownLimits": [
+    "First user gesture required for browser audio; explicitly saved mute remains respected.",
+    "Existing PWA Restart/closed-tab activation boundary remains.",
+    "Physical iPhone/Safari and subjective balance require user listening."
+  ],
+  "originalDirtyRuntimePreserved": true
+}
