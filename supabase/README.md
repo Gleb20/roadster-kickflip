@@ -1,8 +1,16 @@
-## 4.2.0 server rollout verified — 23 October 2026
+## Published 4.2.0 — instant ranking
 
-The additive migration, API, private worker and 10-second recovery scheduler are deployed. Seven hosted fixtures prove all four rulesets, exact results, duplicate receipts, forged-score rejection, delayed retry, expired-lease recovery and completion after the submitting process exits. The 602.825-second fixture completed in eight bounded chunks. Receipt HTTP samples: 276–712ms. Twenty public records retain the exact baseline digest; QA results are isolated under `qa-v420-20261023`. Anonymous/public-key worker calls return401. Both downloaded bundles match local source. Frontend Pages publication follows this backend gate; see the current release-status evidence for final status.
+[Play 4.2.0](https://gleb20.github.io/roadster-kickflip/?v=4.2.0). Game commit `4040488e44fdae42ac84a961135cbd44e52d2173`, tree `40f007eb4660d6650848739806f7f13ddbfa18f0`; Pages `39924948255` succeeded. All 152 public resources plus service worker match the tested build. The migration, private worker and recovery scheduler are active. Seven isolated hosted fixtures passed; an additional native Chrome submission displayed its row directly and was accepted with the exact 73 points. That single live QA row was then moved reversibly to the QA epoch; all 20 original public records retain their exact digest.
 
-## Prepared 4.2.0 autonomous ranking — not deployed
+Local evidence: 140 game tests, 13 server tests, 20 database checks, 17 browser checks and 10 actual 4.1.1→4.2 PWA upgrade checks. Hosted packet receipt samples were 276–712ms; the 602.825-second replay finished in eight bounded server chunks after the submitting process exited. No reduction in simulation CPU or hosted billing is claimed. Four frozen rulesets remain unchanged. Root 4.3.1 booster/art work is preserved and not part of this publication.
+
+Physical iPhone/Safari is untested. A much older 3.7.3 installation in the Codex in-app browser retained its cache after close/reopen; Chrome loaded and submitted from 4.2.0. Treat that old-cache path as an unresolved acceptance case, not proof that current 4.1.1 upgrades fail. Bounded follow-up proposal: diagnose that older cache/update path and measure receipt/input latency on the actual phone; leave gameplay and verification rules unchanged.
+
+## Backend rollout evidence — 23 October 2026
+
+The additive migration, API, private worker and 10-second recovery scheduler are deployed. Seven hosted fixtures prove all four rulesets, exact results, duplicate receipts, forged-score rejection, delayed retry, expired-lease recovery and completion after the submitting process exits. The 602.825-second fixture completed in eight bounded chunks. Receipt HTTP samples: 276–712ms. Twenty public records retain the exact baseline digest; QA results are isolated under `qa-v420-20261023`. Anonymous/public-key worker calls return401. Both downloaded bundles match local source. The frontend was published after this backend gate.
+
+## Deployed 4.2.0 autonomous ranking
 
 Apply `migrations/20261023090000_background_ranking.sql` to the existing 4.1-compatible database, never the initial schema. It preserves accepted rows and frozen rulesets; adds receipt/claim/scheduling fields and a private take/retry protocol. `GET /preview?score=N` computes an insertion and surrounding server rows without publishing a candidate. `POST /sessions/:id` acknowledges only after the immutable packet is committed. The optional integer score is compared with the fully simulated final score; old payload hashes remain compatible.
 
@@ -10,7 +18,7 @@ Apply `migrations/20261023090000_background_ranking.sql` to the existing 4.1-com
 
 Deploy both functions, then apply `install-worker-schedule.sql`. This checks Vault, installs a private dispatcher and enables autonomous verification. A committed submission/checkpoint wakes work through pg_net; a 10-second cron watchdog recovers lost dispatches/expired leases. At most four requests are outstanding. Idle checks issue no Edge HTTP requests. Transient failures use bounded exponential retry; a stale lease cannot commit twice. Pending work survives ticket expiry. Worker chunks retain the 400ms scheduling target and exact simulation, while removing the 6,000-tick cap. Do not deploy the new frontend until health reports `autonomousVerification: true` and a hosted receipt → closed-browser completion test passes.
 
-Local evidence: [4.2.0 packet](../docs/verification/2026-10-23-ranking-v420/README.md). SQL integration executes the real migration/RPC in disposable PGlite; scheduler tests use SQL stand-ins for net/cron/Vault, so hosted extension delivery and runtime CPU remain deployment checks. No hosted schema, secrets, scheduler or public scores were changed by these tests. The old explicit-retry transport described below is historical.
+Local evidence: [4.2.0 packet](../docs/verification/2026-10-23-ranking-v420/README.md). SQL integration executes the real migration/RPC in disposable PGlite; scheduler tests use SQL stand-ins for net/cron/Vault, and hosted extension delivery is now verified separately; runtime CPU and billing remain unmeasured. No hosted schema, secrets, scheduler or public scores were changed by these tests. The old explicit-retry transport described below is historical.
 
 ## Ruleset4.1.0 —late colliding aerial waves
 

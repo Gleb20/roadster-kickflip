@@ -1,6 +1,14 @@
-## 4.2.0 server rollout verified — 23 October 2026
+## Published 4.2.0 — instant ranking
 
-The additive migration, API, private worker and 10-second recovery scheduler are deployed. Seven hosted fixtures prove all four rulesets, exact results, duplicate receipts, forged-score rejection, delayed retry, expired-lease recovery and completion after the submitting process exits. The 602.825-second fixture completed in eight bounded chunks. Receipt HTTP samples: 276–712ms. Twenty public records retain the exact baseline digest; QA results are isolated under `qa-v420-20261023`. Anonymous/public-key worker calls return401. Both downloaded bundles match local source. Frontend Pages publication follows this backend gate; see the current release-status evidence for final status.
+[Play 4.2.0](https://gleb20.github.io/roadster-kickflip/?v=4.2.0). Game commit `4040488e44fdae42ac84a961135cbd44e52d2173`, tree `40f007eb4660d6650848739806f7f13ddbfa18f0`; Pages `39924948255` succeeded. All 152 public resources plus service worker match the tested build. The migration, private worker and recovery scheduler are active. Seven isolated hosted fixtures passed; an additional native Chrome submission displayed its row directly and was accepted with the exact 73 points. That single live QA row was then moved reversibly to the QA epoch; all 20 original public records retain their exact digest.
+
+Local evidence: 140 game tests, 13 server tests, 20 database checks, 17 browser checks and 10 actual 4.1.1→4.2 PWA upgrade checks. Hosted packet receipt samples were 276–712ms; the 602.825-second replay finished in eight bounded server chunks after the submitting process exited. No reduction in simulation CPU or hosted billing is claimed. Four frozen rulesets remain unchanged. Root 4.3.1 booster/art work is preserved and not part of this publication.
+
+Physical iPhone/Safari is untested. A much older 3.7.3 installation in the Codex in-app browser retained its cache after close/reopen; Chrome loaded and submitted from 4.2.0. Treat that old-cache path as an unresolved acceptance case, not proof that current 4.1.1 upgrades fail. Bounded follow-up proposal: diagnose that older cache/update path and measure receipt/input latency on the actual phone; leave gameplay and verification rules unchanged.
+
+## Backend rollout evidence — 23 October 2026
+
+The additive migration, API, private worker and 10-second recovery scheduler are deployed. Seven hosted fixtures prove all four rulesets, exact results, duplicate receipts, forged-score rejection, delayed retry, expired-lease recovery and completion after the submitting process exits. The 602.825-second fixture completed in eight bounded chunks. Receipt HTTP samples: 276–712ms. Twenty public records retain the exact baseline digest; QA results are isolated under `qa-v420-20261023`. Anonymous/public-key worker calls return401. Both downloaded bundles match local source. The frontend was published after this backend gate.
 
 ## Ranking 4.2.0 candidate rollback
 

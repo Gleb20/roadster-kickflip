@@ -1,8 +1,8 @@
 {
   "version": "4.2.0",
   "baseCommit": "1399b4077145d56d215d7e9b0e209020350fe0b1",
-  "status": "backend-deployed-frontend-ready",
-  "frontendPublished": false,
+  "status": "published-verified",
+  "frontendPublished": true,
   "backendMigrationDeployed": true,
   "workerDeployed": true,
   "autonomousSchedulingActivated": true,
@@ -20,5 +20,15 @@
   "physicalIPhoneSafari": "not-tested",
   "hostedFixtures": 7,
   "publicScores": 20,
-  "publicFixtureWrites": 0
+  "publicFixtureWrites": 1,
+  "gameCommit": "4040488e44fdae42ac84a961135cbd44e52d2173",
+  "tree": "40f007eb4660d6650848739806f7f13ddbfa18f0",
+  "pagesRun": 39924948255,
+  "pagesConclusion": "success",
+  "liveHashes": 153,
+  "liveChromeSubmission": true,
+  "liveBrowserErrors": [],
+  "remainingPublicFixtureRows": 0,
+  "publicRecordsUnchanged": true,
+  "oldIab373Upgrade": "remained on 3.7.3 after close/reopen; unresolved"
 }

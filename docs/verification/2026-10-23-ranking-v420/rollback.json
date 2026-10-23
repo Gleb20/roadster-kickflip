@@ -5,5 +5,9 @@
   "restoredTree": "ac314cb6ba86493d64115e61c8e45ea622e71e20",
   "exactReverse": true,
   "restoredGameTests": 138,
-  "restoredSourceContentTypePwaChecks": "pass"
+  "restoredSourceContentTypePwaChecks": "pass",
+  "publishedGameCommit": "4040488e44fdae42ac84a961135cbd44e52d2173",
+  "publishedTree": "40f007eb4660d6650848739806f7f13ddbfa18f0",
+  "publishedInverseExactTree": "ac314cb6ba86493d64115e61c8e45ea622e71e20",
+  "publishedInversePatch": "/tmp/tesla-v420-published-inverse.patch"
 }
