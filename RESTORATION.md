@@ -1,6 +1,6 @@
 ## Speed camera4.4.1 — bounded inverse
 
-Base is the published4.4.0 rail release. This task changes frontend framing, cameo lifecycle, cache identity and affected verification fixtures only. Original dirty root/index retained. Exact candidate delta and inverse are rehearsed in a disposable parent copy, with source hashes recorded in docs/verification/2026-10-23-camera/rollback.json. Reverting publicly requires a fresh cache identity and retention of seven replay rulesets, pending/accepted records, best and collection. Never revert database data.
+Released game a82bdfa/tree014a19fb, parent9b9a174. Base is the published4.4.0 rail release. This task changes frontend framing, cameo lifecycle, cache identity and affected verification fixtures only. Original dirty root/index retained. Exact candidate delta and inverse are rehearsed in a disposable parent copy, with source hashes recorded in docs/verification/2026-10-23-camera/rollback.json. Reverting publicly requires a fresh cache identity and retention of seven replay rulesets, pending/accepted records, best and collection. Never revert database data.
 
 ## Grind4.4.0 release rollback —23 October2026
 

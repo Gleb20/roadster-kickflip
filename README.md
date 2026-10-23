@@ -1,6 +1,6 @@
-## Speed camera 4.4.1
+## Published speed camera 4.4.1
 
-Road and all game objects now sit higher above touch controls. The normal speed ramp smoothly widens the road view by up to40% relative to the old camera; Home clears milestone cameos/fireworks and restores initial framing. Rails4.4.0 and ranked rules remain intact. [Evidence](docs/verification/2026-10-23-camera/README.md).
+[Play4.4.1](https://gleb20.github.io/roadster-kickflip/?v=4.4.1). Game a82bdfa; Pages39982022190 succeeded,171 public hashes and17 public browser/offline checks pass. Road and all game objects now sit higher above touch controls. The normal speed ramp smoothly widens the road view by up to40% relative to the old camera; Home clears milestone cameos/fireworks and restores initial framing. Rails4.4.0 and ranked rules remain intact. [Evidence](docs/verification/2026-10-23-camera/README.md).
 
 ## Update4.4.0 — optional rail grind
 

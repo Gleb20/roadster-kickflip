@@ -1,6 +1,6 @@
-## Speed camera and clean Home4.4.1 —23 October2026
+## Published speed camera and clean Home4.4.1 —23 October2026
 
-Camera-only update on the published4.4.0 rail release. Raised shared road baseline, smooth wider speed-ramp view and clean Home cameo/reset state. 172 tests, source/content/types/PWA170 resources,45 camera/native-input,35 rail,98 speed and13 actual upgrade checks pass; two rail witnesses retain exact server replay. Seven frozen rulesets/backend untouched, ranked roadster-v4.4.0 retained. Physical iPhone/Safari remains untested. Known closed-tab PWA activation boundary stays separate. [Evidence and rollback](verification/2026-10-23-camera/README.md).
+[Play4.4.1](https://gleb20.github.io/roadster-kickflip/?v=4.4.1). Game a82bdfa; Pages39982022190 succeeded,171 public hashes and17 public browser/offline checks pass. Camera-only update on the published4.4.0 rail release. Raised shared road baseline, smooth wider speed-ramp view and clean Home cameo/reset state. 172 tests, source/content/types/PWA170 resources,45 camera/native-input,35 rail,98 speed and13 actual upgrade checks pass; two rail witnesses retain exact server replay. Seven frozen rulesets/backend untouched, ranked roadster-v4.4.0 retained. Physical iPhone/Safari remains untested. Known closed-tab PWA activation boundary stays separate. [Evidence and rollback](verification/2026-10-23-camera/README.md).
 
 ## Release4.4.0 in progress —23 October2026
 

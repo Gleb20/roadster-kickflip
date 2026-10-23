@@ -1,4 +1,6 @@
-# Tesla Jump 4.4.1 — speed camera and clean Home
+# Published 4.4.1
+
+[Play on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.4.1). Commit `a82bdfa76c1247ffdbb06b86d66464cb0d4c0205`, tree `014a19fb4bf47aca15a78b68ef4d28343b5891f6`; Pages `39982022190` succeeded. All171 public resource hashes match without retries;17 public touch/keyboard, pause/Home and cold offline checks pass with zero runtime errors. No public score was submitted. Physical iPhone/Safari remains for user testing.
 
 Scope: remove milestone cameos/fireworks left behind on Home after a crash or pause; raise the complete world above thumb controls; widen the speed-ramp view while anchoring the road. Rails and the approved hero rig from 4.4.0 remain in the final release.
 

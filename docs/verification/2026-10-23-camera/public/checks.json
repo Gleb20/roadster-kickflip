@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "390: public version4.4.1 and QA seam unavailable",
+    "390: native jump on public game",
+    "390: raised road clears controls",
+    "390: pause freezes public run and camera",
+    "390: resume continues",
+    "390: Home resets camera",
+    "390: cold offline launch has exact new version",
+    "390: offline attempt starts",
+    "1440: public version4.4.1 and QA seam unavailable",
+    "1440: native jump on public game",
+    "1440: raised road clears controls",
+    "1440: pause freezes public run and camera",
+    "1440: resume continues",
+    "1440: Home resets camera",
+    "1440: cold offline launch has exact new version",
+    "1440: offline attempt starts",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "physicalPhone": false,
+  "publicFixtureScores": 0
+}

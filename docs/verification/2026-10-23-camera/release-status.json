@@ -1,0 +1,23 @@
+{
+  "version": "4.4.1",
+  "status": "published",
+  "gameCommit": "a82bdfa76c1247ffdbb06b86d66464cb0d4c0205",
+  "gameTree": "014a19fb4bf47aca15a78b68ef4d28343b5891f6",
+  "parentCommit": "9b9a174f1186493cc1cef29197437a6776a14eae",
+  "pagesRun": 39982022190,
+  "pagesConclusion": "success",
+  "publicUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.4.1",
+  "liveResources": 171,
+  "liveHashErrors": 0,
+  "publicBrowserChecks": 17,
+  "gameTests": 172,
+  "cameraChecks": 45,
+  "railChecks": 35,
+  "speedChecks": 98,
+  "upgradeChecks": 13,
+  "backendChanges": false,
+  "publicScoreSubmissions": 0,
+  "rankedRuleset": "roadster-v4.4.0",
+  "physicalPhoneTested": false,
+  "knownLimit": "PWA Restart activation still needs the closed-tab boundary in the upgrade fixture"
+}
