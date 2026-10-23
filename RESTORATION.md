@@ -1,3 +1,7 @@
+## English audio labels4.6.1 —bounded inverse
+
+Parent `ede9ec6042fd6c262eda2873861974cde72a082b` is the published director4.6.0 with audio controls. `docs/verification/2026-10-24-audio-language/runtime-forward.patch` has an exact forward/reverse hash rehearsal recorded in `scope-and-rollback.json`. Revert only this task on fresh isolated main with a fresh cache version, preserving newer rotation work, all nine replay versions, settings and scores/outbox. Never restore old shared docs/runtime over newer edits.
+
 ## Director 4.6.0 — bounded rollback
 
 Parent is `b7eb5b07f510ba3d7a450e3bbc9d124c0fed43cb` (published4.5.1 audio controls). Reverse only the director release delta in an isolated checkout; inspect the resulting tree and run parent tests/checks. Publish any reversal with a fresh PWA identity. Retain all nine backend rulesets for cached clients, existing accepted scores and queued submissions; do not reverse the additive migration or delete data. Original dirty root, index and foreign changes are preserved. [Evidence](docs/verification/2026-10-23-director/README.md).

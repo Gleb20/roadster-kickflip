@@ -1,0 +1,845 @@
+diff --git a/docs/audio.md b/docs/audio.md
+index bc84f0c..b6e2b9b 100644
+--- a/docs/audio.md
++++ b/docs/audio.md
+@@ -38,6 +38,6 @@ Automated verification can establish routing, bounded voices, decoded seams, off
+ 
+ The shared audio context and final limiter remain. Music now passes through a dedicated0–1 gain bus; effects and recorded thrust share the existing effects bus scaled by the effects setting. A25ms smoothing target avoids fader clicks. Zero effects disables one-shots and stops active/fading thrust and grinding; music retains its phase. Zero music stops its sources and leaves effects active. Re-enabling music reuses the decoded buffers at the shared musical phase. Mute/decode races are covered by tests. Existing music files, adaptive stem targets and pressure recording are unchanged.
+ 
+-Settings use native `input type=range`, keyboard arrows/Home/End, percentage output and one persistence model. Storage failures leave controls usable in memory. The section is labelled «Настройки звука» with «Эффекты» and «Музыка». Five44px maximum paper Elon heads map0%,1–25%,26–50%,51–75%,76–100% to grey/red-hand mute, covered mouth, shush, neutral and delighted shout. Pupil-free generated portraits receive small bounded tracking pupils in code. Artwork uses the actual hero style and the inspected Royal Society portrait; source, license, prompts and originals are in `art-source/audio-controls-v470/`.
++Settings use native `input type=range`, keyboard arrows/Home/End, percentage output and one persistence model. Storage failures leave controls usable in memory. The English-only interface labels this section “Sound settings”, with “Effects” and “Music”; the muted accessible value is “Muted” and both the panel and popover use lang="en". Five44px maximum paper Elon heads map0%,1–25%,26–50%,51–75%,76–100% to grey/red-hand mute, covered mouth, shush, neutral and delighted shout. Pupil-free generated portraits receive small bounded tracking pupils in code. Artwork uses the actual hero style and the inspected Royal Society portrait; source, license, prompts and originals are in `art-source/audio-controls-v470/`.
+ 
+ The44px native SVG speaker extends the existing icon system: greyscale/red-cross at0%; low green LEDs and subtle cone movement, stronger green cone response, yellow-zone squash/lift/stretch, then red-zone dancing. This is a volume-responsive illustration, not a real spectrum analyser. Animations run only on visible settings while music is running; hidden panels/pages stop the loop. Reduced motion keeps static state/LED cues, centres the pupils and removes spatial UI/character movement. Native touch/keyboard and reduced-motion browser checks do not establish physical iPhone/Safari or screen-reader acceptance.
+diff --git a/index.html b/index.html
+index e4b8836..6d5d0d4 100644
+--- a/index.html
++++ b/index.html
+@@ -39,7 +39,7 @@
+ @keyframes loader-orbit { to { transform: rotate(360deg); } }
+ @media (max-height: 560px) { .loader-console { width: min(240px, 100%); } #loading-title { margin-bottom: 4px; font-size: 14px; } .loader-instrument { width: 184px; margin-bottom: 8px; } .loader-log-window { height: 38px; margin-top: 12px; } #loading-status { margin-top: 8px; } }
+ @media (prefers-reduced-motion: reduce) { #loading-screen, .loader-console { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
+-</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.6.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
++</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.6.1"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
+ <section id="loading-screen" aria-labelledby="loading-title" aria-hidden="true">
+   <div class="loader-console">
+     <h2 id="loading-title">Loading</h2>
+@@ -64,7 +64,7 @@
+     <noscript><style>.loader-console { opacity: 1; }</style><p style="font-size:12px">Enable JavaScript to load the game.</p></noscript>
+   </div>
+ </section>
+-<main id="game" inert aria-hidden="true"><canvas id="scene" aria-label="Game scene: Elon jumps over obstacles in a Tesla"></canvas><header><a class="brand" href="./">R<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><small>ROADSTER<br>KICKFLIP</small></a><div class="tools"><button id="sound" aria-label="Настройки звука" aria-expanded="false" aria-haspopup="dialog" aria-controls="sound-popover"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10h4l5-5v14l-5-5H4ZM17 8q5 4 0 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SOUND</span></button><button id="pause" aria-label="Pause"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></header><div id="sound-popover" class="audio-popover" hidden></div><section id="race-score" class="hidden" aria-label="Current run"><label>SCORE · <span id="biome-label" aria-live="polite">SPACEPORT</span></label><div class="score-line"><strong id="score" class="odometer" aria-label="Score 0"></strong><span id="multiplier" data-tier="1">×1.0</span></div></section><div id="pending" aria-live="off"></div><div id="toast" aria-live="polite"></div><div class="menu-shortcuts"><button id="pwa-install" class="menu-tile install-tile" type="button" aria-haspopup="dialog" aria-controls="pwa-guide"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Install app</span></button><button id="collection-menu" class="menu-tile legend-tile" type="button" disabled aria-label="Legend: encounter collection" aria-haspopup="dialog" aria-controls="collection-dialog"><span class="teaser-art" aria-hidden="true"><img src="./assets/ui/collection-mystery.png" alt="" width="384" height="328"><b>?</b></span><span>Legend</span></button></div>
++<main id="game" inert aria-hidden="true"><canvas id="scene" aria-label="Game scene: Elon jumps over obstacles in a Tesla"></canvas><header><a class="brand" href="./">R<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><small>ROADSTER<br>KICKFLIP</small></a><div class="tools"><button id="sound" aria-label="Sound settings" aria-expanded="false" aria-haspopup="dialog" aria-controls="sound-popover"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10h4l5-5v14l-5-5H4ZM17 8q5 4 0 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SOUND</span></button><button id="pause" aria-label="Pause"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></header><div id="sound-popover" class="audio-popover" hidden></div><section id="race-score" class="hidden" aria-label="Current run"><label>SCORE · <span id="biome-label" aria-live="polite">SPACEPORT</span></label><div class="score-line"><strong id="score" class="odometer" aria-label="Score 0"></strong><span id="multiplier" data-tier="1">×1.0</span></div></section><div id="pending" aria-live="off"></div><div id="toast" aria-live="polite"></div><div class="menu-shortcuts"><button id="pwa-install" class="menu-tile install-tile" type="button" aria-haspopup="dialog" aria-controls="pwa-guide"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Install app</span></button><button id="collection-menu" class="menu-tile legend-tile" type="button" disabled aria-label="Legend: encounter collection" aria-haspopup="dialog" aria-controls="collection-dialog"><span class="teaser-art" aria-hidden="true"><img src="./assets/ui/collection-mystery.png" alt="" width="384" height="328"><b>?</b></span><span>Legend</span></button></div>
+ <section id="menu"><h1>DO A <em>FLIP</em></h1><div id="menu-record"><span>PERSONAL BEST</span><strong id="best">00000</strong><p id="best-rank" role="status" aria-live="polite">Checking global rank…</p><button id="leaderboard-menu" class="text-button" type="button">LEADERBOARD</button><button id="post-best" class="text-button" type="button" hidden>SUBMIT BEST</button></div></section>
+ <div id="start-dock"><button id="start" class="primary">LET’S GO</button><label class="tutorial-toggle"><input id="replay-tutorial" type="checkbox"><span class="toggle-track" aria-hidden="true"></span><span>Replay tips on next run</span></label></div>
+ <section id="result" class="panel hidden" aria-live="polite"><button id="result-home" class="panel-home" type="button" aria-label="Home" title="Home"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="eyebrow" id="endlabel">NOT EVERYTHING TAKES OFF.</div><h2 id="result-title">FLIGHT COMPLETE.</h2><p id="reason"></p><div class="stats"><div class="result-score"><label>YOUR SCORE</label><strong id="finalScore">0</strong><button class="text-button score-submit" id="post-score" type="button" hidden>SUBMIT SCORE ↗</button></div><div><label>PERSONAL BEST</label><strong id="finalBest">0</strong></div></div><p id="record-celebration" hidden>Beautiful flight. A new personal best.</p><div class="landed-stat"><span id="flips">0</span> LANDED FLIPS</div><div class="panel-actions" aria-label="Next action"><button id="restart" class="retry-secondary" type="button">Try again</button></div></section>
+@@ -79,7 +79,7 @@ const waiting = setTimeout(() => {
+   screen.classList.add('is-visible');
+   screen.removeAttribute('aria-hidden');
+ }, 180);
+-import('./src/loading.js?v=4.6.0').then(() => clearTimeout(waiting)).catch(() => {
++import('./src/loading.js?v=4.6.1').then(() => clearTimeout(waiting)).catch(() => {
+   clearTimeout(waiting);
+   document.getElementById('loading-title').textContent = 'Loading failed';
+   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';
+diff --git a/package-lock.json b/package-lock.json
+index 525bf13..3fcf9c2 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,12 +1,12 @@
+ {
+   "name": "roadster-kickflip",
+-  "version": "4.6.0",
++  "version": "4.6.1",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "roadster-kickflip",
+-      "version": "4.6.0",
++      "version": "4.6.1",
+       "devDependencies": {
+         "esbuild": "0.28.2",
+         "typescript": "7.0.2"
+diff --git a/package.json b/package.json
+index 749c61d..eaa2425 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "roadster-kickflip",
+-  "version": "4.6.0",
++  "version": "4.6.1",
+   "private": true,
+   "type": "module",
+   "scripts": {
+diff --git a/src/audio-controls.js b/src/audio-controls.js
+index 2e60550..62f8cd9 100644
+--- a/src/audio-controls.js
++++ b/src/audio-controls.js
+@@ -10,9 +10,9 @@ function speaker(){
+  return svg(`<g class="speaker-shadow"><ellipse cx="22" cy="41" rx="10" ry="1.3"/></g><g class="speaker-cabinet"><path class="speaker-box" d="M9 3h26v36H9z"/><path class="speaker-edge" d="M9 3h26v36H9z"/><rect class="eq-screen" x="11" y="5" width="22" height="13" rx="1.4"/>${leds}<path class="eq-cross" d="m18 8 8 7m0-7-8 7"/><g class="speaker-cone"><circle class="speaker-ring" cx="22" cy="28" r="8.2"/><circle class="speaker-inner" cx="22" cy="28" r="5.8"/><circle class="speaker-dome" cx="22" cy="28" r="2.8"/></g><path class="speaker-screws" d="M12 21h.01M32 21h.01M12 36h.01M32 36h.01"/></g>`,'speaker-art');
+ }
+ export function createAudioControls({sound,entry,pauseButton,pauseSlot,popover,root=document.getElementById('game'),reducedMotion=matchMedia('(prefers-reduced-motion: reduce)')}){
+- const content=document.createElement('fieldset');content.className='audio-settings';content.lang='ru';content.innerHTML=`<legend id="audio-title">Настройки звука</legend><div class="audio-rows">${['effects','music'].map((id,i)=>`<div class="audio-row" data-channel="${id}"><div class="audio-art ${id==='effects'?'elon-art':'music-art'}" aria-hidden="true">${i?speaker():`<img alt="" width="192" height="192" draggable="false"><i class="eye eye-left"></i><i class="eye eye-right"></i>`}</div><div class="audio-control"><div class="audio-caption"><label for="audio-${id}">${i?'Музыка':'Эффекты'}</label><output aria-hidden="true" for="audio-${id}" id="audio-${id}-value"></output></div><input id="audio-${id}" type="range" min="0" max="100" step="1"></div></div>`).join('')}</div>`;
+- popover.append(content);popover.lang='ru';popover.setAttribute('role','dialog');popover.setAttribute('aria-labelledby','audio-title');popover.hidden=true;
+- entry.setAttribute('aria-label','Настройки звука');entry.setAttribute('aria-haspopup','dialog');entry.setAttribute('aria-controls',popover.id);entry.setAttribute('aria-expanded','false');entry.removeAttribute('aria-pressed');
++ const content=document.createElement('fieldset');content.className='audio-settings';content.lang='en';content.innerHTML=`<legend id="audio-title">Sound settings</legend><div class="audio-rows">${['effects','music'].map((id,i)=>`<div class="audio-row" data-channel="${id}"><div class="audio-art ${id==='effects'?'elon-art':'music-art'}" aria-hidden="true">${i?speaker():`<img alt="" width="192" height="192" draggable="false"><i class="eye eye-left"></i><i class="eye eye-right"></i>`}</div><div class="audio-control"><div class="audio-caption"><label for="audio-${id}">${i?'Music':'Effects'}</label><output aria-hidden="true" for="audio-${id}" id="audio-${id}-value"></output></div><input id="audio-${id}" type="range" min="0" max="100" step="1"></div></div>`).join('')}</div>`;
++ popover.append(content);popover.lang='en';popover.setAttribute('role','dialog');popover.setAttribute('aria-labelledby','audio-title');popover.hidden=true;
++ entry.setAttribute('aria-label','Sound settings');entry.setAttribute('aria-haspopup','dialog');entry.setAttribute('aria-controls',popover.id);entry.setAttribute('aria-expanded','false');entry.removeAttribute('aria-pressed');
+  entry.innerHTML='<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h4l5-5v14l-5-5H4ZM17 8q5 4 0 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SOUND</span>';
+  const rows=new Map([...content.querySelectorAll('.audio-row')].map(el=>[el.dataset.channel,{el,input:el.querySelector('input'),output:el.querySelector('output'),art:el.querySelector('.audio-art')} ]));
+  let mode=null,open=false,closing=false,overlayMotion=null,frame=0,last=0,px=0,py=0,hasPointer=false,lookX=0,lookY=0,registeredTier=-1;
+@@ -21,7 +21,7 @@ export function createAudioControls({sound,entry,pauseButton,pauseSlot,popover,r
+  const visible=()=>!document.hidden&&(mode==='paused'||open&&!closing);
+  function sync(){
+   const volumes=sound.volumes;
+-  for(const [name,row] of rows){const value=Math.round(volumes[name]*100),tier=volumeTier(volumes[name]);row.input.value=String(value);row.output.value=value+'%';row.output.textContent=value+'%';row.input.setAttribute('aria-valuetext',value===0?'Выключено':value+'%');row.el.dataset.tier=String(tier);row.input.style.setProperty('--volume',value+'%');
++  for(const [name,row] of rows){const value=Math.round(volumes[name]*100),tier=volumeTier(volumes[name]);row.input.value=String(value);row.output.value=value+'%';row.output.textContent=value+'%';row.input.setAttribute('aria-valuetext',value===0?'Muted':value+'%');row.el.dataset.tier=String(tier);row.input.style.setProperty('--volume',value+'%');
+    if(name==='effects'&&registeredTier!==tier){const img=row.art.querySelector('img');img.src=AUDIO_ART[tier];row.art.dataset.expression=names[tier];const e=eyes[tier];row.art.style.setProperty('--eye-left',e[0]*100+'%');row.art.style.setProperty('--eye-left-y',e[1]*100+'%');row.art.style.setProperty('--eye-right',e[2]*100+'%');row.art.style.setProperty('--eye-right-y',e[3]*100+'%');registeredTier=tier;}
+   }
+   entry.dataset.muted=String(!sound.enabled);
+diff --git a/src/biomes.js b/src/biomes.js
+index ce568c1..c648f69 100644
+--- a/src/biomes.js
++++ b/src/biomes.js
+@@ -1,4 +1,4 @@
+-import {BIOME_CYCLE} from './content.js?v=4.6.0';
++import {BIOME_CYCLE} from './content.js?v=4.6.1';
+ // Score selects scenery; a fixed world boundary is driven past the rider.
+ // The director uses this same biome selection for the versioned ground pool.
+ export const BIOME_SCORE_STEP=7000;
+diff --git a/src/booster-art.js b/src/booster-art.js
+index f0da17b..b739187 100644
+--- a/src/booster-art.js
++++ b/src/booster-art.js
+@@ -1,4 +1,4 @@
+-import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.6.0';
++import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.6.1';
+ export const PICKUP_FLIGHT_SECONDS=.32;
+ const clamp=value=>Math.max(0,Math.min(1,value));
+ function riderTarget(p){return {x:Math.sin(p.angle||0)*35,y:p.y+65+Math.cos(p.angle||0)*35};}
+diff --git a/src/catalog.js b/src/catalog.js
+index 63be3b5..7f7ed7d 100644
+--- a/src/catalog.js
++++ b/src/catalog.js
+@@ -1,2 +1,2 @@
+ // Compatibility export; the content registry is the single source of definitions.
+-export {OBSTACLES as types} from './content.js?v=4.6.0';
++export {OBSTACLES as types} from './content.js?v=4.6.1';
+diff --git a/src/characters.js b/src/characters.js
+index f59882a..1b38c07 100644
+--- a/src/characters.js
++++ b/src/characters.js
+@@ -1,8 +1,8 @@
+-import {obstacleDefinition} from './content.js?v=4.6.0';
+-import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,rotateAboutHip,relaxedHandAngle,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=4.6.0';
+-import {createCash,advanceCash} from './cash.js?v=4.6.0';
+-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=4.6.0';
+-import {joeReaction} from './encounter.js?v=4.6.0';
++import {obstacleDefinition} from './content.js?v=4.6.1';
++import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,rotateAboutHip,relaxedHandAngle,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=4.6.1';
++import {createCash,advanceCash} from './cash.js?v=4.6.1';
++export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=4.6.1';
++import {joeReaction} from './encounter.js?v=4.6.1';
+ /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
+ export function uprightWristAngle(parentAngle,side,strength){
+   const limit=Math.PI/12;
+diff --git a/src/clock.js b/src/clock.js
+index 29b5732..36dc6c2 100644
+--- a/src/clock.js
++++ b/src/clock.js
+@@ -1,4 +1,4 @@
+-import {STEP} from './physics.js?v=4.6.0';
++import {STEP} from './physics.js?v=4.6.1';
+ 
+ // Preserve elapsed time at 30/60/120 Hz. Long interruptions pause explicitly.
+ export function createClock(step = STEP) {
+diff --git a/src/coaching.js b/src/coaching.js
+index c57a734..6947da9 100644
+--- a/src/coaching.js
++++ b/src/coaching.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
+ export const LESSONS=[
+   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
+   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
+diff --git a/src/collection-ui.js b/src/collection-ui.js
+index 7cae182..fae16bb 100644
+--- a/src/collection-ui.js
++++ b/src/collection-ui.js
+@@ -1,4 +1,4 @@
+-import {COLLECTION_COPY} from './collection-copy.js?v=4.6.0';
++import {COLLECTION_COPY} from './collection-copy.js?v=4.6.1';
+ 
+ export function createCollectionUI({store,definitions,preview,beforeOpen,afterClose}){
+  const dialog=document.getElementById('collection-dialog'),grid=document.getElementById('collection-grid'),detail=document.getElementById('collection-detail');
+diff --git a/src/director.js b/src/director.js
+index 94d83e5..87ab26a 100644
+--- a/src/director.js
++++ b/src/director.js
+@@ -1,8 +1,8 @@
+-import {RAIL,makeRail} from './rails.js?v=4.6.0';
+-import {types} from './catalog.js?v=4.6.0';
+-import {biomeAt} from './biomes.js?v=4.6.0';
+-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.6.0';
+-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.6.0';
++import {RAIL,makeRail} from './rails.js?v=4.6.1';
++import {types} from './catalog.js?v=4.6.1';
++import {biomeAt} from './biomes.js?v=4.6.1';
++import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.6.1';
++import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.6.1';
+ const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
+ const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
+ const airSpeed={ufo:65,primeDrone:70,twitterBird:95,starlink:45,regulatorDrone:60,sikorsky:35,qualitySkull:75};
+diff --git a/src/encounter-routes.js b/src/encounter-routes.js
+index 0b6623c..f5c361d 100644
+--- a/src/encounter-routes.js
++++ b/src/encounter-routes.js
+@@ -1,8 +1,8 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.0';
+-import {createGrind,advanceRail} from './rails.js?v=4.6.0';
+-import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.0';
+-import {speedView} from './speed-feedback.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.1';
++import {createGrind,advanceRail} from './rails.js?v=4.6.1';
++import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.1';
++import {speedView} from './speed-feedback.js?v=4.6.1';
+ export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:40,window:.18,sample:.03,rest:1.5,accentRest:1.8,airCooldown:28,railAirCooldown:30,tallPreparation:.74,tallErrorPreparation:.64});
+ export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
+ // A canonical 320px phone, using less framing withdrawal than the base-speed
+diff --git a/src/enemy-sprites.js b/src/enemy-sprites.js
+index 3da3059..7ac2ec3 100644
+--- a/src/enemy-sprites.js
++++ b/src/enemy-sprites.js
+@@ -1,4 +1,4 @@
+-import {ASSETS} from './content.js?v=4.6.0';
++import {ASSETS} from './content.js?v=4.6.1';
+ import {ENEMY_SPRITES} from './enemy-sprite-data.js';
+ export function createEnemySprites(){
+  const images=new Map();
+diff --git a/src/factory.js b/src/factory.js
+index 3602881..9b7e032 100644
+--- a/src/factory.js
++++ b/src/factory.js
+@@ -1,4 +1,4 @@
+-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.6.0';
++import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.6.1';
+ const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
+ export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
+  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
+diff --git a/src/fall.js b/src/fall.js
+index a56b57c..6b20199 100644
+--- a/src/fall.js
++++ b/src/fall.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
+ const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);},mix=(a,b,t)=>a+(b-a)*t;
+ // Shared contact times drive pose, dust and camera response, independent of FPS.
+ export const FALL_CONTACTS=Object.freeze([.14,.36,.56]);
+diff --git a/src/gameplay-config.js b/src/gameplay-config.js
+index 6e68092..52a3b96 100644
+--- a/src/gameplay-config.js
++++ b/src/gameplay-config.js
+@@ -1,6 +1,6 @@
+ // All v3 balance values use logical world units and simulation seconds.
+ export const GAMEPLAY = Object.freeze({
+-  version:'4.6.0', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
++  version:'4.6.1', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
+   spinSpeed:7.2, spinAcceleration:60, releaseSpeed:1.8, releaseDeceleration:24,
+   landingAngle:Math.PI*2/9, landingOmega:Math.PI*4/3, perfectAngle:Math.PI/18, perfectPoints:50,
+   thrustAcceleration:2100, horizontalDrag:1.8, maxHorizontal:260,
+diff --git a/src/gameplay.js b/src/gameplay.js
+index f6e8fde..813a283 100644
+--- a/src/gameplay.js
++++ b/src/gameplay.js
+@@ -1,6 +1,6 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {obstacleBoxes} from './physics.js?v=4.6.0';
+-import {fallPolygons,interpolateFall} from './fall.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {obstacleBoxes} from './physics.js?v=4.6.1';
++import {fallPolygons,interpolateFall} from './fall.js?v=4.6.1';
+ export const TAU=Math.PI*2;
+ export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
+diff --git a/src/hud.js b/src/hud.js
+index 31676f2..44541f4 100644
+--- a/src/hud.js
++++ b/src/hud.js
+@@ -1,4 +1,4 @@
+-import {BOOSTERS} from './boosters.js?v=4.6.0';
++import {BOOSTERS} from './boosters.js?v=4.6.1';
+ const MILES_PER_KM=.6213711922;
+ export const mphFromKmh=value=>Math.max(0,value)*MILES_PER_KM;
+ export function multiplierAppearance(value,meter){
+diff --git a/src/loading.js b/src/loading.js
+index a53f869..b308011 100644
+--- a/src/loading.js
++++ b/src/loading.js
+@@ -1,4 +1,4 @@
+-import {flipFrameAt} from './roadster-flip.js?v=4.6.0';
++import {flipFrameAt} from './roadster-flip.js?v=4.6.1';
+ 
+ const screen = document.getElementById('loading-screen');
+ const game = document.getElementById('game');
+@@ -158,4 +158,4 @@ logTimer = setInterval(() => {
+ }, 340);
+ 
+ // Start the tiny vector instrument before requesting the game's module graph.
+-import('./main.js?v=4.6.0').catch(fail);
++import('./main.js?v=4.6.1').catch(fail);
+diff --git a/src/main.js b/src/main.js
+index 6b3c81c..ac147a7 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -1,42 +1,42 @@
+-import {createAudioControls} from './audio-controls.js?v=4.6.0';
+-import {createRailPainter} from './rail-art.js?v=4.6.0';
+-import {BOOSTERS,activeBooster} from './boosters.js?v=4.6.0';
+-import {createBoosterPainter} from './booster-art.js?v=4.6.0';
+-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.6.0';
+-import {createEnemySprites} from './enemy-sprites.js?v=4.6.0';
+-import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.6.0';
+-import {createFactoryRenderer} from './factory.js?v=4.6.0';
+-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.6.0';
+-import {createOnline} from './online.js?v=4.6.0';
+-import {createScoreRecord} from './score-record.js?v=4.6.0';
+-import {createOnlineUI} from './online-ui.js?v=4.6.0';
+-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.6.0';
+-import {createPWA} from './pwa.js?v=4.6.0';
+-import {createCollection} from './collection.js?v=4.6.0';
+-import {createCollectionUI} from './collection-ui.js?v=4.6.0';
+-import {createObstaclePainter} from './obstacle-art.js?v=4.6.0';
+-import {loading} from './loading.js?v=4.6.0';
+-import {createThrusterEffects} from './thrusters.js?v=4.6.0';
+-import {createSound} from './sound.js?v=4.6.0';
+-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.6.0';
+-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.6.0';
+-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.6.0';
+-import {types} from './catalog.js?v=4.6.0';
+-import {obstacleDefinition} from './content.js?v=4.6.0';
+-import {START_SPEED, START_KMH} from './physics.js?v=4.6.0';
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {launch,uprightError} from './gameplay.js?v=4.6.0';
+-import {AIR_TYPES,stageAt} from './routes.js?v=4.6.0';
+-import {createCoach} from './coaching.js?v=4.6.0';
+-import {createHUD,mphFromKmh} from './hud.js?v=4.6.0';
+-import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.6.0';
+-import {fallPose,fallSeatContact} from './fall.js?v=4.6.0';
+-import {createSlapstick} from './slapstick.js?v=4.6.0';
+-import {createClock} from './clock.js?v=4.6.0';
+-import {createEnvironmentRenderer} from './environment.js?v=4.6.0';
+-import {createCharacterRenderer} from './characters.js?v=4.6.0';
+-import {createPropRenderer} from './props.js?v=4.6.0';
+-import {createPhotoRenderer} from './photo-cutouts.js?v=4.6.0';
++import {createAudioControls} from './audio-controls.js?v=4.6.1';
++import {createRailPainter} from './rail-art.js?v=4.6.1';
++import {BOOSTERS,activeBooster} from './boosters.js?v=4.6.1';
++import {createBoosterPainter} from './booster-art.js?v=4.6.1';
++import {createBiomeScene,biomeEdge} from './biomes.js?v=4.6.1';
++import {createEnemySprites} from './enemy-sprites.js?v=4.6.1';
++import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.6.1';
++import {createFactoryRenderer} from './factory.js?v=4.6.1';
++import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.6.1';
++import {createOnline} from './online.js?v=4.6.1';
++import {createScoreRecord} from './score-record.js?v=4.6.1';
++import {createOnlineUI} from './online-ui.js?v=4.6.1';
++import {createRun,RUN_STEP,RULESET} from './run.js?v=4.6.1';
++import {createPWA} from './pwa.js?v=4.6.1';
++import {createCollection} from './collection.js?v=4.6.1';
++import {createCollectionUI} from './collection-ui.js?v=4.6.1';
++import {createObstaclePainter} from './obstacle-art.js?v=4.6.1';
++import {loading} from './loading.js?v=4.6.1';
++import {createThrusterEffects} from './thrusters.js?v=4.6.1';
++import {createSound} from './sound.js?v=4.6.1';
++import {createSpaceportSprites} from './spaceport-sprites.js?v=4.6.1';
++import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.6.1';
++import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.6.1';
++import {types} from './catalog.js?v=4.6.1';
++import {obstacleDefinition} from './content.js?v=4.6.1';
++import {START_SPEED, START_KMH} from './physics.js?v=4.6.1';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {launch,uprightError} from './gameplay.js?v=4.6.1';
++import {AIR_TYPES,stageAt} from './routes.js?v=4.6.1';
++import {createCoach} from './coaching.js?v=4.6.1';
++import {createHUD,mphFromKmh} from './hud.js?v=4.6.1';
++import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.6.1';
++import {fallPose,fallSeatContact} from './fall.js?v=4.6.1';
++import {createSlapstick} from './slapstick.js?v=4.6.1';
++import {createClock} from './clock.js?v=4.6.1';
++import {createEnvironmentRenderer} from './environment.js?v=4.6.1';
++import {createCharacterRenderer} from './characters.js?v=4.6.1';
++import {createPropRenderer} from './props.js?v=4.6.1';
++import {createPhotoRenderer} from './photo-cutouts.js?v=4.6.1';
+ const elements=new Map();
+ const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
+ const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
+diff --git a/src/music.js b/src/music.js
+index 1e0442c..8c090da 100644
+--- a/src/music.js
++++ b/src/music.js
+@@ -1,4 +1,4 @@
+-import {MUSIC} from './music-content.js?v=4.6.0';
++import {MUSIC} from './music-content.js?v=4.6.1';
+ 
+ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
+ const smooth=(a,b,v)=>{const x=clamp((v-a)/(b-a));return x*x*(3-2*x);};
+diff --git a/src/online-ui.js b/src/online-ui.js
+index fd2db8e..c919cda 100644
+--- a/src/online-ui.js
++++ b/src/online-ui.js
+@@ -1,4 +1,4 @@
+-import {validNickname,onlineMessage,projectScore} from './online.js?v=4.6.0';
++import {validNickname,onlineMessage,projectScore} from './online.js?v=4.6.1';
+ const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
+ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
+  const dialog=document.getElementById('online-dialog'),content=document.getElementById('online-content'),title=document.getElementById('online-title'),back=document.getElementById('online-close');
+diff --git a/src/online.js b/src/online.js
+index c9fffc8..116eddb 100644
+--- a/src/online.js
++++ b/src/online.js
+@@ -1,4 +1,4 @@
+-import {createJobStore} from './online-store.js?v=4.6.0';
++import {createJobStore} from './online-store.js?v=4.6.1';
+ export const ONLINE_PENDING_KEY='roadster-online-pending-v1';
+ export const ONLINE_CACHE_KEY='roadster-ranking-cache-v1';
+ export const validNickname=value=>typeof value==='string'&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length>=3&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length<=12&&/^[\p{L}\p{N} _-]+$/u.test(value.normalize('NFKC').trim().replace(/ +/g,' '));
+diff --git a/src/physics.js b/src/physics.js
+index d44fb6f..f9a650c 100644
+--- a/src/physics.js
++++ b/src/physics.js
+@@ -1,4 +1,4 @@
+-import {obstacleDefinition} from './content.js?v=4.6.0';
++import {obstacleDefinition} from './content.js?v=4.6.1';
+ // Simulation uses logical CSS units. Rendering pixel ratio never changes gameplay.
+ export const STEP = 1 / 120;
+ export const START_SPEED = 360;
+diff --git a/src/props.js b/src/props.js
+index 47a1447..1696ff3 100644
+--- a/src/props.js
++++ b/src/props.js
+@@ -1,6 +1,6 @@
+ // Static paper props are rasterised once, including their shared outer cut line.
+ // All coordinates are authored at the declared aspect ratio; draw() fits, never stretches.
+-import {PROP_TYPES, OBSTACLES} from './content.js?v=4.6.0';
++import {PROP_TYPES, OBSTACLES} from './content.js?v=4.6.1';
+ export {PROP_TYPES};
+ 
+ const INK = '#282c2c';
+diff --git a/src/rails.js b/src/rails.js
+index dda9bf0..fe39a8f 100644
+--- a/src/rails.js
++++ b/src/rails.js
+@@ -1,6 +1,6 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {uprightError,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.6.0';
+-import {activeBooster,advanceBoosters} from './boosters.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {uprightError,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.6.1';
++import {activeBooster,advanceBoosters} from './boosters.js?v=4.6.1';
+ export const RAIL=Object.freeze({height:190,length:720,belly:8,pointsPerUnit:.1,firstWave:3,every:7,exitSeconds:1.25});
+ export const makeRail=x=>({x,w:RAIL.length,h:RAIL.height,paid:[],passed:false});
+ export const createGrind=()=>({support:null,age:0,exit:null,exitAge:1,pending:0,distance:0,turns:0});
+diff --git a/src/routes.js b/src/routes.js
+index 7ab4a6f..67de4d8 100644
+--- a/src/routes.js
++++ b/src/routes.js
+@@ -1,9 +1,9 @@
+-import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.0';
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.6.0';
++import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.1';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.6.1';
+ export const STAGES=C.stages;
+ export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
+-import {AIR_TYPES} from './content.js?v=4.6.0';
++import {AIR_TYPES} from './content.js?v=4.6.1';
+ export {AIR_TYPES};
+ export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900,gapSeconds=.65}={}){
+  const item=offset=>({...type,x:dx+offset,passed:false});
+diff --git a/src/run.js b/src/run.js
+index 0ff112b..92ae5b1 100644
+--- a/src/run.js
++++ b/src/run.js
+@@ -1,10 +1,10 @@
+-import {RAIL,createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.6.0';
+-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.6.0';
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
+-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.6.0';
+-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.6.0';
+-import {createDirector} from './director.js?v=4.6.0';
+-import {createRandom} from './random.js?v=4.6.0';
++import {RAIL,createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.6.1';
++import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.6.1';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
++import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.6.1';
++import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.6.1';
++import {createDirector} from './director.js?v=4.6.1';
++import {createRandom} from './random.js?v=4.6.1';
+ export const RULESET='roadster-v4.6.0',RUN_STEP=1/120;
+ export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
+ const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
+diff --git a/src/sound.js b/src/sound.js
+index 572c419..1ba22d1 100644
+--- a/src/sound.js
++++ b/src/sound.js
+@@ -1,5 +1,5 @@
+-import {createMusic} from './music.js?v=4.6.0';
+-import {createEffects} from './sound-effects.js?v=4.6.0';
++import {createMusic} from './music.js?v=4.6.1';
++import {createEffects} from './sound-effects.js?v=4.6.1';
+ /** One gesture-unlocked audio context shared by music and bounded effects. */
+ export function normalisePressureBuffer(buffer){
+   if(!buffer.getChannelData)return 1;
+diff --git a/src/speed-feedback.js b/src/speed-feedback.js
+index e8e4d4b..8e6d116 100644
+--- a/src/speed-feedback.js
++++ b/src/speed-feedback.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
+ 
+ // Allocate forward space before shrinking the player: all inputs are actual velocity.
+ const clamp01=value=>Math.max(0,Math.min(1,value));
+diff --git a/src/thrusters.js b/src/thrusters.js
+index 43055a5..0551e5e 100644
+--- a/src/thrusters.js
++++ b/src/thrusters.js
+@@ -1,4 +1,4 @@
+-import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=4.6.0';
++import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=4.6.1';
+ // Source-pixel nozzle anchors measured on each of the nine photographed poses.
+ // The car rolls about its long axis: exhaust points up while the car is inverted.
+ const POSES=[
+diff --git a/sw.js b/sw.js
+index e58c262..6fb0955 100644
+--- a/sw.js
++++ b/sw.js
+@@ -1,5 +1,5 @@
+ // Generated by npm run build:pwa. Every cached byte belongs to this release.
+-const VERSION='4.6.0';
++const VERSION='4.6.1';
+ const CORE=[
+  {
+   "url": "assets/audio/music-v450/ATTRIBUTION.md",
+@@ -527,7 +527,7 @@ const CORE=[
+  },
+  {
+   "url": "index.html",
+-  "sha256": "ceb447283819415f3f24cca564f5178464eba76712a899a403e0c92ca264188e"
++  "sha256": "5272ccfdb97c3be0e77adbea161b05cb831bc248dac57c6404f6e7d3634a0a5b"
+  },
+  {
+   "url": "manifest.webmanifest",
+@@ -542,71 +542,71 @@ const CORE=[
+   "sha256": "03a60ba2884f00f02a94bc98052e71361778a4768df5fd21928aedde2aa23290"
+  },
+  {
+-  "url": "src/audio-controls.js?v=4.6.0",
+-  "sha256": "f6b30e53667477699362beb4eeed55304394026f6c8fd3343307ffac22a5ca97"
++  "url": "src/audio-controls.js?v=4.6.1",
++  "sha256": "ab0be0fbb6e4f8f1f4b71e4b3f0ac0e17784067e601001a85c190eed98bc985c"
+  },
+  {
+-  "url": "src/biomes.js?v=4.6.0",
+-  "sha256": "552594517c3e56d4e68e257570ad2bba9d90378b7fccc83ef1c8058b8a22201d"
++  "url": "src/biomes.js?v=4.6.1",
++  "sha256": "f589515e8724718eefabb57fe645bc90bb2cd2ffa27d7e21f9a3e816f97ef540"
+  },
+  {
+-  "url": "src/booster-art.js?v=4.6.0",
+-  "sha256": "56bf41497d71911aabf7087dce5bb7e430395a21b8e2fa51126496b4af9bc3a3"
++  "url": "src/booster-art.js?v=4.6.1",
++  "sha256": "9019a583afc7ac71fc8b798675784811683b59582a6c4f6947b5ebc171993574"
+  },
+  {
+-  "url": "src/boosters.js?v=4.6.0",
++  "url": "src/boosters.js?v=4.6.1",
+   "sha256": "50fbcd74ff660085ba453fc47984bd4437265066aebc914c35b4027d5a47a536"
+  },
+  {
+-  "url": "src/cash.js?v=4.6.0",
++  "url": "src/cash.js?v=4.6.1",
+   "sha256": "4c85bccc29978d33bf1bcab3f1bff5aecb371eb1d9ff3c9c1a7828f98171e578"
+  },
+  {
+-  "url": "src/catalog.js?v=4.6.0",
+-  "sha256": "06a092ffa050c170dede0615d80beb32585a70fb560703d98ac27e597535b851"
++  "url": "src/catalog.js?v=4.6.1",
++  "sha256": "49caf2916be27db0584824303406d9e3728a69b72c55ad256578c66df1633b0c"
+  },
+  {
+-  "url": "src/characters.js?v=4.6.0",
+-  "sha256": "93e2193273fec84c75a104eff846fa241e4766d32bd477ec89c49385327ecdb0"
++  "url": "src/characters.js?v=4.6.1",
++  "sha256": "f0fc65dc544c91f0386ba1aad6b37659ca6ca69c26da4a06e40814d0ae4d949f"
+  },
+  {
+-  "url": "src/clock.js?v=4.6.0",
+-  "sha256": "e0d6e74c430450048d721096c2856707174243fc763be721a071fb63a8ff239c"
++  "url": "src/clock.js?v=4.6.1",
++  "sha256": "7e740886a16a48c7c82b02525411051d4e20d88ff0babf4eeed436dcdac9f02e"
+  },
+  {
+-  "url": "src/coaching.js?v=4.6.0",
+-  "sha256": "65f4604c6e60b4f684417de055146af475e1187eba0003a08a3e6bc74e57fad7"
++  "url": "src/coaching.js?v=4.6.1",
++  "sha256": "60cff61dfc1c4008031a7a56c235a333fa939b3681ba2d304e4b68f6e9a1506e"
+  },
+  {
+-  "url": "src/collection-copy.js?v=4.6.0",
++  "url": "src/collection-copy.js?v=4.6.1",
+   "sha256": "01a101d36c6a9eed498799d74bdc9414423e5ded5f4d10b69adf82b10aef0c9d"
+  },
+  {
+-  "url": "src/collection-ui.js?v=4.6.0",
+-  "sha256": "09e0f5d8984966019cc5b0263f579b74a6fce66f6acf28a92a2940132cd1ce70"
++  "url": "src/collection-ui.js?v=4.6.1",
++  "sha256": "f2323f0a8ca5d6d2e1ac5e27447de04c94e3acce639a00c0f217a198a0c58b69"
+  },
+  {
+-  "url": "src/collection.js?v=4.6.0",
++  "url": "src/collection.js?v=4.6.1",
+   "sha256": "19f4a25ea83b897df2e2849e2071b1eff6eb6817058ed532e4f6db9ad28ef7cf"
+  },
+  {
+-  "url": "src/content.js?v=4.6.0",
++  "url": "src/content.js?v=4.6.1",
+   "sha256": "f283d984e24bf69626dc3ed91df58539d7a51014e9d2d4eca79bb35571ce0af2"
+  },
+  {
+-  "url": "src/director.js?v=4.6.0",
+-  "sha256": "eaf9c03b3d4ecd6a5c6f821fb5b316b4197edb6795d20be19b858642f9586b8d"
++  "url": "src/director.js?v=4.6.1",
++  "sha256": "364e0fc6934b9ca49300ac144a975ce02f8c08d90ce1d057f6575015658af3c6"
+  },
+  {
+-  "url": "src/encounter-routes.js?v=4.6.0",
+-  "sha256": "5e208e81cd561ffb5a7b617c67b2e8e064ca002babaa60a059ad997cfc654754"
++  "url": "src/encounter-routes.js?v=4.6.1",
++  "sha256": "4bde6c8ea44beb965486d891b23cd9006f35a1ccc8903c3ea39feb339a873f05"
+  },
+  {
+-  "url": "src/encounter.js?v=4.6.0",
++  "url": "src/encounter.js?v=4.6.1",
+   "sha256": "ae74baddef380c9a84c5587df11ab1cfd2fa4d3e7f0b00d81a20e46f7954b7c6"
+  },
+  {
+-  "url": "src/encounters.js?v=4.6.0",
++  "url": "src/encounters.js?v=4.6.1",
+   "sha256": "4a40d8506a7eb17467ad5375a75871a32d2075240ae660375f5304386a91ba94"
+  },
+  {
+@@ -614,151 +614,151 @@ const CORE=[
+   "sha256": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d"
+  },
+  {
+-  "url": "src/enemy-sprites.js?v=4.6.0",
+-  "sha256": "a601a7b0d0322c0cf2c6cbe10b9dd7c977fe47ace4fa4c96e844200d7579252c"
++  "url": "src/enemy-sprites.js?v=4.6.1",
++  "sha256": "01eeb909d1189f670d0c1688a55156ca8dcdf6b598585e52890bb4acaca3859f"
+  },
+  {
+-  "url": "src/environment.js?v=4.6.0",
++  "url": "src/environment.js?v=4.6.1",
+   "sha256": "4d53b6e5c120395c52fa2673c931ed7d915b0ff36f7a4de0b1dbd96ab35ce5b9"
+  },
+  {
+-  "url": "src/factory-production.js?v=4.6.0",
++  "url": "src/factory-production.js?v=4.6.1",
+   "sha256": "d41b6b415aa5c157f1fb36dd85beb6943ae15ec046fe0124caf49665bdfef1bc"
+  },
+  {
+-  "url": "src/factory.js?v=4.6.0",
+-  "sha256": "c39060b90c37d85035e81b06e41b3c492867cf5db0a4065a8961be71a726d628"
++  "url": "src/factory.js?v=4.6.1",
++  "sha256": "cb51bbb4a04abac094a5d717f1647d636a5627dceb9332898271c4757fc6a6cd"
+  },
+  {
+-  "url": "src/fall.js?v=4.6.0",
+-  "sha256": "ba95abf7d0b3060632490d45c472a929e47d6cb84d7889c3db308c31f727d6ed"
++  "url": "src/fall.js?v=4.6.1",
++  "sha256": "7acb2ccab8937b3bd6569413c8233be612c8b28552ed51b712a165d0b22ef0ac"
+  },
+  {
+-  "url": "src/gameplay-config.js?v=4.6.0",
+-  "sha256": "715d584e01fd97280d0d270cf6ade7b4399483bb54d77474c74896e400fd816c"
++  "url": "src/gameplay-config.js?v=4.6.1",
++  "sha256": "aae74d6be250fa56b996b75a624d25f4cefc912f5575d4651b056d4a689a5594"
+  },
+  {
+-  "url": "src/gameplay.js?v=4.6.0",
+-  "sha256": "1455d0d5be8ff7d46610bb41d5c7d1c702fa881c5ddfa94de0fc163850308a60"
++  "url": "src/gameplay.js?v=4.6.1",
++  "sha256": "f565cbcb2bef537b49d2c6e17fba448caeb79e4d8bf01c8ce92322797ff2f760"
+  },
+  {
+-  "url": "src/hero-rig.js?v=4.6.0",
++  "url": "src/hero-rig.js?v=4.6.1",
+   "sha256": "7c7db71d9a52ef09d81333138be13c2d4c376529bc8ee05abc56a38edddd5b85"
+  },
+  {
+-  "url": "src/hud.js?v=4.6.0",
+-  "sha256": "5513367e6afaee8d1bdea3956978bdc82e27fccd5c5882e78c8da46bce8db810"
++  "url": "src/hud.js?v=4.6.1",
++  "sha256": "b27d488912299bbfdd2d87f50ac1f6eec7c9679e7126b2be491afa271cc286b5"
+  },
+  {
+-  "url": "src/loading.js?v=4.6.0",
+-  "sha256": "e1d562dfab3cfe801affacf0acb690962014ed05b73f832211b1b375576b0b04"
++  "url": "src/loading.js?v=4.6.1",
++  "sha256": "977166c97c3578967230f5cf738933bbe5ec605471680a0c5487f6770ed4d80e"
+  },
+  {
+-  "url": "src/main.js?v=4.6.0",
+-  "sha256": "72fd8cbb7d43bdcb31ae429ef432618fb5681a9c5029c0578b84032c30974da6"
++  "url": "src/main.js?v=4.6.1",
++  "sha256": "b16ce033c139fdffbbb16be2e1ae4216cee3a7d5e13b0a3d55a9ec8e681fd11b"
+  },
+  {
+-  "url": "src/music-content.js?v=4.6.0",
++  "url": "src/music-content.js?v=4.6.1",
+   "sha256": "95cfc991c6ecdf0428fc7ca80095041a34a7a1ca12ad2fadf60cf4c6db2f466a"
+  },
+  {
+-  "url": "src/music.js?v=4.6.0",
+-  "sha256": "5ec143d62676f6c3e45e5fd127993e04ab6c4c216e856635913bca9508ca3d12"
++  "url": "src/music.js?v=4.6.1",
++  "sha256": "942323c2592add8408d0922fcd7b495d4aee239f45cc2163269d3a1b35fb44d6"
+  },
+  {
+-  "url": "src/obstacle-art.js?v=4.6.0",
++  "url": "src/obstacle-art.js?v=4.6.1",
+   "sha256": "245a314cb7733d39f899d280bf24b616da8f0e544d4a53d6d43ea32aa6165c18"
+  },
+  {
+-  "url": "src/online-config.js?v=4.6.0",
++  "url": "src/online-config.js?v=4.6.1",
+   "sha256": "270190af96c0f506382dfa22419fddfb0f82b4dedd41f31917e5eb3182ad400f"
+  },
+  {
+-  "url": "src/online-store.js?v=4.6.0",
++  "url": "src/online-store.js?v=4.6.1",
+   "sha256": "2f26d19b93242cc3cb6fa313eafd1e8eaabb8f3a54328036a2d74617b3165760"
+  },
+  {
+-  "url": "src/online-ui.js?v=4.6.0",
+-  "sha256": "1521d4297de3abd67dc5063124e8ecee6ddda7b633b73f32e0aaae2d6beb1177"
++  "url": "src/online-ui.js?v=4.6.1",
++  "sha256": "a32ab015a1558591db8195847302cffc5c22b6b3f76e3a150e1225da14f0062e"
+  },
+  {
+-  "url": "src/online.js?v=4.6.0",
+-  "sha256": "14fc72755dbe5e1a82ca933d03c01b21b719cf00835758677ce4b8d611529a13"
++  "url": "src/online.js?v=4.6.1",
++  "sha256": "f33110db2745abc4da2653423c3c1bb4bb52bd9659dddef1a06628e108a02084"
+  },
+  {
+-  "url": "src/photo-cutouts.js?v=4.6.0",
++  "url": "src/photo-cutouts.js?v=4.6.1",
+   "sha256": "374bdccdad1947dafc5db107d17bf4336ac1f5b7731ff4c20c402c11d34abbed"
+  },
+  {
+-  "url": "src/physics.js?v=4.6.0",
+-  "sha256": "f219f6f13d59a600666b87962807e10088bed1f48e362e047f82197274c2bda0"
++  "url": "src/physics.js?v=4.6.1",
++  "sha256": "673b59cf6b4337e2ac9bedce38b7ba99275beab5729d3b25512c9d0575f590d7"
+  },
+  {
+-  "url": "src/props.js?v=4.6.0",
+-  "sha256": "555bb1e0addd21cc2dfdfdeb26c43fc9d5de933d2a0ad86fd110f1cb6872dc74"
++  "url": "src/props.js?v=4.6.1",
++  "sha256": "89b1321eddd458b954257212b0e18288b00d0bcd19c390047a22b5e52fd87c9a"
+  },
+  {
+-  "url": "src/pwa.js?v=4.6.0",
++  "url": "src/pwa.js?v=4.6.1",
+   "sha256": "f7f5f5aa7b8d4cd6258bcd3e776022fd50976548e096eccbd0e494b001fdd515"
+  },
+  {
+-  "url": "src/rail-art.js?v=4.6.0",
++  "url": "src/rail-art.js?v=4.6.1",
+   "sha256": "59a0d4122893775cb9996c3acccab1ef45082b7b1719386a4562120cd309dc1d"
+  },
+  {
+-  "url": "src/rails.js?v=4.6.0",
+-  "sha256": "a576cfb9ccb6913233e85808eaaa0626130a0cf7ddbeaaf6a4ba597cd5166c39"
++  "url": "src/rails.js?v=4.6.1",
++  "sha256": "0f0f51c114c0bc1eafb7d61f663aaad9711195341134c8a41f1d4a9ef5a07055"
+  },
+  {
+-  "url": "src/random.js?v=4.6.0",
++  "url": "src/random.js?v=4.6.1",
+   "sha256": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1"
+  },
+  {
+-  "url": "src/roadster-flip.js?v=4.6.0",
++  "url": "src/roadster-flip.js?v=4.6.1",
+   "sha256": "e7e249fc3749cee2b8ed9d1ffe6f517360b54cc3cef6d82ce39d1906f867397e"
+  },
+  {
+-  "url": "src/rocket.js?v=4.6.0",
++  "url": "src/rocket.js?v=4.6.1",
+   "sha256": "f5ccc6ea27cfdae64a64ddbc609b210d5104ee7bc83461dea7c3828bfc3e833d"
+  },
+  {
+-  "url": "src/routes.js?v=4.6.0",
+-  "sha256": "fb82174358f34f6098453e5ad3bf0f7625d42437473c917075ec890c3e012e04"
++  "url": "src/routes.js?v=4.6.1",
++  "sha256": "547e99efac4a61279c383d327e3a76ba06c88469cbadb0abefb4f11e09b125da"
+  },
+  {
+-  "url": "src/run.js?v=4.6.0",
+-  "sha256": "128f39a0da3123a9c8fa85efced2c4727f913017999486e1f6057b76c8e6209f"
++  "url": "src/run.js?v=4.6.1",
++  "sha256": "dcd8fe580f750bb210bd84e2f5c741135f4f0922ebc92f079dff012055b19db0"
+  },
+  {
+-  "url": "src/score-record.js?v=4.6.0",
++  "url": "src/score-record.js?v=4.6.1",
+   "sha256": "d8f2c2825d232039b59f0650e6608b8865d9fd2c8f00bca1d1741d72fcd1185f"
+  },
+  {
+-  "url": "src/slapstick.js?v=4.6.0",
++  "url": "src/slapstick.js?v=4.6.1",
+   "sha256": "d627ace249f2d6d81f81b1eeca9f087cf5933dd7701d8affc4a1fe76f912708e"
+  },
+  {
+-  "url": "src/sound-effects.js?v=4.6.0",
++  "url": "src/sound-effects.js?v=4.6.1",
+   "sha256": "8eaf87fd435cd0ed9e389234b599b5f5c0360d7aa706dbb7af5cb7732cfcb825"
+  },
+  {
+-  "url": "src/sound.js?v=4.6.0",
+-  "sha256": "84ff83f937daeffd09a291e426e1b8c40dd00af4fc8cf37c9479321098a39d83"
++  "url": "src/sound.js?v=4.6.1",
++  "sha256": "2281d75ff8619ea1b12e0ce1fc3fb4f752d813dd48b63bafd6d0bc64e4ca61ca"
+  },
+  {
+-  "url": "src/spaceport-sprites.js?v=4.6.0",
++  "url": "src/spaceport-sprites.js?v=4.6.1",
+   "sha256": "1809b3fbc0737df4fb95df2aa5f0a8319654d05c300cc07c95b57362f3796384"
+  },
+  {
+-  "url": "src/speed-feedback.js?v=4.6.0",
+-  "sha256": "a58bc3eee99445f1560dd128168f8192b5214c417ab9ebdaf1a00c8da40d6d26"
++  "url": "src/speed-feedback.js?v=4.6.1",
++  "sha256": "1857f0e554215e1693e179f3b309e880515d0bc3d0f8e62ef8bc08e7fe1444b8"
+  },
+  {
+-  "url": "src/thrusters.js?v=4.6.0",
+-  "sha256": "53697ed6f30e5e895b92e747445b797fcf72fad6056dda42378d8cd1a9ca613f"
++  "url": "src/thrusters.js?v=4.6.1",
++  "sha256": "c881cfb93b2cbf1b19d92af876644dbd23623f9396369c246f66b9de52d55fac"
+  },
+  {
+-  "url": "style.css?v=4.6.0",
++  "url": "style.css?v=4.6.1",
+   "sha256": "534c57f78c3b50569bb9fb0fdb08e16bfe5de7343b4b175dd65ae23b4ea18542"
+  }
+ ];

@@ -1,8 +1,8 @@
-import {RAIL,makeRail} from './rails.js?v=4.6.0';
-import {types} from './catalog.js?v=4.6.0';
-import {biomeAt} from './biomes.js?v=4.6.0';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.6.0';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.6.0';
+import {RAIL,makeRail} from './rails.js?v=4.6.1';
+import {types} from './catalog.js?v=4.6.1';
+import {biomeAt} from './biomes.js?v=4.6.1';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.6.1';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.6.1';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 const airSpeed={ufo:65,primeDrone:70,twitterBird:95,starlink:45,regulatorDrone:60,sikorsky:35,qualitySkull:75};

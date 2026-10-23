@@ -1,0 +1,29 @@
+{
+  "url": "http://127.0.0.1:53696/",
+  "checks": [
+    "390: version4.6.1",
+    "390: English dialog and section language",
+    "390: English labels",
+    "390: English muted accessible value",
+    "390: native keyboard and percent",
+    "390: separate saved levels",
+    "390: settings contain no Cyrillic",
+    "390: English settings in pause",
+    "390: levels survive reload",
+    "390: cold offline English settings and levels",
+    "1440: version4.6.1",
+    "1440: English dialog and section language",
+    "1440: English labels",
+    "1440: English muted accessible value",
+    "1440: native keyboard and percent",
+    "1440: separate saved levels",
+    "1440: settings contain no Cyrillic",
+    "1440: English settings in pause",
+    "1440: levels survive reload",
+    "1440: cold offline English settings and levels",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "physicalDevice": false,
+  "publicScoreSubmissions": 0
+}

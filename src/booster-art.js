@@ -1,4 +1,4 @@
-import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.6.0';
+import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.6.1';
 export const PICKUP_FLIGHT_SECONDS=.32;
 const clamp=value=>Math.max(0,Math.min(1,value));
 function riderTarget(p){return {x:Math.sin(p.angle||0)*35,y:p.y+65+Math.cos(p.angle||0)*35};}

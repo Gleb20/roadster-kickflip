@@ -1,3 +1,7 @@
+## English audio settings4.6.1 —24 October2026
+
+User corrected the audio UI language: all interface copy is English. “Sound settings”, “Effects”, “Music” and accessible “Muted”, with lang="en" in menu and pause. Built over published director4.6.0/mainede9ec6, preserving its gameplay and all nine replay versions.203 tests,21 local browser checks and source/content/types/PWA190 pass; exact scoped inverse restores all parent hashes. Release source is `/tmp/tesla-audio-controls-v470-20261023`, branch `codex/audio-settings-en`; dirty root/runtime and parallel rotation work preserved. [Evidence](verification/2026-10-24-audio-language/README.md). Publication/live verification pending; physical-device acceptance remains separate.
+
 ## Obstacle director 4.6.0 — 24 October 2026
 
 Ground waves contain one or two canonical obstacles. Aircraft remain airborne with a no-input ground bypass; later optional rails combine a comfortable catch route with the same safe bypass. Progression, biome familiarity, two simple recovery waves, air cooldowns and real post-clear rest gate variety. New ranked `roadster-v4.6.0` is additive; eight historical verifier folders and existing records remain intact. Art, controls, physics, camera and adaptive audio are preserved.

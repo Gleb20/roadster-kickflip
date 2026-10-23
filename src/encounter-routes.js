@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.0';
-import {createGrind,advanceRail} from './rails.js?v=4.6.0';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.0';
-import {speedView} from './speed-feedback.js?v=4.6.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.1';
+import {createGrind,advanceRail} from './rails.js?v=4.6.1';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.1';
+import {speedView} from './speed-feedback.js?v=4.6.1';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:40,window:.18,sample:.03,rest:1.5,accentRest:1.8,airCooldown:28,railAirCooldown:30,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // A canonical 320px phone, using less framing withdrawal than the base-speed
