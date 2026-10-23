@@ -20,9 +20,9 @@ const out=path.resolve(process.argv[2]||'docs/verification/2026-10-18-speed-feed
     },{progress,streak});rows.push(row);measurements.push({width,height,...row});
    }
    for(const row of rows.slice(1)){
-    check(`${width}x${height} / ${progress}s / +${row.streak*100}% actual obstacle motion`,Math.abs(row.pixels/rows[0].pixels-(1+row.streak))<.002);
-    check(`${width}x${height} / ${progress}s / +${row.streak*100}% road follows obstacles`,Math.abs(row.road-row.pixels)<.1);
-    check(`${width}x${height} / ${progress}s / +${row.streak*100}% no compensating zoom`,Math.abs(row.scale-rows[0].scale)<1e-9);
+    check(`${width}x${height} / ${progress}s / +${row.streak*100}% actual obstacle motion`,row.pixels>rows[0].pixels&&Math.abs(row.pixels/row.logical-row.scale)<.002);
+    check(`${width}x${height} / ${progress}s / +${row.streak*100}% near road retains actual earned speed`,Math.abs(row.road/rows[0].road-(1+row.streak))<.002);
+    check(`${width}x${height} / ${progress}s / +${row.streak*100}% camera responds to speed below its cap`,row.scale<=rows[0].scale+1e-9);
     check(`${width}x${height} / ${progress}s / +${row.streak*100}% face only at actual limit`,row.feedback.impossibru===(progress===150&&row.streak===.25));
    }
   }

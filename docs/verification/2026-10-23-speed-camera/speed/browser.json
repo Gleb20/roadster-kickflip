@@ -1,0 +1,980 @@
+{
+  "checks": [
+    "390x844 / 0s / +5% actual obstacle motion",
+    "390x844 / 0s / +5% near road retains actual earned speed",
+    "390x844 / 0s / +5% camera responds to speed below its cap",
+    "390x844 / 0s / +5% face only at actual limit",
+    "390x844 / 0s / +25% actual obstacle motion",
+    "390x844 / 0s / +25% near road retains actual earned speed",
+    "390x844 / 0s / +25% camera responds to speed below its cap",
+    "390x844 / 0s / +25% face only at actual limit",
+    "390x844 / 75s / +5% actual obstacle motion",
+    "390x844 / 75s / +5% near road retains actual earned speed",
+    "390x844 / 75s / +5% camera responds to speed below its cap",
+    "390x844 / 75s / +5% face only at actual limit",
+    "390x844 / 75s / +25% actual obstacle motion",
+    "390x844 / 75s / +25% near road retains actual earned speed",
+    "390x844 / 75s / +25% camera responds to speed below its cap",
+    "390x844 / 75s / +25% face only at actual limit",
+    "390x844 / 150s / +5% actual obstacle motion",
+    "390x844 / 150s / +5% near road retains actual earned speed",
+    "390x844 / 150s / +5% camera responds to speed below its cap",
+    "390x844 / 150s / +5% face only at actual limit",
+    "390x844 / 150s / +25% actual obstacle motion",
+    "390x844 / 150s / +25% near road retains actual earned speed",
+    "390x844 / 150s / +25% camera responds to speed below its cap",
+    "390x844 / 150s / +25% face only at actual limit",
+    "320x640 / 0s / +5% actual obstacle motion",
+    "320x640 / 0s / +5% near road retains actual earned speed",
+    "320x640 / 0s / +5% camera responds to speed below its cap",
+    "320x640 / 0s / +5% face only at actual limit",
+    "320x640 / 0s / +25% actual obstacle motion",
+    "320x640 / 0s / +25% near road retains actual earned speed",
+    "320x640 / 0s / +25% camera responds to speed below its cap",
+    "320x640 / 0s / +25% face only at actual limit",
+    "320x640 / 75s / +5% actual obstacle motion",
+    "320x640 / 75s / +5% near road retains actual earned speed",
+    "320x640 / 75s / +5% camera responds to speed below its cap",
+    "320x640 / 75s / +5% face only at actual limit",
+    "320x640 / 75s / +25% actual obstacle motion",
+    "320x640 / 75s / +25% near road retains actual earned speed",
+    "320x640 / 75s / +25% camera responds to speed below its cap",
+    "320x640 / 75s / +25% face only at actual limit",
+    "320x640 / 150s / +5% actual obstacle motion",
+    "320x640 / 150s / +5% near road retains actual earned speed",
+    "320x640 / 150s / +5% camera responds to speed below its cap",
+    "320x640 / 150s / +5% face only at actual limit",
+    "320x640 / 150s / +25% actual obstacle motion",
+    "320x640 / 150s / +25% near road retains actual earned speed",
+    "320x640 / 150s / +25% camera responds to speed below its cap",
+    "320x640 / 150s / +25% face only at actual limit",
+    "844x390 / 0s / +5% actual obstacle motion",
+    "844x390 / 0s / +5% near road retains actual earned speed",
+    "844x390 / 0s / +5% camera responds to speed below its cap",
+    "844x390 / 0s / +5% face only at actual limit",
+    "844x390 / 0s / +25% actual obstacle motion",
+    "844x390 / 0s / +25% near road retains actual earned speed",
+    "844x390 / 0s / +25% camera responds to speed below its cap",
+    "844x390 / 0s / +25% face only at actual limit",
+    "844x390 / 75s / +5% actual obstacle motion",
+    "844x390 / 75s / +5% near road retains actual earned speed",
+    "844x390 / 75s / +5% camera responds to speed below its cap",
+    "844x390 / 75s / +5% face only at actual limit",
+    "844x390 / 75s / +25% actual obstacle motion",
+    "844x390 / 75s / +25% near road retains actual earned speed",
+    "844x390 / 75s / +25% camera responds to speed below its cap",
+    "844x390 / 75s / +25% face only at actual limit",
+    "844x390 / 150s / +5% actual obstacle motion",
+    "844x390 / 150s / +5% near road retains actual earned speed",
+    "844x390 / 150s / +5% camera responds to speed below its cap",
+    "844x390 / 150s / +5% face only at actual limit",
+    "844x390 / 150s / +25% actual obstacle motion",
+    "844x390 / 150s / +25% near road retains actual earned speed",
+    "844x390 / 150s / +25% camera responds to speed below its cap",
+    "844x390 / 150s / +25% face only at actual limit",
+    "1440x900 / 0s / +5% actual obstacle motion",
+    "1440x900 / 0s / +5% near road retains actual earned speed",
+    "1440x900 / 0s / +5% camera responds to speed below its cap",
+    "1440x900 / 0s / +5% face only at actual limit",
+    "1440x900 / 0s / +25% actual obstacle motion",
+    "1440x900 / 0s / +25% near road retains actual earned speed",
+    "1440x900 / 0s / +25% camera responds to speed below its cap",
+    "1440x900 / 0s / +25% face only at actual limit",
+    "1440x900 / 75s / +5% actual obstacle motion",
+    "1440x900 / 75s / +5% near road retains actual earned speed",
+    "1440x900 / 75s / +5% camera responds to speed below its cap",
+    "1440x900 / 75s / +5% face only at actual limit",
+    "1440x900 / 75s / +25% actual obstacle motion",
+    "1440x900 / 75s / +25% near road retains actual earned speed",
+    "1440x900 / 75s / +25% camera responds to speed below its cap",
+    "1440x900 / 75s / +25% face only at actual limit",
+    "1440x900 / 150s / +5% actual obstacle motion",
+    "1440x900 / 150s / +5% near road retains actual earned speed",
+    "1440x900 / 150s / +5% camera responds to speed below its cap",
+    "1440x900 / 150s / +5% face only at actual limit",
+    "1440x900 / 150s / +25% actual obstacle motion",
+    "1440x900 / 150s / +25% near road retains actual earned speed",
+    "1440x900 / 150s / +25% camera responds to speed below its cap",
+    "1440x900 / 150s / +25% face only at actual limit",
+    "native manual flip earns real five percent speed without extreme face",
+    "zero page/console errors"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 0,
+      "streak": 0,
+      "scale": 0.49526062090199413,
+      "logical": 360.01666666666097,
+      "pixels": 178.30207786839674,
+      "road": 178.30643636364584,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 0,
+      "streak": 0.05,
+      "scale": 0.4825217678754406,
+      "logical": 378.01750000000084,
+      "pixels": 182.40167238785807,
+      "road": 187.22175818178584,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 0,
+      "streak": 0.25,
+      "scale": 0.43750826763652956,
+      "logical": 450.02083333333303,
+      "pixels": 196.88783519202843,
+      "road": 222.88304545450956,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 75,
+      "streak": 0,
+      "scale": 0.4059531180117132,
+      "logical": 510.01666666666097,
+      "pixels": 207.04285607129214,
+      "road": 252.5973454545965,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 75,
+      "streak": 0.05,
+      "scale": 0.39387833444314724,
+      "logical": 535.5175000000008,
+      "pixels": 210.928740965182,
+      "road": 265.2272127273318,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 75,
+      "streak": 0.25,
+      "scale": 0.3519985584656884,
+      "logical": 637.520833333333,
+      "pixels": 224.4064143252083,
+      "road": 315.74668181805464,
+      "feedback": {
+        "factor": 1.2499999999999998,
+        "lean": -0.034999999999999976,
+        "impossibru": false,
+        "flameLength": 54.99999999999997,
+        "flameOpacity": 0.35999999999999976
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 150,
+      "streak": 0,
+      "scale": 0.34393939393939754,
+      "logical": 660,
+      "pixels": 227.0000000000348,
+      "road": 326.8800000000192,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 150,
+      "streak": 0.05,
+      "scale": 0.33275512447778344,
+      "logical": 692.9999999999973,
+      "pixels": 230.59930126313702,
+      "road": 343.2239999999001,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "progress": 150,
+      "streak": 0.25,
+      "scale": 0.3150589868147159,
+      "logical": 825,
+      "pixels": 259.92366412217734,
+      "road": 408.5999999998603,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": true,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 0,
+      "streak": 0,
+      "scale": 0.3985357125613697,
+      "logical": 360.01666666666097,
+      "pixels": 143.47949878396685,
+      "road": 143.48300606041448,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 0,
+      "streak": 0.05,
+      "scale": 0.38828477062517097,
+      "logical": 378.01750000000084,
+      "pixels": 146.77843827980382,
+      "road": 150.6571563637408,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 0,
+      "streak": 0.25,
+      "scale": 0.3520624532523028,
+      "logical": 450.02083333333303,
+      "pixels": 158.43543859799047,
+      "road": 179.35375757573638,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 75,
+      "streak": 0,
+      "scale": 0.32667005678475597,
+      "logical": 510.01666666666097,
+      "pixels": 166.6071734611869,
+      "road": 203.2648242425057,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 75,
+      "streak": 0.05,
+      "scale": 0.31695349085880276,
+      "logical": 535.5175000000008,
+      "pixels": 169.73414104099834,
+      "road": 213.42806545450003,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 75,
+      "streak": 0.25,
+      "scale": 0.2832528781779695,
+      "logical": 637.520833333333,
+      "pixels": 180.5796109401092,
+      "road": 254.08103030291386,
+      "feedback": {
+        "factor": 1.2499999999999998,
+        "lean": -0.034999999999999976,
+        "impossibru": false,
+        "flameLength": 54.99999999999997,
+        "flameOpacity": 0.35999999999999976
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 150,
+      "streak": 0,
+      "scale": 0.27676767676767966,
+      "logical": 660,
+      "pixels": 182.66666666669448,
+      "road": 263.03999999989173,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 150,
+      "streak": 0.05,
+      "scale": 0.267767706628231,
+      "logical": 692.9999999999973,
+      "pixels": 185.56302069339108,
+      "road": 276.1919999998645,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "progress": 150,
+      "streak": 0.25,
+      "scale": 0.25352764284062307,
+      "logical": 825,
+      "pixels": 209.16030534354377,
+      "road": 328.7999999997555,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": true,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 0,
+      "streak": 0,
+      "scale": 0.9069545741853442,
+      "logical": 360.01666666666097,
+      "pixels": 326.51876261628786,
+      "road": 326.52674418641254,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 0,
+      "streak": 0.05,
+      "scale": 0.883626329348786,
+      "logical": 378.01750000000084,
+      "pixels": 334.02621595461187,
+      "road": 342.85308139573317,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 0,
+      "streak": 0.25,
+      "scale": 0.8011945788344397,
+      "logical": 450.02083333333303,
+      "pixels": 360.55425202925016,
+      "road": 408.15843023214256,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 75,
+      "streak": 0,
+      "scale": 0.7434086655526455,
+      "logical": 510.01666666666097,
+      "pixels": 379.1508095763106,
+      "road": 462.5732558139134,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 75,
+      "streak": 0.05,
+      "scale": 0.7212965093915845,
+      "logical": 535.5175000000008,
+      "pixels": 386.26690346815303,
+      "road": 485.7019186046091,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 75,
+      "streak": 0.25,
+      "scale": 0.6446034456074358,
+      "logical": 637.520833333333,
+      "pixels": 410.9481258132487,
+      "road": 578.2165697673918,
+      "feedback": {
+        "factor": 1.2499999999999998,
+        "lean": -0.034999999999999976,
+        "impossibru": false,
+        "flameLength": 54.99999999999997,
+        "flameOpacity": 0.35999999999999976
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 150,
+      "streak": 0,
+      "scale": 0.6298449612403166,
+      "logical": 660,
+      "pixels": 415.69767441867043,
+      "road": 598.6046511627501,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 150,
+      "streak": 0.05,
+      "scale": 0.6093635744329863,
+      "logical": 692.9999999999973,
+      "pixels": 422.28895708212303,
+      "road": 628.5348837211495,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "progress": 150,
+      "streak": 0.25,
+      "scale": 0.5769572164033446,
+      "logical": 825,
+      "pixels": 475.989703532829,
+      "road": 748.255813953001,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": true,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 0,
+      "streak": 0,
+      "scale": 1.24996944519134,
+      "logical": 360.01666666666097,
+      "pixels": 450.00983309296134,
+      "road": 450.0208333338378,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 0,
+      "streak": 0.05,
+      "scale": 1.2178183385255705,
+      "logical": 378.01750000000084,
+      "pixels": 460.3566437835989,
+      "road": 472.52187500009313,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 0,
+      "streak": 0.25,
+      "scale": 1.1042104772397727,
+      "logical": 450.02083333333303,
+      "pixels": 496.9177191428789,
+      "road": 562.5260416668607,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 75,
+      "streak": 0,
+      "scale": 1.0245696352167872,
+      "logical": 510.01666666666097,
+      "pixels": 522.5475901211985,
+      "road": 637.5208333338378,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 75,
+      "streak": 0.05,
+      "scale": 0.9940945481999403,
+      "logical": 535.5175000000008,
+      "pixels": 532.3550272157263,
+      "road": 669.3968750000931,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 75,
+      "streak": 0.25,
+      "scale": 0.8883957743948634,
+      "logical": 637.520833333333,
+      "pixels": 566.3708144221109,
+      "road": 796.9010416668607,
+      "feedback": {
+        "factor": 1.2499999999999998,
+        "lean": -0.034999999999999976,
+        "impossibru": false,
+        "flameLength": 54.99999999999997,
+        "flameOpacity": 0.35999999999999976
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 150,
+      "streak": 0,
+      "scale": 0.8680555555555647,
+      "logical": 660,
+      "pixels": 572.9166666667616,
+      "road": 825,
+      "feedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 150,
+      "streak": 0.05,
+      "scale": 0.8398280032249491,
+      "logical": 692.9999999999973,
+      "pixels": 582.0008062349825,
+      "road": 866.25,
+      "feedback": {
+        "factor": 1.05,
+        "lean": -0.007000000000000001,
+        "impossibru": false,
+        "flameLength": 27,
+        "flameOpacity": 0.16799999999999998
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "progress": 150,
+      "streak": 0.25,
+      "scale": 0.7951653944020455,
+      "logical": 825,
+      "pixels": 656.0114503817913,
+      "road": 1031.25,
+      "feedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": true,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      }
+    }
+  ],
+  "nativeLanding": {
+    "version": "4.4.2",
+    "grind": {
+      "support": null,
+      "age": 0,
+      "exit": null,
+      "exitAge": 1,
+      "pending": 0,
+      "distance": 0,
+      "turns": 0
+    },
+    "rails": [],
+    "boosters": {
+      "active": {},
+      "hearts": 0,
+      "grace": 0,
+      "ghostIds": [],
+      "speedBlend": 0,
+      "pickups": [],
+      "nextAt": 8,
+      "serial": 0,
+      "bag": [],
+      "random": 692887005,
+      "spoiledFlight": false
+    },
+    "effectiveMultiplier": 1.2,
+    "biome": {
+      "id": "spaceport",
+      "leg": 0,
+      "nextAt": 7000,
+      "nextIn": 6807,
+      "from": "spaceport",
+      "edgeAt": 0,
+      "start": 0,
+      "end": 0,
+      "progress": 1,
+      "moving": false
+    },
+    "time": 2.3333333333333335,
+    "progress": 2.3333333333333277,
+    "stage": 0,
+    "mode": "playing",
+    "score": 193,
+    "best": 0,
+    "collection": {
+      "discovered": 1,
+      "new": 1
+    },
+    "y": 0,
+    "fall": {
+      "active": false,
+      "age": 0,
+      "duration": 2.8,
+      "rate": 1,
+      "taps": 0,
+      "progress": 1
+    },
+    "speed": 382.9,
+    "camera": {
+      "scale": 0.4796669330317096,
+      "x": 91.29299777337009,
+      "strength": 0.07394237905865077,
+      "energy": 0.04924731182795694,
+      "sceneryScale": 0.7105429376579251,
+      "roadPixelSpeed": 189.63992727272725,
+      "ground": 641.44,
+      "baseline": 641.44,
+      "lift": 0,
+      "screenSpeed": 183.66446865784158,
+      "roadScroll": 143295.00696240997
+    },
+    "speedFeedback": {
+      "factor": 1.05,
+      "lean": -0.007000000000000001,
+      "impossibru": false,
+      "flameLength": 27,
+      "flameOpacity": 0.16799999999999998
+    },
+    "kmh": 140.91,
+    "baseSpeed": 364.66666666666663,
+    "playerX": 188.98678414096915,
+    "angle": 0,
+    "omega": 0,
+    "airborne": false,
+    "spinning": false,
+    "cosmeticFlip": false,
+    "carAnimation": {
+      "cosmetic": false,
+      "phase": 0,
+      "frame": 0,
+      "gap": 0
+    },
+    "visual": {
+      "feet": [
+        {
+          "side": -1,
+          "roofError": 0,
+          "hip": {
+            "x": -11,
+            "y": -43
+          },
+          "knee": {
+            "x": -23,
+            "y": -25
+          },
+          "ankle": {
+            "x": -25.825812667873578,
+            "y": -3.480464198939083
+          },
+          "foot": {
+            "x": -25.009010911745822,
+            "y": 1.4523681407200117
+          }
+        },
+        {
+          "side": 1,
+          "roofError": 3.552713678800501e-15,
+          "hip": {
+            "x": 11,
+            "y": -43
+          },
+          "knee": {
+            "x": 23,
+            "y": -25
+          },
+          "ankle": {
+            "x": 26.524604535264015,
+            "y": 0.19494102748896222
+          },
+          "foot": {
+            "x": 24.971224294974398,
+            "y": 4.947520309213547
+          }
+        }
+      ],
+      "torsoAngle": 4.988800941046398e-34,
+      "torsoShift": 2.217244862687288e-32,
+      "crouch": 5.54311215671822e-33,
+      "bodyDrop": 1.4966402823139194e-31,
+      "landingCrouch": 5.54311215671822e-33,
+      "reactionSpace": null,
+      "aimCosine": null,
+      "jointMouthDistance": null,
+      "reaction": {
+        "reach": 0,
+        "inhale": 0,
+        "meme": 0,
+        "smoke": 0
+      },
+      "gripError": null,
+      "trick": "tuck",
+      "grabSide": 1,
+      "interactionSide": -1,
+      "grab": 0,
+      "car": {
+        "x": 0,
+        "y": 0,
+        "angle": 0
+      },
+      "expression": "neutral",
+      "cash": {
+        "count": 0,
+        "falling": 0
+      },
+      "arms": [
+        {
+          "shoulder": {
+            "x": -22,
+            "y": -82
+          },
+          "elbow": {
+            "x": -33.999999999999986,
+            "y": -65
+          },
+          "wrist": {
+            "x": -44,
+            "y": -65
+          },
+          "taunt": 0,
+          "wave": 0,
+          "handAngle": 4.71238898038469
+        },
+        {
+          "shoulder": {
+            "x": 22,
+            "y": -82
+          },
+          "elbow": {
+            "x": 33.999999999999986,
+            "y": -65
+          },
+          "wrist": {
+            "x": 44,
+            "y": -65
+          },
+          "taunt": 0,
+          "wave": 0,
+          "handAngle": 1.5707963267948966
+        }
+      ],
+      "nearWrist": {
+        "x": 44,
+        "y": -65
+      },
+      "rearWrist": {
+        "x": -44,
+        "y": -65
+      }
+    },
+    "encounters": [],
+    "grab": 0,
+    "mph": 87.557414692902,
+    "thrustAudio": {
+      "wanted": false,
+      "active": false,
+      "ready": false,
+      "voices": 0,
+      "normalisation": 1
+    },
+    "thrusting": false,
+    "fuel": 75,
+    "latched": false,
+    "turns": 1,
+    "pending": 120,
+    "flips": 1,
+    "multiplier": 1.2,
+    "meter": 0.8550257731958768,
+    "streak": 0.05,
+    "recovery": null,
+    "charging": false,
+    "charge": 0,
+    "lastLanding": {
+      "points": 150,
+      "turns": 1,
+      "late": 0,
+      "near": 0,
+      "perfect": true,
+      "good": true,
+      "grindPoints": 0,
+      "grindDistance": 0
+    },
+    "obstacles": [],
+    "director": {
+      "wave": 0,
+      "fallbacks": 0
+    },
+    "tutorial": {
+      "jump": true,
+      "flip": true
+    },
+    "perf": {
+      "fps": 60,
+      "meanRenderMs": 0.2704918110956911,
+      "p95RenderMs": 0.40000009536743164
+    },
+    "sound": false,
+    "factory": null,
+    "rocket": {
+      "phase": "ready",
+      "nextEventIn": 10.808956678149759,
+      "events": 0
+    }
+  }
+}

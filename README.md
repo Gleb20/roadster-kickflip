@@ -1,3 +1,7 @@
+## Speed-responsive camera4.4.3
+
+Actual-speed forward focus, moderate pullback, coherent receding scenery and near-road motion preserve acceleration cues. The raised baseline, rare BACKUP4.4.2 and current replay rules stay intact. [Research, comparison and evidence](docs/verification/2026-10-23-speed-camera/README.md).
+
 ## Published 4.4.2 - rare BACKUP chips
 
 [Play 4.4.2 on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.4.2). One backup chip per twelve ordinary boosters, previously one per four; no chip in the first two bags. Other effects, two-charge cap, hovering and collection feedback are retained. The release includes the existing 4.4.1 rails, roof grab, camera and clean Home.

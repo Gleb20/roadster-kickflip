@@ -1,4 +1,4 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.4.2';
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.4.3';
 const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
@@ -40,9 +40,9 @@ export function createFactoryRenderer({random=Math.random}={}){
   }));grain=concreteGrain();ready=true;},
   get ready(){return ready;},get production(){return production.state;},
   reset(){production.reset();},update(biome,time){production.update(biome,time);},
-  draw(ctx,{W,H,ground,scale,screenDistance,worldDistance,activeTime,reducedMotion=false,drawBehindLine=()=>{}}){
+  draw(ctx,{W,H,ground,scale,sceneryScale,screenDistance,worldDistance,activeTime,reducedMotion=false,drawBehindLine=()=>{}}){
    if(!ready)return;
-   const z=clamp(scale,.68,1.05),distance=worldDistance??screenDistance/z;
+   const z=Math.min(1.05,sceneryScale??clamp(scale,.68,1.05)),distance=sceneryScale?screenDistance/z:worldDistance??screenDistance/z;
    const state=production.state,t=reducedMotion?22:state?.elapsed||0;
    ctx.fillStyle='#293a43';ctx.fillRect(0,0,W,H);
    const wall=images.get('rear-wall'),wallBase=ground-222*z,wh=Math.max(300,wallBase),ww=wh*wall.width/wall.height;
@@ -124,8 +124,8 @@ export function createFactoryRenderer({random=Math.random}={}){
    }
 
   },
-  drawEntrance(ctx,{W,H,ground,scale},edge,toFactory){
-   if(!ready)return;const z=Math.max(.72,Math.min(1.15,scale)),width=46*z;
+  drawEntrance(ctx,{W,H,ground,scale,sceneryScale},edge,toFactory){
+   if(!ready)return;const z=sceneryScale??Math.max(.72,Math.min(1.15,scale)),width=46*z;
    if(edge < -width||edge>W+width)return;
    ctx.save();ctx.beginPath();ctx.rect(0,0,W,Math.min(H,ground));ctx.clip();
    // Existing wall's steel column material forms the physical doorway at the seam.

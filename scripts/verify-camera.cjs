@@ -10,7 +10,7 @@ const out=path.resolve(process.argv[2]||'docs/verification/2026-10-23-camera/bro
  check(`${width}: road baseline stable during zoom`,start.camera.ground===fast.camera.ground);
  const control=await p.locator('#boost').boundingBox();check(`${width}: road above THRUST with margin`,fast.camera.ground<control.y-15);
  const pos=await p.evaluate(()=>{const q=__qa,ctx=document.querySelector('canvas').getContext('2d'),old=ctx.translate,positions=[];ctx.translate=function(x,y){positions.push([x,y]);return old.call(this,x,y);};q.render();ctx.translate=old;return positions;});
- check(`${width}: truck uses shared road baseline`,pos.some(([x,y])=>Math.abs(x-(width*.24+400*fast.camera.scale))<.01&&Math.abs(y-fast.camera.ground)<.01)||pos.some(([x,y])=>Math.abs(x-(width*.29+400*fast.camera.scale))<.01&&Math.abs(y-fast.camera.ground)<.01));
+ check(`${width}: truck uses shared road baseline`,pos.some(([x,y])=>Math.abs(x-(fast.camera.x+400*fast.camera.scale))<.01&&Math.abs(y-fast.camera.ground)<.01));
  measurements.push({width,height,start:start.camera,fast:fast.camera,control});await p.screenshot({path:path.join(out,`fast-${width}.png`)});
  await p.locator('#pause').tap();const paused=await p.evaluate(()=>render_game_to_text());await p.evaluate(()=>{for(let i=0;i<60;i++)__qa.step(1/120);});check(`${width}: pause freezes camera`,paused===await p.evaluate(()=>render_game_to_text()));await p.locator('#resume').tap();
  for(const exit of ['pause','result']){

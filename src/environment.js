@@ -210,7 +210,7 @@ export function createEnvironmentRenderer() {
   }
 
   return {
-    draw(ctx, {W, H, ground, scale, screenDistance, sceneTime, rocketScene}) {
+    draw(ctx, {W, H, ground, scale, sceneryScale, screenDistance, sceneTime, rocketScene}) {
       if (W <= 0 || H <= 0) return;
       if (!layers) layers = createLayers();
       const key = `${W}:${H}:${ground}`;
@@ -219,7 +219,7 @@ export function createEnvironmentRenderer() {
         road = createRoad(Math.max(1, Math.ceil(H - ground)));
         cacheKey = key;
       }
-      const zoom = Math.max(.72, Math.min(1.15, scale));
+      const zoom = sceneryScale ?? Math.max(.72, Math.min(1.15, scale));
       // Integrate pixel travel in the simulation: zoom must not rescale the
       // entire accumulated distance and cancel or reverse the road's movement.
       const distance = screenDistance;

@@ -1,3 +1,7 @@
+## Speed-responsive framing4.4.3 —23 October2026
+
+User asked to make the link between acceleration and camera withdrawal perceptible. Found age-based zoom, fixed framing, background clamps and cancellation of screen motion. Actual speed now drives damped forward framing; scenery recedes and near flow retains real acceleration. Normal max phone obstacles are11% larger at the preserved previous horizon.179 tests, source/types/content/PWA170,45 input/Home,41 framing,98 speed,35 rail and13 actual upgrade checks pass; two current replay witnesses match. Rare BACKUP4.4.2 and all eight frozen verifiers retained. Physical iPhone/Safari and subjective feel remain unverified; known PWA Restart boundary stays separate. [Review and evidence](verification/2026-10-23-speed-camera/README.md).
+
 ## Published 4.4.2 - rare BACKUP chips
 
 [Play 4.4.2 on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.4.2). One backup chip per twelve ordinary boosters, previously one per four; no chip in the first two bags. Other effects, two-charge cap, hovering and collection feedback are retained. The release includes the existing 4.4.1 rails, roof grab, camera and clean Home.

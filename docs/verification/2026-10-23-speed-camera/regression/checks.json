@@ -1,0 +1,197 @@
+{
+  "checks": [
+    "320: zoom increases visible road",
+    "320: road baseline stable during zoom",
+    "320: road above THRUST with margin",
+    "320: truck uses shared road baseline",
+    "320: pause freezes camera",
+    "320: pause home clears cameo and fireworks",
+    "320: pause home restores initial zoom",
+    "320: result home clears cameo and fireworks",
+    "320: result home restores initial zoom",
+    "320: native jump and THRUST",
+    "320: native concurrent grab and THRUST",
+    "390: zoom increases visible road",
+    "390: road baseline stable during zoom",
+    "390: road above THRUST with margin",
+    "390: truck uses shared road baseline",
+    "390: pause freezes camera",
+    "390: pause home clears cameo and fireworks",
+    "390: pause home restores initial zoom",
+    "390: result home clears cameo and fireworks",
+    "390: result home restores initial zoom",
+    "390: native jump and THRUST",
+    "390: native concurrent grab and THRUST",
+    "844: zoom increases visible road",
+    "844: road baseline stable during zoom",
+    "844: road above THRUST with margin",
+    "844: truck uses shared road baseline",
+    "844: pause freezes camera",
+    "844: pause home clears cameo and fireworks",
+    "844: pause home restores initial zoom",
+    "844: result home clears cameo and fireworks",
+    "844: result home restores initial zoom",
+    "844: native jump and THRUST",
+    "844: native concurrent grab and THRUST",
+    "1440: zoom increases visible road",
+    "1440: road baseline stable during zoom",
+    "1440: road above THRUST with margin",
+    "1440: truck uses shared road baseline",
+    "1440: pause freezes camera",
+    "1440: pause home clears cameo and fireworks",
+    "1440: pause home restores initial zoom",
+    "1440: result home clears cameo and fireworks",
+    "1440: result home restores initial zoom",
+    "1440: native jump and THRUST",
+    "1440: native concurrent grab and THRUST",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "width": 320,
+      "height": 568,
+      "start": {
+        "scale": 0.3902415739509215,
+        "x": 75.56195950609964,
+        "strength": 0.04836095679298233,
+        "energy": 0.03225806451612977,
+        "sceneryScale": 0.7137865082725233,
+        "roadPixelSpeed": 149.45454545454558,
+        "ground": 431.68,
+        "baseline": 431.68,
+        "lift": 0,
+        "screenSpeed": 146.3405902315957,
+        "roadScroll": 1556.4447115151534
+      },
+      "fast": {
+        "scale": 0.27676767676768466,
+        "x": 51.20000000000239,
+        "strength": 0.9999999999999066,
+        "energy": 0.6451612903225806,
+        "sceneryScale": 0.6101694915254323,
+        "roadPixelSpeed": 263.04,
+        "ground": 431.68,
+        "baseline": 431.68,
+        "lift": 0,
+        "screenSpeed": 182.6666666666719,
+        "roadScroll": 3529.24471151516
+      },
+      "control": {
+        "x": 226,
+        "y": 480,
+        "width": 76,
+        "height": 76
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "start": {
+        "scale": 0.4849534887966743,
+        "x": 92.09113814805895,
+        "strength": 0.04836095679298233,
+        "energy": 0.03225806451612977,
+        "sceneryScale": 0.7137865082725233,
+        "roadPixelSpeed": 185.7272727272729,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 181.85755829875305,
+        "roadScroll": 1978.7693181818167
+      },
+      "fast": {
+        "scale": 0.34393939393940376,
+        "x": 62.40000000000291,
+        "strength": 0.9999999999999066,
+        "energy": 0.6451612903225806,
+        "sceneryScale": 0.6101694915254323,
+        "roadPixelSpeed": 326.88,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 227.00000000000648,
+        "roadScroll": 4430.369318181954
+      },
+      "control": {
+        "x": 282,
+        "y": 742,
+        "width": 90,
+        "height": 90
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "start": {
+        "scale": 0.888079460325843,
+        "x": 241.4946681973378,
+        "strength": 0.04836095679298233,
+        "energy": 0.03225806451612977,
+        "sceneryScale": 0.8991496712735275,
+        "roadPixelSpeed": 340.11627906976776,
+        "ground": 260,
+        "baseline": 260,
+        "lift": 0,
+        "screenSpeed": 333.0297976221914,
+        "roadScroll": 3563.795058139528
+      },
+      "fast": {
+        "scale": 0.6298449612403281,
+        "x": 177.2400000000063,
+        "strength": 0.9999999999999066,
+        "energy": 0.6451612903225806,
+        "sceneryScale": 0.7686243594797113,
+        "roadPixelSpeed": 598.6046511627907,
+        "ground": 260,
+        "baseline": 260,
+        "lift": 0,
+        "screenSpeed": 415.69767441861654,
+        "roadScroll": 8053.329941860202
+      },
+      "control": {
+        "x": 744,
+        "y": 302,
+        "width": 76,
+        "height": 76
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "start": {
+        "scale": 1.2239556664747195,
+        "x": 412.0288177774484,
+        "strength": 0.04836095679298233,
+        "energy": 0.03225806451612977,
+        "sceneryScale": 1.1400756729352803,
+        "roadPixelSpeed": 468.75000000000045,
+        "ground": 684,
+        "baseline": 684,
+        "lift": 0,
+        "screenSpeed": 458.9833749280202,
+        "roadScroll": 4949.140624999997
+      },
+      "fast": {
+        "scale": 0.8680555555555803,
+        "x": 302.4000000000107,
+        "strength": 0.9999999999999066,
+        "energy": 0.6451612903225806,
+        "sceneryScale": 0.9745762711864544,
+        "roadPixelSpeed": 825,
+        "ground": 684,
+        "baseline": 684,
+        "lift": 0,
+        "screenSpeed": 572.916666666683,
+        "roadScroll": 11136.640624999996
+      },
+      "control": {
+        "x": 1312,
+        "y": 784,
+        "width": 104,
+        "height": 104
+      }
+    }
+  ],
+  "physicalPhone": false
+}

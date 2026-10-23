@@ -1,12 +1,28 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.4.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.4.3';
 
-// Widen the normal ramp horizon; temporary bonuses still read as faster motion.
+// Allocate forward space before shrinking the player: all inputs are actual velocity.
+const clamp01=value=>Math.max(0,Math.min(1,value));
+const viewStrength=speed=>Math.max(0,Math.min(1.3,(speed-C.startSpeed)/(C.maxSpeed-C.startSpeed)));
+export function baseViewScale(width,height){
+ const x=width*(width<600?.24:.29);
+ return Math.min(1.25,Math.max(.68,width/650),height/430,(width-x-24)/550);
+}
+export function speedView(width,height,speed,strength=viewStrength(speed)){
+ const baseScale=baseViewScale(width,height),x=width*((width<600?.24:.29)-.08*strength);
+ return {scale:baseScale/(1+.44*strength),x,baseScale,strength,
+  energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),
+  sceneryScale:Math.max(.72,Math.min(1.15,baseScale))/(1+.18*strength)};
+}
+export const createSpeedView=()=>({strength:0});
+export function advanceSpeedView(state,dt,width,height,speed){
+ const target=viewStrength(speed);
+ const rate=target>state.strength?4:1.25;
+ state.strength+=(target-state.strength)*(1-Math.exp(-Math.max(0,dt)*rate));
+ return speedView(width,height,speed,state.strength);
+}
+// Static normal-ramp framing retained for previews; live camera reads effective speed.
 export function viewScale(width,height,progress){
-  const anchor=width*(width<600?.24:.29);
-  const ramp=Math.max(0,Math.min(1,progress/C.rampSeconds));
-  const cruise=C.startSpeed+(C.maxSpeed-C.startSpeed)*ramp;
-  const base=Math.min(1.25,Math.max(.68,width/650),height/430,(width-anchor-24)/Math.max(550,cruise*.95));
-  return base/(1+.4*ramp);
+ return speedView(width,height,C.startSpeed+(C.maxSpeed-C.startSpeed)*clamp01(progress/C.rampSeconds)).scale;
 }
 
 // Keep the world above the thumb controls, including short landscape viewports.

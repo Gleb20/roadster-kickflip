@@ -1,0 +1,9 @@
+{
+  "parentCommit": "b63e2af11e56bea8f46f14db484779e3c6250323",
+  "forwardApplied": true,
+  "inverseApplied": true,
+  "parentFiles": 1101,
+  "exactParentRestored": true,
+  "patch": "/tmp/tesla-speed-camera-v443-forward.patch",
+  "backendChanges": false
+}
