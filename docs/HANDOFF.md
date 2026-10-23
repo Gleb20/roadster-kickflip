@@ -1,3 +1,7 @@
+## Speed camera and clean Home4.4.1 —23 October2026
+
+Camera-only update on the published4.4.0 rail release. Raised shared road baseline, smooth wider speed-ramp view and clean Home cameo/reset state. 172 tests, source/content/types/PWA170 resources,45 camera/native-input,35 rail,98 speed and13 actual upgrade checks pass; two rail witnesses retain exact server replay. Seven frozen rulesets/backend untouched, ranked roadster-v4.4.0 retained. Physical iPhone/Safari remains untested. Known closed-tab PWA activation boundary stays separate. [Evidence and rollback](verification/2026-10-23-camera/README.md).
+
 ## Release4.4.0 in progress —23 October2026
 
 User approved the final roof-grab/squat and publication. Release evidence: [4.4.0](verification/2026-10-23-release-v440/README.md). Isolated managed checkout preserves the original dirty root/index. All six legacy verifiers stay intact; backend support remains additive even on a future frontend rollback. Public commit and live verification follow in release-status.json.

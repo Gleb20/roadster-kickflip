@@ -1,0 +1,15 @@
+# Tesla Jump 4.4.1 — speed camera and clean Home
+
+Scope: remove milestone cameos/fireworks left behind on Home after a crash or pause; raise the complete world above thumb controls; widen the speed-ramp view while anchoring the road. Rails and the approved hero rig from 4.4.0 remain in the final release.
+
+The Home bug is reproduced on unchanged 4.3.2: menu mode retains CAMEO.active, t=4 and milestone=10000. Home now resets all cameo fields and the initial view scale; both cameo painters also exclude menu mode. Existing result/paused rendering stays frozen until navigation.
+
+Road baseline: min(viewportHeight × 0.76, viewportHeight − 130 CSS px). All world painters receive the same baseline: hero, obstacles, flying enemies, pickups, rail and scenery. Zoom is the original ramp scale divided by 1 + 0.4 × clampedRampProgress. It blends at the existing 2/s response; at full ramp 40% more logical road is visible at the same viewport/speed than before. Starting scale is unchanged. Earned and temporary speed effects do not cancel themselves through extra zoom. Grounded framing cannot produce a positive lift on a short screen; airborne vertical following remains available.
+
+No numerical simulation, spawn, collision, scoring, command or replay-rule changes. Frontend/cache version is 4.4.1; ranked RULESET remains roadster-v4.4.0. Seven historical frozen rulesets and all backend files remain unchanged from the 4.4.0 release parent. No server deployment or score submission belongs to this task.
+
+Validation: 172 game tests; source/content/types/PWA checks with 170 resources. 45 camera/menu/pause/native touch checks across 320×568, 390×844, 844×390 and 1440×900; 35 rail capture/slide/jump/exit/landing checks; 98 speed-feedback checks verify proportional earned speed and matching road/obstacle motion at held base pace; two seeded witnesses each catch 7 rails and match server replay, including JSON checkpoint during support. Actual PWA upgrade 4.4.0→4.4.1 retains best, collection, old finished record, immutable queued packet and offline assets/game. 13 upgrade checks passed. The already-recorded Restart boundary still required closing/reopening the old tab; it is not fixed here. Public tests and deployment evidence are recorded after publication.
+
+[Flow and screenshots](flow-report.html). Browser checks use prepared simulation states plus native input in Chromium. Physical iPhone/Safari timing, thumb occlusion and human play balance remain unverified. Values are working tuning parameters, not measured human reaction improvements. Existing bounded debt proposal remains to reproduce PWA Restart activation and measure input/readability on a physical phone; no new obligation or unrelated audit is added.
+
+Rollback: retain the exact tested parent and bounded forward/inverse delta. The inverse must restore exact parent game bytes; publishing a reversal requires a fresh cache identity, preserving seven-version replay support, saved best/collection and queued/accepted scores. Never roll back database data.

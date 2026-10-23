@@ -49,7 +49,7 @@ const out=resolve(process.argv[2]||'/tmp/tesla-roadster-review');mkdirSync(out,{
   await page.evaluate(()=>{__qa.stop();document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));__qa.S.y=0;__qa.S.charging=false;__qa.B.factor=1;__qa.B.state='ready';Object.assign(__qa.roadsterMotion,{compression:0,velocity:0});});
   for(const [name,width,height] of [['desktop',1440,900],['portrait',390,844],['landscape',844,390]]){
    await page.setViewportSize({width,height});
-   const geometry=await page.evaluate(()=>{__wheelDraws=[];__qa.render();return {ground:innerHeight*.84,wheels:__wheelDraws};});
+   const geometry=await page.evaluate(()=>{__wheelDraws=[];__qa.render();return {ground:JSON.parse(render_game_to_text()).camera.ground,wheels:__wheelDraws};});
    assert.equal(geometry.wheels.length,2);
    geometry.wheels.forEach(w=>assert.ok(Math.abs(w.bottom-geometry.ground)<.01,`${name}: tyre touches road`));
    await page.screenshot({path:resolve(out,name+'.png')});results.push({name,...geometry});

@@ -1,0 +1,9 @@
+{
+  "mode": "menu",
+  "cameo": {
+    "active": true,
+    "t": 4,
+    "nextScore": 15000,
+    "milestone": 10000
+  }
+}

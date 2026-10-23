@@ -1,0 +1,9 @@
+{
+  "baseCommit": "9b9a174f1186493cc1cef29197437a6776a14eae",
+  "forwardApplied": true,
+  "inverseApplied": true,
+  "parentFiles": 1021,
+  "exactParentHashesRestored": true,
+  "patch": "/tmp/tesla-camera-v441-forward.patch",
+  "backendChanged": false
+}

@@ -1,0 +1,157 @@
+{
+  "checks": [
+    "320: zoom increases visible road",
+    "320: road baseline stable during zoom",
+    "320: road above THRUST with margin",
+    "320: truck uses shared road baseline",
+    "320: pause freezes camera",
+    "320: pause home clears cameo and fireworks",
+    "320: pause home restores initial zoom",
+    "320: result home clears cameo and fireworks",
+    "320: result home restores initial zoom",
+    "320: native jump and THRUST",
+    "320: native concurrent grab and THRUST",
+    "390: zoom increases visible road",
+    "390: road baseline stable during zoom",
+    "390: road above THRUST with margin",
+    "390: truck uses shared road baseline",
+    "390: pause freezes camera",
+    "390: pause home clears cameo and fireworks",
+    "390: pause home restores initial zoom",
+    "390: result home clears cameo and fireworks",
+    "390: result home restores initial zoom",
+    "390: native jump and THRUST",
+    "390: native concurrent grab and THRUST",
+    "844: zoom increases visible road",
+    "844: road baseline stable during zoom",
+    "844: road above THRUST with margin",
+    "844: truck uses shared road baseline",
+    "844: pause freezes camera",
+    "844: pause home clears cameo and fireworks",
+    "844: pause home restores initial zoom",
+    "844: result home clears cameo and fireworks",
+    "844: result home restores initial zoom",
+    "844: native jump and THRUST",
+    "844: native concurrent grab and THRUST",
+    "1440: zoom increases visible road",
+    "1440: road baseline stable during zoom",
+    "1440: road above THRUST with margin",
+    "1440: truck uses shared road baseline",
+    "1440: pause freezes camera",
+    "1440: pause home clears cameo and fireworks",
+    "1440: pause home restores initial zoom",
+    "1440: result home clears cameo and fireworks",
+    "1440: result home restores initial zoom",
+    "1440: native jump and THRUST",
+    "1440: native concurrent grab and THRUST",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "width": 320,
+      "height": 568,
+      "start": {
+        "scale": 0.39123868186170674,
+        "ground": 431.68,
+        "baseline": 431.68,
+        "lift": 0,
+        "screenSpeed": 146.71450569814016,
+        "roadScroll": 1582.7431318936613
+      },
+      "fast": {
+        "scale": 0.24971524261113925,
+        "ground": 431.68,
+        "baseline": 431.68,
+        "lift": 0,
+        "screenSpeed": 164.8120601233519,
+        "roadScroll": 2868.357747370901
+      },
+      "control": {
+        "x": 226,
+        "y": 480,
+        "width": 76,
+        "height": 76
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "start": {
+        "scale": 0.4861925955252231,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 182.32222332195883,
+        "roadScroll": 1957.9609303824416
+      },
+      "fast": {
+        "scale": 0.3103213142667625,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 204.81206741606326,
+        "roadScroll": 3555.59515144084
+      },
+      "control": {
+        "x": 282,
+        "y": 742,
+        "width": 90,
+        "height": 90
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "start": {
+        "scale": 0.8903485959444079,
+        "ground": 260,
+        "baseline": 260,
+        "lift": 0,
+        "screenSpeed": 333.88072347915323,
+        "roadScroll": 3618.2009661495854
+      },
+      "fast": {
+        "scale": 0.6478406108318304,
+        "ground": 260,
+        "baseline": 260,
+        "lift": 0,
+        "screenSpeed": 427.57480314900806,
+        "roadScroll": 6911.241125255412
+      },
+      "control": {
+        "x": 744,
+        "y": 302,
+        "width": 76,
+        "height": 76
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "start": {
+        "scale": 1.227083000820818,
+        "ground": 684,
+        "baseline": 684,
+        "lift": 0,
+        "screenSpeed": 460.15612530780714,
+        "roadScroll": 4964.123126424113
+      },
+      "fast": {
+        "scale": 0.8928572521079716,
+        "ground": 684,
+        "baseline": 684,
+        "lift": 0,
+        "screenSpeed": 589.2857863912612,
+        "roadScroll": 9502.607961089185
+      },
+      "control": {
+        "x": 1312,
+        "y": 784,
+        "width": 104,
+        "height": 104
+      }
+    }
+  ],
+  "physicalPhone": false
+}

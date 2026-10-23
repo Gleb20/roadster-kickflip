@@ -1,4 +1,4 @@
-import {validNickname,onlineMessage,projectScore} from './online.js?v=4.4.0';
+import {validNickname,onlineMessage,projectScore} from './online.js?v=4.4.1';
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
 export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
  const dialog=document.getElementById('online-dialog'),content=document.getElementById('online-content'),title=document.getElementById('online-title'),back=document.getElementById('online-close');

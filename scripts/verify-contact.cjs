@@ -43,7 +43,7 @@ const baseline=process.env.EXPECT_BASELINE==='1',out=resolve(process.argv[2]||'d
     const q=__qa;q.S.obs=[];q.S.particles=[];q.S.y=0;q.S.charging=!!charge;q.S.charge=charge;q.CAMEO.active=false;q.B.factor=factor;q.B.state=factor>1?'active':'ready';q.roadsterMotion.compression=1.8*charge;
     for(let i=0;i<30;i++){q.setSceneTime(20+i/60);q.render()}
     __contact={local:[],soles:[],riders:[],hull:null,text:[]};q.render();
-    const ctx=document.querySelector('#scene').getContext('2d'),d=ctx.getTransform().a,scale=Math.min(1.25,Math.max(.68,innerWidth/650),innerHeight/430),px=innerWidth*(innerWidth<600?.24:.29),ground=innerHeight*.84;
+    const ctx=document.querySelector('#scene').getContext('2d'),d=ctx.getTransform().a,scale=JSON.parse(render_game_to_text()).camera.scale,px=innerWidth*(innerWidth<600?.24:.29),ground=JSON.parse(render_game_to_text()).camera.ground;
     return __contact.soles.map(pair=>pair.map(p=>{
      const x=(p.x/d-px)/scale,y=(p.y/d-ground)/scale-q.roadsterMotion.compression,sx=Math.round(128+x*256/108);let top=0;
      while(top<113&&__contactPixels.car[(top*256+sx)*4+3]<180)top++;
