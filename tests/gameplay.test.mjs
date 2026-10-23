@@ -56,17 +56,17 @@ test('air hitboxes include upper/lower bounds and swept collision catches tunnel
  assert.equal(sweptCollision({y:0,angle:0},{y:0,angle:0},{id:'truck',w:30,h:41},150,-150,1,dt),true);
  p.y=0;p.angle=Math.PI/2;assert.equal(collisionAt(p,{id:'truck',w:30,h:100},60),true,'rotation changes silhouette');
 });
-test('route validation clones state, rejects fuel-less thrust trains and validates all stages',()=>{
+test('route validation clones state, preserves fuel-free bounded compatibility patterns and validates all stages',()=>{
  for(const speed of [360,510,660]){const pace=createPace();pace.progress=(speed-360)/2;pace.base=pace.speed=speed;const e=createEconomy(),p=createFlight(100),initial=JSON.stringify({pace,e,p});
   for(const kind of ['single','pair','hover','incoming','precision','mixed','thrust']){const result=validateRoute(makePattern(kind,{speed,dx:1000}),{pace,economy:e,flight:p});assert.ok(result,`${kind}/${speed}`);assert.equal(result.clearanceVerified,true);assert.equal(result.exit.y,0);}
   assert.equal(JSON.stringify({pace,e,p}),initial);
-  assert.equal(validateRoute(makePattern('thrust',{speed,dx:1000}),{pace,economy:e,flight:createFlight(0)}),null);
+  assert.ok(validateRoute(makePattern('thrust',{speed,dx:1000}),{pace,economy:e,flight:createFlight(0)}));
  }
  assert.deepEqual([0,15,35,60,90,120,150].map(stageAt),[0,1,2,3,4,5,6]);
 });
 test('seeded directors use breathers, grounded entrances, recoverable empty-fuel fallback',()=>{
  let seed=17;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
- for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];S.rails=[];d.spawn();assert.ok(S.obs.length||S.rails.length);assert.ok(d.state.last.route);if(i%5===4)assert.equal(d.state.last.kind,'single');}}
+ for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];S.rails=[];d.update();S.t+=5;d.spawn();assert.ok(S.obs.length||S.rails.length||S.next>0);assert.ok(d.state.last?.route||d.state.restUntil>S.t);if(d.state.last)assert.equal(d.state.last.route.fuelUsed,0);}}
 });
 test('coaching is contextual, persistent, dismissible and never blocks controls',()=>{
  let writes=0;const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>{writes++;data.set(k,v);}};

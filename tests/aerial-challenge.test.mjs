@@ -12,39 +12,20 @@ function directorFixture(score=14500){
  return {S,flight,pace,economy,director};
 }
 
-test('Xi and every flying model are actual grounded-player collision hazards',()=>{
- for(const o of [...AIR_TYPES,obstacleDefinition('xi')]){assert.equal(o.collision,'box',o.id);assert.ok(collisionAt(createFlight(),o,0),o.id);assert.equal(collisionAt({...createFlight(),y:450},o,0),false,o.id);}
+test('Xi remains a ground hazard while ordinary flying enemies clear an upright ground rider',()=>{
+ assert.ok(collisionAt(createFlight(),obstacleDefinition('xi'),0));
+ for(const o of AIR_TYPES){assert.equal(o.collision,'box');assert.ok(o.altitude>=205);assert.equal(collisionAt(createFlight(),o,0),false);assert.ok(collisionAt({...createFlight(),y:o.altitude},o,0));}
 });
-
-test('all air models have broad zero-fuel jump routes even at maximum boosted speed',()=>{
- for(const speed of [360,660,825])for(const type of AIR_TYPES){
-  const pace=createPace(),economy=createEconomy();pace.progress=150;pace.base=Math.min(speed,660);pace.speed=speed;
-  if(speed>660){economy.streak=.25;economy.streakLeft=4;}
-  const obs=makePattern('air',{speed,type:{...type,approachSpeed:100},dx:Math.max(1170,speed*1.8)});
-  assert.equal(obs.length,1);assert.ok(obs[0].altitude>0);
-  const route=validateRoute(obs,{flight:createFlight(0),pace,economy,allowThrust:false,timingMargin:.09});
-  assert.ok(route,`${type.id}/${speed}`);assert.equal(route.fuelUsed,0);
+test('all air models have zero-input fuel-free underpasses at the complete speed envelope',()=>{
+ for(const speed of [360,660,825,1113.75,1373.75])for(const type of AIR_TYPES){
+  const pace=createPace(),economy=createEconomy();pace.progress=150;pace.base=660;pace.speed=speed;
+  const obs=makePattern('air-pass',{speed,type:{...type,approachSpeed:100},dx:Math.max(1170,speed*1.8)});
+  const route=validateRoute(obs,{flight:createFlight(0),pace,economy,allowThrust:false,timingMargin:.09});assert.ok(route,`${type.id}/${speed}`);assert.equal(route.fuelUsed,0);assert.deepEqual(route.actions,[]);
  }
 });
-
-test('air unlocks on third leg, stays rare, is isolated and gets a ground breather',()=>{
- for(const score of [1000,7500,14500,21500]){
-  const {S,director}=directorFixture(score);const waves=[];
-  for(let i=0;i<48;i++){S.obs=[];S.rails=[];S.t+=5;director.spawn();waves.push({time:S.t,kind:director.state.last.kind,obs:[...S.obs],wait:S.next,route:director.state.last.route});}
-  const air=waves.flatMap((w,i)=>w.kind==='air'?[i]:[]);
-  if(score<14000){assert.equal(air.length,0);continue;}
-  assert.ok(air.length>=2&&air.length<=7,`${score}: ${air.length}`);
-  for(const i of air){assert.equal(waves[i].obs.length,1);assert.equal(waves[i-1].kind,'single');assert.equal(waves[i+1]?.kind,'single');assert.equal(waves[i].route.fuelUsed,0);assert.ok(waves[i].route.timingMargin>=.09);assert.ok(waves[i].wait>=waves[i].route.duration+1.2);}
-  for(let i=1;i<air.length;i++){assert.ok(air[i]-air[i-1]>=7);assert.ok(waves[air[i]].time-waves[air[i-1]].time>=28);}
- }
+test('factory generation retains its eligible canonical vehicles',()=>{
+ const {S,director}=directorFixture(7500),seen=new Set();for(let i=0;i<100;i++){S.obs=[];S.rails=[];director.update();S.t+=5;director.spawn();for(const o of S.obs)seen.add(o.id);}assert.ok(seen.has('bydSeal')||seen.has('xiaomiSu7')||seen.has('batteryAgv'));
 });
-
-test('Xi enters the factory ground generator as an ordinary single or pair',()=>{
- const {S,director}=directorFixture(7500),seen=new Set();
- for(let i=0;i<100;i++){S.obs=[];S.rails=[];S.t+=5;director.spawn();for(const o of S.obs){seen.add(o.id);if(o.id==='xi'){assert.equal(o.altitude||0,0);assert.equal(o.collision,'box');}}}
- assert.ok(seen.has('xi'));
-});
-
 
 test('frozen 4.1 late-air replay and checkpoint retain their original collision contract',async()=>{
  const {createRun}=await import('../supabase/rulesets/roadster-v410/run.js');const {verifyChunk}=await import('../supabase/chunk.mjs');

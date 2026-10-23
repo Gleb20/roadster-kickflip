@@ -1,0 +1,102 @@
+{
+  "checks": [
+    "320: air silhouette is above a grounded rider",
+    "320: native late-entry jump catches and banks the combined rail",
+    "320: no-input ground bypass survives",
+    "390: air silhouette is above a grounded rider",
+    "390: native late-entry jump catches and banks the combined rail",
+    "390: no-input ground bypass survives",
+    "390: native touch still launches",
+    "844: air silhouette is above a grounded rider",
+    "844: native late-entry jump catches and banks the combined rail",
+    "844: no-input ground bypass survives",
+    "1002: air silhouette is above a grounded rider",
+    "1002: native late-entry jump catches and banks the combined rail",
+    "1002: no-input ground bypass survives",
+    "1440: air silhouette is above a grounded rider",
+    "1440: native late-entry jump catches and banks the combined rail",
+    "1440: no-input ground bypass survives",
+    "no browser runtime errors"
+  ],
+  "errors": [],
+  "performanceReport": {
+    "before": [
+      {
+        "seed": 17,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 62,
+        "p50": 2.700000047683716,
+        "p95": 5.700000047683716,
+        "max": 11
+      },
+      {
+        "seed": 932,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 62,
+        "p50": 3.4000000953674316,
+        "p95": 9.900000095367432,
+        "max": 16.799999952316284
+      },
+      {
+        "seed": 2026,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 63,
+        "p50": 4.1000001430511475,
+        "p95": 9.900000095367432,
+        "max": 21.200000047683716
+      },
+      {
+        "seed": 42,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 63,
+        "p50": 2.8999998569488525,
+        "p95": 10.599999904632568,
+        "max": 19.09999990463257
+      }
+    ],
+    "after": [
+      {
+        "seed": 17,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 47,
+        "p50": 2.299999952316284,
+        "p95": 7.1000001430511475,
+        "max": 71.70000004768372
+      },
+      {
+        "seed": 932,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 44,
+        "p50": 2,
+        "p95": 9.200000047683716,
+        "max": 11.5
+      },
+      {
+        "seed": 2026,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 45,
+        "p50": 1.8000001907348633,
+        "p95": 4.8999998569488525,
+        "max": 6.5
+      },
+      {
+        "seed": 42,
+        "seconds": 240,
+        "mode": "playing",
+        "n": 47,
+        "p50": 1.6000001430511475,
+        "p95": 3.5999999046325684,
+        "max": 10.099999904632568
+      }
+    ]
+  },
+  "version": "156.0.8078.47",
+  "physicalDevice": false
+}

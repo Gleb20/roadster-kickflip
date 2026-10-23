@@ -1,0 +1,15 @@
+{
+  "api": {
+    "characters": 483430,
+    "freshDeployedSourceExact": true,
+    "sha256": "04d4866926a976f0764bad86ef16026dde1794f687e9d5e96d569813e11053dd"
+  },
+  "worker": {
+    "characters": 477895,
+    "freshDeployedSourceExact": true,
+    "sha256": "9aa6906c1836f971c8146d3533212227aba4769d04489b25e8013535d965c809"
+  },
+  "migration": "20261023210000_director_v460.sql",
+  "oldRulesets": 8,
+  "newRulesets": 9
+}

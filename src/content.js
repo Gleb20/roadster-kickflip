@@ -68,7 +68,7 @@ export const OBSTACLES=freeze([
   ['regulatorDrone','APPROVAL PENDING','all'],
   ['sikorsky','SIKORSKY / VS-300',['spaceport']],
   ['qualitySkull','QUALITY CONTROL',['tesla-factory']],
- ].map(([id,name,biomes])=>spriteDefinition(String(id),String(name),{category:'flying enemy',biomes:Array.isArray(biomes)?biomes:'all',collision:'box',hero:reaction(id==='ufo'?'reptile':'look','near',320)},32)),
+ ].map(([id,name,biomes])=>spriteDefinition(String(id),String(name),{category:'flying enemy',biomes:Array.isArray(biomes)?biomes:'all',collision:'box',hero:reaction(id==='ufo'?'reptile':'look','near',320)},({ufo:225,primeDrone:215,twitterBird:215,starlink:250,regulatorDrone:220,sikorsky:245,qualitySkull:210})[String(id)])),
  spriteDefinition('xi','COMRADE XI',{category:'person',biomes:['tesla-factory'],collision:'box',hero:reaction('lightning','near',380),obstacle:reaction('lightning','near',380)}),
 ]);
 export const PROP_TYPES=freeze(OBSTACLES.filter(o=>['muscleCoupe','muscleCompact','pickup'].includes(o.id)));

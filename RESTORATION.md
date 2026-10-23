@@ -1,3 +1,7 @@
+## Director 4.6.0 — bounded rollback
+
+Parent is `b7eb5b07f510ba3d7a450e3bbc9d124c0fed43cb` (published4.5.1 audio controls). Reverse only the director release delta in an isolated checkout; inspect the resulting tree and run parent tests/checks. Publish any reversal with a fresh PWA identity. Retain all nine backend rulesets for cached clients, existing accepted scores and queued submissions; do not reverse the additive migration or delete data. Original dirty root, index and foreign changes are preserved. [Evidence](docs/verification/2026-10-23-director/README.md).
+
 ## Sound settings4.5.1 — bounded inverse
 
 Parent44579d2 is the published4.5.0 audio release. Runtime commit `d3e18354b8e83d0d5bd12c47e124e577c5daa4f1` has a rehearsed exact inverse restoring parent tree `336d4a39b18d651852b3b241a4f9b3302c5ec926`;185 parent tests and all parent checks pass. Revert this settings release on an isolated checkout, inspect the exact tree and retain the latest parallel director/spin work before publishing any reversal with a fresh PWA version. Keep `roadster-audio-v2`, the legacy sound key, records, collection, IndexedDB outbox and all frozen replay verifiers. Original music/thrust media are unchanged. Exact candidate/parent hashes, inverse rehearsal and parent tests are recorded in `docs/verification/2026-10-23-audio-controls-v470/`. Never restore the old dirty root over current main.

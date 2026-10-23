@@ -1,0 +1,13 @@
+{
+  "baseCommit": "b7eb5b07f510ba3d7a450e3bbc9d124c0fed43cb",
+  "expectedParentTree": "4160cd09baa720b3a8c7147d622792ccbb242f7d",
+  "inverseResultTree": "4160cd09baa720b3a8c7147d622792ccbb242f7d",
+  "exactTreeMatch": true,
+  "parentGameTests": 190,
+  "parentCheck": "pass",
+  "parentPwaResources": 189,
+  "rehearsalCheckout": "/tmp/tesla-director-v460-rollback-final",
+  "frontendOnlyRollback": true,
+  "keepNineBackendRulesets": true,
+  "preserveScoresAndOutbox": true
+}

@@ -1,10 +1,10 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.5.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.0';
 export const LESSONS=[
   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
   {id:'flip',at:20,text:'IN THE AIR: HOLD TO FLIP',detail:'Grab to spin faster. Release to straighten and slow down.'},
   {id:'thrust',at:35,text:'HOLD THRUST / SHIFT IN THE AIR',detail:'Jets push away from the underbody. Land flips to refuel.'},
-  {id:'air',at:60,text:'LOW FLYER. JUMP CLEAR.',detail:'Incoming aircraft cross your lane. Time a clean jump.'},
+  {id:'air',at:60,text:'AIR ABOVE. DRIVE UNDERNEATH.',detail:'The ground is clear. For a rail, let the flyer pass before jumping on.'},
   {id:'near',at:90,text:'LAND CLOSE. JUMP LATE.',detail:'Tight landings and late takeoffs earn +25 base points.'},
 ];
 export function createCoach(storage){

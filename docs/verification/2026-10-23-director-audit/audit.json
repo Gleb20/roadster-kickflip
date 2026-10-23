@@ -1,0 +1,590 @@
+{
+  "base": "44579d2e5d44a5aec3d4f76192d2e2a145b71db7",
+  "version": "4.5.0",
+  "samples": [
+    {
+      "speed": 360,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.35,
+        "fuelUsed": 28.0000000000002
+      },
+      "ms": 21.432
+    },
+    {
+      "speed": 360,
+      "kind": "pair",
+      "count": 2,
+      "span": 650,
+      "edgeGaps": [
+        430
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.35,
+        "fuelUsed": 56.00000000000018
+      },
+      "ms": 14.191
+    },
+    {
+      "speed": 360,
+      "kind": "precision",
+      "count": 2,
+      "span": 524,
+      "edgeGaps": [
+        304
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 11.936
+    },
+    {
+      "speed": 360,
+      "kind": "thrust",
+      "count": 4,
+      "span": 605,
+      "edgeGaps": [
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 13.043
+    },
+    {
+      "speed": 510,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 3.097
+    },
+    {
+      "speed": 510,
+      "kind": "pair",
+      "count": 2,
+      "span": 875,
+      "edgeGaps": [
+        655
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 6.048
+    },
+    {
+      "speed": 510,
+      "kind": "precision",
+      "count": 2,
+      "span": 696.5,
+      "edgeGaps": [
+        476.5
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 4.588
+    },
+    {
+      "speed": 510,
+      "kind": "thrust",
+      "count": 6,
+      "span": 935,
+      "edgeGaps": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 1.1,
+        "fuelUsed": 88.00000000000016
+      },
+      "ms": 14.078
+    },
+    {
+      "speed": 660,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 2.929
+    },
+    {
+      "speed": 660,
+      "kind": "pair",
+      "count": 2,
+      "span": 1100,
+      "edgeGaps": [
+        880
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 4.558
+    },
+    {
+      "speed": 660,
+      "kind": "precision",
+      "count": 3,
+      "span": 869,
+      "edgeGaps": [
+        20,
+        589
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 7.249
+    },
+    {
+      "speed": 660,
+      "kind": "thrust",
+      "count": 6,
+      "span": 935,
+      "edgeGaps": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 11.7
+    },
+    {
+      "speed": 825,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 3.14
+    },
+    {
+      "speed": 825,
+      "kind": "pair",
+      "count": 2,
+      "span": 1347.5,
+      "edgeGaps": [
+        1127.5
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 5.278
+    },
+    {
+      "speed": 825,
+      "kind": "precision",
+      "count": 3,
+      "span": 1058.75,
+      "edgeGaps": [
+        20,
+        748.75
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 4.016
+    },
+    {
+      "speed": 825,
+      "kind": "thrust",
+      "count": 6,
+      "span": 935,
+      "edgeGaps": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.35,
+        "fuelUsed": 28.0000000000002
+      },
+      "ms": 9.325
+    },
+    {
+      "speed": 1113.75,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 2.88
+    },
+    {
+      "speed": 1113.75,
+      "kind": "pair",
+      "count": 2,
+      "span": 1780.625,
+      "edgeGaps": [
+        1560.625
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 3.938
+    },
+    {
+      "speed": 1113.75,
+      "kind": "precision",
+      "count": 3,
+      "span": 1390.8125,
+      "edgeGaps": [
+        20,
+        1080.813
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 3.462
+    },
+    {
+      "speed": 1113.75,
+      "kind": "thrust",
+      "count": 6,
+      "span": 935,
+      "edgeGaps": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.35,
+        "fuelUsed": 28.0000000000002
+      },
+      "ms": 7.868
+    },
+    {
+      "speed": 1373.75,
+      "kind": "single",
+      "count": 1,
+      "span": 110,
+      "edgeGaps": [],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 2.346
+    },
+    {
+      "speed": 1373.75,
+      "kind": "pair",
+      "count": 2,
+      "span": 2170.625,
+      "edgeGaps": [
+        1950.625
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0,
+        "fuelUsed": 0
+      },
+      "ms": 4.105
+    },
+    {
+      "speed": 1373.75,
+      "kind": "precision",
+      "count": 3,
+      "span": 1689.8125,
+      "edgeGaps": [
+        20,
+        1379.813
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.1,
+        "burn": 0.65,
+        "fuelUsed": 52.00000000000019
+      },
+      "ms": 5.188
+    },
+    {
+      "speed": 1373.75,
+      "kind": "thrust",
+      "count": 6,
+      "span": 935,
+      "edgeGaps": [
+        55,
+        55,
+        55,
+        55,
+        55
+      ],
+      "route": {
+        "charge": 0,
+        "lead": 0.11,
+        "burn": 0.35,
+        "fuelUsed": 28.0000000000002
+      },
+      "ms": 8.871
+    }
+  ],
+  "air": [
+    {
+      "id": "ufo",
+      "altitude": 32,
+      "w": 104,
+      "h": 47.26,
+      "hitsUprightGround": true,
+      "biomes": "all"
+    },
+    {
+      "id": "primeDrone",
+      "altitude": 32,
+      "w": 110,
+      "h": 48.984,
+      "hitsUprightGround": true,
+      "biomes": "all"
+    },
+    {
+      "id": "twitterBird",
+      "altitude": 32,
+      "w": 76,
+      "h": 50.568,
+      "hitsUprightGround": true,
+      "biomes": [
+        "spaceport"
+      ]
+    },
+    {
+      "id": "starlink",
+      "altitude": 32,
+      "w": 112,
+      "h": 69.271,
+      "hitsUprightGround": true,
+      "biomes": [
+        "spaceport"
+      ]
+    },
+    {
+      "id": "regulatorDrone",
+      "altitude": 32,
+      "w": 106,
+      "h": 47.065,
+      "hitsUprightGround": true,
+      "biomes": "all"
+    },
+    {
+      "id": "sikorsky",
+      "altitude": 32,
+      "w": 176,
+      "h": 89.146,
+      "hitsUprightGround": true,
+      "biomes": [
+        "spaceport"
+      ]
+    },
+    {
+      "id": "qualitySkull",
+      "altitude": 32,
+      "w": 76,
+      "h": 40.87,
+      "hitsUprightGround": true,
+      "biomes": [
+        "tesla-factory"
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "width": 320,
+      "speed": 360,
+      "visibleWorld": 610.22,
+      "stationaryTTC": 1.564,
+      "incoming110TTC": 1.198
+    },
+    {
+      "width": 320,
+      "speed": 660,
+      "visibleWorld": 971.21,
+      "stationaryTTC": 1.4,
+      "incoming110TTC": 1.2
+    },
+    {
+      "width": 320,
+      "speed": 825,
+      "visibleWorld": 1090.53,
+      "stationaryTTC": 1.265,
+      "incoming110TTC": 1.116
+    },
+    {
+      "width": 320,
+      "speed": 1113.75,
+      "visibleWorld": 1090.53,
+      "stationaryTTC": 0.937,
+      "incoming110TTC": 0.853
+    },
+    {
+      "width": 390,
+      "speed": 360,
+      "visibleWorld": 598.46,
+      "stationaryTTC": 1.532,
+      "incoming110TTC": 1.173
+    },
+    {
+      "width": 390,
+      "speed": 660,
+      "visibleWorld": 952.49,
+      "stationaryTTC": 1.372,
+      "incoming110TTC": 1.176
+    },
+    {
+      "width": 390,
+      "speed": 825,
+      "visibleWorld": 1069.51,
+      "stationaryTTC": 1.239,
+      "incoming110TTC": 1.094
+    },
+    {
+      "width": 390,
+      "speed": 1113.75,
+      "visibleWorld": 1069.51,
+      "stationaryTTC": 0.918,
+      "incoming110TTC": 0.836
+    },
+    {
+      "width": 844,
+      "speed": 360,
+      "visibleWorld": 660.7,
+      "stationaryTTC": 1.705,
+      "incoming110TTC": 1.306
+    },
+    {
+      "width": 844,
+      "speed": 660,
+      "visibleWorld": 1058.61,
+      "stationaryTTC": 1.533,
+      "incoming110TTC": 1.314
+    },
+    {
+      "width": 844,
+      "speed": 825,
+      "visibleWorld": 1190.76,
+      "stationaryTTC": 1.386,
+      "incoming110TTC": 1.223
+    },
+    {
+      "width": 844,
+      "speed": 1113.75,
+      "visibleWorld": 1190.76,
+      "stationaryTTC": 1.027,
+      "incoming110TTC": 0.935
+    },
+    {
+      "width": 1440,
+      "speed": 360,
+      "visibleWorld": 1127.26,
+      "stationaryTTC": 3.001,
+      "incoming110TTC": 2.298
+    },
+    {
+      "width": 1440,
+      "speed": 660,
+      "visibleWorld": 1806.16,
+      "stationaryTTC": 2.665,
+      "incoming110TTC": 2.285
+    },
+    {
+      "width": 1440,
+      "speed": 825,
+      "visibleWorld": 2031.62,
+      "stationaryTTC": 2.406,
+      "incoming110TTC": 2.123
+    },
+    {
+      "width": 1440,
+      "speed": 1113.75,
+      "visibleWorld": 2031.62,
+      "stationaryTTC": 1.782,
+      "incoming110TTC": 1.622
+    }
+  ],
+  "notes": [
+    "Synthetic state matrix, not player success probability.",
+    "Timing is a single cold/warm mixed host measurement, not phone latency or a statistical benchmark.",
+    "1373.75 is multiplicative speed ceiling plus vx bound; individual reachable combinations require run tests.",
+    "Visibility uses settled camera and first screen-edge entry, not full silhouette or charge-ready visibility."
+  ]
+}

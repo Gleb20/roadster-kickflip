@@ -1,0 +1,2061 @@
+{
+  "note": "Machine witness play; not human success probability. Timing is host-specific, single process; ready includes retained rail lifetime.",
+  "results": [
+    {
+      "seed": 17,
+      "mode": "playing",
+      "t": 240,
+      "score": 46801,
+      "maxSpeed": 891.0000000000001,
+      "waves": 62,
+      "maxObjects": 3,
+      "minReadyRest": 0.008333333333325754,
+      "p95SpawnStepMs": 11.059916000000015,
+      "maxSpawnStepMs": 21.185333,
+      "waveDetails": [
+        {
+          "at": 1.7083333333333333,
+          "kind": "single",
+          "previousKind": null,
+          "count": 1,
+          "readyRest": 1.7,
+          "stepMs": 21.185333
+        },
+        {
+          "at": 5.483333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.09166666666666679,
+          "stepMs": 17.497249999999994
+        },
+        {
+          "at": 11.041666666666666,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.0749999999999993,
+          "stepMs": 6.4604169999999925
+        },
+        {
+          "at": 14.083333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.016666666666667496,
+          "stepMs": 4.486792000000008
+        },
+        {
+          "at": 19.958333333333332,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.2416666666666671,
+          "stepMs": 6.554124999999999
+        },
+        {
+          "at": 23,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.13333333333333286,
+          "stepMs": 4.102582999999996
+        },
+        {
+          "at": 25.675,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.04166666666666785,
+          "stepMs": 7.637749999999997
+        },
+        {
+          "at": 30.724999999999998,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.05833333333333,
+          "stepMs": 2.0849159999999927
+        },
+        {
+          "at": 33.03333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 6.453832999999989
+        },
+        {
+          "at": 35.708333333333336,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.125,
+          "stepMs": 5.914540999999986
+        },
+        {
+          "at": 38.38333333333333,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.125,
+          "stepMs": 1.5914579999999887
+        },
+        {
+          "at": 46.50833333333333,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 3.8333333333333357,
+          "stepMs": 14.415959000000015
+        },
+        {
+          "at": 50.833333333333336,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.0833333333333357,
+          "stepMs": 6.498874999999998
+        },
+        {
+          "at": 53.50833333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": null,
+          "stepMs": 11.059916000000015
+        },
+        {
+          "at": 56.18333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.03333333333333144,
+          "stepMs": 8.328082999999992
+        },
+        {
+          "at": 58.858333333333334,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.01666666666666572,
+          "stepMs": 7.680582999999984
+        },
+        {
+          "at": 65.575,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.63333333333334,
+          "stepMs": 1.6383749999999964
+        },
+        {
+          "at": 68.06666666666666,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.09999999999999432,
+          "stepMs": 1.2148750000000064
+        },
+        {
+          "at": 73.10833333333333,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 2.5581669999999974
+        },
+        {
+          "at": 75.41666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.01666666666666572,
+          "stepMs": 2.519332999999989
+        },
+        {
+          "at": 77.90833333333333,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 4.277665999999982
+        },
+        {
+          "at": 84.35,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.5749999999999886,
+          "stepMs": 2.1494169999999997
+        },
+        {
+          "at": 86.84166666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 5.178750000000008
+        },
+        {
+          "at": 89.51666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 1.4145840000000192
+        },
+        {
+          "at": 92.00833333333333,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.125,
+          "stepMs": 1.1125830000000008
+        },
+        {
+          "at": 96.89166666666667,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 6.529208000000011
+        },
+        {
+          "at": 103.475,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.5333333333333314,
+          "stepMs": 2.9010839999999973
+        },
+        {
+          "at": 105.96666666666667,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.13333333333333997,
+          "stepMs": 6.678457999999978
+        },
+        {
+          "at": 109.55833333333334,
+          "kind": "precision",
+          "previousKind": "precision",
+          "count": 3,
+          "readyRest": 0.09166666666666856,
+          "stepMs": 8.448041000000018
+        },
+        {
+          "at": 113.14999999999999,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 0.09999999999999432,
+          "stepMs": 5.2247919999999795
+        },
+        {
+          "at": 115.45833333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.008333333333325754,
+          "stepMs": 1.715332999999987
+        },
+        {
+          "at": 117.95,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 1.3857919999999808
+        },
+        {
+          "at": 123.45,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 2.00833333333334,
+          "stepMs": 1.7642920000000117
+        },
+        {
+          "at": 126.125,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 7.303541999999993
+        },
+        {
+          "at": 129.925,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 2.5470829999999864
+        },
+        {
+          "at": 132.41666666666666,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.05833333333333712,
+          "stepMs": 5.071124999999995
+        },
+        {
+          "at": 136.375,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.04166666666665719,
+          "stepMs": 3.8442079999999805
+        },
+        {
+          "at": 142.65,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 2.458333333333343,
+          "stepMs": 2.370625000000018
+        },
+        {
+          "at": 146.60833333333332,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 0.1416666666666515,
+          "stepMs": 0.6688330000000065
+        },
+        {
+          "at": 151.21666666666667,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 1.7506669999999644
+        },
+        {
+          "at": 153.70833333333334,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 6.57445899999999
+        },
+        {
+          "at": 160.18333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.450000000000017,
+          "stepMs": 1.294999999999959
+        },
+        {
+          "at": 162.675,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 8.18266600000004
+        },
+        {
+          "at": 166.68333333333334,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 2.794540999999981
+        },
+        {
+          "at": 169.175,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 4.760499999999979
+        },
+        {
+          "at": 171.85,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.15000000000000568,
+          "stepMs": 0.6877499999999941
+        },
+        {
+          "at": 176.45833333333334,
+          "kind": "precision",
+          "previousKind": "rail",
+          "count": 3,
+          "readyRest": 1.25,
+          "stepMs": 2.7475840000000176
+        },
+        {
+          "at": 181.94166666666666,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 2.0083333333333258,
+          "stepMs": 3.80337499999996
+        },
+        {
+          "at": 185.9,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.14166666666667993,
+          "stepMs": 2.6972920000000045
+        },
+        {
+          "at": 189.675,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.03333333333335986,
+          "stepMs": 3.1422919999999976
+        },
+        {
+          "at": 192.35,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.15000000000000568,
+          "stepMs": 3.1974589999999807
+        },
+        {
+          "at": 198.09166666666667,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 3.083333333333343,
+          "stepMs": 1.2297079999999596
+        },
+        {
+          "at": 200.58333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 0.8955420000000345
+        },
+        {
+          "at": 205.19166666666666,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 4.3075000000000045
+        },
+        {
+          "at": 209.33333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 0.8688339999999926
+        },
+        {
+          "at": 211.825,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 2.5537080000000287
+        },
+        {
+          "at": 217.30833333333334,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 2.008333333333354,
+          "stepMs": 1.9136249999999677
+        },
+        {
+          "at": 220.53333333333333,
+          "kind": "precision",
+          "previousKind": "pair",
+          "count": 3,
+          "readyRest": 0.15833333333333144,
+          "stepMs": 2.5762919999999667
+        },
+        {
+          "at": 224.125,
+          "kind": "precision",
+          "previousKind": "precision",
+          "count": 3,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 2.7811250000000314
+        },
+        {
+          "at": 228.08333333333334,
+          "kind": "rail",
+          "previousKind": "precision",
+          "count": 0,
+          "readyRest": 0.10000000000002274,
+          "stepMs": 0.4801670000000513
+        },
+        {
+          "at": 234.25833333333333,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 2.816666666666663,
+          "stepMs": 0.564707999999996
+        },
+        {
+          "at": 236.75,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.15000000000000568,
+          "stepMs": 3.171457999999973
+        }
+      ]
+    },
+    {
+      "seed": 932,
+      "mode": "playing",
+      "t": 240,
+      "score": 62364,
+      "maxSpeed": 816.5475000001175,
+      "waves": 62,
+      "maxObjects": 3,
+      "minReadyRest": 0.00833333333333286,
+      "p95SpawnStepMs": 12.344374999999957,
+      "maxSpawnStepMs": 29.258541000000037,
+      "waveDetails": [
+        {
+          "at": 1.7083333333333333,
+          "kind": "single",
+          "previousKind": null,
+          "count": 1,
+          "readyRest": 1.7,
+          "stepMs": 8.120083000000022
+        },
+        {
+          "at": 4.75,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.16666666666666696,
+          "stepMs": 3.955165999999963
+        },
+        {
+          "at": 10.475,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.083333333333334,
+          "stepMs": 9.924624999999992
+        },
+        {
+          "at": 13.333333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": null,
+          "stepMs": 1.166499999999985
+        },
+        {
+          "at": 19.025,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 12.181083000000001
+        },
+        {
+          "at": 21.883333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.09166666666666501,
+          "stepMs": 1.1383749999999964
+        },
+        {
+          "at": 24.741666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.11666666666666714,
+          "stepMs": 12.914125000000013
+        },
+        {
+          "at": 29.5,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.0583333333333336,
+          "stepMs": 7.240250000000003
+        },
+        {
+          "at": 31.625,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.00833333333333286,
+          "stepMs": 12.344374999999957
+        },
+        {
+          "at": 34.11666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 3.4263749999999504
+        },
+        {
+          "at": 36.608333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 0.801084000000003
+        },
+        {
+          "at": 41.975,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 25.23254099999997
+        },
+        {
+          "at": 48.875,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.683333333333337,
+          "stepMs": 3.4805000000000064
+        },
+        {
+          "at": 51.36666666666667,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.00833333333333286,
+          "stepMs": 29.258541000000037
+        },
+        {
+          "at": 55.50833333333333,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": null,
+          "stepMs": 2.6110419999999976
+        },
+        {
+          "at": 58,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.05833333333333712,
+          "stepMs": 4.209750000000099
+        },
+        {
+          "at": 63.93333333333333,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.0333333333333314,
+          "stepMs": 3.379291999999964
+        },
+        {
+          "at": 66.425,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.09999999999999432,
+          "stepMs": 0.909958999999958
+        },
+        {
+          "at": 71.475,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 5.561165999999957
+        },
+        {
+          "at": 75.43333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.08333333333334281,
+          "stepMs": 3.506625000000099
+        },
+        {
+          "at": 80.25833333333333,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 2.441666666666663,
+          "stepMs": 2.2261669999999185
+        },
+        {
+          "at": 84.03333333333333,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.01666666666666572,
+          "stepMs": 10.785916000000043
+        },
+        {
+          "at": 87.99166666666666,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 6.036166999999978
+        },
+        {
+          "at": 91.03333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.15833333333333144,
+          "stepMs": 2.9450409999999465
+        },
+        {
+          "at": 93.525,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.125,
+          "stepMs": 0.7639159999999947
+        },
+        {
+          "at": 99.6,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 2.4499999999999886,
+          "stepMs": 9.578250000000025
+        },
+        {
+          "at": 102.09166666666667,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.13333333333333997,
+          "stepMs": 7.274042000000009
+        },
+        {
+          "at": 106.08333333333333,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 8.983208999999988
+        },
+        {
+          "at": 108.575,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.13333333333333997,
+          "stepMs": 5.510457999999971
+        },
+        {
+          "at": 114.43333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.0166666666666657,
+          "stepMs": 7.528415999999993
+        },
+        {
+          "at": 116.74166666666666,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.3333333333333286,
+          "stepMs": 3.980000000000018
+        },
+        {
+          "at": 120.33333333333333,
+          "kind": "rail",
+          "previousKind": "precision",
+          "count": 0,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 0.6307920000000422
+        },
+        {
+          "at": 124.725,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 4.010209000000032
+        },
+        {
+          "at": 130.55833333333334,
+          "kind": "precision",
+          "previousKind": "pair",
+          "count": 3,
+          "readyRest": 2.0083333333333258,
+          "stepMs": 4.706165999999939
+        },
+        {
+          "at": 134.15,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 5.5877499999999145
+        },
+        {
+          "at": 136.64166666666665,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 8.345625000000041
+        },
+        {
+          "at": 140.41666666666666,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.04166666666665719,
+          "stepMs": 7.820500000000038
+        },
+        {
+          "at": 144.19166666666666,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.05000000000001137,
+          "stepMs": 4.686209000000076
+        },
+        {
+          "at": 148.88333333333333,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 2.4499999999999886,
+          "stepMs": 0.4862919999999349
+        },
+        {
+          "at": 153.49166666666667,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 6.933500000000095
+        },
+        {
+          "at": 155.98333333333332,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 5.188041999999996
+        },
+        {
+          "at": 159.99166666666667,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 6.544458999999961
+        },
+        {
+          "at": 162.48333333333332,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 4.459124999999972
+        },
+        {
+          "at": 166.075,
+          "kind": "precision",
+          "previousKind": "precision",
+          "count": 3,
+          "readyRest": 0.11666666666664582,
+          "stepMs": 4.710250000000087
+        },
+        {
+          "at": 172,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 2.4499999999999886,
+          "stepMs": 3.543333999999959
+        },
+        {
+          "at": 174.49166666666667,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 0.5170829999999569
+        },
+        {
+          "at": 179.1,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 6.290666999999985
+        },
+        {
+          "at": 183.05833333333334,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 6.06454199999996
+        },
+        {
+          "at": 187.01666666666665,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 1.592958000000067
+        },
+        {
+          "at": 192.86666666666667,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.008333333333354,
+          "stepMs": 5.670916999999918
+        },
+        {
+          "at": 195.175,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.0666666666666913,
+          "stepMs": 4.976249999999936
+        },
+        {
+          "at": 199.18333333333334,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 5.147166999999968
+        },
+        {
+          "at": 201.49166666666667,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.06666666666666288,
+          "stepMs": 0.5562499999999773
+        },
+        {
+          "at": 206.1,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 6.495374999999967
+        },
+        {
+          "at": 211.93333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.008333333333354,
+          "stepMs": 0.7812089999999898
+        },
+        {
+          "at": 214.60833333333332,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.14999999999997726,
+          "stepMs": 1.3903750000000628
+        },
+        {
+          "at": 218.75,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 9.819665999999984
+        },
+        {
+          "at": 222.70833333333334,
+          "kind": "precision",
+          "previousKind": "pair",
+          "count": 3,
+          "readyRest": 0.13333333333335418,
+          "stepMs": 4.505791000000045
+        },
+        {
+          "at": 226.29999999999998,
+          "kind": "precision",
+          "previousKind": "precision",
+          "count": 3,
+          "readyRest": 0.11666666666664582,
+          "stepMs": 4.62133300000005
+        },
+        {
+          "at": 231.78333333333333,
+          "kind": "rail",
+          "previousKind": "precision",
+          "count": 0,
+          "readyRest": 2.0083333333333258,
+          "stepMs": 0.6468330000000151
+        },
+        {
+          "at": 236.39166666666665,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 2.5962090000000444
+        },
+        {
+          "at": 238.88333333333333,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 3.4685830000000806
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "mode": "playing",
+      "t": 240,
+      "score": 50534,
+      "maxSpeed": 828.540000000127,
+      "waves": 63,
+      "maxObjects": 3,
+      "minReadyRest": 0.008333333333325754,
+      "p95SpawnStepMs": 14.91862500000002,
+      "maxSpawnStepMs": 25.389749999999935,
+      "waveDetails": [
+        {
+          "at": 1.7083333333333333,
+          "kind": "single",
+          "previousKind": null,
+          "count": 1,
+          "readyRest": 1.7,
+          "stepMs": 6.947041000000013
+        },
+        {
+          "at": 4.75,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.16666666666666696,
+          "stepMs": 3.7667909999998983
+        },
+        {
+          "at": 10.475,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.083333333333334,
+          "stepMs": 0.9649579999999105
+        },
+        {
+          "at": 13.7,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.17499999999999893,
+          "stepMs": 0.9331250000000182
+        },
+        {
+          "at": 19.583333333333332,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.2333333333333307,
+          "stepMs": 6.246209000000022
+        },
+        {
+          "at": 22.441666666666666,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": null,
+          "stepMs": 6.445082999999954
+        },
+        {
+          "at": 25.116666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.04166666666666785,
+          "stepMs": 7.444334000000026
+        },
+        {
+          "at": 30.441666666666666,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.625,
+          "stepMs": 6.888000000000034
+        },
+        {
+          "at": 32.75,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 7.3785839999999325
+        },
+        {
+          "at": 35.24166666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 8.838541999999961
+        },
+        {
+          "at": 37.733333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 0.7585829999999305
+        },
+        {
+          "at": 43.15833333333333,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 25.389749999999935
+        },
+        {
+          "at": 50.141666666666666,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.68333333333333,
+          "stepMs": 0.8704999999999927
+        },
+        {
+          "at": 52.63333333333333,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.00833333333333286,
+          "stepMs": 8.644250000000056
+        },
+        {
+          "at": 56.59166666666667,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 3.835374999999999
+        },
+        {
+          "at": 59.083333333333336,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.06666666666666998,
+          "stepMs": 2.6513330000000224
+        },
+        {
+          "at": 61.574999999999996,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.0833333333333286,
+          "stepMs": 8.888958000000002
+        },
+        {
+          "at": 67.83333333333333,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 2.4666666666666686,
+          "stepMs": 0.5311669999999822
+        },
+        {
+          "at": 72.30833333333334,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 5.55395800000008
+        },
+        {
+          "at": 74.61666666666666,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": null,
+          "stepMs": 9.441208000000074
+        },
+        {
+          "at": 77.29166666666667,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.17500000000001137,
+          "stepMs": 14.106083000000012
+        },
+        {
+          "at": 81.43333333333334,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.08333333333334281,
+          "stepMs": 8.772083000000066
+        },
+        {
+          "at": 86.38333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.5749999999999886,
+          "stepMs": 0.7052080000000842
+        },
+        {
+          "at": 88.875,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 7.604666000000066
+        },
+        {
+          "at": 91.36666666666666,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 0.5834580000000642
+        },
+        {
+          "at": 96.25,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 6.857458000000065
+        },
+        {
+          "at": 101.15833333333333,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.5416666666666714,
+          "stepMs": 5.481625000000008
+        },
+        {
+          "at": 105.14999999999999,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 6.90787499999999
+        },
+        {
+          "at": 107.64166666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.13333333333333997,
+          "stepMs": 6.5815000000000055
+        },
+        {
+          "at": 110.13333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 0.7332910000000084
+        },
+        {
+          "at": 112.625,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.13333333333333997,
+          "stepMs": 3.768291999999974
+        },
+        {
+          "at": 118.875,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 2.4166666666666714,
+          "stepMs": 0.4650829999998223
+        },
+        {
+          "at": 122.91666666666667,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 6.640165999999908
+        },
+        {
+          "at": 126.69166666666666,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.008333333333325754,
+          "stepMs": 10.417790999999852
+        },
+        {
+          "at": 131.38333333333333,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.03333333333333144,
+          "stepMs": 7.478875000000016
+        },
+        {
+          "at": 133.875,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.15833333333333144,
+          "stepMs": 5.400666000000001
+        },
+        {
+          "at": 139.09166666666667,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 2.4666666666666686,
+          "stepMs": 7.726250000000164
+        },
+        {
+          "at": 141.58333333333334,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.15833333333333144,
+          "stepMs": 6.301666999999952
+        },
+        {
+          "at": 145.54166666666666,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 0.1416666666666515,
+          "stepMs": 0.49299999999993815
+        },
+        {
+          "at": 150.15833333333333,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 4.5776670000000195
+        },
+        {
+          "at": 152.46666666666667,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.06666666666666288,
+          "stepMs": 4.559834000000137
+        },
+        {
+          "at": 156.05833333333334,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 6.707042000000001
+        },
+        {
+          "at": 162.14166666666665,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 2.4499999999999886,
+          "stepMs": 4.138166999999839
+        },
+        {
+          "at": 166.1,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 6.62279199999989
+        },
+        {
+          "at": 168.59166666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 0.677417000000105
+        },
+        {
+          "at": 171.08333333333334,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.15000000000000568,
+          "stepMs": 0.4651659999999538
+        },
+        {
+          "at": 175.69166666666666,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 4.395125000000007
+        },
+        {
+          "at": 181.525,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 2.008333333333354,
+          "stepMs": 15.41904199999999
+        },
+        {
+          "at": 185.66666666666666,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.11666666666664582,
+          "stepMs": 8.477957999999944
+        },
+        {
+          "at": 188.15833333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 8.504166000000168
+        },
+        {
+          "at": 190.65,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.16666666666668561,
+          "stepMs": 4.9046659999999065
+        },
+        {
+          "at": 196.10833333333332,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 2.6999999999999886,
+          "stepMs": 8.470332999999982
+        },
+        {
+          "at": 198.6,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 0.5242920000000595
+        },
+        {
+          "at": 203.20833333333334,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 14.91862500000002
+        },
+        {
+          "at": 207.35,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 0.76237500000002
+        },
+        {
+          "at": 212.25,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 2.558333333333337,
+          "stepMs": 16.91124999999988
+        },
+        {
+          "at": 216.20833333333334,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.041666666666685614,
+          "stepMs": 3.959542000000056
+        },
+        {
+          "at": 220.16666666666666,
+          "kind": "precision",
+          "previousKind": "pair",
+          "count": 3,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 4.087709000000132
+        },
+        {
+          "at": 223.75833333333333,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 1.0669170000001031
+        },
+        {
+          "at": 228.10833333333332,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 2.0083333333333258,
+          "stepMs": 0.5621670000000449
+        },
+        {
+          "at": 232.71666666666667,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 7.562791000000061
+        },
+        {
+          "at": 235.39166666666665,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.17499999999998295,
+          "stepMs": 7.482708000000002
+        },
+        {
+          "at": 239.35,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 3.881167000000005
+        }
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "playing",
+      "t": 240,
+      "score": 60382,
+      "maxSpeed": 891.0000000000001,
+      "waves": 63,
+      "maxObjects": 3,
+      "minReadyRest": 0.00833333333333286,
+      "p95SpawnStepMs": 15.383125000000064,
+      "maxSpawnStepMs": 28.267957999999908,
+      "waveDetails": [
+        {
+          "at": 1.7083333333333333,
+          "kind": "single",
+          "previousKind": null,
+          "count": 1,
+          "readyRest": 1.7,
+          "stepMs": 6.37237499999992
+        },
+        {
+          "at": 5.483333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10000000000000053,
+          "stepMs": 2.826999999999998
+        },
+        {
+          "at": 10.383333333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 1.9833333333333325,
+          "stepMs": 7.352124999999887
+        },
+        {
+          "at": 12.691666666666666,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.041666666666666075,
+          "stepMs": 0.5445839999999862
+        },
+        {
+          "at": 17.666666666666668,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 6.543875000000071
+        },
+        {
+          "at": 20.341666666666665,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666643,
+          "stepMs": 0.7551249999999072
+        },
+        {
+          "at": 23.2,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.09999999999999787,
+          "stepMs": 2.58729100000005
+        },
+        {
+          "at": 26.058333333333334,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 7.637124999999969
+        },
+        {
+          "at": 30.808333333333334,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 2.0583333333333336,
+          "stepMs": 0.9339580000000751
+        },
+        {
+          "at": 33.666666666666664,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.01666666666666572,
+          "stepMs": 10.392958000000135
+        },
+        {
+          "at": 36.525,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 0.7955409999999574
+        },
+        {
+          "at": 41.983333333333334,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 8.566082999999935
+        },
+        {
+          "at": 44.65833333333333,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.13333333333333286,
+          "stepMs": 28.267957999999908
+        },
+        {
+          "at": 50.958333333333336,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.0416666666666714,
+          "stepMs": 0.7456670000001395
+        },
+        {
+          "at": 53.449999999999996,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.00833333333333286,
+          "stepMs": 9.819999999999936
+        },
+        {
+          "at": 55.94166666666666,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.0416666666666643,
+          "stepMs": 14.087375000000065
+        },
+        {
+          "at": 60.083333333333336,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.025000000000005684,
+          "stepMs": 8.565000000000055
+        },
+        {
+          "at": 62.574999999999996,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.09166666666666146,
+          "stepMs": 0.5391669999999067
+        },
+        {
+          "at": 67.65,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 4.067375000000084
+        },
+        {
+          "at": 74.13333333333333,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.60833333333332,
+          "stepMs": 2.207916999999952
+        },
+        {
+          "at": 76.625,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 8.093417000000045
+        },
+        {
+          "at": 79.11666666666666,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 3.8002500000000055
+        },
+        {
+          "at": 81.60833333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 4.999250000000075
+        },
+        {
+          "at": 83.91666666666667,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.025000000000005684,
+          "stepMs": 0.699833000000126
+        },
+        {
+          "at": 88.775,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 2.4750000000000085,
+          "stepMs": 0.8618749999998272
+        },
+        {
+          "at": 93.675,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 8.013374999999996
+        },
+        {
+          "at": 96.35,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.17499999999999716,
+          "stepMs": 3.218667000000096
+        },
+        {
+          "at": 100.14166666666667,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 7.926749999999856
+        },
+        {
+          "at": 102.63333333333333,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 4.4720830000001115
+        },
+        {
+          "at": 108.65833333333333,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 2.5250000000000057,
+          "stepMs": 3.921792000000096
+        },
+        {
+          "at": 111.14999999999999,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.14166666666666572,
+          "stepMs": 7.2866670000000795
+        },
+        {
+          "at": 115.10833333333333,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 0.125,
+          "stepMs": 0.5097920000000613
+        },
+        {
+          "at": 119.86666666666666,
+          "kind": "precision",
+          "previousKind": "rail",
+          "count": 3,
+          "readyRest": 1.25,
+          "stepMs": 4.645209000000023
+        },
+        {
+          "at": 123.45833333333333,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 0.10833333333333428,
+          "stepMs": 3.7825000000000273
+        },
+        {
+          "at": 129.3,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 2.00833333333334,
+          "stepMs": 6.924082999999882
+        },
+        {
+          "at": 131.79166666666666,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.15833333333333144,
+          "stepMs": 15.924416999999949
+        },
+        {
+          "at": 135.93333333333334,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 15.383125000000064
+        },
+        {
+          "at": 140.075,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.125,
+          "stepMs": 2.508957999999893
+        },
+        {
+          "at": 144.78333333333333,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 2.375,
+          "stepMs": 0.5603750000000218
+        },
+        {
+          "at": 149.4,
+          "kind": "single",
+          "previousKind": "rail",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 4.9718749999999545
+        },
+        {
+          "at": 151.70833333333334,
+          "kind": "pair",
+          "previousKind": "single",
+          "count": 2,
+          "readyRest": 0.07500000000001705,
+          "stepMs": 3.9370830000000296
+        },
+        {
+          "at": 155.66666666666666,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 3.5906659999998283
+        },
+        {
+          "at": 159.625,
+          "kind": "precision",
+          "previousKind": "pair",
+          "count": 3,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 4.765791000000036
+        },
+        {
+          "at": 165.91666666666666,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 2.816666666666663,
+          "stepMs": 3.718458000000055
+        },
+        {
+          "at": 168.40833333333333,
+          "kind": "single",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 7.8064580000000205
+        },
+        {
+          "at": 170.71666666666667,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 0.025000000000005684,
+          "stepMs": 0.4709170000000995
+        },
+        {
+          "at": 175.325,
+          "kind": "pair",
+          "previousKind": "rail",
+          "count": 2,
+          "readyRest": 1.25,
+          "stepMs": 17.665958000000046
+        },
+        {
+          "at": 179.46666666666667,
+          "kind": "single",
+          "previousKind": "pair",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 7.388374999999996
+        },
+        {
+          "at": 181.775,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.025000000000005684,
+          "stepMs": 5.327457999999979
+        },
+        {
+          "at": 186.54166666666666,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 2.0083333333333258,
+          "stepMs": 1.6340000000000146
+        },
+        {
+          "at": 188.85,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.3499999999999943,
+          "stepMs": 4.179665999999997
+        },
+        {
+          "at": 192.44166666666666,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 3.5909169999999904
+        },
+        {
+          "at": 196.58333333333334,
+          "kind": "rail",
+          "previousKind": "pair",
+          "count": 0,
+          "readyRest": 0.13333333333335418,
+          "stepMs": 0.9266660000000684
+        },
+        {
+          "at": 203.59166666666667,
+          "kind": "precision",
+          "previousKind": "rail",
+          "count": 3,
+          "readyRest": 3.6500000000000057,
+          "stepMs": 4.274832999999944
+        },
+        {
+          "at": 207.18333333333334,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 4.09637500000008
+        },
+        {
+          "at": 209.67499999999998,
+          "kind": "precision",
+          "previousKind": "single",
+          "count": 3,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 4.004124999999931
+        },
+        {
+          "at": 213.26666666666665,
+          "kind": "single",
+          "previousKind": "precision",
+          "count": 1,
+          "readyRest": 0.11666666666664582,
+          "stepMs": 3.713207999999895
+        },
+        {
+          "at": 215.75833333333333,
+          "kind": "air",
+          "previousKind": "single",
+          "count": 1,
+          "readyRest": 0.1666666666666572,
+          "stepMs": 4.795708999999988
+        },
+        {
+          "at": 219.76666666666665,
+          "kind": "single",
+          "previousKind": "air",
+          "count": 1,
+          "readyRest": 1.25,
+          "stepMs": 7.818125000000009
+        },
+        {
+          "at": 224.54166666666666,
+          "kind": "rail",
+          "previousKind": "single",
+          "count": 0,
+          "readyRest": 2.4499999999999886,
+          "stepMs": 0.630292000000054
+        },
+        {
+          "at": 229.15,
+          "kind": "precision",
+          "previousKind": "rail",
+          "count": 3,
+          "readyRest": 1.25,
+          "stepMs": 4.336665999999923
+        },
+        {
+          "at": 232.74166666666667,
+          "kind": "pair",
+          "previousKind": "precision",
+          "count": 2,
+          "readyRest": 0.11666666666667425,
+          "stepMs": 3.846125000000029
+        },
+        {
+          "at": 236.7,
+          "kind": "pair",
+          "previousKind": "pair",
+          "count": 2,
+          "readyRest": 0.13333333333332575,
+          "stepMs": 6.475083000000041
+        }
+      ]
+    }
+  ]
+}

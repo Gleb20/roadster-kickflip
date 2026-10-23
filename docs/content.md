@@ -1,3 +1,19 @@
+## Air and encounter content 4.6.0 — current
+
+All seven models retain their original world size, sprite and box collision. Their lower collision/render edge clears the upright163-unit ground rider with at least47units of space. Each air-pass leaves a genuine safe ground underpass; jumping remains a voluntary risk. Rail-air uses an already introduced small model only. Large Sikorsky and Starlink stay eligible as separate air-passes. Biome memberships are unchanged.
+
+| Model | Bottom altitude | Incoming speed | Biomes |
+| --- | ---: | ---: | --- |
+| UFO |225|65|both|
+| Prime drone |215|70|both|
+| Twitter bird |215|95|spaceport|
+| Starlink |250|45|spaceport|
+| Regulator drone |220|60|both|
+| Sikorsky |245|35|spaceport|
+| Quality skull |210|75|factory|
+
+Factory ground admission retains truck,T800,BYD Seal,Xiaomi SU7,battery AGV,Xi. Tall characters are isolated singles with a specific preparation profile, not tiny rescaled props. New IDs get a single introduction. At most two canonical ground objects can form a wave; no long fuel train is generated. The unchanged rail is190high/720long. Full current contracts and tuning: [gameplay4.6.0](gameplay-v3.md). Earlier low-altitude jump instructions below are historical frozen rules only. Existing source photographs, illustrations, music and licences are unchanged.
+
 ## Aerial challenge4.1.0 —22October2026
 
 Supersedes the4.0.0 harmless-flyby direction at the user's request. Xi is an ordinary colliding ground opponent in the factory pool, on the same baseline as cars and people. His mutual lightning reaction remains visual; body contact ends the run normally.

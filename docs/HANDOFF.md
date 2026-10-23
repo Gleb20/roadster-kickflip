@@ -1,3 +1,9 @@
+## Obstacle director 4.6.0 — 24 October 2026
+
+Ground waves contain one or two canonical obstacles. Aircraft remain airborne with a no-input ground bypass; later optional rails combine a comfortable catch route with the same safe bypass. Progression, biome familiarity, two simple recovery waves, air cooldowns and real post-clear rest gate variety. New ranked `roadster-v4.6.0` is additive; eight historical verifier folders and existing records remain intact. Art, controls, physics, camera and adaptive audio are preserved.
+
+203 game tests, 15 server tests, 24 database checks, 8×600-second nominal/imperfect runs, 6,449 timing probes, native browser rail/air checks and 18 actual 4.5.1→4.6 PWA upgrade checks pass. Physical iPhone/Safari remains untested. The known closed-tab PWA activation boundary remains: close old game windows and reopen the versioned link without clearing site data. [Evidence and limits](verification/2026-10-23-director/README.md). [Play 4.6.0](https://gleb20.github.io/roadster-kickflip/?v=4.6.0).
+
 ## Audio settings4.5.1 — 24 October2026
 
 Independent effects/music sliders replace the master toggle. SOUND opens an origin-anchored balloon in the menu; a session shows only the unchanged44px Pause control, with sliders inside the pause menu. Transform-based Sound→Pause/Home morph; native percentages, keyboard/touch control, immediate save. Five photo/current-style-guided paper Elon expressions with tracking pupils and a native vector speaker with tiered EQ/cone/squash/lift/stretch motion. Reduced motion keeps static indicators. Legacy mute migrates to0/0; valid independent values persist across reload/offline. Original music/pressure files, adaptive score, gameplay and all eight frozen verifiers are unchanged.

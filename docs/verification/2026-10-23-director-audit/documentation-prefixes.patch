@@ -1,0 +1,22 @@
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -1,3 +1,9 @@
++## Obstacle director research and Sol implementation — 23 October 2026
++
++User requests true airborne enemies, gentle optional rail encounters, speed/biome-aware progression and removal of oppressive long Tesla trains. Audited current remote main44579d2 / published4.5.0, not this older dirty root. [Research, sources and implementation contract](planning/obstacle-director-20261023.md), [baseline evidence](verification/2026-10-23-director-audit/README.md). Confirmed: altitude24–32, up to6 cars at55-unit gaps, first-route/fuel-search bias, spawn-relative rest, missing combined rail-air validation and incomplete boosted-speed coverage. Existing biome filtering is already present.
++
++Implementation is delegated to Sol in isolated `/tmp/tesla-director-v460-20261023`, branch `codex/obstacle-director-v460`. This entry records research/handoff only: candidate code, tests and publication are not yet verified here. Current public baseline remains4.5.0. Preserve audio, camera, rare BACKUP, rails, all eight historical replay rulesets and scores. Standing immediate-release authorization remains; no new approval gate. Existing PWA/physical-device debt remains separate.
++
+ ## Published adaptive arcade audio 4.5.0 — 23 October 2026
+ 
+ [Play 4.5.0](https://gleb20.github.io/roadster-kickflip/?v=4.5.0). Selected Spaceport A + Factory B, eight adaptive stem loops, complete player-action sound set. 185 tests, 23 local audio/browser checks, 15 actual upgrade checks, 183 matching public hashes and 31 public checks pass. Runtime fefb0f9; verified publication f90fe24 / Pages40012791793; final evidence commit44579d2. Exact inverse restores 4.4.3 and passes179 tests/checks. Physical phone/Safari and subjective listening remain for user review. [Audio audit](audio.md) / [evidence](verification/2026-10-23-audio-v450/README.md).
+--- a/RESTORATION.md
++++ b/RESTORATION.md
+@@ -1,3 +1,7 @@
++## Obstacle director research — 23 October 2026
++
++Documentation-only parent changes: new `docs/planning/obstacle-director-20261023.md`, new `docs/verification/2026-10-23-director-audit/`, and bounded HANDOFF/RESTORATION prefixes. Prior doc copies, root diff/status and SHA-256 are in `/tmp/tesla-director-audit-20261023/`. Guarded inverse manifest/rehearsal is retained in the new evidence directory; never restore whole older docs over newer edits. No root runtime/index change. Implementation/rollback belongs to the isolated Sol checkout `/tmp/tesla-director-v460-20261023`; this note does not establish a new release or authorize removing scores.
++
+ ## Audio 4.5.0 — published release / preserved working tree
+ 
+ Published integration is remote main44579d2 and `/tmp/tesla-audio-v450-20261023`; the dirty local4.4.0 runtime was preserved. The tested runtime inverse is `git revert --no-commit fefb0f9` on an isolated checkout; it restores parent0da21ea exactly and passes179 tests/checks. A public rollback needs a fresh cache version and must preserve all records/outbox/backend. Audio evidence: `docs/verification/2026-10-23-audio-v450/`. Bounded copies of these original documentation files and their hashes are in `audio-source/selected-20261023/workspace-before/`; do not restore them over any newer edits.

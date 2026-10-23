@@ -1,0 +1,21 @@
+{
+  "method": "Guard complete after hash, strip exact known prefix; exact original suffix equality rehearsed in memory. Do not apply over newer files.",
+  "files": [
+    {
+      "path": "docs/HANDOFF.md",
+      "prefixBytes": 1174,
+      "beforeSha256": "2bb959fd5295dbc20a5b8fece0b15cfe2daf88852fafab45bbbb5051ce0e70d8",
+      "afterSha256": "b1af652383fac0896a992a5faf1e134c469ac2965ca33233a1874358e36ae63d",
+      "restoredSha256": "2bb959fd5295dbc20a5b8fece0b15cfe2daf88852fafab45bbbb5051ce0e70d8",
+      "exactInverse": true
+    },
+    {
+      "path": "RESTORATION.md",
+      "prefixBytes": 653,
+      "beforeSha256": "8460d04d30d29a2beefa774bc9abea5f8b6ad8a1cf8cce1718d9ff0bdcf79178",
+      "afterSha256": "7e1f1c0d43db67f5ea3522f0acb26cdb49aa8a9d9b0e488f371a6f275b005217",
+      "restoredSha256": "8460d04d30d29a2beefa774bc9abea5f8b6ad8a1cf8cce1718d9ff0bdcf79178",
+      "exactInverse": true
+    }
+  ]
+}

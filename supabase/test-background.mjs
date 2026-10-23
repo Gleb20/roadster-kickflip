@@ -7,7 +7,7 @@ for(const p of (await readdir(new URL('./migrations/',import.meta.url))).sort().
 await db.exec('update tesla_ranking.config set accepting_sessions=true,accepting_writes=true,autonomous_verification=true;');
 const rpc=createRpc({url:'https://local-db',key:'fixture-only',fetcher:async(url,o)=>{try{const {action,payload}=JSON.parse(o.body);return Response.json((await db.query('select public.tesla_ranking_rpc($1,$2) value',[action,payload])).rows[0].value);}catch(e){return Response.json({message:e.message},{status:400});}}}),handle=createHandler({rpc});
 const send=async(path,body,capability)=>{const r=await handle(new Request('https://local.test/tesla-ranking'+path,{method:body?'POST':'GET',headers:{Origin:'https://gleb20.github.io','Content-Type':'application/json',...(capability?{'X-Run-Capability':capability}:{})},body:body?JSON.stringify(body):undefined}));return {status:r.status,body:await r.json()};};
-async function fixture(version='roadster-v4.4.2'){
+async function fixture(version='roadster-v4.6.0'){
  const session=(await send('/sessions',{ruleset:version})).body,module=ruleset(version),run=module.createRun({seed:session.seed});run.reset();while(run.S.mode==='playing'){run.step();run.drainEvents();}
  const replay=run.replay(),score=run.S.score;await db.query('update tesla_ranking.sessions set created_at=created_at-$2 where id=$1',[session.id,Math.ceil(replay.ticks*1000/120)]);return {session,replay,score};
 }

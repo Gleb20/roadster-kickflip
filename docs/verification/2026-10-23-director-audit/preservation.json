@@ -1,0 +1,7 @@
+{
+  "trackedRuntimeAndUnrelatedDiffUnchanged": true,
+  "rootHead": "331a970a2c3256856fbc3fe3fe287eea7584de37",
+  "scope": "Only research docs/evidence and two doc prefixes written by parent; excluded two own docs from before/current diff equality. Implementation assigned isolated checkout.",
+  "originalStatus": "/tmp/tesla-director-audit-20261023/root-before.status",
+  "originalDiff": "/tmp/tesla-director-audit-20261023/root-before.patch"
+}

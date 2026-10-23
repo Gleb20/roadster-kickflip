@@ -24,7 +24,7 @@ test('fall does not stop world motion or grant obstacle immunity, and freezes pr
 test('director alternates breathing space after two complex patterns, keeps fuel reserve and waits during falling',()=>{
  const pace=createPace(),e=createEconomy(),p=createFlight(100);pace.progress=155;pace.base=660;pace.speed=660;
  const S={t:155,speed:660,obs:[],anchor:100,entityId:0},d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random:()=>.45});
- for(let i=0;i<8;i++){S.obs=[];d.spawn();assert.ok(d.state.last.route.timingMargin>=.035);assert.ok(d.state.hardStreak<=2);if(i===2)assert.equal(d.state.last.kind,'single');}
+ for(let i=0;i<8;i++){S.obs=[];d.spawn();assert.ok(d.state.last.route.timingMargin>=.035);assert.ok(['introduce','flow','accent','rest'].includes(d.state.phase));if(i===2)assert.equal(d.state.last.kind,'single');}
  const wave=d.state.wave;pace.falling=true;S.obs=[];d.spawn();assert.equal(d.state.wave,wave);
 });
 

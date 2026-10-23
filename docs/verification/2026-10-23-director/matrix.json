@@ -1,0 +1,1327 @@
+{
+  "node": "v20.20.2",
+  "structuralSeeds": 1000,
+  "structuralSpawns": 1673,
+  "matrix": [
+    {
+      "progress": 0,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 0,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 360
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 34.99166666666667,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "rest",
+      "speed": 429.98333333333335
+    },
+    {
+      "progress": 35,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 35,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 430
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 89.99166666666666,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "single",
+      "speed": 539.9833333333333
+    },
+    {
+      "progress": 90,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 90,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 540
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 149.99166666666667,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 659.9833333333333
+    },
+    {
+      "progress": 150,
+      "score": 6999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 6999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 6999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 6999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 7000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 7000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 7000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 7000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 13999,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 13999,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 13999,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 13999,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 14000,
+      "fuel": 0,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 14000,
+      "fuel": 20,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 14000,
+      "fuel": 50,
+      "kind": "air-pass",
+      "speed": 660
+    },
+    {
+      "progress": 150,
+      "score": 14000,
+      "fuel": 100,
+      "kind": "air-pass",
+      "speed": 660
+    }
+  ],
+  "runs": [
+    {
+      "seed": 17,
+      "imperfect": false,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 50420,
+      "biomeLeg": 7,
+      "waves": 122,
+      "counts": {
+        "single": 93,
+        "rail": 13,
+        "air-pass": 10,
+        "spaced-pair": 2,
+        "rail-air": 4
+      },
+      "ids": {
+        "v8": 6,
+        "truck": 22,
+        "zuck": 2,
+        "gemini": 2,
+        "trump": 7,
+        "pump": 1,
+        "doge": 7,
+        "muscleCompact": 4,
+        "ufo": 10,
+        "xiaomiSu7": 13,
+        "bydSeal": 10,
+        "xi": 4,
+        "batteryAgv": 7,
+        "amber": 3,
+        "starlink": 1,
+        "homelessRow": 2,
+        "muscleCoupe": 5,
+        "t800": 2,
+        "qualitySkull": 1,
+        "twitterBird": 2
+      },
+      "pickups": 19,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 17,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 8761,
+      "rest": {
+        "n": 121,
+        "p50": 1.5,
+        "p95": 3.783333333333303,
+        "max": 11.416666666666686
+      },
+      "airMin": 29.05000000000001,
+      "railAirMin": 96.35833333333335,
+      "spawnStepMs": {
+        "n": 147,
+        "p50": 4.3414169999996375,
+        "p95": 17.724874999999884,
+        "max": 54.99912500000028
+      },
+      "fallbacks": 70,
+      "checkpoints": 1
+    },
+    {
+      "seed": 932,
+      "imperfect": false,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 54775,
+      "biomeLeg": 7,
+      "waves": 116,
+      "counts": {
+        "single": 86,
+        "rail": 14,
+        "air-pass": 10,
+        "spaced-pair": 3,
+        "rail-air": 3
+      },
+      "ids": {
+        "doge": 9,
+        "v8": 10,
+        "zuck": 3,
+        "trump": 3,
+        "truck": 18,
+        "regulatorDrone": 5,
+        "t800": 4,
+        "ufo": 3,
+        "bydSeal": 10,
+        "xi": 5,
+        "xiaomiSu7": 12,
+        "primeDrone": 2,
+        "batteryAgv": 7,
+        "muscleCompact": 6,
+        "rogozin": 1,
+        "homelessRow": 1,
+        "starlink": 2,
+        "joe": 1,
+        "muscleCoupe": 2,
+        "qualitySkull": 1
+      },
+      "pickups": 30,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 16,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 8761,
+      "rest": {
+        "n": 115,
+        "p50": 1.5,
+        "p95": 11.041666666666671,
+        "max": 12.825000000000017
+      },
+      "airMin": 30.34166666666667,
+      "railAirMin": 94.04166666666663,
+      "spawnStepMs": {
+        "n": 162,
+        "p50": 3.0069170000006125,
+        "p95": 8.673750000001746,
+        "max": 16.044832999999926
+      },
+      "fallbacks": 84,
+      "checkpoints": 0
+    },
+    {
+      "seed": 9,
+      "imperfect": false,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 58564,
+      "biomeLeg": 8,
+      "waves": 123,
+      "counts": {
+        "single": 95,
+        "rail": 13,
+        "air-pass": 8,
+        "rail-air": 5,
+        "low-cluster": 1,
+        "spaced-pair": 1
+      },
+      "ids": {
+        "v8": 8,
+        "muscleCompact": 7,
+        "truck": 26,
+        "amber": 3,
+        "gemini": 1,
+        "pump": 2,
+        "doge": 3,
+        "joe": 3,
+        "ufo": 3,
+        "t800": 7,
+        "batteryAgv": 7,
+        "regulatorDrone": 6,
+        "bydSeal": 8,
+        "xiaomiSu7": 4,
+        "muscleCoupe": 5,
+        "homelessRow": 7,
+        "rogozin": 1,
+        "sikorsky": 1,
+        "xi": 4,
+        "starlink": 1,
+        "zuck": 1,
+        "trump": 2,
+        "qualitySkull": 2
+      },
+      "pickups": 17,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 18,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 8555,
+      "rest": {
+        "n": 122,
+        "p50": 1.5,
+        "p95": 3.7249999999999943,
+        "max": 11.058333333333394
+      },
+      "airMin": 29.03333333333336,
+      "railAirMin": 95.03333333333336,
+      "spawnStepMs": {
+        "n": 141,
+        "p50": 3.2226250000003347,
+        "p95": 6.026667000000089,
+        "max": 18.671707999999853
+      },
+      "fallbacks": 55,
+      "checkpoints": 0
+    },
+    {
+      "seed": 56,
+      "imperfect": false,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 50864,
+      "biomeLeg": 7,
+      "waves": 121,
+      "counts": {
+        "single": 87,
+        "rail": 15,
+        "air-pass": 10,
+        "spaced-pair": 5,
+        "low-cluster": 2,
+        "rail-air": 2
+      },
+      "ids": {
+        "v8": 5,
+        "doge": 4,
+        "muscleCompact": 7,
+        "truck": 27,
+        "pump": 2,
+        "gemini": 1,
+        "trump": 4,
+        "regulatorDrone": 5,
+        "batteryAgv": 11,
+        "primeDrone": 4,
+        "xi": 5,
+        "t800": 5,
+        "xiaomiSu7": 9,
+        "muscleCoupe": 6,
+        "homelessRow": 7,
+        "sikorsky": 1,
+        "joe": 1,
+        "bydSeal": 3,
+        "rogozin": 2,
+        "ufo": 1,
+        "zuck": 1,
+        "twitterBird": 1,
+        "amber": 1
+      },
+      "pickups": 20,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 17,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 9324,
+      "rest": {
+        "n": 120,
+        "p50": 1.5,
+        "p95": 6.024999999999977,
+        "max": 12.658333333333331
+      },
+      "airMin": 28.02499999999999,
+      "railAirMin": 104.54166666666663,
+      "spawnStepMs": {
+        "n": 146,
+        "p50": 3.1089169999995647,
+        "p95": 10.7426660000001,
+        "max": 16.535374999999476
+      },
+      "fallbacks": 70,
+      "checkpoints": 0
+    },
+    {
+      "seed": 17,
+      "imperfect": true,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 53806,
+      "biomeLeg": 7,
+      "waves": 121,
+      "counts": {
+        "single": 87,
+        "rail": 14,
+        "air-pass": 10,
+        "spaced-pair": 6,
+        "rail-air": 3,
+        "low-cluster": 1
+      },
+      "ids": {
+        "v8": 9,
+        "truck": 24,
+        "muscleCompact": 7,
+        "gemini": 1,
+        "zuck": 6,
+        "pump": 2,
+        "trump": 4,
+        "joe": 1,
+        "ufo": 4,
+        "regulatorDrone": 6,
+        "t800": 3,
+        "batteryAgv": 5,
+        "xiaomiSu7": 16,
+        "bydSeal": 8,
+        "xi": 6,
+        "doge": 3,
+        "amber": 2,
+        "muscleCoupe": 3,
+        "starlink": 1,
+        "homelessRow": 1,
+        "primeDrone": 2
+      },
+      "pickups": 19,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 17,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 9324,
+      "rest": {
+        "n": 120,
+        "p50": 1.5,
+        "p95": 3.991666666666667,
+        "max": 11.766666666666652
+      },
+      "airMin": 28.683333333333337,
+      "railAirMin": 110.74166666666667,
+      "spawnStepMs": {
+        "n": 148,
+        "p50": 3.0271670000001905,
+        "p95": 11.093542000000525,
+        "max": 18.895000000000437
+      },
+      "fallbacks": 70,
+      "checkpoints": 0
+    },
+    {
+      "seed": 932,
+      "imperfect": true,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 62807,
+      "biomeLeg": 8,
+      "waves": 116,
+      "counts": {
+        "single": 83,
+        "rail": 14,
+        "air-pass": 10,
+        "spaced-pair": 6,
+        "rail-air": 3
+      },
+      "ids": {
+        "doge": 9,
+        "v8": 12,
+        "zuck": 1,
+        "trump": 2,
+        "truck": 23,
+        "muscleCompact": 3,
+        "regulatorDrone": 7,
+        "xi": 6,
+        "bydSeal": 10,
+        "xiaomiSu7": 9,
+        "batteryAgv": 6,
+        "t800": 3,
+        "homelessRow": 4,
+        "joe": 2,
+        "ufo": 2,
+        "starlink": 2,
+        "muscleCoupe": 4,
+        "amber": 1,
+        "twitterBird": 1,
+        "primeDrone": 1
+      },
+      "pickups": 30,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 17,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 8761,
+      "rest": {
+        "n": 115,
+        "p50": 1.5,
+        "p95": 7.974999999999994,
+        "max": 12.591666666666697
+      },
+      "airMin": 29.358333333333334,
+      "railAirMin": 114.39999999999998,
+      "spawnStepMs": {
+        "n": 156,
+        "p50": 2.9710420000010345,
+        "p95": 12.16729099999975,
+        "max": 19.767374999999447
+      },
+      "fallbacks": 97,
+      "checkpoints": 0
+    },
+    {
+      "seed": 9,
+      "imperfect": true,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 63237,
+      "biomeLeg": 9,
+      "waves": 123,
+      "counts": {
+        "single": 95,
+        "rail": 13,
+        "spaced-pair": 3,
+        "air-pass": 7,
+        "rail-air": 5
+      },
+      "ids": {
+        "v8": 7,
+        "muscleCompact": 7,
+        "truck": 32,
+        "amber": 5,
+        "gemini": 1,
+        "pump": 1,
+        "doge": 6,
+        "joe": 2,
+        "ufo": 3,
+        "xi": 7,
+        "regulatorDrone": 3,
+        "xiaomiSu7": 6,
+        "homelessRow": 5,
+        "muscleCoupe": 6,
+        "rogozin": 1,
+        "batteryAgv": 8,
+        "primeDrone": 4,
+        "t800": 2,
+        "bydSeal": 2,
+        "sikorsky": 1,
+        "trump": 2,
+        "qualitySkull": 1,
+        "zuck": 1
+      },
+      "pickups": 17,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 18,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 12022,
+      "rest": {
+        "n": 122,
+        "p50": 1.5,
+        "p95": 3.5750000000000455,
+        "max": 11.058333333333309
+      },
+      "airMin": 29.18333333333328,
+      "railAirMin": 94.91666666666669,
+      "spawnStepMs": {
+        "n": 140,
+        "p50": 3.0106250000008004,
+        "p95": 6.365958000000319,
+        "max": 21.694124999999985
+      },
+      "fallbacks": 58,
+      "checkpoints": 0
+    },
+    {
+      "seed": 56,
+      "imperfect": true,
+      "seconds": 600,
+      "mode": "playing",
+      "score": 49799,
+      "biomeLeg": 7,
+      "waves": 119,
+      "counts": {
+        "single": 88,
+        "rail": 13,
+        "air-pass": 10,
+        "rail-air": 4,
+        "low-cluster": 2,
+        "spaced-pair": 2
+      },
+      "ids": {
+        "v8": 10,
+        "doge": 8,
+        "muscleCompact": 5,
+        "truck": 22,
+        "trump": 4,
+        "zuck": 1,
+        "primeDrone": 4,
+        "batteryAgv": 10,
+        "bydSeal": 8,
+        "xiaomiSu7": 8,
+        "xi": 5,
+        "regulatorDrone": 6,
+        "homelessRow": 7,
+        "joe": 1,
+        "twitterBird": 1,
+        "sikorsky": 2,
+        "muscleCoupe": 4,
+        "t800": 2,
+        "starlink": 1,
+        "amber": 1
+      },
+      "pickups": 20,
+      "rescues": 0,
+      "fallCount": 0,
+      "catches": 17,
+      "maxSpeed": 891.0000000000001,
+      "maxBudget": 11972,
+      "rest": {
+        "n": 118,
+        "p50": 1.5,
+        "p95": 6.875,
+        "max": 12.175000000000011
+      },
+      "airMin": 28.48333333333335,
+      "railAirMin": 102.92500000000001,
+      "spawnStepMs": {
+        "n": 152,
+        "p50": 3.0090000000000146,
+        "p95": 11.641583000000537,
+        "max": 32.55275000000074
+      },
+      "fallbacks": 80,
+      "checkpoints": 0
+    }
+  ],
+  "timing": {
+    "checks": 6449,
+    "failures": []
+  },
+  "physicalDevice": false,
+  "spawnBench": {
+    "cold": {
+      "n": 1000,
+      "p50": 0.17162499999994907,
+      "p95": 6.460750000000189,
+      "max": 47.6827500000004
+    },
+    "warm": {
+      "n": 2000,
+      "p50": 2.0742919999997866,
+      "p95": 6.511915999999928,
+      "max": 102.00483299999996
+    }
+  },
+  "airUnderpasses": 168,
+  "serverReplay": {
+    "expected": {
+      "score": 51854,
+      "flips": 0,
+      "ticks": 74702
+    },
+    "chunks": 75,
+    "chunkMs": {
+      "n": 75,
+      "p50": 8.124041999999463,
+      "p95": 18.894540999999663,
+      "max": 39.58412500000122
+    }
+  },
+  "spawnStepMs": {
+    "n": 1192,
+    "p50": 3.1097090000002936,
+    "p95": 10.842500000000655,
+    "max": 54.99912500000028
+  }
+}

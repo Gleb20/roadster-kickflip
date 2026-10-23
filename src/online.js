@@ -1,4 +1,4 @@
-import {createJobStore} from './online-store.js?v=4.5.1';
+import {createJobStore} from './online-store.js?v=4.6.0';
 export const ONLINE_PENDING_KEY='roadster-online-pending-v1';
 export const ONLINE_CACHE_KEY='roadster-ranking-cache-v1';
 export const validNickname=value=>typeof value==='string'&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length>=3&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length<=12&&/^[\p{L}\p{N} _-]+$/u.test(value.normalize('NFKC').trim().replace(/ +/g,' '));

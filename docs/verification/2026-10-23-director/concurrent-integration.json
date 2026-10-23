@@ -1,0 +1,21 @@
+{
+  "parent": "fdc7a35b358f45be80754bb715ceafcb02ba0c36",
+  "audioVersion": "4.5.1",
+  "directorFilesExact": [
+    "src/director.js",
+    "src/encounter-routes.js",
+    "src/routes.js",
+    "src/run.js",
+    "src/content.js",
+    "src/physics.js",
+    "src/gameplay.js",
+    "src/gameplay-config.js",
+    "src/rails.js",
+    "src/speed-feedback.js"
+  ],
+  "allNineFrozenFoldersExact": true,
+  "audioControlsAndSoundMatchParentExceptVersion": true,
+  "mainOnlyDirectorCompatibilityChange": true,
+  "finalParent": "b7eb5b07f510ba3d7a450e3bbc9d124c0fed43cb",
+  "laterAudioDocsOnly": true
+}
