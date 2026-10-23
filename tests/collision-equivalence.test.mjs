@@ -8,7 +8,7 @@ import {createRandom} from '../src/random.js';
 import {createFall,beginFall,advanceFall,fallPose} from '../src/fall.js';
 import {sweptCollision as originalCollision} from '../supabase/rulesets/roadster-v380/gameplay.js';
 import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v460/routes.js';
-import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v460/run.js';
+import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v463/run.js';
 
 test('sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel',()=>{
  const random=createRandom(5873),dxs=[180,180+1e-9,180-1e-9,-400,-180,-180-1e-9,900,0];
@@ -38,8 +38,8 @@ test('all route patterns retain exact choices, timing margins and action schedul
  }
 });
 
-test('zero-spin seeded runs retain the frozen server physics and completed replays',()=>{
- const physicsSnapshot=run=>{const saved=run.snapshot();assert.equal(saved.P.settleTarget,0);assert.equal(saved.P.spinHeld,false);delete saved.P.settleTarget;delete saved.P.spinHeld;return saved;};
+test('current seeded runs retain the new frozen server simulation and completed replays',()=>{
+ const physicsSnapshot=run=>{const saved=run.snapshot();assert.equal(saved.P.settleTarget,0);assert.equal(saved.P.spinHeld,false);return saved;};
  for(const seed of [17,932,93817]){
   const run=createRun({seed}),original=originalRun({seed}),actions=new Map();run.reset();original.reset();let wave=0;
   while(run.S.mode==='playing'){

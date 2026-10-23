@@ -1,0 +1,32 @@
+{
+  "baselineVersion": "4.6.2",
+  "baselineSeconds": 40.2583333333,
+  "baselineFlips": 24,
+  "baselineWaves": 0,
+  "candidateVersion": "4.6.3",
+  "seconds": 180.06666666666666,
+  "flips": 85,
+  "waves": 34,
+  "maxWaveGap": 7.550000000000011,
+  "uniqueModels": [
+    "batteryAgv",
+    "bydSeal",
+    "doge",
+    "gemini",
+    "homelessRow",
+    "muscleCompact",
+    "muscleCoupe",
+    "pump",
+    "qualitySkull",
+    "regulatorDrone",
+    "truck",
+    "v8",
+    "xiaomiSu7"
+  ],
+  "errors": [],
+  "offline": true,
+  "nativeTouch": true,
+  "publicScoreSubmissions": 0,
+  "physicalDevice": false,
+  "note": "Baseline continuous flips; fixed candidate reactive visible-state input with voluntary tricks. No route.actions and no QA mutations. UI resumed after automatic long-frame pauses; candidate runtime cached before compatibleRulesets-only rebuild."
+}

@@ -1,14 +1,14 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.2';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.2';
-import {createGrind,advanceRail} from './rails.js?v=4.6.2';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.2';
-import {speedView} from './speed-feedback.js?v=4.6.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.3';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.6.3';
+import {createGrind,advanceRail} from './rails.js?v=4.6.3';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.6.3';
+import {speedView,advanceSpeedView} from './speed-feedback.js?v=4.6.3';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:40,window:.18,sample:.03,rest:1.5,accentRest:1.8,airCooldown:28,railAirCooldown:30,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
-// A canonical 320px phone, using less framing withdrawal than the base-speed
-// target. This reserves lag during acceleration and never reads the live DOM.
-export function preparationSeconds(type,pace,{charge=0,lead=.2,speed=pace.speed}={}){
- const strength=Math.max(0,Math.min(1.3,(pace.base-C.startSpeed)/300)-.02);
+// Minimum forward sight over supported viewports. Live validation advances the
+// same damped effective-speed camera as the renderer; this helper is static.
+export function preparationSeconds(type,pace,{charge=0,lead=.2,speed=pace.speed,viewStrength=null}={}){
+ const strength=viewStrength??Math.max(0,Math.min(1.3,(speed-C.startSpeed)/300)-.02);
  // The minimum forward horizon over W>=320,H>=390 occurs where the
  // desktop 550-unit horizon cap meets the maximum base scale 1.25. Smaller
  // heights can only reduce scale; phone anchors put the rider farther back.
@@ -18,23 +18,26 @@ export function preparationSeconds(type,pace,{charge=0,lead=.2,speed=pace.speed}
 }
 /** One combined production-physics witness. The fixed budget is shared by all
  * candidates of a spawn; CPU time never changes the deterministic outcome. */
-export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPace(),economy=createEconomy(),boosterState=null,time=0,rail=null,charge=.4,lead=.2,secondLead=lead,noInput=false,requireCatch=!!rail,budget=encounterBudget(),minGroundGap=0,prefix=null,stopBeforeHold=null}={}){
+export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPace(),economy=createEconomy(),boosterState=null,time=0,rail=null,charge=.4,lead=.2,secondLead=lead,noInput=false,requireCatch=!!rail,budget=encounterBudget(),minGroundGap=0,prefix=null,stopBeforeHold=null,viewStrength=0}={}){
  if(flight.airborne||pace.recovery||pace.falling||pace.stumble>0||budget.exhausted)return null;
  if(budget.policies>=ENCOUNTER.policyBudget){budget.exhausted=true;return null;}budget.policies++;
  const p={...(prefix?.p||flight)},r=structuredClone(prefix?.r||pace),e={...(prefix?.e||economy)},q=prefix?structuredClone(prefix.q):boosterState?structuredClone(boosterState):null,g=prefix?structuredClone(prefix.g):createGrind(),rails=prefix?structuredClone(prefix.rails):rail?[{...structuredClone(rail),uid:1}]:[],obs=(prefix?.obs||obstacles).map(o=>({...o})),actions=[];
+ const view={strength:prefix?.view?.strength??viewStrength},visibleAt=prefix?.visibleAt?[...prefix.visibleAt]:obs.map(()=>null);
  let charging=false,holdTick=0,jumps=0,caught=false,groundSince=null,minGap=Infinity,lateTarget=null,nearLandings=0,lateTakeoffs=0,firstPreparation=Infinity;
  const dt=1/120,chargeTicks=Math.round(charge*C.chargeSeconds/dt),groundTargets=obs.filter(o=>!o.altitude);
  const horizon=Math.min(1800,Math.ceil((Math.max(0,...obstacles.map(o=>o.x+o.w),rail?rail.x+rail.w:0)+300)/Math.max(60,Math.min(pace.speed,pace.base)) *120+360));
  for(let tick=prefix?.tick||0;tick<horizon;tick++){
   if(budget.ticks>=ENCOUNTER.tickBudget){budget.exhausted=true;return null;}budget.ticks++;
   const t=tick*dt,target=rail?(jumps===0?rails[0]:null):groundTargets.find(o=>!o.targeted&&o.x+o.w> -47);
-  if(stopBeforeHold!==null&&target&&(target.x+(target.inset||5)-(rail?0:47))/Math.max(1,r.speed+(target.approachSpeed||0))<=stopBeforeHold)return {p,r,e,q,g,rails,obs,tick};
+  const width=(550*1.25+24)/.71,framing=speedView(width,900,r.speed,view.strength),sight=(width-framing.x)/framing.scale;
+  for(let i=0;i<obs.length;i++)if(visibleAt[i]===null&&obs[i].x+obs[i].w<=sight)visibleAt[i]=t;
+  if(stopBeforeHold!==null&&target&&(target.x+(target.inset||5)-(rail?0:47))/Math.max(1,r.speed+(target.approachSpeed||0))<=stopBeforeHold)return {p,r,e,q,g,rails,obs,tick,view,visibleAt};
   if(!noInput&&!p.airborne&&!g.support&&target){
    const targetLead=jumps>0?secondLead:lead,ttc=(target.x+(target.inset||5)-(rail?0:47))/Math.max(1,r.speed+(target.approachSpeed||0));
    if(!charging&&ttc<=targetLead+chargeTicks*dt){
     if(groundSince!==null){const gap=t-groundSince;minGap=Math.min(minGap,gap);if(gap+1e-8<minGroundGap)return null;}
     charging=true;holdTick=tick;actions.push({at:t,action:'hold'});
-    const prep=rail&&obs.length?Math.min(...obs.map(o=>preparationSeconds(o,r,{charge:0,lead:0,speed:r.speed})+(47-o.x)/Math.max(60,r.speed+(o.approachSpeed||0)))):preparationSeconds(target,r,{charge:chargeTicks*dt/C.chargeSeconds,lead:targetLead,speed:r.speed});
+    const indices=rail?obs.map((_,i)=>i):[obs.indexOf(target)],prep=indices.length?Math.min(...indices.map(i=>visibleAt[i]===null?0:t-visibleAt[i])):Infinity;
     firstPreparation=Math.min(firstPreparation,prep);
    }
    if(charging&&tick-holdTick>=chargeTicks){
@@ -44,7 +47,7 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
    }
   }
   if(q){advanceBoosters(q,dt);r.boost=.35*q.speedBlend;e.scoreFactor=activeBooster(q,'score')?3:1;}
-  advanceEconomy(e,dt);advanceStreak(e,dt);const before={...p};let landed=advanceFlight(p,dt);advancePace(r,e,p,dt);
+  advanceEconomy(e,dt);advanceStreak(e,dt);const before={...p};let landed=advanceFlight(p,dt);advancePace(r,e,p,dt);advanceSpeedView(view,dt,1002,900,r.speed);
   if(rail){const events=advanceRail(g,p,before,rails,r.speed*dt,dt,e);if(events.some(v=>v.type==='rail-catch'))caught=true;if(g.support)landed=null;}
   const after=landed?{...p,angle:landed.angle}:p;
   for(const o of obs){const old=o.x;o.x-=(r.speed+(o.approachSpeed||0))*dt;if(sweptCollision(before,after,o,old,o.x,time+t+dt,dt))return null;if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(e);}}
@@ -57,7 +60,7 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
   }
   if(obs.every(o=>o.x+o.w< -180)&&rails.every(o=>o.x+o.w< -180)&&!p.airborne&&!g.support){
    if(requireCatch&&!caught)return null;
-   return {charge,lead,secondLead,burn:0,actions,duration:t+dt,fuelUsed:0,nearLandings,lateTakeoffs,caught,jumps,minGroundGap:Number.isFinite(minGap)?minGap:null,preparation:Number.isFinite(firstPreparation)?firstPreparation:null,clearanceVerified:true,exit:{y:0,angle:0,vx:p.vx}};
+   return {charge,lead,secondLead,burn:0,actions,duration:t+dt,fuelUsed:0,nearLandings,lateTakeoffs,caught,jumps,minGroundGap:Number.isFinite(minGap)?minGap:null,preparation:Number.isFinite(firstPreparation)?firstPreparation:null,clearanceVerified:true,visibility:obs.map((o,i)=>({id:o.id,at:visibleAt[i]})),exit:{y:0,angle:0,vx:p.vx}};
   }
  }
  return null;
@@ -75,12 +78,10 @@ export function validateEncounter(obstacles,options={}){
  if(options.noInput)return simulateEncounter(obstacles,{...options,budget,requireCatch:false,noInput:true});
  const type=obstacles.find(o=>!o.altitude),speed=options.pace?.speed||360,h=type?.h||0;
  const lowCharge=Math.max(0,.19-Math.max(0,speed-360)*.0016),lowLead=.15+Math.min(.03,Math.max(0,speed-360)*.00025);
- let policies=options.policies||(rail?[[.5,.35],[.5,.5],[1,.35]]:h<=45?[[lowCharge,lowLead],[speed<500?.2:.1,.16]]:h<=78?[[speed<410?.3:.2,h<=64?.2:.24],[.3,.24]]:h<=100?[[speed<460?.3:.2,.27],[.3,.28]]:[[.3,.3],[.4,.28],[.5,.27]]);
+ let policies=options.policies||(rail?[[.5,.35],[.5,.5],[1,.35]]:h<=45?[[lowCharge,lowLead],[speed<500?.2:.1,.16]]:h<=78?(speed>=760?[[.1,.21],[.2,.22]]:[[speed<410?.3:.2,h<=64?.2:.24],[.3,.24]]):h<=100?[[speed<460?.3:.2,.27],[.3,.28]]:[[.3,.3],[.4,.28],[.5,.27]]);
  if(options.tallSingle&&!rail)policies=[[.3,.32],[.35,.3],[.4,.28]];
- const minPreparation=options.tallSingle?(h>120?.72:ENCOUNTER.tallPreparation):.9,minErrorPreparation=options.tallSingle?(h>120?.62:ENCOUNTER.tallErrorPreparation):.8;
- // Reject plainly unreadable policies before simulating their idle approach.
- if(!rail&&options.pace)policies=policies.filter(([charge,lead])=>preparationSeconds(type,options.pace,{charge,lead})>=minPreparation-.02);
- if(!policies.length)return null;
+ const fastSingle=!rail&&obstacles.length===1&&speed>=760;
+ const minPreparation=options.tallSingle?(h>120?.72:ENCOUNTER.tallPreparation):fastSingle?.85:.9,minErrorPreparation=options.tallSingle?(h>120?.62:ENCOUNTER.tallErrorPreparation):fastSingle?.75:.8;
  // All candidate policies share the idle approach. Simulate it once, then
  // clone that exact state before the earliest possible hold. No rounded-state
  // cache or alternative physics is involved; actions retain their absolute time.

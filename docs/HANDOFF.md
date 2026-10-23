@@ -1,3 +1,9 @@
+## Director liveness4.6.3 —24 October2026
+
+Successful flips and their speed streak no longer erase the encounter pool. The director tracks the same damped effective-speed camera as rendering, measures full-silhouette visibility on the actual route, admits simple fast singles and falls back to an optional verified rail instead of permanent empty rest. Rest begins after the threats leave the track; voluntary tricks can use it, and the exact landing tick is eligible for the next wave. Rotation4.6.2 and English audio controls are retained. New immutable `roadster-v4.6.3` is additive to all ten previous replay versions.
+
+223 tests,16 server tests,27 disposable SQL checks, five300-second observational-input runs, and18 actual4.6.2→4.6.3 PWA upgrade checks pass. Independent cold-offline native-touch candidate play reaches34 waves/85flips in180s, alive, versus the broken published version's0waves/24flips in40s. These desktop Chrome checks are not physical iPhone/Safari acceptance. Close the old PWA and reopen the new version if it remains4.6.2; do not delete site data. [Evidence](verification/2026-10-24-director-liveness/README.md). [Play4.6.3](https://gleb20.github.io/roadster-kickflip/?v=4.6.3).
+
 ## Released rotation4.6.2 — publication packet,24 October2026
 
 Published main `7377188`, Pages40030539946 success;191 exact live hashes,21 native public controls/offline checks and21 English settings checks,0 errors/score writes. Independent15 hashes match. UI4.6.2 / immutable physics roadster-v4.6.1; [final release status](verification/2026-10-24-rotation-v462/release-status.json). Physical iPhone/Safari remains unverified.

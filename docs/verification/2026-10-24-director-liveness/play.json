@@ -1,0 +1,4455 @@
+{
+  "runs": [
+    {
+      "spawnP95": 11.575707999999992,
+      "seed": 17,
+      "imperfect": false,
+      "seconds": 300,
+      "waves": 59,
+      "flips": 138,
+      "falls": 0,
+      "catches": 11,
+      "pickups": 12,
+      "maxGap": 7.18333333333333,
+      "maxActiveGap": 7.18333333333348,
+      "maxBudget": 3682,
+      "maxSpawnMs": 20.674042,
+      "failedAttempts": 0,
+      "windows": [
+        {
+          "from": 0,
+          "waves": 12,
+          "counts": {
+            "single": 10,
+            "rail": 2
+          },
+          "ids": {
+            "muscleCompact": 2,
+            "truck": 6,
+            "v8": 1,
+            "doge": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 60,
+          "waves": 11,
+          "counts": {
+            "single": 7,
+            "rail": 3,
+            "air-pass": 1
+          },
+          "ids": {
+            "muscleCoupe": 1,
+            "bydSeal": 1,
+            "t800": 1,
+            "truck": 2,
+            "xiaomiSu7": 2,
+            "primeDrone": 1
+          },
+          "fallbackRails": 2
+        },
+        {
+          "from": 120,
+          "waves": 13,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 2
+          },
+          "ids": {
+            "xiaomiSu7": 1,
+            "twitterBird": 1,
+            "truck": 4,
+            "batteryAgv": 1,
+            "doge": 2,
+            "regulatorDrone": 1,
+            "v8": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 180,
+          "waves": 11,
+          "counts": {
+            "single": 8,
+            "rail": 2,
+            "air-pass": 1
+          },
+          "ids": {
+            "truck": 5,
+            "batteryAgv": 2,
+            "v8": 1,
+            "regulatorDrone": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 240,
+          "waves": 12,
+          "counts": {
+            "rail": 3,
+            "single": 9
+          },
+          "ids": {
+            "truck": 7,
+            "batteryAgv": 2
+          },
+          "fallbackRails": 2
+        }
+      ],
+      "spawns": [
+        {
+          "time": 1.7083333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 381.58750000000003,
+          "gap": 1.7083333333333333,
+          "ms": 20.674042,
+          "budget": {
+            "ticks": 2132,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 6.308333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 428.5091666666669,
+          "gap": 4.6000000000000005,
+          "ms": 11.575707999999992,
+          "budget": {
+            "ticks": 3682,
+            "policies": 27,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 12.091666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 480.2291666666665,
+          "gap": 5.783333333333333,
+          "ms": 7.222583999999998,
+          "budget": {
+            "ticks": 2426,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 17.008333333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 492.5208333333325,
+          "gap": 4.916666666666666,
+          "ms": 5.253124999999997,
+          "budget": {
+            "ticks": 2478,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 23.758333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 488.680402777777,
+          "gap": 6.75,
+          "ms": 4.80366699999999,
+          "budget": {
+            "ticks": 1782,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 27.941666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 519.8541666666644,
+          "gap": 4.183333333333334,
+          "ms": 5.398415999999997,
+          "budget": {
+            "ticks": 1705,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 33.641666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 534.1041666666636,
+          "gap": 5.699999999999999,
+          "ms": 5.074040999999994,
+          "budget": {
+            "ticks": 2161,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 37.88333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 544.7083333333295,
+          "gap": 4.241666666666667,
+          "ms": 4.43112499999998,
+          "budget": {
+            "ticks": 1952,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 42.125,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 555.3124999999956,
+          "gap": 4.241666666666667,
+          "ms": 5.906042000000014,
+          "budget": {
+            "ticks": 2120,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 49.30833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 573.2708333333279,
+          "gap": 7.18333333333333,
+          "ms": 18.625125000000025,
+          "budget": {
+            "ticks": 2747,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 53.55833333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 583.8958333333273,
+          "gap": 4.25,
+          "ms": 3.9612089999999966,
+          "budget": {
+            "ticks": 2289,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 59.5,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 598.7499999999932,
+          "gap": 5.94166666666667,
+          "ms": 4.0508330000000115,
+          "budget": {
+            "ticks": 1626,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 63.74166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 609.3541666666592,
+          "gap": 4.241666666666667,
+          "ms": 3.9490830000000017,
+          "budget": {
+            "ticks": 1651,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 69.43333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 623.5833333333367,
+          "gap": 5.69166666666667,
+          "ms": 3.9493329999999958,
+          "budget": {
+            "ticks": 1645,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 73.66666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 634.1666666666783,
+          "gap": 4.233333333333334,
+          "ms": 5.543666999999999,
+          "budget": {
+            "ticks": 1960,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 77.90833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 644.7708333333535,
+          "gap": 4.24166666666666,
+          "ms": 8.726665999999994,
+          "budget": {
+            "ticks": 2641,
+            "policies": 22,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 82.13333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 655.3333333333619,
+          "gap": 4.224999999999994,
+          "ms": 5.4224590000000035,
+          "budget": {
+            "ticks": 1613,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 87.80833333333334,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 669.5208333333733,
+          "gap": 5.675000000000011,
+          "ms": 3.2298330000000135,
+          "budget": {
+            "ticks": 2158,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 93.61666666666666,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 684.0416666667181,
+          "gap": 5.808333333333323,
+          "ms": 0.4648329999999987,
+          "budget": {
+            "ticks": 270,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 98.44166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 696.1041666667277,
+          "gap": 4.825000000000003,
+          "ms": 4.312208999999996,
+          "budget": {
+            "ticks": 2042,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 105.575,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 963.8156250001015,
+          "gap": 7.13333333333334,
+          "ms": 4.579999999999984,
+          "budget": {
+            "ticks": 2703,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 111.04166666666667,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 982.2656250001162,
+          "gap": 5.466666666666669,
+          "ms": 5.99841600000002,
+          "budget": {
+            "ticks": 2905,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 116.7,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 741.7500000000973,
+          "gap": 5.658333333333331,
+          "ms": 3.532624999999996,
+          "budget": {
+            "ticks": 1585,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 121.14166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 752.8541666667729,
+          "gap": 4.441666666666663,
+          "ms": 0.0024579999999900792,
+          "budget": {
+            "ticks": 1581,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 126.575,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 766.4375000001169,
+          "gap": 5.433333333333337,
+          "ms": 2.619124999999997,
+          "budget": {
+            "ticks": 2042,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 132.25,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 780.6250000001102,
+          "gap": 5.674999999999997,
+          "ms": 0.3537910000000011,
+          "budget": {
+            "ticks": 252,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 136.96666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 792.4166666667661,
+          "gap": 4.716666666666669,
+          "ms": 4.604458000000022,
+          "budget": {
+            "ticks": 2175,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 141.15833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 802.8958333334232,
+          "gap": 4.191666666666663,
+          "ms": 3.5239159999999856,
+          "budget": {
+            "ticks": 1587,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 146.81666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 817.0416666667437,
+          "gap": 5.658333333333331,
+          "ms": 4.1272089999999935,
+          "budget": {
+            "ticks": 1997,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 151,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.183333333333337,
+          "ms": 3.2294169999999554,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 155.19166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.3788749999999936,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 159.35833333333332,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 3.886624999999981,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 166.43333333333334,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.075000000000017,
+          "ms": 0.35879200000005085,
+          "budget": {
+            "ticks": 265,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 171.23333333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.799999999999983,
+          "ms": 4.2692499999999995,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 175.4,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.589499999999987,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 179.59166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.556874999999991,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 186.68333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.091666666666669,
+          "ms": 4.757999999999981,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 190.875,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 4.431250000000034,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 195.06666666666666,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.355707999999993,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 202.14166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.074999999999989,
+          "ms": 5.291916000000015,
+          "budget": {
+            "ticks": 2549,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 206.95,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.808333333333337,
+          "ms": 3.7398749999999836,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 211.75833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.808333333333337,
+          "ms": 4.395250000000033,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 216.25,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.491666666666674,
+          "ms": 3.3921250000000214,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 221.89166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 4.3284589999999525,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 226.05833333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.3474579999999605,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 230.25,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.1569169999999644,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 237.35,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 1113.75,
+          "gap": 7.099999999999994,
+          "ms": 0.350750000000005,
+          "budget": {
+            "ticks": 253,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 242.09166666666667,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 1113.75,
+          "gap": 4.741666666666674,
+          "ms": 3.574375000000032,
+          "budget": {
+            "ticks": 2650,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 247.36666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.275000000000006,
+          "ms": 3.9388329999999883,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 254.48333333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.116666666666646,
+          "ms": 3.6469169999999735,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 258.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 5.522416000000021,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 262.81666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 4.382124999999974,
+          "budget": {
+            "ticks": 2177,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 269.9083333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.09166666666664,
+          "ms": 2.080249999999978,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 276.1166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 6.208333333333371,
+          "ms": 3.742166999999995,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 280.9,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.783333333333303,
+          "ms": 3.8989160000000425,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 286.51666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.616666666666674,
+          "ms": 4.513332999999989,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 290.7083333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.1988750000000437,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 294.875,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.5155829999999924,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 299.0416666666667,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.1830830000000105,
+          "budget": {
+            "ticks": 3001,
+            "policies": 15,
+            "candidates": 3,
+            "exhausted": false
+          }
+        }
+      ]
+    },
+    {
+      "spawnP95": 12.624834000000192,
+      "seed": 932,
+      "imperfect": false,
+      "seconds": 300,
+      "waves": 60,
+      "flips": 137,
+      "falls": 0,
+      "catches": 11,
+      "pickups": 9,
+      "maxGap": 7.158333333333335,
+      "maxActiveGap": 7.158333333333479,
+      "maxBudget": 4159,
+      "maxSpawnMs": 16.07512500000007,
+      "failedAttempts": 0,
+      "windows": [
+        {
+          "from": 0,
+          "waves": 11,
+          "counts": {
+            "single": 8,
+            "rail": 3
+          },
+          "ids": {
+            "muscleCompact": 2,
+            "doge": 1,
+            "batteryAgv": 2,
+            "truck": 2,
+            "xi": 1
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 60,
+          "waves": 12,
+          "counts": {
+            "single": 10,
+            "rail": 1,
+            "air-pass": 1
+          },
+          "ids": {
+            "pump": 1,
+            "truck": 2,
+            "gemini": 1,
+            "xiaomiSu7": 1,
+            "t800": 1,
+            "batteryAgv": 2,
+            "v8": 1,
+            "primeDrone": 1,
+            "muscleCompact": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 120,
+          "waves": 13,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 2
+          },
+          "ids": {
+            "xiaomiSu7": 1,
+            "homelessRow": 1,
+            "doge": 2,
+            "ufo": 1,
+            "truck": 3,
+            "batteryAgv": 1,
+            "muscleCompact": 1,
+            "starlink": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 180,
+          "waves": 12,
+          "counts": {
+            "single": 8,
+            "rail": 3,
+            "air-pass": 1
+          },
+          "ids": {
+            "truck": 5,
+            "batteryAgv": 2,
+            "v8": 1,
+            "twitterBird": 1
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 240,
+          "waves": 12,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 1
+          },
+          "ids": {
+            "v8": 1,
+            "truck": 4,
+            "doge": 2,
+            "qualitySkull": 1,
+            "batteryAgv": 2
+          },
+          "fallbackRails": 0
+        }
+      ],
+      "spawns": [
+        {
+          "time": 1.7083333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 381.58750000000003,
+          "gap": 1.7083333333333333,
+          "ms": 16.07512500000007,
+          "budget": {
+            "ticks": 2132,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 6.308333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 428.5091666666669,
+          "gap": 4.6000000000000005,
+          "ms": 12.624834000000192,
+          "budget": {
+            "ticks": 1992,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 12.091666666666667,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 480.2291666666665,
+          "gap": 5.783333333333333,
+          "ms": 15.769375000000082,
+          "budget": {
+            "ticks": 4159,
+            "policies": 20,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 18.325,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 485.56570833333313,
+          "gap": 6.2333333333333325,
+          "ms": 2.6260829999998805,
+          "budget": {
+            "ticks": 2466,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 24.45,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 503.96924999999896,
+          "gap": 6.125,
+          "ms": 4.177208000000064,
+          "budget": {
+            "ticks": 1727,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 31.608333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 529.0208333333304,
+          "gap": 7.158333333333335,
+          "ms": 4.004167000000052,
+          "budget": {
+            "ticks": 1716,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 35.858333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 539.6458333333298,
+          "gap": 4.25,
+          "ms": 5.431082999999944,
+          "budget": {
+            "ticks": 2809,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 40.1,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 550.2499999999959,
+          "gap": 4.241666666666667,
+          "ms": 5.1024589999999534,
+          "budget": {
+            "ticks": 2793,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 44.36666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 560.916666666662,
+          "gap": 4.266666666666666,
+          "ms": 5.157791999999972,
+          "budget": {
+            "ticks": 2776,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 50.075,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 575.1874999999945,
+          "gap": 5.708333333333336,
+          "ms": 3.7053750000000036,
+          "budget": {
+            "ticks": 2326,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 54.916666666666664,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 587.2916666666605,
+          "gap": 4.8416666666666615,
+          "ms": 1.7702089999997952,
+          "budget": {
+            "ticks": 2282,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 61.4,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 593.0393333333272,
+          "gap": 6.483333333333334,
+          "ms": 2.958750000000009,
+          "budget": {
+            "ticks": 1874,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 67.05833333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 617.6458333333319,
+          "gap": 5.6583333333333385,
+          "ms": 3.7680840000000444,
+          "budget": {
+            "ticks": 2074,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 71.29166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 628.2291666666737,
+          "gap": 4.233333333333334,
+          "ms": 2.9892079999999623,
+          "budget": {
+            "ticks": 1884,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 75.525,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 638.8125000000155,
+          "gap": 4.233333333333334,
+          "ms": 3.1348749999999654,
+          "budget": {
+            "ticks": 1632,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 82.68333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 656.708333333363,
+          "gap": 7.158333333333331,
+          "ms": 2.9945840000000317,
+          "budget": {
+            "ticks": 1963,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 86.91666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 667.2916666667048,
+          "gap": 4.233333333333334,
+          "ms": 2.942457999999988,
+          "budget": {
+            "ticks": 1601,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 91.13333333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 677.8333333333798,
+          "gap": 4.216666666666654,
+          "ms": 1.765374999999949,
+          "budget": {
+            "ticks": 2144,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 96.93333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 692.3333333333914,
+          "gap": 5.800000000000011,
+          "ms": 2.7446249999998145,
+          "budget": {
+            "ticks": 1581,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 102.625,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 706.5625000000693,
+          "gap": 5.691666666666663,
+          "ms": 0.2668750000000273,
+          "budget": {
+            "ticks": 269,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 107.44166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 718.6041666667455,
+          "gap": 4.816666666666663,
+          "ms": 3.3577090000001135,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 111.64999999999999,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 729.1250000000873,
+          "gap": 4.208333333333329,
+          "ms": 2.7102500000000873,
+          "budget": {
+            "ticks": 1590,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 117.325,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 743.3125000000986,
+          "gap": 5.675000000000011,
+          "ms": 2.9648329999999987,
+          "budget": {
+            "ticks": 1582,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 121.52499999999999,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 753.812500000107,
+          "gap": 4.199999999999989,
+          "ms": 2.8784590000000208,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 125.725,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 764.3125000001153,
+          "gap": 4.200000000000003,
+          "ms": 1.4589999999998327,
+          "budget": {
+            "ticks": 2042,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 132.85833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 782.145833333442,
+          "gap": 7.133333333333326,
+          "ms": 2.9029169999998885,
+          "budget": {
+            "ticks": 1581,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 137.025,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 792.5625000000992,
+          "gap": 4.166666666666686,
+          "ms": 2.659417000000076,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 141.21666666666667,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 803.0416666667564,
+          "gap": 4.191666666666663,
+          "ms": 0.26312499999994543,
+          "budget": {
+            "ticks": 264,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 146.03333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 815.0833333334122,
+          "gap": 4.816666666666663,
+          "ms": 2.587624999999889,
+          "budget": {
+            "ticks": 1744,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 151.69166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.658333333333331,
+          "ms": 2.726291000000174,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 155.85833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 3.409249999999929,
+          "budget": {
+            "ticks": 2175,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 160.025,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 1.5505409999998392,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 165.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 2.8028750000000855,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 171.31666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.666666666666657,
+          "ms": 3.310165999999981,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 176.1,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.783333333333331,
+          "ms": 0.2829580000000078,
+          "budget": {
+            "ticks": 270,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 179.85,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 3.75,
+          "ms": 5.066499999999905,
+          "budget": {
+            "ticks": 2328,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 184.34166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.491666666666674,
+          "ms": 5.513332999999875,
+          "budget": {
+            "ticks": 2174,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 188.53333333333333,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.0166249999999764,
+          "budget": {
+            "ticks": 2819,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 195.60833333333332,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.074999999999989,
+          "ms": 1.5396250000001146,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 201.20833333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.600000000000023,
+          "ms": 3.299374999999827,
+          "budget": {
+            "ticks": 2008,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 205.4,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.173041000000012,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 209.59166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.6809169999999085,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 215.23333333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 2.6153750000000855,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 219.4,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.297458000000006,
+          "budget": {
+            "ticks": 2175,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 223.59166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.6965829999999187,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 227.78333333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 1.4272500000001855,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 234.85833333333332,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.074999999999989,
+          "ms": 0.24837499999989632,
+          "budget": {
+            "ticks": 251,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 239.54999999999998,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.691666666666663,
+          "ms": 2.752083999999968,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 243.71666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 2.563250000000153,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 249.35833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 3.020082999999886,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 253.525,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 2.4397500000000036,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 257.69166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 3.0077920000001086,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 263.3333333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 1.7515839999998661,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 268.9583333333333,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 0.23662500000000364,
+          "budget": {
+            "ticks": 257,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 273.69166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.7333333333333485,
+          "ms": 2.555499999999938,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 279.3333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 2.6125419999998485,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 283.5,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 2.6802920000000086,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 287.6666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 2.5420419999998103,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 291.8333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666629,
+          "ms": 2.499415999999883,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 297.45,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.616666666666674,
+          "ms": 1.6873749999999745,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        }
+      ]
+    },
+    {
+      "spawnP95": 4.243915999999899,
+      "seed": 9,
+      "imperfect": false,
+      "seconds": 300,
+      "waves": 59,
+      "flips": 140,
+      "falls": 0,
+      "catches": 11,
+      "pickups": 13,
+      "maxGap": 7.141666666666666,
+      "maxActiveGap": 7.141666666666811,
+      "maxBudget": 3823,
+      "maxSpawnMs": 5.995666999999912,
+      "failedAttempts": 0,
+      "windows": [
+        {
+          "from": 0,
+          "waves": 12,
+          "counts": {
+            "single": 10,
+            "rail": 2
+          },
+          "ids": {
+            "truck": 4,
+            "v8": 2,
+            "batteryAgv": 2,
+            "t800": 1,
+            "muscleCompact": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 60,
+          "waves": 12,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 1
+          },
+          "ids": {
+            "amber": 1,
+            "gemini": 1,
+            "bydSeal": 1,
+            "batteryAgv": 2,
+            "truck": 1,
+            "twitterBird": 1,
+            "zuck": 1,
+            "xiaomiSu7": 1,
+            "xi": 1
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 120,
+          "waves": 12,
+          "counts": {
+            "rail": 2,
+            "single": 8,
+            "air-pass": 2
+          },
+          "ids": {
+            "muscleCoupe": 1,
+            "regulatorDrone": 2,
+            "truck": 5,
+            "xiaomiSu7": 1,
+            "batteryAgv": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 180,
+          "waves": 12,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 1
+          },
+          "ids": {
+            "v8": 1,
+            "muscleCompact": 1,
+            "truck": 6,
+            "ufo": 1,
+            "doge": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 240,
+          "waves": 11,
+          "counts": {
+            "single": 7,
+            "rail": 3,
+            "air-pass": 1
+          },
+          "ids": {
+            "muscleCompact": 2,
+            "primeDrone": 1,
+            "truck": 4,
+            "v8": 1
+          },
+          "fallbackRails": 2
+        }
+      ],
+      "spawns": [
+        {
+          "time": 1.7083333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 381.58750000000003,
+          "gap": 1.7083333333333333,
+          "ms": 3.489082999999937,
+          "budget": {
+            "ticks": 2129,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 6.3,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 428.4900000000002,
+          "gap": 4.591666666666667,
+          "ms": 3.852290999999923,
+          "budget": {
+            "ticks": 2477,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 12.058333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 480.1458333333332,
+          "gap": 5.758333333333334,
+          "ms": 3.2405840000001263,
+          "budget": {
+            "ticks": 1832,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 16.333333333333332,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 490.83333333333263,
+          "gap": 4.274999999999999,
+          "ms": 2.140124999999898,
+          "budget": {
+            "ticks": 2485,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 22.508333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 497.1579583333325,
+          "gap": 6.175000000000001,
+          "ms": 3.9090830000000096,
+          "budget": {
+            "ticks": 2260,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 26.733333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 516.8333333333312,
+          "gap": 4.225000000000001,
+          "ms": 3.8745839999999134,
+          "budget": {
+            "ticks": 2201,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 32.458333333333336,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 531.1458333333303,
+          "gap": 5.725000000000001,
+          "ms": 3.0087499999999636,
+          "budget": {
+            "ticks": 1704,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 36.733333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 541.8333333333297,
+          "gap": 4.274999999999999,
+          "ms": 5.995666999999912,
+          "budget": {
+            "ticks": 3823,
+            "policies": 27,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 40.983333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 552.4583333333292,
+          "gap": 4.25,
+          "ms": 2.974124999999958,
+          "budget": {
+            "ticks": 1682,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 45.24166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 563.1041666666619,
+          "gap": 4.258333333333333,
+          "ms": 2.991790999999921,
+          "budget": {
+            "ticks": 1653,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 50.95,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 779.4562499999923,
+          "gap": 5.708333333333336,
+          "ms": 1.8362499999998363,
+          "budget": {
+            "ticks": 2027,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 56.608333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 798.5531249999914,
+          "gap": 5.658333333333331,
+          "ms": 3.6940000000001874,
+          "budget": {
+            "ticks": 1647,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 60.766666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 601.9166666666597,
+          "gap": 4.158333333333331,
+          "ms": 4.11891700000001,
+          "budget": {
+            "ticks": 1967,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 66.44166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 616.104166666664,
+          "gap": 5.674999999999997,
+          "ms": 3.5526250000000346,
+          "budget": {
+            "ticks": 1877,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 70.675,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 626.6875000000058,
+          "gap": 4.233333333333334,
+          "ms": 4.091042000000016,
+          "budget": {
+            "ticks": 1638,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 74.90833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 637.2708333333476,
+          "gap": 4.233333333333334,
+          "ms": 3.51037499999984,
+          "budget": {
+            "ticks": 1604,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 80.61666666666666,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 879.5812500000345,
+          "gap": 5.708333333333329,
+          "ms": 3.91212500000006,
+          "budget": {
+            "ticks": 2948,
+            "policies": 15,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 86.175,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 898.3406250000496,
+          "gap": 5.558333333333337,
+          "ms": 2.5369580000001406,
+          "budget": {
+            "ticks": 2185,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 91.94166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 679.8541666667148,
+          "gap": 5.766666666666666,
+          "ms": 4.243915999999899,
+          "budget": {
+            "ticks": 2041,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 99.08333333333333,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 697.7083333333957,
+          "gap": 7.141666666666666,
+          "ms": 0.36858399999982794,
+          "budget": {
+            "ticks": 256,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 103.81666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 709.5416666667384,
+          "gap": 4.733333333333334,
+          "ms": 3.6018329999999423,
+          "budget": {
+            "ticks": 1963,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 108.02499999999999,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 720.06250000008,
+          "gap": 4.208333333333329,
+          "ms": 3.99354100000005,
+          "budget": {
+            "ticks": 1585,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 115.15833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 737.8958333334276,
+          "gap": 7.13333333333334,
+          "ms": 3.58075000000008,
+          "budget": {
+            "ticks": 1585,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 119.33333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 748.3333333334359,
+          "gap": 4.174999999999997,
+          "ms": 3.5296250000001237,
+          "budget": {
+            "ticks": 1959,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 123.53333333333333,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 758.8333333334442,
+          "gap": 4.200000000000003,
+          "ms": 1.5852919999999813,
+          "budget": {
+            "ticks": 2049,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 129.21666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 773.0416666667837,
+          "gap": 5.683333333333337,
+          "ms": 4.335959000000003,
+          "budget": {
+            "ticks": 1589,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 134.85833333333332,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 787.1458333334375,
+          "gap": 5.6416666666666515,
+          "ms": 0.3325830000001133,
+          "budget": {
+            "ticks": 266,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 139.69166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 799.2291666667599,
+          "gap": 4.833333333333343,
+          "ms": 3.316332999999986,
+          "budget": {
+            "ticks": 1575,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 143.85833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 809.645833333417,
+          "gap": 4.166666666666657,
+          "ms": 3.086999999999989,
+          "budget": {
+            "ticks": 1583,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 148.01666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 820.041666666741,
+          "gap": 4.158333333333331,
+          "ms": 3.1918329999998605,
+          "budget": {
+            "ticks": 1997,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 155.125,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.1083333333333485,
+          "ms": 2.6781660000001466,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 159.31666666666666,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 1.888332999999875,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 164.94166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 2.665416999999934,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 169.10833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 2.7727919999999813,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 174.75,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.64166666666668,
+          "ms": 0.2567919999999049,
+          "budget": {
+            "ticks": 265,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 179.55,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.800000000000011,
+          "ms": 3.1516670000000886,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 183.71666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 2.6672080000000733,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 187.90833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.725500000000011,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 195,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.091666666666669,
+          "ms": 1.4167919999999867,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 200.625,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 3.44600000000014,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 204.81666666666666,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 0.2588749999999891,
+          "budget": {
+            "ticks": 263,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 209.60833333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.791666666666657,
+          "ms": 2.5989170000000286,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 213.775,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.646792000000005,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 217.96666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.5570420000001377,
+          "budget": {
+            "ticks": 1749,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 222.15833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.4393340000001444,
+          "budget": {
+            "ticks": 2177,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 229.25,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 7.091666666666669,
+          "ms": 1.8822089999998752,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 234.875,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 3.452041999999892,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 239.06666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.557207999999946,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 243.23333333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 3.070707999999968,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 248.875,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 1113.75,
+          "gap": 5.64166666666668,
+          "ms": 2.8385000000000673,
+          "budget": {
+            "ticks": 2795,
+            "policies": 15,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 254.15833333333333,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 1113.75,
+          "gap": 5.283333333333331,
+          "ms": 2.7765840000001845,
+          "budget": {
+            "ticks": 2671,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 259.51666666666665,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.35833333333332,
+          "ms": 0.2649579999999787,
+          "budget": {
+            "ticks": 263,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 265.775,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 6.258333333333326,
+          "ms": 1.4701250000000528,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 271.375,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.600000000000023,
+          "ms": 3.4263330000001133,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 275.5416666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 3.2268329999999423,
+          "budget": {
+            "ticks": 2008,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 279.7083333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666629,
+          "ms": 3.5660420000001523,
+          "budget": {
+            "ticks": 2174,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 285.325,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.616666666666674,
+          "ms": 3.5176249999999527,
+          "budget": {
+            "ticks": 2059,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 289.51666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.358249999999998,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 293.7083333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.1725839999999152,
+          "budget": {
+            "ticks": 1994,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        }
+      ]
+    },
+    {
+      "spawnP95": 5.00912500000004,
+      "seed": 56,
+      "imperfect": false,
+      "seconds": 300,
+      "waves": 59,
+      "flips": 135,
+      "falls": 0,
+      "catches": 11,
+      "pickups": 12,
+      "maxGap": 7.616666666666674,
+      "maxActiveGap": 7.616666666666835,
+      "maxBudget": 4174,
+      "maxSpawnMs": 5.5750000000000455,
+      "failedAttempts": 0,
+      "windows": [
+        {
+          "from": 0,
+          "waves": 11,
+          "counts": {
+            "single": 8,
+            "rail": 3
+          },
+          "ids": {
+            "truck": 2,
+            "v8": 1,
+            "doge": 1,
+            "muscleCoupe": 1,
+            "xiaomiSu7": 1,
+            "xi": 1,
+            "batteryAgv": 1
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 60,
+          "waves": 12,
+          "counts": {
+            "single": 10,
+            "rail": 1,
+            "air-pass": 1
+          },
+          "ids": {
+            "muscleCoupe": 1,
+            "v8": 1,
+            "bydSeal": 2,
+            "xiaomiSu7": 1,
+            "t800": 2,
+            "truck": 2,
+            "ufo": 1,
+            "batteryAgv": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 120,
+          "waves": 12,
+          "counts": {
+            "single": 8,
+            "rail": 2,
+            "air-pass": 2
+          },
+          "ids": {
+            "homelessRow": 1,
+            "twitterBird": 1,
+            "batteryAgv": 2,
+            "truck": 4,
+            "muscleCompact": 1,
+            "regulatorDrone": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 180,
+          "waves": 12,
+          "counts": {
+            "rail": 3,
+            "single": 8,
+            "air-pass": 1
+          },
+          "ids": {
+            "truck": 6,
+            "batteryAgv": 1,
+            "v8": 1,
+            "twitterBird": 1
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 240,
+          "waves": 12,
+          "counts": {
+            "single": 9,
+            "rail": 2,
+            "air-pass": 1
+          },
+          "ids": {
+            "truck": 6,
+            "batteryAgv": 2,
+            "ufo": 1,
+            "muscleCompact": 1
+          },
+          "fallbackRails": 1
+        }
+      ],
+      "spawns": [
+        {
+          "time": 1.7083333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 381.58750000000003,
+          "gap": 1.7083333333333333,
+          "ms": 3.6514169999998103,
+          "budget": {
+            "ticks": 2129,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 6.3,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 428.4900000000002,
+          "gap": 4.591666666666667,
+          "ms": 4.449290999999903,
+          "budget": {
+            "ticks": 2459,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 12.058333333333334,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 480.1458333333332,
+          "gap": 5.758333333333334,
+          "ms": 4.839374999999791,
+          "budget": {
+            "ticks": 4174,
+            "policies": 20,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 18.266666666666666,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 485.42288888888874,
+          "gap": 6.208333333333332,
+          "ms": 2.15625,
+          "budget": {
+            "ticks": 2466,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 24.391666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 503.8254583333323,
+          "gap": 6.125,
+          "ms": 3.265124999999898,
+          "budget": {
+            "ticks": 1948,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 30.099999999999998,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 709.0874999999966,
+          "gap": 5.708333333333332,
+          "ms": 3.730957999999873,
+          "budget": {
+            "ticks": 1868,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 34.9,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 725.2874999999956,
+          "gap": 4.800000000000001,
+          "ms": 3.196333999999979,
+          "budget": {
+            "ticks": 1873,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 39.71666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 549.2916666666626,
+          "gap": 4.81666666666667,
+          "ms": 4.276416000000154,
+          "budget": {
+            "ticks": 2317,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 44.30833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 560.7708333333287,
+          "gap": 4.5916666666666615,
+          "ms": 5.00912500000004,
+          "budget": {
+            "ticks": 2760,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 50.016666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 575.0416666666612,
+          "gap": 5.708333333333336,
+          "ms": 3.3875410000000556,
+          "budget": {
+            "ticks": 1656,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 54.24166666666667,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 585.6041666666606,
+          "gap": 4.225000000000001,
+          "ms": 1.7474999999999454,
+          "budget": {
+            "ticks": 2282,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 60.208333333333336,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 600.5208333333264,
+          "gap": 5.966666666666669,
+          "ms": 5.328708000000006,
+          "budget": {
+            "ticks": 1663,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 65.925,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 614.8124999999964,
+          "gap": 5.7166666666666615,
+          "ms": 3.164457999999968,
+          "budget": {
+            "ticks": 1881,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 70.78333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 626.9583333333394,
+          "gap": 4.858333333333334,
+          "ms": 3.253708000000188,
+          "budget": {
+            "ticks": 1874,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 75.60833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 639.020833333349,
+          "gap": 4.825000000000003,
+          "ms": 3.125541999999996,
+          "budget": {
+            "ticks": 1642,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 80.16666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 650.4166666666913,
+          "gap": 4.558333333333337,
+          "ms": 2.801832999999988,
+          "budget": {
+            "ticks": 1966,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 85.875,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 664.6875000000362,
+          "gap": 5.708333333333329,
+          "ms": 5.5750000000000455,
+          "budget": {
+            "ticks": 1587,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 90.1,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 675.2500000000443,
+          "gap": 4.224999999999994,
+          "ms": 1.9741249999999582,
+          "budget": {
+            "ticks": 2144,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 95.9,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 689.7500000000559,
+          "gap": 5.800000000000011,
+          "ms": 0.2881250000000364,
+          "budget": {
+            "ticks": 271,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 100.75,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 701.8750000000657,
+          "gap": 4.849999999999994,
+          "ms": 2.8954999999998563,
+          "budget": {
+            "ticks": 1589,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 106.43333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 716.0833333334102,
+          "gap": 5.683333333333337,
+          "ms": 2.810833999999886,
+          "budget": {
+            "ticks": 1589,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 110.64166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 726.6041666667519,
+          "gap": 4.208333333333329,
+          "ms": 2.772292000000107,
+          "budget": {
+            "ticks": 1956,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 114.85,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 737.1250000000936,
+          "gap": 4.208333333333329,
+          "ms": 2.732250000000022,
+          "budget": {
+            "ticks": 1585,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 121.975,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 754.9375000001078,
+          "gap": 7.125,
+          "ms": 2.784874999999829,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 126.175,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 765.4375000001163,
+          "gap": 4.200000000000003,
+          "ms": 1.5154170000000704,
+          "budget": {
+            "ticks": 2042,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 131.825,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 779.5625000001111,
+          "gap": 5.6499999999999915,
+          "ms": 0.2631659999999556,
+          "budget": {
+            "ticks": 252,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 139.44166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 798.6041666667604,
+          "gap": 7.616666666666674,
+          "ms": 3.140542000000096,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 144.225,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 810.5625000000829,
+          "gap": 4.783333333333331,
+          "ms": 3.112707999999884,
+          "budget": {
+            "ticks": 1871,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 149,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 822.5000000000721,
+          "gap": 4.775000000000006,
+          "ms": 3.0921249999998963,
+          "budget": {
+            "ticks": 1997,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 153.48333333333332,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.48333333333332,
+          "ms": 3.2409999999999854,
+          "budget": {
+            "ticks": 2177,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 159.125,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.64166666666668,
+          "ms": 2.595874999999978,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 163.31666666666666,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 1.4611250000000382,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 168.94166666666666,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 0.25116700000012315,
+          "budget": {
+            "ticks": 265,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 175.21666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 6.275000000000006,
+          "ms": 2.737875000000031,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 179.40833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 3.121708000000126,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 183.575,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 2.791542000000163,
+          "budget": {
+            "ticks": 3003,
+            "policies": 15,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 189.175,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.600000000000023,
+          "ms": 3.2070840000001226,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 194.81666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 3.008291999999983,
+          "budget": {
+            "ticks": 2008,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 198.98333333333332,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 1.74474999999984,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 204.58333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.600000000000023,
+          "ms": 3.3721660000001066,
+          "budget": {
+            "ticks": 2177,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 210.225,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 3.1207500000000437,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 214.39166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666657,
+          "ms": 2.713875000000371,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 218.55833333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 2.708291999999801,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 222.75,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 4.891791000000012,
+          "budget": {
+            "ticks": 2175,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 228.39166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 2.613499999999931,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 232.55833333333334,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.166666666666686,
+          "ms": 1.4448339999999007,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 238.18333333333334,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 0.4884999999999309,
+          "budget": {
+            "ticks": 251,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 242.875,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.691666666666663,
+          "ms": 3.050499999999829,
+          "budget": {
+            "ticks": 2008,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 248.51666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.6416666666666515,
+          "ms": 2.770375000000058,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 253.325,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.808333333333337,
+          "ms": 2.7960830000001806,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 258.10833333333335,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.78333333333336,
+          "ms": 3.010334000000057,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 264.075,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.96666666666664,
+          "ms": 2.6292499999999563,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 268.26666666666665,
+          "kind": "rail",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 1.5319170000002487,
+          "budget": {
+            "ticks": 1985,
+            "policies": 8,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 273.89166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.625,
+          "ms": 3.06650000000036,
+          "budget": {
+            "ticks": 1993,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 278.0833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.191666666666663,
+          "ms": 2.5464170000000195,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 283.7,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 1113.75,
+          "gap": 5.616666666666674,
+          "ms": 0.25420800000028976,
+          "budget": {
+            "ticks": 252,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 287.30833333333334,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 1113.75,
+          "gap": 3.6083333333333485,
+          "ms": 2.70279199999959,
+          "budget": {
+            "ticks": 2934,
+            "policies": 15,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 292.31666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 5.008333333333326,
+          "ms": 2.8281670000001213,
+          "budget": {
+            "ticks": 1864,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 296.8333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.5166666666666515,
+          "ms": 3.017333000000235,
+          "budget": {
+            "ticks": 2060,
+            "policies": 18,
+            "candidates": 2,
+            "exhausted": false
+          }
+        }
+      ]
+    },
+    {
+      "spawnP95": 6.294250000000375,
+      "seed": 17,
+      "imperfect": true,
+      "seconds": 300,
+      "waves": 43,
+      "flips": 107,
+      "falls": 18,
+      "catches": 1,
+      "pickups": 10,
+      "maxGap": 14.583333333333329,
+      "maxActiveGap": 11.358333333333329,
+      "maxBudget": 3982,
+      "maxSpawnMs": 9.015916000000288,
+      "failedAttempts": 0,
+      "windows": [
+        {
+          "from": 0,
+          "waves": 9,
+          "counts": {
+            "single": 9
+          },
+          "ids": {
+            "muscleCompact": 2,
+            "truck": 5,
+            "v8": 2
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 60,
+          "waves": 9,
+          "counts": {
+            "single": 8,
+            "rail": 1
+          },
+          "ids": {
+            "xiaomiSu7": 2,
+            "batteryAgv": 2,
+            "bydSeal": 1,
+            "t800": 1,
+            "truck": 2
+          },
+          "fallbackRails": 1
+        },
+        {
+          "from": 120,
+          "waves": 8,
+          "counts": {
+            "single": 8
+          },
+          "ids": {
+            "muscleCompact": 3,
+            "muscleCoupe": 2,
+            "doge": 1,
+            "truck": 2
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 180,
+          "waves": 9,
+          "counts": {
+            "single": 8,
+            "air-pass": 1
+          },
+          "ids": {
+            "batteryAgv": 1,
+            "truck": 5,
+            "bydSeal": 1,
+            "regulatorDrone": 1,
+            "v8": 1
+          },
+          "fallbackRails": 0
+        },
+        {
+          "from": 240,
+          "waves": 8,
+          "counts": {
+            "air-pass": 1,
+            "single": 7
+          },
+          "ids": {
+            "primeDrone": 1,
+            "v8": 2,
+            "truck": 3,
+            "muscleCompact": 1,
+            "batteryAgv": 1
+          },
+          "fallbackRails": 0
+        }
+      ],
+      "spawns": [
+        {
+          "time": 1.7083333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 381.58750000000003,
+          "gap": 1.7083333333333333,
+          "ms": 3.5316250000000764,
+          "budget": {
+            "ticks": 2132,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 6.308333333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 428.5091666666669,
+          "gap": 4.6000000000000005,
+          "ms": 6.3592499999999745,
+          "budget": {
+            "ticks": 3682,
+            "policies": 27,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 12.091666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 480.2291666666665,
+          "gap": 5.783333333333333,
+          "ms": 4.309416000000056,
+          "budget": {
+            "ticks": 2426,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 19.90833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 413.8049999999993,
+          "gap": 7.816666666666665,
+          "ms": 4.988250000000335,
+          "budget": {
+            "ticks": 2089,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 24.575,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 443.7766666666654,
+          "gap": 4.666666666666668,
+          "ms": 4.101125000000138,
+          "budget": {
+            "ticks": 1861,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 37.56666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 600.4057499999967,
+          "gap": 12.991666666666664,
+          "ms": 9.015916000000288,
+          "budget": {
+            "ticks": 3982,
+            "policies": 29,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 41.833333333333336,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 518.5199999999966,
+          "gap": 4.266666666666673,
+          "ms": 3.8566249999998945,
+          "budget": {
+            "ticks": 1715,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 53.49166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 471.9399999999961,
+          "gap": 11.658333333333331,
+          "ms": 4.737666999999874,
+          "budget": {
+            "ticks": 1806,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 57.699999999999996,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 526.5658333333283,
+          "gap": 4.208333333333329,
+          "ms": 6.294250000000375,
+          "budget": {
+            "ticks": 2755,
+            "policies": 23,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 61.86666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 582.7708333333273,
+          "gap": 4.166666666666671,
+          "ms": 3.8348339999997734,
+          "budget": {
+            "ticks": 1679,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 70.61666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 501.51499999999436,
+          "gap": 8.749999999999993,
+          "ms": 4.694084000000203,
+          "budget": {
+            "ticks": 1716,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 74.80833333333334,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 558.9191666666599,
+          "gap": 4.191666666666677,
+          "ms": 4.202457999999751,
+          "budget": {
+            "ticks": 1671,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 78.95833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 617.8958333333321,
+          "gap": 4.1499999999999915,
+          "ms": 4.00591600000007,
+          "budget": {
+            "ticks": 1961,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 87.75833333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 531.0025000000086,
+          "gap": 8.799999999999997,
+          "ms": 3.2531670000003032,
+          "budget": {
+            "ticks": 1651,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 91.94166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 591.1958333333502,
+          "gap": 4.183333333333337,
+          "ms": 3.0521249999997053,
+          "budget": {
+            "ticks": 1645,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 96.08333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 652.9583333333601,
+          "gap": 4.141666666666666,
+          "ms": 2.8843339999998534,
+          "budget": {
+            "ticks": 1601,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 104.925,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 756.5670000000431,
+          "gap": 8.841666666666669,
+          "ms": 3.5414160000000265,
+          "budget": {
+            "ticks": 1975,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 109.03333333333333,
+          "kind": "rail",
+          "fallbackRail": true,
+          "speed": 841.3773750000572,
+          "gap": 4.108333333333334,
+          "ms": 2.72137500000008,
+          "budget": {
+            "ticks": 2743,
+            "policies": 14,
+            "candidates": 3,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 123.61666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 649.3858333333966,
+          "gap": 14.583333333333329,
+          "ms": 3.169166000000132,
+          "budget": {
+            "ticks": 1866,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 128.375,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 717.7500000000782,
+          "gap": 4.75833333333334,
+          "ms": 3.0447079999999005,
+          "budget": {
+            "ticks": 1867,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 137.61666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 615.4400000000757,
+          "gap": 9.241666666666674,
+          "ms": 3.5227920000002086,
+          "budget": {
+            "ticks": 1611,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 143.21666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 716.8000000000972,
+          "gap": 5.599999999999994,
+          "ms": 2.9197909999998046,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 153.575,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 641.9700000000968,
+          "gap": 10.35833333333332,
+          "ms": 3.0046250000000327,
+          "budget": {
+            "ticks": 1593,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 160.64166666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 781.9166666667757,
+          "gap": 7.066666666666663,
+          "ms": 2.6658330000000205,
+          "budget": {
+            "ticks": 1744,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 169.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 668.1500000000813,
+          "gap": 9.008333333333354,
+          "ms": 2.729374999999891,
+          "budget": {
+            "ticks": 1571,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 173.78333333333333,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 741.2900000000802,
+          "gap": 4.133333333333326,
+          "ms": 2.6337499999999636,
+          "budget": {
+            "ticks": 1575,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 185.71666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 11.933333333333337,
+          "ms": 2.73758399999997,
+          "budget": {
+            "ticks": 1582,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 189.84166666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.125,
+          "ms": 3.0368749999997817,
+          "budget": {
+            "ticks": 1989,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 201.76666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 11.924999999999983,
+          "ms": 2.8142919999995684,
+          "budget": {
+            "ticks": 1587,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 205.86666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.100000000000023,
+          "ms": 3.2990410000002157,
+          "budget": {
+            "ticks": 1989,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 209.95833333333334,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.091666666666669,
+          "ms": 0.2527919999997721,
+          "budget": {
+            "ticks": 265,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 219.69166666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 9.73333333333332,
+          "ms": 3.0504580000001624,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 223.81666666666666,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.125,
+          "ms": 2.537499999999909,
+          "budget": {
+            "ticks": 1579,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 235.76666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 11.949999999999989,
+          "ms": 3.496541999999863,
+          "budget": {
+            "ticks": 2025,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 239.86666666666667,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.100000000000023,
+          "ms": 3.0090000000000146,
+          "budget": {
+            "ticks": 1989,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 243.95833333333334,
+          "kind": "air-pass",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.091666666666669,
+          "ms": 0.24679199999991397,
+          "budget": {
+            "ticks": 263,
+            "policies": 1,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 253.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 9.691666666666663,
+          "ms": 2.692500000000109,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 257.75,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.099999999999994,
+          "ms": 3.303042000000005,
+          "budget": {
+            "ticks": 2023,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 269.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 693,
+          "gap": 11.899999999999977,
+          "ms": 2.8955409999998665,
+          "budget": {
+            "ticks": 1580,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 273.75,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.100000000000023,
+          "ms": 3.3360830000001442,
+          "budget": {
+            "ticks": 1988,
+            "policies": 17,
+            "candidates": 2,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 285.65,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 935.5500000000001,
+          "gap": 11.899999999999977,
+          "ms": 3.6528339999999844,
+          "budget": {
+            "ticks": 1602,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 290.01666666666665,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 758.9999999999999,
+          "gap": 4.366666666666674,
+          "ms": 3.2768339999997806,
+          "budget": {
+            "ticks": 1579,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        },
+        {
+          "time": 294.10833333333335,
+          "kind": "single",
+          "fallbackRail": false,
+          "speed": 825,
+          "gap": 4.091666666666697,
+          "ms": 3.043749999999818,
+          "budget": {
+            "ticks": 1576,
+            "policies": 14,
+            "candidates": 1,
+            "exhausted": false
+          }
+        }
+      ]
+    }
+  ],
+  "replayProof": {
+    "expected": {
+      "score": 126154,
+      "flips": 138,
+      "ticks": 38368
+    },
+    "chunks": 39
+  },
+  "routeActionReads": 0,
+  "physicalDevice": false
+}

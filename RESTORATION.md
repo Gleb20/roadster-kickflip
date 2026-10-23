@@ -1,3 +1,7 @@
+## Director liveness4.6.3 —bounded inverse
+
+Parent `454300619791d8cea513a44bcc91e25741201fad` is published4.6.2 with release settling and English audio. Revert only this release delta in an isolated checkout; inspect the exact parent tree and run parent checks. Preserve the ten old frozen rulesets and the new463 backend for cached clients, all22 real scores, pending/finished replay packets and settings. Do not reverse the additive migration, remove site data or restore this release over the original dirty root. A public frontend reversal needs a fresh PWA identity. [Proof](docs/verification/2026-10-24-director-liveness/README.md).
+
 ## Rotation frontend4.6.2 / physics461 — bounded inverse
 
 Exact parent is English audio4.6.1 `84f0217c72015169a420d5dd368265270c1508a4`, preserving audio controls, English copy, expressions and director4.6. Full bounded inverse rehearsed at `c6034bc` restores that exact parent tree, with203 tests/check green. Published tree `35c1332` at main `7377188` includes the same runtime plus evidence; [final proof](docs/verification/2026-10-24-rotation-v462/README.md). Earlier ede9ec6/4.5 inverses below are historical. Public reversal uses a fresh frontend cache identity and retains all ten deployed immutable verifier versions, all pending/finished packets, audio preferences and real records. Do not reverse the additive migration, deploy old API/worker bundles or restore database rows.

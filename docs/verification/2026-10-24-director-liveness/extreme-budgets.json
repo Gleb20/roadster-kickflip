@@ -1,0 +1,1160 @@
+{
+  "n": 64,
+  "p95": 7.744541999999996,
+  "max": 20.671917000000004,
+  "failed": 0,
+  "cases": [
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 360,
+      "ms": 20.671917000000004,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2225,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 360,
+      "ms": 8.832833999999998,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2785,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 620,
+      "ms": 10.184666000000007,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 5565,
+        "policies": 24,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 620,
+      "ms": 6.400750000000002,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 4831,
+        "policies": 19,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 360,
+      "ms": 5.386332999999993,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2263,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 360,
+      "ms": 4.701999999999998,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2829,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 620,
+      "ms": 3.7758329999999916,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2264,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 620,
+      "ms": 6.302041000000003,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3418,
+        "policies": 21,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 486.00000000000006,
+      "ms": 4.085041000000004,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1837,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 486.00000000000006,
+      "ms": 6.027999999999992,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 4133,
+        "policies": 20,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 746,
+      "ms": 5.379165999999998,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2686,
+        "policies": 21,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 746,
+      "ms": 4.884041999999994,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2554,
+        "policies": 19,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 486.00000000000006,
+      "ms": 5.035792000000001,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1941,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 486.00000000000006,
+      "ms": 4.5461250000000035,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2428,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 746,
+      "ms": 3.5152909999999906,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1971,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 746,
+      "ms": 3.5929169999999857,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2000,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 450,
+      "ms": 6.89583300000001,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 4033,
+        "policies": 30,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 450,
+      "ms": 5.257374999999996,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3292,
+        "policies": 24,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 710,
+      "ms": 4.921458999999999,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2818,
+        "policies": 21,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 710,
+      "ms": 7.744541999999996,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3978,
+        "policies": 29,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 450,
+      "ms": 3.333790999999991,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1996,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 450,
+      "ms": 3.7612089999999796,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2493,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 710,
+      "ms": 3.3009169999999983,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2009,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 710,
+      "ms": 3.303375000000017,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2062,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 607.5,
+      "ms": 2.658083000000005,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1626,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 607.5,
+      "ms": 2.7464169999999797,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1663,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 867.5,
+      "ms": 2.5615840000000105,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1681,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 867.5,
+      "ms": 4.48762499999998,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1717,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 607.5,
+      "ms": 2.6911249999999995,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1881,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 607.5,
+      "ms": 2.9547500000000184,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1881,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 867.5,
+      "ms": 2.9375829999999894,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1938,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 360,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 867.5,
+      "ms": 2.908124999999984,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1938,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 660,
+      "ms": 2.755291999999997,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1959,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 660,
+      "ms": 2.734125000000006,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1594,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 920,
+      "ms": 2.5975420000000042,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2018,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 920,
+      "ms": 2.6876670000000047,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1658,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 660,
+      "ms": 2.883166999999986,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2313,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 660,
+      "ms": 2.8341250000000002,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1869,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 920,
+      "ms": 2.783208000000002,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2372,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 920,
+      "ms": 2.8983329999999796,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1929,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 891.0000000000001,
+      "ms": 2.9749579999999867,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2948,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 891.0000000000001,
+      "ms": 2.857958000000025,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2766,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1151,
+      "ms": 3.1514589999999885,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3078,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1151,
+      "ms": 2.83737499999998,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2897,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 891.0000000000001,
+      "ms": 3.093375000000009,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3078,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 891.0000000000001,
+      "ms": 2.3190830000000062,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2858,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1151,
+      "ms": 4.064291999999995,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3208,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1151,
+      "ms": 2.6355410000000177,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2989,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 825,
+      "ms": 2.9047079999999994,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2177,
+        "policies": 18,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 825,
+      "ms": 2.2638330000000053,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1576,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1085,
+      "ms": 2.9202499999999816,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2275,
+        "policies": 18,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1085,
+      "ms": 3.0196249999999907,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2093,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 825,
+      "ms": 3.1930830000000014,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2549,
+        "policies": 18,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 825,
+      "ms": 2.485416000000015,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 1864,
+        "policies": 14,
+        "candidates": 1,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1085,
+      "ms": 3.2404170000000363,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2647,
+        "policies": 18,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": false,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1085,
+      "ms": 3.027791000000036,
+      "kind": "single",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2427,
+        "policies": 17,
+        "candidates": 2,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 0,
+      "speed": 1113.75,
+      "ms": 2.3003330000000233,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2796,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 0,
+      "leg": 1,
+      "speed": 1113.75,
+      "ms": 2.140041999999994,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2615,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1373.75,
+      "ms": 2.9910000000000423,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2914,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": false,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1373.75,
+      "ms": 2.2124580000000265,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2731,
+        "policies": 14,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 0,
+      "speed": 1113.75,
+      "ms": 2.6247079999999983,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3135,
+        "policies": 16,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 0,
+      "leg": 1,
+      "speed": 1113.75,
+      "ms": 2.3866669999999885,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 2916,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 0,
+      "speed": 1373.75,
+      "ms": 2.7513329999999883,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3254,
+        "policies": 16,
+        "candidates": 3,
+        "exhausted": false
+      }
+    },
+    {
+      "base": 660,
+      "streak": 0.25,
+      "boost": true,
+      "jump": true,
+      "vx": 260,
+      "leg": 1,
+      "speed": 1373.75,
+      "ms": 2.4884999999999877,
+      "kind": "rail",
+      "retry": 0.18,
+      "budget": {
+        "ticks": 3033,
+        "policies": 15,
+        "candidates": 3,
+        "exhausted": false
+      }
+    }
+  ]
+}

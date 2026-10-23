@@ -1,0 +1,12 @@
+{
+  "preservedNormalizedRuntime": {
+    "src/gameplay.js": true,
+    "src/gameplay-config.js": true,
+    "src/rails.js": true,
+    "src/physics.js": true,
+    "src/speed-feedback.js": true,
+    "src/audio-controls.js": true
+  },
+  "trackedHistoricalRulesetChanges": [],
+  "baseline": "454300619791d8cea513a44bcc91e25741201fad"
+}

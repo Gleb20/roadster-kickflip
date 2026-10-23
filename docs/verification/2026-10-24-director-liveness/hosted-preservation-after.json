@@ -1,0 +1,8 @@
+{
+  "real_runs": 22,
+  "max_seq": 65,
+  "real_runs_digest": "446374e07d6d835b2a7e80a8230c8ff4",
+  "pending_sessions": 0,
+  "baselineRowsScopedToSeqAtMost": 65,
+  "publicFixtureWrites": 0
+}

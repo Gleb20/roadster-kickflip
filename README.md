@@ -1,3 +1,9 @@
+## Director liveness4.6.3 —24 October2026
+
+Successful flips and their speed streak no longer erase the encounter pool. The director tracks the same damped effective-speed camera as rendering, measures full-silhouette visibility on the actual route, admits simple fast singles and falls back to an optional verified rail instead of permanent empty rest. Rest begins after the threats leave the track; voluntary tricks can use it, and the exact landing tick is eligible for the next wave. Rotation4.6.2 and English audio controls are retained. New immutable `roadster-v4.6.3` is additive to all ten previous replay versions.
+
+223 tests,16 server tests,27 disposable SQL checks, five300-second observational-input runs, and18 actual4.6.2→4.6.3 PWA upgrade checks pass. Independent cold-offline native-touch candidate play reaches34 waves/85flips in180s, alive, versus the broken published version's0waves/24flips in40s. These desktop Chrome checks are not physical iPhone/Safari acceptance. Close the old PWA and reopen the new version if it remains4.6.2; do not delete site data. [Evidence](docs/verification/2026-10-24-director-liveness/README.md). [Play4.6.3](https://gleb20.github.io/roadster-kickflip/?v=4.6.3).
+
 ## Obstacle director 4.6.0 — 24 October 2026
 
 Ground waves contain one or two canonical obstacles. Aircraft remain airborne with a no-input ground bypass; later optional rails combine a comfortable catch route with the same safe bypass. Progression, biome familiarity, two simple recovery waves, air cooldowns and real post-clear rest gate variety. New ranked `roadster-v4.6.0` is additive; eight historical verifier folders and existing records remain intact. Art, controls, physics, camera and adaptive audio are preserved.

@@ -1,0 +1,158 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "profile": "first-flip",
+      "kind": "single",
+      "tick": 205,
+      "actions": [
+        {
+          "at": 2.025,
+          "action": "hold"
+        },
+        {
+          "at": 2.0833333333333335,
+          "action": "jump",
+          "charge": 0.14583333333333331
+        }
+      ],
+      "hold": 3.7333333333333334,
+      "predicted": 0.9249999999999998,
+      "target": 0.9,
+      "blend": 0,
+      "speed": 381.58750000000003,
+      "visible": 2.725,
+      "actual": 1.0083333333333333,
+      "visibilityMeaning": "full ground silhouette",
+      "camera": {
+        "scale": 0.4775378058857216,
+        "x": 90.96656001389404,
+        "strength": 0.08440512775980605,
+        "energy": 0.05556989247311823,
+        "sceneryScale": 0.7092248021928874,
+        "roadPixelSpeed": 191.09602909090907,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 184.2531870229468,
+        "roadScroll": 1241.2564403181786
+      }
+    },
+    {
+      "width": 390,
+      "profile": "boost-ramp",
+      "kind": "rail",
+      "tick": 205,
+      "actions": [
+        {
+          "at": 1.275,
+          "action": "hold"
+        },
+        {
+          "at": 1.475,
+          "action": "jump",
+          "charge": 0.5
+        }
+      ],
+      "hold": 2.9833333333333334,
+      "predicted": null,
+      "target": null,
+      "blend": 0.1805555555555556,
+      "speed": 405.7017100694445,
+      "visible": 2.25,
+      "actual": 0.7333333333333334,
+      "visibilityMeaning": "optional rail entry; bypass needs no input",
+      "camera": {
+        "scale": 0.40312688600160373,
+        "x": 77.39175871796661,
+        "strength": 0.5194949128856853,
+        "energy": 0.34141451612903223,
+        "sceneryScale": 0.6584307440373142,
+        "roadPixelSpeed": 256.92656563636365,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 209.12519634669843,
+        "roadScroll": 1206.10327457462
+      }
+    },
+    {
+      "width": 1002,
+      "profile": "first-flip",
+      "kind": "single",
+      "tick": 205,
+      "actions": [
+        {
+          "at": 2.025,
+          "action": "hold"
+        },
+        {
+          "at": 2.0833333333333335,
+          "action": "jump",
+          "charge": 0.14583333333333331
+        }
+      ],
+      "hold": 3.7333333333333334,
+      "predicted": 0.9249999999999998,
+      "target": 0.9,
+      "blend": 0,
+      "speed": 381.58750000000003,
+      "visible": 2.808333333333333,
+      "actual": 0.9250000000000003,
+      "visibilityMeaning": "full ground silhouette",
+      "camera": {
+        "scale": 1.2050992603596284,
+        "x": 283.81408495877395,
+        "strength": 0.08440512775980605,
+        "energy": 0.05556989247311823,
+        "sceneryScale": 1.1327896146136396,
+        "roadPixelSpeed": 482.24387781818183,
+        "ground": 641.4400000427569,
+        "baseline": 641.44,
+        "lift": 4.275678600723073e-8,
+        "screenSpeed": 464.975498617159,
+        "roadScroll": 3177.3901461750092
+      }
+    },
+    {
+      "width": 1002,
+      "profile": "boost-ramp",
+      "kind": "rail",
+      "tick": 205,
+      "actions": [
+        {
+          "at": 1.275,
+          "action": "hold"
+        },
+        {
+          "at": 1.475,
+          "action": "jump",
+          "charge": 0.5
+        }
+      ],
+      "hold": 2.9833333333333334,
+      "predicted": null,
+      "target": null,
+      "blend": 0.1805555555555556,
+      "speed": 405.7017100694445,
+      "visible": 2.2916666666666665,
+      "actual": 0.6916666666666669,
+      "visibilityMeaning": "optional rail entry; bypass needs no input",
+      "camera": {
+        "scale": 1.0173182231102147,
+        "x": 248.93728778308343,
+        "strength": 0.5194949128856853,
+        "energy": 0.34141451612903223,
+        "sceneryScale": 1.05166021617071,
+        "roadPixelSpeed": 648.3717318272728,
+        "ground": 641.4400172493187,
+        "baseline": 641.44,
+        "lift": 0.000017249318592524097,
+        "screenSpeed": 527.741712454653,
+        "roadScroll": 2998.6892048221102
+      }
+    }
+  ],
+  "physicalDevice": false,
+  "kind": "focused controlled camera stimulus; separate native PWA play uses no QA"
+}

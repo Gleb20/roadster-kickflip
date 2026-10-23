@@ -1,0 +1,1919 @@
+{
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.6.2",
+  "offline": true,
+  "nativeTouch": true,
+  "physicalDevice": false,
+  "publicScoreSubmissions": 0,
+  "end": {
+    "version": "4.6.2",
+    "grind": {
+      "support": null,
+      "age": 0,
+      "exit": null,
+      "exitAge": 1,
+      "pending": 0,
+      "distance": 0,
+      "turns": 0
+    },
+    "rails": [],
+    "boosters": {
+      "active": {},
+      "hearts": 0,
+      "grace": 0,
+      "ghostIds": [],
+      "speedBlend": 0,
+      "pickups": [],
+      "nextAt": 41.71949342299874,
+      "serial": 2,
+      "bag": [
+        "shield",
+        "jump"
+      ],
+      "bagCycle": 1,
+      "random": 1612636207,
+      "spoiledFlight": false
+    },
+    "effectiveMultiplier": 3.4,
+    "biome": {
+      "id": "tesla-factory",
+      "leg": 1,
+      "nextAt": 14000,
+      "nextIn": 5149,
+      "from": "tesla-factory",
+      "edgeAt": 16056.875417997493,
+      "start": 15104.731388888875,
+      "end": 16409.65284574239,
+      "progress": 1,
+      "moving": false
+    },
+    "time": 40.25833333333333,
+    "progress": 40.25833333333169,
+    "stage": 2,
+    "mode": "paused",
+    "score": 8851,
+    "best": 0,
+    "collection": {
+      "discovered": 0,
+      "new": 0
+    },
+    "y": 0,
+    "fall": {
+      "active": false,
+      "age": 0,
+      "duration": 2.8,
+      "rate": 1,
+      "taps": 0,
+      "progress": 1
+    },
+    "speed": 550.6458333333292,
+    "camera": {
+      "scale": 0.3873214347608435,
+      "x": 73.83675601840746,
+      "strength": 0.633437307102325,
+      "energy": 0.4099910394265143,
+      "sceneryScale": 0.646308711088445,
+      "roadPixelSpeed": 272.71986363636154,
+      "ground": 641.44,
+      "baseline": 641.44,
+      "lift": 0,
+      "screenSpeed": 213.27693421174536,
+      "roadScroll": 9779.128426363623
+    },
+    "speedFeedback": {
+      "factor": 1.25,
+      "lean": -0.035,
+      "impossibru": false,
+      "flameLength": 55,
+      "flameOpacity": 0.36
+    },
+    "kmh": 253.0812499999963,
+    "baseSpeed": 440.51666666666335,
+    "playerX": 188.98678414096915,
+    "angle": 0,
+    "omega": 0,
+    "airborne": false,
+    "spinning": false,
+    "cosmeticFlip": false,
+    "carAnimation": {
+      "cosmetic": false,
+      "phase": 0,
+      "frame": 0,
+      "gap": 0
+    },
+    "visual": {
+      "feet": [
+        {
+          "side": -1,
+          "roofError": 3.552713678800501e-15,
+          "hip": {
+            "x": -11,
+            "y": -31.62454129866312
+          },
+          "knee": {
+            "x": -29.31969927852049,
+            "y": -19.31227064933156
+          },
+          "ankle": {
+            "x": -25.675813345473735,
+            "y": -4.454081279522068
+          },
+          "foot": {
+            "x": -25.046034910725623,
+            "y": 0.5060980643249084
+          }
+        },
+        {
+          "side": 1,
+          "roofError": 3.552713678800501e-15,
+          "hip": {
+            "x": 11,
+            "y": -31.62454129866312
+          },
+          "knee": {
+            "x": 29.31969927852049,
+            "y": -19.31227064933156
+          },
+          "ankle": {
+            "x": 26.49828447001445,
+            "y": 1.1973169599307043
+          },
+          "foot": {
+            "x": 24.76638721617236,
+            "y": 5.887789420369442
+          }
+        }
+      ],
+      "torsoAngle": 0.03791819567112292,
+      "torsoShift": 1.6852531409387967,
+      "crouch": 0.4213132852346992,
+      "bodyDrop": 11.375458701336878,
+      "landingCrouch": 0.4213132852346992,
+      "reactionSpace": null,
+      "aimCosine": null,
+      "jointMouthDistance": null,
+      "reaction": {
+        "reach": 0,
+        "inhale": 0,
+        "meme": 0,
+        "smoke": 0
+      },
+      "gripError": null,
+      "trick": "tuck",
+      "grabSide": 1,
+      "interactionSide": -1,
+      "grab": 0,
+      "car": {
+        "x": 0,
+        "y": 0,
+        "angle": 0
+      },
+      "expression": "neutral",
+      "cash": {
+        "count": 0,
+        "falling": 0
+      },
+      "arms": [
+        {
+          "shoulder": {
+            "x": -22,
+            "y": -82
+          },
+          "elbow": {
+            "x": -35.657220508024885,
+            "y": -66.30030802865276
+          },
+          "wrist": {
+            "x": -44,
+            "y": -60.786867147653005
+          },
+          "taunt": 0,
+          "wave": 0,
+          "handAngle": 4.1284145190717325
+        },
+        {
+          "shoulder": {
+            "x": 22,
+            "y": -82
+          },
+          "elbow": {
+            "x": 35.657220508024885,
+            "y": -66.30030802865276
+          },
+          "wrist": {
+            "x": 44,
+            "y": -60.78686714765301
+          },
+          "taunt": 0,
+          "wave": 4.901763418388055e-54,
+          "handAngle": 2.1547707881078537
+        }
+      ],
+      "nearWrist": {
+        "x": 44,
+        "y": -60.78686714765301
+      },
+      "rearWrist": {
+        "x": -44,
+        "y": -60.786867147653005
+      }
+    },
+    "encounters": [
+      {
+        "id": "moltenVat",
+        "x": 1070.0199791666687
+      }
+    ],
+    "grab": 0,
+    "mph": 157.25739803596394,
+    "thrustAudio": {
+      "wanted": false,
+      "active": false,
+      "ready": true,
+      "voices": 0,
+      "normalisation": 56.01200310362705
+    },
+    "thrusting": false,
+    "fuel": 100,
+    "latched": false,
+    "turns": 1,
+    "pending": 340,
+    "flips": 24,
+    "multiplier": 3.4,
+    "meter": 0.9674479166666674,
+    "streak": 0.25,
+    "recovery": null,
+    "charging": false,
+    "charge": 0,
+    "lastLanding": {
+      "points": 330,
+      "turns": 1,
+      "late": 0,
+      "near": 0,
+      "perfect": false,
+      "good": true,
+      "grindPoints": 0,
+      "grindDistance": 0
+    },
+    "obstacles": [],
+    "director": {
+      "wave": 0,
+      "fallbacks": 63
+    },
+    "tutorial": {
+      "jump": true,
+      "charge": true,
+      "flip": true
+    },
+    "perf": {
+      "fps": 60,
+      "meanRenderMs": 0.3114754098360656,
+      "p95RenderMs": 0.40000009536743164
+    },
+    "sound": true,
+    "audio": {
+      "enabled": true,
+      "volumes": {
+        "effects": 1,
+        "music": 1
+      },
+      "context": "running",
+      "music": {
+        "enabled": true,
+        "ready": [
+          "spaceport",
+          "tesla-factory"
+        ],
+        "loading": [],
+        "errors": {},
+        "requests": 2,
+        "voices": 8,
+        "seconds": 60,
+        "phase": 40.519333333333336,
+        "targets": {
+          "intensity": 0,
+          "volume": 0.12,
+          "brightness": 1150,
+          "biomes": {
+            "spaceport": 6.123233995736766e-17,
+            "tesla-factory": 1
+          },
+          "layers": {
+            "bed": 0.8,
+            "lead": 0.15999999999999998,
+            "bass": 0.07999999999999999,
+            "drums": 0.035
+          }
+        }
+      },
+      "effects": {
+        "voices": 0,
+        "grinding": false,
+        "counts": {
+          "start": 1,
+          "jump": 24,
+          "landing": 24,
+          "pickup": 1
+        }
+      }
+    },
+    "factory": {
+      "leg": 1,
+      "model": "model-s",
+      "color": "white",
+      "start": 31.8,
+      "cycle": 0,
+      "elapsed": 8.458333333333332,
+      "stage": 1
+    },
+    "rocket": {
+      "phase": "orbit",
+      "nextEventIn": 0.03852626033938833,
+      "events": 1
+    }
+  },
+  "changes": [
+    {
+      "time": 0.05,
+      "wave": 0,
+      "obstacles": [],
+      "speed": 360.1
+    }
+  ],
+  "samples": [
+    {
+      "version": "4.6.2",
+      "grind": {
+        "support": null,
+        "age": 0,
+        "exit": null,
+        "exitAge": 1,
+        "pending": 0,
+        "distance": 0,
+        "turns": 0
+      },
+      "rails": [],
+      "boosters": {
+        "active": {},
+        "hearts": 0,
+        "grace": 0,
+        "ghostIds": [],
+        "speedBlend": 0,
+        "pickups": [],
+        "nextAt": 8,
+        "serial": 0,
+        "bag": [],
+        "bagCycle": 0,
+        "random": 3806598362,
+        "spoiledFlight": false
+      },
+      "effectiveMultiplier": 1,
+      "biome": {
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 7000,
+        "nextIn": 7000,
+        "from": "spaceport",
+        "edgeAt": 0,
+        "start": 0,
+        "end": 0,
+        "progress": 1,
+        "moving": false
+      },
+      "time": 0.05,
+      "progress": 0.049999999999999996,
+      "stage": 0,
+      "mode": "playing",
+      "score": 0,
+      "best": 0,
+      "collection": {
+        "discovered": 0,
+        "new": 0
+      },
+      "y": 0,
+      "fall": {
+        "active": false,
+        "age": 0,
+        "duration": 2.8,
+        "rate": 1,
+        "taps": 0,
+        "progress": 1
+      },
+      "speed": 360.1,
+      "camera": {
+        "scale": 0.49526483320176373,
+        "x": 93.59886977358764,
+        "strength": 0.00003622520552438421,
+        "energy": 0.0002150537634409091,
+        "sceneryScale": 0.7199953052439764,
+        "roadPixelSpeed": 178.3477090909091,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 178.34486643595514,
+        "roadScroll": 44.57599
+      },
+      "speedFeedback": {
+        "factor": 1,
+        "lean": 0,
+        "impossibru": false,
+        "flameLength": 0,
+        "flameOpacity": 0
+      },
+      "kmh": 130.09,
+      "baseSpeed": 360.1,
+      "playerX": 188.98678414096915,
+      "angle": 0,
+      "omega": 0,
+      "airborne": false,
+      "spinning": false,
+      "cosmeticFlip": false,
+      "carAnimation": {
+        "cosmetic": false,
+        "phase": 0,
+        "frame": 0,
+        "gap": 0
+      },
+      "visual": {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -25
+            },
+            "ankle": {
+              "x": -25.853772165647058,
+              "y": -3.266296955729748
+            },
+            "foot": {
+              "x": -24.996114507390292,
+              "y": 1.6595961958960084
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 3.552713678800501e-15,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -25
+            },
+            "ankle": {
+              "x": 26.525309187548785,
+              "y": -0.024905045406315857
+            },
+            "foot": {
+              "x": 25.011372297542128,
+              "y": 4.740385616565624
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -33.999999999999986,
+              "y": -65
+            },
+            "wrist": {
+              "x": -44,
+              "y": -65
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 4.71238898038469
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 33.999999999999986,
+              "y": -65
+            },
+            "wrist": {
+              "x": 44,
+              "y": -65
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.5707963267948966
+          }
+        ],
+        "nearWrist": {
+          "x": 44,
+          "y": -65
+        },
+        "rearWrist": {
+          "x": -44,
+          "y": -65
+        }
+      },
+      "encounters": [],
+      "grab": 0,
+      "mph": 80.834178393298,
+      "thrustAudio": {
+        "wanted": false,
+        "active": false,
+        "ready": false,
+        "voices": 0,
+        "normalisation": 1
+      },
+      "thrusting": false,
+      "fuel": 50,
+      "latched": false,
+      "turns": 0,
+      "pending": 0,
+      "flips": 0,
+      "multiplier": 1,
+      "meter": 0,
+      "streak": 0,
+      "recovery": null,
+      "charging": false,
+      "charge": 0,
+      "lastLanding": null,
+      "obstacles": [],
+      "director": {
+        "wave": 0,
+        "fallbacks": 0
+      },
+      "tutorial": {},
+      "perf": {
+        "fps": 0,
+        "meanRenderMs": 0,
+        "p95RenderMs": 0
+      },
+      "sound": true,
+      "audio": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "running",
+        "music": {
+          "enabled": true,
+          "ready": [],
+          "loading": [
+            "spaceport",
+            "tesla-factory"
+          ],
+          "errors": {},
+          "requests": 2,
+          "voices": 0,
+          "seconds": 60,
+          "phase": 59.99133333333333,
+          "targets": {
+            "intensity": 0,
+            "volume": 0.18,
+            "brightness": 1150,
+            "biomes": {
+              "spaceport": 1,
+              "tesla-factory": 0
+            },
+            "layers": {
+              "bed": 0.8,
+              "lead": 0.16,
+              "bass": 0.08,
+              "drums": 0.035
+            }
+          }
+        },
+        "effects": {
+          "voices": 1,
+          "grinding": false,
+          "counts": {
+            "start": 1
+          }
+        }
+      },
+      "factory": null,
+      "rocket": {
+        "phase": "ready",
+        "nextEventIn": 11.663176660537692,
+        "events": 0
+      }
+    },
+    {
+      "version": "4.6.2",
+      "grind": {
+        "support": null,
+        "age": 0,
+        "exit": null,
+        "exitAge": 1,
+        "pending": 0,
+        "distance": 0,
+        "turns": 0
+      },
+      "rails": [],
+      "boosters": {
+        "active": {},
+        "hearts": 0,
+        "grace": 0,
+        "ghostIds": [],
+        "speedBlend": 0,
+        "pickups": [
+          {
+            "id": "score",
+            "uid": 1,
+            "x": 286.2553472222225,
+            "y": 104
+          }
+        ],
+        "nextAt": 25.46389381556461,
+        "serial": 1,
+        "bag": [
+          "speed",
+          "shield",
+          "jump"
+        ],
+        "bagCycle": 1,
+        "random": 2181290158,
+        "spoiledFlight": false
+      },
+      "effectiveMultiplier": 1.5,
+      "biome": {
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 7000,
+        "nextIn": 6193,
+        "from": "spaceport",
+        "edgeAt": 0,
+        "start": 0,
+        "end": 0,
+        "progress": 1,
+        "moving": false
+      },
+      "time": 10.008333333333333,
+      "progress": 10.008333333333406,
+      "stage": 0,
+      "mode": "playing",
+      "score": 807,
+      "best": 0,
+      "collection": {
+        "discovered": 0,
+        "new": 0
+      },
+      "y": 82.89683333333457,
+      "fall": {
+        "active": false,
+        "age": 0,
+        "duration": 2.8,
+        "rate": 1,
+        "taps": 0,
+        "progress": 1
+      },
+      "speed": 475.02083333333354,
+      "camera": {
+        "scale": 0.42412627810514375,
+        "x": 81.70512271387126,
+        "strength": 0.3812460668631006,
+        "energy": 0.2473566308243732,
+        "sceneryScale": 0.6737634595865775,
+        "roadPixelSpeed": 235.26486363636374,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 201.46881806407055,
+        "roadScroll": 2095.703363863637
+      },
+      "speedFeedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      },
+      "kmh": 185.01875000000015,
+      "baseSpeed": 380.0166666666668,
+      "playerX": 188.98678414096915,
+      "angle": -6.600014417367221,
+      "omega": -1.5970610819046411,
+      "airborne": true,
+      "spinning": false,
+      "cosmeticFlip": false,
+      "carAnimation": {
+        "cosmetic": false,
+        "phase": 0,
+        "frame": 0,
+        "gap": 0
+      },
+      "visual": {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.40448222438079906,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 8.790717160769706,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 6.772915178500933e-33,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": -1.7145055188062947e-17
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      "encounters": [],
+      "grab": 0,
+      "mph": 114.96532126685385,
+      "thrustAudio": {
+        "wanted": false,
+        "active": false,
+        "ready": true,
+        "voices": 0,
+        "normalisation": 56.01200310362705
+      },
+      "thrusting": false,
+      "fuel": 100,
+      "latched": false,
+      "turns": 1,
+      "pending": 150,
+      "flips": 5,
+      "multiplier": 1.5,
+      "meter": 0.7849099099099015,
+      "streak": 0.25,
+      "recovery": null,
+      "charging": false,
+      "charge": 0,
+      "lastLanding": {
+        "points": 140,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": false,
+        "good": true,
+        "grindPoints": 0,
+        "grindDistance": 0
+      },
+      "obstacles": [],
+      "director": {
+        "wave": 0,
+        "fallbacks": 12
+      },
+      "tutorial": {
+        "jump": true,
+        "charge": true,
+        "flip": true
+      },
+      "perf": {
+        "fps": 60,
+        "meanRenderMs": 0.48360656910255306,
+        "p95RenderMs": 1.2000000476837158
+      },
+      "sound": true,
+      "audio": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "running",
+        "music": {
+          "enabled": true,
+          "ready": [
+            "spaceport",
+            "tesla-factory"
+          ],
+          "loading": [],
+          "errors": {},
+          "requests": 2,
+          "voices": 8,
+          "seconds": 60,
+          "phase": 9.954000000000008,
+          "targets": {
+            "intensity": 0.8,
+            "volume": 0.46852128566581813,
+            "brightness": 10800,
+            "biomes": {
+              "spaceport": 1,
+              "tesla-factory": 0
+            },
+            "layers": {
+              "bed": 0.8,
+              "lead": 1,
+              "bass": 1,
+              "drums": 0.9721825338970695
+            }
+          }
+        },
+        "effects": {
+          "voices": 0,
+          "grinding": false,
+          "counts": {
+            "start": 1,
+            "jump": 6,
+            "landing": 5
+          }
+        }
+      },
+      "factory": null,
+      "rocket": {
+        "phase": "ready",
+        "nextEventIn": 1.704843327204287,
+        "events": 0
+      }
+    },
+    {
+      "version": "4.6.2",
+      "grind": {
+        "support": null,
+        "age": 0,
+        "exit": null,
+        "exitAge": 1,
+        "pending": 0,
+        "distance": 0,
+        "turns": 0
+      },
+      "rails": [],
+      "boosters": {
+        "active": {
+          "score": 0.3499999999999271
+        },
+        "hearts": 0,
+        "grace": 0,
+        "ghostIds": [],
+        "speedBlend": 0,
+        "pickups": [],
+        "nextAt": 25.46389381556461,
+        "serial": 1,
+        "bag": [
+          "speed",
+          "shield",
+          "jump"
+        ],
+        "bagCycle": 1,
+        "random": 2181290158,
+        "spoiledFlight": false
+      },
+      "effectiveMultiplier": 6.300000000000001,
+      "biome": {
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 7000,
+        "nextIn": 2627,
+        "from": "spaceport",
+        "edgeAt": 0,
+        "start": 0,
+        "end": 0,
+        "progress": 1,
+        "moving": false
+      },
+      "time": 20.025,
+      "progress": 20.024999999999505,
+      "stage": 1,
+      "mode": "playing",
+      "score": 4373,
+      "best": 0,
+      "collection": {
+        "discovered": 0,
+        "new": 0
+      },
+      "y": 40.00100000000134,
+      "fall": {
+        "active": false,
+        "age": 0,
+        "duration": 2.8,
+        "rate": 1,
+        "taps": 0,
+        "progress": 1
+      },
+      "speed": 500.06249999999875,
+      "camera": {
+        "scale": 0.4111772966530109,
+        "x": 79.09742268507385,
+        "strength": 0.46482619599122277,
+        "energy": 0.3012096774193522,
+        "sceneryScale": 0.6644096944470848,
+        "roadPixelSpeed": 247.66731818181756,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 205.61434690754575,
+        "roadScroll": 4514.440384696969
+      },
+      "speedFeedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      },
+      "kmh": 207.55624999999887,
+      "baseSpeed": 400.049999999999,
+      "playerX": 188.98678414096915,
+      "angle": -6.61391834943941,
+      "omega": -1.226858961649885,
+      "airborne": true,
+      "spinning": false,
+      "cosmeticFlip": false,
+      "carAnimation": {
+        "cosmetic": false,
+        "phase": 0,
+        "frame": 0,
+        "gap": 0
+      },
+      "visual": {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.40448222438079906,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 8.790717160769706,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 6.772915178500933e-33,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": -1.7145055188062947e-17
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      "encounters": [],
+      "grab": 0,
+      "mph": 128.96947451106055,
+      "thrustAudio": {
+        "wanted": false,
+        "active": false,
+        "ready": true,
+        "voices": 0,
+        "normalisation": 56.01200310362705
+      },
+      "thrusting": false,
+      "fuel": 100,
+      "latched": false,
+      "turns": 1,
+      "pending": 210,
+      "flips": 11,
+      "multiplier": 2.1,
+      "meter": 0.7542415169660778,
+      "streak": 0.25,
+      "recovery": null,
+      "charging": false,
+      "charge": 0,
+      "lastLanding": {
+        "points": 600,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": false,
+        "good": true,
+        "grindPoints": 0,
+        "grindDistance": 0
+      },
+      "obstacles": [],
+      "director": {
+        "wave": 0,
+        "fallbacks": 30
+      },
+      "tutorial": {
+        "jump": true,
+        "charge": true,
+        "flip": true
+      },
+      "perf": {
+        "fps": 60,
+        "meanRenderMs": 0.35409836300083847,
+        "p95RenderMs": 0.8000001907348633
+      },
+      "sound": true,
+      "audio": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "running",
+        "music": {
+          "enabled": true,
+          "ready": [
+            "spaceport",
+            "tesla-factory"
+          ],
+          "loading": [],
+          "errors": {},
+          "requests": 2,
+          "voices": 8,
+          "seconds": 60,
+          "phase": 19.980666666666664,
+          "targets": {
+            "intensity": 0.85,
+            "volume": 0.46291004988627565,
+            "brightness": 10800,
+            "biomes": {
+              "spaceport": 1,
+              "tesla-factory": 0
+            },
+            "layers": {
+              "bed": 0.8,
+              "lead": 1,
+              "bass": 1,
+              "drums": 0.9959036484910337
+            }
+          }
+        },
+        "effects": {
+          "voices": 0,
+          "grinding": false,
+          "counts": {
+            "start": 1,
+            "jump": 12,
+            "landing": 11,
+            "pickup": 1
+          }
+        }
+      },
+      "factory": null,
+      "rocket": {
+        "phase": "launch",
+        "nextEventIn": 0,
+        "events": 1
+      }
+    },
+    {
+      "version": "4.6.2",
+      "grind": {
+        "support": null,
+        "age": 0,
+        "exit": null,
+        "exitAge": 1,
+        "pending": 0,
+        "distance": 0,
+        "turns": 0
+      },
+      "rails": [],
+      "boosters": {
+        "active": {},
+        "hearts": 0,
+        "grace": 0,
+        "ghostIds": [],
+        "speedBlend": 0,
+        "pickups": [],
+        "nextAt": 41.71949342299874,
+        "serial": 2,
+        "bag": [
+          "shield",
+          "jump"
+        ],
+        "bagCycle": 1,
+        "random": 1612636207,
+        "spoiledFlight": false
+      },
+      "effectiveMultiplier": 2.7,
+      "biome": {
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 7000,
+        "nextIn": 524,
+        "from": "spaceport",
+        "edgeAt": 0,
+        "start": 0,
+        "end": 0,
+        "progress": 1,
+        "moving": false
+      },
+      "time": 30.025,
+      "progress": 30.024999999998936,
+      "stage": 1,
+      "mode": "playing",
+      "score": 6476,
+      "best": 0,
+      "collection": {
+        "discovered": 0,
+        "new": 0
+      },
+      "y": 101.75100000000131,
+      "fall": {
+        "active": false,
+        "age": 0,
+        "duration": 2.8,
+        "rate": 1,
+        "taps": 0,
+        "progress": 1
+      },
+      "speed": 525.0624999999973,
+      "camera": {
+        "scale": 0.3990304871120681,
+        "x": 76.49742268507397,
+        "strength": 0.548159529324552,
+        "energy": 0.354973118279564,
+        "sceneryScale": 0.6553385838583208,
+        "roadPixelSpeed": 260.049136363635,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 209.51594513927918,
+        "roadScroll": 7053.07424833333
+      },
+      "speedFeedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      },
+      "kmh": 230.0562499999976,
+      "baseSpeed": 420.04999999999785,
+      "playerX": 188.98678414096915,
+      "angle": -6.537499999999992,
+      "omega": -2.399999999999996,
+      "airborne": true,
+      "spinning": false,
+      "cosmeticFlip": false,
+      "carAnimation": {
+        "cosmetic": false,
+        "phase": 0,
+        "frame": 0,
+        "gap": 0
+      },
+      "visual": {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.40448222438079906,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 8.790717160769706,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 6.919891637201795e-33,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": -1.7145055188062947e-17
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 34.26412282780159,
+              "y": -98.81045184593788
+            },
+            "wrist": {
+              "x": 40.157444518619144,
+              "y": -106.88936015390495
+            },
+            "taunt": 0,
+            "wave": 0.9999999999999996,
+            "handAngle": 0.6302319561999015
+          }
+        ],
+        "nearWrist": {
+          "x": 40.157444518619144,
+          "y": -106.88936015390495
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      "encounters": [],
+      "grab": 0,
+      "mph": 142.95032633555977,
+      "thrustAudio": {
+        "wanted": false,
+        "active": false,
+        "ready": true,
+        "voices": 0,
+        "normalisation": 56.01200310362705
+      },
+      "thrusting": false,
+      "fuel": 100,
+      "latched": false,
+      "turns": 1,
+      "pending": 270,
+      "flips": 17,
+      "multiplier": 2.7,
+      "meter": 0.7427293064876919,
+      "streak": 0.25,
+      "recovery": null,
+      "charging": false,
+      "charge": 0,
+      "lastLanding": {
+        "points": 260,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": false,
+        "good": true,
+        "grindPoints": 0,
+        "grindDistance": 0
+      },
+      "obstacles": [],
+      "director": {
+        "wave": 0,
+        "fallbacks": 45
+      },
+      "tutorial": {
+        "jump": true,
+        "charge": true,
+        "flip": true
+      },
+      "perf": {
+        "fps": 60,
+        "meanRenderMs": 0.42131145274052856,
+        "p95RenderMs": 0.9000000953674316
+      },
+      "sound": true,
+      "audio": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "running",
+        "music": {
+          "enabled": true,
+          "ready": [
+            "spaceport",
+            "tesla-factory"
+          ],
+          "loading": [],
+          "errors": {},
+          "requests": 2,
+          "voices": 8,
+          "seconds": 60,
+          "phase": 29.97,
+          "targets": {
+            "intensity": 0.8,
+            "volume": 0.46852128566581813,
+            "brightness": 10800,
+            "biomes": {
+              "spaceport": 1,
+              "tesla-factory": 0
+            },
+            "layers": {
+              "bed": 0.8,
+              "lead": 1,
+              "bass": 1,
+              "drums": 0.9721825338970695
+            }
+          }
+        },
+        "effects": {
+          "voices": 0,
+          "grinding": false,
+          "counts": {
+            "start": 1,
+            "jump": 18,
+            "landing": 17,
+            "pickup": 1
+          }
+        }
+      },
+      "factory": null,
+      "rocket": {
+        "phase": "orbit",
+        "nextEventIn": 10.271859593672144,
+        "events": 1
+      }
+    },
+    {
+      "version": "4.6.2",
+      "grind": {
+        "support": null,
+        "age": 0,
+        "exit": null,
+        "exitAge": 1,
+        "pending": 0,
+        "distance": 0,
+        "turns": 0
+      },
+      "rails": [],
+      "boosters": {
+        "active": {},
+        "hearts": 0,
+        "grace": 0,
+        "ghostIds": [],
+        "speedBlend": 0,
+        "pickups": [],
+        "nextAt": 41.71949342299874,
+        "serial": 2,
+        "bag": [
+          "shield",
+          "jump"
+        ],
+        "bagCycle": 1,
+        "random": 1612636207,
+        "spoiledFlight": false
+      },
+      "effectiveMultiplier": 3.3,
+      "biome": {
+        "id": "tesla-factory",
+        "leg": 1,
+        "nextAt": 14000,
+        "nextIn": 5486,
+        "from": "tesla-factory",
+        "edgeAt": 16056.875417997493,
+        "start": 15104.731388888875,
+        "end": 16409.65284574239,
+        "progress": 1,
+        "moving": false
+      },
+      "time": 40.00833333333333,
+      "progress": 40.008333333331706,
+      "stage": 2,
+      "mode": "playing",
+      "score": 8514,
+      "best": 0,
+      "collection": {
+        "discovered": 0,
+        "new": 0
+      },
+      "y": 69.02877777777906,
+      "fall": {
+        "active": false,
+        "age": 0,
+        "duration": 2.8,
+        "rate": 1,
+        "taps": 0,
+        "progress": 1
+      },
+      "speed": 550.0208333333293,
+      "camera": {
+        "scale": 0.3875992918823429,
+        "x": 73.90175601840745,
+        "strength": 0.6313539737689919,
+        "energy": 0.40864695340500923,
+        "sceneryScale": 0.6465263442177241,
+        "roadPixelSpeed": 272.41031818181614,
+        "ground": 641.44,
+        "baseline": 641.44,
+        "lift": 0,
+        "screenSpeed": 213.18768552053456,
+        "roadScroll": 9710.985863863621
+      },
+      "speedFeedback": {
+        "factor": 1.25,
+        "lean": -0.035,
+        "impossibru": false,
+        "flameLength": 55,
+        "flameOpacity": 0.36
+      },
+      "kmh": 252.51874999999634,
+      "baseSpeed": 440.0166666666634,
+      "playerX": 188.98678414096915,
+      "angle": -6.568191912506474,
+      "omega": -1.5907554465395437,
+      "airborne": true,
+      "spinning": false,
+      "cosmeticFlip": false,
+      "carAnimation": {
+        "cosmetic": false,
+        "phase": 0,
+        "frame": 0,
+        "gap": 0
+      },
+      "visual": {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.40448222438079906,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 8.790717160769702,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 6.772915178500933e-33,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": -1.7145055188062947e-17
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 2.0842828425818627e-52,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      "encounters": [
+        {
+          "id": "moltenVat",
+          "x": 1086.5302916666694
+        }
+      ],
+      "grab": 0,
+      "mph": 156.9078767403515,
+      "thrustAudio": {
+        "wanted": false,
+        "active": false,
+        "ready": true,
+        "voices": 0,
+        "normalisation": 56.01200310362705
+      },
+      "thrusting": false,
+      "fuel": 100,
+      "latched": false,
+      "turns": 1,
+      "pending": 330,
+      "flips": 23,
+      "multiplier": 3.3,
+      "meter": 0.6962468193384157,
+      "streak": 0.25,
+      "recovery": null,
+      "charging": false,
+      "charge": 0,
+      "lastLanding": {
+        "points": 320,
+        "turns": 1,
+        "late": 0,
+        "near": 0,
+        "perfect": false,
+        "good": true,
+        "grindPoints": 0,
+        "grindDistance": 0
+      },
+      "obstacles": [],
+      "director": {
+        "wave": 0,
+        "fallbacks": 63
+      },
+      "tutorial": {
+        "jump": true,
+        "charge": true,
+        "flip": true
+      },
+      "perf": {
+        "fps": 60,
+        "meanRenderMs": 0.3114754098360656,
+        "p95RenderMs": 0.40000009536743164
+      },
+      "sound": true,
+      "audio": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "running",
+        "music": {
+          "enabled": true,
+          "ready": [
+            "spaceport",
+            "tesla-factory"
+          ],
+          "loading": [],
+          "errors": {},
+          "requests": 2,
+          "voices": 8,
+          "seconds": 60,
+          "phase": 39.95933333333333,
+          "targets": {
+            "intensity": 0.8,
+            "volume": 0.46852128566581813,
+            "brightness": 10799.999999999998,
+            "biomes": {
+              "spaceport": 6.123233995736766e-17,
+              "tesla-factory": 1
+            },
+            "layers": {
+              "bed": 0.8,
+              "lead": 0.9999999999999999,
+              "bass": 0.9999999999999999,
+              "drums": 0.9721825338970695
+            }
+          }
+        },
+        "effects": {
+          "voices": 0,
+          "grinding": false,
+          "counts": {
+            "start": 1,
+            "jump": 24,
+            "landing": 23,
+            "pickup": 1
+          }
+        }
+      },
+      "factory": {
+        "leg": 1,
+        "model": "model-s",
+        "color": "white",
+        "start": 31.8,
+        "cycle": 0,
+        "elapsed": 8.208333333333332,
+        "stage": 1
+      },
+      "rocket": {
+        "phase": "orbit",
+        "nextEventIn": 0.2885262603393741,
+        "events": 1
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,184 @@
+[
+  {
+    "id": "5eb89379-eae9-4308-9f08-397b9524d045",
+    "ruleset": "roadster-v3.4.2",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "0bb19a5c-2350-451f-8fc5-e6b5e5fc5ea6",
+    "ruleset": "roadster-v3.8.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "0cf5f848-d351-4824-a5f4-0d9fa5eca1ad",
+    "ruleset": "roadster-v4.0.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "4631fa28-deb6-4781-b21e-03004fd9534a",
+    "ruleset": "roadster-v4.1.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "6e6c7e20-81eb-4789-a4e7-7be8ead9bc1c",
+    "ruleset": "roadster-v4.3.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "3d14c77c-ec58-4080-87e4-a2de2ab22c92",
+    "ruleset": "roadster-v4.3.2",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "6ade3262-0ec8-4bdc-8e7e-081ea7296bf3",
+    "ruleset": "roadster-v4.4.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "033f76ad-61bb-4882-ab72-05577952774f",
+    "ruleset": "roadster-v4.4.2",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "a5fa4db7-955c-435d-a7ed-9e8a2d0b9b2e",
+    "ruleset": "roadster-v4.6.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "be08d572-3ad4-42ca-8abe-4540e7aec989",
+    "ruleset": "roadster-v4.6.1",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "4f67a406-0d44-4aba-88c9-f4680f1ca49f",
+    "ruleset": "roadster-v4.6.3",
+    "kind": "valid",
+    "seconds": 312.05,
+    "expected": {
+      "score": 114529,
+      "flips": 136,
+      "ticks": 37446
+    },
+    "pickups": 14,
+    "catches": 13,
+    "railAirCount": 0
+  },
+  {
+    "id": "da507aed-07aa-4bb6-8010-dadd8a019e59",
+    "ruleset": "roadster-v4.6.3",
+    "kind": "fake-score",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  },
+  {
+    "id": "50c395b4-e650-4e39-b395-55c4eed8b45d",
+    "ruleset": "roadster-v4.6.3",
+    "kind": "fake-end",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0,
+    "catches": 0,
+    "railAirCount": 0
+  }
+]

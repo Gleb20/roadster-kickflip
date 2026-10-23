@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.3';
 
 // Allocate forward space before shrinking the player: all inputs are actual velocity.
 const clamp01=value=>Math.max(0,Math.min(1,value));
