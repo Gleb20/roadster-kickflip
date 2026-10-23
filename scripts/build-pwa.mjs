@@ -1,5 +1,6 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {AUDIO_ART} from '../src/audio-controls.js';
 import {MUSIC} from '../src/music-content.js';
 import {ASSETS} from '../src/content.js';
 import {FACTORY_ASSETS} from '../src/factory.js';
@@ -12,6 +13,8 @@ for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))fi
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
 for(const track of Object.values(MUSIC.tracks))for(const file of Object.values(track))files.add(file);
 files.add('assets/audio/music-v450/ATTRIBUTION.md');
+for(const file of AUDIO_ART)files.add(file);
+files.add('assets/ui/audio-v470/ATTRIBUTION.md');
 for(const name of FACTORY_ASSETS)files.add('assets/factory/'+name+'.png');
 for(const name of await readdir(new URL('assets/boosters/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/'+name);
 for(const name of await readdir(new URL('assets/boosters/holo-v431/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/holo-v431/'+name);

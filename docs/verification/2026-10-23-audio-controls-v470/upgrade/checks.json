@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "exact local 4.5.0 parent installed",
+    "new release waits while the old run is paused",
+    "4.5.1 activates at restart or closed-tab boundary and starts a fresh attempt",
+    "explicit audio mute survives upgrade",
+    "rail state starts clean",
+    "all booster state starts clean",
+    "best and collection survive",
+    "finished 4.5.0 record remains eligible for submission",
+    "IndexedDB queue and immutable replay survive",
+    "new independent controls preserve effects1%/music100%",
+    "cold offline launch loads the new game",
+    "both biome music groups decode offline after real upgrade",
+    "independent percentages survive cold offline upgrade",
+    "all five sprite files are in the verified offline cache",
+    "rail sprite and mechanics are cached offline",
+    "offline pickup and aura run without network",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "parentVersion": "4.5.0",
+  "candidateVersion": "4.5.1",
+  "closedTabBoundaryUsed": true,
+  "physicalDevice": false
+}

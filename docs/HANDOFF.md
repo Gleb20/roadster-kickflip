@@ -1,3 +1,9 @@
+## Audio settings4.5.1 — 24 October2026
+
+Independent effects/music sliders replace the master toggle. SOUND opens an origin-anchored balloon in the menu; a session shows only the unchanged44px Pause control, with sliders inside the pause menu. Transform-based Sound→Pause/Home morph; native percentages, keyboard/touch control, immediate save. Five photo/current-style-guided paper Elon expressions with tracking pupils and a native vector speaker with tiered EQ/cone/squash/lift/stretch motion. Reduced motion keeps static indicators. Legacy mute migrates to0/0; valid independent values persist across reload/offline. Original music/pressure files, adaptive score, gameplay and all eight frozen verifiers are unchanged.
+
+190 tests, source/content/types/PWA189,182 browser checks and17 actual4.5.0→4.5.1 upgrade checks pass. Root4.4.0 remains preserved; release source is `/tmp/tesla-audio-controls-v470-20261023`, branch `codex/audio-controls-v470`, parent44579d2. Existing closed-tab PWA activation remains separate; physical iPhone/Safari and real screen-reader acceptance untested. [Audio contract](audio.md), [flow report](verification/2026-10-23-audio-controls-v470/flow-report.html), [evidence](verification/2026-10-23-audio-controls-v470/README.md). Publication pending verification.
+
 ## Published adaptive arcade audio 4.5.0 — 23 October 2026
 
 Selected Spaceport A and Factory B from Suno, edited into eight common-grid 60-second stem loops. Music follows biome, actual speed, effective bonus and speed booster; quiet menu/pause and gradual Play entry share one phase. Original procedural jump, pickup, PERFECT, rail, helmet, backup-rescue, landing/recovery/death cues complement the retained recorded thrust. Priorities, cooldowns, voice caps and music ducking limit clutter. Explicit SOUND OFF persists; first gesture is required by browser autoplay policy.

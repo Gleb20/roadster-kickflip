@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-24",
+  "tool": "built-in image_gen.imagegen",
+  "inputs": [
+    "art-source/audio-controls-v470/references/elon-royal-society.jpg",
+    "art-source/audio-controls-v470/references/game-hero.png"
+  ],
+  "realPhotoPage": "https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_(crop2).jpg",
+  "credit": "The Royal Society / Debbie Rowe",
+  "headAdaptationLicense": "CC BY-SA3.0",
+  "normalization": "sips proportional downscale to192px, alpha retained; no semantic repaint",
+  "records": [
+    {
+      "state": "muted",
+      "prompt": "art-source/audio-controls-v470/muted-prompt.txt",
+      "source": "art-source/audio-controls-v470/muted-original.png",
+      "runtime": "assets/ui/audio-v470/elon-muted.png",
+      "sourceMetadata": {
+        "sha256": "9f25480a26fab8ef0230d962bee064a277d640c67c6581c417613356ce1bd091",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alphaChannel": true
+      },
+      "runtimeMetadata": {
+        "sha256": "a3b437e31a0acf1a7aef61902389f52ee5800dce9dc1023106ddf8cefe2ba096",
+        "dimensions": [
+          192,
+          192
+        ],
+        "alphaChannel": true
+      }
+    },
+    {
+      "state": "quiet",
+      "prompt": "art-source/audio-controls-v470/quiet-prompt.txt",
+      "source": "art-source/audio-controls-v470/quiet-original.png",
+      "runtime": "assets/ui/audio-v470/elon-quiet.png",
+      "sourceMetadata": {
+        "sha256": "f4db8aed39dc8e951150f49ed3ecb866505d20ae22d86801b10e2523c5f214b9",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alphaChannel": true
+      },
+      "runtimeMetadata": {
+        "sha256": "9e6f4fe453464312e48e4e2ee534e1a61a7c949879ccecbac926402180e24ce0",
+        "dimensions": [
+          192,
+          192
+        ],
+        "alphaChannel": true
+      }
+    },
+    {
+      "state": "shush",
+      "prompt": "art-source/audio-controls-v470/shush-prompt.txt",
+      "source": "art-source/audio-controls-v470/shush-original.png",
+      "runtime": "assets/ui/audio-v470/elon-shush.png",
+      "sourceMetadata": {
+        "sha256": "ac4905d4e3f9fd06116458ec35661cfb4998cda5f1b7b6b6c375fa5e8ae8423a",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alphaChannel": true
+      },
+      "runtimeMetadata": {
+        "sha256": "07b1eb59442710b4ad2bf20d2e961b653f3658a11b82e2d457115e8a15e67f13",
+        "dimensions": [
+          192,
+          192
+        ],
+        "alphaChannel": true
+      }
+    },
+    {
+      "state": "neutral",
+      "prompt": "art-source/audio-controls-v470/neutral-prompt.txt",
+      "source": "art-source/audio-controls-v470/neutral-original.png",
+      "runtime": "assets/ui/audio-v470/elon-neutral.png",
+      "sourceMetadata": {
+        "sha256": "a7ee2f04d65abcdc64a65f64d95b3adf6984547689d2a460648c756932d4c22b",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alphaChannel": true
+      },
+      "runtimeMetadata": {
+        "sha256": "855fa99176dda21a920f53aabb40a029aaa9c00fadfd16020a2a2a57e94580dd",
+        "dimensions": [
+          192,
+          192
+        ],
+        "alphaChannel": true
+      }
+    },
+    {
+      "state": "loud",
+      "prompt": "art-source/audio-controls-v470/loud-prompt.txt",
+      "source": "art-source/audio-controls-v470/loud-original.png",
+      "runtime": "assets/ui/audio-v470/elon-loud.png",
+      "sourceMetadata": {
+        "sha256": "4f599b550e792347580f13c15bbdab6ca64f9ff118ea7960e7ba04b386198b48",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alphaChannel": true
+      },
+      "runtimeMetadata": {
+        "sha256": "5c03c4236959ac570c9c5a968a2f6c2c83cc7131a03fec6d72381190559e43ca",
+        "dimensions": [
+          192,
+          192
+        ],
+        "alphaChannel": true
+      }
+    }
+  ]
+}

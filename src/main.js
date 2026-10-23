@@ -1,41 +1,42 @@
-import {createRailPainter} from './rail-art.js?v=4.5.0';
-import {BOOSTERS,activeBooster} from './boosters.js?v=4.5.0';
-import {createBoosterPainter} from './booster-art.js?v=4.5.0';
-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.5.0';
-import {createEnemySprites} from './enemy-sprites.js?v=4.5.0';
-import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.5.0';
-import {createFactoryRenderer} from './factory.js?v=4.5.0';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.5.0';
-import {createOnline} from './online.js?v=4.5.0';
-import {createScoreRecord} from './score-record.js?v=4.5.0';
-import {createOnlineUI} from './online-ui.js?v=4.5.0';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.5.0';
-import {createPWA} from './pwa.js?v=4.5.0';
-import {createCollection} from './collection.js?v=4.5.0';
-import {createCollectionUI} from './collection-ui.js?v=4.5.0';
-import {createObstaclePainter} from './obstacle-art.js?v=4.5.0';
-import {loading} from './loading.js?v=4.5.0';
-import {createThrusterEffects} from './thrusters.js?v=4.5.0';
-import {createSound} from './sound.js?v=4.5.0';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.5.0';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.5.0';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.5.0';
-import {types} from './catalog.js?v=4.5.0';
-import {obstacleDefinition} from './content.js?v=4.5.0';
-import {START_SPEED, START_KMH} from './physics.js?v=4.5.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.5.0';
-import {launch,uprightError} from './gameplay.js?v=4.5.0';
-import {AIR_TYPES,stageAt} from './routes.js?v=4.5.0';
-import {createCoach} from './coaching.js?v=4.5.0';
-import {createHUD,mphFromKmh} from './hud.js?v=4.5.0';
-import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.5.0';
-import {fallPose,fallSeatContact} from './fall.js?v=4.5.0';
-import {createSlapstick} from './slapstick.js?v=4.5.0';
-import {createClock} from './clock.js?v=4.5.0';
-import {createEnvironmentRenderer} from './environment.js?v=4.5.0';
-import {createCharacterRenderer} from './characters.js?v=4.5.0';
-import {createPropRenderer} from './props.js?v=4.5.0';
-import {createPhotoRenderer} from './photo-cutouts.js?v=4.5.0';
+import {createAudioControls} from './audio-controls.js?v=4.5.1';
+import {createRailPainter} from './rail-art.js?v=4.5.1';
+import {BOOSTERS,activeBooster} from './boosters.js?v=4.5.1';
+import {createBoosterPainter} from './booster-art.js?v=4.5.1';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=4.5.1';
+import {createEnemySprites} from './enemy-sprites.js?v=4.5.1';
+import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.5.1';
+import {createFactoryRenderer} from './factory.js?v=4.5.1';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.5.1';
+import {createOnline} from './online.js?v=4.5.1';
+import {createScoreRecord} from './score-record.js?v=4.5.1';
+import {createOnlineUI} from './online-ui.js?v=4.5.1';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=4.5.1';
+import {createPWA} from './pwa.js?v=4.5.1';
+import {createCollection} from './collection.js?v=4.5.1';
+import {createCollectionUI} from './collection-ui.js?v=4.5.1';
+import {createObstaclePainter} from './obstacle-art.js?v=4.5.1';
+import {loading} from './loading.js?v=4.5.1';
+import {createThrusterEffects} from './thrusters.js?v=4.5.1';
+import {createSound} from './sound.js?v=4.5.1';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=4.5.1';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.5.1';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.5.1';
+import {types} from './catalog.js?v=4.5.1';
+import {obstacleDefinition} from './content.js?v=4.5.1';
+import {START_SPEED, START_KMH} from './physics.js?v=4.5.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.5.1';
+import {launch,uprightError} from './gameplay.js?v=4.5.1';
+import {AIR_TYPES,stageAt} from './routes.js?v=4.5.1';
+import {createCoach} from './coaching.js?v=4.5.1';
+import {createHUD,mphFromKmh} from './hud.js?v=4.5.1';
+import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.5.1';
+import {fallPose,fallSeatContact} from './fall.js?v=4.5.1';
+import {createSlapstick} from './slapstick.js?v=4.5.1';
+import {createClock} from './clock.js?v=4.5.1';
+import {createEnvironmentRenderer} from './environment.js?v=4.5.1';
+import {createCharacterRenderer} from './characters.js?v=4.5.1';
+import {createPropRenderer} from './props.js?v=4.5.1';
+import {createPhotoRenderer} from './photo-cutouts.js?v=4.5.1';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -149,16 +150,10 @@ function resize(){
 addEventListener('resize',resize);resize();
 const sound=createSound({music:true,defaultEnabled:true});
 function soundScene(){sound.setScene({mode:S.mode,visible:!document.hidden,speed:S.speed,multiplier:E.multiplier/10*(E.scoreFactor||1),boost:Q.speedBlend||0,streak:E.streak,biome:biomeScene.state,grinding:!!G.support});}
-function soundUI(){
-  const enabled=sound.enabled,button=$('sound');
-  button.innerHTML=icon('sound')+'<span>SOUND '+(enabled?'ON':'OFF')+'</span>';
-  button.setAttribute('aria-label',enabled?'Turn sound off':'Turn sound on');
-  button.setAttribute('aria-pressed',String(enabled));
-}
-soundUI();
+const audioControls=createAudioControls({sound,entry:$('sound'),pauseButton:$('pause'),pauseSlot:$('pause-audio'),popover:$('sound-popover')});
 // Capture touch completion before game handlers prevent default or stop bubbling.
 for(const event of ['pointerup','touchend','keydown'])addEventListener(event,()=>sound.unlock(),{capture:true,passive:true});
-function ui(){soundScene();if(S.mode==='menu')pwa?.checkpoint();refreshScoreActions();for(const [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);boostUI();}
+function ui(){audioControls.setMode(S.mode);soundScene();if(S.mode==='menu')pwa?.checkpoint();refreshScoreActions();for(const [id,mode] of [['menu','menu'],['result','dead'],['paused','paused']])$(id).classList.toggle('hidden',S.mode!==mode);boostUI();}
 function cancelCharge(){primaryInputs.clear();thrustInputs.clear();run.command('cancel');sound.setThrust(false);syncState();}
 function start(seed){
  if(!spritesReady||artReview||$('game').inert||pwa?.locked)return;
@@ -203,11 +198,10 @@ function preventGameGesture(e){
  if(S.mode==='playing'&&!$('game').inert&&gameplayTarget(e.target)&&e.cancelable)e.preventDefault();
 }
 for(const event of ['touchstart','touchmove'])$('game').addEventListener(event,preventGameGesture,{capture:true,passive:false});
-$('sound').onclick=()=>{sound.toggle();soundUI();sound.event({type:'ui'});};
 const thrustKeys=['KeyB','ShiftLeft','ShiftRight'];const jumpKeys=['Space','ArrowUp','KeyW'];
 addEventListener('keydown',e=>{
  if(e.target?.closest?.('#tip-dismiss')&&['Space','Enter'].includes(e.code))return;
- if(document.querySelector('dialog[open]'))return;
+ if(document.querySelector('dialog[open]')||audioControls.inspect().open)return;
  if($('game').inert)return;
  if(e.target?.closest?.('input,textarea,select')||S.mode!=='playing'&&jumpKeys.includes(e.code)&&e.target?.closest?.('button,a')?.getClientRects().length)return;
  const thrust=thrustKeys.includes(e.code)||(e.code==='Enter'&&document.activeElement===$('boost'));
@@ -550,6 +544,6 @@ if(['localhost','127.0.0.1'].includes(location.hostname)){
  window.__qa={railPainter,G,boosterPainter,run,S,B,P,E,F,Q,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
  setTime(t){S.t=t;S.tick=Math.round(t/RUN_STEP);pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
  spawn(id,dx=260){const type=[...types,...AIR_TYPES].find(o=>o.id===id);S.obs.push({...type,x:dx,uid:++S.entityId,passed:false});},
- encounters,enemySprites,factory,rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound,
+ encounters,enemySprites,factory,rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound,audioControls,
  launch(charge){launch(P,charge);syncState();},get lastLanding(){return lastLanding;}};
 }

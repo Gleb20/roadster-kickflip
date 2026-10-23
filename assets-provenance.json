@@ -1131,5 +1131,20 @@
     },
     "primaryRuntimeIntegrated": true,
     "releaseVersion": "4.4.0"
+  },
+  "audioControlsV470": {
+    "method": "Built-in image_gen; five identity-preserving paper head states; native SVG speaker UI",
+    "files": [
+      "assets/ui/audio-v470/elon-muted.png",
+      "assets/ui/audio-v470/elon-quiet.png",
+      "assets/ui/audio-v470/elon-shush.png",
+      "assets/ui/audio-v470/elon-neutral.png",
+      "assets/ui/audio-v470/elon-loud.png"
+    ],
+    "manifest": "art-source/audio-controls-v470/provenance.json",
+    "photo": "Royal Society / Debbie Rowe, CC BY-SA3.0, existing photo reference verified against Wikimedia source",
+    "style": "actual current Tesla Jump hero face",
+    "runtimeSize": "44x44 CSS px maximum; code-overlay tracking pupils",
+    "license": "CC BY-SA 3.0 for the head adaptations; original SVG UI code follows project code terms"
   }
 }
