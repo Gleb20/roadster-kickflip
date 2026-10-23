@@ -1,0 +1,22 @@
+{
+  "version": "4.7.1",
+  "acceptance": "FAILED PACING; survived180s but five consecutive plain rails deferred mandatory ground from36.458 to69.758 seconds",
+  "activeSeconds": 180.00833333333333,
+  "mode": "playing",
+  "sceneKinds": {
+    "initial": 1,
+    "single": 22,
+    "spaced-pair": 9,
+    "air-pass": 4,
+    "rail-air": 4,
+    "rail": 5,
+    "rail-ground": 4
+  },
+  "flips": 26,
+  "errors": [],
+  "publicScoreSubmissions": 0,
+  "routeActionReads": 0,
+  "nativeTouch": true,
+  "offline": true,
+  "physicalDevice": false
+}

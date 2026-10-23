@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-10-23T23:54:20.722073+00:00",
+  "version": "4.7.2",
+  "project": "anzybyamdtouzxouhziu",
+  "method": "authorized dashboard UI; full source clipboard exact comparison before replacement and after deployed reload",
+  "worker": {
+    "baseline471Exact": true,
+    "deployed472Exact": true,
+    "characters": 845134,
+    "sha256": "9e8d7b61292a0411c726ce5cd3734af47983d74b71e3f74c0dbe966098073891"
+  },
+  "api": {
+    "baseline471Exact": true,
+    "deployed472Exact": true,
+    "characters": 850994,
+    "sha256": "7ab249c1c002a0f613fb0598d4e05ea51e8f398bdfd104ed9f41948b41384b78"
+  },
+  "migration": {
+    "versionsBefore": 13,
+    "versionsAfter": 14,
+    "exactWholeSource": true,
+    "result": "Success. No rows returned"
+  },
+  "realScoreBaseline": {
+    "rows": 22,
+    "watermark": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4",
+    "epoch": "v3"
+  },
+  "physicalDevice": false,
+  "realScoreAfterMigration": {
+    "rows": 22,
+    "watermark": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4",
+    "pending": 0,
+    "exactBaselineMatch": true
+  },
+  "fixtureSetup": {
+    "epoch": "qa-v472-20261024",
+    "count": 16,
+    "aggregate": "qa-v472-20261024 ready 16",
+    "ownedOnly": true
+  },
+  "hostedSqlResults": {
+    "epoch": "qa-v472-20261024",
+    "accepted": 14,
+    "rejected": 2,
+    "pending": 0,
+    "realRows": 22,
+    "watermark": 65,
+    "md5": "446374e07d6d835b2a7e80a8230c8ff4",
+    "exactBaselineMatch": true,
+    "publicFixtureWrites": 0
+  }
+}

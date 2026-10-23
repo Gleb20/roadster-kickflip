@@ -1,4 +1,10 @@
-## Canonical ground fallback4.7.1 - current release
+## Reserved ground encounters4.7.2 — release candidate
+
+Public471 pacing acceptance failed: five plain rails postponed ground spawn by33.3s.472 saves a fully validated biome/nonrepeat ground route before air/accent/overlay search, uses a calibrated low policy bank across post-grind and pickup states, and reuses only exact same-state geometry. Shared rail-ground bypass/catch proofs remain mandatory. Reserve low readability is explicitly.85/.75 below760 and the prior fast curve minus.02s with.58/.48 floors;180ms timing and charge/joint checks remain. Fixed budget48policies/18000ticks/3candidates.
+
+242game tests,16server tests,27SQL/PWA191 checks and18actual471→472 upgrade checks pass.193historical verifier files and normalized physics/camera/audio/concurrent scenery are unchanged.2304 mapped director states have no missing encounter; four independent visible-only300s runs complete alive with20–24pairs,7–12rail-ground,7–8rail-air, no consecutive plain rails and maximum actual mandatory ground input gaps9.21–11.50s. Desktop full-spawn-step p95≈19.51–21.33ms,max24.65ms; phone frame pacing and human enjoyment remain unverified. Hosted/backend/public readiness is recorded in [evidence](verification/2026-10-24-encounter-pacing/fallback-v472/README.md); this candidate note does not claim completed publication.
+
+## Canonical ground fallback4.7.1 — superseded; pacing acceptance failed
 
 The final gap audit found a4.7.0 repeat-history lock: four plain optional rails could postpone ground input for23.117s. The reserve now chooses the narrowest canonical eligible low obstacle, visibility comparisons tolerate only numerical1e-8 error at exact tick boundaries, and an optional fallback rail yields the next eligible slot to a ground encounter before another air pass. Biome/repeat filters, collision and180ms timing windows are unchanged. Seed56 now stays alive with maximum actual ground input gap10.733s and no consecutive plain fallbacks in the bounded90s regression.
 

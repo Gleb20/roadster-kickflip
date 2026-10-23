@@ -1,4 +1,4 @@
-import {BIOME_CYCLE} from './content.js?v=4.7.1';
+import {BIOME_CYCLE} from './content.js?v=4.7.2';
 // Score selects scenery; a fixed world boundary is driven past the rider.
 // The director uses this same biome selection for the versioned ground pool.
 export const BIOME_SCORE_STEP=7000;

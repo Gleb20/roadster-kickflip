@@ -13,3 +13,11 @@ The4.7.0 matrices and CPU measurements are retained as predecessor evidence, not
 ## Hosted and rollback
 
 Both471bundles freshly read back byte-exact after deployment,12-to13guard applied.15owned QA sessions complete autonomously:13exact valid versions accepted,2forged total/end rejected; client verify calls/public fixture writes0. New replay314.775s:78flips/17pickups/16catches/20pairs/7rail-air. Real22records through seq65 retain digest446374e07d6d835b2a7e80a8230c8ff4,pending0. Private capabilities are outside Git. The full inverse restores exact470tree dad184c3e08e4a3c21398faaaeb5ddf3b72c1c27;235parent tests/check191 pass.
+
+## Public runtime
+
+Runtime d000eb579f6de1623d07a3bae04da23a9f525475/tree899de77295973dc63ac1f3feddb3017d0177022f was published with expected-parent57ecf2a protection. Pages40040604997 completed successfully. All192 public resource hashes match;39native controls/audio/cold-offline checks pass with zero runtime errors or public score writes. Final visible-only native play is recorded separately after completion.
+
+## Pacing acceptance failed
+
+The independent public471 installed offline native run stayed alive but showed five consecutive plain rails (45.375–65.325s), postponing ground spawn from36.458 to69.758s. This is a failed pacing result, not acceptance. See `independent-public-diagnostic/`. Alive-only checks and the earlier seed56 regression did not cover the no-streak post-grind policy hole.472 addresses the shared availability/budget cause.

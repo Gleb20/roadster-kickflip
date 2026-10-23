@@ -1,0 +1,37 @@
+{
+  "status": "Predecessor 4.7.0 evidence audited again; survival-only pass was insufficient",
+  "rows": [
+    {
+      "seed": 17,
+      "alive": true,
+      "seconds": 300,
+      "maxGroundSpawnGap": 13.899999999999999,
+      "maxPlainRailsBeforeGround": 2,
+      "pacingPass": false
+    },
+    {
+      "seed": 932,
+      "alive": true,
+      "seconds": 300,
+      "maxGroundSpawnGap": 28.825000000000003,
+      "maxPlainRailsBeforeGround": 5,
+      "pacingPass": false
+    },
+    {
+      "seed": 9,
+      "alive": true,
+      "seconds": 300,
+      "maxGroundSpawnGap": 9.875,
+      "maxPlainRailsBeforeGround": 1,
+      "pacingPass": true
+    },
+    {
+      "seed": 56,
+      "alive": true,
+      "seconds": 300,
+      "maxGroundSpawnGap": 24.175000000000004,
+      "maxPlainRailsBeforeGround": 4,
+      "pacingPass": false
+    }
+  ]
+}

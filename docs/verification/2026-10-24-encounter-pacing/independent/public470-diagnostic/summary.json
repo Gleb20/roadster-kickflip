@@ -1,0 +1,22 @@
+{
+  "version": "4.7.0",
+  "status": "transport and survival diagnostic only; release superseded by discovered seed56 fallback starvation",
+  "activeSeconds": 180.025,
+  "mode": "playing",
+  "waves": 53,
+  "flips": 31,
+  "nativeTouch": true,
+  "offline": true,
+  "errors": [],
+  "publicScoreSubmissions": 0,
+  "physicalDevice": false,
+  "sceneKinds": {
+    "onboarding": 1,
+    "single": 26,
+    "spaced-pair": 12,
+    "rail": 3,
+    "air-pass": 5,
+    "rail-air": 4,
+    "rail-ground": 2
+  }
+}

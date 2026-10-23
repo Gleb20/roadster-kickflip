@@ -1,0 +1,91 @@
+{
+  "version": "4.7.2",
+  "source": "frozen candidate after exact overlay reuse",
+  "viewport": [
+    390,
+    844
+  ],
+  "recognitionSeconds": 0.12,
+  "routeActionReads": 0,
+  "thrustUses": 0,
+  "groundInputDefinition": "ground jump, or rail catch input while the current scene contains ground obstacles; excludes optional air/rail-only choices and free tricks",
+  "allPassed": true,
+  "rows": [
+    {
+      "seed": 17,
+      "mode": "playing",
+      "seconds": 300,
+      "flips": 52,
+      "counts": {
+        "single": 35,
+        "spaced-pair": 20,
+        "air-pass": 9,
+        "rail-ground": 11,
+        "rail": 3,
+        "rail-air": 8
+      },
+      "maxPlainRailsBeforeGround": 1,
+      "maxGroundSpawnGap": 10.183333333333337,
+      "mandatoryGroundInputs": 85,
+      "maxMandatoryGroundInputGap": 9.69166666666667,
+      "pacingPass": true
+    },
+    {
+      "seed": 932,
+      "mode": "playing",
+      "seconds": 300,
+      "flips": 56,
+      "counts": {
+        "single": 38,
+        "spaced-pair": 24,
+        "air-pass": 10,
+        "rail-ground": 7,
+        "rail": 2,
+        "rail-air": 7
+      },
+      "maxPlainRailsBeforeGround": 1,
+      "maxGroundSpawnGap": 11.116666666666617,
+      "mandatoryGroundInputs": 92,
+      "maxMandatoryGroundInputGap": 9.833333333333314,
+      "pacingPass": true
+    },
+    {
+      "seed": 9,
+      "mode": "playing",
+      "seconds": 300,
+      "flips": 52,
+      "counts": {
+        "single": 34,
+        "spaced-pair": 24,
+        "air-pass": 9,
+        "rail-ground": 11,
+        "rail-air": 7
+      },
+      "maxPlainRailsBeforeGround": 0,
+      "maxGroundSpawnGap": 10.916666666666671,
+      "mandatoryGroundInputs": 92,
+      "maxMandatoryGroundInputGap": 9.208333333333329,
+      "pacingPass": true
+    },
+    {
+      "seed": 56,
+      "mode": "playing",
+      "seconds": 300,
+      "flips": 54,
+      "counts": {
+        "single": 34,
+        "spaced-pair": 23,
+        "air-pass": 9,
+        "rail-ground": 12,
+        "rail-air": 7,
+        "rail": 1
+      },
+      "maxPlainRailsBeforeGround": 1,
+      "maxGroundSpawnGap": 13.158333333333331,
+      "mandatoryGroundInputs": 90,
+      "maxMandatoryGroundInputGap": 11.5,
+      "pacingPass": true
+    }
+  ],
+  "longestSpawnGapExplanation": "seed56: pair172.825,rail-air176.508,speed pickup182.575,one plain rail182.833,ground185.983; actual mandatory input gap11.5s; no fall"
+}

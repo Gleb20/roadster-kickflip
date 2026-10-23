@@ -1,0 +1,75 @@
+TAP version 13
+# Subtest: spaced pairs remain a validated whole at full streak and speed pickup
+ok 1 - spaced pairs remain a validated whole at full streak and speed pickup
+  ---
+  duration_ms: 53.950667
+  ...
+# Subtest: rail length is physical geometry, with a discrete explicit width
+ok 2 - rail length is physical geometry, with a discrete explicit width
+  ---
+  duration_ms: 0.128584
+  ...
+# Subtest: first safe air is introduced before thirty seconds, including ordinary no-trick play
+ok 3 - first safe air is introduced before thirty seconds, including ordinary no-trick play
+  ---
+  duration_ms: 115.144584
+  ...
+# Subtest: rail plus ground proves a true ordinary jump bypass and a distinct optional catch through the same objects
+ok 4 - rail plus ground proves a true ordinary jump bypass and a distinct optional catch through the same objects
+  ---
+  duration_ms: 41.882208
+  ...
+# Subtest: aerial rail timing remains separately visible with full streak and speed boost
+ok 5 - aerial rail timing remains separately visible with full streak and speed boost
+  ---
+  duration_ms: 10.706542
+  ...
+# Subtest: both pair preparations and exact camera-prefix corners survive changing pickup speed
+ok 6 - both pair preparations and exact camera-prefix corners survive changing pickup speed
+  ---
+  duration_ms: 219.853958
+  ...
+# Subtest: varying physical rail widths preserve post height and stretch only the clear middle span
+ok 7 - varying physical rail widths preserve post height and stretch only the clear middle span
+  ---
+  duration_ms: 0.267375
+  ...
+# Subtest: ground-target prefixes reproduce full rail bypass physics and forbid real catches in every corner
+ok 8 - ground-target prefixes reproduce full rail bypass physics and forbid real catches in every corner
+  ---
+  duration_ms: 11.757208
+  ...
+# Subtest: factory repeat guard selects a validated narrow alternative instead of starving behind plain rails
+ok 9 - factory repeat guard selects a validated narrow alternative instead of starving behind plain rails
+  ---
+  duration_ms: 13.798792
+  ...
+# Subtest: seed56 cannot repeat plain fallback rails instead of mandatory ground decisions
+ok 10 - seed56 cannot repeat plain fallback rails instead of mandatory ground decisions
+  ---
+  duration_ms: 389.209042
+  ...
+# Subtest: exact108tick visibility boundary is not rejected by floating-point subtraction
+ok 11 - exact108tick visibility boundary is not rejected by floating-point subtraction
+  ---
+  duration_ms: 15.379708
+  ...
+# Subtest: canonical fallback chooses a valid narrow biome alternative after the repeated truck is excluded
+ok 12 - canonical fallback chooses a valid narrow biome alternative after the repeated truck is excluded
+  ---
+  duration_ms: 4.769
+  ...
+# Subtest: ordinary post-grind low singles have a full visibility and timing proof throughout450–490
+ok 13 - ordinary post-grind low singles have a full visibility and timing proof throughout450–490
+  ---
+  duration_ms: 52.963916
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 991.321459

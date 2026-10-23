@@ -1,0 +1,10 @@
+{
+  "parent": "d000eb579f6de1623d07a3bae04da23a9f525475",
+  "parentTree": "899de77295973dc63ac1f3feddb3017d0177022f",
+  "candidateSnapshot": "edf6694329f7f8246ebbf25465dd212f06455561",
+  "inverseTree": "899de77295973dc63ac1f3feddb3017d0177022f",
+  "patchSha256": "344c81480a534d1cc112aab55426d8cc50a192a25ddab000aaa59db3d36636f9",
+  "parentTests": 239,
+  "parentChecks": "source/content/types/PWA191 pass",
+  "publicRollback": "fresh cache identity; retain all14 backend rulesets/records/outbox; never reverse additive SQL"
+}

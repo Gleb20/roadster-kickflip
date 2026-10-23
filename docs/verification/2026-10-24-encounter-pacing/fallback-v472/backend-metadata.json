@@ -1,0 +1,18 @@
+{
+  "apiBaseline": {
+    "characters": 775271,
+    "sha256": "714afeb4f25bc9e71d6eb7617ffe839114be6a3eb71bee7360341cca4e25b9d9"
+  },
+  "apiNext": {
+    "characters": 850994,
+    "sha256": "7ab249c1c002a0f613fb0598d4e05ea51e8f398bdfd104ed9f41948b41384b78"
+  },
+  "workerBaseline": {
+    "characters": 769476,
+    "sha256": "56a43f8206740c7ddb03c8c4beef9e327a94de7bfcc6abc825cdf66b724d5b2f"
+  },
+  "workerNext": {
+    "characters": 845134,
+    "sha256": "9e8d7b61292a0411c726ce5cd3734af47983d74b71e3f74c0dbe966098073891"
+  }
+}

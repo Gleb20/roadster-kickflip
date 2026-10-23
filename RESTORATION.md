@@ -1,3 +1,7 @@
+## Reserved ground encounters4.7.2 — bounded inverse
+
+Parentd000eb579f6de1623d07a3bae04da23a9f525475 is published4.7.1, tree899de77295973dc63ac1f3feddb3017d0177022f. Reverse only this correction delta in an isolated checkout and verify the exact parent tree. A public reversal needs a new cache identity and must retain all14backend verifiers, cached-client compatibility, finished/pending packets, records and settings. Never reverse the additive guard, deploy old bundles or touch the dirty original root. [Proof](docs/verification/2026-10-24-encounter-pacing/fallback-v472/README.md).
+
 ## Canonical fallback4.7.1 - bounded inverse
 
 Parent57ecf2ace300fd2bcfe14271ac1885e18108b4b1 is published4.7.0, tree dad184c3e08e4a3c21398faaaeb5ddf3b72c1c27. Reverse only this correction delta in an isolated checkout and verify the exact parent tree. Keep all thirteen backend verifiers, pending/finished packets and real records. Do not reverse the additive SQL guard or delete settings/data; preserve concurrent scenery4.6.4. Public reversal needs a new cache identity. [Proof](docs/verification/2026-10-24-encounter-pacing/fallback-v471/README.md).

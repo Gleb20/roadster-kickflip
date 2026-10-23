@@ -1,0 +1,202 @@
+{
+  "measurement": "entire createRun.step containing fresh validation budget; desktop Node, same policy/seeds/horizon; no phone SLA",
+  "rows": [
+    {
+      "name": "baseline",
+      "seed": 17,
+      "seconds": 180,
+      "mode": "playing",
+      "p50": {
+        "ms": 4.175124999999994,
+        "time": 36.21666666666667,
+        "kind": "single",
+        "wave": 8,
+        "budget": {
+          "ticks": 1926,
+          "policies": 14,
+          "candidates": 1,
+          "exhausted": false
+        }
+      },
+      "p95": {
+        "ms": 10.552999999999983,
+        "time": 48.49166666666667,
+        "kind": "single",
+        "wave": 10,
+        "budget": {
+          "ticks": 2747,
+          "policies": 23,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "max": {
+        "ms": 18.933374999999998,
+        "time": 1.7583333333333333,
+        "kind": "single",
+        "wave": 1,
+        "budget": {
+          "ticks": 2133,
+          "policies": 14,
+          "candidates": 1,
+          "exhausted": false
+        }
+      },
+      "maxTicks": 2834,
+      "maxPolicies": 23,
+      "spawnSteps": 36,
+      "failedRetries": []
+    },
+    {
+      "name": "baseline",
+      "seed": 932,
+      "seconds": 180,
+      "mode": "playing",
+      "p50": {
+        "ms": 3.7243749999999523,
+        "time": 45.71666666666667,
+        "kind": "single",
+        "wave": 10,
+        "budget": {
+          "ticks": 1653,
+          "policies": 14,
+          "candidates": 1,
+          "exhausted": false
+        }
+      },
+      "p95": {
+        "ms": 6.344957999999963,
+        "time": 11.058333333333334,
+        "kind": "rail",
+        "wave": 3,
+        "budget": {
+          "ticks": 4169,
+          "policies": 20,
+          "candidates": 3,
+          "exhausted": false
+        }
+      },
+      "max": {
+        "ms": 8.01600000000002,
+        "time": 41.25,
+        "kind": "single",
+        "wave": 9,
+        "budget": {
+          "ticks": 3815,
+          "policies": 27,
+          "candidates": 1,
+          "exhausted": false
+        }
+      },
+      "maxTicks": 4169,
+      "maxPolicies": 27,
+      "spawnSteps": 38,
+      "failedRetries": []
+    },
+    {
+      "name": "candidate",
+      "seed": 17,
+      "seconds": 180,
+      "mode": "playing",
+      "p50": {
+        "ms": 7.052125000000046,
+        "time": 40.36666666666667,
+        "kind": "single",
+        "wave": 13,
+        "budget": {
+          "ticks": 3612,
+          "policies": 28,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "p95": {
+        "ms": 20.601584000000003,
+        "time": 52.824999999999996,
+        "kind": "spaced-pair",
+        "wave": 16,
+        "budget": {
+          "ticks": 11305,
+          "policies": 44,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "max": {
+        "ms": 24.208958000000052,
+        "time": 13.549999999999999,
+        "kind": "spaced-pair",
+        "wave": 5,
+        "budget": {
+          "ticks": 11682,
+          "policies": 44,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "maxTicks": 11682,
+      "maxPolicies": 48,
+      "spawnSteps": 53,
+      "failedRetries": []
+    },
+    {
+      "name": "candidate",
+      "seed": 932,
+      "seconds": 180,
+      "mode": "playing",
+      "p50": {
+        "ms": 6.178957999999966,
+        "time": 140.26666666666665,
+        "kind": "single",
+        "wave": 40,
+        "budget": {
+          "ticks": 3398,
+          "policies": 30,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "p95": {
+        "ms": 19.55616599999985,
+        "time": 34.325,
+        "kind": "spaced-pair",
+        "wave": 11,
+        "budget": {
+          "ticks": 11036,
+          "policies": 44,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "max": {
+        "ms": 20.547708000000057,
+        "time": 70.675,
+        "kind": "spaced-pair",
+        "wave": 21,
+        "budget": {
+          "ticks": 11048,
+          "policies": 44,
+          "candidates": 2,
+          "exhausted": false
+        }
+      },
+      "maxTicks": 13045,
+      "maxPolicies": 48,
+      "spawnSteps": 53,
+      "failedRetries": [
+        {
+          "ms": 2.9069999999999254,
+          "time": 118.80833333333334,
+          "kind": "single",
+          "wave": 34,
+          "budget": {
+            "ticks": 2515,
+            "policies": 18,
+            "candidates": 3,
+            "exhausted": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
-import {advanceSpeedView} from './speed-feedback.js?v=4.7.1';
-import {makeRail} from './rails.js?v=4.7.1';
-import {types} from './catalog.js?v=4.7.1';
-import {biomeAt} from './biomes.js?v=4.7.1';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.7.1';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.7.1';
+import {advanceSpeedView} from './speed-feedback.js?v=4.7.2';
+import {makeRail} from './rails.js?v=4.7.2';
+import {types} from './catalog.js?v=4.7.2';
+import {biomeAt} from './biomes.js?v=4.7.2';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.7.2';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.7.2';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
@@ -33,6 +33,18 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   const opts={flight,pace,economy,boosterState:boosters,time:sceneTime(),budget,viewStrength:Math.max(0,state.viewStrength-.02)};
   const dx=Math.max(600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
   let kind='single',obstacles=[],rail=null,route=null,fallbackRail=false,bypass=null;
+  const recent=state.history.slice(-2),repeat=recent.length===2&&recent[0]===recent[1]?recent[0]:null;
+  const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
+  const pairEvery=stage>=6?2:stage>=3?3:4,pairDue=!simple&&!familiar&&state.groundCount%pairEvery===0,overlayDue=!simple&&!familiar&&state.groundCount%3===1;
+  // Save a complete ordinary ground path before discretionary pair/overlay
+  // search spends this tick's fixed budget. A failed accent cannot erase it.
+  const lows=choices.filter(o=>o.h<=45),canonical=canonicalGroundFallback(lows);
+  let reserve=null;
+  if(canonical&&candidate()){
+   const items=makePattern('single',{speed:S.speed,type:canonical,dx});
+   const proof=validateEncounter(items,{...opts,fallbackGround:true});
+   if(proof)reserve={obstacles:items,route:proof};
+  }
   const airPool=AIR_TYPES.filter(o=>eligible(o,biome)),airIntro=!state.airBiomes.includes(biome)&&S.t-state.biomeFirstSeen[biome]>=3;
   const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=3&&S.t-state.lastAirAt>=ENCOUNTER.airCooldown));
   if(airDue&&candidate()){
@@ -47,23 +59,19 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
    }
   }
   if(!route){
-   const recent=state.history.slice(-2),repeat=recent.length===2&&recent[0]===recent[1]?recent[0]:null;
-   const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
-   const pairEvery=stage>=6?2:stage>=3?3:4,pairDue=!simple&&!familiar&&state.groundCount%pairEvery===0,overlayDue=!simple&&!familiar&&state.groundCount%3===1;
-   for(let attempt=0;attempt<2&&!route&&candidate();attempt++){
-    const lows=choices.filter(o=>o.h<=45),type=attempt===0&&pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):attempt===1?canonicalGroundFallback(lows):pick(choices);if(!type)break;
-    kind=attempt===0&&pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:.45});
-    route=validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='spaced-pair'?.3:0});
-    if(route&&attempt===0&&overlayDue&&type.h<=64&&budget.policies<18&&candidate()){
-     // Both paths use the real catch/collision resolver. The ground proof must
-     // explicitly finish without catching; the optional route must catch.
+   const type=pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):overlayDue&&reserve?canonical:pick(choices);
+   if(type&&candidate()){
+    kind=pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:.45});
+    route=kind==='single'&&reserve&&type.id===canonical.id?reserve.route:validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='spaced-pair'?.3:0});
+    if(route&&overlayDue&&type.h<=64&&budget.policies<26&&candidate()){
      const overlay=makeRail(dx-S.speed*.3,railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
-     const ground=validateEncounter(obstacles,{...shared,targetMode:'ground',requireCatch:false,forbidCatch:true});
+     const ground=validateEncounter(obstacles,{...shared,fallbackGround:true,targetMode:'ground',requireCatch:false,forbidCatch:true});
      const catchRoute=ground&&validateEncounter(obstacles,{...shared,minSlide:S.speed>=740?.6:.85});
      if(catchRoute){rail=overlay;bypass=ground;route=catchRoute;kind='rail-ground';}
     }
-    if(!route)state.fallbacks++;
    }
+   if(!route&&reserve){kind='single';obstacles=reserve.obstacles;route=reserve.route;rail=null;bypass=null;state.fallbacks++;}
+
   }
   if(!route&&candidate()){rail=makeRail(dx,railLength(S.speed,state.railCount,state.lastRailWidth));obstacles=[];kind='rail';route=validateEncounter([],{...opts,rail,minSlide:S.speed>=740?.6:.85});fallbackRail=!!route;}
   if(!route){state.budget=budget;state.phase='rest';state.restUntil=S.t+.25;S.next=.25;return;}
