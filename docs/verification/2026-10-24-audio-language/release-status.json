@@ -1,0 +1,18 @@
+{
+  "version": "4.6.1",
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.6.1",
+  "runtimeCommit": "8dd2430ece271a3c1df34840a22fa5832cb1415f",
+  "parent": "ede9ec6042fd6c262eda2873861974cde72a082b",
+  "pagesRun": "40028390378",
+  "pagesConclusion": "success",
+  "unitTests": 203,
+  "localBrowserChecks": 21,
+  "publicBrowserChecks": 21,
+  "publicRuntimeErrors": 0,
+  "liveResources": 191,
+  "liveHashErrors": 0,
+  "publicScoreSubmissions": 0,
+  "physicalDeviceTested": false,
+  "spokenScreenReaderTested": false,
+  "rankedRuleset": "roadster-v4.6.0"
+}
