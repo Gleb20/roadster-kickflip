@@ -1,0 +1,28 @@
+{
+  "version": "4.6.3",
+  "runtimeCommit": "bee0e37eb518150ce1dfb4a8df120c06504d2e24",
+  "pagesRun": 40034101902,
+  "seconds": 180.05833333333334,
+  "flips": 79,
+  "waves": 34,
+  "maxWaveGap": 9.483333333333334,
+  "maxSampleSpeed": 911.3343750000599,
+  "models": [
+    "batteryAgv",
+    "gemini",
+    "homelessRow",
+    "muscleCompact",
+    "primeDrone",
+    "regulatorDrone",
+    "truck",
+    "v8",
+    "xiaomiSu7"
+  ],
+  "offline": true,
+  "nativeTouch": true,
+  "qaAvailable": false,
+  "routeActionReads": 0,
+  "physicalDevice": false,
+  "publicScoreSubmissions": 0,
+  "errors": []
+}

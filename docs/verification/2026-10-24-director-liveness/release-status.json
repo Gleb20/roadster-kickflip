@@ -1,0 +1,72 @@
+{
+  "version": "4.6.3",
+  "runtimeCommit": "bee0e37eb518150ce1dfb4a8df120c06504d2e24",
+  "runtimeTree": "cded6b4bc6d78ff9e1a997d87ea4a2b194f4d4b2",
+  "parentCommit": "454300619791d8cea513a44bcc91e25741201fad",
+  "phoneUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.6.3",
+  "runtimePages": {
+    "id": 40034101902,
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "bee0e37eb518150ce1dfb4a8df120c06504d2e24"
+  },
+  "liveHashes": {
+    "matched": 191,
+    "errors": 0
+  },
+  "gameTests": 223,
+  "serverTests": 16,
+  "disposableSqlChecks": 27,
+  "pwaResources": 190,
+  "actualUpgradeChecks": 18,
+  "hosted": {
+    "validAccepted": 11,
+    "forgedRejected": 2,
+    "clientVerifyRequests": 0,
+    "publicFixtureWrites": 0,
+    "existingPublicScoresPreserved": 22
+  },
+  "historicalVerifierFilesUnchanged": 142,
+  "supportedRulesets": 11,
+  "physicalDevice": false,
+  "limits": [
+    "Desktop Chrome native touch and offline PWA do not prove physical iPhone/Safari acceptance.",
+    "Actual 4.6.2 to 4.6.3 activation used the known closed-tab boundary; retain site data.",
+    "Desktop full spawn-step spikes up to20.67ms remain; no universal4ms or phone60fps claim."
+  ],
+  "checkedAt": "2026-10-23T22:33:16.162885+00:00",
+  "publicBrowser": {
+    "checks": 39,
+    "runtimeErrors": 0,
+    "publicScoreSubmissions": 0,
+    "coldOffline": true
+  },
+  "independentPublicPwa": {
+    "version": "4.6.3",
+    "runtimeCommit": "bee0e37eb518150ce1dfb4a8df120c06504d2e24",
+    "pagesRun": 40034101902,
+    "seconds": 180.05833333333334,
+    "flips": 79,
+    "waves": 34,
+    "maxWaveGap": 9.483333333333334,
+    "maxSampleSpeed": 911.3343750000599,
+    "models": [
+      "batteryAgv",
+      "gemini",
+      "homelessRow",
+      "muscleCompact",
+      "primeDrone",
+      "regulatorDrone",
+      "truck",
+      "v8",
+      "xiaomiSu7"
+    ],
+    "offline": true,
+    "nativeTouch": true,
+    "qaAvailable": false,
+    "routeActionReads": 0,
+    "physicalDevice": false,
+    "publicScoreSubmissions": 0,
+    "errors": []
+  }
+}
