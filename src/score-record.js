@@ -12,11 +12,12 @@ export function createScoreRecord({storage,ruleset,compatibleRulesets=[ruleset],
   matching(score){return result?.score===score?result:null;},
   keep(attempt,best){
    if(attempt.score!==best||!valid(attempt))return;
-   if(result?.score===best&&(result.entry||result.session&&result.replay&&result.session.localExpiresAt>now()))return;
+   if(!result?.rejected&&result?.score===best&&(result.entry||result.session&&result.replay&&result.session.localExpiresAt>now()))return;
    result=structuredClone(attempt);save();
   },
   accepted(id,entry){if(result?.session?.id!==id||entry?.score!==result.score)return;result.entry=entry;save();},
-  canPost(attempt){return !!(attempt?.session&&attempt.replay&&!attempt.entry&&attempt.session.localExpiresAt>now());},
+  rejected(id){if(result?.session?.id===id){result.rejected=true;save();}},
+  canPost(attempt){return !!(attempt?.session&&attempt.replay&&!attempt.entry&&!attempt.rejected&&attempt.session.localExpiresAt>now());},
   get persistent(){return persistent;},
  };
 }

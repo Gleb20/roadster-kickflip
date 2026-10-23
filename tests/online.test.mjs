@@ -1,68 +1,58 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import {createOnline,ONLINE_PENDING_KEY,validNickname} from '../src/online.js';
-const session={id:'00000000-0000-4000-8000-000000000001',capability:'a'.repeat(64),ruleset:'roadster-v3.4.1',seed:1,expiresAt:1000000,issuedAt:1000},record={format:1,ruleset:session.ruleset,seed:1,ticks:500,events:[]};
-const memory=()=>{const data=new Map();return {getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v),data};};
-test('ranking preparation never posts a score and consumes each issued session once',async()=>{
- const calls=[],client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:memory(),now:()=>1000,fetcher:async(url,options)=>{calls.push({url:String(url),options});return Response.json(session);}});
- await Promise.all([client.prepare(),client.prepare()]);assert.equal(calls.length,1);assert.equal(client.takeSession().id,session.id);assert.equal(client.takeSession(),null);await client.prepare();assert.ok(calls.every(c=>new URL(c.url).pathname==='/sessions'));assert.equal(client.pending.length,0);
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createJobStore} from '../src/online-store.js';
+import {createOnline,ONLINE_PENDING_KEY,ONLINE_CACHE_KEY,validNickname,projectScore} from '../src/online.js';
+const session={id:'00000000-0000-4000-8000-000000000001',capability:'a'.repeat(64),ruleset:'roadster-v4.1.0',seed:1,expiresAt:1000000,issuedAt:1000};
+const replay={format:1,ruleset:session.ruleset,seed:1,ticks:500,events:[]};
+const memory=()=>{const data=new Map();return {getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v)};};
+const make=options=>createOnline({apiUrl:'https://api.test/functions/v1/ranking/',ruleset:session.ruleset,storage:memory(),now:()=>1000,autoStart:false,...options});
+test('preparation never posts a score and consumes each session once',async()=>{
+ const calls=[],c=make({fetcher:async(url,o)=>{calls.push({url,o});return Response.json(session);}});await Promise.all([c.prepare(),c.prepare()]);assert.equal(calls.length,1);assert.equal(c.takeSession().id,session.id);assert.equal(c.takeSession(),null);await c.prepare();assert.ok(calls.every(c=>c.url.pathname.endsWith('/sessions')));assert.equal(c.pending.length,0);
 });
-test('only explicit submission creates a retry; reload never posts it automatically',async()=>{
- const storage=memory();let calls=0;
- const client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage,now:()=>1000,fetcher:async()=>{calls++;throw Error('offline');}});
- await assert.rejects(client.submit(session,record,'PILOT 1'),e=>e.code==='network');assert.equal(calls,1);assert.equal(client.pending.length,1);
- const saved=JSON.parse(storage.getItem(ONLINE_PENDING_KEY));assert.equal(saved.jobs[0].nickname,'PILOT 1');
- const loaded=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage,now:()=>2000,fetcher:async()=>{calls++;return Response.json({status:'accepted',entry:{id:'public',score:70}});}});
- assert.equal(calls,1);await loaded.retry(loaded.pending[0]);assert.equal(calls,2);assert.equal(loaded.pending.length,0);assert.equal(JSON.parse(storage.getItem(ONLINE_PENDING_KEY)).jobs.length,0);
+test('submit durably saves and shows the score before any network call completes',async()=>{
+ let calls=0;const c=make({fetcher:async()=>{calls++;throw Error('offline');}});await c.submit(session,replay,'PILOT',400);assert.equal(calls,0);assert.equal(c.entries[0].score,400);await c.flush();assert.equal(calls,1);assert.equal(c.entries[0].score,400);assert.equal(c.pending.length,1);
 });
-test('retries reuse the same nickname/replay after an ambiguous response and deduplicate in flight',async()=>{
- let resolve,calls=0;const gate=new Promise(r=>resolve=r),payloads=[];const client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:memory(),now:()=>1000,fetcher:async(url,options)=>{calls++;payloads.push(JSON.parse(options.body));await gate;return Response.json({status:'accepted',entry:{id:'one',score:70}});}});
- const a=client.submit(session,record,'PILOT ONE'),b=client.submit(session,record,'OTHER NAME');resolve();assert.equal((await a).entry.id,(await b).entry.id);assert.equal(calls,1);assert.equal(payloads[0].nickname,'PILOT ONE');assert.deepEqual(payloads[0].replay,record);
+test('offline queue survives reload and sends automatically on the next connection',async()=>{
+ const storage=memory();let connected=false,calls=0;const first=make({storage,connected:()=>connected,fetcher:async()=>{calls++;throw Error();}});await first.submit(session,replay,'PILOT',400);await first.flush();assert.equal(calls,0);
+ const loaded=make({storage,connected:()=>connected,fetcher:async()=>{calls++;return Response.json({status:'pending',receipt:true,background:true,publicId:'public'});}});await loaded.loaded;assert.equal(loaded.entries[0].score,400);connected=true;await loaded.flush();assert.equal(calls,1);assert.equal(loaded.lookup(session.id).receipt,true);
 });
-test('unknown/corrupt storage is preserved and blocked storage remains a working in-memory retry',async()=>{
- for(const raw of ['{broken',JSON.stringify({version:2,jobs:[]})]){const storage=memory();storage.setItem(ONLINE_PENDING_KEY,raw);const c=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage,now:()=>1000,fetcher:async()=>{throw Error();}});await assert.rejects(c.submit(session,record,'PILOT'));assert.equal(c.persistent,false);assert.equal(c.pending.length,1);assert.equal(storage.getItem(ONLINE_PENDING_KEY),raw);}
- const c=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:{getItem(){throw Error();},setItem(){throw Error();}},fetcher:async()=>{throw Error();}});await assert.rejects(c.submit(session,record,'PILOT'));assert.equal(c.pending.length,1);
+test('receipt ends upload; later recovery reads status without uploading replay or calling verify',async()=>{
+ const storage=memory(),paths=[];let time=1000;const c=make({storage,now:()=>time,fetcher:async(url,o)=>{paths.push([url.pathname,o.method]);return Response.json(o.method==='POST'?{status:'pending',receipt:true,publicId:'public'}:{status:'accepted',entry:{id:'public',score:400}});}});
+ await c.submit(session,replay,'PILOT',400);await c.flush();time+=11000;await c.flush();assert.deepEqual(paths.map(x=>x[1]),['POST','GET']);assert.ok(paths.every(x=>!x[0].endsWith('/verify')));assert.equal(c.pending.length,0);assert.equal(c.entries.length,1);assert.equal(c.entries[0].id,'public');assert.equal(c.lookup(session.id).replay,undefined);
 });
-test('offline preparation is silent and nickname validation matches the public contract',async()=>{
- let calls=0;const c=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,connected:()=>false,fetcher:async()=>{calls++;}});assert.equal(await c.prepare(),null);assert.equal(c.takeSession(),null);assert.equal(calls,0);
- for(const name of ['PILOT','  Мой   ник  ','ＰＩＬＯＴ'])assert.equal(validNickname(name),true);for(const name of ['A','<B>','AAAAAAAAAAAAA','X\u202eY'])assert.equal(validNickname(name),false);
+test('ambiguous upload repeats original identity, nickname and replay, deduplicating in flight',async()=>{
+ let time=1000,calls=0;const bodies=[];const c=make({now:()=>time,fetcher:async(url,o)=>{bodies.push(JSON.parse(o.body));if(++calls===1)throw Error('lost response');return Response.json({status:'accepted',entry:{id:'one',score:400}});}});
+ await c.submit(session,replay,'PILOT',400);await Promise.all([c.flush(),c.flush()]);await c.submit(session,replay,'OTHER',999);time+=10000;await c.flush();assert.equal(calls,2);assert.deepEqual(bodies[0],bodies[1]);assert.equal(bodies[1].nickname,'PILOT');assert.equal(bodies[1].score,400);
 });
-test('terminal verification failures remain terminal after reload and keep local retry history truthful',async()=>{
- const storage=memory(),client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage,now:()=>1000,fetcher:async()=>Response.json({status:'rejected',error:'verification_failed'})});
- await client.submit(session,record,'PILOT');assert.equal(client.pending[0].status,'rejected');
- const loaded=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage,now:()=>2000});assert.equal(loaded.pending[0].status,'rejected');assert.equal(loaded.pending[0].error,'verification_failed');
- loaded.remove(session.id);assert.equal(loaded.pending.length,0);
+test('rejected row remains for the submitting page, disappears silently after reload and is never resubmitted',async()=>{
+ const storage=memory(),rejections=[];let calls=0;const c=make({storage,onRejected:id=>rejections.push(id),fetcher:async()=>{calls++;return Response.json({status:'rejected',receipt:true,error:'verification_failed'});}});await c.submit(session,replay,'PILOT',999);await c.flush();assert.equal(c.entries.length,1);assert.deepEqual(rejections,[session.id]);
+ const loaded=make({storage,fetcher:async()=>{calls++;throw Error();}});await loaded.loaded;assert.equal(loaded.entries.length,0);await loaded.flush();assert.equal(calls,1);assert.equal(loaded.pending.length,0);
 });
-test('Supabase nested API path and chunk continuation survive a transient network loss',async()=>{
- const storage=memory(),paths=[];let chunk=0,fail=true;
- const fetcher=async(url,options)=>{paths.push(url.pathname);if(url.pathname.endsWith('/sessions/'+session.id))return Response.json({status:'pending',verifierUrl:'https://api.test/functions/v1/ranking/'});if(url.pathname.endsWith('/verify')){chunk++;if(fail&&chunk===2)throw Error('offline');return Response.json(chunk<3?{status:'pending',continue:true,progress:1200}:{status:'accepted',entry:{id:'verified'}});}throw Error('Unexpected path');};
- const client=createOnline({apiUrl:'https://api.test/functions/v1/ranking/',ruleset:session.ruleset,storage,fetcher,now:()=>1000});await assert.rejects(client.submit(session,record,'PILOT'),e=>e.code==='network');assert.equal(client.pending.length,1);assert.equal(chunk,2);fail=false;
- const result=await client.retry(client.pending[0]);assert.equal(result.entry.id,'verified');assert.equal(client.pending.length,0);assert.ok(paths.every(p=>p.startsWith('/functions/v1/ranking/')));
+test('rejection learned after reload removes an old overlay, while transient errors preserve it',async()=>{
+ const storage=memory(),c=make({storage});await c.submit(session,replay,'PILOT',400);
+ const loaded=make({storage,fetcher:async()=>Response.json({status:'rejected',receipt:true})});await loaded.loaded;assert.equal(loaded.entries.length,1);await loaded.flush();assert.equal(loaded.entries.length,0);
+ const temp=make({fetcher:async()=>Response.json({error:'service_unavailable'},{status:503})});await temp.submit(session,replay,'PILOT',400);await temp.flush();assert.equal(temp.entries.length,1);assert.notEqual(temp.lookup(session.id).status,'rejected');
 });
-test('Supabase gateway key and per-run capability use separate headers',async()=>{
- const c=createOnline({apiUrl:'https://api.test/functions/v1/ranking/',apiKey:'sb_publishable_fixture',ruleset:session.ruleset,storage:memory(),fetcher:async(url,o)=>{assert.equal(o.headers.apikey,'sb_publishable_fixture');assert.equal(o.headers.Authorization,'Bearer sb_publishable_fixture');assert.equal(o.headers['X-Run-Capability'],session.capability);return Response.json({status:'accepted',entry:{id:'one'}});}});assert.equal((await c.submit(session,record,'PILOT')).entry.id,'one');
+test('unavailable or corrupt persistence never claims a saved score or overwrites unknown records',async()=>{
+ const blocked={getItem(){return null;},setItem(){throw Error('quota');}},c=make({storage:blocked});await assert.rejects(c.submit(session,replay,'PILOT',400),e=>e.code==='storage_unavailable');assert.equal(c.entries.length,0);
+ const storage=memory();storage.setItem(ONLINE_PENDING_KEY,'{broken');const bad=make({storage});await assert.rejects(bad.submit(session,replay,'PILOT',400),e=>e.code==='storage_unavailable');assert.equal(storage.getItem(ONLINE_PENDING_KEY),'{broken');
 });
-test('chunked service uses the configured HTTPS endpoint when no verifier URL is returned',async()=>{
- const paths=[];const c=createOnline({apiUrl:'https://api.test/functions/v1/ranking/',ruleset:session.ruleset,storage:memory(),fetcher:async(url)=>{paths.push(String(url));return Response.json(url.pathname.endsWith('/verify')?{status:'accepted',entry:{id:'final'}}:{status:'pending',continue:true,verifierUrl:null});}});assert.equal((await c.submit(session,record,'PILOT')).entry.id,'final');assert.equal(paths[1],'https://api.test/functions/v1/ranking/verify');
+test('legacy pending packets migrate without changing replay or losing terminal rejection',async()=>{
+ const storage=memory();storage.setItem(ONLINE_PENDING_KEY,JSON.stringify({version:1,jobs:[{session,replay,nickname:'LEGACY',createdAt:10,status:'pending'}]}));let sent;const c=make({storage,fetcher:async(url,o)=>{sent=JSON.parse(o.body);return Response.json({status:'pending',receipt:true});}});await c.loaded;assert.equal(c.pending.length,1);await c.flush();assert.deepEqual(sent.replay,replay);assert.equal(sent.score,undefined);assert.ok(storage.getItem(ONLINE_PENDING_KEY));
 });
-test('accepted callback persists an explicitly retried score independently of dialog state',async()=>{
- const accepted=[],client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,storage:memory(),now:()=>1000,onAccepted:(id,entry)=>accepted.push({id,entry}),fetcher:async()=>Response.json({status:'accepted',entry:{id:'public-best',score:400}})});
- await client.submit(session,record,'PILOT');assert.deepEqual(accepted,[{id:session.id,entry:{id:'public-best',score:400}}]);
+test('cached ranking survives restart; preview adds the row with stable tie order and never duplicates confirmed ID',async()=>{
+ const data={page:1,pages:1,total:2,snapshot:2,entries:[{id:'a',rank:1,score:500},{id:'b',rank:2,score:400}]};const storage=memory();storage.setItem(ONLINE_CACHE_KEY,JSON.stringify({version:1,data}));const c=make({storage});assert.deepEqual(c.cached,data);
+ const p=projectScore(data,{id:'own',score:400});assert.deepEqual(p.entries.map(e=>e.rank),[1,2,3]);assert.equal(p.entries[2].own,true);assert.equal(projectScore(data,{id:'b',score:400}).entries.length,2);
+ const unknown=projectScore(null,{id:'own',score:400});assert.equal(unknown.entries[0].rank,null);
+});
+test('preview pages contain exactly the server-ranked insertion and adjacent pages omit it',()=>{
+ const own={id:'own',score:400},base={page:2,pages:3,total:21,previewRank:15,entries:[{id:'a',rank:14,score:500},{id:'b',rank:16,score:300}]};assert.deepEqual(projectScore(base,own).entries.map(e=>e.rank),[14,15,16]);assert.equal(projectScore({...base,page:3,entries:[{id:'z',rank:21,score:1}]},own).entries.length,1);
+});
+test('gateway key and run capability remain separate; field validation retains the public contract',async()=>{
+ const c=make({apiKey:'sb_publishable_fixture',fetcher:async(url,o)=>{assert.equal(o.headers.apikey,'sb_publishable_fixture');assert.equal(o.headers.Authorization,'Bearer sb_publishable_fixture');assert.equal(o.headers['X-Run-Capability'],session.capability);return Response.json({status:'accepted',entry:{id:'one',score:400}});}});await c.submit(session,replay,'PILOT',400);await c.flush();
+ for(const name of ['PILOT','  Мой   ник  ','ＰＩＬＯＴ'])assert.equal(validNickname(name),true);for(const name of ['A','<B>','AAAAAAAAAAAAA','X\u202eY'])assert.equal(validNickname(name),false);await assert.rejects(c.submit(session,replay,'PILOT',-1),e=>e.code==='invalid_score');
 });
 
-test('possible rank uses one snapshot, puts a new tie last, and searches large tables logarithmically',async()=>{
- const scores=Array.from({length:5000},(_,i)=>Math.floor((5000-i)/4)*10),calls=[];
- const client=createOnline({apiUrl:'https://api.test',ruleset:session.ruleset,fetcher:async(url,options)=>{
-  assert.equal(options.method,'GET');const page=Number(url.searchParams.get('page'));calls.push(page);
-  if(page!==1)assert.equal(url.searchParams.get('snapshot'),'77');
-  return Response.json({page,pages:Math.ceil(scores.length/10),total:scores.length,snapshot:77,entries:scores.slice((page-1)*10,page*10).map((score,i)=>({score,rank:(page-1)*10+i+1}))});
- }});
- for(const score of [99999,12500,10000,9990,30,0]){
-  calls.length=0;const result=await client.estimateRank(score);assert.equal(result.rank,scores.filter(s=>s>=score).length+1);assert.equal(result.snapshot,77);assert.ok(calls.length<=10);
- }
-});
-test('possible rank distinguishes empty ranking, network failure and invalid score',async()=>{
- const c=createOnline({apiUrl:'https://api.test',fetcher:async()=>Response.json({entries:[],snapshot:0,pages:1,total:0})});assert.equal((await c.estimateRank(100)).rank,1);
- await assert.rejects(c.estimateRank(-1),e=>e.code==='invalid_score');
- const offline=createOnline({apiUrl:'https://api.test',fetcher:async()=>{throw Error('offline');}});await assert.rejects(offline.estimateRank(100),e=>e.code==='network');
+test('IndexedDB failure cannot split the durable queue into an invisible fallback store',async()=>{
+ const storage=memory(),indexedDB={open(){const request={error:Error('blocked')};queueMicrotask(()=>request.onerror());return request;}};
+ const client=make({storage,jobStore:createJobStore({storage,indexedDB})});await assert.rejects(client.submit(session,replay,'PILOT',400),e=>e.code==='storage_unavailable');assert.equal(storage.getItem('roadster-online-outbox-v2'),undefined);
 });

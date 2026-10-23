@@ -1,0 +1,32 @@
+{
+  "checks": [
+    "390: own row appears while upload response is blocked",
+    "390: no pending/checking/retry labels",
+    "390: local row uses claimed finished score",
+    "390: backend completes after the browser context closes",
+    "1440: own row appears while upload response is blocked",
+    "1440: no pending/checking/retry labels",
+    "1440: local row uses claimed finished score",
+    "1440: backend completes after the browser context closes",
+    "offline submission is visible without an upload",
+    "offline reload retains local result and leaderboard",
+    "reconnection sends the original packet without retry button",
+    "rejection remains visually quiet for current page",
+    "rejected local row is absent after reload",
+    "no cheating/status notice after rejection",
+    "concurrent per-run storage writes preserve both tabs",
+    "completed legacy migration no longer depends on the old storage key",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "timings": [
+    {
+      "width": 390,
+      "localRowMs": 67.57683300000099
+    },
+    {
+      "width": 1440,
+      "localRowMs": 63.74333300000217
+    }
+  ]
+}

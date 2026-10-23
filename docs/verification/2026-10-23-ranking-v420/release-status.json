@@ -1,0 +1,24 @@
+{
+  "version": "4.2.0",
+  "baseCommit": "1399b4077145d56d215d7e9b0e209020350fe0b1",
+  "status": "backend-deployed-frontend-ready",
+  "frontendPublished": false,
+  "backendMigrationDeployed": true,
+  "workerDeployed": true,
+  "autonomousSchedulingActivated": true,
+  "gameTests": 140,
+  "serverTests": 13,
+  "databaseChecks": 20,
+  "browserChecks": 17,
+  "upgradeChecks": 10,
+  "frozenRulesetsUnchanged": [
+    "roadster-v3.4.2",
+    "roadster-v3.8.0",
+    "roadster-v4.0.0",
+    "roadster-v4.1.0"
+  ],
+  "physicalIPhoneSafari": "not-tested",
+  "hostedFixtures": 7,
+  "publicScores": 20,
+  "publicFixtureWrites": 0
+}

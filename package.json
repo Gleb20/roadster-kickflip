@@ -1,6 +1,6 @@
 {
   "name": "roadster-kickflip",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,7 +11,7 @@
     "check:types": "tsc --noEmit",
     "build:pwa": "node scripts/build-pwa.mjs",
     "check:pwa": "node scripts/build-pwa.mjs --check",
-    "build:ranking": "esbuild supabase/entry.mjs --bundle --format=esm --platform=neutral --target=es2022 --outfile=supabase/functions/tesla-ranking/index.ts"
+    "build:ranking": "esbuild supabase/entry.mjs --bundle --format=esm --platform=neutral --target=es2022 --outfile=supabase/functions/tesla-ranking/index.ts && esbuild supabase/worker-entry.mjs --bundle --format=esm --platform=neutral --target=es2022 --outfile=supabase/functions/tesla-ranking-worker/index.ts"
   },
   "devDependencies": {
     "esbuild": "0.28.2",

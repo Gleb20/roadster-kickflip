@@ -1,3 +1,13 @@
+## 4.2.0 submission transport — gameplay rules remain 4.1.0
+
+The finished replay is already recorded incrementally as input transitions during the run. No new per-frame hashing or cryptographic work is added to rendering. Submit includes its displayed integer score as a consistency check. The server recomputes the complete score and first collision from its issued seed and frozen ruleset; an unequal claimed score is rejected. Legacy clients without this additional claim remain compatible. A checksum or arithmetic trick ledger can detect corruption/accounting mistakes but cannot authenticate player-authored events, so neither replaces simulation.
+
+Verification is now prepared as an autonomous private worker, with server-owned checkpoints, exclusive leases, revision checks and retry backoff. It still checks the exact replay. The 400ms compute scheduling target remains; a single step can overshoot it. `maxTicks=432000` removes the former 50-simulated-second interruption, reducing requests/checkpoint storage on fast hosts. Old `/verify` remains compatible. Accepted/pending rows and all four immutable rulesets are preserved.
+
+The client displays an optimistic local row without status labels. A committed upload receipt transfers responsibility to the server. An unsent offline packet remains durable on the device; the app must reopen/reconnect to send it. New sessions now allow seven days for submission, and already received pending work does not expire during processing. A fully offline run still needs a server-issued session obtained before play; arbitrary client-chosen offline seeds are not promoted to ranked runs. Permanent rejection hides the optimistic row after reload; infrastructure failures retain the queue and retry automatically.
+
+Current implementation and measured limits: [4.2.0 evidence](verification/2026-10-23-ranking-v420/README.md). Earlier transport descriptions below are historical.
+
 ## Aerial challenge4.1.0 —22October2026
 
 Supersedes the4.0.0 harmless-flyby direction at the user's request. Xi is an ordinary colliding ground opponent in the factory pool, on the same baseline as cars and people. His mutual lightning reaction remains visual; body contact ends the run normally.

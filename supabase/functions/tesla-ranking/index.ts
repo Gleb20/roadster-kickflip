@@ -3553,6 +3553,13 @@ function createHandler({ rpc, chunk = verifyChunk } = {}) {
         if (snapshot !== null && (!Number.isSafeInteger(Number(snapshot)) || Number(snapshot) < 0)) throw new ApiError("invalid_snapshot");
         return json(await rpc("scores", { page, ...snapshot === null ? {} : { snapshot: Number(snapshot) } }));
       }
+      if (path === "/preview" && req.method === "GET") {
+        const score = Number(url.searchParams.get("score"));
+        if (!Number.isSafeInteger(score) || score < 0 || score > 1e8) throw new ApiError("invalid_score");
+        const page = url.searchParams.get("page");
+        if (page !== null && (!Number.isInteger(Number(page)) || Number(page) < 1 || Number(page) > 1e4)) throw new ApiError("invalid_page");
+        return json(await rpc("preview", { score, ...page ? { page: Number(page) } : {} }));
+      }
       if (path.startsWith("/scores/") && req.method === "GET") return json(await rpc("entry", { id: id(path.slice(8)) }));
       if (path === "/sessions" && req.method === "POST") {
         const b = await body(req, 1024);
@@ -3579,7 +3586,8 @@ function createHandler({ rpc, chunk = verifyChunk } = {}) {
           throw new ApiError("invalid_replay");
         }
         const replay = { format: 1, ruleset: b.replay.ruleset, seed: b.replay.seed, ticks: b.replay.ticks, events: b.replay.events.map((e) => [e[0], e[1]]) };
-        return json(decorate(await rpc("submit", { ...p, nickname, replay, payloadHash: await hash(JSON.stringify({ nickname, replay })) })), 202);
+        if (b.score !== void 0 && (!Number.isSafeInteger(b.score) || b.score < 0 || b.score > 1e8)) throw new ApiError("invalid_score");
+        return json(decorate(await rpc("submit", { ...p, nickname, replay, ...b.score === void 0 ? {} : { claimedScore: b.score }, payloadHash: await hash(JSON.stringify({ nickname, replay })) })), 202);
       }
       if (path === "/verify" && req.method === "POST") {
         const b = await body(req, 1024);

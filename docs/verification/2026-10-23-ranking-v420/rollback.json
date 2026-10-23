@@ -1,0 +1,9 @@
+{
+  "candidateCommit": "8fff1a2",
+  "baseCommit": "1399b4077145d56d215d7e9b0e209020350fe0b1",
+  "expectedTree": "ac314cb6ba86493d64115e61c8e45ea622e71e20",
+  "restoredTree": "ac314cb6ba86493d64115e61c8e45ea622e71e20",
+  "exactReverse": true,
+  "restoredGameTests": 138,
+  "restoredSourceContentTypePwaChecks": "pass"
+}

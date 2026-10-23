@@ -1,3 +1,13 @@
+## 4.2.0 server rollout verified — 23 October 2026
+
+The additive migration, API, private worker and 10-second recovery scheduler are deployed. Seven hosted fixtures prove all four rulesets, exact results, duplicate receipts, forged-score rejection, delayed retry, expired-lease recovery and completion after the submitting process exits. The 602.825-second fixture completed in eight bounded chunks. Receipt HTTP samples: 276–712ms. Twenty public records retain the exact baseline digest; QA results are isolated under `qa-v420-20261023`. Anonymous/public-key worker calls return401. Both downloaded bundles match local source. Frontend Pages publication follows this backend gate; see the current release-status evidence for final status.
+
+## Ranking 4.2.0 candidate rollback
+
+Base is published 4.1.1 documentation head `1399b40`; preserve its vat asset/depth changes. The original dirty workspace was snapshotted before edits at `/tmp/tesla-score-v420-before-20261023/`, with a second guarded snapshot immediately before synchronizing the bounded candidate. Never reset or stage the original historical index. The candidate and inverse are retained in the isolated `/tmp/tesla-score-v420-20261023` repository. Exact inverse verification is recorded in `docs/verification/2026-10-23-ranking-v420/rollback.json`.
+
+For deployment, release the additive backend and verify autonomous processing before publishing the frontend. Keep accepted data, pending packets, frozen rulesets and the new private queue even if reverting the frontend. Disabling autonomous dispatch while a 4.2.0 client is installed strands its received jobs; use it only as a temporary operational pause, then resume processing. A public frontend rollback needs a fresh cache version. Do not restore an older database or reapply schema.sql.
+
 ## Factory vat4.1.1 inverse
 
 Parent45b55a525466071cca22170fa9682d5859303be4 / tree5014308de9963d2305b5c6b6bcf6b87567b7fbe0. Snapshot /tmp/tesla-vat-v411-before-20261023 protects dirty source files and historical index. Rehearse the bounded forward/inverse in /tmp/tesla-vat-v411-rollback-20261023; verify exact parent tree and138 parent tests/checks. Public reversal uses a fresh frontend/cache version, leaving all ranked rulesets, backend data and historical art intact. See docs/verification/2026-10-23-vat-v411/.

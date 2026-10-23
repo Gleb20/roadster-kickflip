@@ -1,0 +1,98 @@
+[
+  {
+    "seconds": 32.03333333333333,
+    "ruleset": "roadster-v3.4.2",
+    "results": [
+      {
+        "maxTicks": 6000,
+        "chunks": 1,
+        "totalMs": 113.357541,
+        "maxChunkMs": 113.33525,
+        "checkpointBytes": 4,
+        "outcome": "accepted",
+        "result": {
+          "score": 1272,
+          "flips": 0,
+          "ticks": 3844
+        }
+      },
+      {
+        "maxTicks": 432000,
+        "chunks": 1,
+        "totalMs": 79.936417,
+        "maxChunkMs": 79.92412499999998,
+        "checkpointBytes": 4,
+        "outcome": "accepted",
+        "result": {
+          "score": 1272,
+          "flips": 0,
+          "ticks": 3844
+        }
+      }
+    ]
+  },
+  {
+    "seconds": 603.8166666666667,
+    "ruleset": "roadster-v3.4.2",
+    "results": [
+      {
+        "maxTicks": 6000,
+        "chunks": 13,
+        "totalMs": 1571.42,
+        "maxChunkMs": 170.65108299999997,
+        "checkpointBytes": 22154,
+        "outcome": "accepted",
+        "result": {
+          "score": 53478,
+          "flips": 0,
+          "ticks": 72458
+        }
+      },
+      {
+        "maxTicks": 432000,
+        "chunks": 4,
+        "totalMs": 1416.7163329999998,
+        "maxChunkMs": 402.27933399999984,
+        "checkpointBytes": 7047,
+        "outcome": "accepted",
+        "result": {
+          "score": 53478,
+          "flips": 0,
+          "ticks": 72458
+        }
+      }
+    ]
+  },
+  {
+    "seconds": 3592,
+    "ruleset": "roadster-v3.4.2",
+    "results": [
+      {
+        "maxTicks": 6000,
+        "chunks": 72,
+        "totalMs": 8694.55075,
+        "maxChunkMs": 193.32495799999924,
+        "checkpointBytes": 147677,
+        "outcome": "accepted",
+        "result": {
+          "score": 328341,
+          "flips": 0,
+          "ticks": 431040
+        }
+      },
+      {
+        "maxTicks": 432000,
+        "chunks": 21,
+        "totalMs": 8442.664958,
+        "maxChunkMs": 425.5625,
+        "checkpointBytes": 47859,
+        "outcome": "accepted",
+        "result": {
+          "score": 328341,
+          "flips": 0,
+          "ticks": 431040
+        }
+      }
+    ]
+  }
+]

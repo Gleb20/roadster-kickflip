@@ -1,7 +1,7 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.1';
-import {types} from './catalog.js?v=4.1.1';
-import {biomeAt} from './biomes.js?v=4.1.1';
-import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.1.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.2.0';
+import {types} from './catalog.js?v=4.2.0';
+import {biomeAt} from './biomes.js?v=4.2.0';
+import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.2.0';
 export function createDirector({S,flight,pace,economy,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
  const initial=()=>({wave:0,last:null,fallbacks:0,waiting:false,hardStreak:0,leg:-1,legStartedAt:0,groundSinceAir:0,airCount:0,lastAirAt:-1e9});
  const state=initial();

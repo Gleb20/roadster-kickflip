@@ -1,0 +1,15 @@
+{
+  "runs": 20,
+  "runsDigest": "52b0bf96a8d6e4294e81740102cd7b6f",
+  "sessions": {
+    "ready": 387,
+    "accepted": 20,
+    "rejected": 10
+  },
+  "extensions": [
+    "supabase_vault"
+  ],
+  "workerVaultNames": null,
+  "liveVersion": "4.1.1",
+  "main": "1399b4077145d56d215d7e9b0e209020350fe0b1"
+}

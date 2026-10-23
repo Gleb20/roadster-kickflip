@@ -1,0 +1,48 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla Jump — мгновенная запись результата</title><style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style></head><body>
+<h1>Tesla Jump: результат без ожидания</h1><p class="meta">23 октября 2026 · Локальная сборка 4.2.0 поверх 4.1.1 · не опубликована</p><div class="skills"><span class="chip">userflow</span><span class="chip">flow-errors</span><span class="chip">ponytail</span></div>
+<h2>Принятое поведение</h2><p>После Submit игрок видит обычный рейтинг со своей строкой. Никаких Sending, Checking, Pending и Retry. Подтверждённый сервером рейтинг дополняется локальным результатом; проверка и повторы идут независимо от интерфейса. Явное решение пользователя заменяет общие рекомендации flow-errors показывать сетевые статусы.</p>
+<h2>От завершённого проезда к рейтингу</h2><ol class="flow">
+<li><span class="step-n">1</span><span class="step-t">Результат проезда</span><p class="step-d">Счёт, кнопка Submit Score, прежнее игровое оформление.</p><p class="cta"><b>Submit Score</b> → имя игрока.</p></li>
+<li><span class="step-n">2</span><span class="step-t">Имя и отправка</span><p class="step-d">Неизменяемый пакет записывается на устройстве. Рейтинг не ждёт сетевого ответа.</p><p class="cta"><b>Submit Score</b> → рейтинг со своей выделенной строкой.</p><div class="branch">При отказе локального хранилища форма сохраняет введённое имя и показывает понятную ошибку. Потерянный пакет не считается сохранённым.</div></li>
+<li><span class="step-n">3</span><span class="step-t">Обычный рейтинг</span><p class="step-d">Сначала последняя сохранённая таблица. Онлайн приходит актуальная страница вокруг результата. Оффлайн строка сохраняется и отправится сама при подключении. Неизвестное точное место обозначено тире.</p><p class="cta"><b>Back to Game</b> → игра; Prev / Next → соседняя страница.</p></li>
+<li><span class="step-n">4</span><span class="step-t">Проверка за экраном</span><p class="step-d">Сервер подтверждает приём после записи пакета. Отдельный обработчик продолжает работу после закрытия вкладки. Счёт и момент столкновения сверяются прежней точной симуляцией.</p><div class="branch">Отклонённый результат никогда не виден другим игрокам. Локальная строка остаётся до перезагрузки текущего окна, затем тихо исчезает. Временная ошибка сервиса сохраняет очередь.</div></li></ol>
+<h3>Экраны и состояния</h3><div class="overflow"><table><tr><th>Экран</th><th>Назначение</th><th>Действие</th><th>Состояния</th></tr><tr><td>Game Over</td><td>Результат</td><td>Submit Score</td><td>Старые сохранённые проезды совместимы.</td></tr><tr><td>Имя</td><td>Публичное имя</td><td>Submit Score</td><td>Валидация имени; отказ хранилища сохраняет ввод.</td></tr><tr><td>Рейтинг</td><td>Своя строка и соседи</td><td>Back to Game</td><td>Кэш и локальная строка; актуальная страница онлайн. Отсутствие кэша не выдумывает чужих игроков.</td></tr></table></div>
+<h3>Проверки сценария</h3><div class="overflow"><table><tr><th>Риск</th><th>Результат</th><th>Доказательство</th></tr>
+<tr><td>Игрок ждёт сеть</td><td class="pass">PASS</td><td>Ответ загрузки заблокирован; строка появилась за 68/64 мс в 390/1440 Chromium.</td></tr>
+<tr><td>Оффлайн-очередь теряется после перезапуска</td><td class="pass">PASS</td><td>Настоящий IndexedDB, перезагрузка оффлайн и автоматическая отправка после подключения; 17 браузерных проверок.</td></tr>
+<tr><td>Повторная отправка создаёт дубли</td><td class="pass">PASS</td><td>Идемпотентный идентификатор и неизменяемый пакет; конфликтный повтор отклонён в SQL-проверках.</td></tr>
+<tr><td>Закрытие вкладки прерывает античит</td><td class="pass">PASS локально</td><td>Тестовая база и отдельный обработчик завершили проезд после закрытия контекста браузера.</td></tr>
+<tr><td>Накрученный счёт виден другим</td><td class="pass">PASS</td><td>Подмена итога и продолжение после первого столкновения отклонены; тихое исчезновение локальной строки проверено браузером.</td></tr>
+<tr><td>Обновление теряет прежнюю очередь</td><td class="pass">PASS</td><td>Реальное обновление PWA 4.1.1 → 4.2.0; пакет, личный рекорд и коллекция сохранены.</td></tr>
+<tr><td>Стоимость и лимиты хостинга</td><td class="warn">NOT TESTED на сервере</td><td>Локальная симуляция идентична; долгие фикстуры используют примерно на 70% меньше частей. Задержки Supabase и доставка pg_net ещё требуют проверки при развёртывании.</td></tr>
+<tr><td>Физический iPhone / Safari</td><td class="warn">NOT TESTED</td><td>Проверен мобильный viewport Chromium, не устройство пользователя.</td></tr></table></div>
+<h2>Границы и следующий шаг</h2><p>Сначала развернуть и проверить автономный обработчик, затем публиковать клиент. Для рейтинга нужен серверный билет до начала проезда; на доставку даётся семь дней. Полученный сервером проезд уже не истекает вместе с билетом. Полностью закрытый браузер отправит ещё не переданный оффлайн-пакет при следующем открытии с сетью.</p><p>Контрольная сумма полезна для целостности, но не доказывает реальность трюков: клиент может пересчитать её после подмены. Поэтому точная проверка сохранена, а ожидание убрано из игрового сценария. Дальнейшая ограниченная работа — замер задержек приёма и восстановления очереди на хостинге после развёртывания.</p>
+<footer>Основано на локальном шаблоне userflow; <a href="README.md">пакет проверок и план развёртывания</a>. Пользовательское тестирование не заявляется.</footer></body></html>

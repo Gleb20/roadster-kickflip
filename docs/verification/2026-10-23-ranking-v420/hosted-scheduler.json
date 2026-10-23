@@ -1,0 +1,26 @@
+{
+  "publicRuns": 20,
+  "publicDigest": "52b0bf96a8d6e4294e81740102cd7b6f",
+  "publicDataUnchanged": true,
+  "qaEpoch": "qa-v420-20261023",
+  "fixtureStatuses": [
+    "accepted",
+    "accepted",
+    "accepted",
+    "accepted",
+    "rejected",
+    "accepted",
+    "accepted"
+  ],
+  "longFixtureSeconds": 602.825,
+  "longFixtureChunks": 8,
+  "httpRequests": 14,
+  "httpStatus": 200,
+  "cron": "10 seconds",
+  "cronActive": true,
+  "idleDispatch": 0,
+  "recoveredExpiredLease": true,
+  "recoveredRetryDelay": true,
+  "receivedPendingOutlivedTicket": true,
+  "clientVerifyRequests": 0
+}

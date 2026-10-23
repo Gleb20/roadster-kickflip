@@ -36,3 +36,9 @@ test('gameplay upgrade preserves old finished best and can store a new-version r
  const next=createScoreRecord({storage,ruleset:'roadster-v3.8.0',compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0'],now});assert.equal(next.persistent,true);assert.equal(next.canPost(next.matching(123)),true);assert.deepEqual(next.matching(123),old);
  const current={...old,score:150,session:{...old.session,ruleset:'roadster-v3.8.0'},replay:{...old.replay,ruleset:'roadster-v3.8.0'}};next.keep(current,150);assert.deepEqual(next.matching(150),current);assert.equal(createScoreRecord({storage,ruleset:'roadster-v3.8.0',now}).matching(150).score,150);
 });
+
+test('rejected best cannot be resubmitted after reload and a new equal run can replace it',()=>{
+ const storage=memory(),r=create(storage),a=attempt();r.keep(a,400);r.rejected(a.session.id);
+ const reload=create(storage);assert.equal(reload.canPost(reload.matching(400)),false);
+ const fresh=attempt(400,'00000000-0000-4000-8000-000000000002');reload.keep(fresh,400);assert.equal(reload.canPost(reload.matching(400)),true);assert.equal(reload.matching(400).session.id,fresh.session.id);
+});

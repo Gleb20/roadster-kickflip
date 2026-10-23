@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "id": "5d671111-78d9-4dbc-9b2a-a99628d55ab6",
+      "kind": "valid",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "8592c7ad-5f54-489b-98fc-7be5c9a13700"
+    },
+    {
+      "id": "3b559787-379a-4fa2-8a49-23a8280d1692",
+      "kind": "valid",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "8d4dc201-d675-4bfe-aa9c-e84a3e4a518c"
+    },
+    {
+      "id": "ad034fa1-a94d-4f40-a682-e98e82b4de5a",
+      "kind": "valid",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "e8ce1171-f3fc-46ab-bdfc-cb8f7d33a435"
+    },
+    {
+      "id": "4a574be0-1853-49a0-95a0-9ef40990a2cd",
+      "kind": "valid",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "50769865-03c8-441e-9c4f-eae6a21bd108"
+    },
+    {
+      "id": "377a115e-fa0f-46bd-a94d-cbe37ab38b03",
+      "kind": "fake-score",
+      "status": "rejected",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "c40f6421-e644-4a9f-99ba-ad0377e6efa8"
+    },
+    {
+      "id": "02ab52ed-95fc-4ffd-9e25-5d38f314c2dc",
+      "kind": "lost-lease",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "298643f9-1202-4776-9ee0-19303950d815"
+    },
+    {
+      "id": "9fafd90a-e28f-4d33-8abe-7557f0d104ea",
+      "kind": "long",
+      "status": "accepted",
+      "exactResult": true,
+      "duplicateReceipt": true,
+      "publicId": "231a6421-63a3-4e9b-9d7b-9490633d4d1e"
+    }
+  ],
+  "publicScores": 20,
+  "publicFixtureWrites": 0,
+  "clientVerifyRequests": 0
+}

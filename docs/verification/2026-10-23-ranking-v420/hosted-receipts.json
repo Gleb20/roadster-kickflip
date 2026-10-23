@@ -1,0 +1,51 @@
+[
+  {
+    "id": "5d671111-78d9-4dbc-9b2a-a99628d55ab6",
+    "kind": "valid",
+    "ms": 712.0655409999999,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "3b559787-379a-4fa2-8a49-23a8280d1692",
+    "kind": "valid",
+    "ms": 339.4451670000001,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "ad034fa1-a94d-4f40-a682-e98e82b4de5a",
+    "kind": "valid",
+    "ms": 364.31925,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "4a574be0-1853-49a0-95a0-9ef40990a2cd",
+    "kind": "valid",
+    "ms": 293.06391699999995,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "377a115e-fa0f-46bd-a94d-cbe37ab38b03",
+    "kind": "fake-score",
+    "ms": 281.91604200000006,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "02ab52ed-95fc-4ffd-9e25-5d38f314c2dc",
+    "kind": "lost-lease",
+    "ms": 275.5815,
+    "receipt": true,
+    "status": "pending"
+  },
+  {
+    "id": "9fafd90a-e28f-4d33-8abe-7557f0d104ea",
+    "kind": "long",
+    "ms": 341.2690419999999,
+    "receipt": true,
+    "status": "pending"
+  }
+]

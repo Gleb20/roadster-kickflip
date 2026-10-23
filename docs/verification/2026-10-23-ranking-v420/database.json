@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "receipt returns durable identity before any verification",
+    "pending result is absent from public ranking",
+    "one worker owns the lease",
+    "transient retry is delayed and stays pending",
+    "closed-browser worker completes an expired-ticket pending run",
+    "lost receipt or duplicate submit returns the same entry",
+    "conflicting resubmission is rejected",
+    "fabricated claimed total is rejected silently without a public row",
+    "replay beyond first collision cannot enter ranking",
+    "roadster-v3.4.2 retains exact legacy acceptance",
+    "roadster-v3.8.0 retains exact legacy acceptance",
+    "roadster-v4.0.0 retains exact legacy acceptance",
+    "hypothetical insertion follows all existing ties",
+    "preview does not create a ranking row",
+    "preview adjacent pages keep coherent positions",
+    "browser roles cannot claim private work",
+    "idle scheduler issues no HTTP calls",
+    "dispatch caps simultaneous HTTP work at four",
+    "watchdog does not redispatch live requests",
+    "completion wakes the next saved job"
+  ],
+  "errors": []
+}

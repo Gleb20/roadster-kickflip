@@ -1,38 +1,38 @@
-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.1.1';
-import {createEnemySprites} from './enemy-sprites.js?v=4.1.1';
-import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.1.1';
-import {createFactoryRenderer} from './factory.js?v=4.1.1';
-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.1.1';
-import {createOnline} from './online.js?v=4.1.1';
-import {createScoreRecord} from './score-record.js?v=4.1.1';
-import {createOnlineUI} from './online-ui.js?v=4.1.1';
-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.1.1';
-import {createPWA} from './pwa.js?v=4.1.1';
-import {createCollection} from './collection.js?v=4.1.1';
-import {createCollectionUI} from './collection-ui.js?v=4.1.1';
-import {createObstaclePainter} from './obstacle-art.js?v=4.1.1';
-import {loading} from './loading.js?v=4.1.1';
-import {createThrusterEffects} from './thrusters.js?v=4.1.1';
-import {createSound} from './sound.js?v=4.1.1';
-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.1.1';
-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.1.1';
-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.1.1';
-import {types} from './catalog.js?v=4.1.1';
-import {obstacleDefinition} from './content.js?v=4.1.1';
-import {START_SPEED, START_KMH} from './physics.js?v=4.1.1';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.1';
-import {launch,uprightError} from './gameplay.js?v=4.1.1';
-import {AIR_TYPES,stageAt} from './routes.js?v=4.1.1';
-import {createCoach} from './coaching.js?v=4.1.1';
-import {createHUD,mphFromKmh} from './hud.js?v=4.1.1';
-import {viewScale,speedFeedback} from './speed-feedback.js?v=4.1.1';
-import {fallPose,fallSeatContact} from './fall.js?v=4.1.1';
-import {createSlapstick} from './slapstick.js?v=4.1.1';
-import {createClock} from './clock.js?v=4.1.1';
-import {createEnvironmentRenderer} from './environment.js?v=4.1.1';
-import {createCharacterRenderer} from './characters.js?v=4.1.1';
-import {createPropRenderer} from './props.js?v=4.1.1';
-import {createPhotoRenderer} from './photo-cutouts.js?v=4.1.1';
+import {createBiomeScene,biomeEdge} from './biomes.js?v=4.2.0';
+import {createEnemySprites} from './enemy-sprites.js?v=4.2.0';
+import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.2.0';
+import {createFactoryRenderer} from './factory.js?v=4.2.0';
+import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.2.0';
+import {createOnline} from './online.js?v=4.2.0';
+import {createScoreRecord} from './score-record.js?v=4.2.0';
+import {createOnlineUI} from './online-ui.js?v=4.2.0';
+import {createRun,RUN_STEP,RULESET} from './run.js?v=4.2.0';
+import {createPWA} from './pwa.js?v=4.2.0';
+import {createCollection} from './collection.js?v=4.2.0';
+import {createCollectionUI} from './collection-ui.js?v=4.2.0';
+import {createObstaclePainter} from './obstacle-art.js?v=4.2.0';
+import {loading} from './loading.js?v=4.2.0';
+import {createThrusterEffects} from './thrusters.js?v=4.2.0';
+import {createSound} from './sound.js?v=4.2.0';
+import {createSpaceportSprites} from './spaceport-sprites.js?v=4.2.0';
+import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.2.0';
+import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.2.0';
+import {types} from './catalog.js?v=4.2.0';
+import {obstacleDefinition} from './content.js?v=4.2.0';
+import {START_SPEED, START_KMH} from './physics.js?v=4.2.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.2.0';
+import {launch,uprightError} from './gameplay.js?v=4.2.0';
+import {AIR_TYPES,stageAt} from './routes.js?v=4.2.0';
+import {createCoach} from './coaching.js?v=4.2.0';
+import {createHUD,mphFromKmh} from './hud.js?v=4.2.0';
+import {viewScale,speedFeedback} from './speed-feedback.js?v=4.2.0';
+import {fallPose,fallSeatContact} from './fall.js?v=4.2.0';
+import {createSlapstick} from './slapstick.js?v=4.2.0';
+import {createClock} from './clock.js?v=4.2.0';
+import {createEnvironmentRenderer} from './environment.js?v=4.2.0';
+import {createCharacterRenderer} from './characters.js?v=4.2.0';
+import {createPropRenderer} from './props.js?v=4.2.0';
+import {createPhotoRenderer} from './photo-cutouts.js?v=4.2.0';
 const elements=new Map();
 const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
 const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
@@ -71,24 +71,24 @@ function refreshScoreActions(){
  rank.replaceChildren();rank.setAttribute('aria-busy',String(best>0&&!recordRank));
  if(!best)rank.textContent='Your next launch starts here.';
  else if(recordRank?.score===best&&recordRank.rank){
-  if(!posted)rank.append('Would rank ');
+  if(!posted&&!online.lookup(saved?.session?.id))rank.append('Would rank ');
   const number=document.createElement('b');number.textContent='#'+recordRank.rank.toLocaleString();rank.append(number,' globally');
- }else rank.textContent=recordRank?.error?'Global rank unavailable':'Checking global rank…';
+ }else rank.textContent='';
  $('post-best').hidden=!canPost;$('post-best').textContent='SUBMIT BEST ↗';
  $('pause-score').textContent=S.score.toLocaleString();
  if(completedOnline){
   const eligible=!!completedOnline.session&&!!completedOnline.replay;
-  $('post-score').hidden=!eligible;$('post-score').textContent=completedOnline.entry?'VIEW SCORE ↗':'SUBMIT SCORE ↗';
+  $('post-score').hidden=!eligible;$('post-score').textContent=completedOnline.entry||online.lookup(completedOnline.session?.id)?'VIEW SCORE ↗':'SUBMIT SCORE ↗';
  }
 }
 async function refreshRecordRank(){
  const score=best,saved=scoreRecord.matching(score),id=saved?.entry?.id,serial=++rankRequest;
- recordRank=null;refreshScoreActions();if(!score)return;
+ recordRank=null;refreshScoreActions();if(!score||saved?.rejected)return;
  try{const data=await(id?online.entry(id):online.estimateRank(score));if(serial!==rankRequest||best!==score)return;recordRank={score,rank:data.rank};}
  catch{if(serial!==rankRequest)return;recordRank={score,error:true};}
  refreshScoreActions();
 }
-const online=createOnline({apiUrl:ONLINE_API,apiKey:ONLINE_PUBLIC_KEY,ruleset:RULESET,storage,enabled:!localHost||new URLSearchParams(location.search).get('online')==='1',onAccepted:(id,entry)=>{scoreRecord.accepted(id,entry);if(completedOnline?.session?.id===id)completedOnline.entry=entry;refreshScoreActions();void refreshRecordRank();},onChange:()=>{onlineUI?.refresh();}});
+const online=createOnline({apiUrl:ONLINE_API,apiKey:ONLINE_PUBLIC_KEY,ruleset:RULESET,storage,enabled:!localHost||new URLSearchParams(location.search).get('online')==='1',onAccepted:(id,entry)=>{scoreRecord.accepted(id,entry);if(completedOnline?.session?.id===id)completedOnline.entry=entry;refreshScoreActions();void refreshRecordRank();},onRejected:id=>{scoreRecord.rejected(id);refreshScoreActions();},onChange:()=>{onlineUI?.refresh();}});
 const coach=createCoach(storage);
 const hud=createHUD();
 const B={state:'ready',charge:0,left:0,duration:0,level:1,factor:1};
@@ -325,7 +325,7 @@ $('post-score').onclick=()=>openScore($('post-score'),completedOnline);
 $('post-best').onclick=()=>openScore($('post-best'),scoreRecord.matching(best));
 addEventListener('online',()=>{void online.prepare();void refreshRecordRank();});
 pwa=createPWA({mode:()=>S.mode,canReload:()=>!document.querySelector('dialog[open]'),restart:()=>start(),lock:locked=>{cancelCharge();for(const id of ['start','restart','resume','pause-restart','pause-home','result-home'])$(id).disabled=locked;}});
-$('game').addEventListener('tesla-ready',async()=>{if(!artReview){collectionUI.restore();onlineUI.restore();void online.prepare();void refreshRecordRank();await pwa.init();if(pwa.consumeStart()){await online.prepare();if(S.mode==='menu')start();}}},{once:true});
+$('game').addEventListener('tesla-ready',async()=>{if(!artReview){await online.loaded;collectionUI.restore();onlineUI.restore();void online.prepare();if(!localHost||new URLSearchParams(location.search).get('online')==='1')void online.list(1).catch(()=>{});void refreshRecordRank();await pwa.init();if(pwa.consumeStart()){await online.prepare();if(S.mode==='menu')start();}}},{once:true});
 $('collection-menu').onclick=()=>collectionUI.open($('collection-menu'));
 function collectionTeaser(){const found=types.filter(o=>collection.state(o.id)!=='locked').length;$('collection-menu').setAttribute('aria-label',`Legend: ${found} of ${types.length} encounters found`);}
 collectionTeaser();

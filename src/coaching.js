@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.1.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.2.0';
 export const LESSONS=[
   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
