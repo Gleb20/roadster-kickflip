@@ -1,3 +1,7 @@
+# Published4.4.0
+
+[Play](https://gleb20.github.io/roadster-kickflip/?v=4.4.0). Game9b9a174f1186493cc1cef29197437a6776a14eae; Pages39981066196 succeeded.171 live hashes,23 native public browser checks and9 hosted fixtures pass.21 real records remain exact. Physical iPhone/Safari remains untested. One initial startup timed out; unchanged-game diagnostics and full repeat passed, cause unconfirmed. User phone playtest is next.
+
 # Tesla Jump4.4.0 — grind release
 
 User approved roof-grab/squatv5 and requested publication23 October2026. Based on main d47c93cc2af6e410c8a541ee3f8fb69e54247001. One-way elevated optional rails, unique-distance pending reward until safe ground landing, natural exit and ordinary charged jump-off. Original kickflip retained before/after rails; unchanged idle arm proportions across poses, roof grip with deeply bent knees and visible sparks. Existing boosters keep their rules; new roadster-v4.4.0 verifier is additive, all six historical rulesets unchanged.
