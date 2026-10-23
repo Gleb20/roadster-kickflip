@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "390: exact public version with no local QA seam",
+    "390: native controlled release banks a single safe flip",
+    "390: jump audio remains available",
+    "390: pause freezes angular physics",
+    "390: Home resets flight and camera",
+    "390: both biome audio groups remain playable",
+    "390: released separate volume channels are present",
+    "390: exact new version cold-loads offline",
+    "390: both audio channels retain levels offline",
+    "390: offline attempt starts",
+    "1440: exact public version with no local QA seam",
+    "1440: native controlled release banks a single safe flip",
+    "1440: jump audio remains available",
+    "1440: pause freezes angular physics",
+    "1440: Home resets flight and camera",
+    "1440: both biome audio groups remain playable",
+    "1440: released separate volume channels are present",
+    "1440: exact new version cold-loads offline",
+    "1440: both audio channels retain levels offline",
+    "1440: offline attempt starts",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "version": "4.6.2",
+  "base": "https://gleb20.github.io/roadster-kickflip/?v=4.6.2",
+  "physicalPhone": false,
+  "publicFixtureScores": 0
+}

@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-23T21:59:49.451083+00:00",
+  "publicationCommit": "7377188d298d1a74b98e8f2dc93cc1eddbb56d17",
+  "pagesRun": 40030539946,
+  "pagesConclusion": "success",
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.6.2",
+  "checks": [
+    {
+      "file": "index.html",
+      "sha256": "0eb8a505cca55cb36ede1e8d137e7a1e7e6deaa5eafcbaaff6dfd20c449a81e1",
+      "matches": true
+    },
+    {
+      "file": "sw.js",
+      "sha256": "77ce87e5efa406304bd3c9a5e2e6523c1e9dc68be003ff8f1980049ad16b4107",
+      "matches": true
+    },
+    {
+      "file": "src/gameplay.js",
+      "sha256": "64dba860e5d9bcb8e0ca2e3bd6948ee3e94448de835774b3e77d586ce854b4e0",
+      "matches": true
+    },
+    {
+      "file": "src/gameplay-config.js",
+      "sha256": "8820ceda4dd0ca85444fb9b2a35d279c17b4ecbd8506c17cb4b1bbdbfa614ad0",
+      "matches": true
+    },
+    {
+      "file": "src/run.js",
+      "sha256": "7ffb772f4b7da3f850c59a64789a3ae778655d20a0c5d29566f07cc9401101d5",
+      "matches": true
+    },
+    {
+      "file": "src/rails.js",
+      "sha256": "250b7b8fa1a3f50a4e27292cd4b900d9a01116e535199b369e51e0af3d8e38b0",
+      "matches": true
+    },
+    {
+      "file": "src/main.js",
+      "sha256": "af722e36e351cde9f7d71337ef09a7d77c1b90c0ce66e1925832de41950ed3a9",
+      "matches": true
+    },
+    {
+      "file": "src/audio-controls.js",
+      "sha256": "ab0be0fbb6e4f8f1f4b71e4b3f0ac0e17784067e601001a85c190eed98bc985c",
+      "matches": true
+    },
+    {
+      "file": "src/sound.js",
+      "sha256": "68990c0957a2bf51ad9f3e3ff3a78e2826d905194efd0fe0da6a5e179495c706",
+      "matches": true
+    },
+    {
+      "file": "src/music.js",
+      "sha256": "b5390cdd515d03850965366dc7ff1d10b514098150b6b5621999ea3ffe707442",
+      "matches": true
+    },
+    {
+      "file": "src/director.js",
+      "sha256": "88367724c1d96c454e3b5789a49d0864512cd268cd71c058cd735102168f27e6",
+      "matches": true
+    },
+    {
+      "file": "src/encounter-routes.js",
+      "sha256": "c758699c691488bb3827b2b722903a220585c1ce1e99c9e503406477ffcf0ceb",
+      "matches": true
+    },
+    {
+      "file": "src/characters.js",
+      "sha256": "4acee5e095197eb7220014b604e4f55f865c2a15390193eeebd0c65218c07328",
+      "matches": true
+    },
+    {
+      "file": "src/online.js",
+      "sha256": "01c34face9e55418b25c6d853f8ca0dec839d02f91683d532d452293068395be",
+      "matches": true
+    },
+    {
+      "file": "src/score-record.js",
+      "sha256": "d8f2c2825d232039b59f0650e6608b8865d9fd2c8f00bca1d1741d72fcd1185f",
+      "matches": true
+    }
+  ],
+  "physicalPhone": false
+}

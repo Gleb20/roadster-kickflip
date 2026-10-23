@@ -1,8 +1,8 @@
 # Gentle release settling — frontend4.6.2 / physics461
 
-Publication status: backend verified; frontend Pages/live verification pending. [Phone4.6.2](https://gleb20.github.io/roadster-kickflip/?v=4.6.2). Final workflow/head and live results will be recorded in `release-status.json`.
+Publication status: **published and verified**. Pages run [40030539946](https://github.com/Gleb20/roadster-kickflip/actions/runs/40030539946) succeeded at `7377188d298d1a74b98e8f2dc93cc1eddbb56d17`. All191 live resource hashes match exactly (0 retries);21 native public controls/offline and21 public English settings checks pass with0 runtime errors/score submissions. Independent review matches15 key public hashes. [Phone4.6.2](https://gleb20.github.io/roadster-kickflip/?v=4.6.2). [Final workflow/head and live results](release-status.json).
 
-Exact parent: English audio4.6.1 `84f0217c72015169a420d5dd368265270c1508a4`. The originally prepared frontend4.6.1 was stopped by expected-head protection before push when that authorized copy fix appeared. Its changes are preserved; this release uses a fresh4.6.2 cache/display identity. Already-deployed immutable physics tag `roadster-v4.6.1` and both API/worker bundles remain byte-identical, with no repeat backend mutation. Runtime `9333fc4`; isolated branch `codex/air-rotation-v462`, original dirty root preserved.
+Exact parent: English audio4.6.1 `84f0217c72015169a420d5dd368265270c1508a4`. The originally prepared frontend4.6.1 was stopped by expected-head protection before push when that authorized copy fix appeared. Its changes are preserved; this release uses a fresh4.6.2 cache/display identity. Already-deployed immutable physics tag `roadster-v4.6.1` and both API/worker bundles remain byte-identical, with no repeat backend mutation. Tested runtime `9333fc4`, published exact tree `35c1332c2296239c3a93a78608629fe8710cab8d`; isolated publication branch `codex/air-rotation-published-v462`, original dirty root preserved.
 
 ## Result and unchanged rules
 
@@ -23,6 +23,6 @@ All22 pre-existing public row IDs and full-row hashes match before/after (`1d3af
 
 ## Rollback and remaining acceptance
 
-The bounded complete inverse targets exact English parent84f0217, preserving its English copy and audio preferences. `rollback.json` records forward/inverse equality and fresh parent203 tests/checks. Public reversal uses another fresh frontend cache identity and retains all ten deployed verifiers, accepted/queued packets and real records. Do not downgrade API/worker or undo database changes. Original root/audio/director checkouts stay untouched.
+The bounded complete inverse rehearsed at `c6034bc` targets exact English parent84f0217, preserving its English copy and audio preferences. `rollback.json` records forward/inverse equality and fresh parent203 tests/checks. Public reversal uses another fresh frontend cache identity and retains all ten deployed verifiers, accepted/queued packets and real records. Do not downgrade API/worker or undo database changes. Original root/audio/director checkouts stay untouched.
 
 Physical iPhone/Safari and subjective feel remain unverified. Bounded follow-up after publication: a phone pass covering early/timely/late release, continued thrust, rehold and rail. Existing closed-tab PWA activation remains a separate question; no unrelated debt sprint is started.
