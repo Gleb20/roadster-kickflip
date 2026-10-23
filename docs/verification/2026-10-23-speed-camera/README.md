@@ -1,4 +1,6 @@
-# Speed-responsive framing — 4.4.3
+# Published speed camera4.4.3
+
+[Play](https://gleb20.github.io/roadster-kickflip/?v=4.4.3) · [Motion comparison](https://gleb20.github.io/roadster-kickflip/docs/verification/2026-10-23-speed-camera/review.html). Game58997d7/treec686194d, Pages40006890574 succeeded. All171 public hashes match with zero retries;17 native input/pause/Home/cold-offline public checks pass without runtime errors. Comparison HTML and WebP hashes verified separately. No public score submitted; physical iPhone/Safari not tested.
 
 Authorized scope: make acceleration-related camera withdrawal perceptible rather than merely shrinking obstacles. The release builds on published4.4.2/b63e2af, retaining rare BACKUP chips, all eight replay versions, old records and the earlier raised road/Home correction. No backend deployment or score submission belongs to this task.
 
