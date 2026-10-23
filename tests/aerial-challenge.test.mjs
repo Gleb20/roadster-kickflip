@@ -46,8 +46,8 @@ test('Xi enters the factory ground generator as an ordinary single or pair',()=>
 });
 
 
-test('late-air replay and checkpoint verification include a real collision',async()=>{
- const {createRun}=await import('../src/run.js');const {verifyChunk}=await import('../supabase/chunk.mjs');
+test('frozen 4.1 late-air replay and checkpoint retain their original collision contract',async()=>{
+ const {createRun}=await import('../supabase/rulesets/roadster-v410/run.js');const {verifyChunk}=await import('../supabase/chunk.mjs');
  const run=createRun({seed:17}),actions=new Map();run.reset();let wave=0,airSeen=false,death=null;
  while(run.S.mode==='playing'){
   for(const action of actions.get(run.S.tick)||[])run.command(action);

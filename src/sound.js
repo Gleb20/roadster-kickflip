@@ -86,6 +86,10 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     }catch{}
   }
   return {
+    impact(){
+      if(!enabled||context?.state!=='running')return;
+      try{const n=Math.floor(context.sampleRate*.22),buffer=context.createBuffer(1,n,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<n;i++)data[i]=(Math.random()*2-1)*Math.exp(-i/n*5);const source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();source.buffer=buffer;filter.type='lowpass';filter.frequency.value=1200;gain.gain.value=.13;source.connect(filter);filter.connect(gain);gain.connect(master);source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};source.start();}catch{}
+    },
     get enabled(){return enabled},
     get state(){return !enabled?'off':context?.state||'locked'},
     get thrust(){return {wanted:thrustWanted,active:!!voice,ready:!!thrustBuffer,voices:voices.size,normalisation};},

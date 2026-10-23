@@ -1,3 +1,19 @@
+## Pickup capture and feedback - local4.3.2
+
+Capture is now a swept112-unit horizontal window and122-unit vertical half-height around rider y+78, larger than the29-unit sphere. Grant remains immediate and once-only; full slots and falling riders do not collect. Cosmetic hover/attraction do not move the authoritative geometry. A separate320ms shrinking flight tracks the rotated torso; pause freezes simulation time, restart/home clears feedback, reduced motion fades without spatial movement. The geometry change has additive roadster-v4.3.2 verification; all old rulesets remain frozen. [Task evidence](verification/2026-10-23-pickup-motion/README.md). Other effect/scoring/input parameters below stay unchanged.
+
+## Booster icon revision · local4.3.1
+
+The rescue charge is now represented by a holographic backup chip (up to two); its automatic rescue behavior is unchanged. The other icons are a space helmet, jetpack, spring and gold «х3» lettering. Only art/copy/cache change; roadster-v4.3.0 and all parameters below remain. [Current visual review](verification/2026-10-23-booster-holograms/visual-review.html).
+
+## Booster candidate 4.3.0 — local, not published
+
+Five deterministic pickups add temporary shield (8s), +35% pace (8s, 0.6s entry / 0.8s exit), launch velocity ×1.25 (12s), up to two automatic rescue hearts, and ×3 new earnings (10s). These are initial working parameters for player review. Three timed slots plus separate hearts; repeat pickup refreshes duration without strength stacking. Combo stays capped at ×5; event earnings can reach ×15. Distance points receive only the separate ×3, not the combo multiplier. Previous points are never multiplied retrospectively. Temporary jump strength is captured at takeoff. Pause freezes all effect/pickup state; restart clears it.
+
+Lethal contact spends a heart automatically, keeps motion/input/banked score/remaining effects, resets combo and earned speed, and cancels that flight's pending reward. 2s grace plus contact IDs protect until the player exits every contacted obstacle. A shield instead removes contacted obstacle collision immediately and pays passage once, with cosmetic flyaway motion; bad landing still follows ordinary recovery rules. No Keep Going interruption. Spheres appear in clear between-wave gaps, sometimes as pairs; ordinary ground and late isolated aircraft patterns remain. Route validation simulates active modifier expiry. Replay/checkpoints include power-up state under the additive roadster-v4.3.0 ruleset; all older versions remain frozen.
+
+Current implementation, balance, art provenance, verification limits and next rail prototype: [booster handoff](verification/2026-10-23-boosters/README.md). This stage is local only.
+
 ## Aerial challenge4.1.0 —22October2026
 
 Supersedes the4.0.0 harmless-flyby direction at the user's request. Xi is an ordinary colliding ground opponent in the factory pool, on the same baseline as cars and people. His mutual lightning reaction remains visual; body contact ends the run normally.
@@ -18,9 +34,15 @@ New ranked generator is `roadster-v4.0.0`. Frozen3.4.2/3.8.0 remain byte-identic
 
 135 game tests,9 server tests and source/content/type/PWA checks pass. Local browser coverage includes320/390 portrait,844 landscape,1440 desktop, native first jump, pause, reduced motion, two180-second production runs and actual3.9.3→4.0.0 upgrade/offline preservation. These are browser checks; physical iPhone/Safari acceptance remains open. Existing route-search performance and real-phone timing debt remain separate; no general refactor is added.
 
-## Mobile input 3.9.3
+## Published mobile input 3.9.3
 
-THRUST retains its enlarged hit area. Tip text/background receive normal gameplay input; only the independently accessible cross dismisses it. Active field/thrust touchstart and touchmove suppress native long-press handling. Each finger keeps its role until release; rotation and thrust remain independent. Charge/release, physics, scoring, collisions and replay results retain the3.8.0 rules. Collision calculations avoid identical outside-window work and temporary projection arrays. Physical iPhone/Safari acceptance remains open.
+Expanded THRUST hit area retained. Tip text/background use normal charge/release or airborne hold; only the separate, visually unchanged cross dismisses it. Active field/thrust touchstart/touchmove cancel native long-press handling while Pointer Events remain the sole command source. Each finger keeps its role until release. Redundant outside-window collision work and temporary projection arrays are eliminated, with exact frozen-verifier equivalence; physics, scoring, route generation and rendering are preserved. [Verified publication](verification/2026-10-22-input-v393/release-status.json). Physical iPhone/Safari acceptance remains open; earlier local-only status below is historical.
+
+## Local mobile input refinement on 3.9.2
+
+The THRUST instrument retains its existing enlarged hit area. Text/background of the gameplay tip receive normal charge/release or airborne hold input; only its cross dismisses it. The cross is independently keyboard-accessible. During active play, native touchstart/touchmove gestures are cancelled on the field and thrust control; game commands still come only from Pointer Events. Pause, Sound, menus, dialogs and form inputs retain native interaction. Each finger keeps its initial role until release, and separate fingers operate thrust and rotation independently. No input-duration floor, new jump buffering or automatic slide-switch is added.
+
+Collision checks and route search retain the exact original rules while avoiding outside-window sweep work and temporary projection arrays. Frozen server rulesets are unchanged. This candidate is local and requires a fresh frontend/cache version before publication; iPhone Safari/PWA acceptance remains open. [Verification](verification/2026-10-22-input-fix/README.md).
 
 # Current flight update3.8.0
 
@@ -84,6 +106,6 @@ Pressure hiss: real CC0 compressor recording by unfa; local optional MP3, decode
 HUD refinement, 18 October: no visible distance readout; distance-based scoring remains unchanged. Both bottom instruments sit 12 px from the edge (safe-area inset + 8 px when larger). THRUST keeps its instrument size and enlarged hit area, with the original lightweight angular surface, pressed feedback and a soft white contour glow linked to fuel. The two glow layers are capped at 18% opacity / 2 px blur and 10% / 6 px, with a 24% maximum contour stroke, preventing a bright bloom.
 
 
-## Visual flight layer — 3.5.2
+## Visual flight layer — local3.5.2
 
-One compact grab follows the approved concept: front-left sill grip, both feet on the roof, rear-right encounter arm, roof toward rider. Ordinary jumps retain the original nine-frame car kickflip; manual grabs use the upright hull and common rotation. Directed reactions (`space: target`) aim the arm at the obstacle through a full somersault; Joe's `space: self` keeps the joint at the lips during inhalation, then withdraws before exhalation. Encounter faces/gaze and slower persistent falling cash remain active. Physics, collision silhouettes, score/fuel/recovery rules and `roadster-v3.4.2` replay verification are unchanged. `render_game_to_text()` reports read-only car-animation and rig diagnostics. [Animation contract](hero-animation.md), [current local verification](verification/2026-10-20-release-v3.5.2/README.md). Release authorised for publication; physical phone acceptance follows deployment.
+One compact grab follows the approved concept: front-left sill grip, both feet on the roof, rear-right encounter arm, roof toward rider. Ordinary jumps retain the original nine-frame car kickflip; manual grabs use the upright hull and common rotation. Directed reactions (`space: target`) aim the arm at the obstacle through a full somersault; Joe's `space: self` keeps the joint at the lips during inhalation, then withdraws before exhalation. Encounter faces/gaze and slower persistent falling cash remain active. Physics, collision silhouettes, score/fuel/recovery rules and `roadster-v3.4.2` replay verification are unchanged. `render_game_to_text()` reports read-only car-animation and rig diagnostics. [Animation contract](hero-animation.md), [current local verification](verification/2026-10-20-v3.5.2/README.md). Local only; public remains3.5.0.

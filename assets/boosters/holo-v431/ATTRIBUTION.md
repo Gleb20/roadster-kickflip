@@ -1,0 +1,3 @@
+# Holographic booster sprites · local 4.3.1
+
+Generated with image_gen from verified photographs and the current game frame, in the user-requested simplified holographic style. Real prototypes: SpaceX Crew Dragon helmet (SpaceX via NASA); NASA SAFER; Lee Spring compression spring; Raspberry Pi RP2040; Adafruit 879 yellow LED display (emission only for literal х3 typography). Sources, credits and licensing limits: [brief](../../../art-source/boosters-holo-20261023/brief.md). Exact prompts, inputs, original generations and alpha preparation are retained there and in assets-provenance.json. Prior 4.3.0 art remains unchanged in the parent folder.

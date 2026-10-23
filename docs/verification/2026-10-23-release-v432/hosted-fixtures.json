@@ -1,0 +1,98 @@
+[
+  {
+    "id": "876b08e8-cd8a-4395-b660-7dea8c62924c",
+    "ruleset": "roadster-v3.4.2",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  },
+  {
+    "id": "9881f451-2e10-4abd-86bb-ec19bfc0c418",
+    "ruleset": "roadster-v3.8.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  },
+  {
+    "id": "f5deff5a-b5a4-4994-9fdc-1a1de78d0851",
+    "ruleset": "roadster-v4.0.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  },
+  {
+    "id": "6be6d11e-59e1-4dab-8a49-44d0167c03ca",
+    "ruleset": "roadster-v4.1.0",
+    "kind": "valid",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  },
+  {
+    "id": "2e4beb00-02a7-4fd2-ae5c-1d8a86708a19",
+    "ruleset": "roadster-v4.3.0",
+    "kind": "valid",
+    "seconds": 90.65833333333333,
+    "expected": {
+      "score": 11656,
+      "flips": 0,
+      "ticks": 10879
+    },
+    "pickups": 5
+  },
+  {
+    "id": "035e1606-9dc9-4a91-a1c0-1fc50eb46a7a",
+    "ruleset": "roadster-v4.3.2",
+    "kind": "valid",
+    "seconds": 86.54166666666667,
+    "expected": {
+      "score": 13217,
+      "flips": 0,
+      "ticks": 10385
+    },
+    "pickups": 3
+  },
+  {
+    "id": "511c2ffc-35a7-43b7-95e2-336f2ed5ab27",
+    "ruleset": "roadster-v4.3.2",
+    "kind": "fake-score",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  },
+  {
+    "id": "81a7ce41-0ec7-42ad-bef5-c163afaf17b4",
+    "ruleset": "roadster-v4.3.2",
+    "kind": "fake-end",
+    "seconds": 4.058333333333334,
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    },
+    "pickups": 0
+  }
+]

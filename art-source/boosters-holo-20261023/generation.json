@@ -1,0 +1,56 @@
+{
+  "shield": {
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "generatedPath": "/Users/liubavskii/.codex/generated_images/01a164a0-7d59-7bc0-b87f-d5a1035b5e65/exec-4e28bb43-c21b-4d41-84b5-800bbca1f68d.png",
+    "savedOriginal": "generated/shield.png",
+    "inputImages": [
+      "references/helmet-photo.jpg",
+      "style/current-game.png"
+    ]
+  },
+  "speed": {
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "generatedPath": "/Users/liubavskii/.codex/generated_images/01a164a0-7d59-7bc0-b87f-d5a1035b5e65/exec-8c55c39a-8251-463d-bb12-318605e19d0c.png",
+    "savedOriginal": "generated/speed.png",
+    "inputImages": [
+      "references/jetpack-photo.jpg",
+      "style/current-game.png",
+      "generated/shield.png"
+    ]
+  },
+  "jump": {
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "generatedPath": "/Users/liubavskii/.codex/generated_images/01a164a0-7d59-7bc0-b87f-d5a1035b5e65/exec-f94da887-b0f1-4d43-8c06-138e6cf86599.png",
+    "savedOriginal": "generated/jump.png",
+    "inputImages": [
+      "references/spring-photo.jpg",
+      "style/current-game.png",
+      "generated/shield.png"
+    ]
+  },
+  "life": {
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "generatedPath": "/Users/liubavskii/.codex/generated_images/01a164a0-7d59-7bc0-b87f-d5a1035b5e65/exec-8815ea9c-a1f3-4a5c-813e-444a5459df3f.png",
+    "savedOriginal": "generated/life.png",
+    "inputImages": [
+      "references/chip-photo.png",
+      "style/current-game.png",
+      "generated/shield.png"
+    ]
+  },
+  "score": {
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "generatedPath": "/Users/liubavskii/.codex/generated_images/01a164a0-7d59-7bc0-b87f-d5a1035b5e65/exec-9ee78c7c-584d-48db-8303-3231e48669c5.png",
+    "savedOriginal": "generated/score.png",
+    "inputImages": [
+      "references/type-photo.jpg",
+      "style/current-game.png",
+      "generated/shield.png"
+    ]
+  }
+}

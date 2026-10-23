@@ -1,0 +1,93 @@
+{
+  "results": [
+    {
+      "seed": 17,
+      "seconds": 191.925,
+      "score": 44707,
+      "pickups": [
+        {
+          "time": 11.141666666666666,
+          "id": "shield"
+        },
+        {
+          "time": 28.358333333333334,
+          "id": "jump"
+        },
+        {
+          "time": 28.933333333333334,
+          "id": "life"
+        },
+        {
+          "time": 73.38333333333333,
+          "id": "speed"
+        },
+        {
+          "time": 93.45,
+          "id": "speed"
+        },
+        {
+          "time": 145.96666666666667,
+          "id": "life"
+        },
+        {
+          "time": 146.33333333333334,
+          "id": "score"
+        },
+        {
+          "time": 184.36666666666667,
+          "id": "speed"
+        }
+      ],
+      "rescues": [
+        185.71666666666667,
+        188.88333333333333
+      ],
+      "smashes": [],
+      "waves": 54,
+      "verified": {
+        "score": 44707,
+        "flips": 0,
+        "ticks": 23031
+      }
+    },
+    {
+      "seed": 932,
+      "seconds": 186.925,
+      "score": 41741,
+      "pickups": [
+        {
+          "time": 10.575,
+          "id": "score"
+        },
+        {
+          "time": 26.708333333333332,
+          "id": "speed"
+        },
+        {
+          "time": 65.275,
+          "id": "shield"
+        },
+        {
+          "time": 100.24166666666666,
+          "id": "life"
+        },
+        {
+          "time": 138.21666666666667,
+          "id": "jump"
+        }
+      ],
+      "rescues": [
+        183.33333333333334
+      ],
+      "smashes": [],
+      "waves": 53,
+      "verified": {
+        "score": 41741,
+        "flips": 0,
+        "ticks": 22431
+      }
+    }
+  ],
+  "scriptedRouteWitness": true,
+  "humanBalanceAcceptance": false
+}

@@ -1,0 +1,80 @@
+{
+  "checks": [
+    {
+      "id": "876b08e8-cd8a-4395-b660-7dea8c62924c",
+      "ruleset": "roadster-v3.4.2",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "7dfda0f9-2358-445b-8265-7914a4ab4039"
+    },
+    {
+      "id": "9881f451-2e10-4abd-86bb-ec19bfc0c418",
+      "ruleset": "roadster-v3.8.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "878b5c82-1a52-4781-9957-86310f9e1294"
+    },
+    {
+      "id": "f5deff5a-b5a4-4994-9fdc-1a1de78d0851",
+      "ruleset": "roadster-v4.0.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "97e32eb5-8207-4ebc-a0a1-4f5976a62c8e"
+    },
+    {
+      "id": "6be6d11e-59e1-4dab-8a49-44d0167c03ca",
+      "ruleset": "roadster-v4.1.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "a8877156-b3c4-4932-b88b-546cb2fad813"
+    },
+    {
+      "id": "2e4beb00-02a7-4fd2-ae5c-1d8a86708a19",
+      "ruleset": "roadster-v4.3.0",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 5,
+      "exactResult": true,
+      "publicId": "a0cf65b8-f04d-4eef-9e06-cf6a8b2cb997"
+    },
+    {
+      "id": "035e1606-9dc9-4a91-a1c0-1fc50eb46a7a",
+      "ruleset": "roadster-v4.3.2",
+      "kind": "valid",
+      "status": "accepted",
+      "pickups": 3,
+      "exactResult": true,
+      "publicId": "571c0d87-e2f4-4439-a3ad-9a33cfb23c14"
+    },
+    {
+      "id": "511c2ffc-35a7-43b7-95e2-336f2ed5ab27",
+      "ruleset": "roadster-v4.3.2",
+      "kind": "fake-score",
+      "status": "rejected",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "fa44a1f2-de5d-4a6d-927d-53eb6fd810da"
+    },
+    {
+      "id": "81a7ce41-0ec7-42ad-bef5-c163afaf17b4",
+      "ruleset": "roadster-v4.3.2",
+      "kind": "fake-end",
+      "status": "rejected",
+      "pickups": 0,
+      "exactResult": true,
+      "publicId": "65d28f13-7fe4-456f-901b-3922d88d99d8"
+    }
+  ],
+  "publicScores": 20,
+  "publicFixtureWrites": 0,
+  "clientVerifyRequests": 0,
+  "autonomousCompletion": true
+}

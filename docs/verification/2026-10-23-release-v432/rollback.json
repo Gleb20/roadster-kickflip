@@ -1,0 +1,12 @@
+{
+  "baseCommit": "41ff44b70f69b1d6974cbea4d52258b0118ef617",
+  "candidateCommit": "fdbe038860afa69c4292af43e839d8bffffe02c3",
+  "expectedParentTree": "d1812eaa730ae3a8306471d273b6b5c102301350",
+  "restoredTree": "d1812eaa730ae3a8306471d273b6b5c102301350",
+  "exactInverse": true,
+  "patch": "/tmp/tesla-v432-release-forward.patch",
+  "publicRollbackNeedsFreshVersion": true,
+  "preserveSixVersionBackend": true,
+  "restoredParentGameTests": 140,
+  "restoredParentChecks": "passed"
+}

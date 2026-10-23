@@ -1,0 +1,142 @@
+{
+  "method": "Five individually generated photo-and-current-game-guided transparent cut-paper pickup sprites",
+  "style": "New foreground collectible category; simplified tactile paper props, cream cutout edge. Current painter scene supplied as actual image input. Vehicle photo style and distant background style are unchanged.",
+  "assets": {
+    "shield": {
+      "prototype": "Cold Steel Medieval Buckler CS-92BKPB",
+      "photo": {
+        "page": "https://www.coldsteel.com/medieval-buckler/",
+        "images": [
+          "https://cdn11.bigcommerce.com/s-99kn4fj7jr/images/stencil/500x659/products/232/490/92BKPB_1__34325.1607300809.jpg?c=1"
+        ],
+        "author": "Cold Steel",
+        "license": "Not specified on product page"
+      },
+      "accessed": "2026-10-23",
+      "generationInputs": [
+        "art-source/boosters-20261023/references/shield-photo.jpg",
+        "art-source/boosters-20261023/style/current-game.png"
+      ],
+      "prompt": "Create ONE transparent PNG game pickup sprite: a cyan and brushed-silver ROUND PROTECTIVE BUCKLER SHIELD, front view with slight thickness, centered, whole object within a square with 12% clear margin. Photo A is the real Cold Steel Medieval Buckler CS-92BKPB: use only the upper shield for circular silhouette, raised central boss and rim, ignore the hand and second shield. Image B is the CURRENT Tesla Jump game scene: match its simplified South Park-like tactile cut-paper prop grammar, warm cream thin cutout edge, flat bold shapes with subtle paper grain, crisp readable silhouette. Cyan face, silver rim and central boss; only 3–4 broad shapes, simple enough for a 32-pixel icon. This is a pickup, not a realistic product photo and not a person. No backdrop, no scene, no text, no sphere, no glow, no cast shadow outside the object. Real alpha transparent background. Do not reproduce characters, factory, limbs or other objects from image B.",
+      "tool": "image_gen.imagegen",
+      "generatedOriginal": "art-source/boosters-20261023/generated/shield-original.png",
+      "file": "assets/boosters/shield.png",
+      "size": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+      "sha256": "cbbb7211705511fcc4dc7a55cb539c3d6cd5675d88763497dee528ff5812b347"
+    },
+    "speed": {
+      "prototype": "SpaceX Starship upper stage, April 2023",
+      "photo": {
+        "page": "https://www.flickr.com/photos/spacex/52822653368",
+        "images": [
+          "https://live.staticflickr.com/65535/52822653368_ff034659d4.jpg"
+        ],
+        "author": "Official SpaceX Photos",
+        "license": "CC BY-NC 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-nc/2.0/"
+      },
+      "accessed": "2026-10-23",
+      "generationInputs": [
+        "art-source/boosters-20261023/references/speed-photo.jpg",
+        "art-source/boosters-20261023/style/current-game.png"
+      ],
+      "prompt": "Create ONE transparent PNG pickup sprite for Tesla Jump: a tiny silver SpaceX STARSHIP upper-stage rocket with pointed black nose, black heat-shield side and two simple flap pairs, launching diagonally toward upper right, with a short orange/yellow flame attached below. Photo A is the actual Starship at Starbase: use the ROCKET ONLY for recognizable proportions and flaps; do not draw launch tower, landscape or Super Heavy lower booster. Image B is current Tesla Jump: match its tactile flat cut-paper prop style, warm cream thin cutout edge, simple broad shapes and subtle paper grain. Keep detail sparse for 32-pixel readability. Entire rocket including attached flame in square frame, 15% transparent margin. No words, logo, sphere, glow or separate stars; no people or scene. True alpha transparency.",
+      "tool": "image_gen.imagegen",
+      "generatedOriginal": "art-source/boosters-20261023/generated/speed-original.png",
+      "file": "assets/boosters/speed.png",
+      "size": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+      "sha256": "71b6ec2f4cc74cf764a5f5af414364cb4b6babbe3d27c62e11ab19ccac429791"
+    },
+    "jump": {
+      "prototype": "Lee Spring compression coil spring",
+      "photo": {
+        "page": "https://www.leespring.com/compression-springs",
+        "images": [
+          "https://www.leespring.com/sites/default/files/2018-03/1-Compression-Springs_300x300_2.jpg"
+        ],
+        "author": "Lee Spring",
+        "license": "Not specified on product page"
+      },
+      "accessed": "2026-10-23",
+      "generationInputs": [
+        "art-source/boosters-20261023/references/jump-photo.jpg",
+        "art-source/boosters-20261023/style/current-game.png"
+      ],
+      "prompt": "Create ONE transparent PNG game pickup icon: one upright CHARTREUSE GREEN METAL COMPRESSION COIL SPRING with five thick clearly separated coils and flat end loops, slight three-quarter view. Photo A shows real Lee Spring compression springs: take the geometry of the GREEN coil in lower right only, simplify to five thick coils, no other springs. Image B is current Tesla Jump scene and defines tactile flat cut-paper style, restrained paper grain, cream narrow cutout edge, chunky readable shapes. Spring must be unmistakable at 32 pixels. No arrows, text, glow, sphere, stand, people, scene or other objects. Whole object centered inside square with 15% transparent padding. True alpha transparent background.",
+      "tool": "image_gen.imagegen",
+      "generatedOriginal": "art-source/boosters-20261023/generated/jump-original.png",
+      "file": "assets/boosters/jump.png",
+      "size": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+      "sha256": "2cace2bce073d792c8281612155deecd4b81f294632cbea7383b9bc723fe4c67"
+    },
+    "life": {
+      "prototype": "IKEA FAMNIG HJÄRTA heart cushion",
+      "photo": {
+        "page": "https://www.ikea.com/us/en/p/famnig-hjaerta-cushion-red-50473209/",
+        "images": [
+          "https://www.ikea.com/us/en/images/products/famnig-hjaerta-cushion-red__0710297_pe727447_s5.jpg"
+        ],
+        "author": "IKEA",
+        "license": "Not specified on product page"
+      },
+      "accessed": "2026-10-23",
+      "generationInputs": [
+        "art-source/boosters-20261023/references/life-photo.jpg",
+        "art-source/boosters-20261023/style/current-game.png"
+      ],
+      "prompt": "Create ONE transparent PNG game pickup sprite: a bold simple RED HEART, front view. Photo A is an actual IKEA FAMNIG HJARTA heart cushion: use the red heart central body and its recognizable lobes and pointed bottom as the shape reference; REMOVE BOTH ARMS AND HANDS entirely, no limbs. Image B is the current Tesla Jump scene: match its flat tactile cut-paper prop style with restrained grain, cream narrow cutout edge and only a few broad paper layers. A warm coral red heart with one small lighter red highlight and a darker lower red layer, no realistic cloth folds. It must read clearly as an extra life at 24–32 pixels. Whole heart centered in square, 15% clear margin. No text, sphere, glow, faces, medical cross, scene or other objects. Real transparent alpha background.",
+      "tool": "image_gen.imagegen",
+      "generatedOriginal": "art-source/boosters-20261023/generated/life-original.png",
+      "file": "assets/boosters/life.png",
+      "size": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+      "sha256": "d14a183707befbb443fe5403cca5559a6aa841ed07dfe93101633df9da9a695c"
+    },
+    "score": {
+      "prototype": "Physical Dogecoin token, photographed by Cyril Ernst",
+      "photo": {
+        "page": "https://commons.wikimedia.org/wiki/File:Dogecoin_gold_coin_on_wood_2_-_tails.jpg",
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/1/19/Dogecoin_gold_coin_on_wood_2_-_tails.jpg"
+        ],
+        "author": "Cyril Ernst",
+        "license": "CC BY-SA 4.0"
+      },
+      "accessed": "2026-10-23",
+      "generationInputs": [
+        "art-source/boosters-20261023/references/score-photo.jpg",
+        "art-source/boosters-20261023/style/current-game.png"
+      ],
+      "prompt": "Create ONE transparent PNG game pickup sprite: a GOLD COIN with a very large dark embossed '×3' centered on its face, front view with slight visible thickness. Photo A is a real physical Dogecoin token on wood (Cyril Ernst): use circular token geometry, raised rim and milled edge as form reference only; remove all Dogecoin writing, D emblem and wooden background, change metal to warm gold. Image B is current Tesla Jump and defines tactile cut-paper prop style, subtle paper grain, cream narrow cutout edge, simple broad ochre/gold layers instead of photorealistic metal. Text must read exactly '×3' and occupy most of face, perfectly legible as a 32-pixel pickup icon. No other lettering, crypto branding, sphere, glow, stars, scene or people. One centered whole coin in square frame with 15% clear margin. Real alpha transparent background.",
+      "tool": "image_gen.imagegen",
+      "generatedOriginal": "art-source/boosters-20261023/generated/score-original.png",
+      "file": "assets/boosters/score.png",
+      "size": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+      "sha256": "e1e5e5980928dc8a04b476609c26d6e33f46ee0a91fc90f40f7cb43563de8325"
+    }
+  }
+}

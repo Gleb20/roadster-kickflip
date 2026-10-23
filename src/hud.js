@@ -1,3 +1,4 @@
+import {BOOSTERS} from './boosters.js?v=4.3.2';
 const MILES_PER_KM=.6213711922;
 export const mphFromKmh=value=>Math.max(0,value)*MILES_PER_KM;
 export function multiplierAppearance(value,meter){
@@ -6,6 +7,15 @@ export function multiplierAppearance(value,meter){
 }
 export function createHUD({root=document.getElementById('game'),reducedMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches}={}){
   const $=id=>document.getElementById(id),score=$('score'),multiplier=$('multiplier');
+  const powerups=document.createElement('div');powerups.id='powerups';powerups.className='hidden';powerups.setAttribute('role','group');powerups.setAttribute('aria-label','Active power-ups');root.append(powerups);
+  const hearts=document.createElement('span');hearts.className='powerup-hearts';powerups.append(hearts);
+  for(let i=0;i<2;i++){const img=document.createElement('img');img.src='assets/boosters/holo-v431/life.png';img.alt='';img.width=22;img.height=22;hearts.append(img);}
+  const cards=new Map();for(const [id,def] of Object.entries(BOOSTERS)){if(id==='life')continue;const card=document.createElement('span');card.className='powerup-card';card.dataset.booster=id;card.style.setProperty('--powerup-color',def.color);card.innerHTML=`<img src="assets/boosters/holo-v431/${id}.png" alt="" width="30" height="30"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="2" width="40" height="40" rx="10" pathLength="1"/></svg>`;powerups.append(card);cards.set(id,card);}
+  function updatePowerups(q,mode){
+    const race=['playing','paused'].includes(mode);powerups.classList.toggle('hidden',!race||!q||!q.hearts&&!Object.keys(q.active).length);if(!q)return;
+    hearts.hidden=q.hearts===0;hearts.setAttribute('aria-label',`${q.hearts} backup ${q.hearts===1?'chip':'chips'} (extra lives)`);[...hearts.children].forEach((img,i)=>img.hidden=i>=q.hearts);
+    for(const [id,card] of cards){const seconds=q.active[id]||0;card.hidden=seconds<=0;card.setAttribute('aria-label',`${BOOSTERS[id].name}, ${Math.ceil(seconds)} seconds remaining`);card.querySelector('rect').style.strokeDashoffset=String(1-seconds/BOOSTERS[id].seconds);card.classList.toggle('expiring',seconds>0&&seconds<2);}
+  }
   let columns=[],lastScore='',lastMode='',fall=null;
   function odometer(value,instant=false){
     const next=String(Math.max(0,Math.floor(value))).padStart(5,'0');
@@ -45,7 +55,7 @@ export function createHUD({root=document.getElementById('game'),reducedMotion=()
     if(value==='menu'||value==='dead'){fall?.node.remove();fall=null;}
   }
   function update(s){
-    mode(s.mode);odometer(s.score);
+    mode(s.mode);odometer(s.score);updatePowerups(s.boosters,s.mode);
     const a=multiplierAppearance(s.multiplier,s.meter);
     multiplier.textContent='×'+s.multiplier.toFixed(1);multiplier.dataset.tier=String(a.tier);
     multiplier.style.setProperty('--combo-scale',String(a.scale));multiplier.style.setProperty('--combo-alpha',String(a.opacity));multiplier.style.setProperty('--combo-shake',a.shake+'px');multiplier.style.setProperty('--combo-saturation',String(.45+.55*s.meter));

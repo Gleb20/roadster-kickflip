@@ -1,0 +1,18 @@
+
+> roadster-kickflip@4.2.0 check
+> node scripts/check.mjs && npm run check:content && npm run check:types && npm run check:pwa
+
+
+> roadster-kickflip@4.2.0 check:content
+> node scripts/check-content.mjs
+
+Content OK: 29 obstacle definitions, 22 material sources
+
+> roadster-kickflip@4.2.0 check:types
+> tsc --noEmit
+
+
+> roadster-kickflip@4.2.0 check:pwa
+> node scripts/build-pwa.mjs --check
+
+PWA OK: 152 hashed resources; scope-relative manifest and 192/512 icons

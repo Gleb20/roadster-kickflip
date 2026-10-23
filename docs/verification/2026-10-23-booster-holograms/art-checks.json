@@ -1,0 +1,173 @@
+{
+  "galleryImages": 15,
+  "allDecoded": true,
+  "sizes": [
+    {
+      "src": "../../../assets/boosters/holo-v431/shield.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/shield.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/shield.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        80,
+        80
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/speed.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/speed.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/speed.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        80,
+        80
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/jump.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/jump.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/jump.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        80,
+        80
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/life.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/life.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/life.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        80,
+        80
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/score.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/score.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        32,
+        32
+      ]
+    },
+    {
+      "src": "../../../assets/boosters/holo-v431/score.png",
+      "pixels": [
+        256,
+        256
+      ],
+      "display": [
+        80,
+        80
+      ]
+    }
+  ],
+  "smallestLifeHud": 19,
+  "visualInspectionRequired": true
+}

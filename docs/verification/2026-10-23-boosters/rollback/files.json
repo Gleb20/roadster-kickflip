@@ -1,0 +1,470 @@
+{
+  "README.md": {
+    "before": "fb7df0051a45ff6392e57e5d991e56ce537d8a9571b61a012913d955556d255a",
+    "after": "4166c074a09977efc3b251aba906033811051e057f5f312964a041c8bfeb0f47"
+  },
+  "RESTORATION.md": {
+    "before": "dff3af788d9b90cb8be4e11fce3d3711b3ca78d7d72b0475b0dc4202a2b042bf",
+    "after": "c7ce747733e059aa7aff9a8d91f4a762dd33ad6cd1a8899540662bbfb9596ead"
+  },
+  "art-source/boosters-20261023/brief.md": {
+    "before": null,
+    "after": "75b3305dc52fdce5d75fd7380412411bbee8d4c8a38adddfbacf70c481b7e867"
+  },
+  "art-source/boosters-20261023/generated/jump-original.png": {
+    "before": null,
+    "after": "153485c3a37fea950ac5533f712ea975d1a4d2946c18bc9df96e61a5e1dbca97"
+  },
+  "art-source/boosters-20261023/generated/life-original.png": {
+    "before": null,
+    "after": "045aa9b3319136131380847cdfa345dd8da4504e5d4db0b5fa577eaad834e97c"
+  },
+  "art-source/boosters-20261023/generated/score-original.png": {
+    "before": null,
+    "after": "519dfd0e9343937552d5211e007d5d15323dffdfa3722e43ac5cfcca9930ca38"
+  },
+  "art-source/boosters-20261023/generated/shield-original.png": {
+    "before": null,
+    "after": "fac2433d5425662181b38ef61cf18440c4cb3a0b1cafb5ac4d375135d7621a27"
+  },
+  "art-source/boosters-20261023/generated/speed-original.png": {
+    "before": null,
+    "after": "af8b448eea194c8de25ac098cd9d5813fe11ade916d46643947de9b8677032e2"
+  },
+  "art-source/boosters-20261023/generation.json": {
+    "before": null,
+    "after": "8c433551a35c7d5731c2488474782907ca37e2f948982021ae55f7c2cfba7d78"
+  },
+  "art-source/boosters-20261023/prompts.json": {
+    "before": null,
+    "after": "e19ce6a32024cb136dd4e7c22c7f95dfe865bc20d360ea192d0b69d93bf23644"
+  },
+  "art-source/boosters-20261023/references/jump-photo.jpg": {
+    "before": null,
+    "after": "9b2eec9c2759bb53b84aaab371bdd36d84c03f444e2e9080d8edd6f43f7d768a"
+  },
+  "art-source/boosters-20261023/references/life-photo.jpg": {
+    "before": null,
+    "after": "3b22d70de2be5e70dd141ede3f88925b719ba44bc697a2e4a01ed0a228234877"
+  },
+  "art-source/boosters-20261023/references/score-photo.jpg": {
+    "before": null,
+    "after": "8b0b29af3db568b0e811af9432a302893579e746c4f5685f42b72e2afbfe3b56"
+  },
+  "art-source/boosters-20261023/references/shield-photo.jpg": {
+    "before": null,
+    "after": "83b0a6ef442342c4dc2ab51794c3fe6558d2b203ba6e09ec0c923a79ac40e961"
+  },
+  "art-source/boosters-20261023/references/sources.json": {
+    "before": null,
+    "after": "7c4558ab36121e44c9c57838ff10944e47e6b3ee0f3f9a0469d7058d71739fac"
+  },
+  "art-source/boosters-20261023/references/speed-photo.jpg": {
+    "before": null,
+    "after": "ce0b078f7a584625a3b8a0360d3a5c849f9676242d18478b928f755f7f9a6102"
+  },
+  "art-source/boosters-20261023/style/current-game.png": {
+    "before": null,
+    "after": "ad2e26d4fa5bbdd34d02dbb96d916e2938cee96e790296522cea212a0fe9d669"
+  },
+  "assets-provenance.json": {
+    "before": "d625111bc57e70ef8cd1d5fb204907d10f1b8e903f92cf3a9d04b50efe68bf8a",
+    "after": "58078c341266587a3e17ec7c7922b793e66bf6b351f65318a5b4acfe4fb55e3e"
+  },
+  "assets/boosters/ATTRIBUTION.md": {
+    "before": null,
+    "after": "f3fa5fb13d5959c98c8753d0abb7d7c8a853b696820e82eb09e8ece5f53e9f76"
+  },
+  "assets/boosters/jump.png": {
+    "before": null,
+    "after": "2cace2bce073d792c8281612155deecd4b81f294632cbea7383b9bc723fe4c67"
+  },
+  "assets/boosters/life.png": {
+    "before": null,
+    "after": "d14a183707befbb443fe5403cca5559a6aa841ed07dfe93101633df9da9a695c"
+  },
+  "assets/boosters/score.png": {
+    "before": null,
+    "after": "e1e5e5980928dc8a04b476609c26d6e33f46ee0a91fc90f40f7cb43563de8325"
+  },
+  "assets/boosters/shield.png": {
+    "before": null,
+    "after": "cbbb7211705511fcc4dc7a55cb539c3d6cd5675d88763497dee528ff5812b347"
+  },
+  "assets/boosters/speed.png": {
+    "before": null,
+    "after": "71b6ec2f4cc74cf764a5f5af414364cb4b6babbe3d27c62e11ab19ccac429791"
+  },
+  "docs/HANDOFF.md": {
+    "before": "43d4b7a016df90cf0d6b01f355caaf333ca0dae1020e58e3d971532884bc43b6",
+    "after": "82f907e7efaf6a784f421cad5aaf94bfd724338643386d7e1d7a1f348143e5cc"
+  },
+  "docs/gameplay-v3.md": {
+    "before": "0d7fa6565162f775121bef9c80aec2fc7320118a2aad3f95f34ae2a8a514e3a5",
+    "after": "3b2488467e696d9449ca21f8e6e35c68d47fe0cce8f431bca193bb482e21e78d"
+  },
+  "docs/verification/2026-10-23-boosters/README.md": {
+    "before": null,
+    "after": "c797b716135e23e05fb9aedd2d3e24f4bf62ef72c166aadc3a852f4fce40503d"
+  },
+  "docs/verification/2026-10-23-boosters/backend-build.txt": {
+    "before": null,
+    "after": "21bae0975ab6ea2fbb1bad1b9a2df8df3485bf994e5f4033abffe12ab1a24955"
+  },
+  "docs/verification/2026-10-23-boosters/browser/active-1440.png": {
+    "before": null,
+    "after": "09f9ca8e9f6a660211e4290426c90e98fb0cb237be381d979a9d4c62f307b30a"
+  },
+  "docs/verification/2026-10-23-boosters/browser/active-320.png": {
+    "before": null,
+    "after": "dd661110e3ff0a68e72f2766b5f45b9172bb433316a5ff045b898d8b68508fd2"
+  },
+  "docs/verification/2026-10-23-boosters/browser/active-390.png": {
+    "before": null,
+    "after": "b1f18ed525ec79598fb2419b25bc01ca9eaafadc5f6407ecc505c889a48c6a7c"
+  },
+  "docs/verification/2026-10-23-boosters/browser/active-844.png": {
+    "before": null,
+    "after": "9efb322e4dec4a1d1a7bf914ad506bfb20db925c70dbaa36098b9d80bed1753d"
+  },
+  "docs/verification/2026-10-23-boosters/browser/checks.json": {
+    "before": null,
+    "after": "38ba7cfca3a6b9b5d267acd2d736ae4b256c13cc9d80600c663326ef724197bb"
+  },
+  "docs/verification/2026-10-23-boosters/browser/jump-1440.png": {
+    "before": null,
+    "after": "c16f3c81bde8473533e7a0a963cb998b114c2645b31fec332b2e9ec047122b5f"
+  },
+  "docs/verification/2026-10-23-boosters/browser/jump-320.png": {
+    "before": null,
+    "after": "4368312c006f090b21741e32f6cf805e8b45480b8acce7f70148de5d1678dacf"
+  },
+  "docs/verification/2026-10-23-boosters/browser/jump-390.png": {
+    "before": null,
+    "after": "58abc437446c9773ecd732eb905c913fd53fd3a6298b6074aee9bd7ce4153be1"
+  },
+  "docs/verification/2026-10-23-boosters/browser/jump-844.png": {
+    "before": null,
+    "after": "7cfec2e4a771b9770963cf4255347e35a0f42eed0b04a3bfda90e9937d6531e0"
+  },
+  "docs/verification/2026-10-23-boosters/browser/reduced-motion.png": {
+    "before": null,
+    "after": "53e562e92aa225d601b0944e3338f3b534ca926a17cee4992a84ad4f55c8eb7d"
+  },
+  "docs/verification/2026-10-23-boosters/browser/rescue-1440.png": {
+    "before": null,
+    "after": "087131c0369a797025fb764bb601c7416e6e5669731f1067d472adb96e8fcd7b"
+  },
+  "docs/verification/2026-10-23-boosters/browser/rescue-320.png": {
+    "before": null,
+    "after": "de66078dafd5405894c248ae88f8ef5a67fd83fdfbca978384e7f39559e88da7"
+  },
+  "docs/verification/2026-10-23-boosters/browser/rescue-390.png": {
+    "before": null,
+    "after": "32901a12def7c80ab0ac062a83a2828e34899ebefdf5eed0246cf0dc886d0871"
+  },
+  "docs/verification/2026-10-23-boosters/browser/rescue-844.png": {
+    "before": null,
+    "after": "8940e611584b5c38b0c850e92fbb9d95cde45dbfac81e7f71290ee3ab9796e2f"
+  },
+  "docs/verification/2026-10-23-boosters/browser/smash-1440.png": {
+    "before": null,
+    "after": "ededc26bdc8e48127b0f2064e9c411865161fd2ea7d243855d56500c0bea338a"
+  },
+  "docs/verification/2026-10-23-boosters/browser/smash-320.png": {
+    "before": null,
+    "after": "b350232948e89a5a0f893f9f0875176768bc1d8620d5bc685449e6fe3d8d7abf"
+  },
+  "docs/verification/2026-10-23-boosters/browser/smash-390.png": {
+    "before": null,
+    "after": "14faa955d5b4991482115da613220042641ed1a1f086c2a8d590b1f382e7e80c"
+  },
+  "docs/verification/2026-10-23-boosters/browser/smash-844.png": {
+    "before": null,
+    "after": "e70bff86da8e67372c0309b8a6f3c4d204413c0e184674afebfefa14da890eb6"
+  },
+  "docs/verification/2026-10-23-boosters/database.json": {
+    "before": null,
+    "after": "ced5a7e79bbe712746651215a32bb66b90a52eeb024da3b89c6be80ca23d017a"
+  },
+  "docs/verification/2026-10-23-boosters/frozen-rulesets.txt": {
+    "before": null,
+    "after": "2fa6d8bfd92d29a296d04ab34c7db6f061c95956f355efe362a29b64c8d5e700"
+  },
+  "docs/verification/2026-10-23-boosters/game-tests.txt": {
+    "before": null,
+    "after": "9e5346afa90378b6c15145edddcf2f3c7c7ba722042340a20aefa1430e26a387"
+  },
+  "docs/verification/2026-10-23-boosters/runs/17.json": {
+    "before": null,
+    "after": "3bbf6fd73b607cd7c87e04ff1f3c8a21e6b2aebb80e959ecb8821ff3ca6cf569"
+  },
+  "docs/verification/2026-10-23-boosters/runs/932.json": {
+    "before": null,
+    "after": "58b5d9ca625e1f4d3a2f6b44edbb0d184e84f8ab47094bc33fad8a6a5f7544c5"
+  },
+  "docs/verification/2026-10-23-boosters/runs/summary.json": {
+    "before": null,
+    "after": "a7898552e00fae9980581adddabdce4612752e3229e20d9bdd05dae2782464ed"
+  },
+  "docs/verification/2026-10-23-boosters/server-tests.txt": {
+    "before": null,
+    "after": "c1fb2178660d2de7f0c8fb8519b737b48acf82f50ee0189ac653640542a6bd8f"
+  },
+  "docs/verification/2026-10-23-boosters/source-checks.txt": {
+    "before": null,
+    "after": "bd00b932f4bde4e7e823a3096c1c245709acfc489c1459dd32f8b9f5eeae877b"
+  },
+  "docs/verification/2026-10-23-boosters/upgrade/checks.json": {
+    "before": null,
+    "after": "79040c4a1ab828974857cc54fa2b5cf275cae34bac455958d41f6cc473a5fba9"
+  },
+  "docs/verification/2026-10-23-boosters/upgrade/offline.png": {
+    "before": null,
+    "after": "dc2d5fadb17485372ae58ec3ddc6fb8fba51551bb2c4c735184a7bb90963475f"
+  },
+  "docs/verification/2026-10-23-boosters/visual-review.html": {
+    "before": null,
+    "after": "d4b3c66c1f00fd9c27bffe4cafa4d6d02b52dfb904ddd1739b6600b88e92450c"
+  },
+  "index.html": {
+    "before": "3356c474672570abe6ba9ab15dde56820eb1657ae732421b64cfe0278368c384",
+    "after": "68bf35c1110e0501cd874c837874a3acc57e0f91a476d26acdcaa6fea7b61878"
+  },
+  "package-lock.json": {
+    "before": "26ed9661a0c1d490c5517fdc43b595c09b102f043f0964d9ec66b94d265604a1",
+    "after": "6242df7642874774399f3884ce34ca33bc6734d82bd65a871a2dc5bab4ad2229"
+  },
+  "package.json": {
+    "before": "d65bd2ca950565070bcd54ec0f6e767b6a3e38d1171588316b40727ae57b7547",
+    "after": "d7e6913b941317c1144da1f90e226bba0aa433fa2884c77692578d0324b64255"
+  },
+  "scripts/build-pwa.mjs": {
+    "before": "5fa3f142b734e14512e74fbb357d97a93eb07e16381fd4d9aca6cdbbe326673b",
+    "after": "9358e98367059cbc1d9e3c4593502d7a71bd3ad0ea6d9fb83208e9fc1547438b"
+  },
+  "scripts/verify-booster-runs.mjs": {
+    "before": null,
+    "after": "08096b1b97dfa32b39f36cf47d6216ea8dd362c3fbe1aa89ac20a1d08536b954"
+  },
+  "scripts/verify-booster-upgrade.cjs": {
+    "before": null,
+    "after": "0f80180bbbc399561e2e321bd51479bc104119ce88aa87f00d27417bbc198b89"
+  },
+  "scripts/verify-boosters.cjs": {
+    "before": null,
+    "after": "77eacc311556b3c89625548cdd696ca1bde063be145937303b7060837a75abde"
+  },
+  "src/biomes.js": {
+    "before": "78df1174169438ec8cda09ca6480a782a014453466634874fc47ba9169562b59",
+    "after": "0d596f609cf3a8d6349d59e09e2e3046c42af7fb589bcfe5108b1a4826519efe"
+  },
+  "src/booster-art.js": {
+    "before": null,
+    "after": "bb7fdefadb6844bf020881a0d9d0f271d226ebe9db8ca8416eafb7a89e1b2ace"
+  },
+  "src/boosters.js": {
+    "before": null,
+    "after": "f22ba6d82d18e26c8f2affe3e8d1cf09ca82de676e08f76691abb1c5e20eca76"
+  },
+  "src/catalog.js": {
+    "before": "be110defbcd585e4c06ba65d8a61c9f6cb54c1af6b85911ee99e1a46c059965e",
+    "after": "b5a5c8013e9996565f55b787d1ad11ae586cc0e2e0a6a54f0f5d4aeaf38f1eb4"
+  },
+  "src/characters.js": {
+    "before": "9e806bb6b28018fafcacef5f4b1627f019c8d035e8b1c8ca5acbac33df6c61ea",
+    "after": "596f73b5f111a8eee53f330587c09fa46fbc3b5d775acb1bccbc30e0a25a70ea"
+  },
+  "src/clock.js": {
+    "before": "0d8d016d01ff6b6ac58e45a73a435a7a6d31e2f86975331a1505e0bcd6a2f754",
+    "after": "5f0bf1ecf371d78c9431eafa2501a380c17f6b0a8669b38ebd0f78d8bb827608"
+  },
+  "src/coaching.js": {
+    "before": "7b18dc6c307a423dc57802e167af8be127d10255e95b6d1179b06b2b72f1154c",
+    "after": "57039930c284979307f4eedbe457bfe79666e2b65ae80f93887abf1d9fdc4ad5"
+  },
+  "src/collection-ui.js": {
+    "before": "9080de2bcd9ec9edb81844e8aba4e72ffeade8cce8211e79be87185ab585706d",
+    "after": "9240545fe4165bb9afb527a3f6fd6e062a3b61783d7a0e5ffded7bf79ccb7048"
+  },
+  "src/director.js": {
+    "before": "bc8b271d7a8f44b0d152175a935cb8ac0bd837c42a49b4bcc6b62b41382a2af4",
+    "after": "29bcba7d0a4cff55aa719954dac47fe83e74e6122fc5b8947d1876459e562273"
+  },
+  "src/enemy-sprites.js": {
+    "before": "96de8a44725d982b107fa3be0963c199b6ad3361c8ffd7880307a668f1553b6b",
+    "after": "e64b6dc237eb568d2c9723702744146b6fa47c06aef1fd16a9485d9c206ce243"
+  },
+  "src/factory.js": {
+    "before": "0a869df59b1996e0a3003378b69d7f1ecbdff2984b9ade88cd2bdd7ba3401019",
+    "after": "33b220b45807607124788cfeaf9a093c2a45f1fd7acd4e789d14fdd91c836b76"
+  },
+  "src/fall.js": {
+    "before": "44f0dd5a6c76b835868ad1e4f5856cc203816111a0434cc50c09848557683fc4",
+    "after": "2d46e98e6318abebc64417ae6edeed409b38227408ca428eaf2507778bc79c94"
+  },
+  "src/gameplay-config.js": {
+    "before": "c8bbbdfe6cbae472d0539f22a0cac687339d96e1603bed4469d502a37db4d9bd",
+    "after": "cfd41f7fe29312b5b60d048c7dbbc9073a3ee26ef14597bc938e990751f0b171"
+  },
+  "src/gameplay.js": {
+    "before": "335ad1289cab81077869485da7839602df68574fc020f32befd96ed20f901c78",
+    "after": "c155a54c65c05ec7d1008ba139c4296e9f337774a37610217ed0a9d18393a119"
+  },
+  "src/hud.js": {
+    "before": "d02ca61dae95cec2b5c5a3f801c154e8f2079bef9df89621ca86ac970d972cca",
+    "after": "6ca52d751201c179fca3eac72ec3faeeb627b85a98e70d267385b6b3d46c7640"
+  },
+  "src/loading.js": {
+    "before": "5f92ba7856e9dd1cbfbb7ae5eb31d4e1cd9d16a19edb20f0a49c60b8e580cba5",
+    "after": "23fb3b0a4498c285df53d0dbbe42b6d2c2c0bb606084cc10816a5bcf631b5f17"
+  },
+  "src/main.js": {
+    "before": "66d1e85f98c9fb9269ccb440f3cc1699efdf85885e70149727e181a8f4482a9a",
+    "after": "1a2c7a39279057aebbeffbd501f7b6f35bdf7e7cfa492af2bad568f6f88e6d3e"
+  },
+  "src/online-ui.js": {
+    "before": "faa8a5e7c5195889c7f06d6eb7636ac21f952e257a44df4f734ef07e49ae22a5",
+    "after": "70f492ad3f5be5a2cfb6325bf52d4b6c89aee42b821bcc79aa92311d18f8107b"
+  },
+  "src/online.js": {
+    "before": "c96a29a9e128b2ad87631fe58454f4a6cf4ea09ffbcf005fe8b84a96e569693a",
+    "after": "e39997a70c221af9af354e1722207ef76f443f293f8e826a7053b0edaa268cba"
+  },
+  "src/physics.js": {
+    "before": "aa996d2737f4450fce44bfb71f141ca5053bb92ff24acf64ca277c751e445f50",
+    "after": "37d305c065aae985500c5506337dc27665c8d0df454492e097c042301530a28c"
+  },
+  "src/props.js": {
+    "before": "2625168d882b355f5fdcf497ef97e2e916f8c7b6a4dd8ea01e0bb9b73de4cc97",
+    "after": "e357af0220b9c95d63cc2f25b0ff052a09e9657528bfcd6b1d3889f6eb9b6716"
+  },
+  "src/routes.js": {
+    "before": "ba7acb60423a6306eb4b881fde5fb2099830954334064920904c1571688c887e",
+    "after": "6dced1e24f6772652e224eb5e51ef26525798e65db4ca286f2808ffbcfb23c99"
+  },
+  "src/run.js": {
+    "before": "3cfbb9df06ca40f079f1f39737c017b85f1a42a79560079145457d50aac9cb9d",
+    "after": "8d700b316759d1e180782943adb91c419254fdf925e48454b5bc94ed50dc585c"
+  },
+  "src/sound.js": {
+    "before": "8f3bbc840fc29ab15fb56c12e0dc2f19d9dc15a4105d01de4ba9fb163c60ed63",
+    "after": "c9901964ed5e3f9d804da1ba8cfc6592e173d5c08d82d0ad44b3a939b6d09f1f"
+  },
+  "src/speed-feedback.js": {
+    "before": "6904a0d9d0ab36927b97b81a019ae68649bae420049de98544ab8e14b1a06a10",
+    "after": "99018fb65fe46c2cef436da28e27bcf91361b4cc59c3c8f67e85ed95c2dd9147"
+  },
+  "src/thrusters.js": {
+    "before": "d5370f337b2cc6147b32ff28258a2055c01e23eb2fd3ff905505228eea836553",
+    "after": "7e1ae07cf6c685cc77ef8e1efc2f3161b57aaf10ba38f30962447efd42cd7d8e"
+  },
+  "style.css": {
+    "before": "5f58911f10f64de7253cde5d4e5502404cbdb88d961d6c1e7e4ff3a1f85e56e7",
+    "after": "3f155449a0945d1e77e5f2598d875a4b8a93c9449a2c59660961dea9cd1ce343"
+  },
+  "supabase/README.md": {
+    "before": "a271c03f8d473426b47ae5dd9c51260aef2e199db27d94fff06320513226d3fe",
+    "after": "2e62f77f56f2075416eaa316d73808b8f3b3517bd99954fab53f79a9b80e0c2e"
+  },
+  "supabase/check-ruleset.mjs": {
+    "before": "5bc3d7a839f9f981b1e869f67f27cdb9a0361c57e55f71a3ba53d9511d446bb8",
+    "after": "2216a4ee3414004427984c33b07d316bfd8afd6b17324701ee43b9cfc0bf933b"
+  },
+  "supabase/functions/tesla-ranking-worker/index.ts": {
+    "before": "177a29ef63352c7f77dc958138eed62634e534c43bd70372d3d8e9d1c070f785",
+    "after": "7a4603d4ac592a614aa7cb756180cec21f3b8924fc77fc7aeca2929f239547b5"
+  },
+  "supabase/functions/tesla-ranking/index.ts": {
+    "before": "08b0a50933b6abb55943690b5268bb126e9bf800655f1f463f2c196d2aa29431",
+    "after": "c848f7515d8943dd1e5f475d660ef68c8c706520bbf42a1548488075161f8bda"
+  },
+  "supabase/migrations/20261023103000_boosters_v430.sql": {
+    "before": null,
+    "after": "ca6e3e105c4584ef89111d5d3de3928d6ed6821d3513b8a27e05588e42c2c5cc"
+  },
+  "supabase/rulesets.mjs": {
+    "before": "48c9548cc43dbe87eb29be5bd1f7035f477be1e58758742e573ad0dc6ec150cb",
+    "after": "d0f7e6435d0a96437a3602469aa0519a40ee012155d557c8b9d482bebc75b20e"
+  },
+  "supabase/rulesets/roadster-v430/biomes.js": {
+    "before": null,
+    "after": "2efa3fe69ff366f580fb3436eb237034e9e2183f4799889a1a6823db5e584178"
+  },
+  "supabase/rulesets/roadster-v430/boosters.js": {
+    "before": null,
+    "after": "f22ba6d82d18e26c8f2affe3e8d1cf09ca82de676e08f76691abb1c5e20eca76"
+  },
+  "supabase/rulesets/roadster-v430/catalog.js": {
+    "before": null,
+    "after": "db222e71f0fdbf4b133fc9b238f5ece3a3d1f674916f16a61e722b7482ca49ab"
+  },
+  "supabase/rulesets/roadster-v430/content.js": {
+    "before": null,
+    "after": "c66768e9ddcbd7b51ad2045a3a14e858be3217dbfb1c27ac127619d207aa276f"
+  },
+  "supabase/rulesets/roadster-v430/director.js": {
+    "before": null,
+    "after": "e848bcd31a1705314e9bda1258807a15969714e245907690b43ac42842a40637"
+  },
+  "supabase/rulesets/roadster-v430/enemy-sprite-data.js": {
+    "before": null,
+    "after": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d"
+  },
+  "supabase/rulesets/roadster-v430/fall.js": {
+    "before": null,
+    "after": "cee2006e4ddcc28bc61c08cf5c0a79e67e220b283348b74e4fabeb6242c34413"
+  },
+  "supabase/rulesets/roadster-v430/gameplay-config.js": {
+    "before": null,
+    "after": "cfd41f7fe29312b5b60d048c7dbbc9073a3ee26ef14597bc938e990751f0b171"
+  },
+  "supabase/rulesets/roadster-v430/gameplay.js": {
+    "before": null,
+    "after": "d345fdb3baf93efb310409d7bae76b1c55a9c7848a2538c52818b5f3eb9cb445"
+  },
+  "supabase/rulesets/roadster-v430/manifest.json": {
+    "before": null,
+    "after": "500026bb751f1fef710bdc3d7066489f0f6baaa06300b6a3338b0694d7e84a96"
+  },
+  "supabase/rulesets/roadster-v430/physics.js": {
+    "before": null,
+    "after": "80f9b52244904f73729cac369a60804d395f9feac5e6023147a1b01745a53e9f"
+  },
+  "supabase/rulesets/roadster-v430/random.js": {
+    "before": null,
+    "after": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1"
+  },
+  "supabase/rulesets/roadster-v430/routes.js": {
+    "before": null,
+    "after": "f592d2717a36d6e7ceff9db7b5727562feb8e993d1c1710b41e6266f4e1ace50"
+  },
+  "supabase/rulesets/roadster-v430/run.js": {
+    "before": null,
+    "after": "3b3327d25fff988e054ba3933c142039de841ae067d67d654644e138cc857536"
+  },
+  "supabase/test-background.mjs": {
+    "before": "8f95d36351702defe33e214be55d356ae9652afa9aff1a9c3dd8ff6d14b7bb2b",
+    "after": "f236f30c2c951496d49c0673ae9ae1c530dbd31bdf5c9640c0a73f04727c375d"
+  },
+  "supabase/tests/chunk.test.mjs": {
+    "before": "2b4f88cc4435f3492d7d0c6d60f4d490a4e79a5d439d0064c55aee95e54c1f10",
+    "after": "7c9e0efbffd4a2d53a09d7398498600ec979b0b52518b99accfd8be6b043bdbc"
+  },
+  "sw.js": {
+    "before": "26bfa3bb1110d6aefe1403ca4388948170bf26cc3dfaf92497146c893a26fd47",
+    "after": "0b25969f3c8959a56b51b2f8ecca867af210d5ec07f01447a5d0941ec689a7a1"
+  },
+  "tests/aerial-challenge.test.mjs": {
+    "before": "9e6d4fbded31bb51ba0a8b9bb592a40a072b4600abba4abdba20dd4e071dcd10",
+    "after": "9ef1e180fbabf53ba7d7c3f5089a8f4e66fe0fd29d848a7e9ccf27110147f663"
+  },
+  "tests/boosters.test.mjs": {
+    "before": null,
+    "after": "b63461f33954ab301f54339079a523fd4a3bab8c75ab257490e13fc6d32ba0ea"
+  },
+  "tests/collision-equivalence.test.mjs": {
+    "before": "3aa0ba7a6f4ebc1af1b38b039f9f946b949280c96521f14a466bcedaee65d5dc",
+    "after": "ba050aa8e64b279bb0b34c6bf37882aab6b0bdf2b75faa00995a6428883375d1"
+  }
+}

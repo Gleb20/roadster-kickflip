@@ -616,3 +616,15 @@ button.collection-card:hover { background:rgb(255 255 255 / 6%); border-color:va
  #game[data-mode='playing'] #sound span,#game[data-mode='paused'] #sound span { display:none; }
  #game[data-mode='playing'] #sound,#game[data-mode='paused'] #sound { width:44px; padding:0; }
 }
+/* Small non-interactive power-up instruments; the playfield and touch roles stay unobstructed. */
+#powerups { position:absolute; z-index:3; left:max(var(--edge-x),env(safe-area-inset-left)); top:calc(var(--edge-top) + 66px); display:flex; align-items:center; gap:7px; pointer-events:none; }
+.powerup-card { position:relative; display:grid; place-items:center; width:44px; height:44px; border-radius:12px; background:rgb(19 29 35 / 78%); }
+.powerup-card > img { width:32px; height:32px; object-fit:contain; }
+.powerup-card > svg { position:absolute; inset:0; width:100%; height:100%; }
+.powerup-card rect { fill:none; stroke:var(--powerup-color); stroke-width:2; stroke-dasharray:1; stroke-dashoffset:0; stroke-linecap:round; }
+.powerup-card.expiring { background:rgb(37 46 51 / 90%); }
+.powerup-hearts { display:flex; gap:2px; align-items:center; padding-right:2px; }
+.powerup-hearts img { width:22px; height:22px; object-fit:contain; }
+#powerups [hidden] { display:none; }
+@media(max-width:600px) { #powerups { top:calc(var(--edge-top) + 46px); gap:5px; } .powerup-card { width:37px; height:37px; } .powerup-card > img { width:28px; height:28px; } .powerup-hearts img { width:19px; height:19px; } }
+@media(max-height:570px) { #powerups { top:calc(var(--edge-top) + 42px); } .powerup-card { width:34px; height:34px; } .powerup-card > img { width:25px; height:25px; } }

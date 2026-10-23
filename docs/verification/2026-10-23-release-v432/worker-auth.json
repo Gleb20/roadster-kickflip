@@ -1,0 +1,7 @@
+{
+  "publicApiJwt": true,
+  "privateWorkerLegacyJwt": false,
+  "privateSecretStillRequired": true,
+  "publicKeyWorkerStatus": 401,
+  "emptyUnauthorizedResponse": true
+}

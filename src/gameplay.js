@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.2.0';
-import {obstacleBoxes} from './physics.js?v=4.2.0';
-import {fallPolygons,interpolateFall} from './fall.js?v=4.2.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.3.2';
+import {obstacleBoxes} from './physics.js?v=4.3.2';
+import {fallPolygons,interpolateFall} from './fall.js?v=4.3.2';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -9,10 +9,10 @@ export function uprightError(angle,direction=-1){
   if(Math.abs(Math.abs(e)-Math.PI)<1e-9)e=-Math.sign(direction||-1)*Math.PI;
   return e;
 }
-export function createFlight(fuel=C.initialFuel){return {y:0,vy:0,vx:0,angle:0,omega:0,airborne:false,time:0,fuel,thrusting:false,latched:false,attach:0,maxTurn:0,turns:0,lastDirection:-1,trickStarted:false,grab:0,launchVelocity:0};}
+export function createFlight(fuel=C.initialFuel){return {y:0,vy:0,vx:0,angle:0,omega:0,airborne:false,time:0,fuel,thrusting:false,latched:false,attach:0,maxTurn:0,turns:0,lastDirection:-1,trickStarted:false,grab:0,launchVelocity:0,jumpFactor:1};}
 export function launch(p,charge=0){
   if(p.airborne)return false;
-  Object.assign(p,{y:.001,vy:C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1),angle:0,omega:0,airborne:true,time:0,latched:false,attach:0,maxTurn:0,turns:0,trickStarted:false,grab:0,launchVelocity:C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1)});
+  Object.assign(p,{y:.001,vy:(C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1))*(p.jumpFactor||1),angle:0,omega:0,airborne:true,time:0,latched:false,attach:0,maxTurn:0,turns:0,trickStarted:false,grab:0,launchVelocity:(C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1))*(p.jumpFactor||1)});
   return true;
 }
 // Shared by live play and route validation. No DOM, audio, timers or randomness.
@@ -54,7 +54,7 @@ export function advanceFlight(p,dt,{spin=false,thrust=false}={}){
   if(result.good){p.angle=0;p.omega=0;}
   return result;
 }
-export function createEconomy(){return {bonus:0,multiplier:10,meter:0,decay:0,streak:0,streakLeft:0,flips:0};}
+export function createEconomy(){return {scoreFactor:1,bonus:0,multiplier:10,meter:0,decay:0,streak:0,streakLeft:0,flips:0};}
 export function comboSeconds(e){return C.comboDuration-C.comboFalloff*(e.multiplier/10-1);}
 export function rewardAction(e,count=1){e.multiplier=Math.min(C.maxMultiplier,e.multiplier+count*C.multiplierStep);e.meter=1;e.decay=0;}
 export function advanceEconomy(e,dt){
@@ -62,16 +62,16 @@ export function advanceEconomy(e,dt){
   if(e.meter===0&&e.multiplier>10){e.decay+=dt;while(e.decay+1e-9>=C.comboDecaySeconds&&e.multiplier>10){e.multiplier--;e.decay-=C.comboDecaySeconds;}}
 }
 export function advanceStreak(e,dt){const used=Math.min(dt,e.streakLeft);e.streakLeft-=used;e.streak=Math.max(0,e.streak-(dt-used)*C.streakDecay);}
-export function passObstacle(e){const points=C.obstaclePoints*e.multiplier/10;e.bonus+=points;return points;}
+export function passObstacle(e){const points=C.obstaclePoints*e.multiplier/10*(e.scoreFactor||1);e.bonus+=points;return points;}
 export function settleLanding(e,p,result,{late=0,near=0}={}){
   if(!result.good){e.multiplier=10;e.meter=0;e.decay=0;e.streak=0;e.streakLeft=0;return {points:0,turns:0,late:0,near:0,perfect:false,good:false};}
-  const n=result.turns,perfect=!!result.perfect,points=(C.flipFactor*n*(n+1)+C.nearPoints*(late+near)+C.perfectPoints*Number(perfect))*e.multiplier/10;
+  const n=result.turns,perfect=!!result.perfect,points=(C.flipFactor*n*(n+1)+C.nearPoints*(late+near)+C.perfectPoints*Number(perfect))*e.multiplier/10*(e.scoreFactor||1);
   e.bonus+=points;e.flips+=n;p.fuel=Math.min(C.tank,p.fuel+C.fuelPerFlip*n);
   if(n+late+near+Number(perfect))rewardAction(e,n+late+near+Number(perfect));
   if(n||near){e.streak=Math.min(C.maxStreak,e.streak+C.streakStep);e.streakLeft=C.streakHold;}
   return {points,turns:n,late,near,perfect,good:true};
 }
-export function createPace(){return {progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
+export function createPace(){return {boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
 export function stumble(pace){
   const target=pace.recovery?.target??pace.base,r=clamp((target-C.startSpeed)/(C.maxSpeed-C.startSpeed),0,1);
   pace.recovery={target,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
@@ -87,7 +87,7 @@ export function advancePace(pace,e,p,dt){
     pace.stumble=Math.max(0,pace.stumble-dt);const r=pace.recovery;r.age=Math.min(r.duration,r.age+dt);pace.base=recoverySpeed(r,r.age);
     if(r.age>=r.duration){pace.base=r.target;pace.recovery=null;}
   }else if(!pace.falling){pace.progress+=dt;pace.base=C.startSpeed+(C.maxSpeed-C.startSpeed)*Math.min(1,pace.progress/C.rampSeconds);}
-  pace.speed=Math.max(60,pace.base*(1+e.streak)+p.vx);return pace.speed;
+  pace.speed=Math.max(60,pace.base*(1+e.streak)*(1+(pace.boost||0))+p.vx);return pace.speed;
 }
 // Collision proxies rotate with the same pivot (65 above tyre baseline) as the art.
 export function playerPolygons(p){

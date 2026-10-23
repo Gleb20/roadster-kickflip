@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.2.0';
-import {types} from './catalog.js?v=4.2.0';
-import {biomeAt} from './biomes.js?v=4.2.0';
-import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.2.0';
-export function createDirector({S,flight,pace,economy,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.3.2';
+import {types} from './catalog.js?v=4.3.2';
+import {biomeAt} from './biomes.js?v=4.3.2';
+import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.3.2';
+export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
  const initial=()=>({wave:0,last:null,fallbacks:0,waiting:false,hardStreak:0,leg:-1,legStartedAt:0,groundSinceAir:0,airCount:0,lastAirAt:-1e9});
  const state=initial();
  function reset(){Object.assign(state,initial());}
@@ -27,9 +27,9 @@ export function createDirector({S,flight,pace,economy,spawnDistance,sceneTime=()
    dx=Math.max(dx,(S.speed+type.approachSpeed)*2);
   }
   let obstacles=makePattern(kind,{speed:S.speed,type,dx});
-  let route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime(),allowThrust:kind!=='air',timingMargin:kind==='air'?.09:C.routeTimingMargin});
+  let route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime(),boosterState:boosters,allowThrust:kind!=='air',timingMargin:kind==='air'?.09:C.routeTimingMargin});
   if(route&&route.fuelUsed>0&&flight.fuel-route.fuelUsed<C.routeFuelReserve)route=null;
-  if(!route){state.fallbacks++;kind='single';obstacles=makePattern(kind,{speed:S.speed,type:types.find(o=>o.id==='truck'),dx});route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime(),timingMargin:C.routeTimingMargin});}
+  if(!route){state.fallbacks++;kind='single';obstacles=makePattern(kind,{speed:S.speed,type:types.find(o=>o.id==='truck'),dx});route=validateRoute(obstacles,{flight,pace,economy,time:sceneTime(),boosterState:boosters,timingMargin:C.routeTimingMargin});}
   if(!route){S.next=.3;return;}
   state.hardStreak=['precision','thrust'].includes(kind)?state.hardStreak+1:0;
   if(kind==='air'){state.airCount++;state.groundSinceAir=0;state.lastAirAt=S.t;}else state.groundSinceAir++;

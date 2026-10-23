@@ -1,0 +1,11 @@
+{
+  "files": 117,
+  "evidenceFiles": 7,
+  "allBeforeAndAfterHashesVerified": true,
+  "originalHead": "331a970a2c3256856fbc3fe3fe287eea7584de37",
+  "originalIndexPreserved": true,
+  "published": false,
+  "rootGameTests151Passed": true,
+  "rootSourceChecksPassed": true,
+  "guardedRootRehearsal": true
+}

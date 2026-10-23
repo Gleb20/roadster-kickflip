@@ -1,0 +1,19 @@
+{
+  "ruleset": "roadster-v4.3.0",
+  "sourceCommit": "frozen local 4.2.0 plus bounded booster integration",
+  "files": {
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "run.js": "3b3327d25fff988e054ba3933c142039de841ae067d67d654644e138cc857536",
+    "catalog.js": "db222e71f0fdbf4b133fc9b238f5ece3a3d1f674916f16a61e722b7482ca49ab",
+    "director.js": "e848bcd31a1705314e9bda1258807a15969714e245907690b43ac42842a40637",
+    "routes.js": "f592d2717a36d6e7ceff9db7b5727562feb8e993d1c1710b41e6266f4e1ace50",
+    "content.js": "c66768e9ddcbd7b51ad2045a3a14e858be3217dbfb1c27ac127619d207aa276f",
+    "gameplay.js": "d345fdb3baf93efb310409d7bae76b1c55a9c7848a2538c52818b5f3eb9cb445",
+    "physics.js": "80f9b52244904f73729cac369a60804d395f9feac5e6023147a1b01745a53e9f",
+    "fall.js": "cee2006e4ddcc28bc61c08cf5c0a79e67e220b283348b74e4fabeb6242c34413",
+    "gameplay-config.js": "cfd41f7fe29312b5b60d048c7dbbc9073a3ee26ef14597bc938e990751f0b171",
+    "biomes.js": "2efa3fe69ff366f580fb3436eb237034e9e2183f4799889a1a6823db5e584178",
+    "enemy-sprite-data.js": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d",
+    "boosters.js": "f22ba6d82d18e26c8f2affe3e8d1cf09ca82de676e08f76691abb1c5e20eca76"
+  }
+}

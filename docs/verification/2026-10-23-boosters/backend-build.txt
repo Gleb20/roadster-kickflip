@@ -1,0 +1,12 @@
+
+> roadster-kickflip@4.3.0 build:ranking
+> esbuild supabase/entry.mjs --bundle --format=esm --platform=neutral --target=es2022 --outfile=supabase/functions/tesla-ranking/index.ts && esbuild supabase/worker-entry.mjs --bundle --format=esm --platform=neutral --target=es2022 --outfile=supabase/functions/tesla-ranking-worker/index.ts
+
+
+  supabase/functions/tesla-ranking/index.ts  232.4kb
+
+⚡ Done in 20ms
+
+  supabase/functions/tesla-ranking-worker/index.ts  227.2kb
+
+⚡ Done in 7ms

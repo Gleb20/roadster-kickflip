@@ -1,0 +1,10 @@
+{
+  "baseline": "56099f8060b845e28e4f00c76a755b474fbd94db",
+  "affectedFiles": 117,
+  "exactForwardAndInverse": true,
+  "beforeHashesRestored": true,
+  "guardedRestorationRehearsal": true,
+  "parentGameTests": 140,
+  "parentSourceChecks": true,
+  "candidatePatchSha256": "46a43a5b4fab1975a374d91cb87f55824def79eae37b258bc1b9e462915bd812"
+}

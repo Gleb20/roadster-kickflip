@@ -1,0 +1,43 @@
+{
+  "jump": {
+    "page": "https://www.leespring.com/compression-springs",
+    "images": [
+      "https://www.leespring.com/sites/default/files/2018-03/1-Compression-Springs_300x300_2.jpg"
+    ],
+    "author": "Lee Spring",
+    "license": "Not specified on product page"
+  },
+  "life": {
+    "page": "https://www.ikea.com/us/en/p/famnig-hjaerta-cushion-red-50473209/",
+    "images": [
+      "https://www.ikea.com/us/en/images/products/famnig-hjaerta-cushion-red__0710297_pe727447_s5.jpg"
+    ],
+    "author": "IKEA",
+    "license": "Not specified on product page"
+  },
+  "speed": {
+    "page": "https://www.flickr.com/photos/spacex/52822653368",
+    "images": [
+      "https://live.staticflickr.com/65535/52822653368_ff034659d4.jpg"
+    ],
+    "author": "Official SpaceX Photos",
+    "license": "CC BY-NC 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/2.0/"
+  },
+  "shield": {
+    "page": "https://www.coldsteel.com/medieval-buckler/",
+    "images": [
+      "https://cdn11.bigcommerce.com/s-99kn4fj7jr/images/stencil/500x659/products/232/490/92BKPB_1__34325.1607300809.jpg?c=1"
+    ],
+    "author": "Cold Steel",
+    "license": "Not specified on product page"
+  },
+  "score": {
+    "page": "https://commons.wikimedia.org/wiki/File:Dogecoin_gold_coin_on_wood_2_-_tails.jpg",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/1/19/Dogecoin_gold_coin_on_wood_2_-_tails.jpg"
+    ],
+    "author": "Cyril Ernst",
+    "license": "CC BY-SA 4.0"
+  }
+}

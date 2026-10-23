@@ -1,7 +1,7 @@
-import {FACTORY_ASSETS} from '../src/factory.js';
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {ASSETS} from '../src/content.js';
+import {FACTORY_ASSETS} from '../src/factory.js';
 const root=new URL('../',import.meta.url),pkg=JSON.parse(await readFile(new URL('package.json',root),'utf8'));
 const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.file),
  'assets/characters/bezos-v247.png','assets/characters/katy-v247.png','assets/spaceport/spaceport-atlas.png','assets/roadster-flip/atlas.png',
@@ -9,7 +9,9 @@ const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.
  'assets/ui/collection-mystery.png','assets/ui/ATTRIBUTION.md']);
 for(const name of await readdir(new URL('src/',root)))if(name.endsWith('.js'))files.add('src/'+name);
 for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith('.mp3'))files.add('assets/audio/'+name);
-for(const id of FACTORY_ASSETS)files.add('assets/factory/'+id+'.png');
+for(const name of FACTORY_ASSETS)files.add('assets/factory/'+name+'.png');
+for(const name of await readdir(new URL('assets/boosters/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/'+name);
+for(const name of await readdir(new URL('assets/boosters/holo-v431/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/holo-v431/'+name);
 files.add('assets/factory/ATTRIBUTION.md');
 files.add('assets/encounters/v400/ATTRIBUTION.md');
 const core=[];

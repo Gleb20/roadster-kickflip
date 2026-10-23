@@ -1,0 +1,45 @@
+{
+  "method": "sharp trim threshold 5, aspect-preserving fit inside 224, centered transparent padding to 256; alpha retained",
+  "assets": [
+    {
+      "id": "shield",
+      "width": 256,
+      "height": 256,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "partialAlphaPixels": 37004
+    },
+    {
+      "id": "speed",
+      "width": 256,
+      "height": 256,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "partialAlphaPixels": 35429
+    },
+    {
+      "id": "jump",
+      "width": 256,
+      "height": 256,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "partialAlphaPixels": 29158
+    },
+    {
+      "id": "life",
+      "width": 256,
+      "height": 256,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "partialAlphaPixels": 44688
+    },
+    {
+      "id": "score",
+      "width": 256,
+      "height": 256,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "partialAlphaPixels": 21687
+    }
+  ]
+}

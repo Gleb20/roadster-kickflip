@@ -436,79 +436,6 @@
     "background": "#10151b",
     "safeZone": "Vehicle stays within the central maskable safe area"
   },
-  "teslaFactoryV360": {
-    "files": [
-      "assets/factory/rear-wall.png",
-      "assets/factory/conveyor.png",
-      "assets/factory/body-shell.png",
-      "assets/factory/forklift.png",
-      "assets/factory/robot-base.png",
-      "assets/factory/robot-upper.png",
-      "assets/factory/robot-fore.png",
-      "assets/factory/robot-grip.png",
-      "assets/factory/worker-0.png",
-      "assets/factory/worker-1.png",
-      "assets/factory/worker-2.png"
-    ],
-    "method": "Byte-for-byte integration of the existing photo-plus-style generated paper packet, no new generation or pixel edits. Runtime uses proportional sprites, bottom anchors and measured robot joints.",
-    "prototypes": {
-      "hallAndRedArms": "Tesla Fremont assembly hall; red arm model unverified",
-      "forklift": "Linde E20-02 (2002); background-only, no claim of Tesla use",
-      "workers": "Fictional characters; real boilersuit reference supplies garment only"
-    },
-    "sources": [
-      "https://commons.wikimedia.org/wiki/File:Tesla_Motors_Assembly_Line_(6858583426).jpg",
-      "https://commons.wikimedia.org/wiki/File:Tesla_Robot_Dance_(7408451314).jpg",
-      "https://commons.wikimedia.org/wiki/File:Linde_E20_Elektrostapler_r.jpg",
-      "https://commons.wikimedia.org/wiki/File:Boilersuit.jpg"
-    ],
-    "credits": "assets/factory/ATTRIBUTION.md",
-    "hashesAndPivots": "assets/factory/manifest.json",
-    "productionProvenance": "assets/factory/production-provenance.json",
-    "notes": "Prepared photo/reference originals remain in the preserved project art-source packet. This release adds factory scenery only, retaining ranked collision/generation rules. Ramp stunt and independent daylight remain separate unfinished stages."
-  },
-  "factoryOrganicV362": {
-    "category": "background scenery",
-    "realPrototypes": [
-      "Dexion Speedlock P90 pallet rack",
-      "Haas VF-2 (2013) vertical machining centre"
-    ],
-    "sources": [
-      {
-        "name": "dexion-p90.jpg",
-        "object": "Dexion Speedlock P90 pallet rack",
-        "page": "https://www.dexion.com/products/pallet-racking/speedlock-p90-pallet-racking/",
-        "image": "https://www.dexion.com/globalassets/services/uk_the_range_avonmouth_racking_construction-01.jpg",
-        "author": "Dexion / Gonvarri Material Handling, photographer unspecified",
-        "license": "Reuse license not established; retained locally as reference",
-        "sha256": "602d5bdd0ab0a23093bd00512cf6d345a6814b90ee33753bca41ce839d5fcc1f",
-        "accessDate": "2026-10-20"
-      },
-      {
-        "name": "haas-vf2.jpg",
-        "object": "Haas VF-2 (2013) vertical machining centre",
-        "page": "https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c",
-        "image": "https://portal-images.azureedge.net/auctions-2023/united4-10145/images/f7c20701-d38e-4183-80fe-b0a80176538c.jpg?h=1920&mode=max&w=1920",
-        "author": "United Asset Sales listing, photographer unspecified",
-        "license": "Reuse license not established; retained locally as reference",
-        "sha256": "a6b914708154ed4ac694821b8e568c8c53a1b3ec2a75571e2adddca52252ae11",
-        "accessDate": "2026-10-20"
-      }
-    ],
-    "style": "Current factory rear-wall paper sprite, passed as actual second image",
-    "method": "Built-in image_gen, photo-guided paper adaptation, transparent_background=true",
-    "packet": "art-source/factory-organic-v362/provenance.json",
-    "runtimeFiles": [
-      "assets/factory/rack-v362.png",
-      "assets/factory/machine-v362.png"
-    ],
-    "size": [
-      512,
-      341
-    ],
-    "alpha": "RGBA; proportional resize; original retained",
-    "notes": "Fictional background arrangement; no claim these machine/rack models are used by Tesla. Existing worker assets retained as history but removed from renderer and active offline cache."
-  },
   "elonTrickConcepts20261020": {
     "status": "concepts-awaiting-user-approval-not-integrated",
     "files": [
@@ -544,6 +471,37 @@
       "src/main.js"
     ],
     "notes": "Flat oval-eye/small-mouth facial grammar; front anatomical left grip, rear right encounter; roof toward rider throughout rotation. No generated concept pixels shipped in runtime; physics/replay ruleset untouched."
+  },
+  "teslaFactoryV360": {
+    "files": [
+      "assets/factory/rear-wall.png",
+      "assets/factory/conveyor.png",
+      "assets/factory/body-shell.png",
+      "assets/factory/forklift.png",
+      "assets/factory/robot-base.png",
+      "assets/factory/robot-upper.png",
+      "assets/factory/robot-fore.png",
+      "assets/factory/robot-grip.png",
+      "assets/factory/worker-0.png",
+      "assets/factory/worker-1.png",
+      "assets/factory/worker-2.png"
+    ],
+    "method": "Byte-for-byte integration of the existing photo-plus-style generated paper packet, no new generation or pixel edits. Runtime uses proportional sprites, bottom anchors and measured robot joints.",
+    "prototypes": {
+      "hallAndRedArms": "Tesla Fremont assembly hall; red arm model unverified",
+      "forklift": "Linde E20-02 (2002); background-only, no claim of Tesla use",
+      "workers": "Fictional characters; real boilersuit reference supplies garment only"
+    },
+    "sources": [
+      "https://commons.wikimedia.org/wiki/File:Tesla_Motors_Assembly_Line_(6858583426).jpg",
+      "https://commons.wikimedia.org/wiki/File:Tesla_Robot_Dance_(7408451314).jpg",
+      "https://commons.wikimedia.org/wiki/File:Linde_E20_Elektrostapler_r.jpg",
+      "https://commons.wikimedia.org/wiki/File:Boilersuit.jpg"
+    ],
+    "credits": "assets/factory/ATTRIBUTION.md",
+    "hashesAndPivots": "assets/factory/manifest.json",
+    "productionProvenance": "assets/factory/production-provenance.json",
+    "notes": "Prepared photo/reference originals remain in the preserved project art-source packet. This release adds factory scenery only, retaining ranked collision/generation rules. Ramp stunt and independent daylight remain separate unfinished stages."
   },
   "uiStabilization370": {
     "date": "2026-10-20",
@@ -663,6 +621,48 @@
     ],
     "inspection": "Whole image plus512/192/64/48px and circle crop reviewed against photo pose, game hero, TV shapes and video cutout. Two arms/legs, high knees, separate flipping car, smoke, bottom characters, diagonal rocket, no city."
   },
+  "factoryOrganicV362": {
+    "category": "background scenery",
+    "realPrototypes": [
+      "Dexion Speedlock P90 pallet rack",
+      "Haas VF-2 (2013) vertical machining centre"
+    ],
+    "sources": [
+      {
+        "name": "dexion-p90.jpg",
+        "object": "Dexion Speedlock P90 pallet rack",
+        "page": "https://www.dexion.com/products/pallet-racking/speedlock-p90-pallet-racking/",
+        "image": "https://www.dexion.com/globalassets/services/uk_the_range_avonmouth_racking_construction-01.jpg",
+        "author": "Dexion / Gonvarri Material Handling, photographer unspecified",
+        "license": "Reuse license not established; retained locally as reference",
+        "sha256": "602d5bdd0ab0a23093bd00512cf6d345a6814b90ee33753bca41ce839d5fcc1f",
+        "accessDate": "2026-10-20"
+      },
+      {
+        "name": "haas-vf2.jpg",
+        "object": "Haas VF-2 (2013) vertical machining centre",
+        "page": "https://www.bidspotter.com/en-us/auction-catalogues/bscunited/catalogue-id-united4-10145/lot-339212d3-7067-4350-875b-b0a80175e94c",
+        "image": "https://portal-images.azureedge.net/auctions-2023/united4-10145/images/f7c20701-d38e-4183-80fe-b0a80176538c.jpg?h=1920&mode=max&w=1920",
+        "author": "United Asset Sales listing, photographer unspecified",
+        "license": "Reuse license not established; retained locally as reference",
+        "sha256": "a6b914708154ed4ac694821b8e568c8c53a1b3ec2a75571e2adddca52252ae11",
+        "accessDate": "2026-10-20"
+      }
+    ],
+    "style": "Current factory rear-wall paper sprite, passed as actual second image",
+    "method": "Built-in image_gen, photo-guided paper adaptation, transparent_background=true",
+    "packet": "art-source/factory-organic-v362/provenance.json",
+    "runtimeFiles": [
+      "assets/factory/rack-v362.png",
+      "assets/factory/machine-v362.png"
+    ],
+    "size": [
+      512,
+      341
+    ],
+    "alpha": "RGBA; proportional resize; original retained",
+    "notes": "Fictional background arrangement; no claim these machine/rack models are used by Tesla. Existing worker assets retained as history but removed from renderer and active offline cache."
+  },
   "release371": {
     "version": "3.7.1",
     "scope": "Menu/UI changes and final kickflip icon, preserving latest3.6.2 factory",
@@ -671,7 +671,8 @@
     "activeCover": "assets/ui/pwa-cover-kickflip-v2.png",
     "uiSourceRecord": "uiStabilization370",
     "iconSourceRecord": "pwaKickflipV2",
-    "researchInputs": "Photo and TV references are local-only research, not runtime assets."
+    "researchInputs": "Photo and TV references are local-only research, not runtime assets.",
+    "publishedCommit": "15f7693bbebd46bb6af601c88dc197b56711a6f1"
   },
   "factoryAssemblyArt20261021": {
     "status": "approved-integrated-v3.9.0",
@@ -806,5 +807,256 @@
       "normalization": "remove alpha<10 generated flecks; alpha crop; proportional Lanczos max768; remaining alpha preserved"
     },
     "runtime": "Far wall plane, before storage and production; 0.8 perspective, 0.5 alpha, 0.12 parallax. No ranked mechanics changes."
+  },
+  "boostersV430": {
+    "method": "Five individually generated photo-and-current-game-guided transparent cut-paper pickup sprites",
+    "style": "New foreground collectible category; simplified tactile paper props, cream cutout edge. Current painter scene supplied as actual image input. Vehicle photo style and distant background style are unchanged.",
+    "assets": {
+      "shield": {
+        "prototype": "Cold Steel Medieval Buckler CS-92BKPB",
+        "photo": {
+          "page": "https://www.coldsteel.com/medieval-buckler/",
+          "images": [
+            "https://cdn11.bigcommerce.com/s-99kn4fj7jr/images/stencil/500x659/products/232/490/92BKPB_1__34325.1607300809.jpg?c=1"
+          ],
+          "author": "Cold Steel",
+          "license": "Not specified on product page"
+        },
+        "accessed": "2026-10-23",
+        "generationInputs": [
+          "art-source/boosters-20261023/references/shield-photo.jpg",
+          "art-source/boosters-20261023/style/current-game.png"
+        ],
+        "prompt": "Create ONE transparent PNG game pickup sprite: a cyan and brushed-silver ROUND PROTECTIVE BUCKLER SHIELD, front view with slight thickness, centered, whole object within a square with 12% clear margin. Photo A is the real Cold Steel Medieval Buckler CS-92BKPB: use only the upper shield for circular silhouette, raised central boss and rim, ignore the hand and second shield. Image B is the CURRENT Tesla Jump game scene: match its simplified South Park-like tactile cut-paper prop grammar, warm cream thin cutout edge, flat bold shapes with subtle paper grain, crisp readable silhouette. Cyan face, silver rim and central boss; only 3–4 broad shapes, simple enough for a 32-pixel icon. This is a pickup, not a realistic product photo and not a person. No backdrop, no scene, no text, no sphere, no glow, no cast shadow outside the object. Real alpha transparent background. Do not reproduce characters, factory, limbs or other objects from image B.",
+        "tool": "image_gen.imagegen",
+        "generatedOriginal": "art-source/boosters-20261023/generated/shield-original.png",
+        "file": "assets/boosters/shield.png",
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+        "sha256": "cbbb7211705511fcc4dc7a55cb539c3d6cd5675d88763497dee528ff5812b347"
+      },
+      "speed": {
+        "prototype": "SpaceX Starship upper stage, April 2023",
+        "photo": {
+          "page": "https://www.flickr.com/photos/spacex/52822653368",
+          "images": [
+            "https://live.staticflickr.com/65535/52822653368_ff034659d4.jpg"
+          ],
+          "author": "Official SpaceX Photos",
+          "license": "CC BY-NC 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-nc/2.0/"
+        },
+        "accessed": "2026-10-23",
+        "generationInputs": [
+          "art-source/boosters-20261023/references/speed-photo.jpg",
+          "art-source/boosters-20261023/style/current-game.png"
+        ],
+        "prompt": "Create ONE transparent PNG pickup sprite for Tesla Jump: a tiny silver SpaceX STARSHIP upper-stage rocket with pointed black nose, black heat-shield side and two simple flap pairs, launching diagonally toward upper right, with a short orange/yellow flame attached below. Photo A is the actual Starship at Starbase: use the ROCKET ONLY for recognizable proportions and flaps; do not draw launch tower, landscape or Super Heavy lower booster. Image B is current Tesla Jump: match its tactile flat cut-paper prop style, warm cream thin cutout edge, simple broad shapes and subtle paper grain. Keep detail sparse for 32-pixel readability. Entire rocket including attached flame in square frame, 15% transparent margin. No words, logo, sphere, glow or separate stars; no people or scene. True alpha transparency.",
+        "tool": "image_gen.imagegen",
+        "generatedOriginal": "art-source/boosters-20261023/generated/speed-original.png",
+        "file": "assets/boosters/speed.png",
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+        "sha256": "71b6ec2f4cc74cf764a5f5af414364cb4b6babbe3d27c62e11ab19ccac429791"
+      },
+      "jump": {
+        "prototype": "Lee Spring compression coil spring",
+        "photo": {
+          "page": "https://www.leespring.com/compression-springs",
+          "images": [
+            "https://www.leespring.com/sites/default/files/2018-03/1-Compression-Springs_300x300_2.jpg"
+          ],
+          "author": "Lee Spring",
+          "license": "Not specified on product page"
+        },
+        "accessed": "2026-10-23",
+        "generationInputs": [
+          "art-source/boosters-20261023/references/jump-photo.jpg",
+          "art-source/boosters-20261023/style/current-game.png"
+        ],
+        "prompt": "Create ONE transparent PNG game pickup icon: one upright CHARTREUSE GREEN METAL COMPRESSION COIL SPRING with five thick clearly separated coils and flat end loops, slight three-quarter view. Photo A shows real Lee Spring compression springs: take the geometry of the GREEN coil in lower right only, simplify to five thick coils, no other springs. Image B is current Tesla Jump scene and defines tactile flat cut-paper style, restrained paper grain, cream narrow cutout edge, chunky readable shapes. Spring must be unmistakable at 32 pixels. No arrows, text, glow, sphere, stand, people, scene or other objects. Whole object centered inside square with 15% transparent padding. True alpha transparent background.",
+        "tool": "image_gen.imagegen",
+        "generatedOriginal": "art-source/boosters-20261023/generated/jump-original.png",
+        "file": "assets/boosters/jump.png",
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+        "sha256": "2cace2bce073d792c8281612155deecd4b81f294632cbea7383b9bc723fe4c67"
+      },
+      "life": {
+        "prototype": "IKEA FAMNIG HJÄRTA heart cushion",
+        "photo": {
+          "page": "https://www.ikea.com/us/en/p/famnig-hjaerta-cushion-red-50473209/",
+          "images": [
+            "https://www.ikea.com/us/en/images/products/famnig-hjaerta-cushion-red__0710297_pe727447_s5.jpg"
+          ],
+          "author": "IKEA",
+          "license": "Not specified on product page"
+        },
+        "accessed": "2026-10-23",
+        "generationInputs": [
+          "art-source/boosters-20261023/references/life-photo.jpg",
+          "art-source/boosters-20261023/style/current-game.png"
+        ],
+        "prompt": "Create ONE transparent PNG game pickup sprite: a bold simple RED HEART, front view. Photo A is an actual IKEA FAMNIG HJARTA heart cushion: use the red heart central body and its recognizable lobes and pointed bottom as the shape reference; REMOVE BOTH ARMS AND HANDS entirely, no limbs. Image B is the current Tesla Jump scene: match its flat tactile cut-paper prop style with restrained grain, cream narrow cutout edge and only a few broad paper layers. A warm coral red heart with one small lighter red highlight and a darker lower red layer, no realistic cloth folds. It must read clearly as an extra life at 24–32 pixels. Whole heart centered in square, 15% clear margin. No text, sphere, glow, faces, medical cross, scene or other objects. Real transparent alpha background.",
+        "tool": "image_gen.imagegen",
+        "generatedOriginal": "art-source/boosters-20261023/generated/life-original.png",
+        "file": "assets/boosters/life.png",
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+        "sha256": "d14a183707befbb443fe5403cca5559a6aa841ed07dfe93101633df9da9a695c"
+      },
+      "score": {
+        "prototype": "Physical Dogecoin token, photographed by Cyril Ernst",
+        "photo": {
+          "page": "https://commons.wikimedia.org/wiki/File:Dogecoin_gold_coin_on_wood_2_-_tails.jpg",
+          "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/19/Dogecoin_gold_coin_on_wood_2_-_tails.jpg"
+          ],
+          "author": "Cyril Ernst",
+          "license": "CC BY-SA 4.0"
+        },
+        "accessed": "2026-10-23",
+        "generationInputs": [
+          "art-source/boosters-20261023/references/score-photo.jpg",
+          "art-source/boosters-20261023/style/current-game.png"
+        ],
+        "prompt": "Create ONE transparent PNG game pickup sprite: a GOLD COIN with a very large dark embossed '×3' centered on its face, front view with slight visible thickness. Photo A is a real physical Dogecoin token on wood (Cyril Ernst): use circular token geometry, raised rim and milled edge as form reference only; remove all Dogecoin writing, D emblem and wooden background, change metal to warm gold. Image B is current Tesla Jump and defines tactile cut-paper prop style, subtle paper grain, cream narrow cutout edge, simple broad ochre/gold layers instead of photorealistic metal. Text must read exactly '×3' and occupy most of face, perfectly legible as a 32-pixel pickup icon. No other lettering, crypto branding, sphere, glow, stars, scene or people. One centered whole coin in square frame with 15% clear margin. Real alpha transparent background.",
+        "tool": "image_gen.imagegen",
+        "generatedOriginal": "art-source/boosters-20261023/generated/score-original.png",
+        "file": "assets/boosters/score.png",
+        "size": [
+          256,
+          256
+        ],
+        "alpha": true,
+        "normalization": "Sharp trim and proportional resize, transparent padding to 256 square; originals retained",
+        "sha256": "e1e5e5980928dc8a04b476609c26d6e33f46ee0a91fc90f40f7cb43563de8325"
+      }
+    }
+  },
+  "boostersHologramsV431": {
+    "date": "2026-10-23",
+    "userDirection": "Simpler sci-fi holograms: helmet, jetpack, spring, chip, gold literal х3 without coin",
+    "brief": "art-source/boosters-holo-20261023/brief.md",
+    "styleReference": "art-source/boosters-holo-20261023/style/current-game.png",
+    "familyReference": "art-source/boosters-holo-20261023/generated/shield.png",
+    "generationTool": "image_gen.imagegen",
+    "assets": [
+      {
+        "id": "shield",
+        "width": 256,
+        "height": 256,
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "partialAlphaPixels": 37004,
+        "prototype": "SpaceX Crew Dragon helmet",
+        "file": "assets/boosters/holo-v431/shield.png",
+        "sha256": "c2cd8f409fb6bb3f01129d16819a63795f1907134e5c88e740108d16623fc141",
+        "photo": "art-source/boosters-holo-20261023/references/helmet-photo.jpg",
+        "original": "art-source/boosters-holo-20261023/generated/shield.png",
+        "prompt": "Use case: game-asset. One simple holographic sci-fi booster icon: a detached SpaceX Crew Dragon spacesuit HELMET, near frontal three-quarter view. Input 1 is the real SpaceX suit photo (NASA/SpaceX KSC-20180102-PH_SPX01_0010): use ONLY the astronaut helmet's smooth rounded shell, broad visor and neck ring, no person or spacecraft. Input 2 is the actual Tesla Jump game frame: compatibility reference for readability, NOT its paper texture. The user explicitly wants a simplified hologram style. Cyan luminous bold clean silhouette and visor outline, two or three translucent cyan planes, restrained narrow glow, sparse horizontal scan lines. Flat iconic geometry with a hint of depth. At 24px it must read immediately as a space helmet. Bright thick contours, dark transparent visor interior, no face, no logos, no text. No paper, sticker border, physical material, extraneous rings, stars or scenery. Entire centered helmet within square with 12% margin. Genuine alpha transparency, no background or ground shadow. Produce only this single icon.",
+        "inputs": [
+          "references/helmet-photo.jpg",
+          "style/current-game.png"
+        ],
+        "transparentBackgroundRequested": true
+      },
+      {
+        "id": "speed",
+        "width": 256,
+        "height": 256,
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "partialAlphaPixels": 35429,
+        "prototype": "NASA SAFER backpack, stylized exhaust",
+        "file": "assets/boosters/holo-v431/speed.png",
+        "sha256": "2f9441f220748df4ac27a70e59d50898877439c3df6e383fa44a70c43941ee41",
+        "photo": "art-source/boosters-holo-20261023/references/jetpack-photo.jpg",
+        "original": "art-source/boosters-holo-20261023/generated/speed.png",
+        "prompt": "One Tesla Jump sci-fi booster icon, a simple holographic JETPACK, rear three-quarter view, no astronaut. Image 1: real NASA SAFER backpack photo, source for the compact back-mounted rectangular propulsion pack, paired side propulsion modules and shoulder attachment, simplify radically. Image 2: actual game frame for compatibility only. Image 3: approved new cyan hologram HELMET defines the icon family: luminous clean bold contours, sparse horizontal scan lines, a few translucent planes, restrained glow and no paper sticker border. Make the jetpack the SAME simplified holographic style in warm AMBER/ORANGE light, two short stylized exhaust flares below its twin propulsion pods to communicate speed. Just central pack and two pods, no tiny mechanical detail, no hoses or arms, no rocket/missile shape. Clear as a jetpack at 24px. Single centered entire object on genuine transparent alpha background with comfortable 12% margin. No badge, no circle, text, logos, stars, pedestal or scenery.",
+        "inputs": [
+          "references/jetpack-photo.jpg",
+          "style/current-game.png",
+          "generated/shield.png"
+        ],
+        "transparentBackgroundRequested": true
+      },
+      {
+        "id": "jump",
+        "width": 256,
+        "height": 256,
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "partialAlphaPixels": 29158,
+        "prototype": "Lee Spring compression spring",
+        "file": "assets/boosters/holo-v431/jump.png",
+        "sha256": "96b4569b774a2190595a8717784681e3b22499166e86b8c062060c9779f0a8ea",
+        "photo": "art-source/boosters-holo-20261023/references/spring-photo.jpg",
+        "original": "art-source/boosters-holo-20261023/generated/jump.png",
+        "prompt": "Single simple Tesla Jump booster icon: an upright compression SPRING made of luminous LIME GREEN holographic light. Image1 is real Lee Spring compression springs product photography: use ONLY the recognizable upright coil form (choose one spring, 4 clear coils), no assortment or other objects. Image2 actual game screenshot compatibility only. Image3 new holographic helmet defines style, substitute lime/chartreuse for cyan: bold clean emissive contours, softly translucent planes, restrained narrow glow, very sparse horizontal scan lines. Minimal geometric spring silhouette, slight three-quarter view, wide gaps between 4 turns so it is instantly readable at 24px. No platform/base or arrow, no mechanical tiny details, no paper, sticker border or physical metal texture. Whole centered object on genuine transparent alpha background with 12% breathing margin. No circle, lettering, logos, stars, scenery or cast shadow.",
+        "inputs": [
+          "references/spring-photo.jpg",
+          "style/current-game.png",
+          "generated/shield.png"
+        ],
+        "transparentBackgroundRequested": true
+      },
+      {
+        "id": "life",
+        "width": 256,
+        "height": 256,
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "partialAlphaPixels": 44688,
+        "prototype": "Raspberry Pi RP2040 QFN chip",
+        "file": "assets/boosters/holo-v431/life.png",
+        "sha256": "1c93dad5d17e895b4eec80ca314bddabb308ea0b7651b12e58a53bc6d8f01dfb",
+        "photo": "art-source/boosters-holo-20261023/references/chip-photo.png",
+        "original": "art-source/boosters-holo-20261023/generated/life.png",
+        "prompt": "Single Tesla Jump booster icon: a simple sci-fi backup microCHIP, replacing a heart icon. Image1 is the real Raspberry Pi RP2040 chip photograph: use the square package and peripheral contacts as geometry reference ONLY, no logo or writing. Image2 actual game frame compatibility only. Image3 cyan hologram helmet is the style reference: luminous clean bold outlines, minimal broad translucent planes, sparse horizontal scan lines, controlled glow. The chip glows vivid MAGENTA/PINK, square face almost frontal with slight three-quarter thickness, one inset square core and just THREE broad short pins per side, large negative gaps, immediately readable as a chip at 19–24px. Simplified futuristic silhouette, no circuit board, intricate traces, heart symbol, text, numbers, branding or pedestal. No paper or sticker border. One centered entire chip with 12% margin on genuine alpha transparency; no background, extra circles, scene, cast shadow or detached decoration.",
+        "inputs": [
+          "references/chip-photo.png",
+          "style/current-game.png",
+          "generated/shield.png"
+        ],
+        "transparentBackgroundRequested": true
+      },
+      {
+        "id": "score",
+        "width": 256,
+        "height": 256,
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "partialAlphaPixels": 21687,
+        "prototype": "Gold х3 typography, Adafruit 879 yellow display emission reference",
+        "file": "assets/boosters/holo-v431/score.png",
+        "sha256": "d021a6338b0cd3ba207b6f9292bae1d39433cbb101d7064f3dfaa704254c9e09",
+        "photo": "art-source/boosters-holo-20261023/references/type-photo.jpg",
+        "original": "art-source/boosters-holo-20261023/generated/score.png",
+        "prompt": "A single simple game booster icon consisting ONLY of the exact bright GOLD text \"х3\", on genuine alpha transparency. Text verbatim: \"х3\" (lowercase Cyrillic х, visually an x, followed by digit 3). Nothing else. Bold clean geometric sci-fi sans serif lettering, two generously thick clear glyphs, bright pale golden emissive cores with narrow rich amber glow and a few very subtle scan lines, slightly translucent holographic light. Near frontal, no bevel or physical depth. Image1 is an actual Adafruit yellow LED display photograph: reference ONLY for luminous yellow light; do NOT reproduce device, segments, its numbers or rectangular panel. Image2 is actual Tesla Jump frame for contrast compatibility. Image3 is the new hologram helmet: keep the same crisp luminous holographic family, but gold. The exact simple lettering must dominate, read instantly at 24–32px. No coin, circle, token, frame, border, object, badge, platform, stars, sparkles, shadow, backdrop, additional characters or words. Center both glyphs together as a single compact icon with 12% margin, transparent negative space around and within glyphs.",
+        "inputs": [
+          "references/type-photo.jpg",
+          "style/current-game.png",
+          "generated/shield.png"
+        ],
+        "transparentBackgroundRequested": true
+      }
+    ]
   }
 }

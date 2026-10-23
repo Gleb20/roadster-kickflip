@@ -1,0 +1,15 @@
+{
+  "head": "331a970a2c3256856fbc3fe3fe287eea7584de37",
+  "indexSHA256": "0cf02dcd8a671fc1e1bfb3c0aca5bd89e9225cf46f02a135c2ac12f5195c0a4d",
+  "oldFrozenFilesUnchanged": 64,
+  "guardedIntegratedFiles": 54,
+  "gameTests": 154,
+  "serverTests": 15,
+  "databaseChecks": 21,
+  "motionBrowserChecks": 34,
+  "nativeBrowserChecks": 54,
+  "upgradeChecks": 11,
+  "pwaResources": 166,
+  "published": false,
+  "physicalPhoneTested": false
+}

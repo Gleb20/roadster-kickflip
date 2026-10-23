@@ -1,0 +1,141 @@
+{
+  "compared": [
+    {
+      "file": "src/biomes.js",
+      "match": true
+    },
+    {
+      "file": "src/catalog.js",
+      "match": true
+    },
+    {
+      "file": "src/characters.js",
+      "match": true
+    },
+    {
+      "file": "src/clock.js",
+      "match": true
+    },
+    {
+      "file": "src/coaching.js",
+      "match": true
+    },
+    {
+      "file": "src/collection-ui.js",
+      "match": true
+    },
+    {
+      "file": "src/director.js",
+      "match": false
+    },
+    {
+      "file": "src/enemy-sprites.js",
+      "match": true
+    },
+    {
+      "file": "src/factory.js",
+      "match": true
+    },
+    {
+      "file": "src/fall.js",
+      "match": true
+    },
+    {
+      "file": "src/gameplay-config.js",
+      "match": true
+    },
+    {
+      "file": "src/gameplay.js",
+      "match": false
+    },
+    {
+      "file": "src/loading.js",
+      "match": true
+    },
+    {
+      "file": "src/main.js",
+      "match": false
+    },
+    {
+      "file": "src/online-store.js",
+      "match": true
+    },
+    {
+      "file": "src/online-ui.js",
+      "match": true
+    },
+    {
+      "file": "src/online.js",
+      "match": true
+    },
+    {
+      "file": "src/physics.js",
+      "match": true
+    },
+    {
+      "file": "src/props.js",
+      "match": true
+    },
+    {
+      "file": "src/routes.js",
+      "match": false
+    },
+    {
+      "file": "src/run.js",
+      "match": false
+    },
+    {
+      "file": "src/score-record.js",
+      "match": true
+    },
+    {
+      "file": "src/speed-feedback.js",
+      "match": false
+    },
+    {
+      "file": "src/thrusters.js",
+      "match": true
+    },
+    {
+      "file": "supabase/config.toml",
+      "match": true
+    },
+    {
+      "file": "supabase/handler.mjs",
+      "match": true
+    },
+    {
+      "file": "supabase/local-api.mjs",
+      "match": true
+    },
+    {
+      "file": "supabase/migrations/20261023090000_background_ranking.sql",
+      "match": true
+    },
+    {
+      "file": "supabase/test-background-hosted.mjs",
+      "match": false
+    },
+    {
+      "file": "supabase/test-background.mjs",
+      "match": false
+    },
+    {
+      "file": "supabase/tests/worker.test.mjs",
+      "match": true
+    },
+    {
+      "file": "supabase/worker-entry.mjs",
+      "match": true
+    },
+    {
+      "file": "supabase/worker.mjs",
+      "match": true
+    }
+  ],
+  "unavailable": [
+    "supabase/install-worker-schedule.sql"
+  ],
+  "schedulerVerifiedByGitBlob": true,
+  "remoteMain": "4040488e44fdae42ac84a961135cbd44e52d2173"
+}

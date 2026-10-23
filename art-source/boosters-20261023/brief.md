@@ -1,0 +1,9 @@
+# Booster sprite production — 23 October 2026
+
+User authorized self-produced game-style sprites and implementation after neighbouring work completed. Five separate built-in generations use actual inspected photographs and a current painter capture. Originals, input images and exact prompts are retained in this directory; `generation.json` records every input/output and runtime hash. This is a new foreground collectible category: broad paper shapes, thin cream cut edge, readable at 24–40 pixels. It does not replace the photographic car category or the quieter background palette.
+
+Objects: Cold Steel round buckler; Starship upper stage; Lee Spring coil; IKEA heart cushion with arms removed; physical Dogecoin token with emblem replaced by ×3 and gold recoloring. The final sprites are 256-square alpha PNGs with a shared center anchor and proportional transparent padding. Field icon is about 48 world units inside a 58-unit sphere; HUD icons are 25–32 CSS pixels. Sphere glow, vertical-axis spin, protective aura, flames and flyaway motion are separate procedural effects.
+
+Photo sources, authors and known licenses are in `references/sources.json` and `assets/boosters/ATTRIBUTION.md`. Manufacturer photo licenses remain unspecified; do not describe them as open-license images. SpaceX photo is CC BY-NC 2.0; score sprite adaptation is CC BY-SA 4.0 with Cyril Ernst credit. Generated artwork is distinct from documentary photographs. The physical token photo appears gray under its lighting; the gold coloring is a deliberate generated adaptation.
+
+Inspected all five source images and the current game scene before generation. Each result was displayed and checked, then normalized with Sharp without changing aspect ratio. Visual comparisons and actual desktop/mobile scene captures are in `docs/verification/2026-10-23-boosters/`. Physical iPhone/Safari and subjective player balance remain unverified.

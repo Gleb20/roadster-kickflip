@@ -1,0 +1,164 @@
+--- src/run.js
++++ src/run.js
+@@ -4,7 +4,7 @@
+ import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=VERSION';
+ import {createDirector} from './director.js?v=VERSION';
+ import {createRandom} from './random.js?v=VERSION';
+-export const RULESET='roadster-v4.3.0',RUN_STEP=1/120;
++export const RULESET='roadster-v4.3.2',RUN_STEP=1/120;
+ export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
+ const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
+ /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
+@@ -57,8 +57,8 @@
+    if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(E);if(o.altitude)events.push({type:'air-passed'});}
+   }
+   for(const orb of Q.pickups){const old=orb.x;orb.x-=S.speed*RUN_STEP;
+-   const inReach=Math.min(old,orb.x)<=74&&Math.max(old,orb.x)>=-74&&Math.abs(P.y+78-orb.y)<=100;
+-   if(!F.active&&inReach&&collectBooster(Q,orb.id)){orb.collected=true;events.push({type:'pickup',id:orb.id});}
++   const inReach=Math.min(old,orb.x)<=112&&Math.max(old,orb.x)>=-112&&Math.abs(P.y+78-orb.y)<=122;
++   if(!F.active&&inReach&&collectBooster(Q,orb.id)){orb.collected=true;events.push({type:'pickup',id:orb.id,uid:orb.uid,x:orb.x,y:orb.y});}
+   }
+   Q.pickups=Q.pickups.filter(o=>!o.collected&&o.x> -180);
+   Q.ghostIds=Q.ghostIds.filter(id=>S.obs.some(o=>o.uid===id&&o.x+o.w> -180));
+--- src/boosters.js
++++ src/boosters.js
+@@ -8,8 +8,9 @@
+ });
+ export function createBoosters(seed=0){return {active:{},hearts:0,grace:0,ghostIds:[],speedBlend:0,pickups:[],nextAt:8,serial:0,bag:[],random:(seed^0xa53c9e17)>>>0,spoiledFlight:false};}
+ export const activeBooster=(q,id)=>(q?.active[id]||0)>0;
++export function canCollectBooster(q,id){return !!BOOSTERS[id]&&(id==='life'?q.hearts<2:activeBooster(q,id)||Object.keys(q.active).length<3);}
+ export function collectBooster(q,id){
+- const def=BOOSTERS[id];if(!def)return false;
++ const def=BOOSTERS[id];if(!canCollectBooster(q,id))return false;
+  if(id==='life'){if(q.hearts>=2)return false;q.hearts++;return true;}
+  if(!activeBooster(q,id)&&Object.keys(q.active).length>=3)return false;
+  q.active[id]=def.seconds;return true;
+--- src/booster-art.js
++++ src/booster-art.js
+@@ -1,15 +1,38 @@
+-import {BOOSTERS,activeBooster} from './boosters.js?v=VERSION';
++import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=VERSION';
++export const PICKUP_FLIGHT_SECONDS=.32;
++const clamp=value=>Math.max(0,Math.min(1,value));
++function riderTarget(p){return {x:Math.sin(p.angle||0)*35,y:p.y+65+Math.cos(p.angle||0)*35};}
++export function pickupPose(o,p,time,{reduced=false,attract=true}={}){
++ const bob=reduced?0:Math.sin(time*2.8+o.uid*.7)*6,target=riderTarget(p),y=o.y+bob;
++ const proximity=clamp(1-Math.hypot((o.x-target.x)/240,(y-target.y)/180));
++ const pull=reduced||!attract?0:proximity*proximity*.55;
++ return {x:o.x+(target.x-o.x)*pull,y:y+(target.y-y)*pull};
++}
++export function collectionPose(start,p,age,reduced=false){
++ const t=clamp(age/(reduced?.13:PICKUP_FLIGHT_SECONDS)),target=riderTarget(p),travel=t*t;
++ return {x:reduced?start.x:start.x+(target.x-start.x)*travel,y:reduced?start.y:start.y+(target.y-start.y)*travel,size:reduced?1:1-travel,alpha:reduced?1-t:1-clamp((t-.65)/.35),done:t>=1};
++}
+ export function createBoosterPainter(){
+  const images=Object.fromEntries(Object.keys(BOOSTERS).map(id=>[id,new Image()]));
++ let flights=[];
+  function load(){return Promise.all(Object.entries(images).map(([id,img])=>new Promise((resolve,reject)=>{img.onload=()=>img.decode().then(resolve,reject);img.onerror=reject;img.src=new URL('../assets/boosters/holo-v431/'+id+'.png',import.meta.url).href;})));}
+- function drawPickups(ctx,q,{px,ground,scale,time,reduced=false}){
+-  for(const o of q.pickups){const x=px+o.x*scale,y=ground-o.y*scale,r=29*scale;if(x< -60||x>ctx.canvas.width+60)continue;
+-   ctx.save();ctx.translate(x,y+(reduced?0:Math.sin(time*3+o.uid)*3*scale));
+-   const glow=ctx.createRadialGradient(0,0,r*.3,0,0,r*1.6);glow.addColorStop(0,BOOSTERS[o.id].color+'40');glow.addColorStop(1,BOOSTERS[o.id].color+'00');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(0,0,r*1.6,0,Math.PI*2);ctx.fill();
+-   ctx.fillStyle='#192a3866';ctx.strokeStyle=BOOSTERS[o.id].color;ctx.lineWidth=1.4*scale;ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
++ function drawOrb(ctx,id,{x,y,scale,alpha=1,spin=1}){
++   const r=29*scale;ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);
++   const glow=ctx.createRadialGradient(0,0,r*.3,0,0,r*1.6);glow.addColorStop(0,BOOSTERS[id].color+'40');glow.addColorStop(1,BOOSTERS[id].color+'00');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(0,0,r*1.6,0,Math.PI*2);ctx.fill();
++   ctx.fillStyle='#192a3866';ctx.strokeStyle=BOOSTERS[id].color;ctx.lineWidth=1.4*scale;ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
+    ctx.strokeStyle='#fff9';ctx.lineWidth=1.5*scale;ctx.beginPath();ctx.arc(-r*.08,-r*.08,r*.76,3.7,4.6);ctx.stroke();
+-   ctx.scale(reduced?1:Math.cos(time*2.6+o.uid*.4),1);ctx.drawImage(images[o.id],-r*.83,-r*.83,r*1.66,r*1.66);ctx.restore();
++   ctx.scale(spin,1);ctx.drawImage(images[id],-r*.83,-r*.83,r*1.66,r*1.66);ctx.restore();
++ }
++ function drawPickups(ctx,q,{px,ground,scale,time,flight,reduced=false,falling=false}){
++  for(const o of q.pickups){const pose=pickupPose(o,flight,time,{reduced,attract:!falling&&canCollectBooster(q,o.id)}),x=px+pose.x*scale;
++   if(x< -60||x>ctx.canvas.width+60)continue;
++   drawOrb(ctx,o.id,{x,y:ground-pose.y*scale,scale,spin:reduced?1:Math.cos(time*2.6+o.uid*.4)});
+   }
++ }
++ function collect(event,time,flight,reduced=false){flights.push({...event,start:pickupPose(event,flight,time,{reduced}),at:time});flights=flights.slice(-8);}
++ function drawCollections(ctx,{px,ground,scale,time,flight,reduced=false}){
++  flights=flights.filter(f=>time>=f.at&&!collectionPose(f.start,flight,time-f.at,reduced).done);
++  for(const f of flights){const pose=collectionPose(f.start,flight,time-f.at,reduced);drawOrb(ctx,f.id,{x:px+pose.x*scale,y:ground-pose.y*scale,scale:scale*pose.size,alpha:pose.alpha});}
+  }
+  function aura(ctx,q,{x,y,scale,time,reduced=false}){
+   if(!activeBooster(q,'shield'))return;
+@@ -17,5 +40,5 @@
+   ctx.globalAlpha=warning&&!reduced?.45+.35*(.5+.5*Math.sin(time*9)):.8;ctx.strokeStyle='#9cf4ff';ctx.lineWidth=2;ctx.shadowColor='#7ce5f3';ctx.shadowBlur=18*scale;
+   ctx.fillStyle='#7ce5f30b';ctx.beginPath();ctx.ellipse(0,-76,68,112,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.strokeStyle='#7ce5f344';ctx.beginPath();ctx.ellipse(0,-76,74,118,0,0,Math.PI*2);ctx.stroke();ctx.restore();
+  }
+- return {load,drawPickups,aura};
++ return {load,drawPickups,aura,collect,drawCollections,reset(){flights=[];},inspect(time,flight,reduced=false){return flights.map(f=>({id:f.id,age:time-f.at,...collectionPose(f.start,flight,time-f.at,reduced)}));}};
+ }
+--- src/main.js
++++ src/main.js
+@@ -66,7 +66,7 @@
+ const collection=createCollection(storage,types.map(o=>o.id));let collectionUI,pwa;
+ const localHost=['localhost','127.0.0.1'].includes(location.hostname);
+ let onlineUI,activeOnline=null,completedOnline=null,onlineTarget=null;
+-const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0',RULESET]});
++const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0',RULESET]});
+ let recordRank=null,rankRequest=0;
+ function refreshScoreActions(){
+  const saved=scoreRecord.matching(best),posted=!!saved?.entry,canPost=scoreRecord.canPost(saved),rank=$('best-rank');
+@@ -159,7 +159,7 @@
+ function start(seed){
+  if(!spritesReady||artReview||$('game').inert||pwa?.locked)return;
+  if(pwa?.beforeRun())return;
+- sound.unlock();if($('replay-tutorial').checked){coach.reset();$('replay-tutorial').checked=false;}cancelCharge();activeOnline=typeof seed==='number'?null:online.takeSession();completedOnline=null;const nextSeed=typeof seed==='number'?seed:activeOnline?.seed??crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed);biomeScene.reset();factory.reset();encounters.reset();sceneTime=0;rocketLeg=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
++ sound.unlock();if($('replay-tutorial').checked){coach.reset();$('replay-tutorial').checked=false;}cancelCharge();activeOnline=typeof seed==='number'?null:online.takeSession();completedOnline=null;const nextSeed=typeof seed==='number'?seed:activeOnline?.seed??crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed);boosterPainter.reset();biomeScene.reset();factory.reset();encounters.reset();sceneTime=0;rocketLeg=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
+  cameraLift=0;scale=viewScale(W,H,0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();characters.reset();
+  Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();projectiles.length=0;clock.reset();syncState();ui();tone(500);
+ }
+@@ -172,7 +172,7 @@
+ $('boost').onclick=e=>e.preventDefault();
+ $('start').onclick=start;$('restart').onclick=start;$('resume').onclick=pause;$('pause').onclick=pause;
+ $('pause-restart').onclick=start;
+-function home(){if(pwa?.locked)return;cancelCharge();run.reset();S.mode='menu';biomeScene.reset();factory.reset();encounters.reset();characters.reset();thrusters.reset();projectiles.length=0;activeOnline=null;completedOnline=null;sceneTime=0;cameraLift=0;clock.reset();syncState();ui();collectionTeaser();$('start').focus({preventScroll:true});void refreshRecordRank();}
++function home(){if(pwa?.locked)return;cancelCharge();run.reset();boosterPainter.reset();S.mode='menu';biomeScene.reset();factory.reset();encounters.reset();characters.reset();thrusters.reset();projectiles.length=0;activeOnline=null;completedOnline=null;sceneTime=0;cameraLift=0;clock.reset();syncState();ui();collectionTeaser();$('start').focus({preventScroll:true});void refreshRecordRank();}
+ $('pause-home').onclick=home;$('result-home').onclick=home;
+ $('tip-dismiss').onclick=()=>{coach.dismiss(pace.progress);boostUI();};
+ function gameplayTarget(target){return !!target.closest('#boost')||!target.closest('button,a,input,textarea,select,[contenteditable]');}
+@@ -234,7 +234,7 @@
+  for(const event of run.drainEvents()){
+   if(event.type==='jump'){coach.complete('jump');if(event.charge>=.5)coach.complete('charge');tone(660,.18,'triangle');}
+   if(event.type==='death')die(event.obstacle);
+-  if(event.type==='pickup'){toast(event.id==='life'?'BACKUP CHIP':BOOSTERS[event.id].name);tone(event.id==='life'?880:740,.15,'triangle');}
++  if(event.type==='pickup'){boosterPainter.collect(event,S.t,P,reducedScenery.matches);toast(event.id==='life'?'BACKUP CHIP':BOOSTERS[event.id].name);tone(event.id==='life'?880:740,.15,'triangle');}
+   if(event.type==='rescued'){hud.dropMultiplier(event.oldMultiplier/10*(E.scoreFactor||1));toast('CHIP SAVED YOU');tone(220,.18,'triangle');}
+   if(event.type==='smash')sound.impact();
+   if(event.type==='recovered'){primaryInputs.clear();thrustInputs.clear();toast('BACK ON BOARD');}
+@@ -473,7 +473,7 @@
+  const worldGround=ground+cameraLift;
+  ellipse(x,worldGround+1.5*ds,46*ds,Math.max(1.3,3.5-hop*.012)*ds,'#0007');
+  for(const o of S.obs){if(o.smashed){ctx.save();const a=o.smashAge;ctx.globalAlpha=Math.max(0,1-a/1.2);const cx=px+(o.x+o.w/2)*scale,cy=worldGround-o.h*scale/2;ctx.translate(cx+a*1000*scale,cy-a*550*scale);if(!reducedScenery.matches)ctx.rotate(a*6);ctx.translate(-cx,-cy);obstacle(o);ctx.restore();}else obstacle(o);}
+- boosterPainter.drawPickups(ctx,Q,{px,ground:worldGround,scale,time:S.t,reduced:reducedScenery.matches});
++ boosterPainter.drawPickups(ctx,Q,{px,ground:worldGround,scale,time:S.t,flight:P,falling:F.active,reduced:reducedScenery.matches});
+  boosterPainter.aura(ctx,Q,{x:px,y:worldGround-hop*ds,scale:ds,time:S.t,reduced:reducedScenery.matches});
+  ctx.save();ctx.translate(0,cameraLift);drawProjectiles();ctx.restore();
+  ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);thrusters.drawDust(ctx);ctx.restore();
+@@ -492,6 +492,7 @@
+  elon(0,-29.5+roadsterMotion.compression,P.airborne,time);
+  if(input.charging){rect(-28,17,56,5,'#45574f',2);rect(-28,17,56*input.charge,5,'#d9ff62',2);line([[0,17],[0,22]],'#fff',1);}
+  ctx.restore();}ctx.restore();ctx.save();ctx.translate(px,worldGround);ctx.scale(ds,ds);drawMoneyStreams();drawLightning();ctx.restore();
++ boosterPainter.drawCollections(ctx,{px,ground:worldGround,scale,time:S.t,flight:P,reduced:reducedScenery.matches});
+  for(const p of S.particles){ctx.globalAlpha=Math.max(0,p.life);rect(p.x,p.y,3,3,p.c);}
+  ctx.globalAlpha=1;
+ }
+@@ -531,7 +532,7 @@
+ ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
+ window.render_game_to_text=()=>JSON.stringify({version:C.version,boosters:Q,effectiveMultiplier:E.multiplier/10*(E.scoreFactor||1),biome:biomeScene.state,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,collection:{discovered:types.filter(o=>collection.state(o.id)!=='locked').length,new:types.filter(o=>collection.state(o.id)==='new').length},y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning:input.spin,cosmeticFlip:jumpCarPose(P,C.gravity).cosmetic,carAnimation:jumpCarPose(P,C.gravity),visual:characters.inspect(),encounters:encounters.state.actors.map(a=>({id:a.id,x:a.x,altitude:a.altitude})),grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:input.charging,charge:input.charge,lastLanding,obstacles:S.obs.map(o=>({type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,factory:factory.production,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+ if(['localhost','127.0.0.1'].includes(location.hostname)){
+- window.__qa={run,S,B,P,E,F,Q,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
++ window.__qa={boosterPainter,run,S,B,P,E,F,Q,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
+  setTime(t){S.t=t;S.tick=Math.round(t/RUN_STEP);pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
+  spawn(id,dx=260){const type=[...types,...AIR_TYPES].find(o=>o.id===id);S.obs.push({...type,x:dx,uid:++S.entityId,passed:false});},
+  encounters,enemySprites,factory,rocket,roadsterMotion,thrusters,stop(){S.mode='paused';ui();},projectiles,characters,sound,
+--- supabase/rulesets.mjs
++++ supabase/rulesets.mjs
+@@ -3,5 +3,6 @@
+ import * as encounters from './rulesets/roadster-v400/run.js';
+ import * as current from './rulesets/roadster-v410/run.js';
+ import * as boosters from './rulesets/roadster-v430/run.js';
+-const supported=new Map([legacy,previous,encounters,current,boosters].map(r=>[r.RULESET,r]));
++import * as magnetic from './rulesets/roadster-v432/run.js';
++const supported=new Map([legacy,previous,encounters,current,boosters,magnetic].map(r=>[r.RULESET,r]));
+ export function ruleset(id){const r=supported.get(id);if(!r)throw Error('Unsupported ruleset');return r;}

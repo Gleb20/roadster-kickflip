@@ -1,0 +1,17 @@
+{
+  "version": "4.3.2",
+  "baseCommit": "41ff44b70f69b1d6974cbea4d52258b0118ef617",
+  "status": "backend-verified-frontend-ready",
+  "frontendPublished": false,
+  "backendDeployed": true,
+  "gameTests": 154,
+  "serverTests": 15,
+  "databaseChecks": 21,
+  "motionBrowserChecks": 34,
+  "nativeBrowserChecks": 54,
+  "upgradeChecks": 11,
+  "hostedFixtures": 8,
+  "publicFixtureWrites": 0,
+  "publicScores": 20,
+  "phoneTested": false
+}

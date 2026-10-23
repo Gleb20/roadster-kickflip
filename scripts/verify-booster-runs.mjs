@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';import{createRun,verifyReplay,RUN_STEP}from'../src/run.js';
+const out='docs/verification/2026-10-23-boosters/runs';await mkdir(out,{recursive:true});const results=[];
+for(const seed of [17,932]){const r=createRun({seed}),actions=new Map(),pickups=[],rescues=[],smashes=[];r.reset();let wave=0;
+while(r.S.mode==='playing'&&r.S.t<240){for(const a of actions.get(r.S.tick)||[])r.command(a);r.step();for(const e of r.drainEvents()){if(e.type==='pickup')pickups.push({time:r.S.t,id:e.id});if(e.type==='rescued')rescues.push(r.S.t);if(e.type==='smash')smashes.push(r.S.t);}
+if(r.director.state.wave!==wave){wave=r.director.state.wave;if(r.S.t<180)for(const e of r.director.state.last.route.actions){const tick=r.S.tick+Math.round(e.at/RUN_STEP);if(!actions.has(tick))actions.set(tick,[]);actions.get(tick).push({hold:'primary-down',jump:'primary-up','thrust-on':'thrust-on','thrust-off':'thrust-off'}[e.action]);}}
+if(r.S.t>=180&&r.S.t-RUN_STEP<180)assert.equal(r.S.mode,'playing');}
+assert.ok(r.S.t>=180,`seed ${seed} route witness died at ${r.S.t}`);assert.equal(r.S.mode,'dead');const verified=verifyReplay(r.replay());assert.equal(verified.score,r.S.score);results.push({seed,seconds:r.S.t,score:r.S.score,pickups,rescues,smashes,waves:wave,verified});await writeFile(`${out}/${seed}.json`,JSON.stringify({replay:r.replay(),expected:verified},null,2));}
+await writeFile(out+'/summary.json',JSON.stringify({results,scriptedRouteWitness:true,humanBalanceAcceptance:false},null,2));console.log(JSON.stringify(results.map(r=>({seed:r.seed,seconds:r.seconds,score:r.score,pickups:r.pickups.length,smashes:r.smashes.length}))));

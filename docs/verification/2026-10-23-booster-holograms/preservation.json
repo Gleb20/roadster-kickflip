@@ -1,0 +1,13 @@
+{
+  "head": "331a970a2c3256856fbc3fe3fe287eea7584de37",
+  "indexSHA256": "0cf02dcd8a671fc1e1bfb3c0aca5bd89e9225cf46f02a135c2ac12f5195c0a4d",
+  "oldSpritesRetained": 5,
+  "historicalProvenanceEntriesRetained": true,
+  "isolatedTests": 151,
+  "browserChecks": 54,
+  "runtimeErrors": 0,
+  "pwaResources": 166,
+  "ruleset": "roadster-v4.3.0",
+  "published": false,
+  "physicalPhoneTested": false
+}
