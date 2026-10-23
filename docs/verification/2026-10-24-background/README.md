@@ -1,0 +1,13 @@
+# Smooth scenery 4.6.4
+
+Parent: `28e02f4c5a409cd09d9b17ed33143dc2b180ee1a` (published 4.6.3). Isolated source: `/tmp/tesla-background-v464-20261024`. Original dirty root/index preserved.
+
+Repeated panoramas used `wrap(accumulatedPixelDistance, tileWidth * speedZoom)`. Speed-dependent tile widths reinterpret all prior travel: after 120 seconds the old rendered building layer reverses on 239 of 1200 sampled ticks during one booster cycle (maximum reverse displacement 1.389 px/tick). The same probe after the fix has zero reverse ticks.
+
+The background now uses a fixed viewport-based scale and its own continuously integrated, exponentially filtered velocity (4/s acceleration, 3/s deceleration). Old travel is never rescaled. The immediate near-road flow and existing speed-driven gameplay zoom/forward framing remain unchanged. Successful-flip speed rewards ease into the background; the filter also follows real slowing and recovery. Falling no longer shakes the entire canvas; rider/car poses and impact dust retain feedback. Necessary vertical tracking of high jumps in short landscape viewports remains.
+
+227 tests and syntax/content/types/PWA checks pass. 116 browser checks at 320×568, 390×844, 844×390 and 1440×900, plus reduced motion, cover both biomes after 120 simulated seconds, booster onset/expiry, one actual successful charged flip, a prepared rough landing, recovery, pause and Home. Captured actual panorama/storage draw positions have zero horizontal reversals or jumps; speed smoothing remains continuous. These controlled fixtures suppress obstacles and use local QA state; they are not a human playthrough. 41 existing camera regression checks pass. The 18-check actual 4.6.3→4.6.4 PWA upgrade preserves completed records, IndexedDB queue, collection, tutorial and audio preferences, and works cold offline. It used the known close/reopen activation boundary.
+
+The normalized gameplay and camera modules are identical. All 205 backend files remain byte-identical; `roadster-v4.6.3` and all previous replay versions are retained. No backend deployment or score writes. New frontend cache identity: 4.6.4, 191 hashed resources. Browser plugin not available; installed Playwright with desktop Chrome used. Physical iPhone/Safari and subjective comfort remain unverified.
+
+Detailed local probes, screenshots, traces and command logs: `/tmp/tesla-background-evidence/`. Summary evidence is retained beside this document. Existing technical debt was rechecked: PWA activation still sometimes needs closed tabs; phone spawn/input performance remains an unverified device question. No unrelated lifecycle or director refactor was added. A bounded next debt task is to reproduce that activation boundary before changing its logic.

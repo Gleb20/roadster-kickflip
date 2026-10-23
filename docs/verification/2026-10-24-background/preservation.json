@@ -1,0 +1,14 @@
+{
+  "parent": "28e02f4c5a409cd09d9b17ed33143dc2b180ee1a",
+  "substantiveExistingRuntimeChanges": [
+    "factory.js",
+    "main.js",
+    "environment.js"
+  ],
+  "newRuntime": [
+    "scenery-motion.js"
+  ],
+  "normalizedGameplayAndCameraIdentical": true,
+  "backendFilesIdentical": 205,
+  "ruleset": "roadster-v4.6.3"
+}

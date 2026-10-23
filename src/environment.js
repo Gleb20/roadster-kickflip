@@ -210,7 +210,7 @@ export function createEnvironmentRenderer() {
   }
 
   return {
-    draw(ctx, {W, H, ground, scale, sceneryScale, screenDistance, sceneTime, rocketScene}) {
+    draw(ctx, {W, H, ground, scale, sceneryScale, screenDistance, roadDistance = screenDistance, sceneTime, rocketScene}) {
       if (W <= 0 || H <= 0) return;
       if (!layers) layers = createLayers();
       const key = `${W}:${H}:${ground}`;
@@ -249,7 +249,7 @@ export function createEnvironmentRenderer() {
       ctx.fillRect(0,nearBase,W,ground+2-nearBase);
       tile(ctx, layers.buildings, W, ground - 29 - 130 * zoom, zoom, distance * .095);
       tile(ctx, layers.verge, W, ground - 48 * zoom, zoom, distance * .18);
-      tile(ctx, road, W, ground + 2, 1, distance);
+      tile(ctx, road, W, ground + 2, 1, roadDistance);
       line(ctx, [[0, ground], [W, ground]], '#7d978b', 1.6);
       line(ctx, [[0, ground + 2], [W, ground + 2]], '#243b40', 1);
     },

@@ -1,3 +1,7 @@
+## Smooth background 4.6.4 —bounded inverse
+
+Parent `28e02f4c5a409cd09d9b17ed33143dc2b180ee1a` is the exact 4.6.3 release. Revert only this frontend delta in an isolated checkout, compare the parent tree and run its tests/checks. Public reversal needs a new PWA identity. Keep all eleven immutable replay versions, accepted scores, pending/finished replay packets and preferences. Do not restore over the original dirty root. [Evidence](docs/verification/2026-10-24-background/README.md).
+
 ## Director liveness4.6.3 —bounded inverse
 
 Parent `454300619791d8cea513a44bcc91e25741201fad` is published4.6.2 with release settling and English audio. Revert only this release delta in an isolated checkout; inspect the exact parent tree and run parent checks. Preserve the ten old frozen rulesets and the new463 backend for cached clients, all22 real scores, pending/finished replay packets and settings. Do not reverse the additive migration, remove site data or restore this release over the original dirty root. A public frontend reversal needs a fresh PWA identity. [Proof](docs/verification/2026-10-24-director-liveness/README.md).

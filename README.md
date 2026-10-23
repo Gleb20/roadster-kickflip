@@ -1,3 +1,7 @@
+## Smooth background 4.6.4 —24 October2026
+
+Background tiles keep a fixed scale and smoothly follow actual speed, preventing backward movement and scale pulses on booster changes or flip landings. Whole-canvas fall shake is removed; near-road speed feedback, gameplay camera, mechanics and immutable roadster-v4.6.3 are preserved. 227 tests, all source/content/type/PWA checks, 116 focused browser checks, 41 camera regressions and 18 real PWA upgrade checks pass. Physical iPhone/Safari remains unverified. [Evidence](docs/verification/2026-10-24-background/README.md). Release source: `/tmp/tesla-background-v464-20261024`; original dirty root/index retained.
+
 ## Director liveness4.6.3 —24 October2026
 
 Successful flips and their speed streak no longer erase the encounter pool. The director tracks the same damped effective-speed camera as rendering, measures full-silhouette visibility on the actual route, admits simple fast singles and falls back to an optional verified rail instead of permanent empty rest. Rest begins after the threats leave the track; voluntary tricks can use it, and the exact landing tick is eligible for the next wave. Rotation4.6.2 and English audio controls are retained. New immutable `roadster-v4.6.3` is additive to all ten previous replay versions.

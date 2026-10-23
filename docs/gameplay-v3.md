@@ -1,3 +1,7 @@
+## Scenery motion 4.6.4 —24 October2026
+
+Distant scenery retains a fixed viewport-based size. Its pixel travel integrates a smoothed actual speed (4/s acceleration, 3/s deceleration); changing boosters, landing rewards or recovery cannot reinterpret accumulated travel or resize repeated tiles. The immediate near-road speed cue and speed-driven gameplay camera remain unchanged. Falls retain rider/car motion and dust without shaking the entire canvas. High jumps still use the necessary vertical camera tracking. This presentation-only change retains roadster-v4.6.3 and all historical replay support.
+
 ## Liveness correction4.6.3 — current contract
 
 The earlier4.6.0 witness-only matrix missed ordinary repeated flips. Camera preparation is now measured from the first full silhouette during the same damped effective-speed trajectory as rendering; camera state and visibility timestamps survive checkpoints/prefixes. The base-speed proxy and blanket ground suppression above760 are removed. Ordinary ground retains.9/.8s nominal/early preparation; isolated fast singles at≥760 use the explicitly calibrated.85/.75s profile, with the same180ms lead window, charge-neighbour checks and moderate joint corners. Tall profiles, colliders and physical movement are unchanged.

@@ -1,4 +1,4 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.6.3';
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.6.4';
 const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
@@ -40,7 +40,7 @@ export function createFactoryRenderer({random=Math.random}={}){
   }));grain=concreteGrain();ready=true;},
   get ready(){return ready;},get production(){return production.state;},
   reset(){production.reset();},update(biome,time){production.update(biome,time);},
-  draw(ctx,{W,H,ground,scale,sceneryScale,screenDistance,worldDistance,activeTime,reducedMotion=false,drawBehindLine=()=>{}}){
+  draw(ctx,{W,H,ground,scale,sceneryScale,screenDistance,roadDistance=screenDistance,worldDistance,activeTime,reducedMotion=false,drawBehindLine=()=>{}}){
    if(!ready)return;
    const z=Math.min(1.05,sceneryScale??clamp(scale,.68,1.05)),distance=sceneryScale?screenDistance/z:worldDistance??screenDistance/z;
    const state=production.state,t=reducedMotion?22:state?.elapsed||0;
@@ -112,13 +112,13 @@ export function createFactoryRenderer({random=Math.random}={}){
    const floor=ctx.createLinearGradient(0,ground-18*z,0,H);floor.addColorStop(0,'#46565a');floor.addColorStop(1,'#59666a');ctx.fillStyle=floor;ctx.fillRect(0,ground-18*z,W,H-ground+18*z);
    ctx.fillStyle='#b6a259';ctx.fillRect(0,ground-18*z,W,3*z);ctx.fillStyle='#263d43';ctx.fillRect(0,ground-14*z,W,2*z);
    ctx.strokeStyle='#35494f';ctx.lineWidth=.8*z;const slab=360*z;
-   for(let x=-wrap(screenDistance,slab);x<W+slab;x+=slab){ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x-42*z,H);ctx.stroke();}
+   for(let x=-wrap(roadDistance,slab);x<W+slab;x+=slab){ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x-42*z,H);ctx.stroke();}
    ctx.strokeStyle='#78818455';ctx.beginPath();ctx.moveTo(0,ground+(H-ground)*.62);ctx.lineTo(W,ground+(H-ground)*.62);ctx.stroke();
    // Fine, world-anchored concrete grain and gently different slab tones.
    let texture=patterns.get(ctx);if(!texture){texture=ctx.createPattern(grain,'repeat');patterns.set(ctx,texture);}
-   const scroll=wrap(screenDistance,128);ctx.save();ctx.translate(-scroll,0);ctx.fillStyle=texture;ctx.fillRect(scroll,ground-10*z,W,H-ground+10*z);ctx.restore();
-   const firstSlab=Math.floor(screenDistance/slab);
-   for(let x=-wrap(screenDistance,slab),n=firstSlab;x<W;x+=slab,n++){
+   const scroll=wrap(roadDistance,128);ctx.save();ctx.translate(-scroll,0);ctx.fillStyle=texture;ctx.fillRect(scroll,ground-10*z,W,H-ground+10*z);ctx.restore();
+   const firstSlab=Math.floor(roadDistance/slab);
+   for(let x=-wrap(roadDistance,slab),n=firstSlab;x<W;x+=slab,n++){
     ctx.fillStyle=['#a1aba904','#162e3605','#a1aba908','#162e3603'][wrap(n,4)];ctx.beginPath();ctx.moveTo(x,ground-10*z);ctx.lineTo(x+slab,ground-10*z);ctx.lineTo(x+slab-42*z,H);ctx.lineTo(x-42*z,H);ctx.fill();
     const y=ground+(H-ground)*(.37+wrap(n,3)*.14);ctx.fillStyle='#142f3609';ctx.beginPath();ctx.ellipse(x+slab*.54,y,26*z,4*z,-.06,0,Math.PI*2);ctx.fill();
    }
