@@ -83,5 +83,9 @@
   "restoredParentTests": 172,
   "restoredParentChecksPassed": true,
   "publicRollback": "fresh cache identity; retain all eight backend rulesets, real scores and queued replays; no database rollback",
-  "patch": "/tmp/tesla-backup-final.patch"
+  "patch": "/tmp/tesla-backup-published.patch",
+  "publishedGameCommit": "8cd9fd753f2031420d57808382fb175af110912c",
+  "publishedGameTree": "4d86777e42c812b46eb38f3b31074017798f1020",
+  "exactFinalInverse": true,
+  "restoredParentTree": "37f16889727ed0b278ec0079d8c05364af7e49ac"
 }

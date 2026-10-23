@@ -1,7 +1,7 @@
 {
   "version": "4.4.2",
   "parentCommit": "598198078ed9c0033dbdfe4c68b7e464592461f5",
-  "status": "backend-verified-frontend-ready",
+  "status": "published-verified",
   "gameTests": 174,
   "serverTests": 15,
   "databaseChecks": 24,
@@ -11,5 +11,16 @@
   "oldFrozenFoldersUnchanged": 7,
   "hostedFixtures": 10,
   "publicFixtureWrites": 0,
-  "physicalPhoneTested": false
+  "physicalPhoneTested": false,
+  "gameCommit": "8cd9fd753f2031420d57808382fb175af110912c",
+  "gameTree": "4d86777e42c812b46eb38f3b31074017798f1020",
+  "pagesRun": 40005264545,
+  "pagesConclusion": "success",
+  "liveResources": 171,
+  "liveHashErrors": 0,
+  "publicBrowserChecks": 21,
+  "runtimeErrors": [],
+  "publicRecords": 22,
+  "publicRecordsUnchanged": true,
+  "publicUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.4.2"
 }

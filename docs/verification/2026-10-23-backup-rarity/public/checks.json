@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "390: exact public version",
+    "390: QA mutation seam unavailable on public origin",
+    "390: actual offline worker activated",
+    "390: native touch jump and landing",
+    "390: real forward collection activates a booster",
+    "390: new hologram assets decoded in HUD",
+    "390: real pause freezes simulation and effects",
+    "390: native resume",
+    "390: cold offline launch retains exact4.4.2",
+    "390: offline game starts",
+    "1440: exact public version",
+    "1440: QA mutation seam unavailable on public origin",
+    "1440: actual offline worker activated",
+    "1440: native keyboard jump and landing",
+    "1440: real forward collection activates a booster",
+    "1440: new hologram assets decoded in HUD",
+    "1440: real pause freezes simulation and effects",
+    "1440: native resume",
+    "1440: cold offline launch retains exact4.4.2",
+    "1440: offline game starts",
+    "no public runtime errors"
+  ],
+  "errors": [],
+  "physicalPhone": false,
+  "realPublicOrigin": true,
+  "publicFixtureWrites": 0
+}

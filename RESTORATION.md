@@ -1,3 +1,7 @@
+## Published 4.4.2 - exact final inverse
+
+Game `8cd9fd753f2031420d57808382fb175af110912c`, tree `4d86777e42c812b46eb38f3b31074017798f1020`; inverse restores parent `598198078ed9c0033dbdfe4c68b7e464592461f5`, tree `37f16889727ed0b278ec0079d8c05364af7e49ac`. Both exact tree equality and 172 restored-parent tests/checks pass. Patch `/tmp/tesla-backup-published.patch`; evidence `docs/verification/2026-10-23-backup-rarity/rollback.json`. Public reversal requires a fresh cache identity and retention of all eight backend rulesets, pending packets and real scores. No database rollback. Original root runtime and index are preserved; release work is isolated in `/tmp/tesla-backup-rarity-20261023`.
+
 ## Backup rarity 4.4.2 - bounded reversal
 
 Parent `598198078ed9c0033dbdfe4c68b7e464592461f5`, published 4.4.1. Preserve the original dirty workspace and historical index. The isolated source delta and exact inverse are rehearsed against that parent. Evidence: `docs/verification/2026-10-23-backup-rarity/rollback.json`. A public reversal needs a fresh frontend/cache identity and retention of eight-version backend compatibility, real records and pending packets; no database rollback.

@@ -1,0 +1,17 @@
+{
+  "before": {
+    "count": 22,
+    "digest": "14643e2e2e1e784a657038f258b8ba1a"
+  },
+  "afterMigration": {
+    "count": 22,
+    "digest": "14643e2e2e1e784a657038f258b8ba1a"
+  },
+  "afterHostedFixtures": {
+    "count": 22,
+    "digest": "14643e2e2e1e784a657038f258b8ba1a"
+  },
+  "exactPreservation": true,
+  "publicFixtureWrites": 0,
+  "qaEpoch": "qa-v442-20261023"
+}

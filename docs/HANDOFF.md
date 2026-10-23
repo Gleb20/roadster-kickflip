@@ -1,3 +1,12 @@
+## Published 4.4.2 - rare BACKUP chips
+
+[Play 4.4.2 on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.4.2). One backup chip per twelve ordinary boosters, previously one per four; no chip in the first two bags. Other effects, two-charge cap, hovering and collection feedback are retained. The release includes the existing 4.4.1 rails, roof grab, camera and clean Home.
+
+Game `8cd9fd753f2031420d57808382fb175af110912c`, Pages `40005264545` succeeded. All 171 public resources match, 21 native public browser checks pass with no runtime errors. Ten isolated hosted fixtures passed; all 22 real records retain their exact digest. 174 game tests, 15 server tests, 24 database checks, 35 rail checks and 11 actual PWA upgrade checks pass. Eight replay rulesets are supported; all seven older folders are unchanged. Finished 4.4.0 records and pending outbox survive updating. Exact final inverse restores the 4.4.1 parent and passes 172 parent tests/checks.
+
+[Evidence and rollback](verification/2026-10-23-backup-rarity/README.md). Exact next step: user phone playtest of chip scarcity. Physical iPhone/Safari is untested; the known PWA closed-tab activation boundary remains separate. Close old game windows and reopen the versioned URL if an installation stays old, without deleting site data. Bounded debt proposal remains reproducing that activation boundary before changing lifecycle logic.
+
+<!-- Historical preparation and earlier releases follow. -->
 ## Backup rarity 4.4.2 - release candidate, 23 October 2026
 
 The backup chip now appears once per three shuffled bags: one chip for twelve ordinary boosters, previously one for four. The first two bags contain no backup. Ordinary booster variety, wave interval, collection animation and two-charge cap are retained. This is a working balance choice for phone playtesting; elapsed encounter time depends on safe gaps, eligibility and collection.
