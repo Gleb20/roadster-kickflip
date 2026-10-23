@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {HERO_HANDS,HERO_TRICKS,selectTrick,trickCarPose,heroToWorld,worldToHero,sampleHeroArm,sampleHeroLeg} from '../src/hero-rig.js';
+import {HERO_RIG,HERO_HANDS,HERO_TRICKS,selectTrick,trickCarPose,heroToWorld,worldToHero,sampleHeroArm,sampleHeroLeg} from '../src/hero-rig.js';
 import {createCash,advanceCash} from '../src/cash.js';
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-7,`${a} != ${b}`);
 test('airborne tuck folds knees up toward chest rather than down through the car',()=>{
  for(let trick=0;trick<HERO_TRICKS.length;trick++)for(const side of [-1,1]){
-  const p=sampleHeroLeg(side,{air:true,grab:1,crouch:1,drop:32,trick});
+  const p=sampleHeroLeg(side,{air:true,grab:1,crouch:1,drop:43,trick});
   near(Math.hypot(p.knee.x-p.hip.x,p.knee.y-p.hip.y),28);near(Math.hypot(p.ankle.x-p.knee.x,p.ankle.y-p.knee.y),27);
   if(trick===0)assert.ok(p.knee.y<p.hip.y-15,'compact tuck raises both knees');
  }
@@ -18,7 +18,7 @@ test('front anatomical left grip survives rear-arm interactions and never swaps 
   assert.deepEqual(acting.wrist,neutral.wrist);
   const rear=sampleHeroArm(-1,{...base,special:true,guns:true,taunt:1,aim:{x:facing*150,y:-180},facing});
   assert.notDeepEqual(rear.wrist,sampleHeroArm(-1,base).wrist);
-  for(const p of [acting,rear]){near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),36);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),36);}
+  for(const p of [acting,rear]){near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),HERO_RIG.arm.upper);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),HERO_RIG.arm.lower);}
  }
 });
 test('car roof faces the rider through every trick and complete turns; encounter points transform back to the same world target',()=>{

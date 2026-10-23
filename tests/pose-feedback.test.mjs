@@ -10,7 +10,7 @@ test('one approved compact grab is used on every flight',()=>{
 });
 test('both soles follow photographed roof supports through car bank and rider lean',()=>{
  for(const side of [-1,1])for(const tilt of [-.085,-.04,.2])for(const grab of [.1,.5,1]){
-  const car=trickCarPose(0,grab,.3),p=sampleHeroLeg(side,{air:true,grab,crouch:grab,drop:32*grab,tilt,car,offset:-29.5});
+  const car=trickCarPose(0,grab,.3),p=sampleHeroLeg(side,{air:true,grab,crouch:grab,drop:43*grab,tilt,car,offset:-29.5});
   const rotate=(p,a)=>({x:p.x*Math.cos(a)-p.y*Math.sin(a),y:p.x*Math.sin(a)+p.y*Math.cos(a)});
   const world=rotate(p.foot,tilt),support=rotate({x:side*25,y:-29.5+(side<0?1.6:4.8)},car.angle);
   near(world.x,car.x+support.x);near(world.y-29.5,car.y+support.y);

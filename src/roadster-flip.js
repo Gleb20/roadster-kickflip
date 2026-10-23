@@ -9,8 +9,11 @@ export function flipFrameAt(jumpPhase) {
   return 0;
 }
 /** Ordinary jumps retain the independent nine-frame kickflip; grabs share one hull. */
-export function jumpCarPose(flight,gravity){
- const cosmetic=!!flight.airborne&&!flight.trickStarted&&!flight.latched;
+export function jumpCarPose(flight,gravity,{railJump=false}={}){
+ // Rail simulation marks its linked flight as a trick for bookkeeping. Only
+ // actual rider rotation/grab overrides the ordinary photographed kickflip.
+ const ordinary=!flight.trickStarted||(railJump&&!flight.omega&&!flight.grab);
+ const cosmetic=!!flight.airborne&&flight.launchVelocity>0&&ordinary&&!flight.latched;
  const phase=cosmetic?Math.min(1,flight.time/(2*flight.launchVelocity/gravity)):0;
  return {cosmetic,phase,frame:flipFrameAt(phase),gap:cosmetic?Math.sin(phase*Math.PI)*24:0};
 }

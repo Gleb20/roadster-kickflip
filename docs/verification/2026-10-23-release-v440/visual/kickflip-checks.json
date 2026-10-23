@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "390: ground ordinary jump starts cosmetic kickflip",
+    "390: ground traverses all nine photographed frames",
+    "390: rail ordinary jump starts cosmetic kickflip",
+    "390: rail traverses all nine photographed frames",
+    "390: real grab overrides automatic car flip",
+    "1440: ground ordinary jump starts cosmetic kickflip",
+    "1440: ground traverses all nine photographed frames",
+    "1440: rail ordinary jump starts cosmetic kickflip",
+    "1440: rail traverses all nine photographed frames",
+    "1440: real grab overrides automatic car flip",
+    "no browser runtime errors"
+  ],
+  "errors": [],
+  "arrangedFlights": true,
+  "physicalDevice": false
+}

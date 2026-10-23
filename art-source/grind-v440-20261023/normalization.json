@@ -1,0 +1,16 @@
+{
+  "source": "art-source/grind-v440-20261023/rail-tall-original.png",
+  "crop": [
+    60,
+    219,
+    1924,
+    707
+  ],
+  "output": "assets/rails/v440/rail.png",
+  "alpha": true,
+  "method": "alpha>=64 bounds; proportional Lanczos resize",
+  "dimensions": [
+    1440,
+    377
+  ]
+}

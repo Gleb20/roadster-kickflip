@@ -1,0 +1,6 @@
+{
+  "sameInputPoseSamples": 224,
+  "armAndLegGeometryExactlyPreserved": true,
+  "otherPainterChannels": "body translation/drop and torso/head transforms differ only when grab>0",
+  "browserTiming": "screenshots from separate runs have different scene time; pixel/foot equality across captures not asserted"
+}

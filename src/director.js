@@ -1,16 +1,21 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.3.2';
-import {types} from './catalog.js?v=4.3.2';
-import {biomeAt} from './biomes.js?v=4.3.2';
-import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.3.2';
+import {RAIL,makeRail,validateRailRoute} from './rails.js?v=4.4.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.4.0';
+import {types} from './catalog.js?v=4.4.0';
+import {biomeAt} from './biomes.js?v=4.4.0';
+import {AIR_TYPES,stageAt,makePattern,validateRoute} from './routes.js?v=4.4.0';
 export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
  const initial=()=>({wave:0,last:null,fallbacks:0,waiting:false,hardStreak:0,leg:-1,legStartedAt:0,groundSinceAir:0,airCount:0,lastAirAt:-1e9});
  const state=initial();
  function reset(){Object.assign(state,initial());}
  function spawn(){
-  if(flight.airborne||pace.recovery||pace.falling||S.obs.some(o=>!o.passed)){S.next=.18;state.waiting=true;return;}
+  if(flight.airborne||pace.recovery||pace.falling||(S.rails?.length>0)||S.obs.some(o=>!o.passed)){S.next=.18;state.waiting=true;return;}
   state.waiting=false;
   const {id:biome,leg}=biomeAt(S.score||0);
   if(leg!==state.leg){state.leg=leg;state.legStartedAt=S.t;}
+  if(state.wave>=RAIL.firstWave&&(state.wave-RAIL.firstWave)%RAIL.every===0&&state.last?.kind!=='air'){
+   const rail=makeRail(spawnDistance()),route=validateRailRoute(rail,{flight,pace,economy,boosterState:boosters});
+   if(route){state.wave++;state.hardStreak=0;state.last={kind:'rail',stage:stageAt(pace.progress),biome,leg,route,startedAt:S.t};(S.rails??=[]).push({...rail,uid:++S.entityId});S.next=route.duration+RAIL.exitSeconds;return;}
+  }
   const stage=stageAt(pace.progress),afterAir=state.last?.kind==='air',breath=afterAir||state.wave%5===4||state.hardStreak>=2;
   const airDue=leg>=2&&S.t-state.legStartedAt>=8&&state.groundSinceAir>=6&&S.t-state.lastAirAt>=28;
   const pools=[['single'],['single'],['pair','single'],['single','pair'],['precision','single','pair'],['pair','precision','thrust'],['pair','precision','thrust']];

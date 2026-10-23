@@ -1,0 +1,7 @@
+{
+  "function": "tesla-ranking-worker",
+  "readFromFreshDeployedEditor": true,
+  "bytes": 347263,
+  "sha256": "6d50bd5ca51a7c91062dedd0dbb2ca0173c1d48616142881b005f90556ad2e57",
+  "matchesCandidate": true
+}

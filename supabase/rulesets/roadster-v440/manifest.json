@@ -1,0 +1,20 @@
+{
+  "ruleset": "roadster-v4.4.0",
+  "sourceCommit": "isolated local 4.3.2 parent; rail preview awaiting visual approval",
+  "files": {
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "run.js": "5717749eb7295934c362a1b3c89533c4a217694d8001eeff246e41b064cf96c6",
+    "catalog.js": "aff6e64fef23e7a0f4c0e49440dc64c28579b2e3564f01657fd10e08a05402c8",
+    "director.js": "deb2246526d5b0a06fec129a0ac6317f67ca3c3360166ac95351f2d4a6bd0f71",
+    "routes.js": "46e9addc43a151472a1d4b6918daac7598aeeab92a298ce5379d6792e5c70697",
+    "content.js": "c66768e9ddcbd7b51ad2045a3a14e858be3217dbfb1c27ac127619d207aa276f",
+    "gameplay.js": "822ebd67513ecdc0e6a8b6dfa8d0cd9ccb04f45f6e8ebef421bc408b65bd5b52",
+    "physics.js": "88ef92c6debba208ce9742c874f265d76a50c3b64d6ad03b16d9f99ef9a406f8",
+    "fall.js": "17a2d96df00b506f47347e0c248feba5c52811b87f5c655a520deaa58e72bee8",
+    "gameplay-config.js": "874180b46d9ae954750089b9118a1d8dd346a7bb0fa42280a503cf5518fb6d6e",
+    "biomes.js": "37b77b18bfbc7e6f9bf73c3b06f9d6521ae8bf1816da045c54bd3bb77f93efe5",
+    "enemy-sprite-data.js": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d",
+    "boosters.js": "cf80ac0ac4731078560587dc8d2cc8178eede23d0a550be130649af39a7e8a0e",
+    "rails.js": "88769685e1e1ce2e0f6c7c9dbe63ab0a1b4e27d99a7c76686ff5982be7586053"
+  }
+}

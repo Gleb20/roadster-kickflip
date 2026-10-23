@@ -33,7 +33,7 @@ test('hosted gateway rewritten path and custom capability header are supported',
 });
 
 test('new gameplay freezes independently and current rulesets verify interrupted checkpoints exactly',async()=>{
- const current=await import('../../src/run.js'),frozen=await import('../rulesets/roadster-v432/run.js');
+ const current=await import('../../src/run.js'),frozen=await import('../rulesets/roadster-v440/run.js');
  for(const module of [current,frozen]){
   const r=module.createRun({seed:73});r.reset();const actions=new Map([[0,'primary-down'],[24,'primary-up'],[25,'primary-down'],[121,'primary-up']]);
   while(r.S.mode==='playing'){const a=actions.get(r.S.tick);if(a)r.command(a);r.step();r.drainEvents();}
@@ -42,8 +42,8 @@ test('new gameplay freezes independently and current rulesets verify interrupted
   assert.equal(result.outcome,'accepted');assert.deepEqual(result.result,expected);
  }
 });
-test('session creation and replay submission explicitly support all six versions, with no unknown fallback',async()=>{
- for(const ruleset of ['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2']){
+test('session creation and replay submission explicitly support all seven versions, with no unknown fallback',async()=>{
+ for(const ruleset of ['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2','roadster-v4.4.0']){
   const handle=createHandler({rpc:async(action,p)=>{assert.equal(action,'create');assert.equal(p.ruleset,ruleset);return {ruleset};}});
   const res=await handle(new Request('https://x.test/tesla-ranking/sessions',{method:'POST',headers:{Origin:'https://gleb20.github.io','Content-Type':'application/json'},body:JSON.stringify({ruleset})}));assert.equal(res.status,201);assert.equal((await res.json()).ruleset,ruleset);
  }

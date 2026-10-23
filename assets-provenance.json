@@ -1058,5 +1058,78 @@
         "transparentBackgroundRequested": true
       }
     ]
+  },
+  "grindPreviewV440": {
+    "status": "preview-awaiting-user-approval",
+    "runtimeIntegrated": false,
+    "date": "2026-10-23",
+    "prototype": "Freshpark Ultimate Grind Rail Kit; straight central steel beam, raised supports",
+    "sourcePage": "https://freshpark.com/products/ultimate-grind-rail-kit-by-freshpark",
+    "photographs": [
+      {
+        "file": "art-source/grind-v440-20261023/references/rail-photo.jpg",
+        "url": "https://freshpark.com/cdn/shop/files/freshpark_ultimate_grind_kit_view_6copycopy.jpg?v=1760052103&width=1946",
+        "role": "real object geometry"
+      },
+      {
+        "file": "art-source/grind-v440-20261023/references/boardslide-photo.jpg",
+        "url": "https://freshpark.com/cdn/shop/products/166160555_353113166056986_4046565958964262938_n.jpg?v=1760052181&width=1946",
+        "role": "real balancing motion; skater identity unknown"
+      }
+    ],
+    "authorLicense": "Not stated by manufacturer",
+    "styleReference": "art-source/grind-v440-20261023/references/current-game.png",
+    "method": "built-in image_gen with inspected real photographs and current painter; alpha crop and proportional Lanczos normalization",
+    "prompts": [
+      "art-source/grind-v440-20261023/rail-prompt.txt",
+      "art-source/grind-v440-20261023/rail-tall-prompt.txt",
+      "art-source/grind-v440-20261023/poses-prompt.txt"
+    ],
+    "originals": [
+      "art-source/grind-v440-20261023/rail-original.png",
+      "art-source/grind-v440-20261023/rail-tall-original.png",
+      "art-source/grind-v440-20261023/poses-original.png"
+    ],
+    "previewSprite": "assets/concepts/grind-v440/rail.png",
+    "dimensions": [
+      1440,
+      377
+    ],
+    "alpha": true,
+    "poses": "Concept reference only; current procedural rig renders reviewed game frames",
+    "review": "docs/verification/2026-10-23-grind/review.html",
+    "visualRevision": {
+      "id": "arms-and-sparks-v2",
+      "method": "coordinate and wrist-orientation corrections in existing procedural rig; parameter/render adjustment of existing native spark effect; no new raster generation",
+      "reference": "assets/concepts/grind-v440/poses-concept.png",
+      "actualReview": "docs/verification/2026-10-23-grind/pose-v2/before-after.png",
+      "motion": "docs/verification/2026-10-23-grind/pose-v2/grind-motion.gif",
+      "integratedIntoPrimaryRuntime": false
+    },
+    "kickflipCorrection": {
+      "id": "kickflip-restored-v3",
+      "method": "cosmetic selection correction; existing nine photographed frames reused unchanged",
+      "motion": "docs/verification/2026-10-23-grind/kickflip-v3/grind-motion.gif",
+      "primaryRuntimeIntegrated": false
+    },
+    "armProportionsCorrection": {
+      "id": "constant-idle-arm-proportions-v4",
+      "method": "measured original idle limb centerlines applied to all procedural pose channels; hip-pivot fold reaches the near car contact; no new raster generation",
+      "segments": {
+        "upper": 20.808652046684813,
+        "lower": 10
+      },
+      "review": "docs/verification/2026-10-23-grind/proportions-v4/poses-same-scale.png",
+      "motion": "docs/verification/2026-10-23-grind/proportions-v4/grind-motion.gif",
+      "primaryRuntimeIntegrated": false
+    },
+    "roofGrabCorrection": {
+      "id": "roof-grab-squat-v5",
+      "method": "existing procedural geometry correction: roof contact, deeply bent knees and backward pelvis; no generated artwork",
+      "review": "docs/verification/2026-10-23-grind/grab-v5/grab-before-after.png",
+      "primaryRuntimeIntegrated": false
+    },
+    "primaryRuntimeIntegrated": true,
+    "releaseVersion": "4.4.0"
   }
 }

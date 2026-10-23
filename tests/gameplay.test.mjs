@@ -66,7 +66,7 @@ test('route validation clones state, rejects fuel-less thrust trains and validat
 });
 test('seeded directors use breathers, grounded entrances, recoverable empty-fuel fallback',()=>{
  let seed=17;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
- for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];d.spawn();assert.ok(S.obs.length);assert.ok(d.state.last.route);if(i%5===4)assert.equal(d.state.last.kind,'single');}}
+ for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];S.rails=[];d.spawn();assert.ok(S.obs.length||S.rails.length);assert.ok(d.state.last.route);if(i%5===4)assert.equal(d.state.last.kind,'single');}}
 });
 test('coaching is contextual, persistent, dismissible and never blocks controls',()=>{
  let writes=0;const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>{writes++;data.set(k,v);}};

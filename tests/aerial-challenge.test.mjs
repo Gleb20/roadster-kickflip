@@ -30,7 +30,7 @@ test('all air models have broad zero-fuel jump routes even at maximum boosted sp
 test('air unlocks on third leg, stays rare, is isolated and gets a ground breather',()=>{
  for(const score of [1000,7500,14500,21500]){
   const {S,director}=directorFixture(score);const waves=[];
-  for(let i=0;i<48;i++){S.obs=[];S.t+=5;director.spawn();waves.push({time:S.t,kind:director.state.last.kind,obs:[...S.obs],wait:S.next,route:director.state.last.route});}
+  for(let i=0;i<48;i++){S.obs=[];S.rails=[];S.t+=5;director.spawn();waves.push({time:S.t,kind:director.state.last.kind,obs:[...S.obs],wait:S.next,route:director.state.last.route});}
   const air=waves.flatMap((w,i)=>w.kind==='air'?[i]:[]);
   if(score<14000){assert.equal(air.length,0);continue;}
   assert.ok(air.length>=2&&air.length<=7,`${score}: ${air.length}`);
@@ -41,7 +41,7 @@ test('air unlocks on third leg, stays rare, is isolated and gets a ground breath
 
 test('Xi enters the factory ground generator as an ordinary single or pair',()=>{
  const {S,director}=directorFixture(7500),seen=new Set();
- for(let i=0;i<100;i++){S.obs=[];S.t+=5;director.spawn();for(const o of S.obs){seen.add(o.id);if(o.id==='xi'){assert.equal(o.altitude||0,0);assert.equal(o.collision,'box');}}}
+ for(let i=0;i<100;i++){S.obs=[];S.rails=[];S.t+=5;director.spawn();for(const o of S.obs){seen.add(o.id);if(o.id==='xi'){assert.equal(o.altitude||0,0);assert.equal(o.collision,'box');}}}
  assert.ok(seen.has('xi'));
 });
 

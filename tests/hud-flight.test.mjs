@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mphFromKmh,multiplierAppearance} from '../src/hud.js';
-import {boardGrabArm} from '../src/characters.js';
+import {boardGrabArm,HERO_RIG,rotateAboutHip} from '../src/hero-rig.js';
 import {createFlight,launch,advanceFlight} from '../src/gameplay.js';
 
 test('speed readout converts km/h to mph and multiplier uses five tier colours',()=>{
@@ -9,11 +9,14 @@ test('speed readout converts km/h to mph and multiplier uses five tier colours',
  assert.deepEqual([1,1.9,2,2.9,3,4,5].map(x=>multiplierAppearance(x,1).tier),[1,1,2,2,3,4,5]);
  const low=multiplierAppearance(3,0),high=multiplierAppearance(3,1);assert.ok(high.opacity>low.opacity&&high.scale>low.scale&&high.shake>low.shake);assert.equal(multiplierAppearance(1,1).shake,0);
 });
-test('both board-grab arms keep bone lengths and touch fixed board edges at full tuck',()=>{
- for(const side of [-1,1]){
-  const a=boardGrabArm(side,32,.09);assert.ok(Math.abs(Math.hypot(a.elbow.x-a.shoulder.x,a.elbow.y-a.shoulder.y)-36)<1e-8);assert.ok(Math.abs(Math.hypot(a.wrist.x-a.elbow.x,a.wrist.y-a.elbow.y)-36)<1e-8);
-  const x=4+Math.cos(.09)*a.wrist.x-Math.sin(.09)*a.wrist.y,y=32+Math.sin(.09)*a.wrist.x+Math.cos(.09)*a.wrist.y;
-  assert.ok(Math.abs(x-side*43)<1e-8);assert.ok(Math.abs(y-10)<1e-8);
+test('grab uses the idle-sized skeleton and squats with moderate torso lean to reach the roof',()=>{
+ const contact={x:13,y:9.5},angle=.64,drop=43,shift=-20;
+ const nearArm=boardGrabArm(1,drop,angle,HERO_RIG,contact,1,shift),point=rotateAboutHip(nearArm.wrist,angle);
+ assert.ok(Math.abs(point.x+shift-contact.x)<1e-8);assert.ok(Math.abs(point.y+drop-contact.y)<1e-8);
+ for(const side of [-1,1])for(const target of [contact,{x:1000,y:1000}]){
+  const a=boardGrabArm(side,drop,angle,HERO_RIG,target,1,shift);
+  assert.ok(Math.abs(Math.hypot(a.elbow.x-a.shoulder.x,a.elbow.y-a.shoulder.y)-HERO_RIG.arm.upper)<1e-8);
+  assert.ok(Math.abs(Math.hypot(a.wrist.x-a.elbow.x,a.wrist.y-a.elbow.y)-HERO_RIG.arm.lower)<1e-8);
  }
 });
 test('first jump is cosmetic; manual rotation smoothly tucks and launch resets pose',()=>{

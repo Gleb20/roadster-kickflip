@@ -1,4 +1,4 @@
-import {BOOSTERS} from './boosters.js?v=4.3.2';
+import {BOOSTERS} from './boosters.js?v=4.4.0';
 const MILES_PER_KM=.6213711922;
 export const mphFromKmh=value=>Math.max(0,value)*MILES_PER_KM;
 export function multiplierAppearance(value,meter){
@@ -65,7 +65,7 @@ export function createHUD({root=document.getElementById('game'),reducedMotion=()
     button.setAttribute('aria-pressed',String(s.thrusting));button.setAttribute('aria-label',`Hold for airborne thrust. Fuel ${fuel} percent`);
     button.style.setProperty('--thrust-charge',String(Math.max(0,Math.min(1,s.fuel/100))));
     $('thrust-fill').style.strokeDashoffset=String(1-s.fuel/100);$('boost-time').textContent=fuel+'%';
-    $('pending').textContent=s.pending>0?`${s.turns} FLIP${s.turns>1?'S':''} · ${Math.round(s.pending)} PENDING`:'';
+    $('pending').textContent=s.pending>0?`${s.turns?s.turns+' FLIP'+(s.turns>1?'S':'')+' · ':''}${s.grindDistance>0?'GRIND · ':''}${Math.round(s.pending)} PENDING`:'';
   }
   function dropMultiplier(value){
     if(value<=1)return;fall?.animation.cancel();fall?.node.remove();

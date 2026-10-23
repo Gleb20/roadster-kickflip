@@ -1,3 +1,7 @@
+## Update4.4.0 — optional rail grind
+
+Jump onto the raised rail, slide, jump off or drop from its end, then land safely to bank the reward. Rails are optional and need no booster. Natural roof-grab squat, original arm proportions, visible sparks and ordinary kickflips are preserved. [Release evidence](docs/verification/2026-10-23-release-v440/README.md).
+
 ## Published 4.3.2 - holographic boosters and continuous pickup
 
 [Play 4.3.2 on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.3.2). Published game commit `43b7bcf908b89403c1174149a1d8abd8d3223495`, tree `d917f4d04b12c033716cb49ae9f97e049e9642eb`; Pages run `39960492499` succeeded. All 167 public resources match. The 21 public browser checks passed with native touch/keyboard, pickup, pause/resume and offline play; no runtime errors. Both server bundles and additive migrations are deployed. Eight isolated hosted fixtures passed, and all 20 real public records retain their exact digest. No public fixture scores were written.

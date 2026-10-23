@@ -12,6 +12,7 @@ for(const name of await readdir(new URL('assets/audio/',root)))if(name.endsWith(
 for(const name of FACTORY_ASSETS)files.add('assets/factory/'+name+'.png');
 for(const name of await readdir(new URL('assets/boosters/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/'+name);
 for(const name of await readdir(new URL('assets/boosters/holo-v431/',root)))if(name.endsWith('.png')||name==='ATTRIBUTION.md')files.add('assets/boosters/holo-v431/'+name);
+files.add('assets/rails/v440/rail.png');files.add('assets/rails/v440/ATTRIBUTION.md');
 files.add('assets/factory/ATTRIBUTION.md');
 files.add('assets/encounters/v400/ATTRIBUTION.md');
 const core=[];

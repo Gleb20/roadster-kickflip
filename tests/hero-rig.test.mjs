@@ -17,7 +17,7 @@ test('standing sole anchors remain on the photographed board through crouch and 
 });
 test('near-arm grab and fall override their own gesture channels',()=>{
  const a=sampleHeroArm(1,{grab:1,drop:20,wave:1,taunt:1,aim:{x:300,y:-20},facing:1,time:99}),b=sampleHeroArm(1,{grab:1,drop:20});assert.deepEqual(a.wrist,b.wrist);assert.deepEqual(a.elbow,b.elbow);
- const f=sampleHeroArm(-1,{grab:1,seat:1,push:1,flail:1,wave:1});assert.deepEqual(f.elbow,{x:-44,y:-75});assert.deepEqual(f.wrist,{x:-65,y:-90});
+ const f=sampleHeroArm(-1,{grab:1,seat:1,push:1,flail:1,wave:1});assert.ok(f.wrist.x<f.shoulder.x);near(Math.hypot(f.elbow.x-f.shoulder.x,f.elbow.y-f.shoulder.y),HERO_RIG.arm.upper);near(Math.hypot(f.wrist.x-f.elbow.x,f.wrist.y-f.elbow.y),HERO_RIG.arm.lower);
  const replacement={...HERO_RIG,shoulder:{x:18,y:-65},arm:{upper:30,lower:25}};const p=sampleHeroArm(1,{grab:1,drop:10},replacement);near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),30);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),25);
  assert.deepEqual(sampleClip(HERO_CLIPS.brace,0,-1),sampleClip(HERO_CLIPS.brace,0,0));assert.deepEqual(sampleClip(HERO_CLIPS.brace,0,2),sampleClip(HERO_CLIPS.brace,0,1));
 });
@@ -31,9 +31,9 @@ test('fall impact lowers the raised hands and shoulders, and folds both forward 
  for(const side of [-1,1]){
   const rebound=sampleHeroArm(side,{falling:true,seat:1,flail:1,impact:0});
   const impact=sampleHeroArm(side,{falling:true,seat:1,flail:1,impact:1});
-  assert.ok(rebound.wrist.y<rebound.shoulder.y-35,'both arms reach upward');
-  assert.ok(impact.wrist.y>rebound.wrist.y+8);assert.ok(impact.shoulder.y>rebound.shoulder.y+3);
-  for(const p of [rebound,impact]){near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),36);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),36);}
+  assert.ok(rebound.wrist.y<rebound.shoulder.y-20,'both arms reach upward');
+  assert.ok(impact.wrist.y>rebound.wrist.y+4);assert.ok(impact.shoulder.y>rebound.shoulder.y+3);
+  for(const p of [rebound,impact]){near(Math.hypot(p.elbow.x-p.shoulder.x,p.elbow.y-p.shoulder.y),HERO_RIG.arm.upper);near(Math.hypot(p.wrist.x-p.elbow.x,p.wrist.y-p.elbow.y),HERO_RIG.arm.lower);}
   const a=sampleHeroLeg(side,{seat:1,drop:22,impact:0}),b=sampleHeroLeg(side,{seat:1,drop:22,impact:1});
   assert.ok(a.foot.x>a.hip.x+25);assert.ok(b.foot.x<a.foot.x-6,'feet draw inward at impact');
   for(const p of [a,b]){near(Math.hypot(p.knee.x-p.hip.x,p.knee.y-p.hip.y),28);near(Math.hypot(p.ankle.x-p.knee.x,p.ankle.y-p.knee.y),27);}

@@ -1,3 +1,7 @@
+## Grind4.4.0 release rollback —23 October2026
+
+User approved the final roof-grab/squat and publication. Release evidence: [4.4.0](docs/verification/2026-10-23-release-v440/README.md). Isolated managed checkout preserves the original dirty root/index. All six legacy verifiers stay intact; backend support remains additive even on a future frontend rollback. Public commit and live verification follow in release-status.json.
+
 ## Published 4.3.2 - verified inverse
 
 Game commit `43b7bcf908b89403c1174149a1d8abd8d3223495`, tree `d917f4d04b12c033716cb49ae9f97e049e9642eb`; parent `41ff44b70f69b1d6974cbea4d52258b0118ef617`, tree `d1812eaa730ae3a8306471d273b6b5c102301350`. The exact inverse was rehearsed, and the restored parent passes 140 tests and checks. Evidence: `docs/verification/2026-10-23-release-v432/rollback.json`; complete patch: `/tmp/tesla-v432-final-inverse.patch`.
