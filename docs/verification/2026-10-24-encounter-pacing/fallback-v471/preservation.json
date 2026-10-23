@@ -1,0 +1,6 @@
+{
+  "base": "57ecf2ace300fd2bcfe14271ac1885e18108b4b1",
+  "historicalVerifierFiles": 176,
+  "oldBytesUnchanged": true,
+  "rendererAudioPhysicsChanges": "version tags only; director fallback and visibility comparisons are the sole generation changes"
+}

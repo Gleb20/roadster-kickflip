@@ -1,3 +1,9 @@
+## Canonical ground fallback4.7.1 - current release
+
+The final gap audit found a4.7.0 repeat-history lock: four plain optional rails could postpone ground input for23.117s. The reserve now chooses the narrowest canonical eligible low obstacle, visibility comparisons tolerate only numerical1e-8 error at exact tick boundaries, and an optional fallback rail yields the next eligible slot to a ground encounter before another air pass. Biome/repeat filters, collision and180ms timing windows are unchanged. Seed56 now stays alive with maximum actual ground input gap10.733s and no consecutive plain fallbacks in the bounded90s regression.
+
+The progressive pairs, early air, joint optional rails and varied lengths described below remain. New immutable471 is additive to all twelve earlier versions;176 historical verifier files, published4.6.4 scenery, rotation, English audio and saved records/outbox remain intact.239 game tests,16server tests,27SQL checks, PWA191 and18 actual470-to471 upgrade checks pass. The4.7.0 full matrices are explicitly predecessor evidence; final471 public acceptance is recorded separately. [Play4.7.1](https://gleb20.github.io/roadster-kickflip/?v=4.7.1). [Evidence](verification/2026-10-24-encounter-pacing/fallback-v471/README.md). Physical iPhone/Safari and human enjoyment remain unverified.
+
 ## Encounter pacing4.7.0 —24 October2026
 
 Pairs remain available at full streak and speed pickups. Rails offer an optional route alongside ground or aerial opponents, with four real lengths and shorter late-game slide duration. First safe air appears around22–24s in the measured runs, including a timely factory-specific introduction. The director validates complete mixed paths and keeps a normal jump/ground bypass available without fuel or mandatory grind.

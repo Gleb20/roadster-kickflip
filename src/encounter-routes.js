@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.0';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.7.0';
-import {createGrind,advanceRail} from './rails.js?v=4.7.0';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.7.0';
-import {speedView,advanceSpeedView} from './speed-feedback.js?v=4.7.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.1';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.7.1';
+import {createGrind,advanceRail} from './rails.js?v=4.7.1';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.7.1';
+import {speedView,advanceSpeedView} from './speed-feedback.js?v=4.7.1';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:40,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // Minimum forward sight over supported viewports. Live validation advances the
@@ -93,13 +93,13 @@ export function validateEncounter(obstacles,options={}){
   const base=simulateEncounter(obstacles,{...proof,charge,lead});if(!base)continue;
   // Optional rails have a safe no-input bypass, but their reward route still
   // needs a broad input window. Mandatory ground routes also need visibility.
-  if((groundRoute||obstacles.some(o=>o.altitude))&&(base.preparation??0)<minPreparation)continue;
+  if((groundRoute||obstacles.some(o=>o.altitude))&&(base.preparation??0)+1e-8<minPreparation)continue;
   let ok=true;
-  for(let i=-3;i<=3&&ok;i++){if(i===0)continue;const shifted=simulateEncounter(obstacles,{...proof,charge,lead:lead+i*.03});if(!shifted||(groundRoute||obstacles.some(o=>o.altitude))&&(shifted.preparation??0)<minErrorPreparation)ok=false;}
+  for(let i=-3;i<=3&&ok;i++){if(i===0)continue;const shifted=simulateEncounter(obstacles,{...proof,charge,lead:lead+i*.03});if(!shifted||(groundRoute||obstacles.some(o=>o.altitude))&&(shifted.preparation??0)+1e-8<minErrorPreparation)ok=false;}
   if(ok&&base.jumps>1){
    const offsets=[-.09,-.06,-.03,.03,.06,.09];
-   for(const shift of offsets)for(const first of [false,true]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+(first?shift:0),secondLead:lead+(first?0:shift)});if(!sample||(sample.preparation??0)<minErrorPreparation){ok=false;break;}}
-   if(ok)for(const first of [-.09,.09])for(const second of [-.09,.09]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+first,secondLead:lead+second});if(!sample||(sample.preparation??0)<minErrorPreparation){ok=false;break;}}
+   for(const shift of offsets)for(const first of [false,true]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+(first?shift:0),secondLead:lead+(first?0:shift)});if(!sample||(sample.preparation??0)+1e-8<minErrorPreparation){ok=false;break;}}
+   if(ok)for(const first of [-.09,.09])for(const second of [-.09,.09]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+first,secondLead:lead+second});if(!sample||(sample.preparation??0)+1e-8<minErrorPreparation){ok=false;break;}}
   }
   if(ok&&groundRoute)for(const c of [Math.max(0,charge-.1),Math.min(1,charge+.1)]){if(!simulateEncounter(obstacles,{...proof,charge:c,lead})){ok=false;break;}}
   if(ok&&groundRoute)for(const c of [Math.max(0,charge-(options.tallSingle?.1:.05)),Math.min(1,charge+(options.tallSingle?.1:.05))])for(const offset of options.tallSingle?[-.09,.09]:[-.06,.06]){if(!simulateEncounter(obstacles,{...proof,charge:c,lead:lead+offset})){ok=false;break;}}

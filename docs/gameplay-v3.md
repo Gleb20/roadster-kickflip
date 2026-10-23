@@ -1,3 +1,7 @@
+## Canonical reserve correction4.7.1
+
+A rejected primary choice uses the narrowest eligible canonical low ground fallback, retaining biome and repeat guards. Visibility comparisons allow only1e-8 numerical tolerance for exact120Hz boundaries. Following a plain optional fallback rail, aerial scheduling defers until a ground encounter succeeds. These corrections prevent repeat-history starvation; all4.7 pacing, physical geometry, timing windows and actual camera rules below remain. Immutable471 coexists with all twelve previous rulesets.
+
 ## Encounter pacing 4.7.0 — current contract
 
 The first three ground encounters introduce the controls. Subsequent whole encounters contain an ordinary ground single or pair, or an aerial stay-low choice. Optional rails overlay the same obstacle plan; a plain rail is an explicitly counted fallback and never credited as a ground decision. Ground and rail threats must clear x+w<−100 before a0.25s rest; compound ground uses0.45s, and every seventh completed ground wave may take0.9s. The old additional1.25s grind-settlement delay is removed. Voluntary tricks can use the rest; actual recovery still reserves two simple ground encounters.

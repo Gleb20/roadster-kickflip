@@ -1,6 +1,6 @@
 // All v3 balance values use logical world units and simulation seconds.
 export const GAMEPLAY = Object.freeze({
-  version:'4.7.0', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
+  version:'4.7.1', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
   spinSpeed:7.2, spinAcceleration:60, releaseSpeed:1.8, releaseDeceleration:24,
   settleMinTurn:Math.PI*17/12, settleApproach:Math.PI*7/12, settleFullAngle:Math.PI*5/36, settleDamping:16,
   landingAngle:Math.PI*2/9, landingOmega:Math.PI*4/3, perfectAngle:Math.PI/18, perfectPoints:50,

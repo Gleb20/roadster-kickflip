@@ -1,3 +1,7 @@
+## Canonical fallback4.7.1 - bounded inverse
+
+Parent57ecf2ace300fd2bcfe14271ac1885e18108b4b1 is published4.7.0, tree dad184c3e08e4a3c21398faaaeb5ddf3b72c1c27. Reverse only this correction delta in an isolated checkout and verify the exact parent tree. Keep all thirteen backend verifiers, pending/finished packets and real records. Do not reverse the additive SQL guard or delete settings/data; preserve concurrent scenery4.6.4. Public reversal needs a new cache identity. [Proof](docs/verification/2026-10-24-encounter-pacing/fallback-v471/README.md).
+
 ## Encounter pacing4.7.0 — bounded inverse
 
 Parent `2cf618771f1d34c4a21c2b6cd256b2db9887a545` is published4.6.4 scenery, retaining4.6.3 replay semantics. Reverse only this bounded release delta in an isolated checkout with an exact-tree check; publish any frontend reversal with a fresh PWA identity. Retain all twelve backend verifiers for cached clients and pending records. Never reverse the additive migration, delete scores/queue/settings, overwrite the dirty original or remove the concurrent scenery fix. [Proof](docs/verification/2026-10-24-encounter-pacing/README.md).

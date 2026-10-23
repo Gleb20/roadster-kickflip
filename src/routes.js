@@ -1,9 +1,9 @@
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.7.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.0';
-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.7.0';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.7.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.1';
+import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.7.1';
 export const STAGES=C.stages;
 export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
-import {AIR_TYPES} from './content.js?v=4.7.0';
+import {AIR_TYPES} from './content.js?v=4.7.1';
 export {AIR_TYPES};
 export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900,gapSeconds=.65}={}){
  const item=offset=>({...type,x:dx+offset,passed:false});

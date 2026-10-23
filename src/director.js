@@ -1,11 +1,12 @@
-import {advanceSpeedView} from './speed-feedback.js?v=4.7.0';
-import {makeRail} from './rails.js?v=4.7.0';
-import {types} from './catalog.js?v=4.7.0';
-import {biomeAt} from './biomes.js?v=4.7.0';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.7.0';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.7.0';
+import {advanceSpeedView} from './speed-feedback.js?v=4.7.1';
+import {makeRail} from './rails.js?v=4.7.1';
+import {types} from './catalog.js?v=4.7.1';
+import {biomeAt} from './biomes.js?v=4.7.1';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.7.1';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.7.1';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
+export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
 const airSpeed={ufo:65,primeDrone:70,twitterBird:95,starlink:45,regulatorDrone:60,sikorsky:35,qualitySkull:75};
 export const RAIL_LENGTHS=Object.freeze([880,1120,1440,1680]);
 export function railLength(speed,index,lastWidth=null){const bag=speed>=1000?[1440,1680]:speed>=740?[1120,1440]:[880,1120],pick=index%bag.length;return bag[pick]===lastWidth?bag[(pick+1)%bag.length]:bag[pick];}
@@ -33,7 +34,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   const dx=Math.max(600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
   let kind='single',obstacles=[],rail=null,route=null,fallbackRail=false,bypass=null;
   const airPool=AIR_TYPES.filter(o=>eligible(o,biome)),airIntro=!state.airBiomes.includes(biome)&&S.t-state.biomeFirstSeen[biome]>=3;
-  const airDue=S.t>=22&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=3&&S.t-state.lastAirAt>=ENCOUNTER.airCooldown));
+  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=3&&S.t-state.lastAirAt>=ENCOUNTER.airCooldown));
   if(airDue&&candidate()){
    const small=airPool.filter(o=>o.w<=110&&o.h<=60),specific=small.filter(o=>Array.isArray(o.biomes)),model=pick(airIntro&&specific.length?specific:state.airCount<2?small:airPool);
    if(model){
@@ -50,7 +51,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
    const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
    const pairEvery=stage>=6?2:stage>=3?3:4,pairDue=!simple&&!familiar&&state.groundCount%pairEvery===0,overlayDue=!simple&&!familiar&&state.groundCount%3===1;
    for(let attempt=0;attempt<2&&!route&&candidate();attempt++){
-    const lows=choices.filter(o=>o.h<=45),type=attempt===0&&pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):attempt===1?(lows.find(o=>o.id===(S.speed<430&&biome==='spaceport'?'v8':'truck'))||pick(lows)):pick(choices);if(!type)break;
+    const lows=choices.filter(o=>o.h<=45),type=attempt===0&&pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):attempt===1?canonicalGroundFallback(lows):pick(choices);if(!type)break;
     kind=attempt===0&&pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:.45});
     route=validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='spaced-pair'?.3:0});
     if(route&&attempt===0&&overlayDue&&type.h<=64&&budget.policies<18&&candidate()){

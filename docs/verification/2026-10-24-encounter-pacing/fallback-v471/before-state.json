@@ -1,0 +1,268 @@
+{
+  "seed": 56,
+  "S": {
+    "mode": "playing",
+    "tick": 4697,
+    "t": 39.141666666666666,
+    "distance": 17377.95467476848,
+    "score": 9098,
+    "speed": 547.8541666666628,
+    "next": -0.008333333333333333,
+    "obs": [
+      {
+        "id": "truck",
+        "name": "CYBERBRICK",
+        "w": 110,
+        "h": 41,
+        "definitionVersion": 1,
+        "category": "vehicle",
+        "placement": "ground",
+        "anchor": "ground-center",
+        "biomes": "all",
+        "visual": {
+          "renderer": "photo",
+          "key": "truck",
+          "assets": [
+            "photos"
+          ],
+          "bob": false
+        },
+        "collision": "box",
+        "reactions": {
+          "hero": {
+            "enabled": false
+          },
+          "obstacle": {
+            "enabled": false
+          }
+        },
+        "collectible": true,
+        "provenance": "assets-provenance.json",
+        "x": -474.69618055555156,
+        "passed": true,
+        "uid": 11,
+        "nearPaid": false,
+        "latePaid": false
+      }
+    ],
+    "rails": [],
+    "entityId": 11,
+    "anchor": 0,
+    "lastCharge": 0.7500000000000002
+  },
+  "P": {
+    "spinHeld": false,
+    "settleTarget": 0,
+    "y": 0,
+    "vy": 0,
+    "vx": 0,
+    "angle": 0,
+    "omega": 0,
+    "airborne": false,
+    "time": 1.441666666666664,
+    "fuel": 100,
+    "thrusting": false,
+    "latched": false,
+    "attach": 0,
+    "maxTurn": 6.671866772920113,
+    "turns": 1,
+    "lastDirection": -1,
+    "trickStarted": true,
+    "grab": 0,
+    "launchVelocity": 1112.5000000000002,
+    "jumpFactor": 1.25
+  },
+  "E": {
+    "scoreFactor": 1,
+    "bonus": 8589.805161422415,
+    "multiplier": 37,
+    "meter": 1,
+    "decay": 0,
+    "streak": 0.25,
+    "streakLeft": 4,
+    "flips": 12
+  },
+  "pace": {
+    "boost": 0,
+    "progress": 39.14166666666509,
+    "base": 438.2833333333302,
+    "speed": 547.8541666666628,
+    "recovery": null,
+    "stumble": 0,
+    "falling": false
+  },
+  "F": {
+    "active": false,
+    "age": 0,
+    "duration": 2.8,
+    "rate": 1,
+    "taps": 0,
+    "angle": 0,
+    "reduced": false
+  },
+  "Q": {
+    "active": {
+      "jump": 5.000000000000078
+    },
+    "hearts": 0,
+    "grace": 0,
+    "ghostIds": [],
+    "speedBlend": 0,
+    "pickups": [],
+    "nextAt": 48.90208529904484,
+    "serial": 3,
+    "bag": [
+      "shield"
+    ],
+    "bagCycle": 1,
+    "random": 3705902008,
+    "spoiledFlight": false
+  },
+  "G": {
+    "support": null,
+    "age": 0,
+    "exit": null,
+    "exitAge": 1,
+    "pending": 0,
+    "distance": 0,
+    "turns": 0
+  },
+  "input": {
+    "charging": false,
+    "charge": 0,
+    "spin": false,
+    "thrust": false
+  },
+  "random": 2967354815,
+  "director": {
+    "wave": 10,
+    "groundCount": 6,
+    "last": {
+      "kind": "single",
+      "fallbackRail": false,
+      "tallSingle": false,
+      "stage": 2,
+      "biome": "tesla-factory",
+      "leg": 1,
+      "route": {
+        "charge": 0,
+        "lead": 0.18,
+        "secondLead": 0.18,
+        "burn": 0,
+        "actions": [
+          {
+            "at": 1.4083333333333332,
+            "action": "hold"
+          },
+          {
+            "at": 1.4083333333333332,
+            "action": "jump",
+            "charge": 0
+          }
+        ],
+        "duration": 2.3166666666666664,
+        "fuelUsed": 0,
+        "preparations": [
+          {
+            "target": "truck",
+            "holdAt": 1.4083333333333332,
+            "visibleAt": 0.4583333333333333,
+            "seconds": 0.95
+          }
+        ],
+        "nearLandings": 0,
+        "lateTakeoffs": 0,
+        "caught": false,
+        "catchAt": null,
+        "exitAt": null,
+        "slideSeconds": 0,
+        "grindDistance": 0,
+        "jumps": 1,
+        "minGroundGap": null,
+        "preparation": 0.95,
+        "clearanceVerified": true,
+        "visibility": [
+          {
+            "id": "truck",
+            "at": 0.4583333333333333
+          }
+        ],
+        "exit": {
+          "y": 0,
+          "angle": 0,
+          "vx": 0
+        },
+        "preparationTarget": 0.9,
+        "errorPreparationTarget": 0.8,
+        "timingMargin": 0.09,
+        "timingWindow": 0.18,
+        "sampleStep": 0.03
+      },
+      "bypass": null,
+      "groundDecisions": 1,
+      "airDecisions": 0,
+      "startedAt": 36.608333333333334,
+      "restSeconds": 0.25,
+      "railWidth": null
+    },
+    "viewStrength": 0.6241317515430254,
+    "viewAt": 39.141666666666666,
+    "fallbacks": 7,
+    "waiting": true,
+    "leg": 1,
+    "legStartedAt": 29.733333333333334,
+    "legDistance": 12444.631855324062,
+    "biomeFirstSeen": {
+      "spaceport": 0.008333333333333333,
+      "tesla-factory": 29.733333333333334
+    },
+    "airBiomes": [
+      "spaceport",
+      "tesla-factory"
+    ],
+    "groundSinceAir": 1,
+    "airCount": 2,
+    "lastAirAt": 33.225,
+    "railCount": 2,
+    "lastRailWidth": 1120,
+    "lastRailAirAt": -1000000000,
+    "phase": "flow",
+    "flow": 0,
+    "active": false,
+    "restUntil": 38.90833333333333,
+    "restSeconds": 0.25,
+    "recoveryWaves": 0,
+    "history": [
+      "muscleCompact",
+      "openai",
+      "truck",
+      "truck"
+    ],
+    "seen": [
+      "v8",
+      "muscleCompact",
+      "openai",
+      "twitterBird",
+      "truck",
+      "qualitySkull"
+    ],
+    "sinceTall": 8,
+    "budget": {
+      "ticks": 1823,
+      "policies": 14,
+      "candidates": 1,
+      "exhausted": false
+    }
+  },
+  "lateId": null,
+  "lastLanding": {
+    "points": 360,
+    "turns": 1,
+    "late": 0,
+    "near": 0,
+    "perfect": false,
+    "good": true,
+    "grindPoints": 0,
+    "grindDistance": 0
+  }
+}

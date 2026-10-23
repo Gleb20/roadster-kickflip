@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "exact local4.7.0 parent installed",
+    "new release waits while the old run is paused",
+    "4.7.1 activates at restart or closed-tab boundary and starts a fresh attempt",
+    "explicit audio mute survives upgrade",
+    "completed air lesson is preserved without resetting the tutorial",
+    "rail state starts clean",
+    "all booster state starts clean",
+    "best and collection survive",
+    "finished 4.6.3 record remains eligible for submission",
+    "IndexedDB queue and immutable replay survive",
+    "cold offline launch loads the new game",
+    "independent effects1/music100 persist offline",
+    "both biome music groups decode offline after real upgrade",
+    "all five sprite files are in the verified offline cache",
+    "rail sprite and mechanics are cached offline",
+    "offline pickup and aura run without network",
+    "new combined-route module is cached offline",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "parentVersion": "4.7.0",
+  "candidateVersion": "4.7.1",
+  "closedTabBoundaryUsed": true,
+  "physicalDevice": false
+}
