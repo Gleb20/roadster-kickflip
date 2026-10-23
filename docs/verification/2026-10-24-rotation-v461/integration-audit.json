@@ -1,0 +1,29 @@
+{
+  "parent": "ede9ec6042fd6c262eda2873861974cde72a082b",
+  "candidateRuntime": "890bcb265f62e39bc0c9a9ead5a54d91f3b43d01",
+  "semanticSourceChanges": [
+    "src/gameplay-config.js",
+    "src/gameplay.js",
+    "src/main.js",
+    "src/rails.js",
+    "src/run.js"
+  ],
+  "unchangedHistoricalFolders": [
+    "roadster-v342",
+    "roadster-v380",
+    "roadster-v400",
+    "roadster-v410",
+    "roadster-v430",
+    "roadster-v432",
+    "roadster-v440",
+    "roadster-v442",
+    "roadster-v460"
+  ],
+  "presentationAudioAndDirectorEqualAfterVersionNormalization": true,
+  "nativeBrowserChecks": 39,
+  "gameTests": 212,
+  "serverTests": 16,
+  "databaseChecks": 27,
+  "actualUpgradeChecks": 14,
+  "physicalPhone": false
+}

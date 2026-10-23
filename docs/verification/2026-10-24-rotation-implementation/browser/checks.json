@@ -1,0 +1,3803 @@
+{
+  "checks": [
+    "390: native hold retains roof grip, tuck and speed",
+    "390: release opens using original timing and latches intended turn",
+    "390: long-flight residual settles with natural non-PERFECT lean",
+    "390: native boosted release lands one safe turn",
+    "390: touchdown compression remains",
+    "390: established half-charge .8 remains PERFECT",
+    "390: overhold still falls",
+    "390: native rehold immediately cancels settle and accelerates",
+    "390: rehold restores full grab",
+    "390: native pause freezes all physics",
+    "390: resume processes cancellation once",
+    "390: two independent native fingers spin and thrust",
+    "390: releasing spin finger preserves thrust and eligibility",
+    "844: native hold retains roof grip, tuck and speed",
+    "844: release opens using original timing and latches intended turn",
+    "844: long-flight residual settles with natural non-PERFECT lean",
+    "844: native boosted release lands one safe turn",
+    "844: touchdown compression remains",
+    "844: established half-charge .8 remains PERFECT",
+    "844: overhold still falls",
+    "844: native rehold immediately cancels settle and accelerates",
+    "844: rehold restores full grab",
+    "844: native pause freezes all physics",
+    "844: resume processes cancellation once",
+    "844: two independent native fingers spin and thrust",
+    "844: releasing spin finger preserves thrust and eligibility",
+    "1440: native hold retains roof grip, tuck and speed",
+    "1440: release opens using original timing and latches intended turn",
+    "1440: long-flight residual settles with natural non-PERFECT lean",
+    "1440: native boosted release lands one safe turn",
+    "1440: touchdown compression remains",
+    "1440: established half-charge .8 remains PERFECT",
+    "1440: overhold still falls",
+    "1440: native rehold immediately cancels settle and accelerates",
+    "1440: rehold restores full grab",
+    "1440: native pause freezes all physics",
+    "1440: resume processes cancellation once",
+    "12 identical renderer poses retain exact geometry, expression and arms",
+    "no browser runtime errors"
+  ],
+  "errors": [],
+  "states": [
+    {
+      "width": 390,
+      "kind": "settled",
+      "state": {
+        "version": "4.5.0",
+        "grind": {
+          "support": null,
+          "age": 0,
+          "exit": null,
+          "exitAge": 1,
+          "pending": 0,
+          "distance": 0,
+          "turns": 0
+        },
+        "rails": [],
+        "boosters": {
+          "active": {
+            "jump": 5.983333333333233
+          },
+          "hearts": 0,
+          "grace": 0,
+          "ghostIds": [],
+          "speedBlend": 0,
+          "pickups": [],
+          "nextAt": 1000000000,
+          "serial": 0,
+          "bag": [],
+          "bagCycle": 0,
+          "random": 2772213254,
+          "spoiledFlight": false
+        },
+        "effectiveMultiplier": 1.1,
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 7000,
+          "nextIn": 6864,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 2.0166666666666666,
+        "progress": 2.016666666666662,
+        "stage": 0,
+        "mode": "playing",
+        "score": 136,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 364.0333333333333,
+        "camera": {
+          "scale": 0.49271327746732696,
+          "x": 93.23165543282843,
+          "strength": 0.011805915614473379,
+          "energy": 0.008673835125447964,
+          "sceneryScale": 0.7184731978898014,
+          "roadPixelSpeed": 180.2957818181818,
+          "ground": 641.44,
+          "baseline": 641.44,
+          "lift": 0,
+          "screenSpeed": 179.36405677402257,
+          "roadScroll": 912.829115454543
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 133.63,
+        "baseSpeed": 364.0333333333333,
+        "playerX": 188.98678414096915,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 3.552713678800501e-15,
+              "hip": {
+                "x": -11,
+                "y": -43
+              },
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "ankle": {
+                "x": -25.883168136679114,
+                "y": -3.0245393375843403
+              },
+              "foot": {
+                "x": -24.97951327335613,
+                "y": 1.8931235105573179
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 5.0242958677880805e-15,
+              "hip": {
+                "x": 11,
+                "y": -43
+              },
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "ankle": {
+                "x": 26.52391808879114,
+                "y": -0.2727947496647968
+              },
+              "foot": {
+                "x": 25.054581068897598,
+                "y": 4.506436226336505
+              }
+            }
+          ],
+          "torsoAngle": 0,
+          "torsoShift": 0,
+          "crouch": 0,
+          "bodyDrop": 0,
+          "landingCrouch": 0,
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "arms": [
+            {
+              "shoulder": {
+                "x": -22,
+                "y": -82
+              },
+              "elbow": {
+                "x": -33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": -44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 4.71238898038469
+            },
+            {
+              "shoulder": {
+                "x": 22,
+                "y": -82
+              },
+              "elbow": {
+                "x": 33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": 44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 1.5707963267948966
+            }
+          ],
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "encounters": [],
+        "grab": 0,
+        "mph": 83.033832413686,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": true,
+          "voices": 0,
+          "normalisation": 56.01200310362705
+        },
+        "thrusting": false,
+        "fuel": 75,
+        "latched": false,
+        "turns": 1,
+        "pending": 110,
+        "flips": 1,
+        "multiplier": 1.1,
+        "meter": 1,
+        "streak": 0.05,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": {
+          "points": 100,
+          "turns": 1,
+          "late": 0,
+          "near": 0,
+          "perfect": false,
+          "good": true,
+          "grindPoints": 0,
+          "grindDistance": 0
+        },
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {
+          "jump": true,
+          "charge": true,
+          "flip": true
+        },
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.2899999976158142,
+          "p95RenderMs": 0.40000009536743164
+        },
+        "sound": true,
+        "audio": {
+          "enabled": true,
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "phase": 0.45000000000000284,
+            "targets": {
+              "intensity": 0.010568888888888909,
+              "volume": 0.5974794391684389,
+              "brightness": 1307.453210840977,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.24,
+                "bass": 0.2,
+                "drums": 0.1
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1,
+              "landing": 1
+            }
+          }
+        },
+        "factory": null,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 8.959174943674174,
+          "events": 0
+        },
+        "settleTarget": 0,
+        "spinHeld": false
+      }
+    },
+    {
+      "width": 844,
+      "kind": "settled",
+      "state": {
+        "version": "4.5.0",
+        "grind": {
+          "support": null,
+          "age": 0,
+          "exit": null,
+          "exitAge": 1,
+          "pending": 0,
+          "distance": 0,
+          "turns": 0
+        },
+        "rails": [],
+        "boosters": {
+          "active": {
+            "jump": 5.983333333333233
+          },
+          "hearts": 0,
+          "grace": 0,
+          "ghostIds": [],
+          "speedBlend": 0,
+          "pickups": [],
+          "nextAt": 1000000000,
+          "serial": 0,
+          "bag": [],
+          "bagCycle": 0,
+          "random": 2772213254,
+          "spoiledFlight": false
+        },
+        "effectiveMultiplier": 1.1,
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 7000,
+          "nextIn": 6864,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 2.0166666666666666,
+        "progress": 2.016666666666662,
+        "stage": 0,
+        "mode": "playing",
+        "score": 136,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 364.0333333333333,
+        "camera": {
+          "scale": 0.9022897074816585,
+          "x": 243.96286457771075,
+          "strength": 0.011805915614473379,
+          "energy": 0.008673835125447964,
+          "sceneryScale": 0.9050534469542071,
+          "roadPixelSpeed": 330.1697674418604,
+          "ground": 371.92836327128197,
+          "baseline": 260,
+          "lift": 111.92836327128195,
+          "screenSpeed": 328.4635298469064,
+          "roadScroll": 1726.0527034883642
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 133.63,
+        "baseSpeed": 364.0333333333333,
+        "playerX": 269.8635897435897,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 3.552713678800501e-15,
+              "hip": {
+                "x": -11,
+                "y": -43
+              },
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "ankle": {
+                "x": -25.883168136679114,
+                "y": -3.0245393375843403
+              },
+              "foot": {
+                "x": -24.97951327335613,
+                "y": 1.8931235105573179
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 5.0242958677880805e-15,
+              "hip": {
+                "x": 11,
+                "y": -43
+              },
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "ankle": {
+                "x": 26.52391808879114,
+                "y": -0.2727947496647968
+              },
+              "foot": {
+                "x": 25.054581068897598,
+                "y": 4.506436226336505
+              }
+            }
+          ],
+          "torsoAngle": 0,
+          "torsoShift": 0,
+          "crouch": 0,
+          "bodyDrop": 0,
+          "landingCrouch": 0,
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "arms": [
+            {
+              "shoulder": {
+                "x": -22,
+                "y": -82
+              },
+              "elbow": {
+                "x": -33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": -44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 4.71238898038469
+            },
+            {
+              "shoulder": {
+                "x": 22,
+                "y": -82
+              },
+              "elbow": {
+                "x": 33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": 44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 1.5707963267948966
+            }
+          ],
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "encounters": [],
+        "grab": 0,
+        "mph": 83.033832413686,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": true,
+          "voices": 0,
+          "normalisation": 56.01200310362705
+        },
+        "thrusting": false,
+        "fuel": 75,
+        "latched": false,
+        "turns": 1,
+        "pending": 110,
+        "flips": 1,
+        "multiplier": 1.1,
+        "meter": 1,
+        "streak": 0.05,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": {
+          "points": 100,
+          "turns": 1,
+          "late": 0,
+          "near": 0,
+          "perfect": false,
+          "good": true,
+          "grindPoints": 0,
+          "grindDistance": 0
+        },
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {
+          "jump": true,
+          "charge": true,
+          "flip": true
+        },
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.5934426315495225,
+          "p95RenderMs": 1
+        },
+        "sound": true,
+        "audio": {
+          "enabled": true,
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "spaceport",
+              "tesla-factory"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "phase": 0.41799999999999926,
+            "targets": {
+              "intensity": 0.010887777777777817,
+              "volume": 0.597403880658794,
+              "brightness": 1307.9071434180114,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.24,
+                "bass": 0.2,
+                "drums": 0.1
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1,
+              "landing": 1
+            }
+          }
+        },
+        "factory": null,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 11.809904545927807,
+          "events": 0
+        },
+        "settleTarget": 0,
+        "spinHeld": false
+      }
+    },
+    {
+      "width": 1440,
+      "kind": "settled",
+      "state": {
+        "version": "4.5.0",
+        "grind": {
+          "support": null,
+          "age": 0,
+          "exit": null,
+          "exitAge": 1,
+          "pending": 0,
+          "distance": 0,
+          "turns": 0
+        },
+        "rails": [],
+        "boosters": {
+          "active": {
+            "jump": 5.983333333333233
+          },
+          "hearts": 0,
+          "grace": 0,
+          "ghostIds": [],
+          "speedBlend": 0,
+          "pickups": [],
+          "nextAt": 1000000000,
+          "serial": 0,
+          "bag": [],
+          "bagCycle": 0,
+          "random": 2772213254,
+          "spoiledFlight": false
+        },
+        "effectiveMultiplier": 1.1,
+        "biome": {
+          "id": "spaceport",
+          "leg": 0,
+          "nextAt": 7000,
+          "nextIn": 6864,
+          "from": "spaceport",
+          "edgeAt": 0,
+          "start": 0,
+          "end": 0,
+          "progress": 1,
+          "moving": false
+        },
+        "time": 2.0166666666666666,
+        "progress": 2.016666666666662,
+        "stage": 0,
+        "mode": "playing",
+        "score": 136,
+        "best": 0,
+        "collection": {
+          "discovered": 0,
+          "new": 0
+        },
+        "y": 0,
+        "fall": {
+          "active": false,
+          "age": 0,
+          "duration": 2.8,
+          "rate": 1,
+          "taps": 0,
+          "progress": 1
+        },
+        "speed": 364.0333333333333,
+        "camera": {
+          "scale": 1.243540301977927,
+          "x": 416.23995852121266,
+          "strength": 0.011805915614473379,
+          "energy": 0.008673835125447964,
+          "sceneryScale": 1.147561357740655,
+          "roadPixelSpeed": 455.04166666666663,
+          "ground": 702.0759713059978,
+          "baseline": 684,
+          "lift": 18.0759713059978,
+          "screenSpeed": 452.69012126336463,
+          "roadScroll": 2453.8546874999993
+        },
+        "speedFeedback": {
+          "factor": 1,
+          "lean": 0,
+          "impossibru": false,
+          "flameLength": 0,
+          "flameOpacity": 0
+        },
+        "kmh": 133.63,
+        "baseSpeed": 364.0333333333333,
+        "playerX": 334.08,
+        "angle": 0,
+        "omega": 0,
+        "airborne": false,
+        "spinning": false,
+        "cosmeticFlip": false,
+        "carAnimation": {
+          "cosmetic": false,
+          "phase": 0,
+          "frame": 0,
+          "gap": 0
+        },
+        "visual": {
+          "feet": [
+            {
+              "side": -1,
+              "roofError": 3.552713678800501e-15,
+              "hip": {
+                "x": -11,
+                "y": -43
+              },
+              "knee": {
+                "x": -23,
+                "y": -25
+              },
+              "ankle": {
+                "x": -25.883168136679114,
+                "y": -3.0245393375843403
+              },
+              "foot": {
+                "x": -24.97951327335613,
+                "y": 1.8931235105573179
+              }
+            },
+            {
+              "side": 1,
+              "roofError": 5.0242958677880805e-15,
+              "hip": {
+                "x": 11,
+                "y": -43
+              },
+              "knee": {
+                "x": 23,
+                "y": -25
+              },
+              "ankle": {
+                "x": 26.52391808879114,
+                "y": -0.2727947496647968
+              },
+              "foot": {
+                "x": 25.054581068897598,
+                "y": 4.506436226336505
+              }
+            }
+          ],
+          "torsoAngle": 0,
+          "torsoShift": 0,
+          "crouch": 0,
+          "bodyDrop": 0,
+          "landingCrouch": 0,
+          "reactionSpace": null,
+          "aimCosine": null,
+          "jointMouthDistance": null,
+          "reaction": {
+            "reach": 0,
+            "inhale": 0,
+            "meme": 0,
+            "smoke": 0
+          },
+          "gripError": null,
+          "trick": "tuck",
+          "grabSide": 1,
+          "interactionSide": -1,
+          "grab": 0,
+          "car": {
+            "x": 0,
+            "y": 0,
+            "angle": 0
+          },
+          "expression": "neutral",
+          "cash": {
+            "count": 0,
+            "falling": 0
+          },
+          "arms": [
+            {
+              "shoulder": {
+                "x": -22,
+                "y": -82
+              },
+              "elbow": {
+                "x": -33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": -44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 4.71238898038469
+            },
+            {
+              "shoulder": {
+                "x": 22,
+                "y": -82
+              },
+              "elbow": {
+                "x": 33.999999999999986,
+                "y": -65
+              },
+              "wrist": {
+                "x": 44,
+                "y": -65
+              },
+              "taunt": 0,
+              "wave": 0,
+              "handAngle": 1.5707963267948966
+            }
+          ],
+          "nearWrist": {
+            "x": 44,
+            "y": -65
+          },
+          "rearWrist": {
+            "x": -44,
+            "y": -65
+          }
+        },
+        "encounters": [],
+        "grab": 0,
+        "mph": 83.033832413686,
+        "thrustAudio": {
+          "wanted": false,
+          "active": false,
+          "ready": true,
+          "voices": 0,
+          "normalisation": 56.01200310362705
+        },
+        "thrusting": false,
+        "fuel": 75,
+        "latched": false,
+        "turns": 1,
+        "pending": 110,
+        "flips": 1,
+        "multiplier": 1.1,
+        "meter": 1,
+        "streak": 0.05,
+        "recovery": null,
+        "charging": false,
+        "charge": 0,
+        "lastLanding": {
+          "points": 100,
+          "turns": 1,
+          "late": 0,
+          "near": 0,
+          "perfect": false,
+          "good": true,
+          "grindPoints": 0,
+          "grindDistance": 0
+        },
+        "obstacles": [],
+        "director": {
+          "wave": 0,
+          "fallbacks": 0
+        },
+        "tutorial": {
+          "jump": true,
+          "charge": true,
+          "flip": true
+        },
+        "perf": {
+          "fps": 60,
+          "meanRenderMs": 0.49836063775859896,
+          "p95RenderMs": 1.0999999046325684
+        },
+        "sound": true,
+        "audio": {
+          "enabled": true,
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "phase": 0.5300000000000011,
+            "targets": {
+              "intensity": 0.010614444444444423,
+              "volume": 0.5974686433403366,
+              "brightness": 1307.5172460333442,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.24,
+                "bass": 0.2,
+                "drums": 0.1
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1,
+              "landing": 1
+            }
+          }
+        },
+        "factory": null,
+        "rocket": {
+          "phase": "ready",
+          "nextEventIn": 8.390637047830463,
+          "events": 0
+        },
+        "settleTarget": 0,
+        "spinHeld": false
+      }
+    }
+  ],
+  "physicalPhone": false,
+  "comparisonPoses": [
+    [
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      }
+    ],
+    [
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      },
+      {
+        "feet": [
+          {
+            "side": -1,
+            "roofError": 0.4739779174499165,
+            "hip": {
+              "x": -11,
+              "y": -43
+            },
+            "knee": {
+              "x": -23,
+              "y": -35
+            },
+            "ankle": {
+              "x": -25,
+              "y": -6
+            },
+            "foot": {
+              "x": -25,
+              "y": -1
+            }
+          },
+          {
+            "side": 1,
+            "roofError": 7.920768634423023,
+            "hip": {
+              "x": 11,
+              "y": -43
+            },
+            "knee": {
+              "x": 23,
+              "y": -35
+            },
+            "ankle": {
+              "x": 25,
+              "y": -6
+            },
+            "foot": {
+              "x": 25,
+              "y": -1
+            }
+          }
+        ],
+        "torsoAngle": 0,
+        "torsoShift": 0,
+        "crouch": 0,
+        "bodyDrop": 0,
+        "landingCrouch": 0,
+        "reactionSpace": null,
+        "aimCosine": null,
+        "jointMouthDistance": null,
+        "reaction": {
+          "reach": 0,
+          "inhale": 0,
+          "meme": 0,
+          "smoke": 0
+        },
+        "gripError": null,
+        "trick": "tuck",
+        "grabSide": 1,
+        "interactionSide": -1,
+        "grab": 0,
+        "car": {
+          "x": 0,
+          "y": 0,
+          "angle": 0
+        },
+        "expression": "neutral",
+        "cash": {
+          "count": 0,
+          "falling": 0
+        },
+        "arms": [
+          {
+            "shoulder": {
+              "x": -22,
+              "y": -82
+            },
+            "elbow": {
+              "x": -42.808588664021514,
+              "y": -82.05135962962825
+            },
+            "wrist": {
+              "x": -50,
+              "y": -89
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": -0.802565506243782
+          },
+          {
+            "shoulder": {
+              "x": 22,
+              "y": -82
+            },
+            "elbow": {
+              "x": 40.084074133898525,
+              "y": -71.70600841657317
+            },
+            "wrist": {
+              "x": 50,
+              "y": -73
+            },
+            "taunt": 0,
+            "wave": 0,
+            "handAngle": 1.4410333070989962
+          }
+        ],
+        "nearWrist": {
+          "x": 50,
+          "y": -73
+        },
+        "rearWrist": {
+          "x": -50,
+          "y": -89
+        }
+      }
+    ]
+  ]
+}

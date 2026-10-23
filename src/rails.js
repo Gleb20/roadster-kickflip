@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
-import {uprightError,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.6.1';
-import {activeBooster,advanceBoosters} from './boosters.js?v=4.6.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.2';
+import {uprightError,resetAirRotation,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.6.2';
+import {activeBooster,advanceBoosters} from './boosters.js?v=4.6.2';
 export const RAIL=Object.freeze({height:190,length:720,belly:8,pointsPerUnit:.1,firstWave:3,every:7,exitSeconds:1.25});
 export const makeRail=x=>({x,w:RAIL.length,h:RAIL.height,paid:[],passed:false});
 export const createGrind=()=>({support:null,age:0,exit:null,exitAge:1,pending:0,distance:0,turns:0});
@@ -8,6 +8,7 @@ export const createGrind=()=>({support:null,age:0,exit:null,exitAge:1,pending:0,
 // rather than the tyres, touches the rail; accepted angles are never snapped.
 export const railContactHeight=p=>p.y+65+(RAIL.belly-65)*Math.cos(p.angle);
 export function leaveRail(g,p){
+ resetAirRotation(p);
  g.support=null;g.age=0;g.exit='end';g.exitAge=0;p.airborne=true;p.angle=uprightError(p.angle);p.omega=0;p.maxTurn=Math.max(0,-p.angle);p.turns=0;p.time=0;p.launchVelocity=0;p.trickStarted=true;
 }
 export function jumpFromRail(g,p,charge){
@@ -31,7 +32,7 @@ export function advanceRail(g,p,before,rails,travel,dt,e,{spoiled=false,blocked=
   if(good&&old>=RAIL.height&&now<=RAIL.height&&old>now){
    fraction=(old-RAIL.height)/(old-now);
    rail=rails.find((r,i)=>{const x=oldXs[i]-travel*fraction;return x<=0&&x+r.w>=0;});
-   if(rail){g.support=rail.uid;g.age=0;g.turns+=Math.max(p.turns,Math.round(-p.angle/(Math.PI*2)));p.turns=0;p.airborne=false;p.omega=0;p.vy=0;p.thrusting=false;p.grab=0;events.push({type:'rail-catch',uid:rail.uid,impact:Math.abs(before.vy)});}
+   if(rail){resetAirRotation(p);g.support=rail.uid;g.age=0;g.turns+=Math.max(p.turns,Math.round(-p.angle/(Math.PI*2)));p.turns=0;p.airborne=false;p.omega=0;p.vy=0;p.thrusting=false;p.grab=0;events.push({type:'rail-catch',uid:rail.uid,impact:Math.abs(before.vy)});}
   }
  }
  if(rail){

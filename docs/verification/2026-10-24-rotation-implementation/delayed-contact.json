@@ -1,0 +1,55 @@
+{
+  "kind": "Only contact postponed by elevated y; same input and unchanged angular physics. No trajectory forecasting in production.",
+  "baseline": [
+    {
+      "time": 1.6166666666666667,
+      "extraContactDelay": 0,
+      "angle": -424.70496564072107,
+      "omega": -1.8
+    },
+    {
+      "time": 2.1166666666666667,
+      "extraContactDelay": 0.5,
+      "angle": -476.27116720249506,
+      "omega": -1.8
+    },
+    {
+      "time": 2.6166666666666667,
+      "extraContactDelay": 1,
+      "angle": -527.8373687642711,
+      "omega": -1.8
+    },
+    {
+      "time": 3.6166666666666667,
+      "extraContactDelay": 2,
+      "angle": -630.9697718878232,
+      "omega": -1.8
+    }
+  ],
+  "candidate": [
+    {
+      "time": 1.6166666666666667,
+      "extraContactDelay": 0,
+      "angle": -383.93454591356334,
+      "omega": -0.0017744309843415879
+    },
+    {
+      "time": 2.1166666666666667,
+      "extraContactDelay": 0.5,
+      "angle": -383.9405759970176,
+      "omega": -6.673034439028042e-7
+    },
+    {
+      "time": 2.6166666666666667,
+      "extraContactDelay": 1,
+      "angle": -383.94057826452035,
+      "omega": -2.5090718733072886e-10
+    },
+    {
+      "time": 3.6166666666666667,
+      "extraContactDelay": 2,
+      "angle": -383.94057826537306,
+      "omega": -3.547255883121497e-17
+    }
+  ]
+}

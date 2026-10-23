@@ -1,3 +1,7 @@
+## Rotation frontend4.6.2 / physics461 — bounded inverse
+
+Exact parent is English audio4.6.1 `84f0217c72015169a420d5dd368265270c1508a4`, preserving audio controls, English copy, expressions and director4.6. Rehearse the bounded candidate inverse against that exact parent; [final proof](docs/verification/2026-10-24-rotation-v462/README.md). Earlier ede9ec6/4.5 inverses below are historical. Public reversal uses a fresh frontend cache identity and retains all ten deployed immutable verifier versions, all pending/finished packets, audio preferences and real records. Do not reverse the additive migration, deploy old API/worker bundles or restore database rows.
+
 ## English audio labels4.6.1 —bounded inverse
 
 Parent `ede9ec6042fd6c262eda2873861974cde72a082b` is the published director4.6.0 with audio controls. `docs/verification/2026-10-24-audio-language/runtime-forward.patch` has an exact forward/reverse hash rehearsal recorded in `scope-and-rollback.json`. Revert only this task on fresh isolated main with a fresh cache version, preserving newer rotation work, all nine replay versions, settings and scores/outbox. Never restore old shared docs/runtime over newer edits.

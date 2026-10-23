@@ -1,0 +1,18 @@
+{
+  "parent": "84f0217c72015169a420d5dd368265270c1508a4",
+  "frontendVersion": "4.6.2",
+  "physicsRuleset": "roadster-v4.6.1",
+  "acceptedPhysicsCommit": "890bcb2",
+  "normalizedAngularRunRailsConfigIdentical": true,
+  "englishAudioUiAndRendererIdenticalAfterCacheQueryNormalization": true,
+  "backendFilesByteIdentical": true,
+  "carriedForward": [
+    "24080-case sweep873rescues0regressions",
+    "1000director seeds8x600sec6449timingprobes",
+    "16server tests27PGlite checks",
+    "10hostedacceptances2hostedrejections",
+    "22original row IDs/hash exact",
+    "API/worker ZIP exact readback"
+  ],
+  "backendMutatedAgain": false
+}

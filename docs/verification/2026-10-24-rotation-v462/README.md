@@ -1,0 +1,28 @@
+# Gentle release settling — frontend4.6.2 / physics461
+
+Publication status: backend verified; frontend Pages/live verification pending. [Phone4.6.2](https://gleb20.github.io/roadster-kickflip/?v=4.6.2). Final workflow/head and live results will be recorded in `release-status.json`.
+
+Exact parent: English audio4.6.1 `84f0217c72015169a420d5dd368265270c1508a4`. The originally prepared frontend4.6.1 was stopped by expected-head protection before push when that authorized copy fix appeared. Its changes are preserved; this release uses a fresh4.6.2 cache/display identity. Already-deployed immutable physics tag `roadster-v4.6.1` and both API/worker bundles remain byte-identical, with no repeat backend mutation. Runtime `9333fc4`; isolated branch `codex/air-rotation-v462`, original dirty root preserved.
+
+## Result and unchanged rules
+
+A timely manual release latches one physically reachable turn:255° minimum progress,105° maximum approach and original stopping forecast within safe±40°. Ordinary opening/braking is retained until1.8rad/s; past PERFECT10°, smoothstep dissipative damping reaches16/s at25°. There is no angle assignment, return torque, reverse rotation or later target acquisition after a rough abort. Rehold cancels immediately. Hold7.2/60, grab.12/.18, safe40/PERFECT10/speed threshold, real thrust/fuel, collision geometry, scoring, audio and renderer remain unchanged. The boosted full-charge/.8s target moves from−424.705° fall to a natural safe tilt around−383.94°, with only about.006° additional drift over delayed contact.
+
+## Fresh and carried-forward verification
+
+- Fresh212 game tests and `npm run check` pass; PWA190 cached resources. Fresh21 native English audio settings checks pass at390/1440, including labels, accessible values, keyboard sliders, pause, reload and offline persistence. Fresh14 actual English4.6.1→4.6.2 upgrade checks preserve exact old finished replay, outbox, best/collection/tutorial, separate levels and new offline settling; existing closed-tab activation fallback was required.
+- `semantic-preservation.json` proves normalized gameplay/config/rails/run identical to accepted `890bcb2`, English audio/index/renderer/director identical to parent, and every Supabase file byte-identical to the tested/deployed candidate. Config display version and browser cache query identity are the only differences in the shared angular graph; its numerical physics and inputs are unchanged. Main only adds old4.6.0 finished-record compatibility beyond cache queries.
+- Therefore the prior24,080-case sweep is carried forward:873 fail→safe,0 safe→fail,0 PERFECT→safe,0 safe→PERFECT,0 fail→PERFECT,0 turn changes. Ground safe56–105ticks/PERFECT68–74 and boosted rail safe51–105/PERFECT62–69 retain the established narrow PERFECT windows. Early120/180/240°, late overhold/second-turn and physically unreachable releases still fail; no guarantee or autopilot is added. Data: [sweep](../2026-10-24-rotation-v461/sweep.json), [tuning and delayed drift](../2026-10-24-rotation-implementation/README.md).
+- Carried forward unchanged:16 server tests,27 disposable SQL checks including active persisted service checkpoint,39 native rotation checks and12 identical renderer poses,1000 director structural seeds/112 states/336 air underpasses/6449 timing probes/eight600-second nominal/imperfect runs. [Exact final physics evidence](../2026-10-24-rotation-v461/README.md). These controlled fixtures do not establish human success probability, phone FPS or subjective feel.
+
+## Hosted compatibility and records
+
+The additive nine→ten guard, ten frozen manifests and exact API/worker ZIP readback are retained. Twelve sessions were moved to unique QA epoch before submitting: all ten valid rulesets accepted with exact totals, fake score/end rejected autonomously; public fixture writes0 and client `/verify` calls0. Old4.6.0 compatibility includes a real251-second rail-air witness. Hosted acceptance is separate from active-checkpoint coverage, which is proven in local/PGlite/JSON tests; no production chunk budget was changed or client checkpoint uploaded.
+
+All22 pre-existing public row IDs and full-row hashes match before/after (`1d3aff2d32baf7d52ad9c62b619d368a04ed2486d9ab346c8084310a0698f413`). Concurrent legitimate new IDs would be allowed; none is removed or restored. Capabilities remain only in0600 `/tmp` files. [Hosted results](../2026-10-24-rotation-v461/hosted-results.json), [preservation](../2026-10-24-rotation-v461/hosted-preservation.json), [exact backend readback](../2026-10-24-rotation-v461/backend-readback.json).
+
+## Rollback and remaining acceptance
+
+The bounded complete inverse targets exact English parent84f0217, preserving its English copy and audio preferences. `rollback.json` records forward/inverse equality and fresh parent203 tests/checks. Public reversal uses another fresh frontend cache identity and retains all ten deployed verifiers, accepted/queued packets and real records. Do not downgrade API/worker or undo database changes. Original root/audio/director checkouts stay untouched.
+
+Physical iPhone/Safari and subjective feel remain unverified. Bounded follow-up after publication: a phone pass covering early/timely/late release, continued thrust, rehold and rail. Existing closed-tab PWA activation remains a separate question; no unrelated debt sprint is started.

@@ -1,0 +1,16 @@
+{
+  "parentCommit": "ede9ec6042fd6c262eda2873861974cde72a082b",
+  "parentTree": "5233014bee6910ec0dd6d4fe2bcc6c4ef471a698",
+  "rehearsedCommit": "b5f33468c93c9dd806185ae601349ef46306f8c7",
+  "restoredHead": "ede9ec6042fd6c262eda2873861974cde72a082b",
+  "restoredTree": "5233014bee6910ec0dd6d4fe2bcc6c4ef471a698",
+  "restoredStatus": "",
+  "completePatch": "/tmp/tesla-rotation-v461-complete.patch",
+  "completePatchSha256": "8bf1b54a0857d5fe4493267b681756bba36cc8fbc82a16529b081714ce55a027",
+  "forwardAndInverse": true,
+  "restoredParentTests": 203,
+  "restoredParentChecks": true,
+  "parentRuntimeTestedAt": "afecbfaf76d668746d756b801f20b2e79359325d",
+  "docOnlyParentAdvanceToEde9ec6Verified": true,
+  "publicRollback": "Use a fresh frontend cache identity and retain ten deployed verifier versions, accepted records and queued packets. Never roll back database rows or deploy the old inverse backend."
+}

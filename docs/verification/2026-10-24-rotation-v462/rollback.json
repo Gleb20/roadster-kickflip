@@ -1,0 +1,18 @@
+{
+  "parentCommit": "84f0217c72015169a420d5dd368265270c1508a4",
+  "parentTree": "d27bc4c7df2542575866b11a1acf716250016512",
+  "rehearsedCommit": "c6034bc0e72016554b40a369971455e2e9ffe7c1",
+  "restoredHead": "84f0217c72015169a420d5dd368265270c1508a4",
+  "restoredTree": "d27bc4c7df2542575866b11a1acf716250016512",
+  "restoredStatus": "",
+  "completePatch": "/tmp/tesla-rotation-v462-complete.patch",
+  "completePatchSha256": "c31068a62887b34bf9f9640791734faaf41edee74a2dd7326a6e9e81428e6e3a",
+  "forwardAndInverse": true,
+  "restoredParentTests": 203,
+  "restoredParentChecks": true,
+  "parentRuntimeTestLogs": [
+    "/tmp/rotation-v462-rollback-tests.txt",
+    "/tmp/rotation-v462-rollback-check.txt"
+  ],
+  "publicRollback": "Use a fresh frontend cache identity and retain all ten deployed verifiers, records and queued packets. Never undo migration, downgrade API/worker or restore database rows."
+}

@@ -1,0 +1,185 @@
+{
+  "replay": {
+    "format": 1,
+    "ruleset": "roadster-v4.6.1",
+    "seed": 17,
+    "ticks": 1023,
+    "events": [
+      [
+        0,
+        0
+      ],
+      [
+        48,
+        1
+      ],
+      [
+        48,
+        0
+      ],
+      [
+        144,
+        1
+      ]
+    ]
+  },
+  "expected": {
+    "score": 260,
+    "flips": 1,
+    "ticks": 1023
+  },
+  "activeCheckpoint": {
+    "seed": 17,
+    "S": {
+      "mode": "playing",
+      "tick": 145,
+      "t": 1.2083333333333333,
+      "distance": 436.4701388888889,
+      "score": 21,
+      "speed": 362.4166666666667,
+      "next": 0.49166666666667086,
+      "obs": [],
+      "rails": [],
+      "entityId": 0,
+      "anchor": 0,
+      "lastCharge": 1
+    },
+    "P": {
+      "spinHeld": false,
+      "settleTarget": 6.283185307179586,
+      "y": 301.9471805555562,
+      "vy": -252.9166666666655,
+      "vx": 0,
+      "angle": -5.415833333333327,
+      "omega": -7,
+      "airborne": true,
+      "time": 0.8083333333333329,
+      "fuel": 50,
+      "thrusting": false,
+      "latched": false,
+      "attach": 0,
+      "maxTurn": 5.415833333333327,
+      "turns": 0,
+      "lastDirection": -1,
+      "trickStarted": true,
+      "grab": 0.9537037037037037,
+      "launchVelocity": 1000,
+      "jumpFactor": 1
+    },
+    "E": {
+      "scoreFactor": 1,
+      "bonus": 0,
+      "multiplier": 10,
+      "meter": 0,
+      "decay": 0,
+      "streak": 0,
+      "streakLeft": 0,
+      "flips": 0
+    },
+    "pace": {
+      "boost": 0,
+      "progress": 1.2083333333333315,
+      "base": 362.4166666666667,
+      "speed": 362.4166666666667,
+      "recovery": null,
+      "stumble": 0,
+      "falling": false
+    },
+    "F": {
+      "active": false,
+      "age": 0,
+      "duration": 2.8,
+      "rate": 1,
+      "taps": 0,
+      "angle": 0,
+      "reduced": false
+    },
+    "Q": {
+      "active": {},
+      "hearts": 0,
+      "grace": 0,
+      "ghostIds": [],
+      "speedBlend": 0,
+      "pickups": [],
+      "nextAt": 8,
+      "serial": 0,
+      "bag": [],
+      "bagCycle": 0,
+      "random": 2772213254,
+      "spoiledFlight": false
+    },
+    "G": {
+      "support": null,
+      "age": 0,
+      "exit": null,
+      "exitAge": 1,
+      "pending": 0,
+      "distance": 0,
+      "turns": 0
+    },
+    "input": {
+      "charging": false,
+      "charge": 0,
+      "spin": false,
+      "thrust": false
+    },
+    "random": 17,
+    "director": {
+      "wave": 0,
+      "last": null,
+      "fallbacks": 0,
+      "waiting": false,
+      "leg": 0,
+      "legStartedAt": 0.008333333333333333,
+      "legDistance": 3.000138888888889,
+      "groundSinceAir": 0,
+      "airCount": 0,
+      "lastAirAt": -1000000000,
+      "railCount": 0,
+      "lastRailAirAt": -1000000000,
+      "phase": "introduce",
+      "flow": 0,
+      "active": false,
+      "restUntil": null,
+      "restSeconds": 1.5,
+      "recoveryWaves": 0,
+      "history": [],
+      "seen": [],
+      "sinceTall": 2,
+      "budget": null
+    },
+    "lateId": null,
+    "lastLanding": null
+  },
+  "negative": {
+    "fakeScore": 261,
+    "fakeEnd": {
+      "format": 1,
+      "ruleset": "roadster-v4.6.1",
+      "seed": 17,
+      "ticks": 1024,
+      "events": [
+        [
+          0,
+          0
+        ],
+        [
+          48,
+          1
+        ],
+        [
+          48,
+          0
+        ],
+        [
+          144,
+          1
+        ]
+      ]
+    }
+  },
+  "notes": {
+    "kind": "single controlled release; no QA state injection, no booster, no network",
+    "sourceRuleset": "roadster-v4.6.1"
+  }
+}

@@ -8,7 +8,7 @@ import {createRandom} from '../src/random.js';
 import {createFall,beginFall,advanceFall,fallPose} from '../src/fall.js';
 import {sweptCollision as originalCollision} from '../supabase/rulesets/roadster-v380/gameplay.js';
 import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v460/routes.js';
-import {createRun as originalRun,verifyReplay as originalVerify} from '../supabase/rulesets/roadster-v460/run.js';
+import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v460/run.js';
 
 test('sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel',()=>{
  const random=createRandom(5873),dxs=[180,180+1e-9,180-1e-9,-400,-180,-180-1e-9,900,0];
@@ -38,18 +38,19 @@ test('all route patterns retain exact choices, timing margins and action schedul
  }
 });
 
-test('seeded runs and completed replays remain identical to the frozen server ruleset',()=>{
+test('zero-spin seeded runs retain the frozen server physics and completed replays',()=>{
+ const physicsSnapshot=run=>{const saved=run.snapshot();assert.equal(saved.P.settleTarget,0);assert.equal(saved.P.spinHeld,false);delete saved.P.settleTarget;delete saved.P.spinHeld;return saved;};
  for(const seed of [17,932,93817]){
   const run=createRun({seed}),original=originalRun({seed}),actions=new Map();run.reset();original.reset();let wave=0;
   while(run.S.mode==='playing'){
    for(const action of actions.get(run.S.tick)||[]){run.command(action);original.command(action);}
    run.step();original.step();run.drainEvents();original.drainEvents();
    assert.equal(run.S.tick,original.S.tick);assert.equal(run.S.mode,original.S.mode);
-   if(run.director.state.wave!==wave){wave=run.director.state.wave;assert.deepEqual(run.snapshot(),original.snapshot());
+   if(run.director.state.wave!==wave){wave=run.director.state.wave;assert.deepEqual(physicsSnapshot(run),original.snapshot());
     if(run.S.t<30)for(const event of run.director.state.last.route.actions){const tick=run.S.tick+Math.round(event.at*120),action={hold:'primary-down',jump:'primary-up','thrust-on':'thrust-on','thrust-off':'thrust-off'}[event.action];if(!actions.has(tick))actions.set(tick,[]);actions.get(tick).push(action);}
    }
    assert.ok(run.S.t<60,'fixture should finish after witness inputs stop');
   }
-  assert.deepEqual(run.snapshot(),original.snapshot());assert.deepEqual(originalVerify(run.replay()),{score:run.S.score,flips:run.E.flips,ticks:run.S.tick});
+  assert.deepEqual(physicsSnapshot(run),original.snapshot());assert.deepEqual(originalVerify({...run.replay(),ruleset:originalRuleset}),{score:run.S.score,flips:run.E.flips,ticks:run.S.tick});
  }
 });

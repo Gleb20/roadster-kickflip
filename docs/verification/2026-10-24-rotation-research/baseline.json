@@ -1,0 +1,1015 @@
+{
+  "base": "/tmp/tesla-audio-v450-20261023",
+  "dt": 0.008333333333333333,
+  "kind": "Controlled flight fixtures, not player success rates. Elevated launch uses same y offset as rail jump.",
+  "residualDegreesPerSecond": 103.13240312354819,
+  "rows": [
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 166.25100000000032
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 69.07218055555593
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 782.9166666666657,
+        "angle": -331.0263661368328,
+        "omega": -1.8,
+        "time": 1.0083333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 128.00100000000035
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 52.88988888888928
+      },
+      "result": {
+        "good": true,
+        "perfect": true,
+        "turns": 1,
+        "impact": 782.9166666666657,
+        "angle": -361.87059410804204,
+        "omega": -2.1999999999999957,
+        "time": 1.0083333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 74.25100000000037
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 782.9166666666657,
+        "angle": -384.2159481181439,
+        "omega": -4.599999999999998,
+        "time": 1.0083333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 5.001000000000439
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 782.9166666666657,
+        "angle": -392.810315045106,
+        "omega": -7,
+        "time": 1.0083333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 1.1,
+      "release": null,
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 782.9166666666657,
+        "angle": -392.90580801096115,
+        "omega": -7.2,
+        "time": 1.0083333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 320.25100000000054
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 268.90551388888963
+      },
+      "result": {
+        "good": true,
+        "perfect": true,
+        "turns": 1,
+        "impact": 1002.0833333333311,
+        "angle": -360.2472136885042,
+        "omega": -1.8,
+        "time": 1.2916666666666665
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 304.00100000000066
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 258.223222222223
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1002.0833333333311,
+        "angle": -391.18693462556854,
+        "omega": -1.8,
+        "time": 1.2916666666666665
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 272.2510000000007
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 205.80655555555643
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1002.0833333333311,
+        "angle": -422.12665556263295,
+        "omega": -1.8,
+        "time": 1.2916666666666665
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 1,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 225.00100000000083
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1002.0833333333311,
+        "angle": -453.06637649969736,
+        "omega": -1.8,
+        "time": 1.2916666666666665
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1,
+      "charge": 1,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 162.25100000000094
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1002.0833333333311,
+        "angle": -483.4331396416309,
+        "omega": -2.599999999999996,
+        "time": 1.2916666666666665
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 302.7510000000005
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 246.19718055555626
+      },
+      "result": {
+        "good": true,
+        "perfect": true,
+        "turns": 1,
+        "impact": 975.4166666666646,
+        "angle": -356.8094669177193,
+        "omega": -1.8,
+        "time": 1.2583333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 284.0010000000006
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 234.8898888888896
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 975.4166666666646,
+        "angle": -387.7491878547837,
+        "omega": -1.8,
+        "time": 1.2583333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 249.7510000000007
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 179.973222222223
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 975.4166666666646,
+        "angle": -418.6889087918481,
+        "omega": -1.8,
+        "time": 1.2583333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 200.00100000000077
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 975.4166666666646,
+        "angle": -449.62862972891253,
+        "omega": -1.8,
+        "time": 1.2583333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 134.75100000000086
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 975.4166666666646,
+        "angle": -477.89454762203286,
+        "omega": -3.399999999999997,
+        "time": 1.2583333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 495.25099999999975
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 495.988847222222
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1255.8333333333335,
+        "angle": -393.7652447036566,
+        "omega": -1.8,
+        "time": 1.6166666666666667
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 504.00099999999975
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 491.5565555555553
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1255.8333333333335,
+        "angle": -424.70496564072107,
+        "omega": -1.8,
+        "time": 1.6166666666666667
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 497.25099999999975
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 464.13988888888866
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1255.8333333333335,
+        "angle": -455.6446865777855,
+        "omega": -1.8,
+        "time": 1.6166666666666667
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 475.00099999999975
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1255.8333333333335,
+        "angle": -486.58440751485153,
+        "omega": -1.8,
+        "time": 1.6166666666666667
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 0,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 437.25099999999975
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1255.8333333333335,
+        "angle": -517.524128451916,
+        "omega": -1.8,
+        "time": 1.6166666666666667
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 356.25100000000043
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 259.072180555556
+      },
+      "result": {
+        "good": true,
+        "perfect": true,
+        "turns": 1,
+        "impact": 1105.8333333333321,
+        "angle": -352.51228345423823,
+        "omega": -1.8,
+        "time": 1.2166666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 318.00100000000043
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 242.8898888888893
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1105.8333333333321,
+        "angle": -383.4520043913026,
+        "omega": -1.8,
+        "time": 1.2166666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 264.25100000000043
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 168.4732222222227
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1105.8333333333321,
+        "angle": -414.391725328367,
+        "omega": -1.8,
+        "time": 1.2166666666666666
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 195.00100000000046
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1105.8333333333321,
+        "angle": -445.33144626543145,
+        "omega": -1.9999999999999958,
+        "time": 1.2166666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 0.5,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 110.25100000000059
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1105.8333333333321,
+        "angle": -468.8227158657949,
+        "omega": -4.399999999999998,
+        "time": 1.2166666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 510.25100000000066
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 458.90551388888974
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1273.3333333333326,
+        "angle": -378.29538423512474,
+        "omega": -1.8,
+        "time": 1.4666666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 494.0010000000008
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 448.2232222222231
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1273.3333333333326,
+        "angle": -409.23510517218915,
+        "omega": -1.8,
+        "time": 1.4666666666666666
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 1,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 462.25100000000083
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 395.8065555555565
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1273.3333333333326,
+        "angle": -440.17482610925356,
+        "omega": -1.8,
+        "time": 1.4666666666666666
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 1,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 415.00100000000094
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1273.3333333333326,
+        "angle": -471.11454704631865,
+        "omega": -1.8,
+        "time": 1.4666666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1,
+      "charge": 1,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 352.25100000000106
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1273.3333333333326,
+        "angle": -502.0542679833832,
+        "omega": -1.8,
+        "time": 1.4666666666666666
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 492.75100000000054
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 436.19718055555626
+      },
+      "result": {
+        "good": true,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1246.6666666666658,
+        "angle": -374.8576374643398,
+        "omega": -1.8,
+        "time": 1.4333333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 474.00100000000066
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 424.88988888888963
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1246.6666666666658,
+        "angle": -405.7973584014042,
+        "omega": -1.8,
+        "time": 1.4333333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 439.7510000000007
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 369.97322222222306
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1246.6666666666658,
+        "angle": -436.7370793384687,
+        "omega": -1.8,
+        "time": 1.4333333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 390.0010000000008
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1246.6666666666658,
+        "angle": -467.6768002755336,
+        "omega": -1.8,
+        "time": 1.4333333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 0.5,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 324.7510000000009
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1246.6666666666658,
+        "angle": -498.6165212125981,
+        "omega": -1.8,
+        "time": 1.4333333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.7,
+      "release": {
+        "time": 0.7,
+        "angle": -265.70917749191915,
+        "omega": -7.2,
+        "y": 685.2509999999997
+      },
+      "firstSafe": {
+        "time": 0.9083333333333333,
+        "angle": -320.61763285862304,
+        "y": 685.9888472222219
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1475.416666666668,
+        "angle": -408.37566847949233,
+        "omega": -1.8,
+        "time": 1.7583333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.8,
+      "release": {
+        "time": 0.8,
+        "angle": -306.9621387413382,
+        "omega": -7.2,
+        "y": 694.0009999999997
+      },
+      "firstSafe": {
+        "time": 0.9333333333333332,
+        "angle": -348.97904371759853,
+        "y": 681.5565555555553
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1475.416666666668,
+        "angle": -439.31538941655674,
+        "omega": -1.8,
+        "time": 1.7583333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 0.9,
+      "release": {
+        "time": 0.9,
+        "angle": -348.2150999907572,
+        "omega": -7.2,
+        "y": 687.2509999999997
+      },
+      "firstSafe": {
+        "time": 1.0333333333333332,
+        "angle": -390.23200496701753,
+        "y": 654.1398888888887
+      },
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1475.416666666668,
+        "angle": -470.25511035362183,
+        "omega": -1.8,
+        "time": 1.7583333333333333
+      },
+      "passiveOverrun": true
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 1,
+      "release": {
+        "time": 1,
+        "angle": -389.4680612401762,
+        "omega": -7.2,
+        "y": 665.0009999999997
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1475.416666666668,
+        "angle": -501.19483129068806,
+        "omega": -1.8,
+        "time": 1.7583333333333333
+      },
+      "passiveOverrun": false
+    },
+    {
+      "height": 190,
+      "factor": 1.25,
+      "charge": 1,
+      "hold": 1.1,
+      "release": {
+        "time": 1.1,
+        "angle": -430.72102248959516,
+        "omega": -7.2,
+        "y": 627.2509999999997
+      },
+      "firstSafe": null,
+      "result": {
+        "good": false,
+        "perfect": false,
+        "turns": 1,
+        "impact": 1475.416666666668,
+        "angle": -532.1345522277526,
+        "omega": -1.8,
+        "time": 1.7583333333333333
+      },
+      "passiveOverrun": false
+    }
+  ]
+}

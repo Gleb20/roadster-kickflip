@@ -1,0 +1,86 @@
+[
+  {
+    "id": "9ba45c38-ce3c-4122-b0ff-5f0ef193c186",
+    "ruleset": "roadster-v3.4.2",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "511e5692-ee28-4113-bc97-b8b596480fa8",
+    "ruleset": "roadster-v3.8.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "9bc4da06-3c27-430e-96d3-5356dd517493",
+    "ruleset": "roadster-v4.0.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "ffff56a3-1d52-4aa7-b61a-560807931dec",
+    "ruleset": "roadster-v4.1.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "c1475c94-5824-4f9d-883c-7ec00a0934e0",
+    "ruleset": "roadster-v4.3.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "db8e42ed-9727-4cd2-a22a-3a0d7c9ebf92",
+    "ruleset": "roadster-v4.3.2",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "24cfc3e0-ae81-4c55-a5cd-aeb0aaa974bf",
+    "ruleset": "roadster-v4.4.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "24b274f4-ff27-4235-aa79-65ab539d5b57",
+    "ruleset": "roadster-v4.4.2",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "21f7d19d-a1ca-456f-8236-58f66ba50f6b",
+    "ruleset": "roadster-v4.6.0",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "085d8f90-40e9-4706-ae64-f4499923c099",
+    "ruleset": "roadster-v4.6.1",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "f61eb598-4af6-451b-ab9c-5db02f19498c",
+    "ruleset": "roadster-v4.6.1",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  },
+  {
+    "id": "829806a1-6619-43c7-8d61-f07a9479a0ec",
+    "ruleset": "roadster-v4.6.1",
+    "score_epoch": "qa-v461-20261024-rotation",
+    "status": "ready",
+    "payload_hash": null
+  }
+]

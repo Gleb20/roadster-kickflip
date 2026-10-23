@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "exact final combined parent installed",
+    "candidate waits while parent attempt is paused",
+    "new version activates at restart or documented closed-tab boundary",
+    "old finished record and exact immutable replay survive",
+    "old finished score remains available for posting",
+    "IndexedDB outbox retains exact parent packet",
+    "best, collection and tutorial survive",
+    "both released audio levels survive exactly",
+    "fresh flight, rail and booster state has no old settle latch",
+    "new version cold-loads offline",
+    "both biome audio groups decode offline",
+    "director module, rails and new angular source are verified offline",
+    "cold offline new release safely settles the boosted spin fixture",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "parentVersion": "4.6.0",
+  "candidateVersion": "4.6.1",
+  "closedTabBoundaryUsed": true,
+  "physicalPhone": false,
+  "backendRequestsBlocked": true
+}

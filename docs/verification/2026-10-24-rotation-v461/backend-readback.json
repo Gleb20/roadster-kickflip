@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "function": "tesla-ranking",
+      "sourceSha256": "ff9d7b06867911b0348cd88e6e35862f22d2966d866f53ee4e4d56813510175b",
+      "localSha256": "ff9d7b06867911b0348cd88e6e35862f22d2966d866f53ee4e4d56813510175b",
+      "exact": true,
+      "zip": "tesla-ranking (5).zip"
+    },
+    {
+      "function": "tesla-ranking-worker",
+      "sourceSha256": "523fb0d99b5b6e1047553d98af9c30850d77e82d495bb87b734adbe8409d0ff7",
+      "localSha256": "523fb0d99b5b6e1047553d98af9c30850d77e82d495bb87b734adbe8409d0ff7",
+      "exact": true,
+      "zip": "tesla-ranking-worker (1).zip"
+    }
+  ],
+  "dashboardDeployment": true,
+  "guardInstalled": true,
+  "publicRowsBefore": 22,
+  "publicRowsAfterGuard": 22,
+  "securitySettingsChanged": false,
+  "downloadEventLimitation": "Browser download event did not report, but explicit visible ZIP downloads succeeded and were compared from Downloads."
+}

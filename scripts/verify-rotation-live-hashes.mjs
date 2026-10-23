@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+const version=process.env.EXPECTED_VERSION,base=process.env.GAME_URL;assert.ok(/^\d+\.\d+\.\d+$/.test(version||'')&&base,'Set EXPECTED_VERSION and GAME_URL explicitly');
+const pkg=JSON.parse(await readFile('package.json','utf8'));assert.equal(pkg.version,version,'Live audit must run from the exact release tree');
+const sw=await readFile('sw.js','utf8'),core=JSON.parse(sw.match(/const CORE=(\[[\s\S]*?\]);/)[1]),origin=new URL('./',base),out=path.resolve(process.env.CHECK_OUT||'docs/verification/rotation-release');await mkdir(out,{recursive:true});
+const queue=[...core,{url:'sw.js',sha256:createHash('sha256').update(sw).digest('hex')}],errors=[],retries=[];let checked=0;
+await Promise.all(Array.from({length:4},async()=>{while(queue.length){const item=queue.shift();for(let attempt=1;attempt<=3;attempt++){try{const response=await fetch(new URL(item.url,origin),{signal:AbortSignal.timeout(15000)}),sha256=createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex');assert.ok(response.ok&&sha256===item.sha256,`HTTP${response.status}; hash${sha256}`);break;}catch(e){const result={url:item.url,attempt,error:e.message};if(attempt===3)errors.push(result);else retries.push(result);}}checked++;}}));
+const result={version,base,expectedCommit:process.env.EXPECTED_COMMIT||null,checked,errors,retries};await writeFile(path.join(out,'live-hashes.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({version,checked,errors:errors.length,retries:retries.length}));if(errors.length)process.exitCode=1;

@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
-import {obstacleBoxes} from './physics.js?v=4.6.1';
-import {fallPolygons,interpolateFall} from './fall.js?v=4.6.1';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.2';
+import {obstacleBoxes} from './physics.js?v=4.6.2';
+import {fallPolygons,interpolateFall} from './fall.js?v=4.6.2';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -9,9 +9,11 @@ export function uprightError(angle,direction=-1){
   if(Math.abs(Math.abs(e)-Math.PI)<1e-9)e=-Math.sign(direction||-1)*Math.PI;
   return e;
 }
-export function createFlight(fuel=C.initialFuel){return {y:0,vy:0,vx:0,angle:0,omega:0,airborne:false,time:0,fuel,thrusting:false,latched:false,attach:0,maxTurn:0,turns:0,lastDirection:-1,trickStarted:false,grab:0,launchVelocity:0,jumpFactor:1};}
+export function resetAirRotation(p){p.spinHeld=false;p.settleTarget=0;}
+export function createFlight(fuel=C.initialFuel){return {spinHeld:false,settleTarget:0,y:0,vy:0,vx:0,angle:0,omega:0,airborne:false,time:0,fuel,thrusting:false,latched:false,attach:0,maxTurn:0,turns:0,lastDirection:-1,trickStarted:false,grab:0,launchVelocity:0,jumpFactor:1};}
 export function launch(p,charge=0){
   if(p.airborne)return false;
+  resetAirRotation(p);
   Object.assign(p,{y:.001,vy:(C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1))*(p.jumpFactor||1),angle:0,omega:0,airborne:true,time:0,latched:false,attach:0,maxTurn:0,turns:0,trickStarted:false,grab:0,launchVelocity:(C.jumpSpeed+C.chargedSpeed*clamp(charge,0,1))*(p.jumpFactor||1)});
   return true;
 }
@@ -20,15 +22,33 @@ export function advanceFlight(p,dt,{spin=false,thrust=false}={}){
   p.thrusting=false;
   const gripTarget=p.airborne&&spin?1:0;
   p.grab=approach(p.grab,gripTarget,dt/(gripTarget?.12:.18));
-  if(!p.airborne){p.vx*=Math.exp(-C.horizontalDrag*dt);return null;}
+  if(!p.airborne){resetAirRotation(p);p.vx*=Math.exp(-C.horizontalDrag*dt);return null;}
   p.time+=dt;
-  if(spin){p.trickStarted=true;p.lastDirection=-1;p.omega=approach(p.omega,-C.spinSpeed,C.spinAcceleration*dt);}
+  if(spin){p.settleTarget=0;p.trickStarted=true;p.lastDirection=-1;p.omega=approach(p.omega,-C.spinSpeed,C.spinAcceleration*dt);}
   else {
+    if(p.spinHeld){
+      // Latch this release and this turn only. A rough early abort must not
+      // become eligible later merely because the old release floor drifts on.
+      const progress=-p.angle,turn=Math.max(1,Math.round(progress/TAU));
+      const target=turn*TAU,stopping=progress+p.omega*p.omega/(2*C.releaseDeceleration);
+      p.settleTarget=p.omega<0&&progress>=(turn-1)*TAU+C.settleMinTurn&&Math.abs(target-progress)<=C.settleApproach&&Math.abs(stopping-target)<=C.landingAngle?target:0;
+    }
     // Opening the body brakes the existing rotation, without reversing or
-    // choosing an upright target. Untouched ordinary jumps remain upright.
+    // rotating toward a chosen angle. Untouched ordinary jumps remain upright.
     const target=Math.sign(p.omega)*Math.min(Math.abs(p.omega),C.releaseSpeed);
     p.omega=approach(p.omega,target,C.releaseDeceleration*dt);
+    if(p.settleTarget){
+      const past=-p.angle-p.settleTarget;
+      if(p.omega>0||past>C.landingAngle||past< -C.settleApproach)p.settleTarget=0;
+      else if(Math.abs(p.omega)<=C.releaseSpeed+1e-9){
+        // Dissipative only: no target torque, angle assignment or sign change.
+        // Retain the narrow PERFECT window, then ease into a natural lean.
+        const u=clamp((past-C.perfectAngle)/(C.settleFullAngle-C.perfectAngle),0,1);
+        p.omega*=Math.exp(-C.settleDamping*u*u*(3-2*u)*dt);
+      }
+    }
   }
+  p.spinHeld=spin;
   p.angle+=p.omega*dt;
   p.maxTurn=Math.max(p.maxTurn,-p.angle);
   p.turns=Math.floor((p.maxTurn+1e-7)/TAU);
@@ -50,7 +70,7 @@ export function advanceFlight(p,dt,{spin=false,thrust=false}={}){
   const perfect=good&&Math.abs(uprightError(p.angle))<=C.perfectAngle+1e-9;
   const result={good,perfect,turns,impact:Math.abs(p.vy),angle:p.angle,omega:p.omega};
   p.turns=turns;
-  p.y=0;p.vy=0;p.airborne=false;p.thrusting=false;
+  p.y=0;p.vy=0;p.airborne=false;p.thrusting=false;resetAirRotation(p);
   if(result.good){p.angle=0;p.omega=0;}
   return result;
 }

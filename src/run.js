@@ -1,11 +1,11 @@
-import {RAIL,createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.6.1';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.6.1';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.1';
-import {createFlight,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.6.1';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.6.1';
-import {createDirector} from './director.js?v=4.6.1';
-import {createRandom} from './random.js?v=4.6.1';
-export const RULESET='roadster-v4.6.0',RUN_STEP=1/120;
+import {RAIL,createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.6.2';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.6.2';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.6.2';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.6.2';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.6.2';
+import {createDirector} from './director.js?v=4.6.2';
+import {createRandom} from './random.js?v=4.6.2';
+export const RULESET='roadster-v4.6.1',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
 /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
@@ -54,8 +54,8 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
    if(sweptCollision(before,after,o,old,o.x,S.t,RUN_STEP)){
     if(activeBooster(Q,'shield')){o.smashed=true;o.smashAge=0;if(!o.passed){o.passed=true;passObstacle(E);}events.push({type:'smash',obstacle:{...o}});continue;}
     if(Q.grace>0||Q.ghostIds.includes(o.uid)){if(!Q.ghostIds.includes(o.uid))Q.ghostIds.push(o.uid);}
-    else if(Q.hearts>0){const oldMultiplier=E.multiplier;Q.hearts--;Q.grace=2;Q.ghostIds.push(o.uid);Q.spoiledFlight=true;G.pending=G.distance=G.turns=0;E.multiplier=10;E.meter=0;E.decay=0;E.streak=0;E.streakLeft=0;events.push({type:'rescued',oldMultiplier});director.recover();}
-    else {S.mode='dead';G.pending=G.distance=G.turns=0;clear();sync();events.push({type:'death',obstacle:o});return {landed,impacts:fallStep.impacts};}
+    else if(Q.hearts>0){const oldMultiplier=E.multiplier;Q.hearts--;resetAirRotation(P);Q.grace=2;Q.ghostIds.push(o.uid);Q.spoiledFlight=true;G.pending=G.distance=G.turns=0;E.multiplier=10;E.meter=0;E.decay=0;E.streak=0;E.streakLeft=0;events.push({type:'rescued',oldMultiplier});director.recover();}
+    else {S.mode='dead';resetAirRotation(P);G.pending=G.distance=G.turns=0;clear();sync();events.push({type:'death',obstacle:o});return {landed,impacts:fallStep.impacts};}
    }
    if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(E);if(o.altitude)events.push({type:'air-passed'});}
   }

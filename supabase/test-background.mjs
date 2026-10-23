@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';import {readFile,readdir,writeFile,mkdir} from 'node:fs/promises';import {pathToFileURL} from 'node:url';
+import {rotationFixture} from '../scripts/prepare-rotation-fixture.mjs';
 import {createHandler,createRpc} from './handler.mjs';import {createWorker} from './worker.mjs';import {ruleset} from './rulesets.mjs';import {verifyChunk} from './chunk.mjs';
 const {PGlite}=await import(pathToFileURL(process.env.PGLITE_MODULE||'/tmp/tesla-pg-test/node_modules/@electric-sql/pglite/dist/index.js'));
 const db=new PGlite(),checks=[];const check=(name,value)=>{assert.ok(value,name);checks.push(name);};
@@ -7,9 +8,9 @@ for(const p of (await readdir(new URL('./migrations/',import.meta.url))).sort().
 await db.exec('update tesla_ranking.config set accepting_sessions=true,accepting_writes=true,autonomous_verification=true;');
 const rpc=createRpc({url:'https://local-db',key:'fixture-only',fetcher:async(url,o)=>{try{const {action,payload}=JSON.parse(o.body);return Response.json((await db.query('select public.tesla_ranking_rpc($1,$2) value',[action,payload])).rows[0].value);}catch(e){return Response.json({message:e.message},{status:400});}}}),handle=createHandler({rpc});
 const send=async(path,body,capability)=>{const r=await handle(new Request('https://local.test/tesla-ranking'+path,{method:body?'POST':'GET',headers:{Origin:'https://gleb20.github.io','Content-Type':'application/json',...(capability?{'X-Run-Capability':capability}:{})},body:body?JSON.stringify(body):undefined}));return {status:r.status,body:await r.json()};};
-async function fixture(version='roadster-v4.6.0'){
- const session=(await send('/sessions',{ruleset:version})).body,module=ruleset(version),run=module.createRun({seed:session.seed});run.reset();while(run.S.mode==='playing'){run.step();run.drainEvents();}
- const replay=run.replay(),score=run.S.score;await db.query('update tesla_ranking.sessions set created_at=created_at-$2 where id=$1',[session.id,Math.ceil(replay.ticks*1000/120)]);return {session,replay,score};
+async function fixture(version='roadster-v4.6.1'){
+ const session=(await send('/sessions',{ruleset:version})).body,module=ruleset(version);let replay,score;
+ if(version==='roadster-v4.6.1'){const f=rotationFixture(module,session.seed);replay=f.replay;score=f.expected.score;}else{const run=module.createRun({seed:session.seed});run.reset();while(run.S.mode==='playing'){run.step();run.drainEvents();}replay=run.replay();score=run.S.score;}await db.query('update tesla_ranking.sessions set created_at=created_at-$2 where id=$1',[session.id,Math.ceil(replay.ticks*1000/120)]);return {session,replay,score};
 }
 const first=await fixture();const receipt=await send('/sessions/'+first.session.id,{nickname:'QUEUED',replay:first.replay,score:first.score},first.session.capability);
 check('receipt returns durable identity before any verification',receipt.status===202&&receipt.body.status==='pending'&&receipt.body.receipt&&receipt.body.publicId);
@@ -17,15 +18,15 @@ check('pending result is absent from public ranking',(await send('/scores')).bod
 const claimed=await rpc('take',{id:first.session.id,lease:crypto.randomUUID()});check('one worker owns the lease',(await rpc('take',{id:first.session.id,lease:crypto.randomUUID()})).status==='idle');
 await rpc('retry',{id:claimed.id,tokenHash:claimed.tokenHash,lease:claimed.lease,revision:claimed.revision});check('transient retry is delayed and stays pending',(await rpc('take',{id:first.session.id,lease:crypto.randomUUID()})).status==='idle');
 await db.query('update tesla_ranking.sessions set next_attempt_at=0,expires_at=0 where id=$1',[first.session.id]);
-const work=createWorker({rpc,chunk:(r,c)=>verifyChunk(r,c,{maxTicks:73,budgetMs:Infinity})});let chunks=0,result;
+let activeRotationCheckpoint=false;const work=createWorker({rpc,chunk:(r,c)=>{activeRotationCheckpoint ||= !!c?.run.P.settleTarget;return verifyChunk(r,c,{maxTicks:73,budgetMs:Infinity});}});let chunks=0,result;
 do{result=await work(first.session.id);chunks++;assert.ok(chunks<100);}while(result.status==='pending');
-check('closed-browser worker completes an expired-ticket pending run',result.status==='accepted'&&chunks>1);
+check('closed-browser worker completes an expired-ticket pending run',result.status==='accepted'&&chunks>1);check('new spin resumes through an active service checkpoint',activeRotationCheckpoint);
 const duplicate=await send('/sessions/'+first.session.id,{nickname:'QUEUED',replay:first.replay,score:first.score},first.session.capability);
 check('lost receipt or duplicate submit returns the same entry',duplicate.body.entry.id===receipt.body.publicId&&(await send('/scores')).body.total===1);
 check('conflicting resubmission is rejected',(await send('/sessions/'+first.session.id,{nickname:'DIFFERENT',replay:first.replay,score:first.score},first.session.capability)).status===409);
 const fake=await fixture();await send('/sessions/'+fake.session.id,{nickname:'FAKE TOTAL',replay:fake.replay,score:fake.score+10000},fake.session.capability);const fast=createWorker({rpc});let f;do{f=await fast(fake.session.id);}while(f.status==='pending');check('fabricated claimed total is rejected silently without a public row',f.status==='rejected'&&(await send('/scores')).body.total===1);
 const forged=await fixture();await send('/sessions/'+forged.session.id,{nickname:'FAKE END',replay:{...forged.replay,ticks:forged.replay.ticks+1},score:forged.score},forged.session.capability);let g;do{g=await fast(forged.session.id);}while(g.status==='pending');check('replay beyond first collision cannot enter ranking',g.status==='rejected');
-for(const version of ['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2','roadster-v4.4.0']){const old=await fixture(version);await send('/sessions/'+old.session.id,{nickname:'OLD VALID',replay:old.replay},old.session.capability);let v;do{v=await fast(old.session.id);}while(v.status==='pending');check(version+' retains exact legacy acceptance',v.status==='accepted');}
+for(const version of ['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2','roadster-v4.4.0','roadster-v4.4.2','roadster-v4.6.0']){const old=await fixture(version);await send('/sessions/'+old.session.id,{nickname:'OLD VALID',replay:old.replay},old.session.capability);let v;do{v=await fast(old.session.id);}while(v.status==='pending');check(version+' retains exact legacy acceptance',v.status==='accepted');}
 const before=(await send('/scores')).body.total;for(let i=0;i<17;i++)await db.query("insert into tesla_ranking.runs(public_id,session_id,score_epoch,ruleset,nickname,score,flips,ticks,accepted_at,source_environment) values($1,$2,'v3','roadster-v4.1.0','FIXTURE',1000,0,1000,$3,'local')",[crypto.randomUUID(),crypto.randomUUID(),Date.now()+i]);
 const preview=(await send('/preview?score=1000')).body;check('hypothetical insertion follows all existing ties',preview.previewRank===18&&preview.page===2&&preview.entries.length===9);check('preview does not create a ranking row',(await send('/scores')).body.total===before+17);
 const page1=(await send('/preview?score=1000&page=1')).body;check('preview adjacent pages keep coherent positions',page1.page===1&&page1.entries.length===10&&page1.entries.every(e=>e.rank<=10));
