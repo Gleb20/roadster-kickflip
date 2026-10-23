@@ -1,3 +1,9 @@
+# Published4.3.2
+
+[Play](https://gleb20.github.io/roadster-kickflip/?v=4.3.2). Game43b7bcf908b89403c1174149a1d8abd8d3223495; Pages39960492499 succeeded.167 matching live hashes,21 public native browser checks,8 exact hosted fixture checks,0 public fixture scores. Real20-row digest remains exact. Backend and frontend are deployed. Physical iPhone/Safari is untested.
+
+Exact next step: user plays this version on the phone. If reporting an issue, preserve the run/score/cache evidence. The next feature direction remains a separate one-way rail prototype; no rails or new enemies were included.
+
 # Release4.3.2
 
 Authorized23 October2026 for direct phone testing. Standing preference: publish completed authorized game changes after checks, without a second publication approval; task-specific hold requests take precedence.

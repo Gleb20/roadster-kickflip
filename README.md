@@ -1,3 +1,13 @@
+## Published 4.3.2 - holographic boosters and continuous pickup
+
+[Play 4.3.2 on the phone](https://gleb20.github.io/roadster-kickflip/?v=4.3.2). Published game commit `43b7bcf908b89403c1174149a1d8abd8d3223495`, tree `d917f4d04b12c033716cb49ae9f97e049e9642eb`; Pages run `39960492499` succeeded. All 167 public resources match. The 21 public browser checks passed with native touch/keyboard, pickup, pause/resume and offline play; no runtime errors. Both server bundles and additive migrations are deployed. Eight isolated hosted fixtures passed, and all 20 real public records retain their exact digest. No public fixture scores were written.
+
+Local validation: 154 game tests, 15 server tests, 21 disposable database checks, 34 focused motion checks, 54 native gameplay checks and 11 PWA upgrade checks. The exact game-tree inverse restores the 4.2 parent, whose 140 tests and checks pass. Physical iPhone/Safari remains untested. If an installed copy stays old, close other game windows and reopen this versioned link without deleting site data; the existing Restart/update boundary remains a separate acceptance issue.
+
+Standing user preference: publish completed authorized changes immediately after checks and return a public versioned phone link, without a second approval loop. A task-specific hold takes precedence. Next: user phone playtest; elevated rails remain a separate stage. [Release evidence and next step](docs/verification/2026-10-23-release-v432/README.md). A bounded debt follow-up is to reproduce the existing update boundary and measure actual-phone input timing.
+
+<!-- Historical preparation notes below; publication status above is current. -->
+
 ## Release4.3.2 in progress
 
 Five holographic boosters and continuous collection feedback, with additive six-version replay verification. User23 October authorized publishing completed changes directly for phone testing, without a second publication approval. Exact release evidence is in docs/verification/2026-10-23-release-v432/.

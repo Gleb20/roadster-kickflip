@@ -1,8 +1,8 @@
 {
   "version": "4.3.2",
   "baseCommit": "41ff44b70f69b1d6974cbea4d52258b0118ef617",
-  "status": "backend-verified-frontend-ready",
-  "frontendPublished": false,
+  "status": "published-verified",
+  "frontendPublished": true,
   "backendDeployed": true,
   "gameTests": 154,
   "serverTests": 15,
@@ -13,5 +13,14 @@
   "hostedFixtures": 8,
   "publicFixtureWrites": 0,
   "publicScores": 20,
-  "phoneTested": false
+  "phoneTested": false,
+  "gameCommit": "43b7bcf908b89403c1174149a1d8abd8d3223495",
+  "gameTree": "d917f4d04b12c033716cb49ae9f97e049e9642eb",
+  "pagesRun": 39960492499,
+  "pagesConclusion": "success",
+  "liveResourcesMatched": 167,
+  "publicBrowserChecks": 21,
+  "runtimeErrors": [],
+  "publicRecordsUnchanged": true,
+  "standingAutoPublicationPreference": true
 }

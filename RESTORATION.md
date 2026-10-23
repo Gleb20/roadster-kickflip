@@ -1,3 +1,10 @@
+## Published 4.3.2 - verified inverse
+
+Game commit `43b7bcf908b89403c1174149a1d8abd8d3223495`, tree `d917f4d04b12c033716cb49ae9f97e049e9642eb`; parent `41ff44b70f69b1d6974cbea4d52258b0118ef617`, tree `d1812eaa730ae3a8306471d273b6b5c102301350`. The exact inverse was rehearsed, and the restored parent passes 140 tests and checks. Evidence: `docs/verification/2026-10-23-release-v432/rollback.json`; complete patch: `/tmp/tesla-v432-final-inverse.patch`.
+
+A public reversal needs a fresh frontend/cache version and must retain six-version backend compatibility, queued packets, real records and the standing publication preference. Do not roll back database rows. Earlier local inverses below describe historical development states.
+
+
 ## Release4.3.2 inverse
 
 Parent41ff44b70f69b1d6974cbea4d52258b0118ef617 (published4.2.0). Complete game-tree inverse was rehearsed in /tmp/tesla-v432-release-rollback-20261023; exact parent tree and140 parent tests/checks pass. Commit-based public rollback must allocate a fresh frontend/cache version and retain all six server rulesets, queued packets and real records. Do not roll back database rows or worker scheduling. Evidence: docs/verification/2026-10-23-release-v432/rollback.json. The old local inverses below preserve historical development states.
