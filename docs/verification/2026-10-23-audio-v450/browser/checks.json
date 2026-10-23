@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "new user enabled, no context or audio before gesture",
+    "quiet menu has eight ready layers on one shared context",
+    "real offline music and eight simultaneous effects render without clipping",
+    "menu is substantially quieter than peak score",
+    "all eight browser-decoded MP3 loops are exactly 60 seconds",
+    "every encoded seam stays within the ordinary sample step range",
+    "ordinary start introduces sparse rhythm",
+    "actual jump event reaches effect mixer",
+    "actual PERFECT landing uses reward cue instead of ordinary thud",
+    "actual fuelled airborne thrust starts recorded loop",
+    "actual rail catch starts one sliding loop and stops thrust",
+    "actual booster pickup has distinct feedback",
+    "helmet impact uses shield effect once",
+    "backup collision emits rescue and preserves play",
+    "actual speed/bonus state opens drums, bass and brightness",
+    "visual factory transition selects Factory B without new sources",
+    "pause lowers music and stops movement loops",
+    "mute immediately stops music sources and persists off",
+    "saved mute survives reload and gesture",
+    "cold offline menu decodes and plays both biome stem groups",
+    "Home returns to quiet spaceport menu",
+    "all music is in verified PWA cache",
+    "no browser runtime exceptions"
+  ],
+  "errors": [],
+  "physicalDevice": false,
+  "subjectiveListening": false
+}

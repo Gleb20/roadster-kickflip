@@ -1,4 +1,6 @@
-/** Optional tones and recorded pressure hiss, with gesture-unlocked output. */
+import {createMusic} from './music.js?v=4.5.0';
+import {createEffects} from './sound-effects.js?v=4.5.0';
+/** One gesture-unlocked audio context shared by music and bounded effects. */
 export function normalisePressureBuffer(buffer){
   if(!buffer.getChannelData)return 1;
   let sum=0,count=0,peak=0;
@@ -8,8 +10,9 @@ export function normalisePressureBuffer(buffer){
   for(let c=0;c<buffer.numberOfChannels;c++){const data=buffer.getChannelData(c);for(let i=0;i<data.length;i++)data[i]*=factor;}
   return factor;
 }
-export function createSound({storage,AudioContext=globalThis.AudioContext||globalThis.webkitAudioContext,audioSession=globalThis.navigator?.audioSession,loadThrust=async()=>{const r=await fetch(new URL('../assets/audio/thrust-pressure-hiss.mp3',import.meta.url));if(!r.ok)throw Error('Sound unavailable');return r.arrayBuffer();}}={}) {
-  let enabled=false,context,master,resuming=null,pending=null,previousSession;
+export function createSound({storage,AudioContext=globalThis.AudioContext||globalThis.webkitAudioContext,audioSession=globalThis.navigator?.audioSession,music=false,defaultEnabled=false,fetcher=globalThis.fetch,loadThrust=async()=>{const r=await fetch(new URL('../assets/audio/thrust-pressure-hiss.mp3',import.meta.url));if(!r.ok)throw Error('Sound unavailable');return r.arrayBuffer();}}={}) {
+  let enabled=defaultEnabled,context,master,effectBus,effects,musicPlayer,resuming=null,pending=null,previousSession;
+  let scene={mode:'menu',visible:true};
   let thrustWanted=false,thrustBuffer=null,thrustLoading=null,voice=null,normalisation=1;
   const voices=new Set();
   function stopThrust(immediate=false){
@@ -30,7 +33,7 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
       const source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();
       source.buffer=thrustBuffer;source.loop=true;source.loopStart=.35;source.loopEnd=Math.min(2.8,thrustBuffer.duration);
       filter.type='highpass';filter.frequency.value=420;
-      source.connect(filter);filter.connect(gain);gain.connect(master);
+      source.connect(filter);filter.connect(gain);gain.connect(effectBus||master);
       const current={source,gain,clean(){source.disconnect();filter.disconnect();gain.disconnect();voices.delete(current);if(voice===current)voice=null;}};
       voice=current;voices.add(current);source.onended=current.clean;
       const now=context.currentTime;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.2,now+.015);
@@ -41,7 +44,7 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     if(thrustBuffer||thrustLoading||!context?.decodeAudioData)return;
     thrustLoading=Promise.resolve().then(loadThrust).then(data=>context.decodeAudioData(data)).then(buffer=>{normalisation=normalisePressureBuffer(buffer);thrustBuffer=buffer;thrustLoading=null;syncThrust();},()=>{thrustLoading=null;});
   }
-  try{storage??=globalThis.localStorage;enabled=storage?.getItem('roadster-sound-v1')==='on'}catch{}
+  try{storage??=globalThis.localStorage;const saved=storage?.getItem('roadster-sound-v1');enabled=saved==='on'||saved!=='off'&&defaultEnabled;}catch{}
   function session(active){
     if(!audioSession)return;
     try{
@@ -66,7 +69,11 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     session(true);
     try{
       if(!context||context.state==='closed'){
-        context=new AudioContext();master=context.createGain();master.connect(context.destination);
+        musicPlayer?.dispose();try{context=new AudioContext({sampleRate:24000});}catch{context=new AudioContext();}master=context.createGain();
+        if(context.createDynamicsCompressor){const limiter=context.createDynamicsCompressor();limiter.threshold.value=-4;limiter.knee.value=3;limiter.ratio.value=12;limiter.attack.value=.003;limiter.release.value=.18;master.connect(limiter);limiter.connect(context.destination);}else master.connect(context.destination);
+        effectBus=context.createGain();effectBus.gain.value=.85;effectBus.connect(master);
+        effects=createEffects({context,destination:effectBus,duck:(...args)=>musicPlayer?.duck(...args)});
+        musicPlayer=music?createMusic({context,destination:master,fetcher}):null;
         // Prime the output inside the actual touch/key gesture, including older Safari.
         if(context.createBufferSource){
           const source=context.createBufferSource();source.buffer=context.createBuffer(1,1,22050);
@@ -75,17 +82,23 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
       }
       master.gain.setValueAtTime(1,context.currentTime);
       prepareThrust();
+      musicPlayer?.setEnabled(enabled);musicPlayer?.update(scene);
       // Safari can be 'interrupted', as well as 'suspended', after leaving the tab.
       if(context.state!=='running'&&!resuming){
         resuming=Promise.resolve(context.resume()).then(()=>{
           resuming=null;const next=pending;pending=null;
           if(enabled&&context.state==='running'&&next&&Date.now()-next.at<300)play(next.args);
           syncThrust();
+          if(enabled){musicPlayer?.unlock();musicPlayer?.update(scene);}
         },()=>{resuming=null;pending=null});
       }
     }catch{}
   }
   return {
+    event(event){if(enabled&&scene.visible!==false)effects?.event(event);},
+    setScene(next){scene=next;musicPlayer?.update(scene);effects?.grind(enabled&&scene.visible!==false&&scene.mode==='playing'&&scene.grinding,scene.speed);},
+    setVisible(visible){scene={...scene,visible};musicPlayer?.update(scene);if(!visible){pending=null;stopThrust(true);effects?.stop();try{context?.suspend?.()?.catch?.(()=>{});}catch{}}},
+    get inspect(){return {enabled,context:context?.state||'locked',music:musicPlayer?.inspect()||null,effects:effects?.inspect()||null};},
     scrape(){
       if(!enabled||context?.state!=='running'||!context.createBuffer)return;
       try{const n=Math.floor(context.sampleRate*.105),buffer=context.createBuffer(1,n,context.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<n;i++)data[i]=(Math.random()*2-1)*Math.sin(Math.PI*i/n);const source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();source.buffer=buffer;filter.type='bandpass';filter.frequency.value=2100;filter.Q.value=2.5;gain.gain.value=.035;source.connect(filter);filter.connect(gain);gain.connect(master);source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};source.start();}catch{}
@@ -101,6 +114,7 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     setThrust(active){thrustWanted=!!active;syncThrust();},
     toggle(){
       enabled=!enabled;try{storage?.setItem('roadster-sound-v1',enabled?'on':'off')}catch{}
+      effects?.setEnabled(enabled);musicPlayer?.setEnabled(enabled);
       if(enabled){unlock();syncThrust();}else{pending=null;stopThrust(true);for(const old of [...voices]){try{old.source.stop();}catch{}old.clean();}if(master)master.gain.setValueAtTime(0,context.currentTime);session(false)}
       return enabled;
     },

@@ -1,5 +1,10 @@
 ## Speed-responsive camera4.4.3
 
+## Adaptive arcade soundtrack 4.5.0
+
+Spaceport A and Factory B follow location, speed and earned intensity with four independently mixed layers each. Quiet menu music, seamless 60-second loops, biome crossfades and concise arcade feedback for player actions. [Audio audit](docs/audio.md) · [Verification and rollback](docs/verification/2026-10-23-audio-v450/README.md). Release publication is recorded in the verification packet.
+
+
 Published [4.4.3](https://gleb20.github.io/roadster-kickflip/?v=4.4.3), game58997d7; Pages40006890574,171 public hashes and17 public/offline browser checks pass. Actual-speed forward focus, moderate pullback, coherent receding scenery and near-road motion preserve acceleration cues. The raised baseline, rare BACKUP4.4.2 and current replay rules stay intact. [Research, comparison and evidence](docs/verification/2026-10-23-speed-camera/README.md).
 
 ## Published 4.4.2 - rare BACKUP chips

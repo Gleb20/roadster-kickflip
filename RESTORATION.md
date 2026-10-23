@@ -1,3 +1,7 @@
+## Audio 4.5.0 — bounded rollback
+
+Parent: `0da21eac859b4f1e5853051a99c71fd2811bfe66` (published 4.4.3 runtime). The audio release changes only presentation, cache versions, audio assets and task documentation; backend and all frozen verifier directories stay intact. Revert the audio release commit on an isolated branch, inspect the diff, and use a fresh PWA version before any public reversal. Never restore an old whole working-tree snapshot over newer work, remove site data, or alter accepted scores/outbox. Exact inverse rehearsal and parent tests are recorded in [audio evidence](docs/verification/2026-10-23-audio-v450/README.md).
+
 ## Speed framing4.4.3 inverse
 
 Exact parent is4.4.2/b63e2af; source delta is retained as /tmp/tesla-speed-camera-v443-forward.patch. Disposable forward/inverse restores all parent hashes; evidence is docs/verification/2026-10-23-speed-camera/rollback.json. Public reversal needs fresh cache identity and eight-version replay support. Preserve rare BACKUP tuning, queued/current/old scores, best and collection; no database rollback. Original dirty root/index and unrelated work remain preserved.

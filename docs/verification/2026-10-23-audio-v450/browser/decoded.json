@@ -1,0 +1,82 @@
+[
+  {
+    "file": "assets/audio/music-v450/spaceport-bed.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 2,
+    "peak": 0.3201321065425873,
+    "rms": 0.0297728741802216,
+    "step": 0.060390302911400795,
+    "normalStep": 0.21601759642362595
+  },
+  {
+    "file": "assets/audio/music-v450/spaceport-lead.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 2,
+    "peak": 0.4792751967906952,
+    "rms": 0.055029163343416475,
+    "step": 0.07356470823287964,
+    "normalStep": 0.3500306010246277
+  },
+  {
+    "file": "assets/audio/music-v450/spaceport-bass.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 1,
+    "peak": 0.46246179938316345,
+    "rms": 0.07274251165010338,
+    "step": 0.005552281159907579,
+    "normalStep": 0.1794287394732237
+  },
+  {
+    "file": "assets/audio/music-v450/spaceport-drums.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 1,
+    "peak": 0.6649618148803711,
+    "rms": 0.09990031170746137,
+    "step": 0.011365028098225594,
+    "normalStep": 0.4420788176357746
+  },
+  {
+    "file": "assets/audio/music-v450/factory-bed.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 2,
+    "peak": 0.31285637617111206,
+    "rms": 0.027525075717159397,
+    "step": 0.028870537877082825,
+    "normalStep": 0.2852321546524763
+  },
+  {
+    "file": "assets/audio/music-v450/factory-lead.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 2,
+    "peak": 0.41655901074409485,
+    "rms": 0.050979145471895436,
+    "step": 0.01752351224422455,
+    "normalStep": 0.251846787519753
+  },
+  {
+    "file": "assets/audio/music-v450/factory-bass.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 1,
+    "peak": 0.44534391164779663,
+    "rms": 0.06493287455843622,
+    "step": 0.011407834477722645,
+    "normalStep": 0.20507914572954178
+  },
+  {
+    "file": "assets/audio/music-v450/factory-drums.mp3",
+    "duration": 60,
+    "frames": 1440000,
+    "channels": 1,
+    "peak": 0.6182497143745422,
+    "rms": 0.09726247093553447,
+    "step": 0.017436223570257425,
+    "normalStep": 0.5628066658973694
+  }
+]

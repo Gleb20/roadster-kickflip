@@ -1,0 +1,14 @@
+[
+  {
+    "selection": "spaceport-a",
+    "song": "https://suno.com/song/2d7fcac6-5de2-4185-ab89-62e5e19d6a43",
+    "sha256": "73ce71eb922641dd3fd76162ceef5e82ddbe069d869cf94a4cf5ab0fcb0c265a",
+    "bytes": 34520080
+  },
+  {
+    "selection": "factory-b",
+    "song": "https://suno.com/song/45ac2e46-7763-4127-bfeb-2af29b147030",
+    "sha256": "264d5ac6293268f6c3ec572a6a9e1d33b66453112ff0db7380f3705b5f4109bb",
+    "bytes": 34573840
+  }
+]
