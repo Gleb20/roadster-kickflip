@@ -1,0 +1,60 @@
+{
+  "version": "4.7.2",
+  "runtimeCommit": "1119229dd348288ca4034814bd701b24fde869eb",
+  "runtimeTree": "0c37651a64fa8fe3bc5c890b26d8973b2d21b9c0",
+  "expectedParent": "d000eb579f6de1623d07a3bae04da23a9f525475",
+  "refUpdate": "expected-head protected,force=false",
+  "sourceTests": 242,
+  "serverTests": 16,
+  "sqlChecks": 27,
+  "pwaResources": 191,
+  "upgradeChecks": 18,
+  "hostedAccepted": 14,
+  "hostedRejected": 2,
+  "oldFrozenFilesUnchanged": 193,
+  "publicNative": {
+    "version": "4.7.2",
+    "url": "https://gleb20.github.io/roadster-kickflip/?v=4.7.2",
+    "activeSeconds": 180.00833333333333,
+    "mode": "playing",
+    "spawnedScenes": 50,
+    "counts": {
+      "intro": 1,
+      "single": 22,
+      "spaced-pair": 12,
+      "air-pass": 5,
+      "rail-ground": 6,
+      "rail-air": 5
+    },
+    "flips": 32,
+    "slides": 10,
+    "railWidthsObserved": [
+      880,
+      1120,
+      1440
+    ],
+    "nativeTouch": true,
+    "offlineActivatedReload": true,
+    "qaAvailable": false,
+    "routeActionReads": 0,
+    "publicScoreSubmissions": 0,
+    "runtimeErrors": [],
+    "harnessEvents": [],
+    "physicalDevice": false,
+    "pacingAcceptance": true,
+    "plainFallbackRails": 0,
+    "limits": "Native sample observes880/1120/1440;1680 is covered in Node evidence. Physical iPhone/Safari and human enjoyment unverified."
+  },
+  "physicalIPhone": "unverified",
+  "pagesRuntime": {
+    "id": 40042664304,
+    "conclusion": "success"
+  },
+  "publicControls": 39,
+  "publicRuntimeErrors": 0,
+  "publicScoreSubmissions": 0,
+  "publicHashes": 192,
+  "publicHashErrors": 0,
+  "allAcceptancePassed": true,
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.7.2"
+}

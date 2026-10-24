@@ -1,3 +1,7 @@
+## Current replay contract4.7.2
+
+The browser and server use immutable `roadster-v4.7.2`; all13earlier implementations remain byte-identical. The deterministic director snapshots its camera/pace/history and saves a fully validated canonical ground route before discretionary air/pair/rail searches. Low reserve readability is explicitly calibrated; timing windows and production physics are unchanged. New14-version API/worker bundles and the strict13→14guard are deployed;14exact valid fixtures and2forged rejections pass with no public fixture rows. Older finished/offline packets and checkpoints remain supported. [Current evidence](verification/2026-10-24-encounter-pacing/fallback-v472/README.md). Earlier behavior descriptions below are historical.
+
 ## 4.2.0 submission transport — gameplay rules remain 4.1.0
 
 The finished replay is already recorded incrementally as input transitions during the run. No new per-frame hashing or cryptographic work is added to rendering. Submit includes its displayed integer score as a consistency check. The server recomputes the complete score and first collision from its issued seed and frozen ruleset; an unequal claimed score is rejected. Legacy clients without this additional claim remain compatible. A checksum or arithmetic trick ledger can detect corruption/accounting mistakes but cannot authenticate player-authored events, so neither replaces simulation.

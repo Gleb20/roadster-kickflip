@@ -1,3 +1,7 @@
+## Deployed14-version verifier4.7.2 —24October2026
+
+Both generated API/worker bundles include immutable roadster-v4.7.2 and all13unchanged historical versions. Strict additive `migrations/20261024080000_ground_reserve_v472.sql` extends only the471guard13→14. Hosted16owned fixtures are isolated inqa-v472-20261024 before submission:14exact accepted,2forged rejected, autonomous completion and zero public fixture writes. Originalv3records remain22/maxseq65/digest446374e07d6d835b2a7e80a8230c8ff4, pending0. Never deploy older bundles, reverse the additive guard, delete records or discard cached/offline queues on frontend rollback. [Current proof](../docs/verification/2026-10-24-encounter-pacing/fallback-v472/README.md). Older deployment notes below are historical.
+
 ## Local4.3.2 pickup capture candidate
 
 Expanded pickup geometry is frozen as roadster-v4.3.2 in roadster-v432; all five previous versions remain supported unchanged. Deploy the preceding4.3 booster guard then migrations/20261023120000_pickup_v432.sql and both six-version generated bundles before any future authorized4.3.2 frontend publication. The deployed4.2 worker/queue and real records are untouched by this local task. Local acceptance:15 server tests,21 disposable database checks and current/legacy replay checkpoint equivalence. No hosted deployment is claimed. See docs/verification/2026-10-23-pickup-motion/README.md.

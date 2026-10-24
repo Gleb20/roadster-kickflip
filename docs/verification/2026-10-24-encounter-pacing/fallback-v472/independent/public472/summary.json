@@ -1,0 +1,33 @@
+{
+  "version": "4.7.2",
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.7.2",
+  "activeSeconds": 180.00833333333333,
+  "mode": "playing",
+  "spawnedScenes": 50,
+  "counts": {
+    "intro": 1,
+    "single": 22,
+    "spaced-pair": 12,
+    "air-pass": 5,
+    "rail-ground": 6,
+    "rail-air": 5
+  },
+  "flips": 32,
+  "slides": 10,
+  "railWidthsObserved": [
+    880,
+    1120,
+    1440
+  ],
+  "nativeTouch": true,
+  "offlineActivatedReload": true,
+  "qaAvailable": false,
+  "routeActionReads": 0,
+  "publicScoreSubmissions": 0,
+  "runtimeErrors": [],
+  "harnessEvents": [],
+  "physicalDevice": false,
+  "pacingAcceptance": true,
+  "plainFallbackRails": 0,
+  "limits": "Native sample observes880/1120/1440;1680 is covered in Node evidence. Physical iPhone/Safari and human enjoyment unverified."
+}
