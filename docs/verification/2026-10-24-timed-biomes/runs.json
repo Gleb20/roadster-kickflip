@@ -1,0 +1,230 @@
+[
+  {
+    "seed": 17,
+    "visits": [
+      {
+        "time": 0.008333333333333333,
+        "score": 0,
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 40,
+        "nextIn": 39.99166666666667
+      },
+      {
+        "time": 40,
+        "score": 6503,
+        "id": "tesla-factory",
+        "leg": 1,
+        "nextAt": 77,
+        "nextIn": 37
+      },
+      {
+        "time": 77,
+        "score": 25446,
+        "id": "spaceport",
+        "leg": 2,
+        "nextAt": 124,
+        "nextIn": 47
+      },
+      {
+        "time": 124,
+        "score": 42418,
+        "id": "tesla-factory",
+        "leg": 3,
+        "nextAt": 155,
+        "nextIn": 31
+      },
+      {
+        "time": 155,
+        "score": 53432,
+        "id": "spaceport",
+        "leg": 4,
+        "nextAt": 198,
+        "nextIn": 43
+      }
+    ],
+    "pickups": 5,
+    "checkpoint": true,
+    "chunks": 22,
+    "result": {
+      "score": 63776,
+      "flips": 46,
+      "ticks": 21760
+    }
+  },
+  {
+    "seed": 932,
+    "visits": [
+      {
+        "time": 0.008333333333333333,
+        "score": 0,
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 40,
+        "nextIn": 39.99166666666667
+      },
+      {
+        "time": 40,
+        "score": 11298,
+        "id": "tesla-factory",
+        "leg": 1,
+        "nextAt": 75,
+        "nextIn": 35
+      },
+      {
+        "time": 75,
+        "score": 22736,
+        "id": "spaceport",
+        "leg": 2,
+        "nextAt": 108,
+        "nextIn": 33
+      },
+      {
+        "time": 108,
+        "score": 39905,
+        "id": "tesla-factory",
+        "leg": 3,
+        "nextAt": 140,
+        "nextIn": 32
+      },
+      {
+        "time": 140,
+        "score": 54504,
+        "id": "spaceport",
+        "leg": 4,
+        "nextAt": 179,
+        "nextIn": 39
+      },
+      {
+        "time": 179,
+        "score": 70313,
+        "id": "tesla-factory",
+        "leg": 5,
+        "nextAt": 209,
+        "nextIn": 30
+      }
+    ],
+    "pickups": 10,
+    "checkpoint": true,
+    "chunks": 22,
+    "result": {
+      "score": 70901,
+      "flips": 50,
+      "ticks": 21773
+    }
+  },
+  {
+    "seed": 56,
+    "visits": [
+      {
+        "time": 0.008333333333333333,
+        "score": 0,
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 40,
+        "nextIn": 39.99166666666667
+      },
+      {
+        "time": 40,
+        "score": 11627,
+        "id": "tesla-factory",
+        "leg": 1,
+        "nextAt": 84,
+        "nextIn": 44
+      },
+      {
+        "time": 84,
+        "score": 31582,
+        "id": "spaceport",
+        "leg": 2,
+        "nextAt": 120,
+        "nextIn": 36
+      },
+      {
+        "time": 120,
+        "score": 51153,
+        "id": "tesla-factory",
+        "leg": 3,
+        "nextAt": 151,
+        "nextIn": 31
+      },
+      {
+        "time": 151,
+        "score": 61869,
+        "id": "spaceport",
+        "leg": 4,
+        "nextAt": 193,
+        "nextIn": 42
+      }
+    ],
+    "pickups": 11,
+    "checkpoint": true,
+    "chunks": 23,
+    "result": {
+      "score": 74827,
+      "flips": 47,
+      "ticks": 22321
+    }
+  },
+  {
+    "seed": 2026,
+    "visits": [
+      {
+        "time": 0.008333333333333333,
+        "score": 0,
+        "id": "spaceport",
+        "leg": 0,
+        "nextAt": 40,
+        "nextIn": 39.99166666666667
+      },
+      {
+        "time": 40,
+        "score": 7218,
+        "id": "tesla-factory",
+        "leg": 1,
+        "nextAt": 74,
+        "nextIn": 34
+      },
+      {
+        "time": 74,
+        "score": 29520,
+        "id": "spaceport",
+        "leg": 2,
+        "nextAt": 108,
+        "nextIn": 34
+      },
+      {
+        "time": 108,
+        "score": 47896,
+        "id": "tesla-factory",
+        "leg": 3,
+        "nextAt": 138,
+        "nextIn": 30
+      },
+      {
+        "time": 138,
+        "score": 58526,
+        "id": "spaceport",
+        "leg": 4,
+        "nextAt": 173,
+        "nextIn": 35
+      },
+      {
+        "time": 173,
+        "score": 71787,
+        "id": "tesla-factory",
+        "leg": 5,
+        "nextAt": 214,
+        "nextIn": 41
+      }
+    ],
+    "pickups": 8,
+    "checkpoint": true,
+    "chunks": 23,
+    "result": {
+      "score": 74870,
+      "flips": 46,
+      "ticks": 22794
+    }
+  }
+]

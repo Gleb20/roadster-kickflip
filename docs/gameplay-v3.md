@@ -1,3 +1,7 @@
+## Timed biome contract4.7.3 — local candidate
+
+Spaceport→factory entry begins at40 active seconds. Following entries alternate every seeded random30–50 whole seconds, measured from the preceding entry start. Score and multiplier do not participate. Pause excludes elapsed wall time; retry resets to40. A shared time/seed schedule drives the existing moving scenery boundary and the eligible obstacle pool; physics and scoring stay unchanged. This supersedes historical score-threshold descriptions below. Additive immutable roadster-v4.7.3 requires the prepared server deployment before frontend publication. [Validation/status](verification/2026-10-24-timed-biomes/README.md).
+
 ## Canonical reserve correction4.7.1
 
 A rejected primary choice uses the narrowest eligible canonical low ground fallback, retaining biome and repeat guards. Visibility comparisons allow only1e-8 numerical tolerance for exact120Hz boundaries. Following a plain optional fallback rail, aerial scheduling defers until a ground encounter succeeds. These corrections prevent repeat-history starvation; all4.7 pacing, physical geometry, timing windows and actual camera rules below remain. Immutable471 coexists with all twelve previous rulesets.

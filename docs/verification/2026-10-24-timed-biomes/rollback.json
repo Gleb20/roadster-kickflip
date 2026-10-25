@@ -1,0 +1,10 @@
+{
+  "runtimeCommit": "b1aec9aecd0a364e3408066efa07cfb36cd24a01",
+  "parent": "661292831fd1ffcdc4186bbc847c0db480d9843c",
+  "revertedTree": "bddc6703cb04ce68ac703c2142556f60749cf50d",
+  "exactParentTree": true,
+  "testsPassed": 242,
+  "sourceContentTypesPwaPassed": true,
+  "isolatedCheckout": "/tmp/tesla-timed-biomes-rollback",
+  "instruction": "Revert only the bounded runtime commit in an isolated checkout; preserve newer work. After any hosted rollout retain the additive verifier/guard and all records/queues. Use a fresh cache version on a future public frontend rollback."
+}

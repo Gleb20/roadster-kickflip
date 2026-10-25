@@ -1,0 +1,22 @@
+{
+  "apiSha256": "baf6e04121fdb942931f8b8bcf1f4ba52be9bd471882cbfaff3dcad85392a395",
+  "workerSha256": "4a2c3095db28a402b18759e14aee2f5b5cd3f97fcd1b9eda82f7d0cb6131693b",
+  "fullDeployedEditorReadbackEqual": true,
+  "guardMigration": "20261024090000_timed_biomes_v473.sql",
+  "baseline": {
+    "count": 22,
+    "maxSeq": 65,
+    "rowToJsonMd5": "3e1077b08c4495a24b744c572ecb794d"
+  },
+  "afterOriginalPrefix": {
+    "count": 22,
+    "maxSeq": 65,
+    "rowToJsonMd5": "3e1077b08c4495a24b744c572ecb794d"
+  },
+  "afterAllPublic": {
+    "count": 23,
+    "maxSeq": 143,
+    "rowToJsonMd5": "746dcc9560d30e59547097f923e57b82"
+  },
+  "fixturePublicWrites": 0
+}

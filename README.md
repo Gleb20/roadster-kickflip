@@ -1,3 +1,7 @@
+## Timed biomes4.7.3 — backend verified, frontend publication in progress
+
+First transition starts at40 active seconds; later starts follow at independently seeded30–50-second intervals. Score and boosters cannot skip locations; pause freezes the timer and retry resets it. Existing world doorway and all14 previous replay rulesets are preserved.244 game tests,16 server tests,33 local SQL checks,35 browser checks and four180s replay-verified runs pass. Source:/tmp/tesla-biomes-time-20261024 on codex/timed-biomes, parent6612928. Backend15-version verification is deployed:15valid/2forged isolated hosted fixtures pass, the original22records are unchanged and no QA result entered the public table. Frontend publication is in progress. [Evidence](docs/verification/2026-10-24-timed-biomes/README.md).
+
 ## Reserved ground encounters4.7.2 — published
 
 Public471 pacing acceptance failed: five plain rails postponed ground spawn by33.3s.472 saves a fully validated biome/nonrepeat ground route before air/accent/overlay search, uses a calibrated low policy bank across post-grind and pickup states, and reuses only exact same-state geometry. Shared rail-ground bypass/catch proofs remain mandatory. Reserve low readability is explicitly.85/.75 below760 and the prior fast curve minus.02s with.58/.48 floors;180ms timing and charge/joint checks remain. Fixed budget48policies/18000ticks/3candidates.

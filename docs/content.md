@@ -1,3 +1,7 @@
+## Timed biome contract4.7.3 — local candidate
+
+Spaceport→factory entry begins at40 active seconds. Following entries alternate every seeded random30–50 whole seconds, measured from the preceding entry start. Score and multiplier do not participate. Pause excludes elapsed wall time; retry resets to40. A shared time/seed schedule drives the existing moving scenery boundary and the eligible obstacle pool; physics and scoring stay unchanged. This supersedes historical score-threshold descriptions below. Additive immutable roadster-v4.7.3 requires the prepared server deployment before frontend publication. [Validation/status](verification/2026-10-24-timed-biomes/README.md).
+
 ## Encounter pacing4.7.0
 
 The existing enemy art, canonical sizes, collision profiles and biome identity are unchanged. Air remains airborne; introductions occur earlier and respect the current biome. Optional rails now share a validated encounter with ground or air opponents and use four physical widths880/1120/1440/1680. The existing rail raster is drawn in three horizontal slices so posts/caps keep their height. No new image was generated. [Current rules](gameplay-v3.md).

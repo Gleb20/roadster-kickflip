@@ -1,3 +1,7 @@
+## Timed biomes4.7.3 — backend verified, frontend publication in progress
+
+First transition starts at40 active seconds; later starts follow at independently seeded30–50-second intervals. Score and boosters cannot skip locations; pause freezes the timer and retry resets it. Existing world doorway and all14 previous replay rulesets are preserved.244 game tests,16 server tests,33 local SQL checks,35 browser checks and four180s replay-verified runs pass. Source:/tmp/tesla-biomes-time-20261024 on codex/timed-biomes, parent6612928. Backend15-version verification is deployed:15valid/2forged isolated hosted fixtures pass, the original22records are unchanged and no QA result entered the public table. Frontend publication is in progress. [Evidence](docs/verification/2026-10-24-timed-biomes/README.md).
+
 ## Reserved ground encounters4.7.2 — bounded inverse
 
 Parentd000eb579f6de1623d07a3bae04da23a9f525475 is published4.7.1, tree899de77295973dc63ac1f3feddb3017d0177022f. Reverse only this correction delta in an isolated checkout and verify the exact parent tree. A public reversal needs a new cache identity and must retain all14backend verifiers, cached-client compatibility, finished/pending packets, records and settings. Never reverse the additive guard, deploy old bundles or touch the dirty original root. [Proof](docs/verification/2026-10-24-encounter-pacing/fallback-v472/README.md).

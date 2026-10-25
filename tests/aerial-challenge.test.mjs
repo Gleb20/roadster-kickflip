@@ -5,9 +5,9 @@ import {AIR_TYPES,obstacleDefinition} from '../src/content.js';
 import {createFlight,createPace,createEconomy,collisionAt} from '../src/gameplay.js';
 import {validateRoute,makePattern} from '../src/routes.js';
 
-function directorFixture(score=14500){
+function directorFixture(time=180){
  const flight=createFlight(0),pace=createPace(),economy=createEconomy();pace.progress=150;pace.base=pace.speed=660;
- const S={t:180,score,speed:660,next:0,obs:[],entityId:0,anchor:0};let n=0;
+ const S={t:time,score:0,speed:660,next:0,obs:[],entityId:0,anchor:0};let n=0;
  const director=createDirector({S,flight,pace,economy,spawnDistance:()=>1170,random:()=>((++n*37)%97)/97});
  return {S,flight,pace,economy,director};
 }
@@ -24,7 +24,7 @@ test('all air models have zero-input fuel-free underpasses at the complete speed
  }
 });
 test('factory generation retains its eligible canonical vehicles',()=>{
- const {S,director}=directorFixture(7500),seen=new Set();for(let i=0;i<100;i++){S.obs=[];S.rails=[];director.update();S.t+=5;director.spawn();for(const o of S.obs)seen.add(o.id);}assert.ok(seen.has('bydSeal')||seen.has('xiaomiSu7')||seen.has('batteryAgv'));
+ const {S,director}=directorFixture(45),seen=new Set();for(let i=0;i<100;i++){S.obs=[];S.rails=[];director.update();director.state.restUntil=null;director.spawn();for(const o of S.obs)seen.add(o.id);}assert.ok(seen.has('bydSeal')||seen.has('xiaomiSu7')||seen.has('batteryAgv'));
 });
 
 test('frozen 4.1 late-air replay and checkpoint retain their original collision contract',async()=>{

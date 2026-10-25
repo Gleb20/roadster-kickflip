@@ -1,44 +1,37 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const out=path.resolve(process.argv[2]||'/tmp/tesla-factory-organic-v362-browser');fs.mkdirSync(out,{recursive:true});
-(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH}),checks=[],errors=[],results=[];
+const out=path.resolve(process.argv[2]||'/tmp/tesla-timed-biomes-browser');fs.mkdirSync(out,{recursive:true});
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE_PATH}),checks=[],errors=[];
 const check=(name,value)=>{assert.ok(value,name);checks.push(name);};
-try{for(const [label,width,height,reduced] of [['desktop',1440,900,false],['portrait',390,844,false],['landscape',844,390,false],['reduced',390,844,true]]){
- const context=await browser.newContext({viewport:{width,height},reducedMotion:reduced?'reduce':'no-preference',hasTouch:width<900});const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
- await page.goto(process.env.GAME_BASE_URL||'http://127.0.0.1:8892/');await page.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&document.querySelector('#loading-screen').hidden);
- check(label+': factory is decoded before start',await page.evaluate(()=>__qa.factory.ready));await page.evaluate(()=>{requestAnimationFrame=()=>0;});await page.waitForTimeout(40);await page.click('#start');
- const step=async ticks=>page.evaluate(ticks=>{for(let i=0;i<ticks;i++)__qa.step(1/120);__qa.refreshHUD();__qa.render();},ticks);
+try{for(const [label,width,height] of [['desktop',1440,900],['phone',390,844]]){
+ const context=await browser.newContext({viewport:{width,height},hasTouch:label==='phone'}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.env.GAME_BASE_URL||'http://127.0.0.1:8899/');await page.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&document.querySelector('#loading-screen').hidden);
+ await page.evaluate(()=>{requestAnimationFrame=()=>0;});await page.waitForTimeout(50);
+ if(label==='phone')await page.locator('#start').tap();else await page.locator('#start').click();
  const state=()=>page.evaluate(()=>JSON.parse(render_game_to_text()));
- await page.evaluate(()=>{__qa.S.next=1e9;__qa.setTime(600);__qa.E.bonus=6999;__qa.syncState();__qa.refreshHUD();__qa.render();});
- check(label+': ten minutes below 7000 cannot trigger factory',(await state()).biome.id==='spaceport');
- await page.evaluate(()=>{__qa.start(17);__qa.S.next=1e9;__qa.E.bonus=6999;__qa.P.fuel=61;__qa.syncState();__qa.refreshHUD();});let before=await state();
- check(label+': 6999 stays in spaceport',before.biome.id==='spaceport');
- await page.evaluate(()=>{__qa.E.bonus=7000;__qa.syncState();__qa.refreshHUD();__qa.render();});let after=await state();
- check(label+': 7000 immediately starts factory without a time gate',after.biome.id==='tesla-factory'&&after.biome.progress===0&&after.time===0&&after.score===7000&&after.fuel===before.fuel);
- check(label+': scene title follows score threshold',await page.locator('#biome-label').textContent()==='TESLA FACTORY');
+ const step=async ticks=>page.evaluate(n=>{for(let i=0;i<n;i++)__qa.step(1/120);__qa.refreshHUD();__qa.render();},ticks);
+ check(label+': native start enters play',(await state()).mode==='playing');
+ await page.evaluate(()=>{__qa.start(17);__qa.S.next=1e9;__qa.S.obs=[];__qa.setTime(39);__qa.E.bonus=1000000;__qa.syncState();__qa.refreshHUD();__qa.render();});
+ check(label+': million-point bonus before40 cannot switch biome',(await state()).biome.leg===0);
+ await page.evaluate(()=>{__qa.E.bonus=0;__qa.setTime(40);__qa.syncState();__qa.refreshHUD();__qa.render();});let b=(await state()).biome;
+ check(label+':40 starts factory independently of score',b.id==='tesla-factory'&&b.moving&&b.progress===0);
+ check(label+': next switch lies between70 and90',b.nextAt>=70&&b.nextAt<=90);
+ check(label+': HUD follows timed location',await page.locator('#biome-label').textContent()==='TESLA FACTORY');
  await step(90);await page.screenshot({path:path.join(out,label+'-transition.png')});
- // Same Canvas output on repeated paused renders; no wall-clock-driven machinery.
- await page.keyboard.press('KeyP');await page.evaluate(()=>__qa.render());const paused=await state(),pixels=await page.locator('#scene').evaluate(e=>e.toDataURL());await step(240);check(label+': pause freezes active time and factory pixels',(await state()).time===paused.time&&await page.locator('#scene').evaluate(e=>e.toDataURL())===pixels);await page.keyboard.press('KeyP');
- await step(720);check(label+': world boundary passes without another score condition',(await state()).biome.progress===1);await page.screenshot({path:path.join(out,label+'-factory.png')});
- const r0=await page.evaluate(()=>({...__qa.rocket.state}));await step(240);const r1=await page.evaluate(()=>({...__qa.rocket.state}));check(label+': rocket event is inactive inside factory',JSON.stringify(r0)===JSON.stringify(r1));
- // Actual keyboard inputs remain playable in the factory.
- await page.keyboard.down('Space');await step(30);await page.keyboard.up('Space');await step(18);check(label+': native jump still works in factory',(await state()).airborne);await step(180);
- const cameraBefore=(await state()).camera.roadScroll;await page.setViewportSize({width:width+8,height});check(label+': resize preserves integrated travel',(await state()).camera.roadScroll===cameraBefore);await page.setViewportSize({width,height});
- await page.evaluate(()=>{__qa.E.bonus=13999-__qa.S.distance/20+.000001;__qa.syncState();});
- check(label+': 13999 remains factory',(await state()).biome.id==='tesla-factory');
- await page.evaluate(()=>{__qa.E.bonus=14000-__qa.S.distance/20+.000001;__qa.syncState();__qa.refreshHUD();__qa.render();});
- check(label+': 14000 returns to spaceport without restarting',(await state()).biome.id==='spaceport'&&(await state()).score===14000);await step(20);
- check(label+': return schedules fresh rocket event',await page.evaluate(()=>__qa.rocket.state.phase==='ready'&&__qa.rocket.state.events===0));await step(480);await page.screenshot({path:path.join(out,label+'-return.png')});
- await page.evaluate(()=>{__qa.E.bonus=24500-__qa.S.distance/20+.000001;__qa.syncState();__qa.refreshHUD();});
- check(label+': large bonus chooses current band immediately',(await state()).biome.leg===3&&(await state()).biome.id==='tesla-factory');
- await page.evaluate(()=>{__qa.start();__qa.refreshHUD();__qa.render();});check(label+': retry starts from spaceport',(await state()).time===0&&(await state()).biome.id==='spaceport');
- if(reduced)check('reduced: machinery clock has no cosmetic motion',await page.evaluate(()=>{const c=document.createElement('canvas');c.width=390;c.height=844;const x=c.getContext('2d'),v={W:390,H:844,ground:709,scale:.8,screenDistance:800,worldDistance:800,reducedMotion:true};__qa.factory.draw(x,{...v,activeTime:156});const first=c.toDataURL();__qa.factory.draw(x,{...v,activeTime:199});return c.toDataURL()===first;}));
- results.push({label,before,after});await context.close();
+ if(label==='phone')await page.locator('#pause').tap();else await page.keyboard.press('KeyP');
+ const paused=await state();await step(600);check(label+': pause freezes timer and boundary',JSON.stringify((await state()).biome)===JSON.stringify(paused.biome)&&(await state()).time===paused.time);
+ if(label==='phone')await page.locator('#resume').tap();else await page.keyboard.press('KeyP');
+ await step(720);check(label+': existing moving doorway completes',(await state()).biome.progress===1);await page.screenshot({path:path.join(out,label+'-factory.png')});
+ const beforeResize=(await state()).biome.edgeAt;await page.setViewportSize({width:width+8,height});check(label+': resize retains world doorway',(await state()).biome.edgeAt===beforeResize);
+ for(let n=0;n<4;n++){
+  b=(await state()).biome;
+  await page.evaluate(at=>{__qa.setTime(at-1/120);__qa.E.bonus+=1000000;__qa.syncState();__qa.refreshHUD();},b.nextAt);
+  check(label+': bonus cannot skip leg'+b.leg,(await state()).biome.leg===b.leg);
+  await page.evaluate(at=>{__qa.setTime(at);__qa.syncState();__qa.refreshHUD();__qa.render();},b.nextAt);
+  const next=(await state()).biome;check(label+': exact deadline advances one leg'+next.leg,next.leg===b.leg+1&&next.nextAt-b.nextAt>=30&&next.nextAt-b.nextAt<=50);
  }
- // Earn both score thresholds on the real update pipeline, no obstacle edits.
- const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(process.env.GAME_BASE_URL||'http://127.0.0.1:8892/');await page.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert);await page.evaluate(()=>{requestAnimationFrame=()=>0;});await page.waitForTimeout(40);
- const natural=await page.evaluate(()=>{__qa.start(17);const q=__qa;let wave=0,actions=[],start=0;const visits=[];let leg=-1;while(q.S.mode==='playing'&&q.S.t<310){if(q.director.state.wave!==wave){wave=q.director.state.wave;start=q.S.tick;actions=[...q.director.state.last.route.actions];}while(actions.length&&q.S.tick-start>=Math.round(actions[0].at*120)){const a=actions.shift();if(a.action==='hold'||a.action==='jump')q.run.command(a.action==='hold'?'primary-down':'primary-up');else dispatchEvent(new KeyboardEvent(a.action==='thrust-on'?'keydown':'keyup',{code:'ShiftLeft',bubbles:true}));}q.step(1/120);const b=Math.floor(q.S.score/7000);if(b!==leg){visits.push({leg:b,time:q.S.t,score:q.S.score,flips:q.E.flips});leg=b;}}q.refreshHUD();q.render();return {mode:q.S.mode,time:q.S.t,score:q.S.score,visits,replay:q.run.replay(),perf:JSON.parse(render_game_to_text()).perf};});
- results.push({natural});fs.writeFileSync(path.join(out,'natural.json'),JSON.stringify(natural,null,2));
- check('full run: unmodified obstacles survive both biome boundaries',natural.mode==='playing'&&natural.time>=310);check('full run: first threshold follows earned score, not 150 seconds',natural.visits[1]?.score>=7000&&natural.visits[1]?.time<150&&natural.visits[1]?.flips===0);await page.screenshot({path:path.join(out,'natural-return-310.png')});results.push({natural});await context.close();check('no runtime errors',errors.length===0);
- fs.writeFileSync(path.join(out,'browser.json'),JSON.stringify({checks,errors,results},null,2));console.log(JSON.stringify({checks:checks.length,errors,natural:{time:natural.time,visits:natural.visits}}));
-}finally{fs.writeFileSync(path.join(out,'progress.json'),JSON.stringify({checks,errors,results},null,2));await browser.close();}})().catch(e=>{console.error(e);process.exit(1)});
+ await page.evaluate(()=>{__qa.start(932);__qa.refreshHUD();__qa.render();});check(label+': retry resets timer and spaceport',(await state()).time===0&&(await state()).biome.id==='spaceport'&&(await state()).biome.nextAt===40);
+ await context.close();
+}
+check('no runtime errors',errors.length===0);console.log(JSON.stringify({checks:checks.length,errors}));
+}finally{fs.writeFileSync(path.join(out,'checks.json'),JSON.stringify({checks,errors},null,2));await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});

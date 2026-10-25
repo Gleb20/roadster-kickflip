@@ -1,21 +1,21 @@
-import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.7.2';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.7.2';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.2';
-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.7.2';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.7.2';
-import {createDirector} from './director.js?v=4.7.2';
-import {createRandom} from './random.js?v=4.7.2';
-export const RULESET='roadster-v4.7.2',RUN_STEP=1/120;
+import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.7.3';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.7.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.3';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.7.3';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.7.3';
+import {createDirector} from './director.js?v=4.7.3';
+import {createRandom} from './random.js?v=4.7.3';
+export const RULESET='roadster-v4.7.3',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
 /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
 export function createRun({seed=0,record=true,reducedMotion=false}={}){
- const S={mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
+ const S={seed,mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
  let random=createRandom(seed),events=[],log=[],lateId=null,lastLanding=null,recordable=true;
  const director=createDirector({S,flight:P,pace,economy:E,boosters:Q,random:()=>random.next(),relative:true,sceneTime:()=>S.t,spawnDistance:()=>Math.max(900,S.speed*1.5+180)});
  function clear(){Object.assign(input,{charging:false,charge:0,spin:false,thrust:false});P.thrusting=false;}
  function sync(){S.t=S.tick*RUN_STEP;S.speed=pace.speed;S.score=Math.floor(S.distance/20+E.bonus);}
- function reset(nextSeed=seed){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());Object.assign(S,{mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();}
+ function reset(nextSeed=seed){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());Object.assign(S,{seed,mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();}
  function jump(){
   if(S.mode!=='playing'||P.airborne||F.active||pace.stumble>0)return false;
   lateId=null;for(const o of S.obs){if(o.altitude||o.passed)continue;if(nearWindow(o.x+(o.inset||5)-47,S.speed+(o.approachSpeed||0))){lateId=o.uid;break;}}

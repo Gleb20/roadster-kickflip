@@ -1,5 +1,5 @@
-import {createMusic} from './music.js?v=4.7.2';
-import {createEffects} from './sound-effects.js?v=4.7.2';
+import {createMusic} from './music.js?v=4.7.3';
+import {createEffects} from './sound-effects.js?v=4.7.3';
 /** One gesture-unlocked audio context shared by music and bounded effects. */
 export function normalisePressureBuffer(buffer){
   if(!buffer.getChannelData)return 1;

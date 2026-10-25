@@ -1,0 +1,90 @@
+TAP version 13
+# Subtest: service checkpoints preserve exact replay result and resume after interruption
+ok 1 - service checkpoints preserve exact replay result and resume after interruption
+  ---
+  duration_ms: 234.630792
+  ...
+# Subtest: verification yields at the bounded time budget
+ok 2 - verification yields at the bounded time budget
+  ---
+  duration_ms: 10.370125
+  ...
+# Subtest: endpoint rejects wrong origins and streamed oversized data before database access
+ok 3 - endpoint rejects wrong origins and streamed oversized data before database access
+  ---
+  duration_ms: 65.5975
+  ...
+# Subtest: verification uses only stored replay/checkpoint and hides private claim payload
+ok 4 - verification uses only stored replay/checkpoint and hides private claim payload
+  ---
+  duration_ms: 40.867375
+  ...
+# Subtest: server RPC supports current secret keys without treating them as JWTs
+ok 5 - server RPC supports current secret keys without treating them as JWTs
+  ---
+  duration_ms: 0.9935
+  ...
+# Subtest: hosted gateway rewritten path and custom capability header are supported
+ok 6 - hosted gateway rewritten path and custom capability header are supported
+  ---
+  duration_ms: 1.435584
+  ...
+# Subtest: new gameplay freezes independently and current rulesets verify interrupted checkpoints exactly
+ok 7 - new gameplay freezes independently and current rulesets verify interrupted checkpoints exactly
+  ---
+  duration_ms: 268.932083
+  ...
+# Subtest: session creation and replay submission explicitly support all fifteen versions, with no unknown fallback
+ok 8 - session creation and replay submission explicitly support all fifteen versions, with no unknown fallback
+  ---
+  duration_ms: 75.754625
+  ...
+# Subtest: legacy 3.8 finished records still verify through version dispatch
+ok 9 - legacy 3.8 finished records still verify through version dispatch
+  ---
+  duration_ms: 67.205584
+  ...
+# Subtest: finished 4.0 records retain their original verifier
+ok 10 - finished 4.0 records retain their original verifier
+  ---
+  duration_ms: 112.705333
+  ...
+# Subtest: finished 4.1 records retain their original verifier
+ok 11 - finished 4.1 records retain their original verifier
+  ---
+  duration_ms: 82.474834
+  ...
+# Subtest: finished4.3.0 booster records keep their original capture window and verifier
+ok 12 - finished4.3.0 booster records keep their original capture window and verifier
+  ---
+  duration_ms: 103.055625
+  ...
+# Subtest: new release spin witness freezes exactly and crosses active JSON checkpoints
+ok 13 - new release spin witness freezes exactly and crosses active JSON checkpoints
+  ---
+  duration_ms: 144.45075
+  ...
+# Subtest: worker advances only its stored replay and checkpoint, independently of any browser
+ok 14 - worker advances only its stored replay and checkpoint, independently of any browser
+  ---
+  duration_ms: 1.951458
+  ...
+# Subtest: worker records retry after infrastructure failure; idle/leased work does no computation
+ok 15 - worker records retry after infrastructure failure; idle/leased work does no computation
+  ---
+  duration_ms: 0.313417
+  ...
+# Subtest: private worker refuses missing, public and wrong credentials without running work
+ok 16 - private worker refuses missing, public and wrong credentials without running work
+  ---
+  duration_ms: 50.371709
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1489.966416

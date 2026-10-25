@@ -1,3 +1,7 @@
+## Deployed15-version verifier4.7.3
+
+Both complete generated bundles and the additive20261024090000_timed_biomes_v473.sql guard are deployed. All14 historical folders remain unchanged. Fifteen exact valid hosted fixtures accepted; forged score/end rejected autonomously. Owned fixtures useqa-v473-20261024 with zero public writes. Original22records throughseq65 retain their exact row_to_json digest; an unrelated new public result remains preserved. Retain all15verifiers and additive guards on any frontend rollback. [Evidence](../docs/verification/2026-10-24-timed-biomes/README.md).
+
 ## Deployed14-version verifier4.7.2 —24October2026
 
 Both generated API/worker bundles include immutable roadster-v4.7.2 and all13unchanged historical versions. Strict additive `migrations/20261024080000_ground_reserve_v472.sql` extends only the471guard13→14. Hosted16owned fixtures are isolated inqa-v472-20261024 before submission:14exact accepted,2forged rejected, autonomous completion and zero public fixture writes. Originalv3records remain22/maxseq65/digest446374e07d6d835b2a7e80a8230c8ff4, pending0. Never deploy older bundles, reverse the additive guard, delete records or discard cached/offline queues on frontend rollback. [Current proof](../docs/verification/2026-10-24-encounter-pacing/fallback-v472/README.md). Older deployment notes below are historical.
