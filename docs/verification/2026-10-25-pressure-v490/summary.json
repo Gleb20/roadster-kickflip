@@ -1,0 +1,167 @@
+{
+  "recognitionSeconds": 0.12,
+  "routeActionReads": 0,
+  "thrustUses": 0,
+  "results": [
+    {
+      "version": "4.8.0",
+      "width": 390,
+      "seed": 17,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 199574,
+      "counts": {
+        "single": 55,
+        "spaced-pair": 57,
+        "air-pass": 19,
+        "rail-ground": 21,
+        "rail": 2,
+        "rail-air": 17
+      },
+      "lateDecisionsPerMinute": 19.466666666666665,
+      "latePassiveFraction": 0.2265625,
+      "maxSpawnMs": 137.8749170000001
+    },
+    {
+      "version": "4.8.0",
+      "width": 390,
+      "seed": 932,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 226504,
+      "counts": {
+        "single": 64,
+        "spaced-pair": 54,
+        "air-pass": 18,
+        "rail-ground": 19,
+        "rail": 2,
+        "rail-air": 16
+      },
+      "lateDecisionsPerMinute": 19.733333333333334,
+      "latePassiveFraction": 0.2109375,
+      "maxSpawnMs": 32.606416000000536
+    },
+    {
+      "version": "4.8.0",
+      "width": 600,
+      "seed": 17,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 199815,
+      "counts": {
+        "single": 55,
+        "spaced-pair": 57,
+        "air-pass": 19,
+        "rail-ground": 21,
+        "rail": 2,
+        "rail-air": 17
+      },
+      "lateDecisionsPerMinute": 19.466666666666665,
+      "latePassiveFraction": 0.2265625,
+      "maxSpawnMs": 24.384624999999687
+    },
+    {
+      "version": "4.8.0",
+      "width": 600,
+      "seed": 932,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 226504,
+      "counts": {
+        "single": 64,
+        "spaced-pair": 54,
+        "air-pass": 18,
+        "rail-ground": 19,
+        "rail": 2,
+        "rail-air": 16
+      },
+      "lateDecisionsPerMinute": 19.733333333333334,
+      "latePassiveFraction": 0.2109375,
+      "maxSpawnMs": 41.718832999998995
+    },
+    {
+      "version": "4.9.0",
+      "width": 390,
+      "seed": 17,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 182032,
+      "counts": {
+        "single": 78,
+        "spaced-pair": 22,
+        "air-pass": 14,
+        "rail-ground": 6,
+        "rail": 1,
+        "rail-air": 11,
+        "pressure-chain": 39
+      },
+      "lateDecisionsPerMinute": 26.266666666666666,
+      "latePassiveFraction": 0.14173228346456693,
+      "maxSpawnMs": 86.60075000000143,
+      "exactReplay": true
+    },
+    {
+      "version": "4.9.0",
+      "width": 390,
+      "seed": 932,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 199444,
+      "counts": {
+        "single": 89,
+        "spaced-pair": 23,
+        "air-pass": 13,
+        "rail-ground": 4,
+        "rail": 2,
+        "rail-air": 11,
+        "pressure-chain": 34
+      },
+      "lateDecisionsPerMinute": 25.733333333333334,
+      "latePassiveFraction": 0.1297709923664122,
+      "maxSpawnMs": 23.923209000000497,
+      "exactReplay": true
+    },
+    {
+      "version": "4.9.0",
+      "width": 600,
+      "seed": 17,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 183586,
+      "counts": {
+        "single": 73,
+        "spaced-pair": 24,
+        "air-pass": 14,
+        "rail-ground": 6,
+        "rail": 1,
+        "rail-air": 11,
+        "pressure-chain": 40
+      },
+      "lateDecisionsPerMinute": 26.533333333333335,
+      "latePassiveFraction": 0.144,
+      "maxSpawnMs": 23.617083999997703,
+      "exactReplay": true
+    },
+    {
+      "version": "4.9.0",
+      "width": 600,
+      "seed": 932,
+      "mode": "playing",
+      "seconds": 600,
+      "score": 199444,
+      "counts": {
+        "single": 89,
+        "spaced-pair": 23,
+        "air-pass": 13,
+        "rail-ground": 4,
+        "rail": 2,
+        "rail-air": 11,
+        "pressure-chain": 34
+      },
+      "lateDecisionsPerMinute": 25.733333333333334,
+      "latePassiveFraction": 0.1297709923664122,
+      "maxSpawnMs": 20.636333000002196,
+      "exactReplay": true
+    }
+  ]
+}

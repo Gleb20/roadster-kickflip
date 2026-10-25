@@ -1,13 +1,14 @@
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.8.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.8.0';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.9.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.9.0';
 export const STAGES=C.stages;
 export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
-import {AIR_TYPES} from './content.js?v=4.8.0';
+import {AIR_TYPES} from './content.js?v=4.9.0';
 export {AIR_TYPES};
-export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900,gapSeconds=.65}={}){
+export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900,gapSeconds=.65,chainTypes=null}={}){
  const item=offset=>({...type,x:dx+offset,passed:false});
  // Canonical dimensions; no fuel train or miniature cars in the current rules.
+ if(kind==='pressure-chain'){let x=dx;return Array.from({length:3},(_,i)=>{const model=chainTypes?.[i]||type,o={...model,x,passed:false};x+=speed*(.9+gapSeconds)+model.w;return o;});}
  if(['pair','spaced-pair','mixed'].includes(kind))return [item(0),item(speed*(.9+gapSeconds)+type.w)];
  if(['precision','thrust','low-cluster'].includes(kind))return [item(0),item(type.w+35)];
  return [item(0)];

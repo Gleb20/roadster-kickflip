@@ -1,25 +1,25 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.8.0';
-import {createGrind,advanceRail} from './rails.js?v=4.8.0';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.8.0';
-import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.8.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.9.0';
+import {createGrind,advanceRail} from './rails.js?v=4.9.0';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.9.0';
+import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.9.0';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:48,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // Minimum forward sight over supported viewports. Live validation advances the
 // same damped effective-speed camera as the renderer; this helper is static.
 export function preparationSeconds(type,pace,{charge=0,lead=.2,speed=pace.speed,viewStrength=null}={}){
- const strength=viewStrength??Math.max(0,Math.min(4,(speed-C.startSpeed)/300)-.02);
+ const strength=viewStrength??Math.max(0,Math.min(6,(speed-C.startSpeed)/300)-.02);
  const silhouette=minimumForwardSight(speed,strength)-type.w-47;
  return silhouette/Math.max(60,speed+(type.approachSpeed||0))-charge*C.chargeSeconds-lead;
 }
 /** One combined production-physics witness. The fixed budget is shared by all
  * candidates of a spawn; CPU time never changes the deterministic outcome. */
-export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPace(),economy=createEconomy(),boosterState=null,time=0,rail=null,charge=.4,lead=.2,secondLead=lead,noInput=false,requireCatch=!!rail,budget=encounterBudget(),minGroundGap=0,prefix=null,stopBeforeHold=null,viewStrength=0,targetMode=rail?'rail':'ground',forbidCatch=false,minSlide=0}={}){
+export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPace(),economy=createEconomy(),boosterState=null,time=0,rail=null,charge=.4,lead=.2,secondLead=lead,jumpLeads=null,burn=0,burnAt=.18,noInput=false,requireCatch=!!rail,budget=encounterBudget(),minGroundGap=0,prefix=null,stopBeforeHold=null,viewStrength=0,targetMode=rail?'rail':'ground',forbidCatch=false,minSlide=0}={}){
  if(flight.airborne||pace.recovery||pace.falling||pace.stumble>0||budget.exhausted)return null;
  if(budget.policies>=ENCOUNTER.policyBudget){budget.exhausted=true;return null;}budget.policies++;
  const p={...(prefix?.p||flight)},r=structuredClone(prefix?.r||pace),e={...(prefix?.e||economy)},q=prefix?structuredClone(prefix.q):boosterState?structuredClone(boosterState):null,g=prefix?structuredClone(prefix.g):createGrind(),rails=prefix?structuredClone(prefix.rails):rail?[{...structuredClone(rail),uid:1}]:[],obs=(prefix?.obs||obstacles).map(o=>({...o})),actions=[],preparations=[];
  const view={strength:prefix?.view?.strength??viewStrength},visibleAt=prefix?.visibleAt?[...prefix.visibleAt]:obs.map(()=>null);
- let charging=false,holdTick=0,jumps=0,caught=false,groundSince=null,minGap=Infinity,lateTarget=null,nearLandings=0,lateTakeoffs=0,firstPreparation=Infinity,catchAt=null,exitAt=null,grindDistance=0;
+ let lastThrust=false,charging=false,holdTick=0,jumps=0,caught=false,groundSince=null,minGap=Infinity,lateTarget=null,nearLandings=0,lateTakeoffs=0,firstPreparation=Infinity,catchAt=null,exitAt=null,grindDistance=0;
  const dt=1/120,chargeTicks=Math.round(charge*C.chargeSeconds/dt),groundTargets=obs.filter(o=>!o.altitude);
  const horizon=Math.min(1800,Math.ceil((Math.max(0,...obstacles.map(o=>o.x+o.w),rail?rail.x+rail.w:0)+300)/Math.max(60,Math.min(pace.speed,pace.base)) *120+360));
  for(let tick=prefix?.tick||0;tick<horizon;tick++){
@@ -29,7 +29,7 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
   for(let i=0;i<obs.length;i++)if(visibleAt[i]===null&&obs[i].x+obs[i].w<=sight)visibleAt[i]=t;
   if(stopBeforeHold!==null&&target&&(target.x+(target.inset||5)-(isRailTarget?0:47))/Math.max(1,r.speed+(target.approachSpeed||0))<=stopBeforeHold)return {p,r,e,q,g,rails,obs,tick,view,visibleAt};
   if(!noInput&&!p.airborne&&!g.support&&target){
-   const targetLead=jumps>0?secondLead:lead,ttc=(target.x+(target.inset||5)-(isRailTarget?0:47))/Math.max(1,r.speed+(target.approachSpeed||0));
+   const targetLead=jumpLeads?.[jumps]??(jumps>0?secondLead:lead),ttc=(target.x+(target.inset||5)-(isRailTarget?0:47))/Math.max(1,r.speed+(target.approachSpeed||0));
    if(!charging&&ttc<=targetLead+chargeTicks*dt){
     if(groundSince!==null){const gap=t-groundSince;minGap=Math.min(minGap,gap);if(gap+1e-8<minGroundGap)return null;}
     charging=true;holdTick=tick;actions.push({at:t,action:'hold'});
@@ -43,8 +43,8 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
    }
   }
   if(q){advanceBoosters(q,dt);r.boost=.35*q.speedBlend;e.scoreFactor=activeBooster(q,'score')?3:1;}
-  advanceEconomy(e,dt);advanceStreak(e,dt);const before={...p};let landed=advanceFlight(p,dt);advancePace(r,e,p,dt);advanceSpeedView(view,dt,1002,900,r.speed);
-  if(rail){const events=advanceRail(g,p,before,rails,r.speed*dt,dt,e);if(events.some(v=>v.type==='rail-catch')){if(forbidCatch)return null;caught=true;catchAt=t+dt;}if(events.some(v=>v.type==='rail-exit'))exitAt=t+dt;grindDistance=g.distance;if(g.support)landed=null;}
+  advanceEconomy(e,dt);advanceStreak(e,dt);const before={...p};const useThrust=p.airborne&&p.time>=burnAt&&p.time<burnAt+burn;if(useThrust!==lastThrust){actions.push({at:t,action:useThrust?'thrust-on':'thrust-off'});lastThrust=useThrust;}let landed=advanceFlight(p,dt,{thrust:useThrust});advancePace(r,e,p,dt);advanceSpeedView(view,dt,1002,900,r.speed);
+  if(rail){const events=advanceRail(g,p,before,rails,r.speed*dt,dt,e);if(events.some(v=>v.type==='rail-catch')){if(forbidCatch)return null;if(!caught)catchAt=t+dt;caught=true;}if(events.some(v=>v.type==='rail-exit'))exitAt=t+dt;grindDistance=g.distance;if(g.support)landed=null;}
   const after=landed?{...p,angle:landed.angle}:p;
   for(const o of obs){const old=o.x;o.x-=(r.speed+(o.approachSpeed||0))*dt;if(sweptCollision(before,after,o,old,o.x,time+t+dt,dt))return null;if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(e);}}
   if(landed){
@@ -56,7 +56,7 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
   }
   if(obs.every(o=>o.x+o.w< -180)&&rails.every(o=>o.x+o.w< -180)&&!p.airborne&&!g.support){
    if(requireCatch&&(!caught||exitAt===null||exitAt-catchAt+1e-8<minSlide))return null;
-   return {charge,lead,secondLead,burn:0,actions,duration:t+dt,fuelUsed:0,preparations,nearLandings,lateTakeoffs,caught,catchAt,exitAt,slideSeconds:catchAt===null?0:(exitAt??t+dt)-catchAt,grindDistance,jumps,minGroundGap:Number.isFinite(minGap)?minGap:null,preparation:Number.isFinite(firstPreparation)?firstPreparation:null,clearanceVerified:true,visibility:obs.map((o,i)=>({id:o.id,at:visibleAt[i]})),exit:{y:0,angle:0,vx:p.vx}};
+   return {charge,lead,secondLead,burn,actions,duration:t+dt,fuelUsed:flight.fuel-p.fuel,preparations,nearLandings,lateTakeoffs,caught,catchAt,exitAt,slideSeconds:catchAt===null?0:(exitAt??t+dt)-catchAt,grindDistance,jumps,minGroundGap:Number.isFinite(minGap)?minGap:null,preparation:Number.isFinite(firstPreparation)?firstPreparation:null,clearanceVerified:true,visibility:obs.map((o,i)=>({id:o.id,at:visibleAt[i]})),exit:{y:0,angle:0,vx:p.vx}};
   }
  }
  return null;
@@ -83,11 +83,13 @@ export function validateEncounter(obstacles,options={}){
   const first=v<420?[c,l]:expiring&&type.w>=115?[c+.025,.155]:v<550?[.1,.16]:[0,.165];
   policies=[first,[0,.165],[0,.163],[0,.167],[.1,.16],[.15,.16],[.125,.155],[.15,.155],[.2,.15],[.25,.15]].filter((p,i,a)=>a.findIndex(q=>q[0]===p[0]&&q[1]===p[1])===i);
  }
- if(options.tallSingle&&groundRoute)policies=[h<=100?[.26,.27]:[.3,.31],[.32,.3],[.34,.29]];
+ if(options.tallSingle&&groundRoute&&!options.policies)policies=[h>120?[.34,.3]:h<=100?[.26,.27]:[.3,.31],[.32,.3],[.34,.3]];
  const fastGround=groundRoute&&!!type&&!options.tallSingle&&h<=78&&speed>=760;
  const fastPreparation=.85-Math.min(1,Math.max(0,(speed-825)/(1113.75-825)))*.27;
  const fallbackLow=options.fallbackGround&&groundRoute&&!!type&&h<=45;
- const minPreparation=options.tallSingle?(h>120?.72:ENCOUNTER.tallPreparation):fastGround?Math.max(.58,fastPreparation-(fallbackLow?.02:0)):fallbackLow?.85:.9,minErrorPreparation=options.tallSingle?(h>120?.62:ENCOUNTER.tallErrorPreparation):fastGround?Math.max(.48,fastPreparation-.1-(fallbackLow?.02:0)):fallbackLow?.75:.8;
+ const pressure=Math.max(0,Math.min(1,(speed-740)/220));
+ const relief=pressure*(speed>=1200?.27:.20);
+ const minPreparation=Math.max(options.tallSingle?.5:.45,(options.tallSingle?(h>120?.72:ENCOUNTER.tallPreparation):fastGround?Math.max(.58,fastPreparation-(fallbackLow?.02:0)):fallbackLow?.85:.9)-relief),minErrorPreparation=Math.max(options.tallSingle?.4:.35,(options.tallSingle?(h>120?.62:ENCOUNTER.tallErrorPreparation):fastGround?Math.max(.48,fastPreparation-.1-(fallbackLow?.02:0)):fallbackLow?.75:.8)-relief);
  // All candidate policies share the idle approach. Simulate it once, then
  // clone that exact state before the earliest possible hold. No rounded-state
  // cache or alternative physics is involved; actions retain their absolute time.
@@ -101,10 +103,18 @@ export function validateEncounter(obstacles,options={}){
   if((groundRoute||obstacles.some(o=>o.altitude))&&(base.preparation??0)+1e-8<minPreparation)continue;
   let ok=true;
   for(let i=-3;i<=3&&ok;i++){if(i===0)continue;const shifted=simulateEncounter(obstacles,{...proof,charge,lead:lead+i*.03});if(!shifted||(groundRoute||obstacles.some(o=>o.altitude))&&(shifted.preparation??0)+1e-8<minErrorPreparation)ok=false;}
-  if(ok&&base.jumps>1){
+  if(ok&&base.jumps===2){
    const offsets=[-.09,-.06,-.03,.03,.06,.09];
    for(const shift of offsets)for(const first of [false,true]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+(first?shift:0),secondLead:lead+(first?0:shift)});if(!sample||(sample.preparation??0)+1e-8<minErrorPreparation){ok=false;break;}}
    if(ok)for(const first of [-.09,.09])for(const second of [-.09,.09]){const sample=simulateEncounter(obstacles,{...proof,charge,lead:lead+first,secondLead:lead+second});if(!sample||(sample.preparation??0)+1e-8<minErrorPreparation){ok=false;break;}}
+  }
+  if(ok&&base.jumps>2){
+   // Vary each jump independently and all endpoint combinations. The uniform
+   // seven-sample sweep above also covers interior timing across the sequence.
+   const n=base.jumps,variations=[];
+   for(let j=0;j<n;j++)for(const shift of [-.09,.09])variations.push(Array.from({length:n},(_,i)=>lead+(i===j?shift:0)));
+   for(let mask=0;mask<2**n;mask++)variations.push(Array.from({length:n},(_,i)=>lead+((mask>>i)&1?.09:-.09)));
+   for(const jumpLeads of variations){const sample=simulateEncounter(obstacles,{...proof,charge,lead,jumpLeads});if(!sample||(sample.preparation??0)+1e-8<minErrorPreparation){ok=false;break;}}
   }
   if(ok&&groundRoute)for(const c of [Math.max(0,charge-.1),Math.min(1,charge+.1)]){if(!simulateEncounter(obstacles,{...proof,charge:c,lead})){ok=false;break;}}
   if(ok&&groundRoute)for(const c of [Math.max(0,charge-(options.tallSingle?.1:.05)),Math.min(1,charge+(options.tallSingle?.1:.05))])for(const offset of options.tallSingle?[-.09,.09]:[-.06,.06]){if(!simulateEncounter(obstacles,{...proof,charge:c,lead:lead+offset})){ok=false;break;}}

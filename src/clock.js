@@ -1,4 +1,4 @@
-import {STEP} from './physics.js?v=4.8.0';
+import {STEP} from './physics.js?v=4.9.0';
 
 // Preserve elapsed time at 30/60/120 Hz. Long interruptions pause explicitly.
 export function createClock(step = STEP) {

@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
-import {uprightError,resetAirRotation,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.8.0';
-import {activeBooster,advanceBoosters} from './boosters.js?v=4.8.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+import {uprightError,resetAirRotation,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.9.0';
+import {activeBooster,advanceBoosters} from './boosters.js?v=4.9.0';
 export const RAIL=Object.freeze({height:190,length:720,belly:8,pointsPerUnit:.1,firstWave:3,every:7,exitSeconds:1.25});
 export const makeRail=(x,width=RAIL.length)=>({x,w:width,h:RAIL.height,paid:[],passed:false});
 export const createGrind=()=>({support:null,age:0,exit:null,exitAge:1,pending:0,distance:0,turns:0});

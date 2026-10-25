@@ -1,8 +1,8 @@
-import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.8.0';
+import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.9.0';
 
 // Allocate forward space before shrinking the player: all inputs are actual velocity.
 const clamp01=value=>Math.max(0,Math.min(1,value));
-const viewStrength=speed=>Math.max(0,Math.min(4,(speed-C.startSpeed)/300));
+const viewStrength=speed=>Math.max(0,Math.min(6,(speed-C.startSpeed)/300));
 export function baseViewScale(width,height){
  const x=width*(width<600?.24:.29);
  return Math.min(1.25,Math.max(.68,width/650),height/430,(width-x-24)/550);
@@ -12,7 +12,7 @@ export function speedView(width,height,speed,strength=viewStrength(speed)){
  const original=Math.min(1.3,strength),a=clamp01((v-550)/190),blend=a*a*(3-2*a);
  const oldScale=baseScale/(1+.44*original),oldX=width*((width<600?.24:.29)-.08*original);
  // Beyond the sustained pickup peak, retain forward sight for residual thrust.
- const zoom=Math.min(.572,.40*u)+Math.max(0,v-1248.75)*.0009;
+ const zoom=Math.min(.40,.40*u)+Math.max(0,Math.min(v,1620)-960)*.00045+Math.max(0,v-1620)*.0009;
  const nextScale=baseScale/(1+zoom),nextX=width*Math.max(width<600?.075:.09,(width<600?.24:.29)-.17*(u+.18*Math.sin(Math.PI*clamp01(u))));
  const scale=oldScale+(nextScale-oldScale)*blend,x=oldX+(nextX-oldX)*blend;
  return {scale,x,baseScale,strength,energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),sceneryScale:Math.max(.72,Math.min(1.15,baseScale))};

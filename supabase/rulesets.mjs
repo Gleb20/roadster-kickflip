@@ -14,5 +14,6 @@ import * as fallback from './rulesets/roadster-v471/run.js';
 import * as reserve from './rulesets/roadster-v472/run.js';
 import * as timedBiomes from './rulesets/roadster-v473/run.js';
 import * as speedPlateau from './rulesets/roadster-v480/run.js';
-const supported=new Map([legacy,previous,encounters,current,boosters,magnetic,rails,rareBackup,director,airRotation,liveness,pacing,fallback,reserve,timedBiomes,speedPlateau].map(r=>[r.RULESET,r]));
+import * as pressure from './rulesets/roadster-v490/run.js';
+const supported=new Map([legacy,previous,encounters,current,boosters,magnetic,rails,rareBackup,director,airRotation,liveness,pacing,fallback,reserve,timedBiomes,speedPlateau,pressure].map(r=>[r.RULESET,r]));
 export function ruleset(id){const r=supported.get(id);if(!r)throw Error('Unsupported ruleset');return r;}

@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
 const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);},mix=(a,b,t)=>a+(b-a)*t;
 // Shared contact times drive pose, dust and camera response, independent of FPS.
 export const FALL_CONTACTS=Object.freeze([.14,.36,.56]);
@@ -13,7 +13,7 @@ function track(keys,p){let i=1;while(i<keys.length-1&&p>keys[i][0])i++;const [a,
 export function createFall(){return {active:false,age:0,duration:C.fallSeconds,rate:1,taps:0,angle:0,reduced:false};}
 export function beginFall(f,result,{reduced=false,speed=C.startSpeed}={}){
  const angle=Math.atan2(Math.sin(result.angle),Math.cos(result.angle));
- const severity=clamp((speed-C.startSpeed)/(C.maxSpeed-C.startSpeed));
+ const severity=clamp((speed-C.startSpeed)/(740-C.startSpeed));
  Object.assign(f,{active:true,age:0,duration:C.fallSeconds+C.fallSpeedSeconds*severity,rate:1,taps:0,angle,reduced});
 }
 export function hastenFall(f){if(!f.active)return false;f.taps++;f.rate=Math.min(C.fallMaxRate,f.rate+C.fallTapRate);return true;}

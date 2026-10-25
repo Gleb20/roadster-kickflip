@@ -1,0 +1,22 @@
+{
+  "ruleset": "roadster-v4.9.0",
+  "sourceCommit": "4d66e62 plus TJ-002 late pressure",
+  "files": {
+    "random.js": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1",
+    "run.js": "56fae083204a5e8cfa4bfd80dcb297e706eea59832cf8c12a2bd16e1d0391a04",
+    "catalog.js": "db222e71f0fdbf4b133fc9b238f5ece3a3d1f674916f16a61e722b7482ca49ab",
+    "director.js": "9778a01e0448d1f17e7ad3d6398a94529b0ae2c3f4dfc2bc54c54ad93cb6ab62",
+    "routes.js": "5b9b79950010ce15612de11d3f727286624462c3247696cc8732cda5f2184473",
+    "content.js": "f283d984e24bf69626dc3ed91df58539d7a51014e9d2d4eca79bb35571ce0af2",
+    "gameplay.js": "3cffe5e924666cd0bf8fdab582ee53839f967264dd38c0d98ff597712ee40498",
+    "physics.js": "80f9b52244904f73729cac369a60804d395f9feac5e6023147a1b01745a53e9f",
+    "fall.js": "9a3f0ba821a59847363cbcf19925f3fc863feffb625b4806a644fbd4e333b7a1",
+    "gameplay-config.js": "2ad776eff4aed84c95c7f1c8a6d1e940f156e7305b9f6f2ced4e1c0b92b7a240",
+    "biomes.js": "a3ec6f6088be3384c2efea97f6fc8c3bd65f57862e937f9b7a3840446b0960c1",
+    "enemy-sprite-data.js": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d",
+    "boosters.js": "50fbcd74ff660085ba453fc47984bd4437265066aebc914c35b4027d5a47a536",
+    "rails.js": "3a16fa9f687780c67bd511afebff0f416d8d48177d529beb2e23e844aef8e305",
+    "encounter-routes.js": "f0b654241df145cafa903dccc445352f619321233991c0196b6ff4d11634f746",
+    "speed-feedback.js": "ecb1b4920e75b66f7700e78a1a37cb092152d77eb6b67a2ea6ac1f8cb7231c61"
+  }
+}

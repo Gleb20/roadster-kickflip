@@ -1,0 +1,16 @@
+{
+  "version": "4.9.0",
+  "acceptedVersions": 17,
+  "rejectedForgeries": 2,
+  "isolatedFixtures": 19,
+  "publicFixtureWrites": 0,
+  "originalRowsPreserved": 28,
+  "currentReplay": {
+    "seconds": 189.775,
+    "score": 70774,
+    "flips": 41,
+    "ticks": 22773,
+    "pickups": 8,
+    "railCatches": 9
+  }
+}

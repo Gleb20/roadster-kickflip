@@ -1,15 +1,15 @@
-import {advanceSpeedView} from './speed-feedback.js?v=4.8.0';
-import {makeRail} from './rails.js?v=4.8.0';
-import {types} from './catalog.js?v=4.8.0';
-import {biomeAt} from './biomes.js?v=4.8.0';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.8.0';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.8.0';
+import {advanceSpeedView} from './speed-feedback.js?v=4.9.0';
+import {makeRail} from './rails.js?v=4.9.0';
+import {types} from './catalog.js?v=4.9.0';
+import {biomeAt} from './biomes.js?v=4.9.0';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.9.0';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.9.0';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
 const airSpeed={ufo:65,primeDrone:70,twitterBird:95,starlink:45,regulatorDrone:60,sikorsky:35,qualitySkull:75};
-export const RAIL_LENGTHS=Object.freeze([880,1120,1440,1680]);
-export function railLength(speed,index,lastWidth=null){const bag=speed>=1000?[1440,1680]:speed>=740?[1120,1440]:[880,1120],pick=index%bag.length;return bag[pick]===lastWidth?bag[(pick+1)%bag.length]:bag[pick];}
+export const RAIL_LENGTHS=Object.freeze([880,1120,1440,1680,1920,2160]);
+export function railLength(speed,index,lastWidth=null){const bag=speed>=1400?[1920,2160]:speed>=1000?[1440,1680]:speed>=740?[1120,1440]:[880,1120],pick=index%bag.length;return bag[pick]===lastWidth?bag[(pick+1)%bag.length]:bag[pick];}
 export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sceneTime=()=>S.t,random=Math.random,relative=false}){
  const initial=()=>({wave:0,groundCount:0,last:null,viewStrength:0,viewAt:0,fallbacks:0,waiting:false,leg:-1,legStartedAt:0,legDistance:0,biomeFirstSeen:{},airBiomes:[],groundSinceAir:0,airCount:0,lastAirAt:-1e9,railCount:0,lastRailWidth:null,lastRailAirAt:-1e9,phase:'introduce',flow:0,active:false,restUntil:null,restSeconds:ENCOUNTER.rest,recoveryWaves:0,history:[],seen:[],sinceTall:2,budget:null});
  const state=initial();
@@ -46,7 +46,8 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
    if(proof)reserve={obstacles:items,route:proof};
   }
   const airPool=AIR_TYPES.filter(o=>eligible(o,biome)),airIntro=!state.airBiomes.includes(biome)&&S.t-state.biomeFirstSeen[biome]>=3;
-  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=3&&S.t-state.lastAirAt>=ENCOUNTER.airCooldown));
+  const pressure=stage>=5&&!simple&&!familiar;
+  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=(pressure?5:3)&&S.t-state.lastAirAt>=(pressure?22:ENCOUNTER.airCooldown)));
   if(airDue&&candidate()){
    const small=airPool.filter(o=>o.w<=110&&o.h<=60),specific=small.filter(o=>Array.isArray(o.biomes)),model=pick(airIntro&&specific.length?specific:state.airCount<2?small:airPool);
    if(model){
@@ -59,11 +60,12 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
    }
   }
   if(!route){
-   const type=pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):overlayDue&&reserve?canonical:pick(choices);
+   const chainDue=pressure&&state.groundCount%3!==2;
+   const type=chainDue?canonical:pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):overlayDue&&reserve?canonical:pick(choices);
    if(type&&candidate()){
-    kind=pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:.45});
-    route=kind==='single'&&reserve&&type.id===canonical.id?reserve.route:validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='spaced-pair'?.3:0});
-    if(route&&overlayDue&&type.h<=64&&budget.policies<26&&candidate()){
+    kind=chainDue?'pressure-chain':pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:chainDue?.09:.45,chainTypes:chainDue?[canonical,pick(lows)||canonical,canonical]:null});
+    route=kind==='single'&&reserve&&type.id===canonical.id?reserve.route:validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='pressure-chain'?.12:kind==='spaced-pair'?.3:0});
+    if(route&&!chainDue&&overlayDue&&type.h<=64&&budget.policies<26&&candidate()){
      const overlay=makeRail(dx-S.speed*.3,railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
      const ground=validateEncounter(obstacles,{...shared,fallbackGround:true,targetMode:'ground',requireCatch:false,forbidCatch:true});
      const catchRoute=ground&&validateEncounter(obstacles,{...shared,minSlide:S.speed>=740?.6:.85});

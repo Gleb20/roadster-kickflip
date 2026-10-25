@@ -1,3 +1,4 @@
+import {progressAt} from './pace-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createDirector} from '../src/director.js';
@@ -6,7 +7,7 @@ import {createFlight,createPace,createEconomy,collisionAt} from '../src/gameplay
 import {validateRoute,makePattern} from '../src/routes.js';
 
 function directorFixture(time=180){
- const flight=createFlight(0),pace=createPace(),economy=createEconomy();pace.progress=150;pace.base=pace.speed=660;
+ const flight=createFlight(0),pace=createPace(),economy=createEconomy();pace.progress=progressAt(660);pace.base=pace.speed=660;
  const S={t:time,score:0,speed:660,next:0,obs:[],entityId:0,anchor:0};let n=0;
  const director=createDirector({S,flight,pace,economy,spawnDistance:()=>1170,random:()=>((++n*37)%97)/97});
  return {S,flight,pace,economy,director};
