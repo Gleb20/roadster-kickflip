@@ -1,0 +1,18 @@
+{
+  "version": "4.9.0",
+  "runtimeCommit": "cbd8ad38a5b9c5f21712e728753500e7548166d4",
+  "tree": "cd3a564e6dc665d76bf6fafc69e2c2f55442fd75",
+  "parent": "4d66e620b60490706be918c7cbafdb07a830ec18",
+  "pagesRun": 40221186878,
+  "pagesConclusion": "success",
+  "liveHashes": 192,
+  "liveHashFailures": 0,
+  "hostedValidVersions": 17,
+  "hostedRejectedForgeries": 2,
+  "publicFixtureWrites": 0,
+  "originalRecordsPreserved": 28,
+  "physicalPhoneTested": false,
+  "freshPublicBrowserInteractionVerified": false,
+  "localBrowserChecks": "390x844, 320x568, 1440x900; late and boost framing; charge/release; no console errors",
+  "pwaLimitation": "Existing browser profiles retained earlier clients; stored data preserved."
+}
