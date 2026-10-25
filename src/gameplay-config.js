@@ -1,6 +1,6 @@
 // All v3 balance values use logical world units and simulation seconds.
 export const GAMEPLAY = Object.freeze({
-  version:'4.7.3', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
+  version:'4.8.0', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
   spinSpeed:7.2, spinAcceleration:60, releaseSpeed:1.8, releaseDeceleration:24,
   settleMinTurn:Math.PI*17/12, settleApproach:Math.PI*7/12, settleFullAngle:Math.PI*5/36, settleDamping:16,
   landingAngle:Math.PI*2/9, landingOmega:Math.PI*4/3, perfectAngle:Math.PI/18, perfectPoints:50,
@@ -11,7 +11,18 @@ export const GAMEPLAY = Object.freeze({
   streakStep:.05, maxStreak:.25, streakHold:4, streakDecay:.1,
   fallSeconds:2.8, fallSpeedSeconds:.65, fallMaxRate:1.6, fallTapRate:.15, routeTimingMargin:.035, routeFuelReserve:20,
   stumbleSeconds:.3, recoveryRatio:.55, recoveryMin:1.2, recoveryExtra:2.8,
-  startSpeed:360, maxSpeed:660, rampSeconds:150,
+  startSpeed:360, maxSpeed:740, rampSeconds:150,
   stages:Object.freeze([0,15,35,60,90,120,150]),
   bestKey:'roadster-best-v3', tutorialKey:'roadster-coach-v3',
 });
+
+// Preserve the original opening, then reach a finite smooth late-run plateau.
+export function basePace(progress){
+ if(progress<=20)return GAMEPLAY.startSpeed+2*Math.max(0,progress);
+ const u=Math.max(0,Math.min(1,(progress-20)/130));
+ return 400+260*u+500*u*u-420*u*u*u;
+}
+export function basePaceSlope(progress){
+ if(progress<=20)return 2;if(progress>=150)return 0;
+ const u=(progress-20)/130;return (260+1000*u-1260*u*u)/130;
+}

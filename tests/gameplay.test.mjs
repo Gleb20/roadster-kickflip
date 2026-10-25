@@ -1,3 +1,5 @@
+import {basePace,basePaceSlope} from '../src/gameplay-config.js';
+import {progressAt} from './pace-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {GAMEPLAY as C} from '../src/gameplay-config.js';
@@ -43,8 +45,8 @@ test('recovery duration grows nonlinearly and rejoins original ramp without hidd
  for(const progress of [0,75,150]){const pace=createPace(),e=createEconomy(),p=createFlight();pace.progress=progress;advancePace(pace,e,p,0);const target=pace.base;stumble(pace);const r={...pace.recovery};durations.push(r.duration);near(pace.base,target*.55);
   const t1=r.duration*.2,t2=r.duration*.4;assert.ok(recoverySpeed(r,t2)-recoverySpeed(r,t1)>recoverySpeed(r,t1)-recoverySpeed(r,0));
   let previous=pace.base;while(pace.recovery){advancePace(pace,e,p,dt);assert.ok(pace.base>=previous-1e-6);previous=pace.base;}near(pace.base,target);near(pace.progress,progress);
-  advancePace(pace,e,p,dt);near(pace.progress,progress+dt);near(pace.base,Math.min(660,target+2*dt));
-  const eps=1e-6,endDerivative=(recoverySpeed(r,r.duration)-recoverySpeed(r,r.duration-eps))/eps;near(endDerivative,target>=660?0:2,.02);
+  advancePace(pace,e,p,dt);near(pace.progress,progress+dt);near(pace.base,basePace(progress+dt));
+  const eps=1e-6,endDerivative=(recoverySpeed(r,r.duration)-recoverySpeed(r,r.duration-eps))/eps;near(endDerivative,basePaceSlope(progress),.02);
  }
  assert.ok(durations[0]<durations[1]&&durations[1]<durations[2]);
 });
@@ -57,7 +59,7 @@ test('air hitboxes include upper/lower bounds and swept collision catches tunnel
  p.y=0;p.angle=Math.PI/2;assert.equal(collisionAt(p,{id:'truck',w:30,h:100},60),true,'rotation changes silhouette');
 });
 test('route validation clones state, preserves fuel-free bounded compatibility patterns and validates all stages',()=>{
- for(const speed of [360,510,660]){const pace=createPace();pace.progress=(speed-360)/2;pace.base=pace.speed=speed;const e=createEconomy(),p=createFlight(100),initial=JSON.stringify({pace,e,p});
+ for(const speed of [360,510,660]){const pace=createPace();pace.progress=progressAt(speed);pace.base=pace.speed=speed;const e=createEconomy(),p=createFlight(100),initial=JSON.stringify({pace,e,p});
   for(const kind of ['single','pair','hover','incoming','precision','mixed','thrust']){const result=validateRoute(makePattern(kind,{speed,dx:1000}),{pace,economy:e,flight:p});assert.ok(result,`${kind}/${speed}`);assert.equal(result.clearanceVerified,true);assert.equal(result.exit.y,0);}
   assert.equal(JSON.stringify({pace,e,p}),initial);
   assert.ok(validateRoute(makePattern('thrust',{speed,dx:1000}),{pace,economy:e,flight:createFlight(0)}));
@@ -66,7 +68,7 @@ test('route validation clones state, preserves fuel-free bounded compatibility p
 });
 test('seeded directors use breathers, grounded entrances, recoverable empty-fuel fallback',()=>{
  let seed=17;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
- for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];S.rails=[];d.update();S.t+=5;d.spawn();assert.ok(S.obs.length||S.rails.length||S.next>0);assert.ok(d.state.last?.route||d.state.restUntil>S.t);if(d.state.last)assert.equal(d.state.last.route.fuelUsed,0);}}
+ for(const progress of [0,20,40,65,95,130,160]){const pace=createPace();pace.progress=progress;pace.base=pace.speed=basePace(progress);const p=createFlight(0),e=createEconomy(),S={t:progress,speed:pace.speed,obs:[],anchor:100,entityId:0};const d=createDirector({S,flight:p,pace,economy:e,spawnDistance:()=>1200,random});for(let i=0;i<10;i++){S.obs=[];S.rails=[];d.update();S.t+=5;d.spawn();assert.ok(S.obs.length||S.rails.length||S.next>0);assert.ok(d.state.last?.route||d.state.restUntil>S.t);if(d.state.last)assert.equal(d.state.last.route.fuelUsed,0);}}
 });
 test('coaching is contextual, persistent, dismissible and never blocks controls',()=>{
  let writes=0;const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>{writes++;data.set(k,v);}};
@@ -83,7 +85,7 @@ test('new flight/pace/economy are invariant under 30/60/120 Hz and uneven displa
 });
 
 test('precision patterns retain a short ground group and forgiving timing without an aerial ceiling',()=>{
- for(const speed of [360,510,660,825]){const pace=createPace(),e=createEconomy();pace.progress=Math.min(150,(speed-360)/2);pace.base=Math.min(660,speed);pace.speed=speed;if(speed>660){e.streak=.25;e.streakLeft=4;}
+ for(const speed of [360,510,660,825]){const pace=createPace(),e=createEconomy();pace.progress=Math.min(150,progressAt(speed));pace.base=Math.min(660,speed);pace.speed=speed;if(speed>660){e.streak=.25;e.streakLeft=4;}
   const obs=makePattern('precision',{speed,dx:1200}),air=obs.filter(o=>o.altitude),ground=obs.filter(o=>!o.altitude);
   assert.equal(air.length,0);assert.ok(ground.length<=3);
   const route=validateRoute(obs,{pace,economy:e,flight:createFlight(0),timingMargin:C.routeTimingMargin});assert.ok(route,`speed ${speed}`);assert.equal(route.timingMargin,C.routeTimingMargin);

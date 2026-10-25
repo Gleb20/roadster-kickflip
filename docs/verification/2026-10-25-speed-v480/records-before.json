@@ -1,0 +1,6 @@
+{
+  "count": 28,
+  "maxSeq": 163,
+  "digest": "c62b11c2fba7dcc0ab18f995d164110b",
+  "sql": "select count(*) as count, max(seq) as max_seq, md5(string_agg(row_to_json(r)::text, '' order by seq)) as digest from tesla_ranking.runs r where score_epoch=(select score_epoch from tesla_ranking.config where id=true);"
+}

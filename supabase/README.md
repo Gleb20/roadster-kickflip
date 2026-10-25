@@ -1,3 +1,11 @@
+## TJ-002 / 4.8.0 — backend deployed; client publication next
+
+API and worker editor contents were copied back and matched the tested bundles exactly. Additive migration applied. Hosted QA: 16 valid versions accepted, 2 forgeries rejected, all 18 fixtures isolated before submission, zero public QA writes. All 28 original records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Browser transfer failure resolved with 60 KB paste chunks. Client publication is the remaining step; physical phone remains untested. Candidate ab2fa3c, parent c954ad2; tested client inverse retains all 16 server verifiers.
+
+## Speed plateau4.8.0 - prepared, NOT deployed
+
+Deploy both full generated bundles, then migrations/20261025090000_speed_plateau_v480.sql before frontend publication. Keep all15historical rulesets, existing scores and offline/pending packets. Hosted test-speed-plateau-hosted.mjs prepare generates own session IDs and isolation SQL; apply only that isolation before submit/check. Chrome input currently disconnects; no Deploy/SQL Run was pressed. Frontend rollback must retain480server support after any480release.
+
 ## Deployed15-version verifier4.7.3
 
 Both complete generated bundles and the additive20261024090000_timed_biomes_v473.sql guard are deployed. All14 historical folders remain unchanged. Fifteen exact valid hosted fixtures accepted; forged score/end rejected autonomously. Owned fixtures useqa-v473-20261024 with zero public writes. Original22records throughseq65 retain their exact row_to_json digest; an unrelated new public result remains preserved. Retain all15verifiers and additive guards on any frontend rollback. [Evidence](../docs/verification/2026-10-24-timed-biomes/README.md).

@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>TJ-002 browser verification</title><style>body{background:#151a20;color:white;font:14px system-ui}button{padding:8px;margin:4px}iframe{border:0;display:block}pre{white-space:pre-wrap}</style>
+<button id="phone">390 × 844</button><button id="narrow">320 × 568</button><button id="tablet">599 × 900</button><button id="desktop">1440 × 900</button>
+<button id="start">Start</button><button id="late">Late 740</button><button id="boost">Boost 1248.75</button><button id="pause">Pause / resume</button><button id="hold">Hold charge</button><button id="release">Release</button>
+<iframe id="game" title="Tesla Jump candidate" width="390" height="844" src="/?qa=480"></iframe><pre id="result">Loading</pre>
+<script>
+const frame=document.querySelector('iframe'),out=document.querySelector('pre');let lab=false;const qa=()=>frame.contentWindow.__qa;
+for(const [id,w,h] of [['phone',390,844],['narrow',320,568],['tablet',599,900],['desktop',1440,900]])document.getElementById(id).onclick=()=>{frame.width=w;frame.height=h};
+start.onclick=()=>{lab=false;qa().start()};
+function scenario(boost){let q=qa();lab=true;q.start();q.setTime(155);Object.assign(q.pace,{progress:155,base:740,speed:boost?1248.75:740,boost:boost?.35:0});Object.assign(q.E,{streak:boost?.25:0,streakLeft:boost?100:0});if(boost){q.Q.active.speed=100;q.Q.speedBlend=1}q.S.next=100;q.S.obs=[];q.S.rails=[];q.syncState();for(let i=0;i<360;i++){q.S.next=100;q.S.obs=[];q.S.rails=[];q.step(1/120)}q.spawn('truck',550);q.S.mode='paused';q.render();}
+late.onclick=()=>scenario(false);boost.onclick=()=>scenario(true);pause.onclick=()=>qa().pause();hold.onclick=()=>qa().beginCharge();release.onclick=()=>qa().releaseCharge();
+setInterval(()=>{try{const q=qa();if(lab&&q.S.obs[0]?.x<200)q.S.obs[0].x=900;const s=JSON.parse(frame.contentWindow.render_game_to_text());out.textContent=JSON.stringify({viewport:[frame.width,frame.height],version:s.version,mode:s.mode,time:s.time,base:s.baseSpeed,speed:s.speed,camera:s.camera,charging:s.charging,airborne:s.airborne,angle:s.angle,perf:s.perf},null,2)}catch(e){out.textContent=e.message}},100);
+</script>

@@ -1,19 +1,15 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.3';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.7.3';
-import {createGrind,advanceRail} from './rails.js?v=4.7.3';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.7.3';
-import {speedView,advanceSpeedView} from './speed-feedback.js?v=4.7.3';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.8.0';
+import {createGrind,advanceRail} from './rails.js?v=4.8.0';
+import {advanceBoosters,activeBooster} from './boosters.js?v=4.8.0';
+import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.8.0';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:48,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // Minimum forward sight over supported viewports. Live validation advances the
 // same damped effective-speed camera as the renderer; this helper is static.
 export function preparationSeconds(type,pace,{charge=0,lead=.2,speed=pace.speed,viewStrength=null}={}){
- const strength=viewStrength??Math.max(0,Math.min(1.3,(speed-C.startSpeed)/300)-.02);
- // The minimum forward horizon over W>=320,H>=390 occurs where the
- // desktop 550-unit horizon cap meets the maximum base scale 1.25. Smaller
- // heights can only reduce scale; phone anchors put the rider farther back.
- const width=(550*1.25+24)/.71,view=speedView(width,900,speed,strength);
- const silhouette=(width-view.x)/view.scale-type.w-47;
+ const strength=viewStrength??Math.max(0,Math.min(4,(speed-C.startSpeed)/300)-.02);
+ const silhouette=minimumForwardSight(speed,strength)-type.w-47;
  return silhouette/Math.max(60,speed+(type.approachSpeed||0))-charge*C.chargeSeconds-lead;
 }
 /** One combined production-physics witness. The fixed budget is shared by all
@@ -29,7 +25,7 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
  for(let tick=prefix?.tick||0;tick<horizon;tick++){
   if(budget.ticks>=ENCOUNTER.tickBudget){budget.exhausted=true;return null;}budget.ticks++;
   const t=tick*dt,nextGround=groundTargets.find(o=>!o.targeted&&o.x+o.w> -47),target=targetMode==='rail'&&rail&&jumps===0?rails[0]:nextGround,isRailTarget=target===rails[0];
-  const width=(550*1.25+24)/.71,framing=speedView(width,900,r.speed,view.strength),sight=(width-framing.x)/framing.scale;
+  const sight=minimumForwardSight(r.speed,view.strength);
   for(let i=0;i<obs.length;i++)if(visibleAt[i]===null&&obs[i].x+obs[i].w<=sight)visibleAt[i]=t;
   if(stopBeforeHold!==null&&target&&(target.x+(target.inset||5)-(isRailTarget?0:47))/Math.max(1,r.speed+(target.approachSpeed||0))<=stopBeforeHold)return {p,r,e,q,g,rails,obs,tick,view,visibleAt};
   if(!noInput&&!p.airborne&&!g.support&&target){
@@ -87,7 +83,7 @@ export function validateEncounter(obstacles,options={}){
   const first=v<420?[c,l]:expiring&&type.w>=115?[c+.025,.155]:v<550?[.1,.16]:[0,.165];
   policies=[first,[0,.165],[0,.163],[0,.167],[.1,.16],[.15,.16],[.125,.155],[.15,.155],[.2,.15],[.25,.15]].filter((p,i,a)=>a.findIndex(q=>q[0]===p[0]&&q[1]===p[1])===i);
  }
- if(options.tallSingle&&groundRoute)policies=[[.3,.32],[.35,.3],[.4,.28]];
+ if(options.tallSingle&&groundRoute)policies=[h<=100?[.26,.27]:[.3,.31],[.32,.3],[.34,.29]];
  const fastGround=groundRoute&&!!type&&!options.tallSingle&&h<=78&&speed>=760;
  const fastPreparation=.85-Math.min(1,Math.max(0,(speed-825)/(1113.75-825)))*.27;
  const fallbackLow=options.fallbackGround&&groundRoute&&!!type&&h<=45;

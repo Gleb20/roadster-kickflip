@@ -1,3 +1,7 @@
+## Speed plateau4.8.0 - candidate
+
+Base360+2t through20progress seconds; then400+260u+500u*u-420u*u*u with u=(t-20)/130 until150; plateau740. Falls/recovery delay progress. Recovery rejoins the same curve/slope. Existing streak25% and OVERDRIVE35% compose; sustained peak1248.75, arithmetic thrust bound1508.75. Phone obstacle motion increases15.3% while shared camera/encounter sight bounds retain existing recognition/timing/collider and CPU budgets. Tall witness profiles are recalibrated; family scheduling stays unchanged. New immutable480 coexists with all15older verifiers. See docs/verification/2026-10-25-speed-v480/README.md for actual release status.
+
 ## Timed biome contract4.7.3 — local candidate
 
 Spaceport→factory entry begins at40 active seconds. Following entries alternate every seeded random30–50 whole seconds, measured from the preceding entry start. Score and multiplier do not participate. Pause excludes elapsed wall time; retry resets to40. A shared time/seed schedule drives the existing moving scenery boundary and the eligible obstacle pool; physics and scoring stay unchanged. This supersedes historical score-threshold descriptions below. Additive immutable roadster-v4.7.3 requires the prepared server deployment before frontend publication. [Validation/status](verification/2026-10-24-timed-biomes/README.md).

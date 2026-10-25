@@ -1,18 +1,30 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.3';
+import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.8.0';
 
 // Allocate forward space before shrinking the player: all inputs are actual velocity.
 const clamp01=value=>Math.max(0,Math.min(1,value));
-const viewStrength=speed=>Math.max(0,Math.min(1.3,(speed-C.startSpeed)/(C.maxSpeed-C.startSpeed)));
+const viewStrength=speed=>Math.max(0,Math.min(4,(speed-C.startSpeed)/300));
 export function baseViewScale(width,height){
  const x=width*(width<600?.24:.29);
  return Math.min(1.25,Math.max(.68,width/650),height/430,(width-x-24)/550);
 }
 export function speedView(width,height,speed,strength=viewStrength(speed)){
- const baseScale=baseViewScale(width,height),x=width*((width<600?.24:.29)-.08*strength);
- return {scale:baseScale/(1+.44*strength),x,baseScale,strength,
-  energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),
-  sceneryScale:Math.max(.72,Math.min(1.15,baseScale))/(1+.18*strength)};
+ const baseScale=baseViewScale(width,height),v=360+300*strength,u=Math.max(0,(v-360)/380);
+ const original=Math.min(1.3,strength),a=clamp01((v-550)/190),blend=a*a*(3-2*a);
+ const oldScale=baseScale/(1+.44*original),oldX=width*((width<600?.24:.29)-.08*original);
+ // Beyond the sustained pickup peak, retain forward sight for residual thrust.
+ const zoom=Math.min(.572,.40*u)+Math.max(0,v-1248.75)*.0009;
+ const nextScale=baseScale/(1+zoom),nextX=width*Math.max(width<600?.075:.09,(width<600?.24:.29)-.17*(u+.18*Math.sin(Math.PI*clamp01(u))));
+ const scale=oldScale+(nextScale-oldScale)*blend,x=oldX+(nextX-oldX)*blend;
+ return {scale,x,baseScale,strength,energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),sceneryScale:Math.max(.72,Math.min(1.15,baseScale))};
 }
+// For each side of600px the base scale is the forward-room cap until1.25.
+// Forward sight decreases to each cap/breakpoint, then increases with width.
+// H>=390 only lowers scale from this maximum-height envelope.
+export function minimumForwardSight(speed,strength=viewStrength(speed)){
+ const phone=speedView(600-1e-7,900,speed,strength),width=(550*1.25+24)/.71,desktop=speedView(width,900,speed,strength);
+ return Math.min((600-1e-7-phone.x)/phone.scale,(width-desktop.x)/desktop.scale);
+}
+
 export const createSpeedView=()=>({strength:0});
 export function advanceSpeedView(state,dt,width,height,speed){
  const target=viewStrength(speed);
@@ -22,7 +34,7 @@ export function advanceSpeedView(state,dt,width,height,speed){
 }
 // Static normal-ramp framing retained for previews; live camera reads effective speed.
 export function viewScale(width,height,progress){
- return speedView(width,height,C.startSpeed+(C.maxSpeed-C.startSpeed)*clamp01(progress/C.rampSeconds)).scale;
+ return speedView(width,height,basePace(progress)).scale;
 }
 
 // Keep the world above the thumb controls, including short landscape viewports.

@@ -1,6 +1,6 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.3';
-import {obstacleBoxes} from './physics.js?v=4.7.3';
-import {fallPolygons,interpolateFall} from './fall.js?v=4.7.3';
+import {GAMEPLAY as C,basePace,basePaceSlope} from './gameplay-config.js?v=4.8.0';
+import {obstacleBoxes} from './physics.js?v=4.8.0';
+import {fallPolygons,interpolateFall} from './fall.js?v=4.8.0';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -94,19 +94,19 @@ export function settleLanding(e,p,result,{late=0,near=0}={}){
 export function createPace(){return {boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
 export function stumble(pace){
   const target=pace.recovery?.target??pace.base,r=clamp((target-C.startSpeed)/(C.maxSpeed-C.startSpeed),0,1);
-  pace.recovery={target,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
+  pace.recovery={target,progress:pace.progress,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
 }
 export function recoverySpeed(r,t){
   const T=r.duration,d=r.target*(1-C.recoveryRatio),v0=r.target*C.recoveryRatio,h=.15,a=T-h;
   if(t<=a)return v0+d*(t/T)**2;
-  const u=clamp((t-a)/h,0,1),start=v0+d*(a/T)**2,slope=2*d*a/T**2,endSlope=r.target>=C.maxSpeed?0:(C.maxSpeed-C.startSpeed)/C.rampSeconds;
+  const u=clamp((t-a)/h,0,1),start=v0+d*(a/T)**2,slope=2*d*a/T**2,endSlope=basePaceSlope(r.progress??C.rampSeconds);
   return (2*u**3-3*u*u+1)*start+(u**3-2*u*u+u)*h*slope+(-2*u**3+3*u*u)*r.target+(u**3-u*u)*h*endSlope;
 }
 export function advancePace(pace,e,p,dt){
   if(pace.recovery){
     pace.stumble=Math.max(0,pace.stumble-dt);const r=pace.recovery;r.age=Math.min(r.duration,r.age+dt);pace.base=recoverySpeed(r,r.age);
     if(r.age>=r.duration){pace.base=r.target;pace.recovery=null;}
-  }else if(!pace.falling){pace.progress+=dt;pace.base=C.startSpeed+(C.maxSpeed-C.startSpeed)*Math.min(1,pace.progress/C.rampSeconds);}
+  }else if(!pace.falling){pace.progress+=dt;pace.base=basePace(pace.progress);}
   pace.speed=Math.max(60,pace.base*(1+e.streak)*(1+(pace.boost||0))+p.vx);return pace.speed;
 }
 // Collision proxies rotate with the same pivot (65 above tyre baseline) as the art.

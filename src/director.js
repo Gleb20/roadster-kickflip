@@ -1,9 +1,9 @@
-import {advanceSpeedView} from './speed-feedback.js?v=4.7.3';
-import {makeRail} from './rails.js?v=4.7.3';
-import {types} from './catalog.js?v=4.7.3';
-import {biomeAt} from './biomes.js?v=4.7.3';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.7.3';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.7.3';
+import {advanceSpeedView} from './speed-feedback.js?v=4.8.0';
+import {makeRail} from './rails.js?v=4.8.0';
+import {types} from './catalog.js?v=4.8.0';
+import {biomeAt} from './biomes.js?v=4.8.0';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.8.0';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.8.0';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);

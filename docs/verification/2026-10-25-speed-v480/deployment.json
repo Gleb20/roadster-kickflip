@@ -1,0 +1,16 @@
+{
+  "version": "4.8.0",
+  "backendDeployed": true,
+  "apiEditorExact": true,
+  "workerEditorExact": true,
+  "migrationApplied": true,
+  "hostedValidAccepted": 16,
+  "hostedForgedRejected": 2,
+  "publicFixtureWrites": 0,
+  "originalRecords": 28,
+  "originalMaxSeq": 163,
+  "originalDigest": "c62b11c2fba7dcc0ab18f995d164110b",
+  "recordsUnchanged": true,
+  "clientPublication": "pending",
+  "physicalPhoneTested": false
+}

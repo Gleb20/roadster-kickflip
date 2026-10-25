@@ -1,11 +1,11 @@
-import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.7.3';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.7.3';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.7.3';
-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.7.3';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.7.3';
-import {createDirector} from './director.js?v=4.7.3';
-import {createRandom} from './random.js?v=4.7.3';
-export const RULESET='roadster-v4.7.3',RUN_STEP=1/120;
+import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.8.0';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.8.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.8.0';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.8.0';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.8.0';
+import {createDirector} from './director.js?v=4.8.0';
+import {createRandom} from './random.js?v=4.8.0';
+export const RULESET='roadster-v4.8.0',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
 /** The browser and verifier call this same simulation. Obstacles are rider-relative. */

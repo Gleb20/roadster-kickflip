@@ -1,3 +1,4 @@
+import {basePace} from '../src/gameplay-config.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {sweptCollision,createFlight,createPace,createEconomy} from '../src/gameplay.js';
@@ -7,8 +8,8 @@ import {types} from '../src/catalog.js';
 import {createRandom} from '../src/random.js';
 import {createFall,beginFall,advanceFall,fallPose} from '../src/fall.js';
 import {sweptCollision as originalCollision} from '../supabase/rulesets/roadster-v380/gameplay.js';
-import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v460/routes.js';
-import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v473/run.js';
+import {validateRoute as originalRoute} from '../supabase/rulesets/roadster-v480/routes.js';
+import {createRun as originalRun,verifyReplay as originalVerify,RULESET as originalRuleset} from '../supabase/rulesets/roadster-v480/run.js';
 
 test('sweep pruning matches the frozen verifier across boundaries, fast crossings and reversed travel',()=>{
  const random=createRandom(5873),dxs=[180,180+1e-9,180-1e-9,-400,-180,-180-1e-9,900,0];
@@ -32,7 +33,7 @@ test('falling rider and car retain exact swept collision results',()=>{
 
 test('all route patterns retain exact choices, timing margins and action schedules',()=>{
  for(const progress of [0,65,130,160])for(const fuel of [0,50,100])for(const kind of ['single','pair','hover','incoming','precision','mixed','thrust']){
-  const flight=createFlight(fuel),pace=createPace(),economy=createEconomy();pace.progress=progress;pace.base=pace.speed=360+300*Math.min(1,progress/150);
+  const flight=createFlight(fuel),pace=createPace(),economy=createEconomy();pace.progress=progress;pace.base=pace.speed=basePace(progress);
   const obstacles=makePattern(kind,{speed:pace.speed,dx:1000,type:types.find(o=>o.id==='truck')}),options={flight,pace,economy,time:progress,timingMargin:.035};
   assert.deepEqual(validateRoute(obstacles,options),originalRoute(obstacles,options),`${progress}/${fuel}/${kind}`);
  }

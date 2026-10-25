@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: ordinary post-grind low singles have a full visibility and timing proof throughout450–490
+ok 1 - ordinary post-grind low singles have a full visibility and timing proof throughout450–490
+  ---
+  duration_ms: 53.070625
+  ...
+# Subtest: canonical reserve survives failed air and a completely exhausted discretionary policy budget
+ok 2 - canonical reserve survives failed air and a completely exhausted discretionary policy budget
+  ---
+  duration_ms: 30.110541
+  ...
+# Subtest: post-grind, changing pickups and repeat histories always produce an encounter instead of rail or empty retry
+ok 3 - post-grind, changing pickups and repeat histories always produce an encounter instead of rail or empty retry
+  ---
+  duration_ms: 1896.877375
+  ...
+# Subtest: transient thrust at the new plateau retains a bounded proved encounter through pickup expiry
+ok 4 - transient thrust at the new plateau retains a bounded proved encounter through pickup expiry
+  ---
+  duration_ms: 161.41825
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2216.338584

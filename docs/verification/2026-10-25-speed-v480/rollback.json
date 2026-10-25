@@ -1,0 +1,11 @@
+{
+  "candidate": "f1f6354",
+  "parent": "c954ad228a1c108668d47bc88be8dbb23b6898f7",
+  "restoredClientFiles": 42,
+  "exactParentClient": true,
+  "retainedReplayVersions": 16,
+  "testsPassed": true,
+  "checksPassed": true,
+  "patchSha256": "81ff17a3397495ab6c084beebf3ee33761df5b6a92f6a9c63b28f2cd4e6c51aa",
+  "publicRollbackRequiresFreshCacheIdentity": true
+}

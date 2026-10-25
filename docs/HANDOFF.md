@@ -1,3 +1,13 @@
+## TJ-002 / 4.8.0 — backend deployed; client publication next
+
+API and worker editor contents were copied back and matched the tested bundles exactly. Additive migration applied. Hosted QA: 16 valid versions accepted, 2 forgeries rejected, all 18 fixtures isolated before submission, zero public QA writes. All 28 original records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Browser transfer failure resolved with 60 KB paste chunks. Client publication is the remaining step; physical phone remains untested. Candidate ab2fa3c, parent c954ad2; tested client inverse retains all 16 server verifiers.
+
+## TJ-002 / 4.8.0 — implemented, not deployed
+
+Authorized candidate: /tmp/tesla-tj002-v480-20261025, branch codex/tj002-speed-v480, parent c954ad228a1c108668d47bc88be8dbb23b6898f7. Original dirty root code/index preserved. First20seconds unchanged, smooth740plateau at150progress seconds, late phone motion+15.3%, shared minimum sight bound and recalibrated tall witnesses.250 game/16server/34localSQL checks and12×900s visible-only exact/chunked replay checks pass. New immutable480 plus15unchanged historical verifiers.
+
+No Deploy/SQL Run or main publication occurred. Chrome navigation/read works, keyboard/fill repeatedly disconnects the native browser connection. Asked user to restore unlocked Mac/Chrome extension input, not to re-authorize deployment. Next: verify both full editor bundles, deploy API/worker, additive guard, isolated hosted fixtures with real-record digests, then Pages/live hashes. [Packet](verification/2026-10-25-speed-v480/README.md). Physical phone/PWA upgrade still unverified.
+
 ## Timed biomes4.7.3 — published
 
 First transition starts at40 active seconds; later starts follow at independently seeded30–50-second intervals. Score and boosters cannot skip locations; pause freezes the timer and retry resets it. Existing world doorway and all14 previous replay rulesets are preserved.244 game tests,16 server tests,33 local SQL checks,35 browser checks and four180s replay-verified runs pass. Source:/tmp/tesla-biomes-time-20261024 on codex/timed-biomes, parent6612928. Backend15-version verification is deployed:15valid/2forged isolated hosted fixtures pass, the original22records are unchanged and no QA result entered the public table. Published runtime951d745, Pages40202529708 succeeded;192live hashes match. Close all old game tabs/app windows and reopen [4.7.3](https://gleb20.github.io/roadster-kickflip/?v=4.7.3). Physical phone is untested. [Evidence](verification/2026-10-24-timed-biomes/README.md).
