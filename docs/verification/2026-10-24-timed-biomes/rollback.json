@@ -6,5 +6,7 @@
   "testsPassed": 242,
   "sourceContentTypesPwaPassed": true,
   "isolatedCheckout": "/tmp/tesla-timed-biomes-rollback",
-  "instruction": "Revert only the bounded runtime commit in an isolated checkout; preserve newer work. After any hosted rollout retain the additive verifier/guard and all records/queues. Use a fresh cache version on a future public frontend rollback."
+  "instruction": "Revert only the bounded runtime commit in an isolated checkout; preserve newer work. After any hosted rollout retain the additive verifier/guard and all records/queues. Use a fresh cache version on a future public frontend rollback.",
+  "publishedRuntimeCommit": "951d745b4fde0f22191696327806cfd30b18fc59",
+  "publishedDeltaInverseExactParent": true
 }

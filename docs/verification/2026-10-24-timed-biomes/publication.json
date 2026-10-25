@@ -1,0 +1,16 @@
+{
+  "version": "4.7.3",
+  "runtimeCommit": "951d745b4fde0f22191696327806cfd30b18fc59",
+  "tree": "6bbcc399f1243e79778bc975fce6fa3cc0b5ab14",
+  "parent": "661292831fd1ffcdc4186bbc847c0db480d9843c",
+  "pagesRun": 40202529708,
+  "pagesConclusion": "success",
+  "liveHashes": 192,
+  "hashErrors": 0,
+  "localBrowserChecks": 35,
+  "actualPwaUpgradeChecks": 18,
+  "publicManualUiCurrentVersionConfirmed": false,
+  "publicManualUiLimitation": "Shared browser profiles retained historical cached shells; not counted as current-release controls acceptance. Other windows and all data preserved.",
+  "phoneTested": false,
+  "publicUrl": "https://gleb20.github.io/roadster-kickflip/?v=4.7.3"
+}
