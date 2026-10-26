@@ -6,7 +6,7 @@ function sample(seed){
  const q=createBoosters(seed),offers=[];let cycles=0,time=8;
  while(cycles<3||q.bag.length){
   if(!q.bag.length)cycles++;
-  offerBooster(q,{time,speed:400,clear:true});
+  offerBooster(q,{time,speed:400,clear:true,obstacles:[{x:1000,w:110,h:41}]});
   offers.push(...q.pickups.map(p=>p.id));q.pickups=[];time+=21;
   assert.ok(offers.length<30);
  }
@@ -22,10 +22,10 @@ test('backup is absent from two initial bags and occurs once per twelve ordinary
 });
 test('backup cycle survives JSON checkpoints, resets on restart and never offers a third charge',()=>{
  const a=createRun({seed:21});a.reset();a.S.next=1e9;
- while(a.Q.bagCycle<2){offerBooster(a.Q,{time:a.S.t+100,speed:400,clear:true});a.Q.pickups=[];a.S.t+=30;}
+ let attempts=0;while(a.Q.bagCycle<2){assert.ok(attempts++<30,'bounded bag generation');offerBooster(a.Q,{time:a.S.t+100,speed:400,clear:true,obstacles:[{x:1000,w:110,h:41}]});a.Q.pickups=[];a.S.t+=30;}
  const b=createRun({record:false});b.restore(JSON.parse(JSON.stringify(a.snapshot())));
  for(let i=0;i<30;i++){
-  for(const r of [a,b]){r.Q.hearts=2;offerBooster(r.Q,{time:10000+i*30,speed:400,clear:true});assert.ok(r.Q.pickups.every(p=>p.id!=='life'));r.Q.pickups=[];}
+  for(const r of [a,b]){r.Q.hearts=2;offerBooster(r.Q,{time:10000+i*30,speed:400,clear:true,obstacles:[{x:1000,w:110,h:41}]});assert.ok(r.Q.pickups.every(p=>p.id!=='life'));r.Q.pickups=[];}
   assert.deepEqual(b.Q,a.Q);
  }
  a.reset();assert.equal(a.Q.bagCycle,0);

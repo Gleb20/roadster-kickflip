@@ -1,21 +1,22 @@
-import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.9.0';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.9.0';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.9.0';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.9.0';
-import {createDirector} from './director.js?v=4.9.0';
-import {createRandom} from './random.js?v=4.9.0';
-export const RULESET='roadster-v4.9.0',RUN_STEP=1/120;
-export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
+import {validateEncounter} from './encounter-routes.js?v=4.10.0';
+import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.10.0';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.10.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.10.0';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.10.0';
+import {createDirector} from './director.js?v=4.10.0';
+import {createRandom} from './random.js?v=4.10.0';
+export const RULESET='roadster-v4.10.0',RUN_STEP=1/120;
+export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel','experienced-start']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
 /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
 export function createRun({seed=0,record=true,reducedMotion=false}={}){
- const S={seed,mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
+ const S={seed,mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace({scoreDriven:true}),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
  let random=createRandom(seed),events=[],log=[],lateId=null,lastLanding=null,recordable=true;
  const director=createDirector({S,flight:P,pace,economy:E,boosters:Q,random:()=>random.next(),relative:true,sceneTime:()=>S.t,spawnDistance:()=>Math.max(900,S.speed*1.5+180)});
  function clear(){Object.assign(input,{charging:false,charge:0,spin:false,thrust:false});P.thrusting=false;}
  function sync(){S.t=S.tick*RUN_STEP;S.speed=pace.speed;S.score=Math.floor(S.distance/20+E.bonus);}
- function reset(nextSeed=seed){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());Object.assign(S,{seed,mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();}
+ function reset(nextSeed=seed,{experienced=false}={}){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace({scoreDriven:true}));Object.assign(F,createFall());Object.assign(S,{seed,mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();if(experienced)command('experienced-start');}
  function jump(){
   if(S.mode!=='playing'||P.airborne||F.active||pace.stumble>0)return false;
   lateId=null;for(const o of S.obs){if(o.altitude||o.passed)continue;if(nearWindow(o.x+(o.inset||5)-47,S.speed+(o.approachSpeed||0))){lateId=o.uid;break;}}
@@ -24,7 +25,9 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
  function command(action){
   if(!RUN_COMMANDS.includes(action))throw Error('Unknown run command');
   if(S.mode!=='playing')return false;
+  if(action==='experienced-start'&&(S.tick!==0||pace.experienced))return false;
   if(record&&recordable){if(log.length>=MAX_RECORDED_EVENTS)recordable=false;else log.push([S.tick,RUN_COMMANDS.indexOf(action)]);}
+  if(action==='experienced-start'){pace.experienced=true;pace.base=pace.speed=S.speed=520;return true;}
   if(action==='cancel'){clear();return true;}
   if(action==='primary-cancel'){input.spin=false;input.charging=false;input.charge=0;return true;}
   if(action==='thrust-off'){input.thrust=false;return true;}
@@ -45,7 +48,7 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
   let landed=null,fallStep={impacts:0,finished:false};
   if(wasFalling){fallStep=advanceFall(F,RUN_STEP);if(fallStep.finished){clear();S.next=Math.max(S.next,.8);events.push({type:'recovered'});}}
   else landed=advanceFlight(P,RUN_STEP,{spin:input.spin,thrust:input.thrust});
-  pace.falling=F.active;advancePace(pace,E,P,RUN_STEP);S.distance+=pace.speed*RUN_STEP;E.bonus+=pace.speed*RUN_STEP/20*(E.scoreFactor-1);sync();
+  pace.falling=F.active;advancePace(pace,E,P,RUN_STEP);S.distance=pace.distance;sync();
   events.push(...advanceRail(G,P,before,S.rails,S.speed*RUN_STEP,RUN_STEP,E,{spoiled:Q.spoiledFlight,blocked:wasFalling}));
   if(G.support){landed=null;input.spin=false;}
   const after=wasFalling?{...P,fallPose:physicsFall()}:landed?{...P,angle:landed.angle}:P;
@@ -78,16 +81,27 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
   if(!P.airborne&&!G.support&&Math.abs(P.angle)>.001){P.angle*=Math.exp(-RUN_STEP*18);P.omega=0;}
   S.obs=S.obs.filter(o=>o.smashed?o.smashAge<1.2:o.uid===lateId||o.x+o.w>(o.id==='joe'?-480:-400));
   S.rails=S.rails.filter(r=>r.x+r.w> -200||r.uid===G.support);
-  offerBooster(Q,{time:S.t,speed:S.speed,clear:!P.airborne&&!G.support&&!S.rails.length&&!F.active&&!pace.recovery&&S.obs.every(o=>o.passed)});
-  director.update();S.next-=RUN_STEP;if(S.next<=0&&!Q.pickups.length)director.spawn();sync();return {landed,impacts:fallStep.impacts};
+  const wave=director.state.wave;director.update();S.next-=RUN_STEP;if(S.next<=0)director.spawn();
+  if(director.state.wave!==wave){
+   const savedBoosters=structuredClone(Q),pickup=offerBooster(Q,{time:S.t,speed:S.speed,obstacles:S.obs,rails:S.rails,clear:!F.active&&!pace.recovery});
+   if(pickup){
+    const last=director.state.last,rail=S.rails[0],proof=route=>validateEncounter(S.obs,{flight:P,pace,economy:E,boosterState:Q,time:S.t,rail,budget:director.state.budget,viewStrength:director.state.viewStrength,
+     policies:[[route.charge,route.lead]],noInput:route.jumps===0,requireCatch:!!route.caught,targetMode:route.caught?'rail':'ground',forbidCatch:!!rail&&!route.caught&&route.jumps>0,minSlide:route.caught?.6:0,
+     fallbackGround:!route.caught,tallSingle:!!last.tallSingle,minGroundGap:route.jumps>2?.12:route.jumps===2?.3:0});
+    const route=proof(last.route),bypass=route&&last.bypass?proof(last.bypass):null;
+    if(!route||last.bypass&&!bypass)Object.assign(Q,savedBoosters);
+    else{last.route=route;if(bypass)last.bypass=bypass;}
+   }
+  }
+  sync();return {landed,impacts:fallStep.impacts};
  }
  function snapshot(){return structuredClone({seed,S,P,E,pace,F,Q,G,input,random:random.state,director:director.state,lateId,lastLanding});}
- function restore(saved){seed=saved.seed;for(const [a,b] of [[G,saved.G],[Q,saved.Q],[S,saved.S],[P,saved.P],[E,saved.E],[pace,saved.pace],[F,saved.F],[input,saved.input],[director.state,saved.director]])Object.assign(a,structuredClone(b));random=createRandom(seed);random.restore(saved.random);lateId=saved.lateId;lastLanding=structuredClone(saved.lastLanding);events=[];}
+ function restore(saved){seed=saved.seed;for(const [a,b] of [[G,saved.G],[Q,saved.Q],[S,saved.S],[P,saved.P],[E,saved.E],[pace,saved.pace],[F,saved.F],[input,saved.input],[director.state,saved.director]])Object.assign(a,structuredClone(b));if(saved.pace.scoreDriven===undefined){pace.scoreDriven=false;pace.distance=S.distance;}random=createRandom(seed);random.restore(saved.random);lateId=saved.lateId;lastLanding=structuredClone(saved.lastLanding);events=[];}
  function replay(){return recordable?{format:1,ruleset:RULESET,seed,ticks:S.tick,events:log.map(e=>[...e])}:null;}
  return {S,P,E,pace,F,Q,G,input,director,reset,jump,command,step,sync,snapshot,restore,replay,drainEvents(){const next=events;events=[];return next;},get lastLanding(){return lastLanding;},get seed(){return seed;},get recordable(){return recordable;}};
 }
 export function validateReplay(value){
  if(!value||value.format!==1||value.ruleset!==RULESET||!Number.isInteger(value.seed)||value.seed<0||value.seed>0xffffffff||!Number.isInteger(value.ticks)||value.ticks<1||value.ticks>MAX_RECORDED_TICKS||!Array.isArray(value.events)||value.events.length>MAX_RECORDED_EVENTS)throw Error('Invalid or unsupported replay');
- let previous=-1;for(const event of value.events){if(!Array.isArray(event)||event.length!==2||!Number.isInteger(event[0])||event[0]<previous||event[0]<0||event[0]>=value.ticks||!Number.isInteger(event[1])||event[1]<0||event[1]>=RUN_COMMANDS.length)throw Error('Invalid replay input');previous=event[0];}return value;
+ let previous=-1,startProfile=false;for(const event of value.events){if(!Array.isArray(event)||event.length!==2||!Number.isInteger(event[0])||event[0]<previous||event[0]<0||event[0]>=value.ticks||!Number.isInteger(event[1])||event[1]<0||event[1]>=RUN_COMMANDS.length)throw Error('Invalid replay input');if(event[1]===6){if(event[0]!==0||startProfile||previous>=0)throw Error('Invalid start profile');startProfile=true;}previous=event[0];}return value;
 }
 export function verifyReplay(value){const replay=validateReplay(value),run=createRun({seed:replay.seed,record:false});run.reset();let event=0;while(run.S.tick<replay.ticks&&run.S.mode==='playing'){while(event<replay.events.length&&replay.events[event][0]===run.S.tick)run.command(RUN_COMMANDS[replay.events[event++][1]]);run.step();run.drainEvents();}if(run.S.mode!=='dead'||run.S.tick!==replay.ticks||event!==replay.events.length)throw Error('Replay does not end at its first collision');return {score:run.S.score,flips:run.E.flips,ticks:run.S.tick};}

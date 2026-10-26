@@ -7,6 +7,7 @@ import {obstacleDefinition} from '../src/content.js';
 import {validateEncounter,simulateEncounter} from '../src/encounter-routes.js';
 import {createRun} from '../src/run.js';
 import {createRun as oldRun} from '../supabase/rulesets/roadster-v480/run.js';
+import {createRun as publishedRun} from '../supabase/rulesets/roadster-v490/run.js';
 
 function options(speed=960,fuel=0){
  const pace={...createPace(),base:960,progress:150,speed,boost:speed>1300?.35:0},economy=createEconomy(),boosterState=createBoosters(17);
@@ -33,8 +34,8 @@ test('the same triple offers one long powered flight instead of three jumps',()=
  for(const lead of [.22,.25,.28])for(const burn of [.87,.9,.93])assert.equal(simulateEncounter(obs,{...options(960,80),charge:.5,lead,burn})?.jumps,1);
  assert.ok(validateEncounter(obs,options(960,0)),'empty fuel never removes the ground route');
 });
-test('first twenty seconds keep the published physical state for identical player inputs',()=>{
- for(const seed of [17,932]){const a=createRun({seed}),b=oldRun({seed});a.reset();b.reset();const inputs=new Map();let wave=0;
+test('historical 4.9.0 first twenty seconds retain the 4.8.0 physical state',()=>{
+ for(const seed of [17,932]){const a=publishedRun({seed}),b=oldRun({seed});a.reset();b.reset();const inputs=new Map();let wave=0;
   while(a.S.mode==='playing'&&a.S.t<20){
    for(const input of inputs.get(a.S.tick)||[]){a.command(input);b.command(input);}
    a.step();b.step();a.drainEvents();b.drainEvents();assert.deepEqual(a.S,b.S);assert.deepEqual(a.P,b.P);

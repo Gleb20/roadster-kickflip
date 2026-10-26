@@ -25,7 +25,7 @@ test('paused render time, viewport and reduced motion cannot alter replay physic
 });
 test('replay parser bounds ticks/events and rejects malformed or unsupported inputs',()=>{
  const r=createRun();r.reset();r.step();const valid=r.replay();
- for(const mutation of [{ruleset:'unknown'},{ticks:0},{ticks:432001},{seed:-1},{events:[[0,6]]},{events:[[1,0],[0,1]]},{events:[[0,.1]]},{events:[[0,0,0]]},{events:Array(24001).fill([0,0])}])assert.throws(()=>validateReplay({...valid,...mutation}));
+ for(const mutation of [{ruleset:'unknown'},{ticks:0},{ticks:432001},{seed:-1},{events:[[0,7]]},{events:[[1,0],[0,1]]},{events:[[0,.1]]},{events:[[0,0,0]]},{events:Array(24001).fill([0,0])}])assert.throws(()=>validateReplay({...valid,...mutation}));
  r.S.mode='paused';const t=r.S.tick;r.step();assert.equal(r.S.tick,t);assert.equal(r.command('primary-down'),false);r.S.mode='playing';assert.throws(()=>r.command('teleport'));
 });
 test('service recording limit does not end the endless casual simulation',()=>{

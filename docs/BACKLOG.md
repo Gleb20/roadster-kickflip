@@ -1,8 +1,16 @@
+## Mobile tempo 4.10.0 — candidate; backend deployed and verified; client publication pending
+
+TJ-001 + reopened TJ-002: accepted user requirements on 26 October supersede earlier time-based pace and unchanged-start decisions. First-ever run starts gently; all subsequent runs start faster and persist across PWA restarts. Score, including bonuses, drives difficulty. New hazards begin outside portrait phone view; boosters never block the next encounter and occupy validated safe positions. Road and world share camera scale; speedometer tracks actual velocity.
+
+Base main b9cf724a60e30df07d8d2242713bc83b387ac19b; isolated source /tmp/tesla-next-backlog-20261026, branch codex/mobile-tempo-v4100. Original dirty runtime/index preserved. 261 game tests,16server tests,36database checks; both startup profiles replay exactly. Two600s visible-only runs: longest empty stretch1.39–1.40s versus3.39–3.60s in4.9; late mandatory ground decisions31.7–32.0/min versus25.7–26.0/min. This is a model, not human acceptance. Mobile440×956 checks and actual4.9→4.10 update/offline pass; physical iPhone17ProMax/Safari remains untested.
+
+[Evidence and bounded rollback](verification/2026-10-26-mobile-tempo-v4100/README.md). Existing bounded debt proposal remains actual-phone full-frame/input profiling and independent PWA update lifecycle diagnosis; neither is started here. This section is current; earlier entries below are historical.
+
 # Tesla Jump — бэклог развития
 
 Обновлено: 25 октября 2026. Источник новых требований: сообщение пользователя в чате «Сформировать и приоритизировать бэкл», `01a1730b-c038-7221-8a08-f00f519f7f97`.
 
-**Это рабочий бэклог для обсуждения и последующих отдельных чатов.** Желания пользователя зафиксированы; порядок и технические решения ниже предложены Codex и ещё могут меняться, кроме явно зафиксированных решений пользователя. Наличие карточки не означает поручения реализовать её сейчас. В этой задаче меняется только документация.
+**Это рабочий бэклог для обсуждения и последующих отдельных чатов.** Желания пользователя зафиксированы; порядок и технические решения ниже предложены Codex и ещё могут меняться, кроме явно зафиксированных решений пользователя. Наличие карточки не означает поручения реализовать её сейчас. Карточки TJ-001/TJ-002 реализуются по отдельному согласованию от26октября.
 
 Последняя сверка при проработке TJ-002: `main` = `c954ad228a1c108668d47bc88be8dbb23b6898f7`, runtime **4.7.3**. TJ-000 опубликована; публичный package.json подтверждает версию, пакет релиза — commit/Pages и проверки. Исходники повторно исследованы в `/tmp/tesla-p1-discovery-20261025`. Первоначальная сверка 4.7.2 в `/tmp/tesla-backlog-review-20261025` остаётся исторической. Основная рабочая папка содержит старый код и чужие изменения; перед реализацией заново проверить remote/HANDOFF. [Проработка TJ-002](planning/TJ-002-speed-result.md).
 
@@ -64,7 +72,7 @@ ID постоянны и не переиспользуются; при изме�
 
 ### TJ-001 — внезапное появление препятствий
 
-**Статус:** предложено; дефект сообщён пользователем, причина не установлена.
+**Статус:** готово к проверке — кандидат4.10.0. Причина rail-air появления внутри мобильного кадра и блокировка волн бустером воспроизведены и исправлены. Человеческая приёмка iPhone17ProMax открыта. [Пакет](verification/2026-10-26-mobile-tempo-v4100/README.md).
 
 **Результат:** самолёт/враг/земной объект рядом с рампой входит в видимую сцену заранее и оставляет реальное время на решение. Не маскировать проблему обязательным предупреждающим значком.
 
@@ -77,6 +85,8 @@ ID постоянны и не переиспользуются; при изме�
 **Затрагивает:** `director.js`, `encounter.js`, `main.js`, загрузку/отрисовку — только после локализации. При изменении генерации — новая совместимая версия replay.
 
 ### TJ-002 — ощущение скорости и лейтгейм
+
+**Актуально26октября:** 4.9.0 не принята по мобильным ощущениям; кандидат4.10.0 реализует согласованные первые/повторные старты, сложность по очкам и независимые бустеры. Сервер опубликован и проверен; готово к публикации клиента; телефонная приёмка открыта. Следующие абзацы — история.
 
 **Текущий статус после «Внедряй»:** реализован изолированный кандидат4.8.0, публикация ещё не выполнена.250 игровых,16серверных,34SQL-проверки и12забегов по15минут прошли. Начало сохранено; поздняя экранная скорость+15.3%, плато740. Физическая приёмка и полныйTJ-001 открыты. [Пакет и препятствие публикации](verification/2026-10-25-speed-v480/README.md). Следующий абзац фиксирует предыдущий этап проработки.
 

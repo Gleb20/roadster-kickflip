@@ -1,0 +1,20 @@
+{
+  "apiCharacters": 1166800,
+  "workerCharacters": 1160680,
+  "editorReadbacksExact": true,
+  "deploymentsConfirmed": true,
+  "additiveSqlSuccess": true,
+  "before": {
+    "count": 28,
+    "maxSeq": 163,
+    "md5": "c62b11c2fba7dcc0ab18f995d164110b"
+  },
+  "isolatedFixturesBeforeSubmission": 21,
+  "readyFixturesBeforeSubmission": 21,
+  "after": {
+    "count": 28,
+    "maxSeq": 163,
+    "md5": "c62b11c2fba7dcc0ab18f995d164110b"
+  },
+  "realRecordsUnchanged": true
+}

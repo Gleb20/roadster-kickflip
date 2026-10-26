@@ -1,4 +1,4 @@
-import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.9.0';
+import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.10.0';
 
 // Allocate forward space before shrinking the player: all inputs are actual velocity.
 const clamp01=value=>Math.max(0,Math.min(1,value));
@@ -12,7 +12,7 @@ export function speedView(width,height,speed,strength=viewStrength(speed)){
  const original=Math.min(1.3,strength),a=clamp01((v-550)/190),blend=a*a*(3-2*a);
  const oldScale=baseScale/(1+.44*original),oldX=width*((width<600?.24:.29)-.08*original);
  // Beyond the sustained pickup peak, retain forward sight for residual thrust.
- const zoom=Math.min(.40,.40*u)+Math.max(0,Math.min(v,1620)-960)*.00045+Math.max(0,v-1620)*.0009;
+ const zoom=Math.min(.40,.40*u)+Math.max(0,Math.min(v,1620)-1100)*.00065+Math.max(0,v-1620)*.0009;
  const nextScale=baseScale/(1+zoom),nextX=width*Math.max(width<600?.075:.09,(width<600?.24:.29)-.17*(u+.18*Math.sin(Math.PI*clamp01(u))));
  const scale=oldScale+(nextScale-oldScale)*blend,x=oldX+(nextX-oldX)*blend;
  return {scale,x,baseScale,strength,energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),sceneryScale:Math.max(.72,Math.min(1.15,baseScale))};
@@ -49,4 +49,10 @@ export function speedFeedback(pace,streak,pickup=0){
     flameLength:bonus>0||pickup>0?20+35*intensity:0,
     flameOpacity:bonus>0||pickup>0?.12+.24*intensity:0,
   };
+}
+
+// Portrait phones: width 320..599, height >=568. Both scale-boundary extrema
+// are included; height cannot reduce the forward-room scale in this range.
+export function maximumMobileSight(speed,strength=viewStrength(speed)){
+ return Math.max(...[320,600-1e-7].map(w=>{const v=speedView(w,Math.max(w,568),speed,strength);return (w-v.x)/v.scale;}));
 }

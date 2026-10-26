@@ -1,9 +1,10 @@
-import {advanceSpeedView} from './speed-feedback.js?v=4.9.0';
-import {makeRail} from './rails.js?v=4.9.0';
-import {types} from './catalog.js?v=4.9.0';
-import {biomeAt} from './biomes.js?v=4.9.0';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.9.0';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.9.0';
+import {scoreStage} from './gameplay-config.js?v=4.10.0';
+import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.10.0';
+import {makeRail} from './rails.js?v=4.10.0';
+import {types} from './catalog.js?v=4.10.0';
+import {biomeAt} from './biomes.js?v=4.10.0';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.10.0';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.10.0';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
@@ -27,11 +28,11 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   update();
   if(!clear()||!settled()||state.restUntil!==null&&S.t+1e-8<state.restUntil){S.next=0;state.waiting=true;return;}
   state.waiting=false;state.restUntil=null;
-  const {id:biome,leg}=biomeAt(S.t,S.seed||0),stage=stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
+  const {id:biome,leg}=biomeAt(S.t,S.seed||0),stage=pace.scoreDriven?scoreStage(S.score):stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
   const familiar=S.t-state.legStartedAt<2,simple=state.groundCount<3||state.recoveryWaves>0;
   const candidate=()=>{if(budget.candidates>=3||budget.exhausted)return false;budget.candidates++;return true;};
   const opts={flight,pace,economy,boosterState:boosters,time:sceneTime(),budget,viewStrength:Math.max(0,state.viewStrength-.02)};
-  const dx=Math.max(600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
+  const entry=maximumMobileSight(S.speed,state.viewStrength)+64,dx=Math.max(entry,600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
   let kind='single',obstacles=[],rail=null,route=null,fallbackRail=false,bypass=null;
   const recent=state.history.slice(-2),repeat=recent.length===2&&recent[0]===recent[1]?recent[0]:null;
   const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
@@ -46,27 +47,28 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
    if(proof)reserve={obstacles:items,route:proof};
   }
   const airPool=AIR_TYPES.filter(o=>eligible(o,biome)),airIntro=!state.airBiomes.includes(biome)&&S.t-state.biomeFirstSeen[biome]>=3;
-  const pressure=stage>=5&&!simple&&!familiar;
-  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=(pressure?5:3)&&S.t-state.lastAirAt>=(pressure?22:ENCOUNTER.airCooldown)));
+  const pressure=stage>=4&&!simple&&!familiar;
+  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=(stage>=6?7:pressure?5:3)&&S.t-state.lastAirAt>=(pressure?22:ENCOUNTER.airCooldown)));
   if(airDue&&candidate()){
    const small=airPool.filter(o=>o.w<=110&&o.h<=60),specific=small.filter(o=>Array.isArray(o.biomes)),model=pick(airIntro&&specific.length?specific:state.airCount<2?small:airPool);
    if(model){
     const combine=!airIntro&&state.airCount>=1&&state.airCount%2===1&&state.groundCount>=6&&S.t-state.lastRailAirAt>=ENCOUNTER.railAirCooldown;
-    kind=combine?'rail-air':'air-pass';rail=combine?makeRail(dx,railLength(S.speed,state.railCount,state.lastRailWidth)):null;
-    obstacles=[{...model,x:combine?dx-S.speed*.6:dx,approachSpeed:airSpeed[model.id],passed:false}];
+    const airX=combine?Math.max(entry,dx-S.speed*.6):dx,railX=airX+S.speed*.6;
+    kind=combine?'rail-air':'air-pass';rail=combine?makeRail(railX,railLength(S.speed,state.railCount,state.lastRailWidth)):null;
+    obstacles=[{...model,x:airX,approachSpeed:airSpeed[model.id],passed:false}];
     if(combine){route=validateEncounter(obstacles,{...opts,rail,policies:[[.5,.15],[.5,.2]],minSlide:S.speed>=740?.6:.85});if(route){bypass=validateEncounter(obstacles,{...opts,rail,noInput:true});if(!bypass)route=null;}}
     else route=validateEncounter(obstacles,{...opts,noInput:true});
     if(!route){rail=null;obstacles=[];}
    }
   }
   if(!route){
-   const chainDue=pressure&&state.groundCount%3!==2;
+   const chainDue=pressure&&state.groundCount%(stage>=6?7:3)!==(stage>=6?6:2);
    const type=chainDue?canonical:pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):overlayDue&&reserve?canonical:pick(choices);
    if(type&&candidate()){
-    kind=chainDue?'pressure-chain':pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:chainDue?.09:.45,chainTypes:chainDue?[canonical,pick(lows)||canonical,canonical]:null});
+    kind=chainDue?'pressure-chain':pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:chainDue?.09:.35,chainTypes:chainDue?[canonical,pick(lows)||canonical,canonical]:null});
     route=kind==='single'&&reserve&&type.id===canonical.id?reserve.route:validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='pressure-chain'?.12:kind==='spaced-pair'?.3:0});
     if(route&&!chainDue&&overlayDue&&type.h<=64&&budget.policies<26&&candidate()){
-     const overlay=makeRail(dx-S.speed*.3,railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
+     const overlay=makeRail(Math.max(entry,dx-S.speed*.3),railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
      const ground=validateEncounter(obstacles,{...shared,fallbackGround:true,targetMode:'ground',requireCatch:false,forbidCatch:true});
      const catchRoute=ground&&validateEncounter(obstacles,{...shared,minSlide:S.speed>=740?.6:.85});
      if(catchRoute){rail=overlay;bypass=ground;route=catchRoute;kind='rail-ground';}
@@ -84,7 +86,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   if(grounds.length){state.groundCount++;state.groundSinceAir++;}
   const tallSingle=kind==='single'&&grounds[0]?.h>=90;
   if(tallSingle)state.sinceTall=0;else if(grounds.length)state.sinceTall++;
-  state.restSeconds=state.groundCount>3&&state.groundCount%7===0?.9:grounds.length>1?ENCOUNTER.accentRest:ENCOUNTER.rest;
+  state.restSeconds=state.groundCount>3&&state.groundCount%7===0?.65:grounds.length>1?(stage>=6?.2:.3):ENCOUNTER.rest;
   for(const o of obstacles)if(!state.seen.includes(o.id))state.seen.push(o.id);
   if(grounds.length){state.history.push(grounds[0].id);state.history=state.history.slice(-4);}
   if(state.recoveryWaves>0&&grounds.length)state.recoveryWaves--;

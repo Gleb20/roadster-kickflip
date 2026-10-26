@@ -1,3 +1,7 @@
+## Current replay contract4.10.0
+
+Immutable `roadster-v4.10.0` adds score-driven pace, outside-portrait spawn, independent safe pickups and persisted first/retry startup. Command6 (`experienced-start`) is optional, unique, first event at tick0; it selects520 instead of360. No later profile changes are accepted. Pace distance/profile and pickups are serialized through checkpoints. All17historical verifiers remain unchanged; the API/database accept18versions. Client retained-best compatibility explicitly includes4.7.3/4.8.0/4.9.0. Old queued/finished records are not migrated to new physics.
+
 ## Current replay contract4.7.2
 
 The browser and server use immutable `roadster-v4.7.2`; all13earlier implementations remain byte-identical. The deterministic director snapshots its camera/pace/history and saves a fully validated canonical ground route before discretionary air/pair/rail searches. Low reserve readability is explicitly calibrated; timing windows and production physics are unchanged. New14-version API/worker bundles and the strict13→14guard are deployed;14exact valid fixtures and2forged rejections pass with no public fixture rows. Older finished/offline packets and checkpoints remain supported. [Current evidence](verification/2026-10-24-encounter-pacing/fallback-v472/README.md). Earlier behavior descriptions below are historical.

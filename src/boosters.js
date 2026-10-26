@@ -22,15 +22,44 @@ export function advanceBoosters(q,dt){
  q.speedBlend=target?Math.min(1,q.speedBlend+delta):Math.max(0,q.speedBlend-delta);
 }
 function random(q){q.random=(Math.imul(q.random,1664525)+1013904223)>>>0;return q.random/4294967296;}
-export function offerBooster(q,{time,speed,clear}){
+
+// The whole magnet capture region plus the upright rider and 24-unit margin.
+// Moving air enemies sweep left relative to a pickup during its approach.
+export function safePickupSpot(spot,obstacles,speed){
+ const horizon=Math.max(0,spot.x-112)/Math.max(60,speed*.55);
+ return obstacles.every(o=>{
+  if(o.smashed||o.collision==='none')return true;
+  const left=o.x-(o.approachSpeed||0)*horizon,right=o.x+o.w;
+  if(spot.x+160<left||spot.x-160>right)return true;
+  const bottom=o.altitude||0,top=bottom+o.h;
+  return spot.y-200>top+24||spot.y+207<bottom-24;
+ });
+}
+export function pickupSpots(obstacles,rails,speed){
+ const live=obstacles.filter(o=>!o.smashed&&o.x>0).sort((a,b)=>a.x-b.x),spots=[];
+ for(let i=0;i<live.length;i++){
+  const a=live[i],b=live[i+1];
+  if(!a.altitude&&a.h<=130)spots.push({x:a.x+a.w/2,y:a.h+230});
+  if(b&&b.x-a.x-a.w>400)spots.push({x:(a.x+a.w+b.x)/2,y:104});
+ }
+ for(const rail of rails)spots.push({x:rail.x+rail.w*.55,y:rail.h+90});
+ return spots.filter(p=>p.x>0&&p.y<=380&&safePickupSpot(p,live,speed));
+}
+export function offerBooster(q,{time,speed,clear,obstacles=[],rails=[]}){
  if(!clear||q.pickups.length||time<q.nextAt)return null;
- if(!q.bag.length){// One backup in every third bag; keep all four ordinary boosts in every bag.
-  q.bagCycle++;q.bag=Object.keys(BOOSTERS).filter(id=>id!=='life'||q.bagCycle%3===0);for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}}
+ const spots=pickupSpots(obstacles,rails,speed);if(!spots.length)return null;
+ if(!q.bag.length){
+  q.bagCycle++;q.bag=Object.keys(BOOSTERS).filter(id=>id!=='life'||q.bagCycle%3===0);
+  for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}
+ }
  const eligible=id=>id==='life'?q.hearts<2:activeBooster(q,id)||Object.keys(q.active).length<3;
- let index=q.bag.findIndex(eligible);if(index<0){q.nextAt=time+2;return null;}
- const id=q.bag.splice(index,1)[0],pickup={id,uid:++q.serial,x:Math.max(900,speed*1.9+180),y:q.serial===1||random(q)<.55?104:240};
- q.pickups.push(pickup);
- // Occasional pairs create real combinations without shortening every breather.
- if(q.serial>1&&random(q)<.4){const second=q.bag.findIndex(other=>other!==id&&eligible(other));if(second>=0){const next=q.bag.splice(second,1)[0];q.pickups.push({id:next,uid:++q.serial,x:pickup.x+240,y:pickup.y});}}
+ const index=q.bag.findIndex(eligible);if(index<0)return null;
+ const id=q.bag.splice(index,1)[0],spot=spots[Math.floor(random(q)*spots.length)];
+ const pickup={id,uid:++q.serial,...spot};q.pickups.push(pickup);
+ // Pairs require a second safe spot, never just a blind fixed offset.
+ if(q.serial>1&&random(q)<.4){
+  const otherSpot=spots.find(p=>Math.abs(p.x-spot.x)>300),next=q.bag.findIndex(other=>other!==id&&eligible(other));
+  if(otherSpot&&next>=0)q.pickups.push({id:q.bag.splice(next,1)[0],uid:++q.serial,...otherSpot});
+ }
  q.nextAt=time+14+random(q)*6;return pickup;
 }

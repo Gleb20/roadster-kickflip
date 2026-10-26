@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "published4.9.0 installed",
+    "update does not replace paused run",
+    "4.10.0 activates after closed window",
+    "best collection and storage retained",
+    "old finished best remains submittable",
+    "existing player receives fast start",
+    "4.10.0 cold loads offline",
+    "fast start persists offline",
+    "offline native touch jumps",
+    "viewport 320",
+    "viewport 956",
+    "viewport 1280",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "physicalPhone": false
+}

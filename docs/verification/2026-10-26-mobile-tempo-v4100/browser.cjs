@@ -1,0 +1,21 @@
+const {chromium}=require('/Users/liubavskii/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const fs=require('fs'),assert=require('assert/strict');
+(async()=>{const b=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});const out='/tmp/tesla-mobile-browser';fs.mkdirSync(out,{recursive:true});const checks=[],errors=[];
+const check=(n,v)=>{assert.ok(v,n);checks.push(n)};
+try{
+const c=await b.newContext({viewport:{width:440,height:956},deviceScaleFactor:3,hasTouch:true,isMobile:true});
+await c.route('https://*.supabase.co/**',r=>r.abort('internetdisconnected'));
+let p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:18826/');await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert);check('page identity',(await p.title()).includes('ROADSTER'));
+await p.locator('#start').tap();check('first run gentle',await p.evaluate(()=>__qa.pace.base<420&&!__qa.pace.experienced));
+await p.touchscreen.tap(280,480);check('native mobile tap jumps',await p.evaluate(()=>__qa.P.airborne));await p.screenshot({path:out+'/first-run.png'});
+await p.locator('#pause').tap();check('pause works',await p.evaluate(()=>__qa.S.mode==='paused'));await p.locator('#pause-restart').tap();check('retry fast',await p.evaluate(()=>__qa.pace.experienced&&__qa.pace.base>=520));
+await p.close();p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto('http://127.0.0.1:18826/');await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert);await p.locator('#start').tap();check('faster start persists after reopening PWA origin',await p.evaluate(()=>__qa.pace.experienced&&__qa.run.replay().events[0][1]===6));
+await p.evaluate(()=>window.requestAnimationFrame=()=>0);await p.waitForTimeout(60);
+const late=await p.evaluate(()=>{const q=__qa;q.start(17);q.S.next=q.Q.nextAt=1e9;q.S.obs=[];q.S.rails=[];q.E.bonus=110000;for(let i=0;i<1200;i++)q.step(1/120);q.CAMEO.active=false;q.coach.dismiss(1000);q.render();return JSON.parse(render_game_to_text());});
+check('score advances late difficulty',late.stage===6&&late.baseSpeed>=1099);check('road and stationary objects share motion',Math.abs(late.camera.roadPixelSpeed-late.camera.screenSpeed)<1e-8);
+await p.evaluate(()=>{const q=__qa;q.director.reset();q.director.update();Object.assign(q.director.state,{groundCount:7,airCount:3,groundSinceAir:9,lastAirAt:-100,lastRailAirAt:-100,legStartedAt:q.S.t-20,airBiomes:['spaceport','tesla-factory']});q.S.next=0;q.step(1/120);q.render();});
+const entry=await p.evaluate(()=>{const s=JSON.parse(render_game_to_text());return {kind:s.director.kind,items:[...__qa.S.obs,...__qa.S.rails].map(o=>({x:s.camera.x+o.x*s.camera.scale,id:o.id})),screen:innerWidth};});check('accepted live scene begins outside phone frame',entry.items.length>0&&entry.items.every(o=>o.x>=entry.screen));
+await p.evaluate(()=>{for(let i=0;i<90;i++)__qa.step(1/120);__qa.refreshHUD();__qa.render();});await p.screenshot({path:out+'/late-encounter.png'});
+check('no runtime errors',errors.length===0);fs.writeFileSync(out+'/result.json',JSON.stringify({checks,errors,late,entry,viewport:{width:440,height:956},physicalPhone:false,browserPlugin:'not available'},null,2));
+await c.close();console.log(JSON.stringify({checks,errors,entry}));
+}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});

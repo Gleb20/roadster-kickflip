@@ -23,5 +23,5 @@ test('recovery rejoins the same nonlinear progression with no speed discontinuit
  for(const progress of [20,75,120,150]){const p=createPace(),f=createFlight(),e=createEconomy();p.progress=progress;p.base=basePace(progress);p.speed=p.base;stumble(p);let prior=p.base;
  while(p.recovery){advancePace(p,e,f,1/120);assert.ok(p.base>=prior-1e-8);prior=p.base;}
  assert.equal(p.base,basePace(progress));advancePace(p,e,f,1/120);assert.ok(p.base-prior<.07);}
- assert.equal(C.maxSpeed,960);
+ assert.equal(C.maxSpeed,1100);
 });

@@ -1,3 +1,7 @@
+## 4.10.0 mobile tempo recovery
+
+Isolated candidate /tmp/tesla-next-backlog-20261026; frozen parent b9cf724a60e30df07d8d2242713bc83b387ac19b at /tmp/tesla-mobile-v4100-parent.tar. Original dirty source/index were not modified. [Release proof and rollback](docs/verification/2026-10-26-mobile-tempo-v4100/README.md). Client rollback must retain the additive18-version backend so already-created4.10 sessions/outbox continue verification; never restore old database schema or delete records.
+
 ## TJ-002 / 4.8.0 — backend deployed; client publication next
 
 API and worker editor contents were copied back and matched the tested bundles exactly. Additive migration applied. Hosted QA: 16 valid versions accepted, 2 forgeries rejected, all 18 fixtures isolated before submission, zero public QA writes. All 28 original records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Browser transfer failure resolved with 60 KB paste chunks. Client publication is the remaining step; physical phone remains untested. Candidate ab2fa3c, parent c954ad2; tested client inverse retains all 16 server verifiers.

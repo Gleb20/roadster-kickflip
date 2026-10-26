@@ -32,7 +32,7 @@ test('x3 applies once above x5 and expires independently of combo',()=>{
  const r=blank();collectBooster(r.Q,'score');r.Q.active.score=.01;r.E.multiplier=50;r.E.meter=1;r.step();r.step();assert.equal(r.E.scoreFactor,1);assert.equal(r.E.multiplier,50);
 });
 test('seeded pickup schedule and checkpoint restoration are deterministic',()=>{
- const a=createRun({seed:12}),b=createRun({seed:12});a.reset();b.reset();for(const r of [a,b]){r.S.next=1e9;r.Q.nextAt=0;}
+ const a=createRun({seed:12}),b=createRun({seed:12});a.reset();b.reset();for(const r of [a,b]){r.S.next=0;r.Q.nextAt=0;}
  for(let i=0;i<5;i++){a.step();b.step();}assert.deepEqual(a.Q,b.Q);assert.equal(a.Q.pickups.length,1);
  const c=createRun({record:false});c.restore(JSON.parse(JSON.stringify(a.snapshot())));for(let i=0;i<300;i++){a.step();c.step();}assert.deepEqual(c.snapshot(),a.snapshot());
 });
@@ -48,7 +48,7 @@ test('real pickup, altered jump and speed replay exactly in the server checkpoin
  assert.equal(verifyChunk({...r.replay(),ticks:r.S.tick+1},null,{maxTicks:1e6,budgetMs:Infinity}).outcome,'rejected');
 });
 test('score pickup triples distance earnings without multiplying previously banked points',()=>{
- const a=blank(),b=blank();a.E.bonus=b.E.bonus=500;collectBooster(b.Q,'score');for(let i=0;i<120;i++){a.step();b.step();}assert.equal(a.S.distance,b.S.distance);assert.ok(Math.abs((b.S.score-500)-3*(a.S.score-500))<=2);assert.equal(a.E.multiplier,b.E.multiplier);
+ const a=blank(),b=blank();a.E.bonus=b.E.bonus=500;collectBooster(b.Q,'score');for(let i=0;i<120;i++){a.step();b.step();}assert.ok(b.S.distance>a.S.distance,'bonus score intentionally advances pace');assert.ok(Math.abs((b.S.score-500)-3*b.S.distance/20)<=1);assert.ok(Math.abs((a.S.score-500)-a.S.distance/20)<=1);assert.equal(a.E.multiplier,b.E.multiplier);
 });
 test('restart clears all temporary state including captured jump strength and score factor',()=>{
  const r=blank();collectBooster(r.Q,'life');collectBooster(r.Q,'score');r.E.scoreFactor=3;r.P.jumpFactor=1.25;r.pace.boost=.35;r.Q.grace=2;r.reset();assert.equal(r.Q.hearts,0);assert.deepEqual(r.Q.active,{});assert.equal(r.E.scoreFactor,1);assert.equal(r.P.jumpFactor,1);assert.equal(r.pace.boost,0);

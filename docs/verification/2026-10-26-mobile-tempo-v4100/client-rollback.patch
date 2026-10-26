@@ -1,0 +1,1128 @@
+diff --git a/index.html b/index.html
+index 8187347..0976cdd 100644
+--- a/index.html
++++ b/index.html
+@@ -1,5 +1,5 @@
+ <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="format-detection" content="telephone=no">
+-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-25-release-v4.9.0"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
++<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-25-release-v4.10.0"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
+ #loading-screen { --instrument-white: #f3f5f4; --instrument-dim: rgb(243 245 244 / 38%); position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); box-sizing: border-box; background: #10151b; color: var(--instrument-white); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; opacity: 1; transition: opacity 180ms ease-out; }
+ #loading-screen[hidden] { display: none; }
+ #loading-screen.is-leaving { opacity: 0; pointer-events: none; }
+@@ -39,7 +39,7 @@
+ @keyframes loader-orbit { to { transform: rotate(360deg); } }
+ @media (max-height: 560px) { .loader-console { width: min(240px, 100%); } #loading-title { margin-bottom: 4px; font-size: 14px; } .loader-instrument { width: 184px; margin-bottom: 8px; } .loader-log-window { height: 38px; margin-top: 12px; } #loading-status { margin-top: 8px; } }
+ @media (prefers-reduced-motion: reduce) { #loading-screen, .loader-console { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
+-</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.9.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
++</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.10.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
+ <section id="loading-screen" aria-labelledby="loading-title" aria-hidden="true">
+   <div class="loader-console">
+     <h2 id="loading-title">Loading</h2>
+@@ -79,7 +79,7 @@ const waiting = setTimeout(() => {
+   screen.classList.add('is-visible');
+   screen.removeAttribute('aria-hidden');
+ }, 180);
+-import('./src/loading.js?v=4.9.0').then(() => clearTimeout(waiting)).catch(() => {
++import('./src/loading.js?v=4.10.0').then(() => clearTimeout(waiting)).catch(() => {
+   clearTimeout(waiting);
+   document.getElementById('loading-title').textContent = 'Loading failed';
+   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';
+diff --git a/package-lock.json b/package-lock.json
+index 054b19d..3b82c02 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,12 +1,12 @@
+ {
+   "name": "roadster-kickflip",
+-  "version": "4.9.0",
++  "version": "4.10.0",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "roadster-kickflip",
+-      "version": "4.9.0",
++      "version": "4.10.0",
+       "devDependencies": {
+         "esbuild": "0.28.2",
+         "typescript": "7.0.2"
+diff --git a/package.json b/package.json
+index 359a42c..846d3d3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "roadster-kickflip",
+-  "version": "4.9.0",
++  "version": "4.10.0",
+   "private": true,
+   "type": "module",
+   "scripts": {
+diff --git a/src/biomes.js b/src/biomes.js
+index 37c667d..c8028ee 100644
+--- a/src/biomes.js
++++ b/src/biomes.js
+@@ -1,5 +1,5 @@
+-import {createRandom} from './random.js?v=4.9.0';
+-import {BIOME_CYCLE} from './content.js?v=4.9.0';
++import {createRandom} from './random.js?v=4.10.0';
++import {BIOME_CYCLE} from './content.js?v=4.10.0';
+ // Active run seconds select scenery and the director's obstacle pool.
+ // A separate seeded stream keeps the schedule replayable without consuming gameplay RNG.
+ export const BIOME_FIRST_SECONDS=40,BIOME_MIN_SECONDS=30,BIOME_MAX_SECONDS=50;
+diff --git a/src/booster-art.js b/src/booster-art.js
+index e783fd6..68a37c0 100644
+--- a/src/booster-art.js
++++ b/src/booster-art.js
+@@ -1,4 +1,4 @@
+-import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.9.0';
++import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.10.0';
+ export const PICKUP_FLIGHT_SECONDS=.32;
+ const clamp=value=>Math.max(0,Math.min(1,value));
+ function riderTarget(p){return {x:Math.sin(p.angle||0)*35,y:p.y+65+Math.cos(p.angle||0)*35};}
+diff --git a/src/boosters.js b/src/boosters.js
+index 36435f5..26dffe5 100644
+--- a/src/boosters.js
++++ b/src/boosters.js
+@@ -22,15 +22,44 @@ export function advanceBoosters(q,dt){
+  q.speedBlend=target?Math.min(1,q.speedBlend+delta):Math.max(0,q.speedBlend-delta);
+ }
+ function random(q){q.random=(Math.imul(q.random,1664525)+1013904223)>>>0;return q.random/4294967296;}
+-export function offerBooster(q,{time,speed,clear}){
++
++// The whole magnet capture region plus the upright rider and 24-unit margin.
++// Moving air enemies sweep left relative to a pickup during its approach.
++export function safePickupSpot(spot,obstacles,speed){
++ const horizon=Math.max(0,spot.x-112)/Math.max(60,speed*.55);
++ return obstacles.every(o=>{
++  if(o.smashed||o.collision==='none')return true;
++  const left=o.x-(o.approachSpeed||0)*horizon,right=o.x+o.w;
++  if(spot.x+160<left||spot.x-160>right)return true;
++  const bottom=o.altitude||0,top=bottom+o.h;
++  return spot.y-200>top+24||spot.y+207<bottom-24;
++ });
++}
++export function pickupSpots(obstacles,rails,speed){
++ const live=obstacles.filter(o=>!o.smashed&&o.x>0).sort((a,b)=>a.x-b.x),spots=[];
++ for(let i=0;i<live.length;i++){
++  const a=live[i],b=live[i+1];
++  if(!a.altitude&&a.h<=130)spots.push({x:a.x+a.w/2,y:a.h+230});
++  if(b&&b.x-a.x-a.w>400)spots.push({x:(a.x+a.w+b.x)/2,y:104});
++ }
++ for(const rail of rails)spots.push({x:rail.x+rail.w*.55,y:rail.h+90});
++ return spots.filter(p=>p.x>0&&p.y<=380&&safePickupSpot(p,live,speed));
++}
++export function offerBooster(q,{time,speed,clear,obstacles=[],rails=[]}){
+  if(!clear||q.pickups.length||time<q.nextAt)return null;
+- if(!q.bag.length){// One backup in every third bag; keep all four ordinary boosts in every bag.
+-  q.bagCycle++;q.bag=Object.keys(BOOSTERS).filter(id=>id!=='life'||q.bagCycle%3===0);for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}}
++ const spots=pickupSpots(obstacles,rails,speed);if(!spots.length)return null;
++ if(!q.bag.length){
++  q.bagCycle++;q.bag=Object.keys(BOOSTERS).filter(id=>id!=='life'||q.bagCycle%3===0);
++  for(let i=q.bag.length-1;i>0;i--){const j=Math.floor(random(q)*(i+1));[q.bag[i],q.bag[j]]=[q.bag[j],q.bag[i]];}
++ }
+  const eligible=id=>id==='life'?q.hearts<2:activeBooster(q,id)||Object.keys(q.active).length<3;
+- let index=q.bag.findIndex(eligible);if(index<0){q.nextAt=time+2;return null;}
+- const id=q.bag.splice(index,1)[0],pickup={id,uid:++q.serial,x:Math.max(900,speed*1.9+180),y:q.serial===1||random(q)<.55?104:240};
+- q.pickups.push(pickup);
+- // Occasional pairs create real combinations without shortening every breather.
+- if(q.serial>1&&random(q)<.4){const second=q.bag.findIndex(other=>other!==id&&eligible(other));if(second>=0){const next=q.bag.splice(second,1)[0];q.pickups.push({id:next,uid:++q.serial,x:pickup.x+240,y:pickup.y});}}
++ const index=q.bag.findIndex(eligible);if(index<0)return null;
++ const id=q.bag.splice(index,1)[0],spot=spots[Math.floor(random(q)*spots.length)];
++ const pickup={id,uid:++q.serial,...spot};q.pickups.push(pickup);
++ // Pairs require a second safe spot, never just a blind fixed offset.
++ if(q.serial>1&&random(q)<.4){
++  const otherSpot=spots.find(p=>Math.abs(p.x-spot.x)>300),next=q.bag.findIndex(other=>other!==id&&eligible(other));
++  if(otherSpot&&next>=0)q.pickups.push({id:q.bag.splice(next,1)[0],uid:++q.serial,...otherSpot});
++ }
+  q.nextAt=time+14+random(q)*6;return pickup;
+ }
+diff --git a/src/catalog.js b/src/catalog.js
+index f9e498d..bdaee6c 100644
+--- a/src/catalog.js
++++ b/src/catalog.js
+@@ -1,2 +1,2 @@
+ // Compatibility export; the content registry is the single source of definitions.
+-export {OBSTACLES as types} from './content.js?v=4.9.0';
++export {OBSTACLES as types} from './content.js?v=4.10.0';
+diff --git a/src/characters.js b/src/characters.js
+index 1ed1667..dc38c51 100644
+--- a/src/characters.js
++++ b/src/characters.js
+@@ -1,8 +1,8 @@
+-import {obstacleDefinition} from './content.js?v=4.9.0';
+-import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,rotateAboutHip,relaxedHandAngle,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=4.9.0';
+-import {createCash,advanceCash} from './cash.js?v=4.9.0';
+-export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=4.9.0';
+-import {joeReaction} from './encounter.js?v=4.9.0';
++import {obstacleDefinition} from './content.js?v=4.10.0';
++import {HERO_RIG,HERO_APPEARANCE,HERO_HANDS,HERO_TRICKS,rotateAboutHip,relaxedHandAngle,raisedArm,unrotate,sampleHeroLeg,sampleHeroArm,createHeroAnimation,advanceHeroAnimation,landingCrouch,trickCarPose,heroToWorld,worldToHero} from './hero-rig.js?v=4.10.0';
++import {createCash,advanceCash} from './cash.js?v=4.10.0';
++export {raisedArm,boardGrabArm,seatedLegPose} from './hero-rig.js?v=4.10.0';
++import {joeReaction} from './encounter.js?v=4.10.0';
+ /** Paper characters: one silhouette per figure, reusable render buffers and cached face bases. */
+ export function uprightWristAngle(parentAngle,side,strength){
+   const limit=Math.PI/12;
+diff --git a/src/clock.js b/src/clock.js
+index 1b2bb13..47e8a55 100644
+--- a/src/clock.js
++++ b/src/clock.js
+@@ -1,4 +1,4 @@
+-import {STEP} from './physics.js?v=4.9.0';
++import {STEP} from './physics.js?v=4.10.0';
+ 
+ // Preserve elapsed time at 30/60/120 Hz. Long interruptions pause explicitly.
+ export function createClock(step = STEP) {
+diff --git a/src/coaching.js b/src/coaching.js
+index 4281cd0..c61ada9 100644
+--- a/src/coaching.js
++++ b/src/coaching.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
+ export const LESSONS=[
+   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
+   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
+diff --git a/src/collection-ui.js b/src/collection-ui.js
+index c413b12..0e9c5f4 100644
+--- a/src/collection-ui.js
++++ b/src/collection-ui.js
+@@ -1,4 +1,4 @@
+-import {COLLECTION_COPY} from './collection-copy.js?v=4.9.0';
++import {COLLECTION_COPY} from './collection-copy.js?v=4.10.0';
+ 
+ export function createCollectionUI({store,definitions,preview,beforeOpen,afterClose}){
+  const dialog=document.getElementById('collection-dialog'),grid=document.getElementById('collection-grid'),detail=document.getElementById('collection-detail');
+diff --git a/src/director.js b/src/director.js
+index 0c4aafd..375b496 100644
+--- a/src/director.js
++++ b/src/director.js
+@@ -1,9 +1,10 @@
+-import {advanceSpeedView} from './speed-feedback.js?v=4.9.0';
+-import {makeRail} from './rails.js?v=4.9.0';
+-import {types} from './catalog.js?v=4.9.0';
+-import {biomeAt} from './biomes.js?v=4.9.0';
+-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.9.0';
+-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.9.0';
++import {scoreStage} from './gameplay-config.js?v=4.10.0';
++import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.10.0';
++import {makeRail} from './rails.js?v=4.10.0';
++import {types} from './catalog.js?v=4.10.0';
++import {biomeAt} from './biomes.js?v=4.10.0';
++import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.10.0';
++import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.10.0';
+ const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
+ const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
+ export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
+@@ -27,11 +28,11 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
+   update();
+   if(!clear()||!settled()||state.restUntil!==null&&S.t+1e-8<state.restUntil){S.next=0;state.waiting=true;return;}
+   state.waiting=false;state.restUntil=null;
+-  const {id:biome,leg}=biomeAt(S.t,S.seed||0),stage=stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
++  const {id:biome,leg}=biomeAt(S.t,S.seed||0),stage=pace.scoreDriven?scoreStage(S.score):stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
+   const familiar=S.t-state.legStartedAt<2,simple=state.groundCount<3||state.recoveryWaves>0;
+   const candidate=()=>{if(budget.candidates>=3||budget.exhausted)return false;budget.candidates++;return true;};
+   const opts={flight,pace,economy,boosterState:boosters,time:sceneTime(),budget,viewStrength:Math.max(0,state.viewStrength-.02)};
+-  const dx=Math.max(600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
++  const entry=maximumMobileSight(S.speed,state.viewStrength)+64,dx=Math.max(entry,600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
+   let kind='single',obstacles=[],rail=null,route=null,fallbackRail=false,bypass=null;
+   const recent=state.history.slice(-2),repeat=recent.length===2&&recent[0]===recent[1]?recent[0]:null;
+   const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
+@@ -46,27 +47,28 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
+    if(proof)reserve={obstacles:items,route:proof};
+   }
+   const airPool=AIR_TYPES.filter(o=>eligible(o,biome)),airIntro=!state.airBiomes.includes(biome)&&S.t-state.biomeFirstSeen[biome]>=3;
+-  const pressure=stage>=5&&!simple&&!familiar;
+-  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=(pressure?5:3)&&S.t-state.lastAirAt>=(pressure?22:ENCOUNTER.airCooldown)));
++  const pressure=stage>=4&&!simple&&!familiar;
++  const airDue=S.t>=22&&!state.last?.fallbackRail&&!state.recoveryWaves&&state.groundCount>=3&&((airIntro&&S.t-state.lastAirAt>=8)||(!familiar&&state.groundSinceAir>=(stage>=6?7:pressure?5:3)&&S.t-state.lastAirAt>=(pressure?22:ENCOUNTER.airCooldown)));
+   if(airDue&&candidate()){
+    const small=airPool.filter(o=>o.w<=110&&o.h<=60),specific=small.filter(o=>Array.isArray(o.biomes)),model=pick(airIntro&&specific.length?specific:state.airCount<2?small:airPool);
+    if(model){
+     const combine=!airIntro&&state.airCount>=1&&state.airCount%2===1&&state.groundCount>=6&&S.t-state.lastRailAirAt>=ENCOUNTER.railAirCooldown;
+-    kind=combine?'rail-air':'air-pass';rail=combine?makeRail(dx,railLength(S.speed,state.railCount,state.lastRailWidth)):null;
+-    obstacles=[{...model,x:combine?dx-S.speed*.6:dx,approachSpeed:airSpeed[model.id],passed:false}];
++    const airX=combine?Math.max(entry,dx-S.speed*.6):dx,railX=airX+S.speed*.6;
++    kind=combine?'rail-air':'air-pass';rail=combine?makeRail(railX,railLength(S.speed,state.railCount,state.lastRailWidth)):null;
++    obstacles=[{...model,x:airX,approachSpeed:airSpeed[model.id],passed:false}];
+     if(combine){route=validateEncounter(obstacles,{...opts,rail,policies:[[.5,.15],[.5,.2]],minSlide:S.speed>=740?.6:.85});if(route){bypass=validateEncounter(obstacles,{...opts,rail,noInput:true});if(!bypass)route=null;}}
+     else route=validateEncounter(obstacles,{...opts,noInput:true});
+     if(!route){rail=null;obstacles=[];}
+    }
+   }
+   if(!route){
+-   const chainDue=pressure&&state.groundCount%3!==2;
++   const chainDue=pressure&&state.groundCount%(stage>=6?7:3)!==(stage>=6?6:2);
+    const type=chainDue?canonical:pairDue?(lows.find(o=>o.id==='truck')||pick(lows)):overlayDue&&reserve?canonical:pick(choices);
+    if(type&&candidate()){
+-    kind=chainDue?'pressure-chain':pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:chainDue?.09:.45,chainTypes:chainDue?[canonical,pick(lows)||canonical,canonical]:null});
++    kind=chainDue?'pressure-chain':pairDue?'spaced-pair':'single';obstacles=makePattern(kind,{speed:S.speed,type,dx,gapSeconds:chainDue?.09:.35,chainTypes:chainDue?[canonical,pick(lows)||canonical,canonical]:null});
+     route=kind==='single'&&reserve&&type.id===canonical.id?reserve.route:validateEncounter(obstacles,{...opts,tallSingle:kind==='single'&&type.h>=90,minGroundGap:kind==='pressure-chain'?.12:kind==='spaced-pair'?.3:0});
+     if(route&&!chainDue&&overlayDue&&type.h<=64&&budget.policies<26&&candidate()){
+-     const overlay=makeRail(dx-S.speed*.3,railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
++     const overlay=makeRail(Math.max(entry,dx-S.speed*.3),railLength(S.speed,state.railCount,state.lastRailWidth)),shared={...opts,rail:overlay};
+      const ground=validateEncounter(obstacles,{...shared,fallbackGround:true,targetMode:'ground',requireCatch:false,forbidCatch:true});
+      const catchRoute=ground&&validateEncounter(obstacles,{...shared,minSlide:S.speed>=740?.6:.85});
+      if(catchRoute){rail=overlay;bypass=ground;route=catchRoute;kind='rail-ground';}
+@@ -84,7 +86,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
+   if(grounds.length){state.groundCount++;state.groundSinceAir++;}
+   const tallSingle=kind==='single'&&grounds[0]?.h>=90;
+   if(tallSingle)state.sinceTall=0;else if(grounds.length)state.sinceTall++;
+-  state.restSeconds=state.groundCount>3&&state.groundCount%7===0?.9:grounds.length>1?ENCOUNTER.accentRest:ENCOUNTER.rest;
++  state.restSeconds=state.groundCount>3&&state.groundCount%7===0?.65:grounds.length>1?(stage>=6?.2:.3):ENCOUNTER.rest;
+   for(const o of obstacles)if(!state.seen.includes(o.id))state.seen.push(o.id);
+   if(grounds.length){state.history.push(grounds[0].id);state.history=state.history.slice(-4);}
+   if(state.recoveryWaves>0&&grounds.length)state.recoveryWaves--;
+diff --git a/src/encounter-routes.js b/src/encounter-routes.js
+index 20357ba..118d579 100644
+--- a/src/encounter-routes.js
++++ b/src/encounter-routes.js
+@@ -1,8 +1,8 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.9.0';
+-import {createGrind,advanceRail} from './rails.js?v=4.9.0';
+-import {advanceBoosters,activeBooster} from './boosters.js?v=4.9.0';
+-import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.9.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
++import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.10.0';
++import {createGrind,advanceRail} from './rails.js?v=4.10.0';
++import {advanceBoosters,activeBooster,collectBooster} from './boosters.js?v=4.10.0';
++import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.10.0';
+ export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:48,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
+ export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
+ // Minimum forward sight over supported viewports. Live validation advances the
+@@ -47,6 +47,12 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
+   if(rail){const events=advanceRail(g,p,before,rails,r.speed*dt,dt,e);if(events.some(v=>v.type==='rail-catch')){if(forbidCatch)return null;if(!caught)catchAt=t+dt;caught=true;}if(events.some(v=>v.type==='rail-exit'))exitAt=t+dt;grindDistance=g.distance;if(g.support)landed=null;}
+   const after=landed?{...p,angle:landed.angle}:p;
+   for(const o of obs){const old=o.x;o.x-=(r.speed+(o.approachSpeed||0))*dt;if(sweptCollision(before,after,o,old,o.x,time+t+dt,dt))return null;if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(e);}}
++  if(q){
++   for(const orb of q.pickups||[]){const old=orb.x;orb.x-=r.speed*dt;
++    if(Math.min(old,orb.x)<=112&&Math.max(old,orb.x)>=-112&&Math.abs(p.y+78-orb.y)<=122&&collectBooster(q,orb.id))orb.collected=true;
++   }
++   q.pickups=(q.pickups||[]).filter(o=>!o.collected&&o.x> -180);
++  }
+   if(landed){
+    if(!landed.good)return null;
+    let near=0;const late=lateTarget&&lateTarget.x+lateTarget.w-(lateTarget.inset||5)< -47?1:0;
+diff --git a/src/enemy-sprites.js b/src/enemy-sprites.js
+index ee4ed8f..4948f24 100644
+--- a/src/enemy-sprites.js
++++ b/src/enemy-sprites.js
+@@ -1,4 +1,4 @@
+-import {ASSETS} from './content.js?v=4.9.0';
++import {ASSETS} from './content.js?v=4.10.0';
+ import {ENEMY_SPRITES} from './enemy-sprite-data.js';
+ export function createEnemySprites(){
+  const images=new Map();
+diff --git a/src/factory.js b/src/factory.js
+index aa7a3f6..246419d 100644
+--- a/src/factory.js
++++ b/src/factory.js
+@@ -1,4 +1,4 @@
+-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.9.0';
++import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.10.0';
+ const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
+ export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
+  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
+diff --git a/src/fall.js b/src/fall.js
+index df96dc8..5f15f9e 100644
+--- a/src/fall.js
++++ b/src/fall.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
+ const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);},mix=(a,b,t)=>a+(b-a)*t;
+ // Shared contact times drive pose, dust and camera response, independent of FPS.
+ export const FALL_CONTACTS=Object.freeze([.14,.36,.56]);
+diff --git a/src/gameplay-config.js b/src/gameplay-config.js
+index 452c7e6..e4e042e 100644
+--- a/src/gameplay-config.js
++++ b/src/gameplay-config.js
+@@ -1,6 +1,6 @@
+ // All v3 balance values use logical world units and simulation seconds.
+ export const GAMEPLAY = Object.freeze({
+-  version:'4.9.0', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
++  version:'4.10.0', gravity:1550, jumpSpeed:560, chargedSpeed:440, chargeSeconds:.4,
+   spinSpeed:7.2, spinAcceleration:60, releaseSpeed:1.8, releaseDeceleration:24,
+   settleMinTurn:Math.PI*17/12, settleApproach:Math.PI*7/12, settleFullAngle:Math.PI*5/36, settleDamping:16,
+   landingAngle:Math.PI*2/9, landingOmega:Math.PI*4/3, perfectAngle:Math.PI/18, perfectPoints:50,
+@@ -11,7 +11,7 @@ export const GAMEPLAY = Object.freeze({
+   streakStep:.05, maxStreak:.25, streakHold:4, streakDecay:.1,
+   fallSeconds:2.8, fallSpeedSeconds:.65, fallMaxRate:1.6, fallTapRate:.15, routeTimingMargin:.035, routeFuelReserve:20,
+   stumbleSeconds:.3, recoveryRatio:.55, recoveryMin:1.2, recoveryExtra:2.8,
+-  startSpeed:360, maxSpeed:960, rampSeconds:150,
++  startSpeed:360, maxSpeed:1100, rampSeconds:150,
+   stages:Object.freeze([0,15,35,60,90,120,150]),
+   bestKey:'roadster-best-v3', tutorialKey:'roadster-coach-v3',
+ });
+@@ -26,3 +26,13 @@ export function basePaceSlope(progress){
+  if(progress<=20)return 2;if(progress>=150)return 0;
+  const u=(progress-20)/130;return (260+2320*u-2580*u*u)/130;
+ }
++
++// Score drives the challenge; a point bonus is deliberately allowed to advance it.
++export const SCORE_STAGES=Object.freeze([0,2500,7500,15000,30000,60000,100000]);
++export function scoreStage(score){return SCORE_STAGES.filter(n=>score>=n).length-1;}
++export function scorePace(score,experienced=false,seconds=0){
++ const speeds=[520,590,680,790,910,1010,1100],n=Math.max(0,score),i=scoreStage(n);
++ const next=Math.min(i+1,speeds.length-1),u=next===i?0:(n-SCORE_STAGES[i])/(SCORE_STAGES[next]-SCORE_STAGES[i]);
++ const target=speeds[i]+(speeds[next]-speeds[i])*u;
++ return target-(experienced?0:Math.max(0,160-seconds*8));
++}
+diff --git a/src/gameplay.js b/src/gameplay.js
+index f5d8385..dcd7374 100644
+--- a/src/gameplay.js
++++ b/src/gameplay.js
+@@ -1,6 +1,6 @@
+-import {GAMEPLAY as C,basePace,basePaceSlope} from './gameplay-config.js?v=4.9.0';
+-import {obstacleBoxes} from './physics.js?v=4.9.0';
+-import {fallPolygons,interpolateFall} from './fall.js?v=4.9.0';
++import {GAMEPLAY as C,basePace,basePaceSlope,scorePace} from './gameplay-config.js?v=4.10.0';
++import {obstacleBoxes} from './physics.js?v=4.10.0';
++import {fallPolygons,interpolateFall} from './fall.js?v=4.10.0';
+ export const TAU=Math.PI*2;
+ export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+ const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
+@@ -91,7 +91,7 @@ export function settleLanding(e,p,result,{late=0,near=0}={}){
+   if(n||near){e.streak=Math.min(C.maxStreak,e.streak+C.streakStep);e.streakLeft=C.streakHold;}
+   return {points,turns:n,late,near,perfect,good:true};
+ }
+-export function createPace(){return {boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
++export function createPace({scoreDriven=false}={}){return {scoreDriven,experienced:false,distance:0,boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
+ export function stumble(pace){
+   const target=pace.recovery?.target??pace.base,r=clamp((target-C.startSpeed)/(C.maxSpeed-C.startSpeed),0,1);
+   pace.recovery={target,progress:pace.progress,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
+@@ -106,8 +106,10 @@ export function advancePace(pace,e,p,dt){
+   if(pace.recovery){
+     pace.stumble=Math.max(0,pace.stumble-dt);const r=pace.recovery;r.age=Math.min(r.duration,r.age+dt);pace.base=recoverySpeed(r,r.age);
+     if(r.age>=r.duration){pace.base=r.target;pace.recovery=null;}
+-  }else if(!pace.falling){pace.progress+=dt;pace.base=basePace(pace.progress);}
+-  pace.speed=Math.max(60,pace.base*(1+e.streak)*(1+(pace.boost||0))+p.vx);return pace.speed;
++  }else if(!pace.falling){pace.progress+=dt;pace.base=pace.scoreDriven?approach(pace.base,scorePace(pace.distance/20+e.bonus,pace.experienced,pace.progress),70*dt):basePace(pace.progress);}
++  pace.speed=Math.max(60,pace.base*(1+e.streak)*(1+(pace.boost||0))+p.vx);
++  if(pace.scoreDriven){const dx=pace.speed*dt;pace.distance+=dx;e.bonus+=dx/20*((e.scoreFactor||1)-1);}
++  return pace.speed;
+ }
+ // Collision proxies rotate with the same pivot (65 above tyre baseline) as the art.
+ export function playerPolygons(p){
+diff --git a/src/hud.js b/src/hud.js
+index 29a1f9f..2780f47 100644
+--- a/src/hud.js
++++ b/src/hud.js
+@@ -1,4 +1,4 @@
+-import {BOOSTERS} from './boosters.js?v=4.9.0';
++import {BOOSTERS} from './boosters.js?v=4.10.0';
+ const MILES_PER_KM=.6213711922;
+ export const mphFromKmh=value=>Math.max(0,value)*MILES_PER_KM;
+ export function multiplierAppearance(value,meter){
+diff --git a/src/loading.js b/src/loading.js
+index bcc7d7f..4d86c2b 100644
+--- a/src/loading.js
++++ b/src/loading.js
+@@ -1,4 +1,4 @@
+-import {flipFrameAt} from './roadster-flip.js?v=4.9.0';
++import {flipFrameAt} from './roadster-flip.js?v=4.10.0';
+ 
+ const screen = document.getElementById('loading-screen');
+ const game = document.getElementById('game');
+@@ -158,4 +158,4 @@ logTimer = setInterval(() => {
+ }, 340);
+ 
+ // Start the tiny vector instrument before requesting the game's module graph.
+-import('./main.js?v=4.9.0').catch(fail);
++import('./main.js?v=4.10.0').catch(fail);
+diff --git a/src/main.js b/src/main.js
+index 763e882..f0de0ca 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -1,43 +1,43 @@
+-import {createSceneryMotion,advanceSceneryMotion,sceneryScaleFor} from './scenery-motion.js?v=4.9.0';
+-import {createAudioControls} from './audio-controls.js?v=4.9.0';
+-import {createRailPainter} from './rail-art.js?v=4.9.0';
+-import {BOOSTERS,activeBooster} from './boosters.js?v=4.9.0';
+-import {createBoosterPainter} from './booster-art.js?v=4.9.0';
+-import {createBiomeScene,biomeEdge} from './biomes.js?v=4.9.0';
+-import {createEnemySprites} from './enemy-sprites.js?v=4.9.0';
+-import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.9.0';
+-import {createFactoryRenderer} from './factory.js?v=4.9.0';
+-import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.9.0';
+-import {createOnline} from './online.js?v=4.9.0';
+-import {createScoreRecord} from './score-record.js?v=4.9.0';
+-import {createOnlineUI} from './online-ui.js?v=4.9.0';
+-import {createRun,RUN_STEP,RULESET} from './run.js?v=4.9.0';
+-import {createPWA} from './pwa.js?v=4.9.0';
+-import {createCollection} from './collection.js?v=4.9.0';
+-import {createCollectionUI} from './collection-ui.js?v=4.9.0';
+-import {createObstaclePainter} from './obstacle-art.js?v=4.9.0';
+-import {loading} from './loading.js?v=4.9.0';
+-import {createThrusterEffects} from './thrusters.js?v=4.9.0';
+-import {createSound} from './sound.js?v=4.9.0';
+-import {createSpaceportSprites} from './spaceport-sprites.js?v=4.9.0';
+-import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.9.0';
+-import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.9.0';
+-import {types} from './catalog.js?v=4.9.0';
+-import {obstacleDefinition} from './content.js?v=4.9.0';
+-import {START_SPEED, START_KMH} from './physics.js?v=4.9.0';
+-import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.9.0';
+-import {launch,uprightError} from './gameplay.js?v=4.9.0';
+-import {AIR_TYPES,stageAt} from './routes.js?v=4.9.0';
+-import {createCoach} from './coaching.js?v=4.9.0';
+-import {createHUD,mphFromKmh} from './hud.js?v=4.9.0';
+-import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.9.0';
+-import {fallPose,fallSeatContact} from './fall.js?v=4.9.0';
+-import {createSlapstick} from './slapstick.js?v=4.9.0';
+-import {createClock} from './clock.js?v=4.9.0';
+-import {createEnvironmentRenderer} from './environment.js?v=4.9.0';
+-import {createCharacterRenderer} from './characters.js?v=4.9.0';
+-import {createPropRenderer} from './props.js?v=4.9.0';
+-import {createPhotoRenderer} from './photo-cutouts.js?v=4.9.0';
++import {createSceneryMotion,advanceSceneryMotion,sceneryScaleFor} from './scenery-motion.js?v=4.10.0';
++import {createAudioControls} from './audio-controls.js?v=4.10.0';
++import {createRailPainter} from './rail-art.js?v=4.10.0';
++import {BOOSTERS,activeBooster} from './boosters.js?v=4.10.0';
++import {createBoosterPainter} from './booster-art.js?v=4.10.0';
++import {createBiomeScene,biomeEdge} from './biomes.js?v=4.10.0';
++import {createEnemySprites} from './enemy-sprites.js?v=4.10.0';
++import {createEncounters,xiHands,lightningPaths,VAT_WIDTH,VAT_HEIGHT} from './encounters.js?v=4.10.0';
++import {createFactoryRenderer} from './factory.js?v=4.10.0';
++import {ONLINE_API,ONLINE_PUBLIC_KEY} from './online-config.js?v=4.10.0';
++import {createOnline} from './online.js?v=4.10.0';
++import {createScoreRecord} from './score-record.js?v=4.10.0';
++import {createOnlineUI} from './online-ui.js?v=4.10.0';
++import {createRun,RUN_STEP,RULESET} from './run.js?v=4.10.0';
++import {createPWA} from './pwa.js?v=4.10.0';
++import {createCollection} from './collection.js?v=4.10.0';
++import {createCollectionUI} from './collection-ui.js?v=4.10.0';
++import {createObstaclePainter} from './obstacle-art.js?v=4.10.0';
++import {loading} from './loading.js?v=4.10.0';
++import {createThrusterEffects} from './thrusters.js?v=4.10.0';
++import {createSound} from './sound.js?v=4.10.0';
++import {createSpaceportSprites} from './spaceport-sprites.js?v=4.10.0';
++import {createFlipSprite, jumpCarPose, createRoadsterMotion, advanceRoadsterMotion} from './roadster-flip.js?v=4.10.0';
++import {createRocketSystem,spaceportLayout} from './rocket.js?v=4.10.0';
++import {types} from './catalog.js?v=4.10.0';
++import {obstacleDefinition} from './content.js?v=4.10.0';
++import {START_SPEED, START_KMH} from './physics.js?v=4.10.0';
++import {GAMEPLAY as C,basePace,scoreStage} from './gameplay-config.js?v=4.10.0';
++import {launch,uprightError} from './gameplay.js?v=4.10.0';
++import {AIR_TYPES,stageAt} from './routes.js?v=4.10.0';
++import {createCoach} from './coaching.js?v=4.10.0';
++import {createHUD,mphFromKmh} from './hud.js?v=4.10.0';
++import {roadBaseline,speedFeedback,baseViewScale,createSpeedView,advanceSpeedView} from './speed-feedback.js?v=4.10.0';
++import {fallPose,fallSeatContact} from './fall.js?v=4.10.0';
++import {createSlapstick} from './slapstick.js?v=4.10.0';
++import {createClock} from './clock.js?v=4.10.0';
++import {createEnvironmentRenderer} from './environment.js?v=4.10.0';
++import {createCharacterRenderer} from './characters.js?v=4.10.0';
++import {createPropRenderer} from './props.js?v=4.10.0';
++import {createPhotoRenderer} from './photo-cutouts.js?v=4.10.0';
+ const elements=new Map();
+ const $=id=>elements.get(id) || (elements.set(id,document.getElementById(id)),elements.get(id));
+ const canvas=$('scene'),ctx=canvas.getContext('2d',{alpha:false});
+@@ -70,10 +70,12 @@ let speedFrame;
+ function frameCamera(dt){speedFrame=advanceSpeedView(speedCamera,dt,W,H,pace.speed);scale=speedFrame.scale;px=speedFrame.x;sceneryScale=sceneryScaleFor(speedFrame.baseScale);}
+ const {P,E,pace,F,Q,G,input}=run;
+ let storage;try{storage=localStorage;}catch{}
++const START_PROFILE_KEY='roadster-started-once-v1';
++let startedOnce=best>0;try{startedOnce ||= storage?.getItem(START_PROFILE_KEY)==='1';}catch{}
+ const collection=createCollection(storage,types.map(o=>o.id));let collectionUI,pwa;
+ const localHost=['localhost','127.0.0.1'].includes(location.hostname);
+ let onlineUI,activeOnline=null,completedOnline=null,onlineTarget=null;
+-const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2','roadster-v4.4.0','roadster-v4.4.2','roadster-v4.6.0','roadster-v4.6.1','roadster-v4.6.3','roadster-v4.7.0','roadster-v4.7.1','roadster-v4.7.2',RULESET]});
++const scoreRecord=createScoreRecord({storage,ruleset:RULESET,compatibleRulesets:['roadster-v3.4.2','roadster-v3.8.0','roadster-v4.0.0','roadster-v4.1.0','roadster-v4.3.0','roadster-v4.3.2','roadster-v4.4.0','roadster-v4.4.2','roadster-v4.6.0','roadster-v4.6.1','roadster-v4.6.3','roadster-v4.7.0','roadster-v4.7.1','roadster-v4.7.2','roadster-v4.7.3','roadster-v4.8.0','roadster-v4.9.0',RULESET]});
+ let recordRank=null,rankRequest=0;
+ function refreshScoreActions(){
+  const saved=scoreRecord.matching(best),posted=!!saved?.entry,canPost=scoreRecord.canPost(saved),rank=$('best-rank');
+@@ -110,8 +112,7 @@ function syncState(){
+  const fallen=F.active?fallPose(F):null;
+  S.grind=G;S.falling=F.active;S.fallCrouch=fallen?.crouch||0;S.fallImpact=fallen?.impact||0;S.fallAngle=fallen?.rider.angle||0;S.fallSeat=fallen?.rider.seat||0;S.fallPush=fallen?.push||0;S.fallFlail=fallen?.flail||0;S.y=P.y;S.grab=P.grab;S.vy=P.vy;S.jumpTime=P.time;S.flips=E.flips;S.charge=input.charge;S.charging=input.charging;
+  S.bonus=E.bonus;S.score=Math.floor(S.distance/20+E.bonus);biomeScene.update(S.t,S.distance,{seed:run.seed,ahead:(W-px+64)/scale,behind:(px+64)/scale});factory.update(biomeScene.state,S.t);S.baseSpeed=pace.base;S.speed=pace.speed;
+- const progress=Math.min(1,pace.progress/C.rampSeconds),cruise=basePace(pace.progress);
+- S.kmh=(130+270*progress)*S.speed/cruise;Object.assign(B,speedFeedback(pace,E.streak,Q.speedBlend));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
++ S.kmh=130*S.speed/START_SPEED;Object.assign(B,speedFeedback(pace,E.streak,Q.speedBlend));B.state=B.factor>1?'active':'ready';B.charge=P.fuel/100;B.left=E.streakLeft;
+ }
+ function boostUI(){
+  hud.update({mode:S.mode,falling:F.active,score:S.score,boosters:Q,multiplier:E.multiplier/10*(E.scoreFactor||1),meter:E.meter,streak:E.streak,kmh:S.kmh||START_KMH,fuel:P.fuel,thrusting:P.thrusting,turns:P.turns+G.turns,grinding:!!G.support,grindDistance:G.distance,pending:(P.airborne||G.support)&&!Q.spoiledFlight?C.flipFactor*(P.turns+G.turns)*(P.turns+G.turns+1)*E.multiplier/10*(E.scoreFactor||1)+G.pending:0});
+@@ -160,7 +161,7 @@ function cancelCharge(){primaryInputs.clear();thrustInputs.clear();run.command('
+ function start(seed){
+  if(!spritesReady||artReview||$('game').inert||pwa?.locked)return;
+  if(pwa?.beforeRun())return;
+- sound.unlock();if($('replay-tutorial').checked){coach.reset();$('replay-tutorial').checked=false;}cancelCharge();activeOnline=typeof seed==='number'?null:online.takeSession();completedOnline=null;const nextSeed=typeof seed==='number'?seed:activeOnline?.seed??crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed);boosterPainter.reset();biomeScene.reset();factory.reset();encounters.reset();sceneTime=0;rocketLeg=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
++ sound.unlock();if($('replay-tutorial').checked){coach.reset();$('replay-tutorial').checked=false;}cancelCharge();activeOnline=typeof seed==='number'?null:online.takeSession();completedOnline=null;const nextSeed=typeof seed==='number'?seed:activeOnline?.seed??crypto.getRandomValues(new Uint32Array(1))[0];run.reset(nextSeed,{experienced:startedOnce});startedOnce=true;try{storage?.setItem(START_PROFILE_KEY,'1');}catch{}boosterPainter.reset();biomeScene.reset();factory.reset();encounters.reset();sceneTime=0;rocketLeg=0;Object.assign(S,{particles:[],toast:0});lastLanding=null;
+  cameraLift=0;sceneryMotion.speed=START_SPEED;speedCamera.strength=0;frameCamera(0);S.anchor=px/scale;$('toast').textContent='';hud.reset();coach.beginRun();director.reset();Object.assign(roadsterMotion,createRoadsterMotion());thrusters.reset();characters.reset();
+  Object.assign(CAMEO,{t:0,active:false,nextScore:5000,milestone:0});rocket.schedule();projectiles.length=0;clock.reset();syncState();ui();sound.event({type:'start'});
+ }
+@@ -249,7 +250,7 @@ function consumeRunEvents(){
+ function update(dt){
+  if(S.mode!=='playing')return;
+  if(input.thrust!==(thrustInputs.size>0))run.command(thrustInputs.size?'thrust-on':'thrust-off');
+- const previousDistance=S.distance,result=run.step();screenRoadDistance+=(S.distance-previousDistance)*baseViewScale(W,H);syncState();
++ const previousDistance=S.distance,result=run.step();screenRoadDistance+=(S.distance-previousDistance)*scale;syncState();
+  advanceSceneryMotion(sceneryMotion,dt,S.speed,baseViewScale(W,H));
+  encounters.update(dt,{speed:S.speed,distance:S.distance,biome:biomeScene.state.id,leg:biomeScene.state.leg,moving:biomeScene.state.moving});
+  // Discover visible encounters before presenting a collision result.
+@@ -542,7 +543,7 @@ function frame(ts){
+   requestAnimationFrame(frame);
+ }
+ ui();if(artReview)document.querySelectorAll('#game > :not(canvas)').forEach(el=>el.style.setProperty('display','none','important'));requestAnimationFrame(frame);
+-window.render_game_to_text=()=>JSON.stringify({version:C.version,grind:G,rails:S.rails,boosters:Q,effectiveMultiplier:E.multiplier/10*(E.scoreFactor||1),biome:biomeScene.state,time:S.t,progress:pace.progress,stage:stageAt(pace.progress),mode:S.mode,score:S.score,best,collection:{discovered:types.filter(o=>collection.state(o.id)!=='locked').length,new:types.filter(o=>collection.state(o.id)==='new').length},y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,x:px,strength:speedCamera.strength,energy:speedFrame.energy,sceneryScale,scenerySpeed:sceneryMotion.speed*baseViewScale(W,H),sceneryScroll:sceneryMotion.distance,roadPixelSpeed:S.speed*baseViewScale(W,H),ground:ground+cameraLift,baseline:ground,lift:cameraLift,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning:input.spin,cosmeticFlip:jumpCarPose(P,C.gravity,{railJump:G.exit==='jump'}).cosmetic,carAnimation:jumpCarPose(P,C.gravity,{railJump:G.exit==='jump'}),visual:characters.inspect(),encounters:encounters.state.actors.map(a=>({id:a.id,x:a.x,altitude:a.altitude})),grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:input.charging,charge:input.charge,lastLanding,obstacles:S.obs.map(o=>({uid:o.uid,type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,audio:sound.inspect,factory:factory.production,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
++window.render_game_to_text=()=>JSON.stringify({version:C.version,grind:G,rails:S.rails,boosters:Q,effectiveMultiplier:E.multiplier/10*(E.scoreFactor||1),biome:biomeScene.state,time:S.t,progress:pace.progress,stage:scoreStage(S.score),mode:S.mode,score:S.score,best,collection:{discovered:types.filter(o=>collection.state(o.id)!=='locked').length,new:types.filter(o=>collection.state(o.id)==='new').length},y:P.y,fall:{active:F.active,age:F.age,duration:F.duration,rate:F.rate,taps:F.taps,progress:F.active?fallPose(F).progress:1},speed:S.speed,camera:{scale,x:px,strength:speedCamera.strength,energy:speedFrame.energy,sceneryScale,scenerySpeed:sceneryMotion.speed*baseViewScale(W,H),sceneryScroll:sceneryMotion.distance,roadPixelSpeed:S.speed*scale,ground:ground+cameraLift,baseline:ground,lift:cameraLift,screenSpeed:S.speed*scale,roadScroll:screenRoadDistance},speedFeedback:{factor:B.factor,lean:B.lean||0,impossibru:!!B.impossibru,flameLength:B.flameLength||0,flameOpacity:B.flameOpacity||0},kmh:S.kmh,baseSpeed:pace.base,playerX:S.anchor,angle:P.angle,omega:P.omega,airborne:P.airborne,spinning:input.spin,cosmeticFlip:jumpCarPose(P,C.gravity,{railJump:G.exit==='jump'}).cosmetic,carAnimation:jumpCarPose(P,C.gravity,{railJump:G.exit==='jump'}),visual:characters.inspect(),encounters:encounters.state.actors.map(a=>({id:a.id,x:a.x,altitude:a.altitude})),grab:P.grab,mph:mphFromKmh(S.kmh||START_KMH),thrustAudio:sound.thrust,thrusting:P.thrusting,fuel:P.fuel,latched:P.latched,turns:P.turns,pending:C.flipFactor*P.turns*(P.turns+1)*E.multiplier/10,flips:E.flips,multiplier:E.multiplier/10,meter:E.meter,streak:E.streak,recovery:pace.recovery,charging:input.charging,charge:input.charge,lastLanding,obstacles:S.obs.map(o=>({uid:o.uid,type:o.id,dx:obstacleDx(o),w:o.w,h:o.h,altitude:o.altitude||0,approachSpeed:o.approachSpeed||0})),director:{wave:director.state.wave,kind:director.state.last?.kind,fallbacks:director.state.fallbacks},tutorial:coach.done,perf:{fps:perf.fps,meanRenderMs:perf.meanRenderMs,p95RenderMs:perf.p95RenderMs},sound:sound.enabled,audio:sound.inspect,factory:factory.production,rocket:{phase:R.phase,nextEventIn:Math.max(0,R.next-sceneTime),events:R.events}});
+ if(['localhost','127.0.0.1'].includes(location.hostname)){
+  window.__qa={railPainter,G,boosterPainter,run,S,B,P,E,F,Q,pace,CAMEO,collection,collectionUI,types:[...types,...AIR_TYPES],start,step,render:()=>render(0,sceneTime),beginCharge,releaseCharge,jump,pause,coach,hud,director,syncState,refreshHUD:boostUI,
+  setTime(t){S.t=t;S.tick=Math.round(t/RUN_STEP);pace.progress=t;},setSceneTime(t){sceneTime=t;},obstacleDx,
+diff --git a/src/music.js b/src/music.js
+index 5b691a2..94dacb2 100644
+--- a/src/music.js
++++ b/src/music.js
+@@ -1,4 +1,4 @@
+-import {MUSIC} from './music-content.js?v=4.9.0';
++import {MUSIC} from './music-content.js?v=4.10.0';
+ 
+ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
+ const smooth=(a,b,v)=>{const x=clamp((v-a)/(b-a));return x*x*(3-2*x);};
+diff --git a/src/online-ui.js b/src/online-ui.js
+index 0dd58a3..e42d7cb 100644
+--- a/src/online-ui.js
++++ b/src/online-ui.js
+@@ -1,4 +1,4 @@
+-import {validNickname,onlineMessage,projectScore} from './online.js?v=4.9.0';
++import {validNickname,onlineMessage,projectScore} from './online.js?v=4.10.0';
+ const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
+ export function createOnlineUI({client,beforeOpen,afterClose,currentRun}){
+  const dialog=document.getElementById('online-dialog'),content=document.getElementById('online-content'),title=document.getElementById('online-title'),back=document.getElementById('online-close');
+diff --git a/src/online.js b/src/online.js
+index 1ff5d7b..da8b257 100644
+--- a/src/online.js
++++ b/src/online.js
+@@ -1,4 +1,4 @@
+-import {createJobStore} from './online-store.js?v=4.9.0';
++import {createJobStore} from './online-store.js?v=4.10.0';
+ export const ONLINE_PENDING_KEY='roadster-online-pending-v1';
+ export const ONLINE_CACHE_KEY='roadster-ranking-cache-v1';
+ export const validNickname=value=>typeof value==='string'&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length>=3&&[...value.normalize('NFKC').trim().replace(/ +/g,' ')].length<=12&&/^[\p{L}\p{N} _-]+$/u.test(value.normalize('NFKC').trim().replace(/ +/g,' '));
+diff --git a/src/physics.js b/src/physics.js
+index 344af51..b02c67c 100644
+--- a/src/physics.js
++++ b/src/physics.js
+@@ -1,4 +1,4 @@
+-import {obstacleDefinition} from './content.js?v=4.9.0';
++import {obstacleDefinition} from './content.js?v=4.10.0';
+ // Simulation uses logical CSS units. Rendering pixel ratio never changes gameplay.
+ export const STEP = 1 / 120;
+ export const START_SPEED = 360;
+diff --git a/src/props.js b/src/props.js
+index 386ef8c..83a6831 100644
+--- a/src/props.js
++++ b/src/props.js
+@@ -1,6 +1,6 @@
+ // Static paper props are rasterised once, including their shared outer cut line.
+ // All coordinates are authored at the declared aspect ratio; draw() fits, never stretches.
+-import {PROP_TYPES, OBSTACLES} from './content.js?v=4.9.0';
++import {PROP_TYPES, OBSTACLES} from './content.js?v=4.10.0';
+ export {PROP_TYPES};
+ 
+ const INK = '#282c2c';
+diff --git a/src/rails.js b/src/rails.js
+index 360ca0a..cbd6d32 100644
+--- a/src/rails.js
++++ b/src/rails.js
+@@ -1,6 +1,6 @@
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+-import {uprightError,resetAirRotation,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.9.0';
+-import {activeBooster,advanceBoosters} from './boosters.js?v=4.9.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
++import {uprightError,resetAirRotation,createFlight,advanceFlight,launch,createPace,createEconomy,advancePace,advanceEconomy,advanceStreak} from './gameplay.js?v=4.10.0';
++import {activeBooster,advanceBoosters} from './boosters.js?v=4.10.0';
+ export const RAIL=Object.freeze({height:190,length:720,belly:8,pointsPerUnit:.1,firstWave:3,every:7,exitSeconds:1.25});
+ export const makeRail=(x,width=RAIL.length)=>({x,w:width,h:RAIL.height,paid:[],passed:false});
+ export const createGrind=()=>({support:null,age:0,exit:null,exitAge:1,pending:0,distance:0,turns:0});
+diff --git a/src/routes.js b/src/routes.js
+index 235181e..fdf33ed 100644
+--- a/src/routes.js
++++ b/src/routes.js
+@@ -1,9 +1,9 @@
+-import {advanceBoosters,activeBooster} from './boosters.js?v=4.9.0';
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+-import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.9.0';
++import {advanceBoosters,activeBooster} from './boosters.js?v=4.10.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
++import {createFlight,launch,advanceFlight,createPace,createEconomy,advancePace,advanceStreak,advanceEconomy,settleLanding,sweptCollision,nearWindow,passObstacle} from './gameplay.js?v=4.10.0';
+ export const STAGES=C.stages;
+ export function stageAt(progress){return STAGES.filter(t=>progress>=t).length-1;}
+-import {AIR_TYPES} from './content.js?v=4.9.0';
++import {AIR_TYPES} from './content.js?v=4.10.0';
+ export {AIR_TYPES};
+ export function makePattern(kind,{speed=360,type={id:'truck',w:110,h:41},dx=900,gapSeconds=.65,chainTypes=null}={}){
+  const item=offset=>({...type,x:dx+offset,passed:false});
+diff --git a/src/run.js b/src/run.js
+index 3a3799a..1fa1dd4 100644
+--- a/src/run.js
++++ b/src/run.js
+@@ -1,21 +1,22 @@
+-import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.9.0';
+-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.9.0';
+-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
+-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.9.0';
+-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.9.0';
+-import {createDirector} from './director.js?v=4.9.0';
+-import {createRandom} from './random.js?v=4.9.0';
+-export const RULESET='roadster-v4.9.0',RUN_STEP=1/120;
+-export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel']);
++import {validateEncounter} from './encounter-routes.js?v=4.10.0';
++import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.10.0';
++import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.10.0';
++import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
++import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.10.0';
++import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.10.0';
++import {createDirector} from './director.js?v=4.10.0';
++import {createRandom} from './random.js?v=4.10.0';
++export const RULESET='roadster-v4.10.0',RUN_STEP=1/120;
++export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel','experienced-start']);
+ const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
+ /** The browser and verifier call this same simulation. Obstacles are rider-relative. */
+ export function createRun({seed=0,record=true,reducedMotion=false}={}){
+- const S={seed,mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace(),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
++ const S={seed,mode:'menu',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,anchor:0},Q=createBoosters(seed),G=createGrind(),P=createFlight(),E=createEconomy(),pace=createPace({scoreDriven:true}),F=createFall(),input={charging:false,charge:0,spin:false,thrust:false};
+  let random=createRandom(seed),events=[],log=[],lateId=null,lastLanding=null,recordable=true;
+  const director=createDirector({S,flight:P,pace,economy:E,boosters:Q,random:()=>random.next(),relative:true,sceneTime:()=>S.t,spawnDistance:()=>Math.max(900,S.speed*1.5+180)});
+  function clear(){Object.assign(input,{charging:false,charge:0,spin:false,thrust:false});P.thrusting=false;}
+  function sync(){S.t=S.tick*RUN_STEP;S.speed=pace.speed;S.score=Math.floor(S.distance/20+E.bonus);}
+- function reset(nextSeed=seed){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace());Object.assign(F,createFall());Object.assign(S,{seed,mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();}
++ function reset(nextSeed=seed,{experienced=false}={}){seed=nextSeed;random=createRandom(seed);Object.assign(Q,createBoosters(seed));Object.assign(G,createGrind());Object.assign(P,createFlight());Object.assign(E,createEconomy());Object.assign(pace,createPace({scoreDriven:true}));Object.assign(F,createFall());Object.assign(S,{seed,mode:'playing',tick:0,t:0,distance:0,score:0,speed:C.startSpeed,next:1.7,obs:[],rails:[],entityId:0,lastCharge:0});clear();events=[];log=[];lateId=null;lastLanding=null;recordable=true;director.reset();if(experienced)command('experienced-start');}
+  function jump(){
+   if(S.mode!=='playing'||P.airborne||F.active||pace.stumble>0)return false;
+   lateId=null;for(const o of S.obs){if(o.altitude||o.passed)continue;if(nearWindow(o.x+(o.inset||5)-47,S.speed+(o.approachSpeed||0))){lateId=o.uid;break;}}
+@@ -24,7 +25,9 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
+  function command(action){
+   if(!RUN_COMMANDS.includes(action))throw Error('Unknown run command');
+   if(S.mode!=='playing')return false;
++  if(action==='experienced-start'&&(S.tick!==0||pace.experienced))return false;
+   if(record&&recordable){if(log.length>=MAX_RECORDED_EVENTS)recordable=false;else log.push([S.tick,RUN_COMMANDS.indexOf(action)]);}
++  if(action==='experienced-start'){pace.experienced=true;pace.base=pace.speed=S.speed=520;return true;}
+   if(action==='cancel'){clear();return true;}
+   if(action==='primary-cancel'){input.spin=false;input.charging=false;input.charge=0;return true;}
+   if(action==='thrust-off'){input.thrust=false;return true;}
+@@ -45,7 +48,7 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
+   let landed=null,fallStep={impacts:0,finished:false};
+   if(wasFalling){fallStep=advanceFall(F,RUN_STEP);if(fallStep.finished){clear();S.next=Math.max(S.next,.8);events.push({type:'recovered'});}}
+   else landed=advanceFlight(P,RUN_STEP,{spin:input.spin,thrust:input.thrust});
+-  pace.falling=F.active;advancePace(pace,E,P,RUN_STEP);S.distance+=pace.speed*RUN_STEP;E.bonus+=pace.speed*RUN_STEP/20*(E.scoreFactor-1);sync();
++  pace.falling=F.active;advancePace(pace,E,P,RUN_STEP);S.distance=pace.distance;sync();
+   events.push(...advanceRail(G,P,before,S.rails,S.speed*RUN_STEP,RUN_STEP,E,{spoiled:Q.spoiledFlight,blocked:wasFalling}));
+   if(G.support){landed=null;input.spin=false;}
+   const after=wasFalling?{...P,fallPose:physicsFall()}:landed?{...P,angle:landed.angle}:P;
+@@ -78,16 +81,27 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
+   if(!P.airborne&&!G.support&&Math.abs(P.angle)>.001){P.angle*=Math.exp(-RUN_STEP*18);P.omega=0;}
+   S.obs=S.obs.filter(o=>o.smashed?o.smashAge<1.2:o.uid===lateId||o.x+o.w>(o.id==='joe'?-480:-400));
+   S.rails=S.rails.filter(r=>r.x+r.w> -200||r.uid===G.support);
+-  offerBooster(Q,{time:S.t,speed:S.speed,clear:!P.airborne&&!G.support&&!S.rails.length&&!F.active&&!pace.recovery&&S.obs.every(o=>o.passed)});
+-  director.update();S.next-=RUN_STEP;if(S.next<=0&&!Q.pickups.length)director.spawn();sync();return {landed,impacts:fallStep.impacts};
++  const wave=director.state.wave;director.update();S.next-=RUN_STEP;if(S.next<=0)director.spawn();
++  if(director.state.wave!==wave){
++   const savedBoosters=structuredClone(Q),pickup=offerBooster(Q,{time:S.t,speed:S.speed,obstacles:S.obs,rails:S.rails,clear:!F.active&&!pace.recovery});
++   if(pickup){
++    const last=director.state.last,rail=S.rails[0],proof=route=>validateEncounter(S.obs,{flight:P,pace,economy:E,boosterState:Q,time:S.t,rail,budget:director.state.budget,viewStrength:director.state.viewStrength,
++     policies:[[route.charge,route.lead]],noInput:route.jumps===0,requireCatch:!!route.caught,targetMode:route.caught?'rail':'ground',forbidCatch:!!rail&&!route.caught&&route.jumps>0,minSlide:route.caught?.6:0,
++     fallbackGround:!route.caught,tallSingle:!!last.tallSingle,minGroundGap:route.jumps>2?.12:route.jumps===2?.3:0});
++    const route=proof(last.route),bypass=route&&last.bypass?proof(last.bypass):null;
++    if(!route||last.bypass&&!bypass)Object.assign(Q,savedBoosters);
++    else{last.route=route;if(bypass)last.bypass=bypass;}
++   }
++  }
++  sync();return {landed,impacts:fallStep.impacts};
+  }
+  function snapshot(){return structuredClone({seed,S,P,E,pace,F,Q,G,input,random:random.state,director:director.state,lateId,lastLanding});}
+- function restore(saved){seed=saved.seed;for(const [a,b] of [[G,saved.G],[Q,saved.Q],[S,saved.S],[P,saved.P],[E,saved.E],[pace,saved.pace],[F,saved.F],[input,saved.input],[director.state,saved.director]])Object.assign(a,structuredClone(b));random=createRandom(seed);random.restore(saved.random);lateId=saved.lateId;lastLanding=structuredClone(saved.lastLanding);events=[];}
++ function restore(saved){seed=saved.seed;for(const [a,b] of [[G,saved.G],[Q,saved.Q],[S,saved.S],[P,saved.P],[E,saved.E],[pace,saved.pace],[F,saved.F],[input,saved.input],[director.state,saved.director]])Object.assign(a,structuredClone(b));if(saved.pace.scoreDriven===undefined){pace.scoreDriven=false;pace.distance=S.distance;}random=createRandom(seed);random.restore(saved.random);lateId=saved.lateId;lastLanding=structuredClone(saved.lastLanding);events=[];}
+  function replay(){return recordable?{format:1,ruleset:RULESET,seed,ticks:S.tick,events:log.map(e=>[...e])}:null;}
+  return {S,P,E,pace,F,Q,G,input,director,reset,jump,command,step,sync,snapshot,restore,replay,drainEvents(){const next=events;events=[];return next;},get lastLanding(){return lastLanding;},get seed(){return seed;},get recordable(){return recordable;}};
+ }
+ export function validateReplay(value){
+  if(!value||value.format!==1||value.ruleset!==RULESET||!Number.isInteger(value.seed)||value.seed<0||value.seed>0xffffffff||!Number.isInteger(value.ticks)||value.ticks<1||value.ticks>MAX_RECORDED_TICKS||!Array.isArray(value.events)||value.events.length>MAX_RECORDED_EVENTS)throw Error('Invalid or unsupported replay');
+- let previous=-1;for(const event of value.events){if(!Array.isArray(event)||event.length!==2||!Number.isInteger(event[0])||event[0]<previous||event[0]<0||event[0]>=value.ticks||!Number.isInteger(event[1])||event[1]<0||event[1]>=RUN_COMMANDS.length)throw Error('Invalid replay input');previous=event[0];}return value;
++ let previous=-1,startProfile=false;for(const event of value.events){if(!Array.isArray(event)||event.length!==2||!Number.isInteger(event[0])||event[0]<previous||event[0]<0||event[0]>=value.ticks||!Number.isInteger(event[1])||event[1]<0||event[1]>=RUN_COMMANDS.length)throw Error('Invalid replay input');if(event[1]===6){if(event[0]!==0||startProfile||previous>=0)throw Error('Invalid start profile');startProfile=true;}previous=event[0];}return value;
+ }
+ export function verifyReplay(value){const replay=validateReplay(value),run=createRun({seed:replay.seed,record:false});run.reset();let event=0;while(run.S.tick<replay.ticks&&run.S.mode==='playing'){while(event<replay.events.length&&replay.events[event][0]===run.S.tick)run.command(RUN_COMMANDS[replay.events[event++][1]]);run.step();run.drainEvents();}if(run.S.mode!=='dead'||run.S.tick!==replay.ticks||event!==replay.events.length)throw Error('Replay does not end at its first collision');return {score:run.S.score,flips:run.E.flips,ticks:run.S.tick};}
+diff --git a/src/sound.js b/src/sound.js
+index 4ae7dd5..fad1d98 100644
+--- a/src/sound.js
++++ b/src/sound.js
+@@ -1,5 +1,5 @@
+-import {createMusic} from './music.js?v=4.9.0';
+-import {createEffects} from './sound-effects.js?v=4.9.0';
++import {createMusic} from './music.js?v=4.10.0';
++import {createEffects} from './sound-effects.js?v=4.10.0';
+ /** One gesture-unlocked audio context shared by music and bounded effects. */
+ export function normalisePressureBuffer(buffer){
+   if(!buffer.getChannelData)return 1;
+diff --git a/src/speed-feedback.js b/src/speed-feedback.js
+index 7a33494..2760c97 100644
+--- a/src/speed-feedback.js
++++ b/src/speed-feedback.js
+@@ -1,4 +1,4 @@
+-import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.9.0';
++import {GAMEPLAY as C,basePace} from './gameplay-config.js?v=4.10.0';
+ 
+ // Allocate forward space before shrinking the player: all inputs are actual velocity.
+ const clamp01=value=>Math.max(0,Math.min(1,value));
+@@ -12,7 +12,7 @@ export function speedView(width,height,speed,strength=viewStrength(speed)){
+  const original=Math.min(1.3,strength),a=clamp01((v-550)/190),blend=a*a*(3-2*a);
+  const oldScale=baseScale/(1+.44*original),oldX=width*((width<600?.24:.29)-.08*original);
+  // Beyond the sustained pickup peak, retain forward sight for residual thrust.
+- const zoom=Math.min(.40,.40*u)+Math.max(0,Math.min(v,1620)-960)*.00045+Math.max(0,v-1620)*.0009;
++ const zoom=Math.min(.40,.40*u)+Math.max(0,Math.min(v,1620)-1100)*.00065+Math.max(0,v-1620)*.0009;
+  const nextScale=baseScale/(1+zoom),nextX=width*Math.max(width<600?.075:.09,(width<600?.24:.29)-.17*(u+.18*Math.sin(Math.PI*clamp01(u))));
+  const scale=oldScale+(nextScale-oldScale)*blend,x=oldX+(nextX-oldX)*blend;
+  return {scale,x,baseScale,strength,energy:clamp01((speed-C.startSpeed)/(C.maxSpeed*1.25-C.startSpeed)),sceneryScale:Math.max(.72,Math.min(1.15,baseScale))};
+@@ -50,3 +50,9 @@ export function speedFeedback(pace,streak,pickup=0){
+     flameOpacity:bonus>0||pickup>0?.12+.24*intensity:0,
+   };
+ }
++
++// Portrait phones: width 320..599, height >=568. Both scale-boundary extrema
++// are included; height cannot reduce the forward-room scale in this range.
++export function maximumMobileSight(speed,strength=viewStrength(speed)){
++ return Math.max(...[320,600-1e-7].map(w=>{const v=speedView(w,Math.max(w,568),speed,strength);return (w-v.x)/v.scale;}));
++}
+diff --git a/src/thrusters.js b/src/thrusters.js
+index c4f0818..bf2c23e 100644
+--- a/src/thrusters.js
++++ b/src/thrusters.js
+@@ -1,4 +1,4 @@
+-import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=4.9.0';
++import {flipFrameAt,ROADSTER_BASELINE,ROADSTER_WIDTH} from './roadster-flip.js?v=4.10.0';
+ // Source-pixel nozzle anchors measured on each of the nine photographed poses.
+ // The car rolls about its long axis: exhaust points up while the car is inverted.
+ const POSES=[
+diff --git a/sw.js b/sw.js
+index 1e6c510..a178550 100644
+--- a/sw.js
++++ b/sw.js
+@@ -1,5 +1,5 @@
+ // Generated by npm run build:pwa. Every cached byte belongs to this release.
+-const VERSION='4.9.0';
++const VERSION='4.10.0';
+ const CORE=[
+  {
+   "url": "assets/audio/music-v450/ATTRIBUTION.md",
+@@ -527,7 +527,7 @@ const CORE=[
+  },
+  {
+   "url": "index.html",
+-  "sha256": "22612aab9c517471af8f99b261d31b076646a5cd96aa9e9723d7a23d5f2276bf"
++  "sha256": "ce366b061ccd5f6253ce99e9aa2c12c6b92ab0bfd74a68bd160e80464c0f7499"
+  },
+  {
+   "url": "manifest.webmanifest",
+@@ -542,71 +542,71 @@ const CORE=[
+   "sha256": "03a60ba2884f00f02a94bc98052e71361778a4768df5fd21928aedde2aa23290"
+  },
+  {
+-  "url": "src/audio-controls.js?v=4.9.0",
++  "url": "src/audio-controls.js?v=4.10.0",
+   "sha256": "ab0be0fbb6e4f8f1f4b71e4b3f0ac0e17784067e601001a85c190eed98bc985c"
+  },
+  {
+-  "url": "src/biomes.js?v=4.9.0",
+-  "sha256": "85893c520d17f3dc36b3c0cdf515fef892143fb8d08d13e85a32f43276b87042"
++  "url": "src/biomes.js?v=4.10.0",
++  "sha256": "cfc742227130c20bc11a1e2d677ac50ba507048c6e3882f870f3518dc89c929d"
+  },
+  {
+-  "url": "src/booster-art.js?v=4.9.0",
+-  "sha256": "ef9da997c1746c4a37a7afc55d169ccfd38aa93369cf7989e66e89cb8b635496"
++  "url": "src/booster-art.js?v=4.10.0",
++  "sha256": "bb2f2d362b9e85f5b6773ebe59db6cf377cd10c677d8d6dd43b04ad97ce145eb"
+  },
+  {
+-  "url": "src/boosters.js?v=4.9.0",
+-  "sha256": "50fbcd74ff660085ba453fc47984bd4437265066aebc914c35b4027d5a47a536"
++  "url": "src/boosters.js?v=4.10.0",
++  "sha256": "179431ae5297f3163127690e501877edc26ff8dd5aee28c30297b2b70d0e0fed"
+  },
+  {
+-  "url": "src/cash.js?v=4.9.0",
++  "url": "src/cash.js?v=4.10.0",
+   "sha256": "4c85bccc29978d33bf1bcab3f1bff5aecb371eb1d9ff3c9c1a7828f98171e578"
+  },
+  {
+-  "url": "src/catalog.js?v=4.9.0",
+-  "sha256": "29d6091dc442e206c16e59b3b608332030c072b03e66b5ef132acad6223db8b9"
++  "url": "src/catalog.js?v=4.10.0",
++  "sha256": "b11144bc4652ae5adcdc87678be39c3bec2cf2d4c3c23b0d52fd49189e9c9164"
+  },
+  {
+-  "url": "src/characters.js?v=4.9.0",
+-  "sha256": "6ab179e4bb6b30182c1a254b0036e1cc803e7307f24b688b235f22c23fe7b24e"
++  "url": "src/characters.js?v=4.10.0",
++  "sha256": "79bdd65b9bfedca44ee8bb631cfefcac30884214f98906b2e71fa20bfbebe3bf"
+  },
+  {
+-  "url": "src/clock.js?v=4.9.0",
+-  "sha256": "9e7714b92dac76a9bbd58e096bce17b3a19ed76e182de41044998512876e671a"
++  "url": "src/clock.js?v=4.10.0",
++  "sha256": "d50b462347c80a8722e22b9c55781ff14fb76ac5871b75dad85408941a204f73"
+  },
+  {
+-  "url": "src/coaching.js?v=4.9.0",
+-  "sha256": "bfe2ad85e4b1fdc0c2391c2dc6a68343a082c2b1f32cbcef248794dc1ab72179"
++  "url": "src/coaching.js?v=4.10.0",
++  "sha256": "b7fc2b2ac3c9c3cee14e57403ba89d5414997ca52365713285643c6cef575bde"
+  },
+  {
+-  "url": "src/collection-copy.js?v=4.9.0",
++  "url": "src/collection-copy.js?v=4.10.0",
+   "sha256": "01a101d36c6a9eed498799d74bdc9414423e5ded5f4d10b69adf82b10aef0c9d"
+  },
+  {
+-  "url": "src/collection-ui.js?v=4.9.0",
+-  "sha256": "f5405bfbf06dc2c7b70c79daa4a4c86966d3ca55a4cbd7dbeaeb33a732d4e4ca"
++  "url": "src/collection-ui.js?v=4.10.0",
++  "sha256": "e2718a39036af6c89e44e4bb76a40ca2a07243d734ccfe876e144dafca7e6c05"
+  },
+  {
+-  "url": "src/collection.js?v=4.9.0",
++  "url": "src/collection.js?v=4.10.0",
+   "sha256": "19f4a25ea83b897df2e2849e2071b1eff6eb6817058ed532e4f6db9ad28ef7cf"
+  },
+  {
+-  "url": "src/content.js?v=4.9.0",
++  "url": "src/content.js?v=4.10.0",
+   "sha256": "f283d984e24bf69626dc3ed91df58539d7a51014e9d2d4eca79bb35571ce0af2"
+  },
+  {
+-  "url": "src/director.js?v=4.9.0",
+-  "sha256": "319401fbd4d7efb0671d9a998dae5f6c811fa0a1d085b202ce1c0a5b5978a61c"
++  "url": "src/director.js?v=4.10.0",
++  "sha256": "000b043e17fae605f159fa85187be18a809f7373448fc19cf43b38583eb4a6c3"
+  },
+  {
+-  "url": "src/encounter-routes.js?v=4.9.0",
+-  "sha256": "a8c609993ca380aac12990eeb97c5fd83d249693e0be6ac31b5a4314a89c8042"
++  "url": "src/encounter-routes.js?v=4.10.0",
++  "sha256": "a3dc26ae9bfc91a74c7a3bd3cac214316040af7b72a48e0b90b7b900ad63edf0"
+  },
+  {
+-  "url": "src/encounter.js?v=4.9.0",
++  "url": "src/encounter.js?v=4.10.0",
+   "sha256": "ae74baddef380c9a84c5587df11ab1cfd2fa4d3e7f0b00d81a20e46f7954b7c6"
+  },
+  {
+-  "url": "src/encounters.js?v=4.9.0",
++  "url": "src/encounters.js?v=4.10.0",
+   "sha256": "4a40d8506a7eb17467ad5375a75871a32d2075240ae660375f5304386a91ba94"
+  },
+  {
+@@ -614,155 +614,155 @@ const CORE=[
+   "sha256": "af41d5bf76dbc687fbe4b6a04d33cb07d617167ca7b124182d5e3323c01e782d"
+  },
+  {
+-  "url": "src/enemy-sprites.js?v=4.9.0",
+-  "sha256": "1f24a7dc8fda4b0ef58ca1210e82a0cd3c42340d62dff2e4da30eac6a423bb31"
++  "url": "src/enemy-sprites.js?v=4.10.0",
++  "sha256": "21cec62032d72e207409077a65f16cf71b34d32a1eb6bd8b49fd382bb54b8e6e"
+  },
+  {
+-  "url": "src/environment.js?v=4.9.0",
++  "url": "src/environment.js?v=4.10.0",
+   "sha256": "0b4693edf22ab1a81c9affe22619229e18da588e08a1fa5a6d27abf40fdbcc35"
+  },
+  {
+-  "url": "src/factory-production.js?v=4.9.0",
++  "url": "src/factory-production.js?v=4.10.0",
+   "sha256": "d41b6b415aa5c157f1fb36dd85beb6943ae15ec046fe0124caf49665bdfef1bc"
+  },
+  {
+-  "url": "src/factory.js?v=4.9.0",
+-  "sha256": "6fe16ae3152bec9e96545f15fb58901e2eb467f71cca3c3cb60042eb55440c06"
++  "url": "src/factory.js?v=4.10.0",
++  "sha256": "23f4770fd4a8f019178c8baea6f6b1d210babbb825671b8a9112c491cb4a95a3"
+  },
+  {
+-  "url": "src/fall.js?v=4.9.0",
+-  "sha256": "e937f49b537de200c148307edcb10a735965b00546b0ee0a79f1a328b6c62fea"
++  "url": "src/fall.js?v=4.10.0",
++  "sha256": "20f724ce049d073ddbed823dc12999ab3b5627dcc6519f2ac9ddc537709c543a"
+  },
+  {
+-  "url": "src/gameplay-config.js?v=4.9.0",
+-  "sha256": "2ad776eff4aed84c95c7f1c8a6d1e940f156e7305b9f6f2ced4e1c0b92b7a240"
++  "url": "src/gameplay-config.js?v=4.10.0",
++  "sha256": "4d9f1cbb512b688e6bffe95010f282b0ae24255278e05b9149f00f303b186748"
+  },
+  {
+-  "url": "src/gameplay.js?v=4.9.0",
+-  "sha256": "bff2a41bad655d435a5f7709b79f211187f99e70f117626a0901fbac9d0d8622"
++  "url": "src/gameplay.js?v=4.10.0",
++  "sha256": "efcdbab3c6a8d6123d99de235c06a8898eb9bc431ee9bed8c80db604158731eb"
+  },
+  {
+-  "url": "src/hero-rig.js?v=4.9.0",
++  "url": "src/hero-rig.js?v=4.10.0",
+   "sha256": "7c7db71d9a52ef09d81333138be13c2d4c376529bc8ee05abc56a38edddd5b85"
+  },
+  {
+-  "url": "src/hud.js?v=4.9.0",
+-  "sha256": "c363b8752d96f846d7a60e20a9cc05f50840e22b967a03b58113a8a11926fe0a"
++  "url": "src/hud.js?v=4.10.0",
++  "sha256": "dda2476224e91f8912a8cb0915597ca57b05157b37f78d3dd889771375d21f55"
+  },
+  {
+-  "url": "src/loading.js?v=4.9.0",
+-  "sha256": "7a480579e96ee90ceeb584eef9102f7be24ed5335df260353a5a3779e5856384"
++  "url": "src/loading.js?v=4.10.0",
++  "sha256": "8ed5fd6a98bb5782515ee90371bdc0c6dbd8abae680fc2626def09468f135c57"
+  },
+  {
+-  "url": "src/main.js?v=4.9.0",
+-  "sha256": "56b71058c7cc438f656d1b0338e79f344ceab8a46387da78308aca5948630a97"
++  "url": "src/main.js?v=4.10.0",
++  "sha256": "b89923c6537efedf9c6e1e75163280966067d0bc403ee130dce290f628d16d23"
+  },
+  {
+-  "url": "src/music-content.js?v=4.9.0",
++  "url": "src/music-content.js?v=4.10.0",
+   "sha256": "95cfc991c6ecdf0428fc7ca80095041a34a7a1ca12ad2fadf60cf4c6db2f466a"
+  },
+  {
+-  "url": "src/music.js?v=4.9.0",
+-  "sha256": "662ae7f69b7a4491b8be17bd23e69e4bf67b3880656698c9be418bf0c65aa839"
++  "url": "src/music.js?v=4.10.0",
++  "sha256": "fb8a3994857be110b9313b49bcc27cb7bd4ff88be419b58a027d85847c82b93b"
+  },
+  {
+-  "url": "src/obstacle-art.js?v=4.9.0",
++  "url": "src/obstacle-art.js?v=4.10.0",
+   "sha256": "245a314cb7733d39f899d280bf24b616da8f0e544d4a53d6d43ea32aa6165c18"
+  },
+  {
+-  "url": "src/online-config.js?v=4.9.0",
++  "url": "src/online-config.js?v=4.10.0",
+   "sha256": "270190af96c0f506382dfa22419fddfb0f82b4dedd41f31917e5eb3182ad400f"
+  },
+  {
+-  "url": "src/online-store.js?v=4.9.0",
++  "url": "src/online-store.js?v=4.10.0",
+   "sha256": "2f26d19b93242cc3cb6fa313eafd1e8eaabb8f3a54328036a2d74617b3165760"
+  },
+  {
+-  "url": "src/online-ui.js?v=4.9.0",
+-  "sha256": "0065286025fa9943ec8acc56a308eca518bac540741f486c34e4ea9a88573c30"
++  "url": "src/online-ui.js?v=4.10.0",
++  "sha256": "38c0fdb60e9583a9570a96315aa1c6236ce21028bd4dbdd73cc3bde801b5f8ac"
+  },
+  {
+-  "url": "src/online.js?v=4.9.0",
+-  "sha256": "7c365af6a5af9b55772b70fc8a6e26fa5f4bd37339afe1c255b840391efec57f"
++  "url": "src/online.js?v=4.10.0",
++  "sha256": "0d8051f29419a749f419e61bbc77fc3152401e79cfafe8111e5fc9a1f478ac7f"
+  },
+  {
+-  "url": "src/photo-cutouts.js?v=4.9.0",
++  "url": "src/photo-cutouts.js?v=4.10.0",
+   "sha256": "374bdccdad1947dafc5db107d17bf4336ac1f5b7731ff4c20c402c11d34abbed"
+  },
+  {
+-  "url": "src/physics.js?v=4.9.0",
+-  "sha256": "457218dea1884d78bf8f18d276e0c5f7991bf7f0993239b7e7cf42f0bc1d8ac0"
++  "url": "src/physics.js?v=4.10.0",
++  "sha256": "c9e6bcd9a4b4f282a5ca12332e38d4fd1967a33896bfaebef879c4fe44a3eebd"
+  },
+  {
+-  "url": "src/props.js?v=4.9.0",
+-  "sha256": "2b9931fb9400990814fff9ab0d34af1a2baef452350fb0abc022c0ac9ac6db9a"
++  "url": "src/props.js?v=4.10.0",
++  "sha256": "4d9b8dda0c1f13fbfa23329199a2865c51ab0401c7bba614cddaeb9895f6cb27"
+  },
+  {
+-  "url": "src/pwa.js?v=4.9.0",
++  "url": "src/pwa.js?v=4.10.0",
+   "sha256": "f7f5f5aa7b8d4cd6258bcd3e776022fd50976548e096eccbd0e494b001fdd515"
+  },
+  {
+-  "url": "src/rail-art.js?v=4.9.0",
++  "url": "src/rail-art.js?v=4.10.0",
+   "sha256": "7e9178425e279dc8ce76ad5d0ab034d1fcb050a496163c4290e8f703b3839d2f"
+  },
+  {
+-  "url": "src/rails.js?v=4.9.0",
+-  "sha256": "043693c33a51d83d12b80862187cb442d9fca7245968b4c68de0a04fb24094c4"
++  "url": "src/rails.js?v=4.10.0",
++  "sha256": "3791485303d2da2c23d282a20f664549592ed820e3d6e58b638bb6c1debfb73e"
+  },
+  {
+-  "url": "src/random.js?v=4.9.0",
++  "url": "src/random.js?v=4.10.0",
+   "sha256": "96ed32ee915194c2fcef808bb6b4bdc34bcc5a8235872185bb3bee0b8e0f0ff1"
+  },
+  {
+-  "url": "src/roadster-flip.js?v=4.9.0",
++  "url": "src/roadster-flip.js?v=4.10.0",
+   "sha256": "e7e249fc3749cee2b8ed9d1ffe6f517360b54cc3cef6d82ce39d1906f867397e"
+  },
+  {
+-  "url": "src/rocket.js?v=4.9.0",
++  "url": "src/rocket.js?v=4.10.0",
+   "sha256": "f5ccc6ea27cfdae64a64ddbc609b210d5104ee7bc83461dea7c3828bfc3e833d"
+  },
+  {
+-  "url": "src/routes.js?v=4.9.0",
+-  "sha256": "c878c8ef29330bba8a4fc165e0a08d8ebede799e32220533f15697345229f0bc"
++  "url": "src/routes.js?v=4.10.0",
++  "sha256": "ed43b02b039b119fc19c07cfebdd1cc9aee1c0eda2f831215dfb50b2f29797e0"
+  },
+  {
+-  "url": "src/run.js?v=4.9.0",
+-  "sha256": "dd202d0d26f7ca72acfb078e2cf9c461ed190b759c339c8190e8e483c641a9e8"
++  "url": "src/run.js?v=4.10.0",
++  "sha256": "5be0e08d8aa54a90f57cc1c3a09c9fad3c233cf897c1f96a3fcbfceb42c2d713"
+  },
+  {
+-  "url": "src/scenery-motion.js?v=4.9.0",
++  "url": "src/scenery-motion.js?v=4.10.0",
+   "sha256": "0af9e829d5db8e5ad22d8c4adccd4708670f9389138535a34114bec8313968d9"
+  },
+  {
+-  "url": "src/score-record.js?v=4.9.0",
++  "url": "src/score-record.js?v=4.10.0",
+   "sha256": "d8f2c2825d232039b59f0650e6608b8865d9fd2c8f00bca1d1741d72fcd1185f"
+  },
+  {
+-  "url": "src/slapstick.js?v=4.9.0",
++  "url": "src/slapstick.js?v=4.10.0",
+   "sha256": "d627ace249f2d6d81f81b1eeca9f087cf5933dd7701d8affc4a1fe76f912708e"
+  },
+  {
+-  "url": "src/sound-effects.js?v=4.9.0",
++  "url": "src/sound-effects.js?v=4.10.0",
+   "sha256": "8eaf87fd435cd0ed9e389234b599b5f5c0360d7aa706dbb7af5cb7732cfcb825"
+  },
+  {
+-  "url": "src/sound.js?v=4.9.0",
+-  "sha256": "59ad4a25a10706b82475e69d0856d8284812277ea8f3fe954d7fa00fa37ab1c2"
++  "url": "src/sound.js?v=4.10.0",
++  "sha256": "03ce74c28be11853004974075224b938924bb69caefdf2deeb745d673bef042e"
+  },
+  {
+-  "url": "src/spaceport-sprites.js?v=4.9.0",
++  "url": "src/spaceport-sprites.js?v=4.10.0",
+   "sha256": "1809b3fbc0737df4fb95df2aa5f0a8319654d05c300cc07c95b57362f3796384"
+  },
+  {
+-  "url": "src/speed-feedback.js?v=4.9.0",
+-  "sha256": "64a0c235b4006fd5e93ac54506de2edb861a7c98145f9ae84211489484858d86"
++  "url": "src/speed-feedback.js?v=4.10.0",
++  "sha256": "abfb4af5c0ac0b71992db7bb7a55ecd4cdf813415091ed412364afc1799fd05e"
+  },
+  {
+-  "url": "src/thrusters.js?v=4.9.0",
+-  "sha256": "1f2847d7312dd97d6e6880749d20c72e4df48f68ee9a1279ce4108d9abd82319"
++  "url": "src/thrusters.js?v=4.10.0",
++  "sha256": "c9a425cdfcdbed9e24b55245d3e0dd2c4c088b5cacc7a81e5dda4d67d7201e5c"
+  },
+  {
+-  "url": "style.css?v=4.9.0",
++  "url": "style.css?v=4.10.0",
+   "sha256": "534c57f78c3b50569bb9fb0fdb08e16bfe5de7343b4b175dd65ae23b4ea18542"
+  }
+ ];

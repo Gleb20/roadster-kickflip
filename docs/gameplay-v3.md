@@ -1,3 +1,11 @@
+## Mobile score tempo4.10.0 — current implementation
+
+Score stages0/2500/7500/15000/30000/60000/100000 interpolate base speeds520/590/680/790/910/1010/1100, maximum base acceleration70world units/s². Only the first-ever run subtracts a160-unit relief declining over20active seconds; later starts are520. `roadster-started-once-v1` persists at actual start; existing best>0 counts as experienced. This is engineering tuning, not a user-approved numeric curve. Biomes remain timed.
+
+Difficulty applies to future accepted waves; score bonuses advance it. Existing geometry never relocates at thresholds. From30k pressure chains begin; after100k six of seven eligible ground waves prefer chains, with a short seventh-wave rest. Existing18k-tick/48-policy proof budget,180ms timing window and difficult no-fuel route remain. Motion uses the same camera scale for road and hazards. Portrait spawn uses maximum supported forward sight plus64world units, including the air-before-rail offset.
+
+Pickups never gate spawning. Offer only after an accepted encounter, using hazard-expanded capture safety zones and actual pickup-aware route/bypass proofs within the remaining shared budget. If unsafe/unproved, defer pickup without spending its bag. Safe sites include gaps and jump trajectories above low ground hazards. No new artwork or input mechanics.
+
 ## Speed plateau4.8.0 - candidate
 
 Base360+2t through20progress seconds; then400+260u+500u*u-420u*u*u with u=(t-20)/130 until150; plateau740. Falls/recovery delay progress. Recovery rejoins the same curve/slope. Existing streak25% and OVERDRIVE35% compose; sustained peak1248.75, arithmetic thrust bound1508.75. Phone obstacle motion increases15.3% while shared camera/encounter sight bounds retain existing recognition/timing/collider and CPU budgets. Tall witness profiles are recalibrated; family scheduling stays unchanged. New immutable480 coexists with all15older verifiers. See docs/verification/2026-10-25-speed-v480/README.md for actual release status.

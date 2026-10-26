@@ -1,3 +1,11 @@
+## Mobile tempo 4.10.0 — candidate; backend deployed and verified; client publication pending
+
+TJ-001 + reopened TJ-002: accepted user requirements on 26 October supersede earlier time-based pace and unchanged-start decisions. First-ever run starts gently; all subsequent runs start faster and persist across PWA restarts. Score, including bonuses, drives difficulty. New hazards begin outside portrait phone view; boosters never block the next encounter and occupy validated safe positions. Road and world share camera scale; speedometer tracks actual velocity.
+
+Base main b9cf724a60e30df07d8d2242713bc83b387ac19b; isolated source /tmp/tesla-next-backlog-20261026, branch codex/mobile-tempo-v4100. Original dirty runtime/index preserved. 261 game tests,16server tests,36database checks; both startup profiles replay exactly. Two600s visible-only runs: longest empty stretch1.39–1.40s versus3.39–3.60s in4.9; late mandatory ground decisions31.7–32.0/min versus25.7–26.0/min. This is a model, not human acceptance. Mobile440×956 checks and actual4.9→4.10 update/offline pass; physical iPhone17ProMax/Safari remains untested.
+
+[Evidence and bounded rollback](verification/2026-10-26-mobile-tempo-v4100/README.md). Existing bounded debt proposal remains actual-phone full-frame/input profiling and independent PWA update lifecycle diagnosis; neither is started here. This section is current; earlier entries below are historical.
+
 ## TJ-002 / 4.8.0 — backend deployed; client publication next
 
 API and worker editor contents were copied back and matched the tested bundles exactly. Additive migration applied. Hosted QA: 16 valid versions accepted, 2 forgeries rejected, all 18 fixtures isolated before submission, zero public QA writes. All 28 original records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Browser transfer failure resolved with 60 KB paste chunks. Client publication is the remaining step; physical phone remains untested. Candidate ab2fa3c, parent c954ad2; tested client inverse retains all 16 server verifiers.

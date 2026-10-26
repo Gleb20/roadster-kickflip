@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.9.0';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.9.0';
-import {createGrind,advanceRail} from './rails.js?v=4.9.0';
-import {advanceBoosters,activeBooster} from './boosters.js?v=4.9.0';
-import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.9.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.10.0';
+import {createGrind,advanceRail} from './rails.js?v=4.10.0';
+import {advanceBoosters,activeBooster,collectBooster} from './boosters.js?v=4.10.0';
+import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.10.0';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:48,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // Minimum forward sight over supported viewports. Live validation advances the
@@ -47,6 +47,12 @@ export function simulateEncounter(obstacles,{flight=createFlight(),pace=createPa
   if(rail){const events=advanceRail(g,p,before,rails,r.speed*dt,dt,e);if(events.some(v=>v.type==='rail-catch')){if(forbidCatch)return null;if(!caught)catchAt=t+dt;caught=true;}if(events.some(v=>v.type==='rail-exit'))exitAt=t+dt;grindDistance=g.distance;if(g.support)landed=null;}
   const after=landed?{...p,angle:landed.angle}:p;
   for(const o of obs){const old=o.x;o.x-=(r.speed+(o.approachSpeed||0))*dt;if(sweptCollision(before,after,o,old,o.x,time+t+dt,dt))return null;if(!o.passed&&o.x+o.w< -50){o.passed=true;passObstacle(e);}}
+  if(q){
+   for(const orb of q.pickups||[]){const old=orb.x;orb.x-=r.speed*dt;
+    if(Math.min(old,orb.x)<=112&&Math.max(old,orb.x)>=-112&&Math.abs(p.y+78-orb.y)<=122&&collectBooster(q,orb.id))orb.collected=true;
+   }
+   q.pickups=(q.pickups||[]).filter(o=>!o.collected&&o.x> -180);
+  }
   if(landed){
    if(!landed.good)return null;
    let near=0;const late=lateTarget&&lateTarget.x+lateTarget.w-(lateTarget.inset||5)< -47?1:0;

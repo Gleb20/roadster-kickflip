@@ -1,0 +1,11 @@
+# Mobile tempo4.10.0 —26October2026
+
+Status: local checks pass; API/worker/additive SQL deployed. Hosted QA passed:19valid results across18versions accepted,2forgeries rejected;21fixtures isolated before submission, zero public QA writes. All28real records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Client publication pending. Base b9cf724a60e30df07d8d2242713bc83b387ac19b; source /tmp/tesla-next-backlog-20261026. The dirty original checkout is not the release source.
+
+User acceptance: iPhone17ProMax PWA first. First-ever start gentle, retries faster across restarts. Difficulty by score including bonuses; challenge before100k, hard after. Boosters cannot cancel/delay waves; safe gaps and jump placements, defer bonus if no safe slot. See canonical planning document.
+
+Evidence: game-tests.log261pass; server-tests.log16pass; database.json36checks; checks.log content/types/PWA191hashes. rulesets.log18immutable versions. red-reproduction.log records the initial failures. comparison.json two600s visible-only runs perversion; long-replays.json two exact full/JSON-checkpoint replays beyond100k. browser.json10checks at440×956; upgrade.json13checks includes actual parent installation, waiting paused run, closed-window activation, preserved best/collection/submittable old record, offline fast retry and narrow/landscape/desktop smoke. Chrome emulation is not physical iPhone or Safari proof.
+
+Late ground decisions31.7–32.0/min versus25.7–26.0 in4.9; empty maximum1.39–1.40s versus3.39–3.60s. Late screen speed for the same camera plateau rises14.6%. Timings are deterministic simulation inputs, not a human difficulty rating. Desktop spawn maxima roughly40–53ms under measurement load still require real-phone profiling; bounded budget unchanged. No zero-frame-time claim.
+
+Rollback: restore only client paths listed in client-rollback.patch from frozen parent, rebuild service worker, validate and publish as a new commit. Keep18server verifiers and additive database guard for existing4.10sessions. The rollback patch inverse is rehearsed against the candidate and parent; original dirty root and production scores are never reset. Pending status will be replaced with deployment evidence before final handoff.

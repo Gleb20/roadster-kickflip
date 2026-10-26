@@ -26,7 +26,7 @@ test('normal-ramp framing preserves a usable visible approach at maximum earned 
 
 test('Impossibru needs maximum base pace and full actual earned speed, not the first trick',()=>{
  for(const [base,speed,streak] of [[360,378,.05],[360,450,.25],[660,693,.05],[660,660,.25],[659,823.75,.25],[660,824,.25]])assert.equal(speedFeedback({base,speed},streak).impossibru,false);
- assert.equal(speedFeedback({base:960,speed:1200},.25).impossibru,true);
+ assert.equal(speedFeedback({base:1100,speed:1375},.25).impossibru,true);
  const cancelled=speedFeedback({base:660,speed:600},.25);assert.equal(cancelled.factor,1);assert.equal(cancelled.flameOpacity,0);
 });
 
