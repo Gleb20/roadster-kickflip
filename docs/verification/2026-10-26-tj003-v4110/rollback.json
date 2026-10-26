@@ -1,0 +1,11 @@
+{
+  "parent": "b97339aeac110663d3a5ef96e86ffc4192557cda",
+  "candidate": "30caf0b0d60d23518f27917a41decadd7de6fcb3",
+  "parentClientFilesExact": 211,
+  "newClientFilesRemoved": 4,
+  "backendVersionsRetained": 19,
+  "backendDataUntouched": true,
+  "parentTestsPassed": 261,
+  "parentCheckPassed": true,
+  "inverse": "client-only.patch.gz"
+}
