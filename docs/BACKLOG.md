@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.1 — contour refinement published
+
+[Play 4.11.1](https://gleb20.github.io/roadster-kickflip/?v=4.11.1). User-requested sprite/UI silhouette highlights replace approximate rectangular openings. Existing tutorial behavior and immutable ruleset 4.11.0 are preserved. 270 game/16 server tests, 135 local browser/10 public checks pass; physical-phone appearance remains open. [Evidence and tested rollback](verification/2026-10-26-tj003-contours-v4111/README.md). This refines TJ-003; next independent card remains TJ-004. No new confirmed technical debt; TJ-D01/TJ-D02 remain separate.
+
 ## TJ-003 / 4.11.0 — published
 
 [Play 4.11.0](https://gleb20.github.io/roadster-kickflip/?v=4.11.0). Seven protected interactive lessons continue into the same scored run. Existing players select `Replay training on next run`; Skip disables the full course until explicit replay. 270 game/16 server/37 SQL/62 local browser/10 public checks passed, including the real-time public course. Physical-phone acceptance remains open. [Evidence and tested rollback](verification/2026-10-26-tj003-v4110/README.md). TJ-001/TJ-002 are published in4.10.0 and accepted as this training baseline; next independent card: TJ-004. Earlier status notes below are historical.

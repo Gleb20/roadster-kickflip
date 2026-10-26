@@ -1,3 +1,7 @@
+## Contour highlights 4.11.1 — published
+
+[Play 4.11.1](https://gleb20.github.io/roadster-kickflip/?v=4.11.1). Training highlights now follow the actual sprite alpha and native UI shapes, including the rotating rider, rail gaps and the clipped THRUST face. 270 game tests, 16 server tests, 135 local browser checks and 10 public checks pass; all 194 public hashes match. Same-origin PWA upgrade and offline training are verified. Physics/scoring/backend remain on `roadster-v4.11.0`. [Evidence and tested rollback](docs/verification/2026-10-26-tj003-contours-v4111/README.md). Physical iPhone appearance remains unverified.
+
 ## Driving lessons 4.11.0 — published
 
 [Play 4.11.0](https://gleb20.github.io/roadster-kickflip/?v=4.11.0).

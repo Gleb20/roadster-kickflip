@@ -10,4 +10,4 @@ Original dirty workspace/index is preserved; implementation is isolated in `/tmp
 
 Physical iPhone/PWA appearance is not verified. Recorded TJ-D01 full-frame/device profiling and TJ-D02 PWA lifecycle diagnosis remain separate; no new confirmed technical debt was found. A bounded next debt stage remains one physical-device full-frame measurement and diagnosis of a reproduced PWA activation delay.
 
-Publication verification will be recorded below.
+Published runtime `dcb109416198df14ab326ac6bcad7bfc654d8ec9`; Pages `40399773291` succeeded. All 194 resources match the candidate. Ten public checks passed, including the complete real-time seven-lesson course, replay and Skip, no QA hook, console errors or score submissions. 135 local browser checks passed. See `live-hashes.json`, `public.json` and `pages.json`.
