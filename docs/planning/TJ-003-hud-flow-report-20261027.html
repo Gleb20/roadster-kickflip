@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla Jump — User Flow Report</title>
+<style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>Tesla Jump — Lesson HUD refinement</h1><p class="meta">2026-10-27 · TJ-003 / 4.11.2: familiar input cue and text outside the flight path</p><div class="skills"><span class="chip">userflow / flow-onboarding</span><span class="chip">impeccable / animate + layout</span></div>
+<h2>Summary</h2><p>The user supplied phone screenshots showing the rider crossing the central THRUST lesson. The lesson now replaces the score at the top left, Skip is a yellow text button, and the hand is replaced by a white contact dot with outward-fading rings. The current lesson height reserves world framing below it; scoring and lesson completion remain unchanged.</p>
+<h2>Flow: learn an action in the same run</h2><p class="meta">Entry: automatic first run or explicit replay · Scope: existing seven-lesson course</p>
+<h3>Steps</h3><ol class="flow">
+<li><span class="step-n">1</span><span class="step-t">Read the current action</span><p class="step-d">Progress, title, detail and yellow Skip occupy the score area. The pause control remains separate.</p><p class="cta">Primary action: <b>Follow the lesson</b> → real gameplay input</p><div class="branch">Skip training → same ordinary run; score returns; course stays disabled until explicit replay.</div></li>
+<li><span class="step-n">2</span><span class="step-t">Hold, then release</span><p class="step-d">White contact dot and rings invite contact at the road or the real THRUST control. Held contact is steady; release uses a single disappearing contact pulse. Once released, the press cue hides.</p><p class="cta">Primary action: <b>Hold / release</b> → action and safe landing</p><div class="branch">Reduced motion → static dot/ring states. Fine pointer → SPACE / SHIFT. Pause → lesson hidden and world frozen.</div></li>
+<li><span class="step-n">3</span><span class="step-t">Continue the same attempt</span><p class="step-d">Successful actions complete the existing seven lessons. Practice points remain; the score display returns after the course.</p><p class="cta">Primary action: <b>Keep driving</b> → ordinary generation and score</p></li></ol>
+<h3>Screen inventory</h3><div class="overflow"><table><tr><th>Surface</th><th>Purpose</th><th>Action</th><th>States</th></tr>
+<tr><td>Lesson HUD</td><td>Readable action above the rider</td><td>Gameplay input / Skip</td><td>Wait, hold, release, retry, success; no new loading state</td></tr>
+<tr><td>Contact cue</td><td>Show where and how to act</td><td>Contact and lift</td><td>Invite, held, release, hidden, reduced motion, keyboard</td></tr>
+<tr><td>Pause / ordinary score</td><td>Preserve control and continuation</td><td>Resume / keep driving</td><td>HUD removed during pause/after Skip/finish</td></tr></table></div>
+<h3>Anti-pattern audit</h3><div class="overflow"><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr>
+<tr><td>Instructions cover the action</td><td class="pass">PASS</td><td>Actual rider alpha bounds tested at four heights and four angles, four viewports, simulated safe area and doubled text.</td></tr>
+<tr><td>Forced or hard-to-exit tour</td><td class="pass">PASS</td><td>44 px yellow Skip, keyboard activation, touch and persisted course skip pass.</td></tr>
+<tr><td>Animation confuses held/released input</td><td class="pass">PASS</td><td>Distinct invite/held/release states, expanding/fading ring samples and static reduced-motion states checked in Chrome.</td></tr>
+<tr><td>Teaching separate from real gameplay</td><td class="pass">PASS</td><td>Full seven-lesson keyboard course uses the production run and retains all 175 practice points.</td></tr>
+<tr><td>Physical iPhone and novice comprehension</td><td class="warn">NOT TESTED</td><td>New 4.11.2 checked in Chrome; supplied photos are evidence for the old defect, not acceptance of the new layout.</td></tr></table></div>
+<h2>Open questions &amp; parked items</h2><ul><li>Physical-device appearance of 4.11.2 awaits user feedback.</li><li>Existing TJ-D01/TJ-D02 remain separate; no new confirmed debt was added.</li></ul>
+<p><a href="../verification/2026-10-27-tj003-hud-v4112/README.md">Browser evidence and rollback</a> · <a href="../verification/2026-10-27-tj003-hud-v4112/references.md">Official ripple references</a></p>
+<footer>Local userflow report template. Findings distinguish browser evidence from physical-device and novice testing.</footer></body></html>

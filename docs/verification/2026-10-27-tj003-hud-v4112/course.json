@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "correct app",
+    "new player starts tutorial",
+    "all lessons finish via keyboard",
+    "all lessons persisted",
+    "continues same run with practice score",
+    "clean input at exit",
+    "returning player no automatic training",
+    "explicit replay starts tutorial",
+    "skip continues playing",
+    "skip does not repeat automatically",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "browserPlugin": "absent",
+  "physicalPhone": false
+}

@@ -20,22 +20,42 @@
 .training :is(#race-score,#pending,#toast,#speedometer,#boost,#powerups) { filter:brightness(.24); }
 .training[data-lesson-target="thrust"] #boost,
 .training[data-lesson-target="bonus"] #powerups { filter:none; }
-#tutorial-card { position:absolute; left:50%; top:clamp(150px,24vh,240px); transform:translateX(-50%); width:min(380px,calc(100% - 40px)); color:var(--text); }
-.lesson-meta { display:flex; justify-content:space-between; gap:12px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
-#tutorial-card h2 { margin:12px 0 8px; font-size:clamp(20px,5vw,28px); line-height:1.08; letter-spacing:-.8px; text-wrap:balance; }
-#tutorial-card p { margin:0; min-height:42px; max-width:34ch; font-size:14px; line-height:1.4; }
-#tutorial-skip { pointer-events:auto; margin:12px 0 0 -12px; padding:12px; min-height:44px; color:var(--secondary); background:transparent; border:0; font-size:12px; text-decoration:underline; text-underline-offset:4px; }
-#lesson-input { position:absolute; display:grid; justify-items:center; transform:translate(-50%,-25%); color:var(--primary); font-size:11px; font-weight:800; letter-spacing:1px; }
+/* Lessons occupy the score slot. The camera reserves the measured block below. */
+.training #race-score { visibility:hidden; }
+.training #powerups { top:var(--lesson-ui-bottom); }
+#tutorial-card { position:absolute; left:max(var(--edge-x),env(safe-area-inset-left)); top:var(--edge-top); width:min(440px,calc(100% - max(var(--edge-x),env(safe-area-inset-left)) - max(var(--edge-x),env(safe-area-inset-right)) - 64px)); color:var(--text); }
+.lesson-meta { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:44px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
+#tutorial-card h2 { margin:4px 0 6px; font-size:clamp(17px,4.6vw,22px); line-height:1.12; letter-spacing:-.5px; text-wrap:balance; }
+#tutorial-card p { margin:0; max-width:36ch; font-size:13px; line-height:1.4; color:var(--text); }
+#tutorial-skip { pointer-events:auto; flex-shrink:0; margin-right:-12px; padding:12px; min-height:44px; color:var(--primary); background:transparent; border:0; font-size:12px; font-weight:650; letter-spacing:0; text-decoration:none; }
+#lesson-input { position:absolute; display:grid; justify-items:center; gap:8px; width:56px; transform:translate(-50%,-28px); color:var(--primary); font-size:11px; font-weight:800; letter-spacing:1px; }
 #lesson-input[hidden] { display:none; }
-#lesson-input svg { width:38px; height:46px; animation:lesson-hold 1.3s ease-in-out infinite; }
-#lesson-input kbd { display:none; margin:0 0 7px; padding:8px 14px; border:2px solid currentColor; border-radius:8px; font:inherit; }
-[data-action="RELEASE"] #lesson-input svg { animation:lesson-release 1.3s ease-in-out infinite; }
-@keyframes lesson-hold { 50% { transform:translateY(5px) scale(.94); } }
-@keyframes lesson-release { 50% { transform:translateY(-8px); opacity:.55; } }
+.lesson-touch { position:relative; display:block; width:56px; height:56px; color:#fff; }
+.lesson-dot,.lesson-wave { position:absolute; inset:0; margin:auto; display:block; border-radius:50%; }
+.lesson-dot { width:14px; height:14px; background:currentColor; animation:lesson-contact 1.4s ease-in-out infinite; }
+.lesson-wave { width:56px; height:56px; border:2px solid currentColor; opacity:0; animation:lesson-ripple 1.4s cubic-bezier(.16,1,.3,1) infinite; }
+.lesson-wave:last-child { animation-delay:.35s; }
+#lesson-input.is-held .lesson-dot { animation:none; transform:scale(.85); }
+#lesson-input.is-held .lesson-wave { animation:none; opacity:.45; transform:scale(.5); }
+#lesson-input.is-held .lesson-wave:last-child { opacity:0; }
+[data-action="RELEASE"] #lesson-input .lesson-dot { animation:lesson-lift .48s ease-out both; }
+[data-action="RELEASE"] #lesson-input .lesson-wave { animation:lesson-ripple .6s ease-out both; }
+[data-action="RELEASE"] #lesson-input .lesson-wave:last-child { display:none; }
+#lesson-input kbd { display:none; margin:8px 0; padding:8px 14px; border:2px solid currentColor; border-radius:8px; font:inherit; }
+.training[data-lesson-target="thrust"] #lesson-action { position:absolute; right:calc(100% + 12px); top:28px; transform:translateY(-50%); }
+@keyframes lesson-contact { 0%,100% { transform:scale(.85); } 30% { transform:scale(1); } }
+@keyframes lesson-ripple { 0% { transform:scale(.25); opacity:.75; } 75%,100% { transform:scale(1); opacity:0; } }
+@keyframes lesson-lift { to { transform:scale(.35); opacity:0; } }
 .training #jump { display:none!important; }
-@media(pointer:fine) { #lesson-input kbd { display:block; } #lesson-input svg { display:none; } }
-@media(max-height:500px) { #tutorial-card { top:78px; left:auto; right:24px; transform:none; width:min(340px,45%); } #tutorial-card h2 { font-size:20px; margin:8px 0; } #tutorial-card p { font-size:12px; min-height:32px; } #tutorial-skip { margin-top:0; } }
-@media(prefers-reduced-motion:reduce) { #lesson-input svg { animation:none!important; } }
+@media(pointer:fine) { #lesson-input kbd { display:block; } .lesson-touch { display:none; } }
+@media(max-height:500px) { #tutorial-card { width:min(410px,calc(100% - 160px)); } #tutorial-card h2 { font-size:17px; } #tutorial-card p { font-size:12px; } }
+@media(prefers-reduced-motion:reduce) {
+ #lesson-input .lesson-dot,#lesson-input .lesson-wave { animation:none!important; }
+ #lesson-input .lesson-wave { transform:scale(.65); opacity:.45; }
+ #lesson-input .lesson-wave:last-child { display:none; }
+ [data-action="RELEASE"] #lesson-input .lesson-dot { background:transparent; border:2px solid currentColor; }
+}
+
 
 * { box-sizing: border-box; }
 html, body {

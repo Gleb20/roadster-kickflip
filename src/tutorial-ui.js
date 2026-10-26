@@ -1,4 +1,4 @@
-import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.11.1';
+import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.11.2';
 
 const COPY={
  jump:['HOLD. RELEASE. JUMP.','Hold the road, then release to clear the car.'],
@@ -11,11 +11,18 @@ const COPY={
 };
 export function createTutorialUI({root,onSkip}){
  const overlay=document.createElement('div');overlay.id='tutorial-overlay';overlay.hidden=true;
- overlay.innerHTML=`<section id="tutorial-card" aria-label="Driving lesson"><div class="lesson-meta"><span id="lesson-progress"></span><span>SAFE PRACTICE</span></div><h2 id="lesson-title"></h2><p id="lesson-detail" aria-live="polite"></p><button id="tutorial-skip" type="button">Skip training</button></section><div id="lesson-input" aria-hidden="true"><svg viewBox="0 0 48 58"><path d="M19 31V9a5 5 0 0 1 10 0v17l3-4a4 4 0 0 1 7 4l-4 15-2 13H15l-7-17a5 5 0 0 1 8-5l3 3" fill="currentColor" stroke="#10151b" stroke-width="2"/></svg><kbd>SPACE</kbd><span id="lesson-action">HOLD</span></div>`;
- root.append(overlay);const get=id=>overlay.querySelector('#'+id);let last='';
+ overlay.innerHTML=`<section id="tutorial-card" aria-label="Driving lesson"><div class="lesson-meta"><span id="lesson-progress"></span><button id="tutorial-skip" type="button">Skip training</button></div><h2 id="lesson-title"></h2><p id="lesson-detail" aria-live="polite"></p></section><div id="lesson-input" aria-hidden="true"><span class="lesson-touch"><i class="lesson-dot"></i><i class="lesson-wave"></i><i class="lesson-wave"></i></span><kbd>SPACE</kbd><span id="lesson-action">HOLD</span></div>`;
+ root.append(overlay);const get=id=>overlay.querySelector('#'+id);let last='',sceneTop=0;
+ const measure=()=>{
+  if(overlay.hidden)return;
+  const bottom=get('tutorial-card').getBoundingClientRect().bottom-root.getBoundingClientRect().top+12;
+  root.style.setProperty('--lesson-ui-bottom',bottom+'px');
+  sceneTop=bottom+(root.dataset.lessonTarget==='bonus'?52:0);
+ };
+ new ResizeObserver(measure).observe(get('tutorial-card'));addEventListener('resize',measure);
  get('tutorial-skip').onclick=onSkip;
  return {update({T,P,G,input,S,ground,W,H,mode}){
-  const visible=T.active&&mode==='playing';overlay.hidden=!visible;root.classList.toggle('training',visible);if(!visible){delete root.dataset.lessonTarget;return;}
+  const visible=T.active&&mode==='playing';overlay.hidden=!visible;root.classList.toggle('training',visible);if(!visible){delete root.dataset.lessonTarget;root.style.removeProperty('--lesson-ui-bottom');sceneTop=0;return;}
   const lesson=tutorialLesson(T),jumped=P.airborne||!!G.support;
   let [title,detail]=COPY[lesson],action=jumped?'RELEASE':'HOLD',target='road';
   if(lesson==='jump'||lesson==='charge'||lesson==='rail'){
@@ -32,18 +39,19 @@ export function createTutorialUI({root,onSkip}){
   if(lesson==='air'){action='HANDS OFF';detail='Stay on the road. Let the aircraft pass above you.';}
   if(lesson==='pickup'){action='COLLECT';target='bonus';if(T.collected)detail='SCORE ×3 is active. The ring shows its time remaining.';}
   if(T.cleared){action='NICE!';detail='You got it. Keep rolling.';}
-  const label=[lesson,detail,action,T.attempt].join('|');if(label!==last){
+  const label=[lesson,detail,action,T.attempt].join('|'),changed=label!==last;if(changed){
    get('lesson-title').textContent=title;get('lesson-detail').textContent=detail;
    get('lesson-progress').textContent=`${T.index+1} / ${TUTORIAL_LESSONS.length}${T.attempt?' · TRY AGAIN':''}`;
    get('lesson-action').textContent=action;overlay.dataset.action=action;last=label;
   }
   // Highlight the real controls, including their transparent corners; no bbox cutouts.
-  root.dataset.lessonTarget=target;
+  root.dataset.lessonTarget=target;if(changed||!sceneTop)measure();
   const pointer=get('lesson-input');let x=Math.max(55,Math.min(W-85,W*.7)),y=Math.min(H-100,ground+42);
   if(target==='thrust'){
-   const r=root.querySelector('#boost').getBoundingClientRect();x=r.x+r.width/2;y=r.bottom+25;
+   const r=root.querySelector('#boost').getBoundingClientRect();x=r.x+r.width/2;y=r.y+r.height/2;
   }
-  pointer.style.left=x+'px';pointer.style.top=Math.min(H-95,y)+'px';pointer.querySelector('kbd').textContent=target==='thrust'?'SHIFT':'SPACE';
-  pointer.hidden=lesson==='air'||lesson==='pickup'||T.cleared||action==='WAIT';
- },get element(){return overlay;}};
+  pointer.style.left=x+'px';pointer.style.top=(target==='thrust'?y:Math.min(H-95,y))+'px';pointer.querySelector('kbd').textContent=target==='thrust'?'SHIFT':'SPACE';
+  const held=target==='thrust'?input.thrust:input.charging||input.spin;pointer.classList.toggle('is-held',held);
+  pointer.hidden=lesson==='air'||lesson==='pickup'||T.cleared||action==='WAIT'||action==='RELEASE'&&!held;
+ },get sceneTop(){return sceneTop;},get element(){return overlay;}};
 }
