@@ -24,10 +24,10 @@
 .training #race-score { visibility:hidden; }
 .training #powerups { top:var(--lesson-ui-bottom); }
 #tutorial-card { position:absolute; left:max(var(--edge-x),env(safe-area-inset-left)); top:var(--edge-top); width:min(440px,calc(100% - max(var(--edge-x),env(safe-area-inset-left)) - max(var(--edge-x),env(safe-area-inset-right)) - 64px)); color:var(--text); }
-.lesson-meta { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:44px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
+.lesson-meta { min-height:16px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
 #tutorial-card h2 { margin:4px 0 6px; font-size:clamp(17px,4.6vw,22px); line-height:1.12; letter-spacing:-.5px; text-wrap:balance; }
 #tutorial-card p { margin:0; max-width:36ch; font-size:13px; line-height:1.4; color:var(--text); }
-#tutorial-skip { pointer-events:auto; flex-shrink:0; margin-right:-12px; padding:12px; min-height:44px; color:var(--primary); background:transparent; border:0; font-size:12px; font-weight:650; letter-spacing:0; text-decoration:none; }
+#tutorial-skip { display:block; pointer-events:auto; margin:8px 0 0 -12px; padding:12px; min-height:44px; color:var(--primary); background:transparent; border:0; font-size:12px; font-weight:650; letter-spacing:.6px; text-decoration:none; }
 #lesson-input { position:absolute; display:grid; place-items:center; width:128px; height:128px; transform:translate(-50%,-50%); color:var(--primary); font-size:11px; font-weight:800; letter-spacing:1px; }
 #lesson-input[hidden] { display:none; }
 .lesson-touch { position:relative; display:block; width:128px; height:128px; color:#fff; }

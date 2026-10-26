@@ -1,0 +1,11 @@
+{
+  "parent": "7f3c7b63c0d33d86280a1333e0f352fcde2ee71c",
+  "clientVersion": "4.11.4",
+  "ruleset": "roadster-v4.11.0",
+  "gameTests": 270,
+  "localBrowserChecks": 56,
+  "rollbackTests": 270,
+  "rollbackExactParentDiffEmpty": true,
+  "backendChanged": false,
+  "physicalPhone": false
+}

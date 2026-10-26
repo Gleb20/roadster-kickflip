@@ -1,4 +1,4 @@
-import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.11.3';
+import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.11.4';
 
 const COPY={
  jump:['HOLD. RELEASE. JUMP.','Hold the road, then release to clear the car.'],
@@ -11,7 +11,7 @@ const COPY={
 };
 export function createTutorialUI({root,onSkip}){
  const overlay=document.createElement('div');overlay.id='tutorial-overlay';overlay.hidden=true;
- overlay.innerHTML=`<section id="tutorial-card" aria-label="Driving lesson"><div class="lesson-meta"><span id="lesson-progress"></span><button id="tutorial-skip" type="button">Skip training</button></div><h2 id="lesson-title"></h2><p id="lesson-detail" aria-live="polite"></p></section><div id="lesson-input" aria-hidden="true"><span class="lesson-touch"><i class="lesson-dot"></i><i class="lesson-wave"></i><i class="lesson-wave"></i></span><kbd>SPACE</kbd><span id="lesson-action">HOLD</span></div>`;
+ overlay.innerHTML=`<section id="tutorial-card" aria-label="Driving lesson"><div class="lesson-meta"><span id="lesson-progress"></span></div><h2 id="lesson-title"></h2><p id="lesson-detail" aria-live="polite"></p><button id="tutorial-skip" type="button">SKIP TRAINING</button></section><div id="lesson-input" aria-hidden="true"><span class="lesson-touch"><i class="lesson-dot"></i><i class="lesson-wave"></i><i class="lesson-wave"></i></span><kbd>SPACE</kbd><span id="lesson-action">HOLD</span></div>`;
  root.append(overlay);const get=id=>overlay.querySelector('#'+id);let last='',sceneTop=0,interactive=false;const contacts=new Map(),pointer=get('lesson-input');
  const measure=()=>{
   if(overlay.hidden)return;

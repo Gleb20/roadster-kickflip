@@ -1,0 +1,144 @@
+{
+  "checks": [
+    "320 lesson0 uppercase below copy",
+    "320 lesson0 aligned 44px target fits",
+    "320 lesson0 rider clears complete block",
+    "320 lesson1 uppercase below copy",
+    "320 lesson1 aligned 44px target fits",
+    "320 lesson1 rider clears complete block",
+    "320 lesson3 uppercase below copy",
+    "320 lesson3 aligned 44px target fits",
+    "320 lesson3 rider clears complete block",
+    "320 lesson6 uppercase below copy",
+    "320 lesson6 aligned 44px target fits",
+    "320 lesson6 rider clears complete block",
+    "320 Skip still continues scored run",
+    "440 lesson0 uppercase below copy",
+    "440 lesson0 aligned 44px target fits",
+    "440 lesson0 rider clears complete block",
+    "440 lesson1 uppercase below copy",
+    "440 lesson1 aligned 44px target fits",
+    "440 lesson1 rider clears complete block",
+    "440 lesson3 uppercase below copy",
+    "440 lesson3 aligned 44px target fits",
+    "440 lesson3 rider clears complete block",
+    "440 lesson6 uppercase below copy",
+    "440 lesson6 aligned 44px target fits",
+    "440 lesson6 rider clears complete block",
+    "440 Skip still continues scored run",
+    "844 lesson0 uppercase below copy",
+    "844 lesson0 aligned 44px target fits",
+    "844 lesson0 rider clears complete block",
+    "844 lesson1 uppercase below copy",
+    "844 lesson1 aligned 44px target fits",
+    "844 lesson1 rider clears complete block",
+    "844 lesson3 uppercase below copy",
+    "844 lesson3 aligned 44px target fits",
+    "844 lesson3 rider clears complete block",
+    "844 lesson6 uppercase below copy",
+    "844 lesson6 aligned 44px target fits",
+    "844 lesson6 rider clears complete block",
+    "844 Skip still continues scored run",
+    "1280 lesson0 uppercase below copy",
+    "1280 lesson0 aligned 44px target fits",
+    "1280 lesson0 rider clears complete block",
+    "1280 lesson1 uppercase below copy",
+    "1280 lesson1 aligned 44px target fits",
+    "1280 lesson1 rider clears complete block",
+    "1280 lesson3 uppercase below copy",
+    "1280 lesson3 aligned 44px target fits",
+    "1280 lesson3 rider clears complete block",
+    "1280 lesson6 uppercase below copy",
+    "1280 lesson6 aligned 44px target fits",
+    "1280 lesson6 rider clears complete block",
+    "1280 Skip still continues scored run",
+    "offline 4.11.4 loads",
+    "offline uppercase Skip below copy",
+    "offline Skip works",
+    "no page errors"
+  ],
+  "gaps": [
+    {
+      "w": 320,
+      "index": 0,
+      "gap": 12.78125
+    },
+    {
+      "w": 320,
+      "index": 1,
+      "gap": 12.75
+    },
+    {
+      "w": 320,
+      "index": 3,
+      "gap": 13.59375
+    },
+    {
+      "w": 320,
+      "index": 6,
+      "gap": 65.59375
+    },
+    {
+      "w": 440,
+      "index": 0,
+      "gap": 14.15625
+    },
+    {
+      "w": 440,
+      "index": 1,
+      "gap": 14.15625
+    },
+    {
+      "w": 440,
+      "index": 3,
+      "gap": 14.15625
+    },
+    {
+      "w": 440,
+      "index": 6,
+      "gap": 65.96875
+    },
+    {
+      "w": 844,
+      "index": 0,
+      "gap": 14.171875
+    },
+    {
+      "w": 844,
+      "index": 1,
+      "gap": 14.171875
+    },
+    {
+      "w": 844,
+      "index": 3,
+      "gap": 14.171875
+    },
+    {
+      "w": 844,
+      "index": 6,
+      "gap": 66.375
+    },
+    {
+      "w": 1280,
+      "index": 0,
+      "gap": 15.1875
+    },
+    {
+      "w": 1280,
+      "index": 1,
+      "gap": 15.1875
+    },
+    {
+      "w": 1280,
+      "index": 3,
+      "gap": 15.1875
+    },
+    {
+      "w": 1280,
+      "index": 6,
+      "gap": 67
+    }
+  ],
+  "errors": [],
+  "physicalPhone": false
+}
