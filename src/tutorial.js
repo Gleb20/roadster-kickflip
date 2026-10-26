@@ -1,6 +1,6 @@
-import {OBSTACLES,AIR_TYPES} from './content.js?v=4.11.0';
-import {makeRail,createGrind} from './rails.js?v=4.11.0';
-import {createFlight,createEconomy} from './gameplay.js?v=4.11.0';
+import {OBSTACLES,AIR_TYPES} from './content.js?v=4.11.1';
+import {makeRail,createGrind} from './rails.js?v=4.11.1';
+import {createFlight,createEconomy} from './gameplay.js?v=4.11.1';
 
 export const TUTORIAL_LESSONS=Object.freeze(['jump','charge','flip','thrust','rail','air','pickup']);
 export const createTutorial=()=>({active:false,started:false,index:0,age:0,attempt:0,settle:0,earned:0,offset:0,ticks:0,charge:0,thrust:0,caught:false,cleared:false,jumped:false,collected:false,retry:false});

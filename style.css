@@ -15,7 +15,11 @@
 /* Lessons use the existing road, controls and instrument accent. */
 #tutorial-overlay[hidden] { display:none; }
 #tutorial-overlay { position:absolute; inset:0; z-index:9; pointer-events:none; }
-#tutorial-spotlight { position:absolute; inset:0; width:100%; height:100%; }
+/* Native UI shapes remain intact; dim only controls/readouts outside the lesson.
+   Pause/sound stay at full brightness and retain their normal touch targets. */
+.training :is(#race-score,#pending,#toast,#speedometer,#boost,#powerups) { filter:brightness(.24); }
+.training[data-lesson-target="thrust"] #boost,
+.training[data-lesson-target="bonus"] #powerups { filter:none; }
 #tutorial-card { position:absolute; left:50%; top:clamp(150px,24vh,240px); transform:translateX(-50%); width:min(380px,calc(100% - 40px)); color:var(--text); }
 .lesson-meta { display:flex; justify-content:space-between; gap:12px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
 #tutorial-card h2 { margin:12px 0 8px; font-size:clamp(20px,5vw,28px); line-height:1.08; letter-spacing:-.8px; text-wrap:balance; }

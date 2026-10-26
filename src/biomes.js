@@ -1,5 +1,5 @@
-import {createRandom} from './random.js?v=4.11.0';
-import {BIOME_CYCLE} from './content.js?v=4.11.0';
+import {createRandom} from './random.js?v=4.11.1';
+import {BIOME_CYCLE} from './content.js?v=4.11.1';
 // Active run seconds select scenery and the director's obstacle pool.
 // A separate seeded stream keeps the schedule replayable without consuming gameplay RNG.
 export const BIOME_FIRST_SECONDS=40,BIOME_MIN_SECONDS=30,BIOME_MAX_SECONDS=50;
