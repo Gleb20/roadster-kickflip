@@ -1,3 +1,7 @@
+## Lesson HUD and ripple cue 4.11.2 — published
+
+[Play 4.11.2](https://gleb20.github.io/roadster-kickflip/?v=4.11.2). Lessons replace the score at the top left; shared world framing keeps the rider below their measured text. Skip is a yellow primary text button. A white contact dot and expanding/fading rings replace the drawn hand, with held/release/reduced-motion states. SAFE PRACTICE is removed. 270 game/16 server tests, 230 local browser and 10 public checks passed; all 194 public hashes match. Scoring and backend stay on `roadster-v4.11.0`. [Evidence and rollback](docs/verification/2026-10-27-tj003-hud-v4112/README.md), [flow report](docs/planning/TJ-003-hud-flow-report-20261027.html). Physical iPhone acceptance of this refinement remains open.
+
 ## Contour highlights 4.11.1 — published
 
 [Play 4.11.1](https://gleb20.github.io/roadster-kickflip/?v=4.11.1). Training highlights now follow the actual sprite alpha and native UI shapes, including the rotating rider, rail gaps and the clipped THRUST face. 270 game tests, 16 server tests, 135 local browser checks and 10 public checks pass; all 194 public hashes match. Same-origin PWA upgrade and offline training are verified. Physics/scoring/backend remain on `roadster-v4.11.0`. [Evidence and tested rollback](docs/verification/2026-10-26-tj003-contours-v4111/README.md). Physical iPhone appearance remains unverified.

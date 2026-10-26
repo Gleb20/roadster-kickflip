@@ -1,3 +1,7 @@
+## Lesson HUD 4.11.2 — bounded inverse
+
+Parent `5f9ff744210e937235d261c7b36a5cd1cb5670ff`, runtime `5491dc60a17e54ed2b493238a989eac88160533b`; Pages `40403880622` succeeded. All 194 public resources match; 10 public checks cover the full real-time course. The client-only forward/reverse patch restores an empty parent diff and passes its 270 tests/checks. Revert only this HUD/cue/framing delta in an isolated checkout, preserve local data/scores/all 19 immutable verifiers, and publish a fresh PWA cache identity. No art/backend/data rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-hud-v4112/README.md). Original dirty runtime and index remain intact.
+
 ## Contour highlights 4.11.1 — bounded inverse
 
 Parent `9f0afc4662d516e3ee203289528d587ce1cb6761`, runtime `dcb109416198df14ab326ac6bcad7bfc654d8ec9`; Pages `40399773291` success. All 194 public hashes match; 10 public checks include the entire real-time course. The client-only forward/reverse patch restores the exact parent diff and passes its 270 tests/checks. Revert only this visual delta in an isolated checkout and publish with a fresh PWA version; preserve all local data, scores and 19 immutable verifiers. No backend/data/art rollback. [Evidence and inverse](docs/verification/2026-10-26-tj003-contours-v4111/README.md). Original dirty root/index remain intact.

@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.2 — lesson HUD refinement published
+
+[Play 4.11.2](https://gleb20.github.io/roadster-kickflip/?v=4.11.2). User-requested yellow text Skip, white ripple contact cue, removal of SAFE PRACTICE and upper-left lesson text replace the previous central layout. Shared world framing protects the measured text area during thrust. 270 game/16 server tests, 230 local browser/10 public checks pass; physics/scoring/backend remain `roadster-v4.11.0`. [Evidence and rollback](verification/2026-10-27-tj003-hud-v4112/README.md). Physical-phone acceptance of 4.11.2 remains open. This refines TJ-003; next independent card is TJ-004. No new confirmed technical debt; existing TJ-D01/TJ-D02 stay separate.
+
 ## TJ-003 / 4.11.1 — contour refinement published
 
 [Play 4.11.1](https://gleb20.github.io/roadster-kickflip/?v=4.11.1). User-requested sprite/UI silhouette highlights replace approximate rectangular openings. Existing tutorial behavior and immutable ruleset 4.11.0 are preserved. 270 game/16 server tests, 135 local browser/10 public checks pass; physical-phone appearance remains open. [Evidence and tested rollback](verification/2026-10-26-tj003-contours-v4111/README.md). This refines TJ-003; next independent card remains TJ-004. No new confirmed technical debt; TJ-D01/TJ-D02 remain separate.
