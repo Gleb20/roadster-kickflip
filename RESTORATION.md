@@ -1,3 +1,7 @@
+## Skip placement 4.11.4 — bounded inverse
+
+Parent `7f3c7b63c0d33d86280a1333e0f352fcde2ee71c`, runtime `4030bb6257f2b36c0c3a9459f6d23564b4d748c1`; Pages `40407737190` succeeded. All 194 public hashes match; 9 public checks pass. Client-only forward/reverse restores an empty parent diff and passes its 270 tests/checks. Revert only this markup/style delta in a clean checkout and publish a fresh PWA version. Preserve scores, local data and all 19 frozen verifiers; no backend/data/art rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-skip-v4114/README.md). Original dirty runtime/index preserved.
+
 ## Readable touch feedback 4.11.3 — bounded inverse
 
 Parent `61389baf7a752691b8a38b8c073ed52742af6e8f`, runtime `a6925c005b36af1a2043820a161fce2802f3c6f2`; Pages `40406508936` succeeded. All 194 public resources match; 14 public checks include the complete real-time course and actual touch/move/cancel. The client-only forward/reverse patch restores an empty parent diff and passes its 270 tests/checks. Revert only this cue/feedback delta in an isolated checkout and publish with a fresh PWA identity, preserving all scores/local storage/all 19 immutable verifiers. No backend/data/art rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-touch-v4113/README.md). Original dirty runtime/index remain intact.

@@ -7,5 +7,7 @@
   "rollbackTests": 270,
   "rollbackExactParentDiffEmpty": true,
   "backendChanged": false,
-  "physicalPhone": false
+  "physicalPhone": false,
+  "runtime": "4030bb6257f2b36c0c3a9459f6d23564b4d748c1",
+  "publicChecks": 9
 }

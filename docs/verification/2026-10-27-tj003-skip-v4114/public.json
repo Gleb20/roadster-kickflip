@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "public 4.11.4",
+    "production QA absent",
+    "training starts",
+    "uppercase below description",
+    "yellow 44px button",
+    "Skip continues same run",
+    "Skip persists",
+    "no score submission",
+    "no runtime errors"
+  ],
+  "info": {
+    "text": "SKIP TRAINING",
+    "below": true,
+    "outsideHeader": true,
+    "height": 44,
+    "color": "rgb(217, 255, 98)"
+  },
+  "errors": [],
+  "posts": [],
+  "physicalPhone": false
+}

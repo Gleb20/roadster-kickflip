@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.4 — Skip placement published
+
+[Play 4.11.4](https://gleb20.github.io/roadster-kickflip/?v=4.11.4). `SKIP TRAINING` moved below the description; progress header is quiet. 270 tests, 56 local browser/9 public checks pass. [Evidence and rollback](verification/2026-10-27-tj003-skip-v4114/README.md). Physical-phone appearance remains open. Next independent card remains TJ-004; existing TJ-D01/TJ-D02 are separate, with no new confirmed debt.
+
 ## TJ-003 / 4.11.3 — readable touch feedback published
 
 [Play 4.11.3](https://gleb20.github.io/roadster-kickflip/?v=4.11.3). User-requested larger cue and overlaid readable label now react synchronously to accepted touches and follow actual contact, with separate primary/THRUST roles. 270 game/16 server tests, 187 local browser/14 public checks pass; actual finger occlusion on the physical iPhone remains unverified. [Evidence and bounded rollback](verification/2026-10-27-tj003-touch-v4113/README.md). This refines TJ-003; next independent card remains TJ-004. No new confirmed technical debt; existing TJ-D01/TJ-D02 stay separate.

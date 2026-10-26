@@ -1,3 +1,7 @@
+## Skip placement 4.11.4 — published
+
+[Play 4.11.4](https://gleb20.github.io/roadster-kickflip/?v=4.11.4). `SKIP TRAINING` is now a separate yellow text button below the lesson description; the header contains only progress. Its 44 px target and existing behavior are preserved. 270 tests, 56 local browser and 9 public checks pass; all 194 public hashes match. [Evidence and rollback](docs/verification/2026-10-27-tj003-skip-v4114/README.md). Physical iPhone appearance remains unverified.
+
 ## Readable touch feedback 4.11.3 — published
 
 [Play 4.11.3](https://gleb20.github.io/roadster-kickflip/?v=4.11.3). The training cue is now 128 px with a larger contact dot. HOLD/RELEASE overlays its upper part, outside the finger pad. Actual touches change the fill immediately and move the cue; primary and THRUST fingers remain independent. 270 game/16 server tests, 187 local browser and 14 public checks passed; all 194 public hashes match. [Evidence and rollback](docs/verification/2026-10-27-tj003-touch-v4113/README.md). Browser occlusion uses an 88 px pad model; physical iPhone acceptance remains open. Rules/scoring/backend stay on `roadster-v4.11.0`.

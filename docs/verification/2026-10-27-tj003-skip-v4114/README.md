@@ -10,4 +10,4 @@ Frozen parent `/tmp/tesla-skip-parent-v4113.tar.gz`; client forward/reverse patc
 
 Original dirty runtime/index preserved. Work: `/tmp/tesla-tj003-discovery-20261026`, branch `codex/tj003-skip-v4114`. No new confirmed technical debt. Existing TJ-D01/TJ-D02 remain separate; the bounded next debt stage remains a physical full-frame measurement and diagnosis of a reproduced PWA activation delay.
 
-Publication verification will be recorded below.
+Published runtime `4030bb6257f2b36c0c3a9459f6d23564b4d748c1`; Pages `40407737190` succeeded. All 194 public resources match. Nine public checks pass: version, no QA hook, training start, uppercase button below copy, yellow 44 px target, working/persisted Skip, no score submissions and no console errors. See `public.json`, `public.png`, `live-hashes.json` and `pages.json`.
