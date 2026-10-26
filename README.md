@@ -1,4 +1,6 @@
-## Driving lessons 4.11.0 — client publication next
+## Driving lessons 4.11.0 — published
+
+[Play 4.11.0](https://gleb20.github.io/roadster-kickflip/?v=4.11.0).
 
 TJ-003 implements seven protected, repeatable driving lessons inside the real scene, with spotlight and slow motion. The same run continues with its practice points. New players receive training automatically; existing players select `Replay training on next run`. `Skip training` disables the entire course until explicit replay. The server checks the protected prefix as part of immutable `roadster-v4.11.0`; all 18 earlier versions and real scores remain supported. [Accepted decisions](docs/planning/TJ-003-onboarding.md), [evidence and bounded rollback](docs/verification/2026-10-26-tj003-v4110/README.md). Physical iPhone acceptance remains open. Earlier sections below are historical.
 

@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.0 — published
+
+[Play 4.11.0](https://gleb20.github.io/roadster-kickflip/?v=4.11.0). Seven protected interactive lessons continue into the same scored run. Existing players select `Replay training on next run`; Skip disables the full course until explicit replay. 270 game/16 server/37 SQL/62 local browser/10 public checks passed, including the real-time public course. Physical-phone acceptance remains open. [Evidence and tested rollback](verification/2026-10-26-tj003-v4110/README.md). TJ-001/TJ-002 are published in4.10.0 and accepted as this training baseline; next independent card: TJ-004. Earlier status notes below are historical.
+
 ## TJ-001 + TJ-002 / 4.10.0 — опубликовано, ожидает приёмки на телефоне
 
 [Играть в4.10.0](https://gleb20.github.io/roadster-kickflip/?v=4.10.0). Runtime `fafeead6e31cabeb6acd3c70159aa104b4873b4f`, Pages `40388363218` — success;192публичных хеша совпали. Плавная только первая попытка нового игрока; все последующие быстрее, включая перезапуск PWA. Сложность растёт по очкам, бонусы тоже её приближают. Вход летунов перед рельсом вынесен за мобильный кадр; бустеры больше не блокируют препятствия, а получают безопасное место с проверкой маршрута. Дорога/объекты используют общий масштаб движения; показание скорости связано с фактической скоростью.
@@ -112,7 +116,7 @@ ID постоянны и не переиспользуются; при изме�
 
 ### TJ-003 — иммерсивный онбординг
 
-**Статус:** в работе — 4.11.0 проверена локально и на сервере, клиент готовится к публикации. База `b97339a`, ветка `codex/tj003-onboarding-v4110`, путь `/tmp/tesla-tj003-discovery-20261026`. [Принятые решения](planning/TJ-003-onboarding.md), [проверки и откат](verification/2026-10-26-tj003-v4110/README.md).
+**Статус:** опубликовано в 4.11.0, физическая приёмка курса открыта. Runtime `08ca5ee`, Pages `40396673050` success; 194 ресурса совпали; полный курс пройден на публичной версии в реальном времени. База `b97339a`, ветка `codex/tj003-onboarding-v4110`, путь `/tmp/tesla-tj003-discovery-20261026`. [Принятые решения](planning/TJ-003-onboarding.md), [проверки и откат](verification/2026-10-26-tj003-v4110/README.md).
 
 **Результат:** обучение прямо в реальной сцене. Мир замедляется, всё лишнее затемняется; яркими остаются нужная зона ввода, Илон, участок дороги/объект или индикатор. Анимированный палец/клавиша показывает настоящее действие, а не отвлечённую инструкцию.
 

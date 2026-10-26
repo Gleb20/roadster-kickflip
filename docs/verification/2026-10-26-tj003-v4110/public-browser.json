@@ -1,0 +1,19 @@
+{
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.11.0",
+  "checks": [
+    "public version4.11.0",
+    "production QA absent",
+    "public novice starts protected lesson",
+    "public full course completes in real time",
+    "public same run retains all practice points",
+    "public later attempt no automatic training",
+    "public explicit replay starts course",
+    "public skip returns same ordinary run",
+    "no score submission",
+    "no runtime console errors"
+  ],
+  "errors": [],
+  "scorePosts": [],
+  "realTimeCourse": true,
+  "physicalPhone": false
+}

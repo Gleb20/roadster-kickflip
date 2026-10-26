@@ -1,6 +1,6 @@
 # TJ-003 / 4.11.0 — immersive driving lessons
 
-Status: server deployed and verified; client publication next. Base `b97339aeac110663d3a5ef96e86ffc4192557cda` / 4.10.0. Isolated checkout `/tmp/tesla-tj003-discovery-20261026`, branch `codex/tj003-onboarding-v4110`. The original workspace's tracked runtime diff and index remain byte-identical to the pre-discovery snapshot.
+Status: published and verified. Runtime `08ca5eeacd66984ececf82b388e4ea9d0c524ac5`; Pages `40396673050` succeeded; all194public resources match. Ten fresh public checks include the complete real-time course, same-run continuation, explicit replay and Skip, with no score submissions or console errors. Base `b97339aeac110663d3a5ef96e86ffc4192557cda` / 4.10.0. Isolated checkout `/tmp/tesla-tj003-discovery-20261026`, branch `codex/tj003-onboarding-v4110`. The original workspace's tracked runtime diff and index remain byte-identical to the pre-discovery snapshot.
 
 ## Accepted behavior
 
@@ -23,7 +23,7 @@ Evidence: `game-tests.log`, `check.log`, `server-tests.log`, `database.log`, `ru
 
 ## Rollback
 
-Parent archive: `/tmp/tesla-tj003-parent-v4100.tar`. A bounded client-only inverse is rehearsed in an isolated checkout before publication; see `rollback.json`. It restores client/tests/scripts to 4.10.0 while retaining additive server support for all 19 versions. Never remove 4.11.0 verifiers, pending packets, accepted scores or the SQL guard after a client rollback. Do not reset or overwrite the original dirty workspace.
+Parent archive: `/tmp/tesla-tj003-parent-v4100.tar`. The bounded `client-only.patch.gz` inverse was applied in `/tmp/tesla-tj003-rollback`: all211parent client/test/script files match byte for byte, all four new client files are removed, and261parent tests plus `check` pass. See `rollback.json` and the two parent logs. It restores client/tests/scripts to 4.10.0 while retaining additive server support for all 19 versions. Never remove 4.11.0 verifiers, pending packets, accepted scores or the SQL guard after a client rollback. Do not reset or overwrite the original dirty workspace.
 
 ## Limits and existing debt
 

@@ -1,0 +1,13 @@
+{
+  "version": "4.11.0",
+  "runtimeCommit": "08ca5eeacd66984ececf82b388e4ea9d0c524ac5",
+  "pagesRun": 40396673050,
+  "conclusion": "success",
+  "liveResources": 194,
+  "liveMatched": 194,
+  "publicBrowserChecks": 10,
+  "publicFullCourseRealTime": true,
+  "physicalPhone": false,
+  "originalTrackedDiffAndIndexPreserved": true,
+  "publicQaWrites": 0
+}
