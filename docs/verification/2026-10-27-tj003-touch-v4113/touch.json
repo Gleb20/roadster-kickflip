@@ -1,0 +1,234 @@
+{
+  "checks": [
+    "320 128px cue",
+    "320 overlay label over upper ring",
+    "320 synchronous accepted-touch feedback without RAF",
+    "320 follows actual primary touch",
+    "320 HOLD label clears 88px finger pad",
+    "320 HOLD label stays in viewport",
+    "320 contact visibly changes fill",
+    "320 follows contact move",
+    "320 RELEASE visible while finger held",
+    "320 RELEASE label clears 88px finger pad",
+    "320 RELEASE label stays in viewport",
+    "320 lift clears feedback immediately",
+    "320 real release launches jump",
+    "320 edge fallback label clears 88px finger pad",
+    "320 edge fallback label stays in viewport",
+    "320 edge label avoids lesson text",
+    "320 thrust touch reacts before simulation",
+    "320 THRUST label clears 88px finger pad",
+    "320 THRUST label stays in viewport",
+    "320 other finger cannot move thrust cue",
+    "320 independent real spin and thrust inputs",
+    "320 lifting primary preserves thrust feedback",
+    "320 thrust RELEASE label remains readable",
+    "320 THRUST RELEASE label clears 88px finger pad",
+    "320 THRUST RELEASE label stays in viewport",
+    "320 cancel clears feedback immediately",
+    "320 cancel clears both real inputs",
+    "320 static held feedback with reduced motion",
+    "320 pause hides and clears contact",
+    "320 resume has no stale contact",
+    "320 skip restores score",
+    "440 128px cue",
+    "440 overlay label over upper ring",
+    "440 synchronous accepted-touch feedback without RAF",
+    "440 follows actual primary touch",
+    "440 HOLD label clears 88px finger pad",
+    "440 HOLD label stays in viewport",
+    "440 contact visibly changes fill",
+    "440 follows contact move",
+    "440 RELEASE visible while finger held",
+    "440 RELEASE label clears 88px finger pad",
+    "440 RELEASE label stays in viewport",
+    "440 lift clears feedback immediately",
+    "440 real release launches jump",
+    "440 edge fallback label clears 88px finger pad",
+    "440 edge fallback label stays in viewport",
+    "440 edge label avoids lesson text",
+    "440 thrust touch reacts before simulation",
+    "440 THRUST label clears 88px finger pad",
+    "440 THRUST label stays in viewport",
+    "440 other finger cannot move thrust cue",
+    "440 independent real spin and thrust inputs",
+    "440 lifting primary preserves thrust feedback",
+    "440 thrust RELEASE label remains readable",
+    "440 THRUST RELEASE label clears 88px finger pad",
+    "440 THRUST RELEASE label stays in viewport",
+    "440 cancel clears feedback immediately",
+    "440 cancel clears both real inputs",
+    "440 static held feedback with reduced motion",
+    "440 pause hides and clears contact",
+    "440 resume has no stale contact",
+    "440 skip restores score",
+    "844 128px cue",
+    "844 overlay label over upper ring",
+    "844 synchronous accepted-touch feedback without RAF",
+    "844 follows actual primary touch",
+    "844 HOLD label clears 88px finger pad",
+    "844 HOLD label stays in viewport",
+    "844 contact visibly changes fill",
+    "844 follows contact move",
+    "844 RELEASE visible while finger held",
+    "844 RELEASE label clears 88px finger pad",
+    "844 RELEASE label stays in viewport",
+    "844 lift clears feedback immediately",
+    "844 real release launches jump",
+    "844 edge fallback label clears 88px finger pad",
+    "844 edge fallback label stays in viewport",
+    "844 edge label avoids lesson text",
+    "844 thrust touch reacts before simulation",
+    "844 THRUST label clears 88px finger pad",
+    "844 THRUST label stays in viewport",
+    "844 other finger cannot move thrust cue",
+    "844 independent real spin and thrust inputs",
+    "844 lifting primary preserves thrust feedback",
+    "844 thrust RELEASE label remains readable",
+    "844 THRUST RELEASE label clears 88px finger pad",
+    "844 THRUST RELEASE label stays in viewport",
+    "844 cancel clears feedback immediately",
+    "844 cancel clears both real inputs",
+    "844 static held feedback with reduced motion",
+    "844 pause hides and clears contact",
+    "844 resume has no stale contact",
+    "844 skip restores score",
+    "1280 128px cue",
+    "1280 overlay label over upper ring",
+    "1280 synchronous accepted-touch feedback without RAF",
+    "1280 follows actual primary touch",
+    "1280 HOLD label clears 88px finger pad",
+    "1280 HOLD label stays in viewport",
+    "1280 contact visibly changes fill",
+    "1280 follows contact move",
+    "1280 RELEASE visible while finger held",
+    "1280 RELEASE label clears 88px finger pad",
+    "1280 RELEASE label stays in viewport",
+    "1280 lift clears feedback immediately",
+    "1280 real release launches jump",
+    "1280 edge fallback label clears 88px finger pad",
+    "1280 edge fallback label stays in viewport",
+    "1280 edge label avoids lesson text",
+    "1280 thrust touch reacts before simulation",
+    "1280 THRUST label clears 88px finger pad",
+    "1280 THRUST label stays in viewport",
+    "1280 other finger cannot move thrust cue",
+    "1280 independent real spin and thrust inputs",
+    "1280 lifting primary preserves thrust feedback",
+    "1280 thrust RELEASE label remains readable",
+    "1280 THRUST RELEASE label clears 88px finger pad",
+    "1280 THRUST RELEASE label stays in viewport",
+    "1280 cancel clears feedback immediately",
+    "1280 cancel clears both real inputs",
+    "1280 static held feedback with reduced motion",
+    "1280 pause hides and clears contact",
+    "1280 resume has no stale contact",
+    "1280 skip restores score",
+    "no runtime errors"
+  ],
+  "pads": [
+    {
+      "w": 320,
+      "label": "HOLD",
+      "gap": 6.012499999999989
+    },
+    {
+      "w": 320,
+      "label": "RELEASE",
+      "gap": 6.012499999999989
+    },
+    {
+      "w": 320,
+      "label": "edge fallback",
+      "gap": 12.142675390472803
+    },
+    {
+      "w": 320,
+      "label": "THRUST",
+      "gap": 6
+    },
+    {
+      "w": 320,
+      "label": "THRUST RELEASE",
+      "gap": 6
+    },
+    {
+      "w": 440,
+      "label": "HOLD",
+      "gap": 6.009374999999977
+    },
+    {
+      "w": 440,
+      "label": "RELEASE",
+      "gap": 6.009374999999977
+    },
+    {
+      "w": 440,
+      "label": "edge fallback",
+      "gap": 12.142675390472803
+    },
+    {
+      "w": 440,
+      "label": "THRUST",
+      "gap": 6
+    },
+    {
+      "w": 440,
+      "label": "THRUST RELEASE",
+      "gap": 6
+    },
+    {
+      "w": 844,
+      "label": "HOLD",
+      "gap": 6
+    },
+    {
+      "w": 844,
+      "label": "RELEASE",
+      "gap": 6
+    },
+    {
+      "w": 844,
+      "label": "edge fallback",
+      "gap": 12.142675390472803
+    },
+    {
+      "w": 844,
+      "label": "THRUST",
+      "gap": 6
+    },
+    {
+      "w": 844,
+      "label": "THRUST RELEASE",
+      "gap": 6
+    },
+    {
+      "w": 1280,
+      "label": "HOLD",
+      "gap": 6
+    },
+    {
+      "w": 1280,
+      "label": "RELEASE",
+      "gap": 6
+    },
+    {
+      "w": 1280,
+      "label": "edge fallback",
+      "gap": 12.142675390472803
+    },
+    {
+      "w": 1280,
+      "label": "THRUST",
+      "gap": 6
+    },
+    {
+      "w": 1280,
+      "label": "THRUST RELEASE",
+      "gap": 6
+    }
+  ],
+  "errors": [],
+  "occlusionModel": "88px diameter circular pad; not a physical-device measurement",
+  "physicalPhone": false
+}

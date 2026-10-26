@@ -1,0 +1,15 @@
+# TJ-003 readable contact feedback / 4.11.3
+
+Parent: `61389baf7a752691b8a38b8c073ed52742af6e8f` (public 4.11.2). User feedback: the small HOLD indicator was covered by the finger, so the next instruction was unreadable. Requested: a larger symbol, overlaid text and reaction to touch.
+
+The cue expands from 56 to 128 CSS px; the filled dot grows from 14 to 54 px. A 15 px HOLD/RELEASE label overlays the upper part of the cue, above the contact pad, rather than underneath/beside it. Its position clamps horizontally and falls below the finger when the upper lesson HUD leaves no room above. Actual accepted pointerdown/move/up/cancel events update presentation immediately, without waiting for a simulation tick or requestAnimationFrame. The contact fills with the primary color and a broad ring remains visible around the finger. Label transitions use the existing lesson events.
+
+Separate pointer IDs retain separate primary/thrust roles. Moving/releasing the primary finger cannot move/cancel the thrust cue. Existing game handlers remain the only command source; these hooks issue no gameplay command and retain the original hit areas, pointer capture, multitouch and replay. Pause, Skip, home/restart and course completion clear contacts. Reduced motion preserves static held/release feedback. No art, physics, scoring or backend change; all 19 immutable verifiers remain intact on `roadster-v4.11.0`.
+
+Validation: 187 local browser checks (125 direct-touch/occlusion + 51 matrix/PWA + 11 full-course), 270 game tests, 16 server tests, syntax/content/types/PWA checks. Browser evidence covers four viewports, actual CDP touch/multitouch, event-synchronous visual feedback with RAF stopped, contact movement, held RELEASE, lift/cancel, independent fingers, pause/Skip and reduced motion. An 88 px circular occluder is a conservative browser test model, not a physical finger measurement; its screenshots are labeled `occluded`. The visible text remains outside it. The CDP partial-end harness initially listed the remaining finger instead of the ended finger; pointer-event traces confirmed and corrected that harness assumption, without product changes. Full seven-lesson keyboard course, real 4.11.2→4.11.3 PWA update and offline training also pass.
+
+Original dirty runtime/index is preserved; isolated work is `/tmp/tesla-tj003-discovery-20261026`, branch `codex/tj003-touch-v4113`. Frozen parent `/tmp/tesla-touch-parent-v4112.tar.gz`. Forward/reverse rehearsal in `/tmp/tesla-touch-rollback` returns an empty parent diff and its 270 tests/checks pass. `client-only.patch.gz` retains the bounded inverse. Revert only this presentation delta in a clean checkout; publish a fresh PWA cache version while retaining all scores/local storage/immutable replay versions. No database rollback.
+
+Existing TJ-D01/TJ-D02 remain separate. No new confirmed technical debt was found. The bounded next debt stage remains physical full-frame measurement and diagnosis of a reproduced PWA activation delay. Physical iPhone appearance/occlusion for 4.11.3 is not yet verified.
+
+Publication verification will be recorded below.
