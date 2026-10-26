@@ -1,4 +1,12 @@
-## Mobile score tempo4.10.0 — current implementation
+## Interactive lessons 4.11.0 — current implementation
+
+The user approved 4.10.0 as the baseline and a predictable protected practice section that continues into the same scored run. First-time players start seven fixed episodes automatically; already-started/best/legacy-tip evidence prevents unsolicited retraining. Explicit `Replay training on next run` replays the full course. `Skip training` disables all lessons until explicit replay, retaining completed awards. Lesson status is additive under `roadster-lessons-v1`; legacy keys, records and outbox are retained.
+
+One spotlight highlights the actual rider, object, road/control and, for the pickup lesson, the top-left active-bonus indicator. A finger or keyboard cue demonstrates hold/release; reduced motion keeps static phases. World time runs at38% while a lesson is active, at normal speed for its short success handoff, and pauses on ordinary pause/hidden. Course order: clear the low car and land safely; charged clearance; one manual flip with release and safe landing; airborne THRUST and landing; rail catch/travel and grounded exit; drive underneath the flyer; collect the score bonus and connect it to its indicator. Actual simulation events complete lessons. Collision or bad landing retries the current scene without death. Normal control mechanics remain available.
+
+Each completed scene adds25points once,175maximum; protected distance and ordinary trick awards do not accrue additional points. Practice does not advance biome time. After the course, normal generation resumes in the same run after a two-second approach buffer, with earned points and the remaining collected score-bonus effect. The normal speed ramp starts smoothly; a later ordinary retry retains the4.10experienced-start profile. Exact ordinary-run equivalence with4.10is checked for both startup profiles. These numeric values are engineering choices; physical phone feel and novice understanding remain open. [Decisions](planning/TJ-003-onboarding.md), [evidence](verification/2026-10-26-tj003-v4110/README.md).
+
+## Mobile score tempo4.10.0 — historical baseline, retained outside practice
 
 Score stages0/2500/7500/15000/30000/60000/100000 interpolate base speeds520/590/680/790/910/1010/1100, maximum base acceleration70world units/s². Only the first-ever run subtracts a160-unit relief declining over20active seconds; later starts are520. `roadster-started-once-v1` persists at actual start; existing best>0 counts as experienced. This is engineering tuning, not a user-approved numeric curve. Biomes remain timed.
 

@@ -1,0 +1,12 @@
+{
+  "apiEditorAndPublishedCodeExact": true,
+  "workerEditorAndPublishedCodeExact": true,
+  "apiCharacters": 756986,
+  "workerCharacters": 753311,
+  "supportedVersions": 19,
+  "migration": "20261026110000_tutorial_v4110.sql",
+  "isolatedFixtures": 24,
+  "originalPublicRecords": 28,
+  "throughSeq": 163,
+  "originalDigest": "c62b11c2fba7dcc0ab18f995d164110b"
+}

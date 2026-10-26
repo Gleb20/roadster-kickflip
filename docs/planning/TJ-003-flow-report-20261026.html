@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tesla Jump - TJ-003</title><style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style><body><h1>Tesla Jump - TJ-003</h1><p class="meta">26 October 2026 - 4.11.0 candidate: implemented and verified, client publication next.</p><div class="skills"><span class="chip">userflow</span><span class="chip">flow-onboarding</span><span class="chip">interface-design</span></div>
+<h2>Accepted flow</h2><p>A predictable protected course continues into the same ordinary run with its earned score. New players start training automatically. Returning players use an explicit replay. First useful success: clear an obstacle and land safely.</p>
+<ol class="flow"><li><span class="step-n">1</span><span class="step-t">Start playing</span><p class="step-d">Play opens the actual road. Existing start, best or legacy-tip evidence prevents automatic retraining. Replay training on next run is explicit.</p><p class="cta"><b>Play</b> - driving scene.</p></li>
+<li><span class="step-n">2</span><span class="step-t">Perform one real action</span><p class="step-d">World time slows to 38%. The rider, relevant object, road and control stay bright; a finger/key shows hold and release. Seven fixed episodes: jump, charge, flip, thrust, rail, air, pickup.</p><p class="cta"><b>Normal controls</b> - confirmed gameplay event.</p><div class="branch">An error repeats only the current episode. Death and repeat-score farming are prevented by the shared simulation. The air lesson teaches driving underneath.</div></li>
+<li><span class="step-n">3</span><span class="step-t">Keep a successful skill</span><p class="step-d">Safe landing or the relevant event completes the lesson and saves progress. Each lesson awards 25 points once.</p><p class="cta"><b>Keep driving</b> - next episode.</p><div class="branch">Pause/hidden takes priority and clears held input. Reduced motion uses static finger phases.</div></li>
+<li><span class="step-n">4</span><span class="step-t">Continue the same run</span><p class="step-d">The full course keeps 175 points and the remaining collected score bonus. Normal generation resumes without restarting the run.</p><p class="cta"><b>Keep driving</b> - ordinary ranked run.</p><div class="branch">Skip training disables the whole course until explicit replay, keeps completed lesson points and clears controls. Practice time does not advance biome changes.</div></li></ol>
+<h2>Surface inventory</h2><div class="overflow"><table><tr><th>Surface</th><th>Action</th><th>Special states</th></tr><tr><td>Menu</td><td>Play / explicit replay</td><td>Returning player, refused storage, prior tips preserved</td></tr><tr><td>Road with lesson</td><td>Normal controls / Skip training</td><td>One active lesson, protected retry, contextual hold/release</td></tr><tr><td>Pause / hidden</td><td>Resume</td><td>World frozen, controls cleared</td></tr><tr><td>Ordinary run</td><td>Continue with earned points</td><td>Training protection ends; complete replay checked by server</td></tr></table></div>
+<h2>Verification</h2><div class="overflow"><table><tr><th>Check</th><th>Verdict</th><th>Evidence / limit</th></tr><tr><td>Teach through action; one lesson</td><td class="pass">PASS - browser</td><td>Complete course using real keyboard events and production fixed steps</td></tr><tr><td>Skip, replay, persistence, pause</td><td class="pass">PASS</td><td>11 complete-course and persistence checks</td></tr><tr><td>Touch, multitouch, reduced motion, layouts</td><td class="pass">PASS</td><td>320x568, 440x956, 844x390, 1280x800; part of 51 matrix checks</td></tr><tr><td>Real update and offline use</td><td class="pass">PASS</td><td>Installed 4.10 cache updated to 4.11; stored data, offline training and Skip retained</td></tr><tr><td>Ranking integrity</td><td class="pass">PASS - hosted</td><td>19 versions; 22 exact accepted results and two rejected forgeries, all QA isolated</td></tr><tr><td>Physical iPhone / novice understanding</td><td class="warn">NOT TESTED</td><td>Emulation and automated input do not establish human acceptance</td></tr></table></div>
+<h2>Open / separate work</h2><p>No blocking product decisions remain. Physical-phone course acceptance is open. Existing TJ-D01 and TJ-D02 remain separate and were not started automatically.</p><p><a href="TJ-003-onboarding.md">Accepted decisions</a> - <a href="../verification/2026-10-26-tj003-v4110/README.md">Evidence and rollback</a>.</p><footer>Only game-relevant flow-onboarding guidance was applied. Browser checks and actual novice usability have distinct evidence status.</footer></body></html>

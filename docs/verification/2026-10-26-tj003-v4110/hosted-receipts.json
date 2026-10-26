@@ -1,0 +1,122 @@
+[
+  {
+    "id": "e0e17555-a4f3-468a-a6b2-0a9573cc1308",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "ad1fff42-76d8-442e-a1fb-22cf2b8c1a66",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "b8f7ca9e-2fec-4680-817a-87f26c1bf839",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "3da84504-c635-42bf-bb64-90eaeb714eff",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "66addee2-a83d-436f-a53d-1b65e527f315",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "b6d7e9b7-feda-4d01-8f8e-0862ca9f3bdd",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "95b6bfd1-58e0-4821-91ba-b6a13e5ff4e3",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "1ec499c5-5861-4abd-a68f-4f7b307e4b5f",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "7fa403ca-ef25-43e9-aa97-74d60782a3a8",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "2cc006f0-1cfd-4b68-83f8-0adb43d25af7",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "7b0f5c99-b9ff-4647-a223-55ea674243bb",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "ab21552b-1a70-47f9-9ff2-85684788c2f6",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "86226d09-d4ad-4340-98c4-50d591570ceb",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "6f5861ab-6f88-42ef-9538-a8011e7587d2",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "70379bb4-9b35-4f8d-9f30-8cdd29d0f6eb",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "4d2d5649-ed97-4a29-b109-f756416e29bb",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "10240f4c-42e7-4e40-8f38-af8450e2d580",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "6b024f54-971a-4bd6-8896-583325db0101",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "3df70327-0abd-4b5f-b251-492e28dde971",
+    "kind": "valid",
+    "receipt": true
+  },
+  {
+    "id": "e019b031-e277-4438-8148-b3ce373e9002",
+    "kind": "valid-tutorial",
+    "receipt": true
+  },
+  {
+    "id": "a914f51d-ec8d-486b-a134-5a6fee0d0414",
+    "kind": "valid-skip",
+    "receipt": true
+  },
+  {
+    "id": "58a50376-5b4b-4bae-b0aa-91b500bbf5a0",
+    "kind": "valid-retry",
+    "receipt": true
+  },
+  {
+    "id": "d4bfec96-57ba-436a-b3c6-e60e0e62bca4",
+    "kind": "fake-score",
+    "receipt": true
+  },
+  {
+    "id": "ba8d105a-ab58-4cfa-ba13-009746eb367a",
+    "kind": "fake-end",
+    "receipt": true
+  }
+]

@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.0 — tested candidate, client publication next
+
+Base b97339a/4.10.0; isolated checkout `/tmp/tesla-tj003-discovery-20261026`. Parent archive `/tmp/tesla-tj003-parent-v4100.tar`. The original tracked runtime diff/index remain byte-identical. API and worker with all19verifiers are deployed and source-exact; additive migration retains authentication, grants, all28public records and old queues. 24owned fixtures were isolated before submission;22exact accepted,2forged rejected. Preserve this additive backend support on any client rollback. Bounded client inverse and its rehearsal are recorded in [evidence](docs/verification/2026-10-26-tj003-v4110/README.md); never reset the original dirty checkout. Physical iPhone acceptance remains open. Earlier entries below are historical.
+
 ## TJ-001 + TJ-002 / 4.10.0 — опубликовано, ожидает приёмки на телефоне
 
 [Играть в4.10.0](https://gleb20.github.io/roadster-kickflip/?v=4.10.0). Runtime `fafeead6e31cabeb6acd3c70159aa104b4873b4f`, Pages `40388363218` — success;192публичных хеша совпали. Плавная только первая попытка нового игрока; все последующие быстрее, включая перезапуск PWA. Сложность растёт по очкам, бонусы тоже её приближают. Вход летунов перед рельсом вынесен за мобильный кадр; бустеры больше не блокируют препятствия, а получают безопасное место с проверкой маршрута. Дорога/объекты используют общий масштаб движения; показание скорости связано с фактической скоростью.

@@ -1,4 +1,10 @@
-## Current replay contract4.10.0
+## Current replay contract 4.11.0
+
+Immutable `roadster-v4.11.0` adds command7 (`tutorial-start`) at tick0 only, once, before ordinary input, optionally after command6 (`experienced-start`); command8 (`tutorial-skip`) is permitted only after a tutorial start and at most once in an envelope. Training cannot be restarted mid-run. The fixed prefix, collision protection, retry, safe completion, 25-point one-time lesson awards, excluded practice distance, biome-time exclusion and normal-run transition are all simulated identically on client and server. Slow motion scales the fixed-step clock's accumulation, preserving 1/120-second physics; UI finger animation uses display time. Pause/hidden retain priority.
+
+Tutorial state and score offset are checkpointed, including an in-progress attempt. The entire same-run replay, including practice and subsequent first ordinary collision, must match the server score. Practice awards are capped at175; protected repetitions cannot farm score. All18historical folders remain unchanged; API, worker and SQL guard accept19versions. Old cached/offline replays remain immutable. For a client rollback keep all19server verifiers and accepted data. [Evidence](verification/2026-10-26-tj003-v4110/README.md).
+
+## Historical replay contract4.10.0
 
 Immutable `roadster-v4.10.0` adds score-driven pace, outside-portrait spawn, independent safe pickups and persisted first/retry startup. Command6 (`experienced-start`) is optional, unique, first event at tick0; it selects520 instead of360. No later profile changes are accepted. Pace distance/profile and pickups are serialized through checkpoints. All17historical verifiers remain unchanged; the API/database accept18versions. Client retained-best compatibility explicitly includes4.7.3/4.8.0/4.9.0. Old queued/finished records are not migrated to new physics.
 

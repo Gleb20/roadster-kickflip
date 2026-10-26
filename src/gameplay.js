@@ -1,6 +1,6 @@
-import {GAMEPLAY as C,basePace,basePaceSlope,scorePace} from './gameplay-config.js?v=4.10.0';
-import {obstacleBoxes} from './physics.js?v=4.10.0';
-import {fallPolygons,interpolateFall} from './fall.js?v=4.10.0';
+import {GAMEPLAY as C,basePace,basePaceSlope,scorePace} from './gameplay-config.js?v=4.11.0';
+import {obstacleBoxes} from './physics.js?v=4.11.0';
+import {fallPolygons,interpolateFall} from './fall.js?v=4.11.0';
 export const TAU=Math.PI*2;
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const approach=(x,target,amount)=>x<target?Math.min(target,x+amount):Math.max(target,x-amount);
@@ -91,7 +91,7 @@ export function settleLanding(e,p,result,{late=0,near=0}={}){
   if(n||near){e.streak=Math.min(C.maxStreak,e.streak+C.streakStep);e.streakLeft=C.streakHold;}
   return {points,turns:n,late,near,perfect,good:true};
 }
-export function createPace({scoreDriven=false}={}){return {scoreDriven,experienced:false,distance:0,boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
+export function createPace({scoreDriven=false}={}){return {scoreDriven,experienced:false,distance:0,scoreOffset:0,boost:0,progress:0,base:C.startSpeed,speed:C.startSpeed,recovery:null,stumble:0,falling:false};}
 export function stumble(pace){
   const target=pace.recovery?.target??pace.base,r=clamp((target-C.startSpeed)/(C.maxSpeed-C.startSpeed),0,1);
   pace.recovery={target,progress:pace.progress,age:0,duration:C.recoveryMin+C.recoveryExtra*r**1.5};pace.stumble=C.stumbleSeconds;pace.base=target*C.recoveryRatio;
@@ -106,7 +106,7 @@ export function advancePace(pace,e,p,dt){
   if(pace.recovery){
     pace.stumble=Math.max(0,pace.stumble-dt);const r=pace.recovery;r.age=Math.min(r.duration,r.age+dt);pace.base=recoverySpeed(r,r.age);
     if(r.age>=r.duration){pace.base=r.target;pace.recovery=null;}
-  }else if(!pace.falling){pace.progress+=dt;pace.base=pace.scoreDriven?approach(pace.base,scorePace(pace.distance/20+e.bonus,pace.experienced,pace.progress),70*dt):basePace(pace.progress);}
+  }else if(!pace.falling){pace.progress+=dt;pace.base=pace.scoreDriven?approach(pace.base,scorePace(Math.max(0,pace.distance-(pace.scoreOffset||0))/20+e.bonus,pace.experienced,pace.progress),70*dt):basePace(pace.progress);}
   pace.speed=Math.max(60,pace.base*(1+e.streak)*(1+(pace.boost||0))+p.vx);
   if(pace.scoreDriven){const dx=pace.speed*dt;pace.distance+=dx;e.bonus+=dx/20*((e.scoreFactor||1)-1);}
   return pace.speed;

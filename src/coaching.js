@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.10.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.11.0';
 export const LESSONS=[
   {id:'jump',at:0,text:'HOLD, THEN RELEASE TO JUMP',detail:'A quick tap clears a low obstacle.'},
   {id:'charge',at:15,text:'CHARGE AT LEAST HALFWAY',detail:'More height gives you time for a flip.'},
@@ -27,4 +27,19 @@ export function createCoach(storage){
     },
     get done(){return {...done};},
   };
+}
+
+// New interactive lessons have their own status; historical tips are retained.
+export function createTutorialProgress(storage){
+ const key='roadster-lessons-v1';let state={lessons:{},finished:false,skipped:false};
+ try{const saved=JSON.parse(storage?.getItem(key)||'null');if(saved&&typeof saved==='object')state={...state,...saved,lessons:saved.lessons||{}};}catch{}
+ const save=()=>{try{storage?.setItem(key,JSON.stringify(state));}catch{}};
+ return {
+  shouldStart(experienced){return !experienced&&!state.finished&&!state.skipped;},
+  complete(id){state.lessons[id]=true;save();},
+  finish(){state.finished=true;save();},
+  skip(){state.skipped=true;save();},
+  reset(){state={lessons:{},finished:false,skipped:false};save();},
+  get state(){return structuredClone(state);},
+ };
 }

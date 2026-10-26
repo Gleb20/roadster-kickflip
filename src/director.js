@@ -1,10 +1,10 @@
-import {scoreStage} from './gameplay-config.js?v=4.10.0';
-import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.10.0';
-import {makeRail} from './rails.js?v=4.10.0';
-import {types} from './catalog.js?v=4.10.0';
-import {biomeAt} from './biomes.js?v=4.10.0';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.10.0';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.10.0';
+import {scoreStage} from './gameplay-config.js?v=4.11.0';
+import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.11.0';
+import {makeRail} from './rails.js?v=4.11.0';
+import {types} from './catalog.js?v=4.11.0';
+import {biomeAt} from './biomes.js?v=4.11.0';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.11.0';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.11.0';
 const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
@@ -20,7 +20,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
  const clear=()=>(S.rails||[]).every(r=>r.x+r.w< -100)&&S.obs.every(o=>o.x+o.w< -100||o.smashed);
  function update(){
   const view={strength:state.viewStrength};advanceSpeedView(view,Math.max(0,S.t-state.viewAt),1002,900,S.speed);state.viewStrength=view.strength;state.viewAt=S.t;
-  const target=biomeAt(S.t,S.seed||0);if(target.leg!==state.leg){state.leg=target.leg;state.legStartedAt=S.t;state.legDistance=S.distance||0;}
+  const target=biomeAt(S.playTime??S.t,S.seed||0);if(target.leg!==state.leg){state.leg=target.leg;state.legStartedAt=S.t;state.legDistance=S.distance||0;}
   state.biomeFirstSeen[target.id]??=S.t;
   if(state.active&&clear()&&!pace.falling&&!pace.recovery){state.active=false;state.restUntil=S.t+state.restSeconds;S.next=Math.max(S.next,state.restSeconds);}
  }
@@ -28,7 +28,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   update();
   if(!clear()||!settled()||state.restUntil!==null&&S.t+1e-8<state.restUntil){S.next=0;state.waiting=true;return;}
   state.waiting=false;state.restUntil=null;
-  const {id:biome,leg}=biomeAt(S.t,S.seed||0),stage=pace.scoreDriven?scoreStage(S.score):stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
+  const {id:biome,leg}=biomeAt(S.playTime??S.t,S.seed||0),stage=pace.scoreDriven?scoreStage(S.score):stageAt(pace.progress),budget=encounterBudget();state.budget=budget;
   const familiar=S.t-state.legStartedAt<2,simple=state.groundCount<3||state.recoveryWaves>0;
   const candidate=()=>{if(budget.candidates>=3||budget.exhausted)return false;budget.candidates++;return true;};
   const opts={flight,pace,economy,boosterState:boosters,time:sceneTime(),budget,viewStrength:Math.max(0,state.viewStrength-.02)};

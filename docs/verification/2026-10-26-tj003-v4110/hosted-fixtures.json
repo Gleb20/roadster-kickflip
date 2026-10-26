@@ -1,0 +1,242 @@
+[
+  {
+    "id": "e0e17555-a4f3-468a-a6b2-0a9573cc1308",
+    "ruleset": "roadster-v3.4.2",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "ad1fff42-76d8-442e-a1fb-22cf2b8c1a66",
+    "ruleset": "roadster-v3.8.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "b8f7ca9e-2fec-4680-817a-87f26c1bf839",
+    "ruleset": "roadster-v4.0.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "3da84504-c635-42bf-bb64-90eaeb714eff",
+    "ruleset": "roadster-v4.1.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "66addee2-a83d-436f-a53d-1b65e527f315",
+    "ruleset": "roadster-v4.10.0",
+    "kind": "valid",
+    "expected": {
+      "score": 63,
+      "flips": 0,
+      "ticks": 409
+    }
+  },
+  {
+    "id": "b6d7e9b7-feda-4d01-8f8e-0862ca9f3bdd",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "valid",
+    "expected": {
+      "score": 63,
+      "flips": 0,
+      "ticks": 409
+    }
+  },
+  {
+    "id": "95b6bfd1-58e0-4821-91ba-b6a13e5ff4e3",
+    "ruleset": "roadster-v4.3.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "1ec499c5-5861-4abd-a68f-4f7b307e4b5f",
+    "ruleset": "roadster-v4.3.2",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "7fa403ca-ef25-43e9-aa97-74d60782a3a8",
+    "ruleset": "roadster-v4.4.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "2cc006f0-1cfd-4b68-83f8-0adb43d25af7",
+    "ruleset": "roadster-v4.4.2",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "7b0f5c99-b9ff-4647-a223-55ea674243bb",
+    "ruleset": "roadster-v4.6.0",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "ab21552b-1a70-47f9-9ff2-85684788c2f6",
+    "ruleset": "roadster-v4.6.1",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "86226d09-d4ad-4340-98c4-50d591570ceb",
+    "ruleset": "roadster-v4.6.3",
+    "kind": "valid",
+    "expected": {
+      "score": 73,
+      "flips": 0,
+      "ticks": 487
+    }
+  },
+  {
+    "id": "6f5861ab-6f88-42ef-9538-a8011e7587d2",
+    "ruleset": "roadster-v4.7.0",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "70379bb4-9b35-4f8d-9f30-8cdd29d0f6eb",
+    "ruleset": "roadster-v4.7.1",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "4d2d5649-ed97-4a29-b109-f756416e29bb",
+    "ruleset": "roadster-v4.7.2",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "10240f4c-42e7-4e40-8f38-af8450e2d580",
+    "ruleset": "roadster-v4.7.3",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "6b024f54-971a-4bd6-8896-583325db0101",
+    "ruleset": "roadster-v4.8.0",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "3df70327-0abd-4b5f-b251-492e28dde971",
+    "ruleset": "roadster-v4.9.0",
+    "kind": "valid",
+    "expected": {
+      "score": 61,
+      "flips": 0,
+      "ticks": 404
+    }
+  },
+  {
+    "id": "e019b031-e277-4438-8148-b3ce373e9002",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "valid-tutorial",
+    "expected": {
+      "score": 386,
+      "flips": 0,
+      "ticks": 3653
+    }
+  },
+  {
+    "id": "a914f51d-ec8d-486b-a134-5a6fee0d0414",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "valid-skip",
+    "expected": {
+      "score": 69,
+      "flips": 0,
+      "ticks": 744
+    }
+  },
+  {
+    "id": "58a50376-5b4b-4bae-b0aa-91b500bbf5a0",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "valid-retry",
+    "expected": {
+      "score": 386,
+      "flips": 0,
+      "ticks": 4225
+    }
+  },
+  {
+    "id": "d4bfec96-57ba-436a-b3c6-e60e0e62bca4",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "fake-score",
+    "expected": {
+      "score": 386,
+      "flips": 0,
+      "ticks": 3653
+    }
+  },
+  {
+    "id": "ba8d105a-ab58-4cfa-ba13-009746eb367a",
+    "ruleset": "roadster-v4.11.0",
+    "kind": "fake-end",
+    "expected": {
+      "score": 386,
+      "flips": 0,
+      "ticks": 3653
+    }
+  }
+]

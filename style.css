@@ -12,6 +12,27 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 }
 
+/* Lessons use the existing road, controls and instrument accent. */
+#tutorial-overlay[hidden] { display:none; }
+#tutorial-overlay { position:absolute; inset:0; z-index:9; pointer-events:none; }
+#tutorial-spotlight { position:absolute; inset:0; width:100%; height:100%; }
+#tutorial-card { position:absolute; left:50%; top:clamp(150px,24vh,240px); transform:translateX(-50%); width:min(380px,calc(100% - 40px)); color:var(--text); }
+.lesson-meta { display:flex; justify-content:space-between; gap:12px; color:var(--primary); font-size:10px; font-weight:700; letter-spacing:1px; }
+#tutorial-card h2 { margin:12px 0 8px; font-size:clamp(20px,5vw,28px); line-height:1.08; letter-spacing:-.8px; text-wrap:balance; }
+#tutorial-card p { margin:0; min-height:42px; max-width:34ch; font-size:14px; line-height:1.4; }
+#tutorial-skip { pointer-events:auto; margin:12px 0 0 -12px; padding:12px; min-height:44px; color:var(--secondary); background:transparent; border:0; font-size:12px; text-decoration:underline; text-underline-offset:4px; }
+#lesson-input { position:absolute; display:grid; justify-items:center; transform:translate(-50%,-25%); color:var(--primary); font-size:11px; font-weight:800; letter-spacing:1px; }
+#lesson-input[hidden] { display:none; }
+#lesson-input svg { width:38px; height:46px; animation:lesson-hold 1.3s ease-in-out infinite; }
+#lesson-input kbd { display:none; margin:0 0 7px; padding:8px 14px; border:2px solid currentColor; border-radius:8px; font:inherit; }
+[data-action="RELEASE"] #lesson-input svg { animation:lesson-release 1.3s ease-in-out infinite; }
+@keyframes lesson-hold { 50% { transform:translateY(5px) scale(.94); } }
+@keyframes lesson-release { 50% { transform:translateY(-8px); opacity:.55; } }
+.training #jump { display:none!important; }
+@media(pointer:fine) { #lesson-input kbd { display:block; } #lesson-input svg { display:none; } }
+@media(max-height:500px) { #tutorial-card { top:78px; left:auto; right:24px; transform:none; width:min(340px,45%); } #tutorial-card h2 { font-size:20px; margin:8px 0; } #tutorial-card p { font-size:12px; min-height:32px; } #tutorial-skip { margin-top:0; } }
+@media(prefers-reduced-motion:reduce) { #lesson-input svg { animation:none!important; } }
+
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
