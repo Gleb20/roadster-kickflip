@@ -1,0 +1,17 @@
+{
+  "url": "https://gleb20.github.io/roadster-kickflip/?v=4.10.0",
+  "checks": [
+    "public4.10.0",
+    "public first start gentle",
+    "public touch jumps",
+    "public pause",
+    "public retry faster",
+    "public faster profile survives reload",
+    "road world velocity aligned",
+    "no score submissions",
+    "no runtime errors"
+  ],
+  "errors": [],
+  "scorePosts": 0,
+  "physicalPhone": false
+}

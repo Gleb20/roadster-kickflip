@@ -1,6 +1,6 @@
 # Mobile tempo4.10.0 —26October2026
 
-Status: local checks pass; API/worker/additive SQL deployed. Hosted QA passed:19valid results across18versions accepted,2forgeries rejected;21fixtures isolated before submission, zero public QA writes. All28real records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Client publication pending. Base b9cf724a60e30df07d8d2242713bc83b387ac19b; source /tmp/tesla-next-backlog-20261026. The dirty original checkout is not the release source.
+Status: PUBLISHED4.10.0. Runtime fafeead6e31cabeb6acd3c70159aa104b4873b4f; Pages40388363218 succeeded; all192live hashes match. API/worker/additive SQL deployed. Hosted QA passed:19valid results across18versions accepted,2forgeries rejected;21fixtures isolated before submission, zero public QA writes. All28real records through seq163 retain digest c62b11c2fba7dcc0ab18f995d164110b. Fresh public mobile440×956 interaction passed9checks with zero errors and no score submissions. Base b9cf724a60e30df07d8d2242713bc83b387ac19b; source /tmp/tesla-next-backlog-20261026. The dirty original checkout is not the release source.
 
 User acceptance: iPhone17ProMax PWA first. First-ever start gentle, retries faster across restarts. Difficulty by score including bonuses; challenge before100k, hard after. Boosters cannot cancel/delay waves; safe gaps and jump placements, defer bonus if no safe slot. See canonical planning document.
 
@@ -8,4 +8,6 @@ Evidence: game-tests.log261pass; server-tests.log16pass; database.json36checks; 
 
 Late ground decisions31.7–32.0/min versus25.7–26.0 in4.9; empty maximum1.39–1.40s versus3.39–3.60s. Late screen speed for the same camera plateau rises14.6%. Timings are deterministic simulation inputs, not a human difficulty rating. Desktop spawn maxima roughly40–53ms under measurement load still require real-phone profiling; bounded budget unchanged. No zero-frame-time claim.
 
-Rollback: restore only client paths listed in client-rollback.patch from frozen parent, rebuild service worker, validate and publish as a new commit. Keep18server verifiers and additive database guard for existing4.10sessions. The rollback patch inverse is rehearsed against the candidate and parent; original dirty root and production scores are never reset. Pending status will be replaced with deployment evidence before final handoff.
+Rollback: restore only client paths listed in client-rollback.patch from frozen parent, rebuild service worker, validate and publish as a new commit. Keep18server verifiers and additive database guard for existing4.10sessions. The rollback patch inverse is rehearsed against the candidate and parent; original dirty root and production scores are never reset. The exact parent runtime also passes253tests and check. Keep new verifier support when rolling back; use matching parent tests for the restored client contract, not new-feature expectations.
+
+Public interaction evidence: public-browser.json and public-mobile.png. Original543runtime files, index and HEAD preserved. Phone full-frame profiling remains a bounded proposed debt stage; human iPhone acceptance stays open.

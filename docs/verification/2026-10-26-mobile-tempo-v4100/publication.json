@@ -1,0 +1,11 @@
+{
+  "version": "4.10.0",
+  "runtimeCommit": "fafeead6e31cabeb6acd3c70159aa104b4873b4f",
+  "pagesRun": 40388363218,
+  "conclusion": "success",
+  "liveHashes": 192,
+  "publicBrowserChecks": 9,
+  "physicalPhone": false,
+  "originalRuntimeFilesPreserved": 543,
+  "originalIndexAndHeadPreserved": true
+}
