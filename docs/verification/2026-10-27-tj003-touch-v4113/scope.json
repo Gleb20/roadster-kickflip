@@ -11,5 +11,6 @@
   "minimumLabelClearanceOutsidePad": 6,
   "rollbackExactParentDiffEmpty": true,
   "rollbackTests": 270,
-  "physicalPhone": false
+  "physicalPhone": false,
+  "runtime": "a6925c005b36af1a2043820a161fce2802f3c6f2"
 }

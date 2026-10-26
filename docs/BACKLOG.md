@@ -1,3 +1,7 @@
+## TJ-003 / 4.11.3 — readable touch feedback published
+
+[Play 4.11.3](https://gleb20.github.io/roadster-kickflip/?v=4.11.3). User-requested larger cue and overlaid readable label now react synchronously to accepted touches and follow actual contact, with separate primary/THRUST roles. 270 game/16 server tests, 187 local browser/14 public checks pass; actual finger occlusion on the physical iPhone remains unverified. [Evidence and bounded rollback](verification/2026-10-27-tj003-touch-v4113/README.md). This refines TJ-003; next independent card remains TJ-004. No new confirmed technical debt; existing TJ-D01/TJ-D02 stay separate.
+
 ## TJ-003 / 4.11.2 — lesson HUD refinement published
 
 [Play 4.11.2](https://gleb20.github.io/roadster-kickflip/?v=4.11.2). User-requested yellow text Skip, white ripple contact cue, removal of SAFE PRACTICE and upper-left lesson text replace the previous central layout. Shared world framing protects the measured text area during thrust. 270 game/16 server tests, 230 local browser/10 public checks pass; physics/scoring/backend remain `roadster-v4.11.0`. [Evidence and rollback](verification/2026-10-27-tj003-hud-v4112/README.md). Physical-phone acceptance of 4.11.2 remains open. This refines TJ-003; next independent card is TJ-004. No new confirmed technical debt; existing TJ-D01/TJ-D02 stay separate.

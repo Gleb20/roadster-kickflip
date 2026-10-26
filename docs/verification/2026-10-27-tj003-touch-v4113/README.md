@@ -12,4 +12,4 @@ Original dirty runtime/index is preserved; isolated work is `/tmp/tesla-tj003-di
 
 Existing TJ-D01/TJ-D02 remain separate. No new confirmed technical debt was found. The bounded next debt stage remains physical full-frame measurement and diagnosis of a reproduced PWA activation delay. Physical iPhone appearance/occlusion for 4.11.3 is not yet verified.
 
-Publication verification will be recorded below.
+Published runtime `a6925c005b36af1a2043820a161fce2802f3c6f2`; Pages `40406508936` succeeded. All 194 public resources match. Fourteen public checks passed: complete real-time course, points/replay/Skip, actual contact/move/cancel and visible label outside the pad, no production QA hook, no console errors or score submissions. See `pages.json`, `live-hashes.json`, `public.json` and `public-contact.png`.

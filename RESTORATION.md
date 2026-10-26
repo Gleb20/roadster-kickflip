@@ -1,3 +1,7 @@
+## Readable touch feedback 4.11.3 — bounded inverse
+
+Parent `61389baf7a752691b8a38b8c073ed52742af6e8f`, runtime `a6925c005b36af1a2043820a161fce2802f3c6f2`; Pages `40406508936` succeeded. All 194 public resources match; 14 public checks include the complete real-time course and actual touch/move/cancel. The client-only forward/reverse patch restores an empty parent diff and passes its 270 tests/checks. Revert only this cue/feedback delta in an isolated checkout and publish with a fresh PWA identity, preserving all scores/local storage/all 19 immutable verifiers. No backend/data/art rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-touch-v4113/README.md). Original dirty runtime/index remain intact.
+
 ## Lesson HUD 4.11.2 — bounded inverse
 
 Parent `5f9ff744210e937235d261c7b36a5cd1cb5670ff`, runtime `5491dc60a17e54ed2b493238a989eac88160533b`; Pages `40403880622` succeeded. All 194 public resources match; 10 public checks cover the full real-time course. The client-only forward/reverse patch restores an empty parent diff and passes its 270 tests/checks. Revert only this HUD/cue/framing delta in an isolated checkout, preserve local data/scores/all 19 immutable verifiers, and publish a fresh PWA cache identity. No art/backend/data rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-hud-v4112/README.md). Original dirty runtime and index remain intact.
