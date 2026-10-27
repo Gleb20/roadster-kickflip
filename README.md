@@ -1,6 +1,6 @@
-## Audio start / 4.12.1 — verified candidate
+## Audio start / 4.12.1 — published
 
-Fixes a shared-audio lockout when the first resume stays pending: later gestures retry, and the initial canonical cue survives asynchronous activation once. Existing score-driven music and saved mute remain. 279 tests/checks and real first-touch output measurements pass; physical iPhone confirmation remains open. [Evidence and bounded rollback](docs/verification/2026-10-27-audio-start-v4121/README.md).
+[Play 4.12.1](https://gleb20.github.io/roadster-kickflip/?v=4.12.1). Fixes a shared-audio lockout when the first resume stays pending: later gestures retry, and the initial canonical cue survives asynchronous activation once. Existing score-driven music and saved mute remain. 279 tests/checks, 93 local candidate browser checks and 58 public checks pass; all 194 live hashes match. Physical iPhone confirmation remains open. [Evidence and bounded rollback](docs/verification/2026-10-27-audio-start-v4121/README.md).
 
 ## TJ-004 / 4.12.0 — published
 

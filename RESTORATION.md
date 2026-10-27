@@ -1,6 +1,6 @@
 ## Audio unlock 4.12.1 — bounded inverse
 
-Parent `94b33f12830f8933fbf5371e60a941a8bfa4648e` / 4.12.0. [Patch and verification](docs/verification/2026-10-27-audio-start-v4121/README.md) include matching regression tests: forward 279 tests/checks; reverse empty parent diff and 275 tests/checks. Reverse this client delta in a clean checkout and publish a fresh PWA identity. Keep records/outbox, independent volume/mute, collection, music and all 19 frozen verifiers. No backend/data rollback. Original dirty root/index preserved. Publication pending verification.
+Parent `94b33f12830f8933fbf5371e60a941a8bfa4648e` / 4.12.0. [Patch and verification](docs/verification/2026-10-27-audio-start-v4121/README.md) include matching regression tests: forward 279 tests/checks; reverse empty parent diff and 275 tests/checks. Reverse this client delta in a clean checkout and publish a fresh PWA identity. Keep records/outbox, independent volume/mute, collection, music and all 19 frozen verifiers. No backend/data rollback. Original dirty root/index preserved. Published runtime `a87d9c9b5b88e1e71ea35322ef51bc6856252514`, Pages `40486230080` success; 194 public hashes and 58 public browser checks pass. Physical iPhone confirmation remains open.
 
 ## TJ-004 / 4.12.0 — bounded client inverse
 
