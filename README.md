@@ -1,3 +1,7 @@
+## TJ-004 / 4.12.0 — published
+
+[Play 4.12.0](https://gleb20.github.io/roadster-kickflip/?v=4.12.0). Score progressively introduces bass, drums and the full lead by 30,000; boost adds a temporary accent. Light training retains the normal tempo, and biome music crosses on the shared bar clock without stopping the rhythm. Original recordings, gameplay and ranking remain. 275 tests/checks, 55 local browser, 8 upgrade and 28 public checks pass; all 194 live hashes match. Physical iPhone/listening acceptance remains open. Close the old PWA/tabs and reopen if the old version persists, preserving site data. [Evidence and rollback](docs/verification/2026-10-27-tj004-v4120/README.md).
+
 ## Skip placement 4.11.4 — published
 
 [Play 4.11.4](https://gleb20.github.io/roadster-kickflip/?v=4.11.4). `SKIP TRAINING` is now a separate yellow text button below the lesson description; the header contains only progress. Its 44 px target and existing behavior are preserved. 270 tests, 56 local browser and 9 public checks pass; all 194 public hashes match. [Evidence and rollback](docs/verification/2026-10-27-tj003-skip-v4114/README.md). Physical iPhone appearance remains unverified.

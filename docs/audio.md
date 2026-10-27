@@ -1,4 +1,4 @@
-# TJ-004 / 4.12.0 — score-driven music
+# TJ-004 / 4.12.0 — published score-driven music
 
 User decisions on 27 October: earned instrumentation follows score/challenge and reaches the full arrangement at 30,000; boost gives a temporary accent; biome music flows on a bar without a pause; training is light at normal tempo. The selected Spaceport A and Factory B sources and all eight 60-second MP3 loops are unchanged.
 
