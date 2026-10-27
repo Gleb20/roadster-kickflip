@@ -1,11 +1,13 @@
-import {scoreStage} from './gameplay-config.js?v=4.12.1';
-import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.12.1';
-import {makeRail} from './rails.js?v=4.12.1';
-import {types} from './catalog.js?v=4.12.1';
-import {biomeAt} from './biomes.js?v=4.12.1';
-import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.12.1';
-import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.12.1';
-const factoryIds=['truck','t800','bydSeal','xiaomiSu7','batteryAgv','xi'];
+import {CONTENT} from './content-runtime.js?v=4.13.0';
+import {pickByRarity} from './content-package.js?v=4.13.0';
+import {scoreStage} from './gameplay-config.js?v=4.13.0';
+import {advanceSpeedView,maximumMobileSight} from './speed-feedback.js?v=4.13.0';
+import {makeRail} from './rails.js?v=4.13.0';
+import {types} from './catalog.js?v=4.13.0';
+import {biomeAt} from './biomes.js?v=4.13.0';
+import {AIR_TYPES,stageAt,makePattern} from './routes.js?v=4.13.0';
+import {ENCOUNTER,encounterBudget,validateEncounter} from './encounter-routes.js?v=4.13.0';
+const groundPools=Object.fromEntries(CONTENT.biomes.map(b=>[b.id,b.groundPool]));
 const eligible=(o,biome)=>o.biomes==='all'||o.biomes.includes(biome);
 export const canonicalGroundFallback=pool=>pool.reduce((best,o)=>!best||o.w<best.w||o.w===best.w&&o.h<best.h?o:best,null);
 const airSpeed={ufo:65,primeDrone:70,twitterBird:95,starlink:45,regulatorDrone:60,sikorsky:35,qualitySkull:75};
@@ -32,10 +34,10 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   const familiar=S.t-state.legStartedAt<2,simple=state.groundCount<3||state.recoveryWaves>0;
   const candidate=()=>{if(budget.candidates>=3||budget.exhausted)return false;budget.candidates++;return true;};
   const opts={flight,pace,economy,boosterState:boosters,time:sceneTime(),budget,viewStrength:Math.max(0,state.viewStrength-.02)};
-  const entry=maximumMobileSight(S.speed,state.viewStrength)+64,dx=Math.max(entry,600,S.speed*1.45+120),pick=pool=>pool.length?pool[Math.min(pool.length-1,Math.floor(random()*pool.length))]:null;
+  const entry=maximumMobileSight(S.speed,state.viewStrength)+64,dx=Math.max(entry,600,S.speed*1.45+120),pick=pool=>pickByRarity(pool,random,CONTENT.rarities);
   let kind='single',obstacles=[],rail=null,route=null,fallbackRail=false,bypass=null;
   const recent=state.history.slice(-2),repeat=recent.length===2&&recent[0]===recent[1]?recent[0]:null;
-  const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(biome!=='tesla-factory'||factoryIds.includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
+  const choices=types.filter(o=>!o.altitude&&o.collision!=='none'&&eligible(o,biome)&&(!groundPools[biome]||groundPools[biome].includes(o.id))&&(simple?o.h<=64:true)&&(o.h<90||state.sinceTall>=2)&&o.id!==repeat);
   const pairEvery=stage>=6?2:stage>=3?3:4,pairDue=!simple&&!familiar&&state.groundCount%pairEvery===0,overlayDue=!simple&&!familiar&&state.groundCount%3===1;
   // Save a complete ordinary ground path before discretionary pair/overlay
   // search spends this tick's fixed budget. A failed accent cannot erase it.
@@ -92,7 +94,7 @@ export function createDirector({S,flight,pace,economy,boosters,spawnDistance,sce
   if(state.recoveryWaves>0&&grounds.length)state.recoveryWaves--;
   state.phase=simple?'introduce':grounds.length>1?'accent':'flow';
   state.last={kind,fallbackRail,tallSingle,stage,biome,leg,route,bypass,groundDecisions:bypass?.jumps??(grounds.length?route.jumps:0),airDecisions:airs.length?1:0,startedAt:S.t,restSeconds:state.restSeconds,railWidth:rail?.w??null};
-  for(const o of obstacles)S.obs.push({...o,x:o.x+(relative?0:S.anchor),uid:++S.entityId,passed:false,nearPaid:false,latePaid:false});
+  for(const o of obstacles){const {rarity,displayName,description,...simulation}=o;S.obs.push({...simulation,x:o.x+(relative?0:S.anchor),uid:++S.entityId,passed:false,nearPaid:false,latePaid:false});}
   if(rail)(S.rails??=[]).push({...rail,uid:++S.entityId});
   S.next=0;
  }

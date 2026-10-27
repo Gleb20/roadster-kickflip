@@ -1,0 +1,94 @@
+import {createMusic} from './music.js?v=4.13.0';
+import {BUNDLED} from './content-bundle.js?v=4.13.0';
+import {validatePackage,pickByRarity} from './content-package.js?v=4.13.0';
+import {portablePackage,importPortable,replaceMaterial,materialBytes,packageIdentity} from './studio-package.js?v=4.13.0';
+const $=id=>document.getElementById(id),node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
+const clean=p=>{const x=structuredClone(p);delete x.contentHash;delete x.gameplayHash;return x;};
+let draft=clean(BUNDLED),files={},tab='biomes',selected={type:'biomes',id:draft.biomes[0].id},dirty=false,frame=null,frameReady=false,db=null,busy=false,revision=0,previewRevision=-1;
+let audioMix=null,audioContext=null;
+const urls=new Map(),original=clean(BUNDLED);let replacing=null;
+function error(e){$('error').textContent=(e?.message||String(e))+'\nYour current draft is still available. Choose another file or correct the fields and retry.';$('error').hidden=false;$('error').focus();}
+function status(text){$('notice').textContent=text;}
+function clearError(){$('error').hidden=true;}
+async function task(work){if(busy)return;busy=true;clearError();try{await work();}catch(e){error(e);}finally{busy=false;}}
+function dbRequest(mode,action){return new Promise((resolve,reject)=>{const tx=db.transaction('drafts',mode),store=tx.objectStore('drafts');let result;const request=action(store);request.onsuccess=()=>{result=request.result};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('Local save was interrupted'));});}
+async function persist(){if(!db){$('draft-status').textContent='Draft in memory · export to keep it';return;}try{await dbRequest('readwrite',s=>s.put({package:draft,files,at:Date.now()},'current'));$('draft-status').textContent='Draft saved on this Mac';}catch{status('The browser could not save this draft. Your edits remain in this tab; export a package before closing it.');$('draft-status').textContent='Export needed · local save unavailable';}}
+function changed(){dirty=true;revision++;$('draft-status').textContent='Saving draft…';$('preview-status').textContent='Draft changed. Preview again to see this revision.';void persist();}
+function materialUrl(path){if(!files[path])return new URL('../'+path,import.meta.url).href;if(!urls.has(path)){const binary=atob(files[path]),bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));urls.set(path,URL.createObjectURL(new Blob([bytes],{type:draft.resources[path].mediaType})));}return urls.get(path);}
+function invalidate(path){if(urls.has(path))URL.revokeObjectURL(urls.get(path));urls.delete(path);}
+function choose(type,id){selected={type,id};renderCatalog();renderInspector();}
+function field(label,value,update,{multiline=false}={}){const wrapper=node('label',label),input=node(multiline?'textarea':'input');input.value=value;if(multiline)input.rows=3;input.addEventListener('change',()=>{update(input.value);changed();renderCatalog();});wrapper.append(input);return wrapper;}
+function button(label,action,cls){const b=node('button',label,cls);b.type='button';b.onclick=()=>task(action);return b;}
+function definitionList(items){const dl=node('dl');for(const [key,value] of items)dl.append(node('dt',key),node('dd',String(value)));return dl;}
+function materialLink(path){const b=button(path,async()=>{tab=draft.resources[path]?.kind==='audio'?'audio':'images';choose(tab,path);renderNavigation();},'material-link');return b;}
+function renderNavigation(){for(const e of document.querySelectorAll('[data-tab]'))e.setAttribute('aria-pressed',String(e.dataset.tab===tab));$('biome-count').textContent=draft.biomes.length;$('enemy-count').textContent=draft.obstacles.length;$('image-count').textContent=Object.values(draft.resources).filter(r=>r.kind==='image').length;$('audio-count').textContent=Object.values(draft.resources).filter(r=>r.kind==='audio').length;}
+function renderCatalog(){
+ const query=$('search').value.toLowerCase(),catalog=$('catalog');catalog.replaceChildren();$('catalog-title').textContent=({biomes:'Biomes',obstacles:'Enemies',images:'Images',audio:'Audio'})[tab];
+ const records=tab==='biomes'?draft.biomes.map(b=>({id:b.id,title:b.name,tag:'SCENE + MUSIC',path:b.scenery.layers.flatMap(l=>l.resources)[0]})):tab==='obstacles'?draft.obstacles.map(o=>({id:o.id,title:o.displayName,tag:o.rarity.toUpperCase(),path:draft.assets[o.visual.assets[0]]?.file})):Object.entries(draft.resources).filter(([,r])=>r.kind===(tab==='images'?'image':'audio')).map(([path,r])=>({id:path,title:path.split('/').at(-1),tag:r.kind==='image'?r.width+' × '+r.height:(r.bytes/1024).toFixed(0)+' KB',path}));
+ let count=0;
+ for(const record of records){if(!`${record.id} ${record.title}`.toLowerCase().includes(query))continue;count++;const row=node('button',undefined,'row');row.type='button';row.dataset.id=record.id;row.setAttribute('aria-pressed',String(selected?.type===tab&&selected.id===record.id));
+  if(record.path&&draft.resources[record.path]?.kind==='image'){const img=node('img');img.src=materialUrl(record.path);img.alt='';img.loading='lazy';row.append(img);}else row.append(node('span',tab==='audio'?'AUDIO':'ART','placeholder'));
+  const text=node('span');text.append(node('strong',record.title),node('small',record.id));row.append(text,node('span',record.tag,'tag'));row.onclick=()=>choose(tab,record.id);catalog.append(row);
+ }
+ if(!count)catalog.append(node('p','No matching materials. Try a shorter name or clear the search.','empty'));
+}
+function renderInspector(){
+ const box=$('inspector');box.replaceChildren();if(!selected)return;$('selection-kind').textContent=({biomes:'BIOME',obstacles:'ENEMY',images:'PNG',audio:'AUDIO'})[selected.type];
+ if(selected.type==='obstacles'){
+  const o=draft.obstacles.find(o=>o.id===selected.id);if(!o)return;box.append(node('h2',o.displayName),node('code',o.id));
+  const path=draft.assets[o.visual.assets[0]]?.file;if(path)box.append(art(path));else box.append(node('div','This object is drawn by a game renderer; inspect it in the assembly preview.','info'));
+  box.append(field('Collection name',o.displayName,v=>o.displayName=v),field('Description',o.description,v=>o.description=v,{multiline:true}));
+  const label=node('label','Rarity · relative weight inside the eligible pool'),select=node('select');select.id='enemy-rarity';for(const [id,weight] of Object.entries(draft.rarities)){const option=node('option',`${id} · weight ${weight}`);option.value=id;option.selected=o.rarity===id;select.append(option);}select.onchange=()=>{o.rarity=select.value;changed();renderCatalog();};label.append(select);box.append(label);
+  box.append(definitionList([['World size',`${o.w} × ${o.h}`],['Anchor',o.anchor],['Placement',o.placement],['Biome pool',o.biomes==='all'?'All':o.biomes.join(', ')],['Collision',o.collision],['Renderer',o.visual.renderer+' / '+o.visual.key]]));
+  box.append(node('p','Rarity applies after biome, geometry and safety filters. Two identical ground encounters prevent a third immediate repeat. Forced safe fallback patterns can bypass weights.','info'));
+  for(const id of o.visual.assets)box.append(materialLink(draft.assets[id].file));
+  const samples=node('div',undefined,'samples');box.append(button('Sample 200 eligible choices',async()=>{const biome=$('scene-biome').value,pool=draft.obstacles.filter(x=>x.biomes==='all'||x.biomes.includes(biome)),counts={};for(let i=0;i<200;i++){const x=pickByRarity(pool,Math.random,draft.rarities);counts[x.id]=(counts[x.id]||0)+1;}samples.textContent='Weight sample only; not a gameplay forecast.\n'+Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([id,n])=>id+': '+n).join('\n');}),samples);
+ }else if(selected.type==='biomes'){
+  const b=draft.biomes.find(b=>b.id===selected.id);if(!b)return;box.append(node('h2',b.name),node('code',b.id));box.append(definitionList([['Scene profile',b.scenery.profile],['Owns','Background, floor, music'],['HUD','Shared across all biomes'],['Ground pool',b.groundPool?.join(', ')||'All eligible enemies']]));
+  box.append(node('p','The existing scene profile controls positions, parallax, crops and assembly choreography. Replace its material files without moving atlas cells. New choreography needs an engine profile.','info'));
+  for(const l of b.scenery.layers){const d=node('details'),s=node('summary',`${l.id} · ${l.resources.length} materials`);d.append(s);for(const path of l.resources)d.append(materialLink(path));box.append(d);}
+  const music=node('h3','Music');box.append(music);const track=draft.music.tracks[b.id];
+  box.append(node('p',Object.keys(track).length===1?'Full-loop mode: bed carries the complete arrangement.':'Stem mode: bed, lead, bass and drums stay aligned.'));
+  for(const [role,path] of Object.entries(track)){box.append(node('p',role.toUpperCase()),materialLink(path));}
+  box.append(button(Object.keys(track).length===1?'Use shipped stem roles':'Use bed as a full loop',async()=>{draft.music.tracks[b.id]=Object.keys(track).length===1?structuredClone(original.music.tracks[b.id]):{bed:track.bed};changed();renderInspector();status('Music roles changed in the draft. Replace the bed with a prepared full mix when using full-loop mode.');}));
+  const guide=node('a','Preparation rules');guide.href='#music-guide';box.append(guide);
+ }else{
+  const path=selected.id,r=draft.resources[path];if(!r)return;box.append(node('h2',path.split('/').at(-1)),node('code',path));
+  if(r.kind==='image'){box.append(art(path));const backgrounds=node('div',undefined,'backdrops');for(const bg of ['checker','light','dark'])backgrounds.append(button(bg,async()=>{box.querySelector('.material-art').dataset.bg=bg}));box.append(backgrounds);}
+  else{const audio=node('audio');audio.controls=true;audio.preload='none';audio.src=materialUrl(path);box.append(audio);}
+  box.append(definitionList([['Format',r.mediaType],['File size',`${(r.bytes/1024).toFixed(1)} KB`],...(r.kind==='image'?[['Pixels',`${r.width} × ${r.height}`],['Layout','Fixed · preserve padding/cells']]:[['Loop grid','128 BPM · 4/4'],['Music length','60.000 seconds / 32 bars']]),['Digest',r.sha256.slice(0,16)+'…']]));
+  if(r.kind==='image')box.append(node('p',`Upload a PNG at exactly ${r.width} × ${r.height} pixels. Preserve transparent padding, proportions and atlas cell positions. This does not resize collision geometry. Wrong dimensions are rejected. Alpha content must be visually checked on light and dark backgrounds.`, 'info'));
+  else box.append(node('p','Music loops must decode to 60 seconds. Upload MP3; keep WAV originals outside the runtime package. Replacements are measured and must still be auditioned. Effects retain their own duration.','info'));
+  const actions=node('div',undefined,'actions');actions.append(button('Download material',async()=>{download(new Blob([await materialBytes(path,draft,files)],{type:r.mediaType}),path.split('/').at(-1));status('Downloaded '+path.split('/').at(-1));}),button('Replace file…',async()=>{replacing=path;$('material-file').accept=r.kind==='image'?'.png,image/png':'.mp3,audio/mpeg';$('material-file').click();}));
+  if(files[path])actions.append(button('Use shipped original',async()=>{if(!original.resources[path])throw Error('No shipped original for this path');delete files[path];draft.resources[path]=structuredClone(original.resources[path]);invalidate(path);changed();renderCatalog();renderInspector();}));box.append(actions);
+  const used=draft.obstacles.filter(o=>o.visual.assets.some(id=>draft.assets[id].file===path));if(used.length){box.append(node('h3','Used by'));for(const o of used)box.append(button(o.displayName,async()=>{tab='obstacles';choose(tab,o.id);renderNavigation();},'material-link'));}
+ }
+}
+function art(path){const wrap=node('div',undefined,'material-art'),img=node('img');img.src=materialUrl(path);img.alt='Material preview';wrap.append(img);return wrap;}
+function download(blob,name){const url=URL.createObjectURL(blob),a=node('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+function sceneSelectors(){const bio=$('scene-biome'),enemy=$('scene-enemy'),oldBio=bio.value,oldEnemy=enemy.value;bio.replaceChildren();enemy.replaceChildren(node('option','No enemy'));enemy.firstChild.value='';for(const b of draft.biomes){const e=node('option',b.name);e.value=b.id;bio.append(e);}for(const o of draft.obstacles){const e=node('option',o.displayName);e.value=o.id;enemy.append(e);}if(draft.biomes.some(b=>b.id===oldBio))bio.value=oldBio;if(draft.obstacles.some(o=>o.id===oldEnemy))enemy.value=oldEnemy;}
+function view(){if(frameReady)frame.contentWindow.postMessage({type:'TESLA_PREVIEW_VIEW',biome:$('scene-biome').value,obstacle:$('scene-enemy').value},location.origin);}
+async function preview(){const errors=validatePackage(draft);if(errors.length)throw Error(errors.join('\n'));const id=await packageIdentity(draft);$('preview-status').textContent='Preparing draft '+id.contentHash.slice(0,10)+'…';frameReady=false;previewRevision=revision;const next=node('iframe');next.title='Production-rendered draft preview';next.setAttribute('sandbox','allow-scripts allow-same-origin');next.src=new URL('../index.html?content-preview=1',location.href).href;frame=next;$('stage').replaceChildren(next);}
+addEventListener('message',event=>{
+ if(event.source!==frame?.contentWindow||event.origin!==location.origin)return;
+ if(event.data?.type==='TESLA_PREVIEW_REQUEST')frame.contentWindow.postMessage({type:'TESLA_PREVIEW_PACKAGE',package:draft,files},location.origin);
+ if(event.data?.type==='TESLA_PREVIEW_READY'){frameReady=true;view();$('preview-status').textContent=previewRevision===revision?'Draft ready · production renderer · scores and saves disabled':'Draft changed during loading. Preview again for the latest revision.';status('Preview ready. Compare the raw material with its actual game assembly.');}
+ if(event.data?.type==='TESLA_PREVIEW_ERROR')error(Error(event.data.message));
+});
+$('preview').onclick=()=>task(preview);$('scene-biome').onchange=view;$('scene-enemy').onchange=view;
+$('play-draft').onclick=()=>task(async()=>{if(!frameReady||previewRevision!==revision){await preview();status('Wait for the preview to finish, then choose Play full cycle again.');return;}frame.contentWindow.postMessage({type:'TESLA_PREVIEW_PLAY'},location.origin);frame.focus();$('preview-status').textContent='Playing the full cycle from Spaceport · Space hold/release · Shift thrust · no saves or score submission';});$('stop-draft').onclick=view;
+for(const e of document.querySelectorAll('[data-tab]'))e.onclick=()=>{tab=e.dataset.tab;renderNavigation();renderCatalog();};$('search').oninput=renderCatalog;
+$('export-package').onclick=()=>task(async()=>{status('Collecting and checking every material for a portable package…');const pack=await portablePackage(draft,files);download(new Blob([JSON.stringify(pack)],{type:'application/json'}),`tesla-jump-${draft.version}-draft.tjpack`);status('Portable package exported with all materials. Import it here to continue editing; release checks are still required.');});
+$('import-package').onclick=()=>$('package-file').click();$('package-file').onchange=()=>task(async()=>{const file=$('package-file').files[0];if(!file)return;status('Checking the complete package. Current draft stays in place until all checks pass…');if(file.size>140*1024*1024)throw Error('Choose a package below 140 MiB');const next=await importPortable(await file.text());for(const path of urls.keys())invalidate(path);draft=clean(next.package);files=next.files;tab='biomes';selected={type:tab,id:draft.biomes[0].id};changed();sceneSelectors();renderNavigation();renderCatalog();renderInspector();status('Package imported into the local draft. Preview it before preparing a release.');$('package-file').value='';});
+$('material-file').onchange=()=>task(async()=>{const file=$('material-file').files[0];if(!file||!replacing)return;status('Checking '+file.name+'…');const next=await replaceMaterial(draft,files,replacing,file);draft=next.package;files=next.files;invalidate(replacing);changed();renderCatalog();renderInspector();status(next.audioReport?`Audio replaced in draft: ${next.audioReport.duration.toFixed(3)} s, peak ${next.audioReport.peak.toFixed(3)}, RMS ${next.audioReport.rms.toFixed(3)}. Audition the seam and both biome transitions.`:'Material replaced in the draft. Preview it in the assembled scene before exporting.');$('material-file').value='';});
+addEventListener('beforeunload',event=>{if(dirty&&!db){event.preventDefault();event.returnValue='';}});
+async function init(){const errors=validatePackage(draft);if(errors.length)throw Error(errors.join('\n'));$('release').textContent=`PACKAGE ${draft.version} · SCHEMA ${draft.schemaVersion}`;sceneSelectors();renderNavigation();renderCatalog();renderInspector();status('Shipped content loaded. Select a material to inspect, download or replace.');try{db=await new Promise((resolve,reject)=>{const req=indexedDB.open('tesla-material-studio',1);req.onupgradeneeded=()=>req.result.createObjectStore('drafts');req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});const saved=await dbRequest('readonly',s=>s.get('current'));if(saved){$('restore-draft').hidden=false;$('restore-draft').onclick=()=>task(async()=>{const errors=validatePackage(saved.package);if(errors.length)throw Error(errors.join('\n'));draft=clean(saved.package);files=saved.files||{};dirty=true;revision++;selected={type:'biomes',id:draft.biomes[0].id};tab='biomes';sceneSelectors();renderNavigation();renderCatalog();renderInspector();$('draft-status').textContent='Restored local draft';status('Saved draft restored. Preview to inspect its assembly.');});}}catch{$('draft-status').textContent='Local saving unavailable · export your work';}}
+void task(init);
+
+$('audition').onclick=()=>task(async()=>{
+ if(audioMix){audioMix.dispose();audioMix=null;await audioContext.close();audioContext=null;$('audition').textContent='Audition mix';status('Assembled music preview stopped.');return;}
+ audioContext=new (globalThis.AudioContext||globalThis.webkitAudioContext)();await audioContext.resume();
+ audioMix=createMusic({context:audioContext,destination:audioContext.destination,config:draft.music,fetcher:url=>{const root=new URL('../',import.meta.url).href,path=String(url).replace(root,'');return fetch(materialUrl(path));}});
+ audioMix.update({mode:'playing',score:30000,biome:{id:$('scene-biome').value}});audioMix.unlock();$('audition').textContent='Stop mix';status('Auditioning the full biome arrangement. Switch biomes to hear the shared-grid transition. Check harmony and loop seams by ear.');
+});
+$('scene-biome').addEventListener('change',()=>audioMix?.update({mode:'playing',score:30000,biome:{id:$('scene-biome').value}}));

@@ -1,3 +1,9 @@
+## Material Studio — 4.13.0
+
+Desktop workspace: [open Material Studio](https://gleb20.github.io/roadster-kickflip/studio/index.html?v=4.13.0). Inspect current materials and their size/layout rules, download originals or a portable package, replace files, edit descriptions/rarity and preview with the actual game renderer. Local drafts restore after reload; imports never publish to the game. Biomes own background/floor/music; HUD stays global. The music preparation guide is built into the studio.
+
+One canonical `content/package.json` compiles into the game/studio bundle. `npm run build:content`, `npm run check:content-package`, then normal tests/PWA checks. Extract an exported draft for review with `node scripts/import-content.mjs draft.tjpack`; it creates a new `/tmp/tesla-content-review-*` directory without overwriting the game. Changed gameplay content requires a new frozen server ruleset before release. Current common weights preserve existing behavior and ranking compatibility.
+
 ## TJ-004 — принято пользователем, 27 октября 2026
 
 Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.

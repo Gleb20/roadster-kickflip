@@ -1,4 +1,5 @@
-import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.12.1';
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {BOOSTERS,activeBooster,canCollectBooster} from './boosters.js?v=4.13.0';
 export const PICKUP_FLIGHT_SECONDS=.32;
 const clamp=value=>Math.max(0,Math.min(1,value));
 function riderTarget(p){return {x:Math.sin(p.angle||0)*35,y:p.y+65+Math.cos(p.angle||0)*35};}
@@ -15,7 +16,7 @@ export function collectionPose(start,p,age,reduced=false){
 export function createBoosterPainter(){
  const images=Object.fromEntries(Object.keys(BOOSTERS).map(id=>[id,new Image()]));
  let flights=[];
- function load(){return Promise.all(Object.entries(images).map(([id,img])=>new Promise((resolve,reject)=>{img.onload=()=>img.decode().then(resolve,reject);img.onerror=reject;img.src=new URL('../assets/boosters/holo-v431/'+id+'.png',import.meta.url).href;})));}
+ function load(){return Promise.all(Object.entries(images).map(([id,img])=>new Promise((resolve,reject)=>{img.onload=()=>img.decode().then(resolve,reject);img.onerror=reject;img.src=resourceUrl(new URL('../assets/boosters/holo-v431/'+id+'.png',import.meta.url).href);})));}
  function drawOrb(ctx,id,{x,y,scale,alpha=1,spin=1}){
    const r=29*scale;ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);
    const glow=ctx.createRadialGradient(0,0,r*.3,0,0,r*1.6);glow.addColorStop(0,BOOSTERS[id].color+'40');glow.addColorStop(1,BOOSTERS[id].color+'00');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(0,0,r*1.6,0,Math.PI*2);ctx.fill();

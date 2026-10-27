@@ -1,3 +1,7 @@
+## TJ-005 / 4.13.0 — bounded client inverse
+
+Parent is 477a73c1bbd8f9eb5b61191c6c5e31b9fe7f3e93 / 4.12.1. Reverse only this client/studio/content delta in an isolated checkout, then publish with a fresh cache identity. Keep accepted records, IndexedDB outbox, local collection/preferences and all 19 frozen server versions. No backend migration or rollback is needed because default equal rarity retains the exact frozen simulation. The original dirty checkout/index remains untouched. [Evidence](docs/verification/2026-10-27-tj005-v4130/README.md).
+
 ## TJ-004 — принято пользователем, 27 октября 2026
 
 Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.

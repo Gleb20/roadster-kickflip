@@ -1,0 +1,8 @@
+// Extract a portable studio draft into a NEW review directory; never overwrite a game.
+import {readFile,mkdir,writeFile} from 'node:fs/promises';import {resolve,dirname} from 'node:path';import {randomUUID} from 'node:crypto';
+import {validatePackage} from '../src/content-package.js';import {decodeBytes,verifyMaterial} from '../src/studio-package.js';
+const file=process.argv[2];if(!file)throw Error('Usage: node scripts/import-content.mjs draft.tjpack');
+const bytes=await readFile(file);if(bytes.length>140*1024*1024)throw Error('Package exceeds 140 MiB');const pack=JSON.parse(bytes.toString());if(pack.format!=='tesla-materials-1')throw Error('Unsupported portable format');const errors=validatePackage(pack.package);if(errors.length)throw Error(errors.join('\n'));
+if(!pack.files||Object.keys(pack.files).length!==Object.keys(pack.package.resources).length)throw Error('Incomplete resource set');
+const materials=[];for(const [path,r] of Object.entries(pack.package.resources)){const bytes=decodeBytes(pack.files[path]);await verifyMaterial(path,r,bytes,{decode:false});materials.push([path,bytes]);}
+const output=resolve('/tmp/tesla-content-review-'+randomUUID());await mkdir(output,{recursive:false});for(const [path,bytes] of materials){const target=resolve(output,path);await mkdir(dirname(target),{recursive:true});await writeFile(target,bytes);}await mkdir(output+'/content');await writeFile(output+'/content/package.json',JSON.stringify(pack.package,null,2)+'\n');console.log(output+'\nDraft extracted and hashes verified. Review/decode media, compare against the game, then run build:content and the normal release checks. Gameplay changes require a new frozen server ruleset.');

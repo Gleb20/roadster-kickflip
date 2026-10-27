@@ -1,8 +1,9 @@
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
 /** Image-generated cutout, kept separate from deterministic rail geometry. */
 export function createRailPainter(){
  const image=new Image();
  return {
-  load(){image.src=new URL('../assets/rails/v440/rail.png',import.meta.url).href;return image.decode();},
+  load(){image.src=resourceUrl(new URL('../assets/rails/v440/rail.png',import.meta.url).href);return image.decode();},
   draw(ctx,rails,{px,ground,scale}){for(const r of rails){const x=px+r.x*scale,w=r.w*scale;if(x+w< -10||x>ctx.canvas.width)continue;// Preserve the photographed caps/posts and190-unit vertical geometry.
    // Only the clear middle span stretches horizontally for the discrete widths.
    const h=720*scale*image.height/image.width,cap=180*scale,sourceCap=image.width/4,y=ground-r.h*scale;

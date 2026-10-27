@@ -1,4 +1,4 @@
-import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.12.1';
+import {tutorialLesson,TUTORIAL_LESSONS} from './tutorial.js?v=4.13.0';
 
 const COPY={
  jump:['HOLD. RELEASE. JUMP.','Hold the road, then release to clear the car.'],

@@ -1,4 +1,4 @@
-import {COLLECTION_COPY} from './collection-copy.js?v=4.12.1';
+import {COLLECTION_COPY} from './collection-copy.js?v=4.13.0';
 
 export function createCollectionUI({store,definitions,preview,beforeOpen,afterClose}){
  const dialog=document.getElementById('collection-dialog'),grid=document.getElementById('collection-grid'),detail=document.getElementById('collection-detail');

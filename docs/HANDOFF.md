@@ -1,3 +1,9 @@
+## TJ-005 / 4.13.0 — verified candidate
+
+Desktop Material Studio and a shared immutable content contract are implemented. Current assets and equal common weights retain the exact 4.11.0 server simulation. The studio supports current-library inspection, original/portable export, transactional upload/import, local draft restore, production-rendered preview, rarity edits and full-loop/stem audition. Biome affects background/floor/music; HUD remains shared. Publishing remains the coordinated verified release path; draft import cannot mutate the live game. Existing scene profiles keep fixed pixel layouts; a universal compositor/cloud admin is outside this card.
+
+300 game tests, 16 server tests and all 19 frozen manifests pass. The desktop import/export/replacement workflow and mobile/offline boot pass 21 browser checks. Nine upgrade checks cover incomplete-package refusal and data preservation; the known closed-tab activation boundary reproduces. Complete natural attempts at 81.125/102.758 seconds retain exact snapshots/replays against frozen 4.11.0. No backend/data change or physical-phone acceptance is claimed. [Decisions](planning/TJ-005-content.md), [evidence](verification/2026-10-27-tj005-v4130/README.md). Next independent card is TJ-006; TJ-D01/TJ-D02 remain separate.
+
 ## TJ-004 — принято пользователем, 27 октября 2026
 
 Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.

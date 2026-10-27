@@ -46,7 +46,8 @@ self.addEventListener('fetch',event=>{
   const cache=await caches.open(CACHE);
   // Navigation uses a coherent cached shell. Update discovery/activation is a
   // separate operation; a newer network HTML must not consume old cached art.
-  const cached=await cache.match(appNavigation?new URL('index.html',ROOT).href:request);
+  const studioNavigation=request.mode==='navigate'&&(url.pathname===base.pathname+'studio/'||url.pathname===base.pathname+'studio/index.html');
+  const cached=await cache.match(appNavigation?new URL('index.html',ROOT).href:studioNavigation?new URL('studio/index.html',ROOT).href:request);
   return cached||fetch(request);
  })());
 });

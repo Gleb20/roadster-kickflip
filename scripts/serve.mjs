@@ -5,7 +5,7 @@ const root = resolve(import.meta.dirname, '..');
 const mime = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.png':'image/png', '.json':'application/json','.webmanifest':'application/manifest+json','.mp3':'audio/mpeg'};
 createServer(async (req, res) => {
   const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-  const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+  const file = resolve(root, '.' + (pathname.endsWith('/') ? pathname+'index.html' : pathname));
   if (!file.startsWith(root + sep)) { res.writeHead(403).end(); return; }
   try { const body = await readFile(file); res.writeHead(200, {'Content-Type':mime[extname(file)] || 'application/octet-stream','Cache-Control':'no-store'}); res.end(body); }
   catch {res.writeHead(404).end('Not found');}

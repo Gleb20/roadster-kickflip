@@ -1,4 +1,5 @@
-import {MUSIC} from './music-content.js?v=4.12.1';
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {MUSIC} from './music-content.js?v=4.13.0';
 
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
 const smooth=(a,b,v)=>{const x=clamp((v-a)/(b-a));return x*x*(3-2*x);};
@@ -64,7 +65,7 @@ export function createMusic({context,destination,fetcher=globalThis.fetch,config
   if(disposed||groups.has(id)||loads.has(id)||!fetcher)return;
   requests++;const tracks=config.tracks[id];
   const work=Promise.all(Object.entries(tracks).map(async([layer,file])=>{
-   const response=await fetcher(new URL('../'+file,import.meta.url));if(!response.ok)throw Error('Music file unavailable');
+   const response=await fetcher(resourceUrl(new URL('../'+file,import.meta.url)));if(!response.ok)throw Error('Music file unavailable');
    const buffer=await context.decodeAudioData(await response.arrayBuffer());
    if(buffer.duration<config.seconds-.025)throw Error('Incomplete music buffer');
    return [layer,buffer];

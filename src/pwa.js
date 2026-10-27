@@ -1,3 +1,4 @@
+import {previewContent} from './content-runtime.js?v=4.13.0';
 /** Install support and automatic, coherent updates at a safe run boundary. */
 export function createPWA({mode,lock,canReload=()=>true,restart=()=>{}}){
  const install=document.getElementById('pwa-install'),guide=document.getElementById('pwa-guide'),status=document.getElementById('pwa-status');
@@ -29,7 +30,7 @@ export function createPWA({mode,lock,canReload=()=>true,restart=()=>{}}){
  }
  function checkpoint(){return applyUpdate(false);}
  async function init(){
-  if(!('serviceWorker' in navigator)||!isSecureContext){status.textContent='Installation and offline support are unavailable in this browser. The game still works online.';return;}
+  if(!(!previewContent&&'serviceWorker' in navigator)||!isSecureContext){status.textContent='Installation and offline support are unavailable in this browser. The game still works online.';return;}
   navigator.serviceWorker.addEventListener('message',event=>{
    if(event.data?.type==='UPDATE_BLOCKED')release();
    if(event.data?.type==='OFFLINE_READY'){offlineReady=true;showStatus();}

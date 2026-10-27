@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla Jump — User Flow Report</title>
+<style>
+  :root{--ink:#111;--muted:#666;--line:#ddd;--accent:#0b5fff;--ok:#0a7d33;--warn:#b45309;--bad:#b91c1c;--bg:#fafafa;--card:#fff}
+  *{box-sizing:border-box;margin:0}
+  body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);padding:48px 24px;max-width:880px;margin:0 auto}
+  h1{font-size:28px;letter-spacing:-.02em}
+  h2{font-size:20px;margin:48px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:28px 0 12px}
+  .meta{color:var(--muted);font-size:14px;margin:6px 0 4px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+  .chip{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+  .flow{list-style:none;padding:0;margin:16px 0}
+  .flow>li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative}
+  .flow>li+li{margin-top:34px}
+  .flow>li+li::before{content:"";position:absolute;top:-27px;left:32px;width:2px;height:20px;background:var(--accent)}
+  .flow>li+li::after{content:"";position:absolute;top:-12px;left:28px;border:5px solid transparent;border-top-color:var(--accent)}
+  .step-n{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:1px 9px;margin-right:8px;vertical-align:1px}
+  .step-t{font-weight:650}
+  .step-d{color:var(--muted);font-size:14px;margin-top:6px}
+  .cta{font-size:13px;margin-top:8px}
+  .cta b{color:var(--ok)}
+  .branch{font-size:13px;margin-top:8px;padding:8px 12px;background:#f4f6ff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+  th{background:var(--bg);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .pass{color:var(--ok);font-weight:650}.warn{color:var(--warn);font-weight:650}.fail{color:var(--bad);font-weight:650}
+  .overflow{overflow-x:auto}
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  @media print{body{background:#fff;padding:0}.flow>li{break-inside:avoid}}
+</style>
+</head>
+<body><h1>Tesla Jump — Material Studio flow report</h1><p class="meta">27 October 2026 · Desktop material inspection, round-trip and isolated preview</p><div class="skills"><span class="chip">flow-forms</span><span class="chip">flow-errors</span></div><h2>Summary</h2><p>A desktop workbench uses the same package contract and painters as the game. The user can inspect existing materials, download files, replace them, compare assembled results, then export a portable candidate. Draft import never publishes to the live game.</p><h2>Flow: Inspect → replace → preview → export</h2><ol class="flow"><li><span class="step-n">1</span><span class="step-t">Library and inspector</span><p class="step-d">Select a biome, enemy, PNG or audio file. Inspector shows source size, fixed layout and world geometry. Search preserves selection.</p><p class="cta">Primary action: <b>Replace file</b> → native file picker</p></li><li><span class="step-n">2</span><span class="step-t">Validate replacement</span><p class="step-d">Check hash, file type, dimensions and decoding. Music checks duration; hearing decides quality. A failure retains the current draft and points to the required format.</p><p class="cta">Primary action: <b>Choose a corrected file</b> → validated local draft</p></li><li><span class="step-n">3</span><span class="step-t">Assembly preview</span><p class="step-d">Production renderers display the chosen biome and enemy. A real unranked full-cycle run and production music mix are available. Preview disables persistence, online ranking and service-worker activation.</p><p class="cta">Primary action: <b>Preview draft</b> → isolated scene</p></li><li><span class="step-n">4</span><span class="step-t">Portable export and restore</span><p class="step-d">All package descriptors and resource bytes export together. Import validates completely before replacing the draft. IndexedDB offers explicit restoration after reload.</p><p class="cta">Primary action: <b>Export package</b> → .tjpack download</p></li></ol><h3>Screen inventory</h3><table><tr><th>Surface</th><th>Purpose / primary action</th><th>States</th></tr><tr><td>Library</td><td>Browse and select current content</td><td>Loading; no search results; selected row</td></tr><tr><td>Inspector</td><td>Read rules; download / replace file</td><td>Atlas or standalone image; audio; bad file; replacement</td></tr><tr><td>Assembly</td><td>Preview actual game output</td><td>Empty; preparing; ready; stale; playing</td></tr><tr><td>Package actions</td><td>Export / atomic import</td><td>Collecting; invalid schema; incomplete file; success</td></tr></table><h3>Anti-pattern audit</h3><table><tr><th>Check</th><th>Verdict</th><th>Evidence</th></tr><tr><td>Inputs survive an import failure</td><td class="pass">PASS</td><td>Browser: bad PNG, MP3 and incompatible schema keep the current selection/draft</td></tr><tr><td>Reload loses unfinished work</td><td class="pass">PASS</td><td>Browser: edit rarity, reload, explicitly restore; rare value retained</td></tr><tr><td>Unclear constraints</td><td class="pass">PASS</td><td>Inspector shows 506 × 768 source layout and collision/world geometry; malformed upload rejected</td></tr><tr><td>Preview differs from production</td><td class="pass">PASS</td><td>Replacement diagnostic PNG reaches actual game sprite painter; scene screenshot inspected</td></tr><tr><td>Preview mutates records</td><td class="pass">PASS</td><td>No ranking requests; preview uses memory store; mobile production behavior checked separately</td></tr><tr><td>Semantic keyboard/screen-reader usability</td><td class="warn">NOT TESTED</td><td>Native controls, persistent labels, alert/status regions in source; no human screen-reader test</td></tr></table><h2>Open questions &amp; parked items</h2><ul><li>Human acceptance on the user's Mac remains open.</li><li>Existing scene profiles preserve authored crop/layout bindings; new compositor/choreography and authenticated publishing remain subsequent cards.</li><li>Harmonic compatibility and subjective mix quality require listening; duration/hash checks cannot prove seamless music.</li></ul><footer>Reference patterns: flow-forms and flow-errors. Evidence: Chromium automation and screenshot inspection; not human usability acceptance.</footer></body></html>

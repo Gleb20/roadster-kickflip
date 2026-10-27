@@ -5,7 +5,7 @@ import {MUSIC} from '../src/music-content.js';
 import {ASSETS} from '../src/content.js';
 import {FACTORY_ASSETS} from '../src/factory.js';
 const root=new URL('../',import.meta.url),pkg=JSON.parse(await readFile(new URL('package.json',root),'utf8'));
-const files=new Set(['index.html','style.css',...Object.values(ASSETS).map(a=>a.file),
+const files=new Set(['index.html','style.css','studio/index.html','studio/studio.css','content/package.json','content/rulesets.json',...Object.values(ASSETS).map(a=>a.file),
  'assets/characters/bezos-v247.png','assets/characters/katy-v247.png','assets/spaceport/spaceport-atlas.png','assets/roadster-flip/atlas.png',
  'manifest.webmanifest','icons/icon-192.png','icons/icon-512.png',
  'assets/ui/collection-mystery.png','assets/ui/ATTRIBUTION.md']);
@@ -24,7 +24,7 @@ files.add('assets/encounters/v400/ATTRIBUTION.md');
 const core=[];
 for(const file of [...files].sort()){
  const bytes=await readFile(new URL(file,root));
- core.push({url:file+(file.startsWith('src/')&&file.endsWith('.js')&&file!=='src/enemy-sprite-data.js'||file==='style.css'?'?v='+pkg.version:''),sha256:createHash('sha256').update(bytes).digest('hex')});
+ core.push({url:file+(file.startsWith('src/')&&file.endsWith('.js')&&file!=='src/enemy-sprite-data.js'||file==='style.css'||file==='studio/studio.css'?'?v='+pkg.version:''),sha256:createHash('sha256').update(bytes).digest('hex')});
 }
 const template=await readFile(new URL('scripts/sw-template.js',root),'utf8');
 const result=template.replace('__VERSION__',pkg.version).replace('__CORE__',JSON.stringify(core,null,1));

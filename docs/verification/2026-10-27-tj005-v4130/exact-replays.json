@@ -1,0 +1,22 @@
+[
+  {
+    "seed": 1705,
+    "seconds": 81.125,
+    "waves": 23,
+    "score": 15601,
+    "flips": 27,
+    "exactSnapshots": true,
+    "exactReplay": true,
+    "serverVerified": true
+  },
+  {
+    "seed": 93817,
+    "seconds": 102.75833333333333,
+    "waves": 30,
+    "score": 15757,
+    "flips": 34,
+    "exactSnapshots": true,
+    "exactReplay": true,
+    "serverVerified": true
+  }
+]

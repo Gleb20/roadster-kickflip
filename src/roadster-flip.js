@@ -1,3 +1,4 @@
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
 // Nine video-derived poses, normalized to 256 x 160 with one centre anchor.
 // The final key closes the loop on the original upright frame.
 const keys = [0, .10, .25, .35, .43, .53, .67, .78, .92, 1];
@@ -64,7 +65,7 @@ export function createFlipSprite() {
     load() {
       return new Promise((resolve, reject) => {
         image.onload = ()=>{bakeRollingLayers();resolve();}; image.onerror = reject;
-        image.src = new URL('../assets/roadster-flip/atlas.png', import.meta.url).href;
+        image.src = resourceUrl(new URL('../assets/roadster-flip/atlas.png', import.meta.url).href);
       });
     },
     drawFrame(ctx, frame, x, y, width = 108) {

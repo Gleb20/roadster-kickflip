@@ -1,4 +1,5 @@
-import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.12.1';
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {createFactoryProduction,FACTORY_MODELS,FACTORY_COLORS,assemblyAction,FACTORY_DEPTH,robotIdlePose} from './factory-production.js?v=4.13.0';
 const equipment=['rear-wall','machine-v362','assembly-conveyor-cutout','assembly-rack-cutout','assembly-robot-base','assembly-robot-upper','assembly-robot-fore','assembly-tool-grip','assembly-tool-paint'];
 export const FACTORY_ASSETS=Object.freeze([...equipment,...FACTORY_MODELS.flatMap(model=>[
  ...(model==='cybertruck'?['steel']:FACTORY_COLORS).flatMap(color=>Array.from({length:5},(_,n)=>`${model}-${color}-${n}`)),
@@ -35,7 +36,7 @@ export function createFactoryRenderer({random=Math.random}={}){
  }
  return {
   async load(){await Promise.all(FACTORY_ASSETS.map(async id=>{
-   const img=new Image();img.src=`assets/factory/${id}.png`;await img.decode();
+   const img=new Image();img.src=resourceUrl(`assets/factory/${id}.png`);await img.decode();
    images.set(id,id==='rear-wall'?grade(img,.4,.30,32):id==='machine-v362'||id==='assembly-rack-cutout'?grade(img,.55,.47,18):grade(img,.62,.60,12));
   }));grain=concreteGrain();ready=true;},
   get ready(){return ready;},get production(){return production.state;},

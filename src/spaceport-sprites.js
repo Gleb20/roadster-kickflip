@@ -1,3 +1,4 @@
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
 // One alpha atlas; all frames are cropped once, kept at a shared animation scale.
 const CELLS = [
   [100,8,120,301], [320,8,307,304], [633,116,307,193], [946,220,300,90],
@@ -10,7 +11,7 @@ export function createSpaceportSprites(){
   const frames=[];
   return {
     async load(){
-      const image=new Image();image.src=new URL('../assets/spaceport/spaceport-atlas.png',import.meta.url).href;await image.decode();
+      const image=new Image();image.src=resourceUrl(new URL('../assets/spaceport/spaceport-atlas.png',import.meta.url).href);await image.decode();
       for(const [x,y,w,h] of CELLS){
         const c=document.createElement('canvas');c.width=w;c.height=h;
         const g=c.getContext('2d');g.drawImage(image,x,y,w,h,0,0,w,h);

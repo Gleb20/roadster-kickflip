@@ -1,4 +1,5 @@
-import {flipFrameAt} from './roadster-flip.js?v=4.12.1';
+import {previewContent} from './content-runtime.js?v=4.13.0';
+import {flipFrameAt} from './roadster-flip.js?v=4.13.0';
 
 const screen = document.getElementById('loading-screen');
 const game = document.getElementById('game');
@@ -101,10 +102,11 @@ export const loading = {
     clearTimeout(timeout);
     clearTimeout(showTimer);
     status.textContent = 'Flight systems ready.';
+    if(previewContent){reveal();return;}
     // A stored visit is only an intro preference; resource readiness still comes
     // from load/decode/bake and the complete first scene prepared by main.js.
     const firstVisit = !returning && !materialsFromCache();
-    try { localStorage.setItem(visitKey, '1'); } catch {}
+    try { if(!previewContent)localStorage.setItem(visitKey, '1'); } catch {}
     if (firstVisit) show();
     const remaining = shownAt === null ? 0 : Math.max(0,
       (firstVisit ? firstVisitDuration : 220) - (performance.now() - shownAt));
@@ -134,6 +136,7 @@ function reveal() {
     const restoreFocus = screen.contains(document.activeElement);
     screen.hidden = true;
     game.inert = false;
+  if(previewContent)parent.postMessage({type:'TESLA_PREVIEW_READY'},location.origin);
     game.removeAttribute('aria-hidden');
     game.dispatchEvent(new Event('tesla-ready'));
     if (restoreFocus) document.getElementById('start').focus({preventScroll: true});
@@ -158,4 +161,4 @@ logTimer = setInterval(() => {
 }, 340);
 
 // Start the tiny vector instrument before requesting the game's module graph.
-import('./main.js?v=4.12.1').catch(fail);
+import('./main.js?v=4.13.0').catch(fail);

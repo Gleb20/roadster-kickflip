@@ -1,12 +1,13 @@
-import {createTutorial,tutorialScene,advanceTutorial,finishTutorial} from './tutorial.js?v=4.12.1';
-import {validateEncounter} from './encounter-routes.js?v=4.12.1';
-import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.12.1';
-import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.12.1';
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.12.1';
-import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.12.1';
-import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.12.1';
-import {createDirector} from './director.js?v=4.12.1';
-import {createRandom} from './random.js?v=4.12.1';
+import {CONTENT_ID} from './content-runtime.js?v=4.13.0';
+import {createTutorial,tutorialScene,advanceTutorial,finishTutorial} from './tutorial.js?v=4.13.0';
+import {validateEncounter} from './encounter-routes.js?v=4.13.0';
+import {createGrind,advanceRail,jumpFromRail} from './rails.js?v=4.13.0';
+import {createBoosters,collectBooster,advanceBoosters,activeBooster,offerBooster} from './boosters.js?v=4.13.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.13.0';
+import {createFlight,resetAirRotation,launch,advanceFlight,createEconomy,advanceEconomy,advanceStreak,passObstacle,settleLanding,rewardAction,createPace,advancePace,stumble,sweptCollision,nearWindow} from './gameplay.js?v=4.13.0';
+import {createFall,beginFall,advanceFall,hastenFall,fallPose} from './fall.js?v=4.13.0';
+import {createDirector} from './director.js?v=4.13.0';
+import {createRandom} from './random.js?v=4.13.0';
 export const RULESET='roadster-v4.11.0',RUN_STEP=1/120;
 export const RUN_COMMANDS=Object.freeze(['primary-down','primary-up','primary-cancel','thrust-on','thrust-off','cancel','experienced-start','tutorial-start','tutorial-skip']);
 const MAX_RECORDED_TICKS=120*60*60,MAX_RECORDED_EVENTS=24000;
@@ -106,7 +107,7 @@ export function createRun({seed=0,record=true,reducedMotion=false}={}){
  function snapshot(){return structuredClone({seed,S,P,E,pace,F,Q,G,T,input,random:random.state,director:director.state,lateId,lastLanding});}
  function restore(saved){seed=saved.seed;for(const [a,b] of [[T,saved.T||createTutorial()],[G,saved.G],[Q,saved.Q],[S,saved.S],[P,saved.P],[E,saved.E],[pace,saved.pace],[F,saved.F],[input,saved.input],[director.state,saved.director]])Object.assign(a,structuredClone(b));if(saved.pace.scoreDriven===undefined){pace.scoreDriven=false;pace.distance=S.distance;}random=createRandom(seed);random.restore(saved.random);lateId=saved.lateId;lastLanding=structuredClone(saved.lastLanding);events=[];}
  function replay(){return recordable?{format:1,ruleset:RULESET,seed,ticks:S.tick,events:log.map(e=>[...e])}:null;}
- return {S,P,E,pace,F,Q,G,T,input,director,reset,jump,command,step,sync,snapshot,restore,replay,drainEvents(){const next=events;events=[];return next;},get lastLanding(){return lastLanding;},get seed(){return seed;},get recordable(){return recordable;}};
+ return {contentVersion:CONTENT_ID,S,P,E,pace,F,Q,G,T,input,director,reset,jump,command,step,sync,snapshot,restore,replay,drainEvents(){const next=events;events=[];return next;},get lastLanding(){return lastLanding;},get seed(){return seed;},get recordable(){return recordable;}};
 }
 export function validateReplay(value){
  if(!value||value.format!==1||value.ruleset!==RULESET||!Number.isInteger(value.seed)||value.seed<0||value.seed>0xffffffff||!Number.isInteger(value.ticks)||value.ticks<1||value.ticks>MAX_RECORDED_TICKS||!Array.isArray(value.events)||value.events.length>MAX_RECORDED_EVENTS)throw Error('Invalid or unsupported replay');

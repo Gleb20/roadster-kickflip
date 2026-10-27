@@ -1,4 +1,4 @@
-import {obstacleDefinition} from './content.js?v=4.12.1';
+import {obstacleDefinition} from './content.js?v=4.13.0';
 // Simulation uses logical CSS units. Rendering pixel ratio never changes gameplay.
 export const STEP = 1 / 120;
 export const START_SPEED = 360;

@@ -1,3 +1,4 @@
+import {resourceUrl} from './content-runtime.js?v=4.13.0';
 // One photographic atlas, decoded and trimmed once; ground anchors never depend on padding.
 const CELLS = Object.freeze({
   v8: [0, 70, 591, 250],
@@ -51,7 +52,7 @@ export function createPhotoRenderer() {
   return {
     async load() {
       const image = new Image();
-      image.src = new URL('../obstacle-photos.png', import.meta.url).href;
+      image.src = resourceUrl(new URL('../obstacle-photos.png', import.meta.url).href);
       await image.decode();
       for (const [id, cell] of Object.entries(CELLS)) sprites.set(id, extract(image, cell));
     },

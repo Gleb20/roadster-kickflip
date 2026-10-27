@@ -1,3 +1,7 @@
+## TJ-005 / 4.13.0 — verified candidate
+
+Shared content contract and desktop Material Studio implemented; current two scenes, HUD, records and frozen replay rules preserved. Current rarities start common; editable weighted rarity is available for draft preview, with a gameplay-hash release gate. Full portable material round-trip, original downloads, file/layout checks, local draft restore and production render/music previews are covered. [Decisions](planning/TJ-005-content.md), [verification](verification/2026-10-27-tj005-v4130/README.md). Next independent card: TJ-006. Existing TJ-D01/TJ-D02 remain separate; the PWA closed-tab boundary reproduced during upgrade.
+
 ## TJ-004 — принято пользователем, 27 октября 2026
 
 Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.
@@ -182,7 +186,7 @@ ID постоянны и не переиспользуются; при изме�
 
 ### TJ-005 — пакет контента и совместимость
 
-**Статус:** предложено. Это ограниченное развитие существующего каталога, не переписывание игры.
+**Статус:** реализовано в кандидате 4.13.0. Решения пользователя 27 октября: общий совместимый формат; десктопная библиотека/выгрузка/импорт/предпросмотр; отдельная взвешенная редкость; биом меняет только фон, пол и музыку. [Решения и границы](planning/TJ-005-content.md).
 
 **Результат:** игра, предпросмотр и админка используют один проверяемый формат с постоянными ID: препятствия, ресурсы, биомы/слои, ссылки на реакции и музыку, тема. Описания сейчас лежат отдельно в `collection-copy.js`; редактор не должен создавать третий независимый справочник.
 

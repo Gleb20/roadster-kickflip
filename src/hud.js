@@ -1,4 +1,4 @@
-import {BOOSTERS} from './boosters.js?v=4.12.1';
+import {BOOSTERS} from './boosters.js?v=4.13.0';
 const MILES_PER_KM=.6213711922;
 export const mphFromKmh=value=>Math.max(0,value)*MILES_PER_KM;
 export function multiplierAppearance(value,meter){
