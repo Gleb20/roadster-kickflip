@@ -1,0 +1,13 @@
+{
+  "base": "19e42ad97efc499545fd266c7e05e3e27567711e",
+  "candidateRuntime": "43b9bea7961c2464e9de456602775fd8219e838e",
+  "patchSha256": "14cbf7476c924012692538e559938aeecea772d469d91b0f9a76ecbc426c6756",
+  "scope": "client files plus matching adaptive-audio/music-progression regression tests",
+  "forwardCandidateTests": 275,
+  "forwardCandidateChecks": "passed",
+  "reverseParentTests": 270,
+  "reverseParentChecks": "passed",
+  "parentDiffAfterReverse": "empty",
+  "frozenBackendChanged": false,
+  "publicRollbackNeedsFreshCacheVersion": true
+}
