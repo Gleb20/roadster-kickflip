@@ -1,0 +1,22 @@
+# TJ-004 / 4.12.0
+
+Base `19e42ad97efc499545fd266c7e05e3e27567711e` / published 4.11.4. User approved all four product decisions: score-driven instrumentation, full arrangement at 30,000, a smooth rhythmic biome handover, and light training at normal tempo. [Specification](../../planning/TJ-004-music.md).
+
+Only `src/music.js` playback and the read-only `main.js` sound snapshot have semantic runtime changes. Other source changes update cache-version URLs/metadata. Existing recordings, visuals, input, simulation, scoring, all 19 frozen verifiers and backend are unchanged. Ruleset remains `roadster-v4.11.0`.
+
+## Evidence
+
+- 275 game tests and syntax/content/types/PWA checks pass; 193 hashed offline resources (194 including the worker).
+- 55 local Chrome checks cover three viewports (440×956 touch, 844×390 touch, 1440×900), actual tutorial start/Skip, score stages, boost/release, both biome transitions on the shared bar grid, phase-preserving source bounds, pause/resume/Home, independent mute, hidden suspension/restore and offline reload/decode. No runtime errors or submitted scores. See `browser/checks.json`, `stages-*.json`; screenshots are retained locally in `/tmp/tesla-tj004-local-screenshots`.
+- Browser-decoded loops are exactly 60 seconds. Encoded seams are within their ordinary sample-step ranges. Five actual OfflineAudioContext renders execute the production scheduling/graph, including both biome directions. Peaks for 0/2,500/7,500/15,000/30,000 are .103/.118/.228/.383/.405; no clipping or silent quarter-second window after initial fade-in. This bounds the measured clips only; it does not certify harmonic compatibility or musical taste. See `browser/decoded.json` and `renders.json`.
+- `sources.json` audits 14 original instrument WAV exports plus eight retained lossless game groups for duration, sample rate, levels, band energy and inter-group correlation. Prior original source tempo/cut/phase measurements in the 4.5.0 provenance remain authoritative; no audio file was re-encoded. Spectral/correlation evidence does not establish perfect isolation, instrument bleed or subjective timbre.
+- Eight real PWA upgrade checks from 4.11.4 preserve independent channel settings, best, collection, lesson state, a finished record and a pending IndexedDB replay; new music decodes offline. The known TJ-D02 was reproduced: restart did not activate within the 12-second harness wait, closing the old tab activated the cache. The fixture stayed local and offline from the backend. See `upgrade/checks.json`.
+- Four new regression cases initially failed against the parent; the implemented progression/scheduler/dispose rules and immediate mode changes now pass. Browser testing also exposed throttled pause/visibility/tutorial transitions; these now bypass the throttle.
+
+Automated tests establish neither subjective listening nor physical iPhone/Safari acceptance. Those remain open for headphones and the iPhone speaker; do not label TJ-004 accepted on this evidence. No new open technical debt; TJ-D01 remains separate, and reproduced TJ-D02 is a bounded proposed follow-up before TJ-005.
+
+## Rollback
+
+Frozen parent: `/tmp/tesla-tj004-parent-v4114.tar`. Work: `/tmp/tesla-tj004-discovery-20261027`, branch `codex/tj004-music-v4120`. `client-only.patch.gz` contains exactly the bounded forward client change; reverse it only against the matching candidate in a clean checkout. `/tmp/tesla-tj004-rollback-20261027` applied it forward/reverse and restored an empty parent diff; the parent's 270 tests and all checks pass (`rollback-*.log`). A public reversal needs a fresh PWA cache version. Keep scores, pending/offline packets, settings, collection, recordings and all immutable replay versions. No backend or database rollback.
+
+Original dirty root and index are preserved; canonical documentation may receive only this task's bounded updates. Publication evidence is appended after deployment and live verification.

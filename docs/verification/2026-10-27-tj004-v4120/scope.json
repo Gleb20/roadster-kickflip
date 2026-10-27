@@ -1,0 +1,21 @@
+{
+  "parent": "19e42ad97efc499545fd266c7e05e3e27567711e",
+  "version": "4.12.0",
+  "ruleset": "roadster-v4.11.0",
+  "semanticRuntimeChanges": [
+    "src/main.js",
+    "src/music.js"
+  ],
+  "allOtherRuntimeChanges": "cache-version URLs and version metadata only",
+  "audioAssetsChanged": false,
+  "backendChanged": false,
+  "frozenVerifiersChanged": false,
+  "rollback": "forward + reverse client-only patch returns empty parent diff; parent 270 tests and check pass",
+  "physicalPhone": false,
+  "subjectiveListening": false,
+  "existingDebt": [
+    "TJ-D01",
+    "TJ-D02"
+  ],
+  "newOpenDebt": false
+}

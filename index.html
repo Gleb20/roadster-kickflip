@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="format-detection" content="telephone=no">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-27-release-v4.11.4"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151b"><meta name="description" content="Elon rides a tiny Roadster. Hold, release, kickflip. A free browser runner."><meta name="game-version" content="2026-10-27-release-v4.12.0"><title>ROADSTER / KICKFLIP</title><style id="loading-style">/* Critical loader styles live with its inline vectors: no asset request is needed to paint it. */
 #loading-screen { --instrument-white: #f3f5f4; --instrument-dim: rgb(243 245 244 / 38%); position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); box-sizing: border-box; background: #10151b; color: var(--instrument-white); font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; opacity: 1; transition: opacity 180ms ease-out; }
 #loading-screen[hidden] { display: none; }
 #loading-screen.is-leaving { opacity: 0; pointer-events: none; }
@@ -39,7 +39,7 @@
 @keyframes loader-orbit { to { transform: rotate(360deg); } }
 @media (max-height: 560px) { .loader-console { width: min(240px, 100%); } #loading-title { margin-bottom: 4px; font-size: 14px; } .loader-instrument { width: 184px; margin-bottom: 8px; } .loader-log-window { height: 38px; margin-top: 12px; } #loading-status { margin-top: 8px; } }
 @media (prefers-reduced-motion: reduce) { #loading-screen, .loader-console { transition: none; } .loader-sweep, .loader-pose.is-active .loader-ink { animation: none; } }
-</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.11.4"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
+</style><link id="game-style" rel="preload" as="style" href="./style.css?v=4.12.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#10151b"><link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="apple-touch-icon" href="./icons/icon-192.png"><meta property="og:title" content="Tesla Jump"><meta property="og:description" content="Tiny Roadster. Very ambitious flight plan."><meta property="og:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://gleb20.github.io/roadster-kickflip/icons/icon-512.png"></head><body>
 <section id="loading-screen" aria-labelledby="loading-title" aria-hidden="true">
   <div class="loader-console">
     <h2 id="loading-title">Loading</h2>
@@ -79,7 +79,7 @@ const waiting = setTimeout(() => {
   screen.classList.add('is-visible');
   screen.removeAttribute('aria-hidden');
 }, 180);
-import('./src/loading.js?v=4.11.4').then(() => clearTimeout(waiting)).catch(() => {
+import('./src/loading.js?v=4.12.0').then(() => clearTimeout(waiting)).catch(() => {
   clearTimeout(waiting);
   document.getElementById('loading-title').textContent = 'Loading failed';
   document.getElementById('loading-status').textContent = 'The flight systems could not load. Check your connection and retry.';

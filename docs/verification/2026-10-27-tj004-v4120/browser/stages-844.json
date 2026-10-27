@@ -1,0 +1,254 @@
+{
+  "stages": [
+    {
+      "score": 0,
+      "targets": {
+        "intensity": 0,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 0.28,
+          "bass": 0,
+          "drums": 0
+        }
+      }
+    },
+    {
+      "score": 2500,
+      "targets": {
+        "intensity": 0.019675925925925927,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 0.28,
+          "bass": 0.25925925925925924,
+          "drums": 0
+        }
+      }
+    },
+    {
+      "score": 7500,
+      "targets": {
+        "intensity": 0.15625,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 0.28,
+          "bass": 1,
+          "drums": 0.3520000000000001
+        }
+      }
+    },
+    {
+      "score": 15000,
+      "targets": {
+        "intensity": 0.5,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 0.4666666666666667,
+          "bass": 1,
+          "drums": 1
+        }
+      }
+    },
+    {
+      "score": 30000,
+      "targets": {
+        "intensity": 1,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 1,
+          "bass": 1,
+          "drums": 1
+        }
+      }
+    },
+    {
+      "score": 100000,
+      "targets": {
+        "intensity": 1,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 1,
+          "bass": 1,
+          "drums": 1
+        }
+      }
+    }
+  ],
+  "boosted": {
+    "intensity": 0.35625,
+    "volume": 0.58,
+    "brightness": 10500,
+    "biomes": {
+      "spaceport": 1,
+      "tesla-factory": 0
+    },
+    "tonalBiomes": {
+      "spaceport": 1,
+      "tesla-factory": 0
+    },
+    "layers": {
+      "bed": 0.8400000000000001,
+      "lead": 0.4,
+      "bass": 1,
+      "drums": 0.552
+    }
+  },
+  "settled": {
+    "intensity": 0.15625,
+    "volume": 0.58,
+    "brightness": 9500,
+    "biomes": {
+      "spaceport": 1,
+      "tesla-factory": 0
+    },
+    "tonalBiomes": {
+      "spaceport": 1,
+      "tesla-factory": 0
+    },
+    "layers": {
+      "bed": 0.8,
+      "lead": 0.28,
+      "bass": 1,
+      "drums": 0.3520000000000001
+    }
+  },
+  "transitions": [
+    {
+      "enabled": true,
+      "ready": [
+        "tesla-factory",
+        "spaceport"
+      ],
+      "loading": [],
+      "errors": {},
+      "requests": 2,
+      "voices": 8,
+      "seconds": 60,
+      "origin": 0.03,
+      "transition": {
+        "from": 0,
+        "to": 1,
+        "at": 1.905,
+        "duration": 1.875
+      },
+      "phase": 0.924666666666667,
+      "targets": {
+        "intensity": 1,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "tonalBiomes": {
+          "spaceport": 1,
+          "tesla-factory": 0
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 1,
+          "bass": 1,
+          "drums": 1
+        }
+      }
+    },
+    {
+      "enabled": true,
+      "ready": [
+        "tesla-factory",
+        "spaceport"
+      ],
+      "loading": [],
+      "errors": {},
+      "requests": 2,
+      "voices": 8,
+      "seconds": 60,
+      "origin": 0.03,
+      "transition": {
+        "from": 1,
+        "to": 0,
+        "at": 5.655,
+        "duration": 1.875
+      },
+      "phase": 3.9806666666666644,
+      "targets": {
+        "intensity": 1,
+        "volume": 0.58,
+        "brightness": 9500,
+        "biomes": {
+          "spaceport": 0,
+          "tesla-factory": 1
+        },
+        "tonalBiomes": {
+          "spaceport": 0,
+          "tesla-factory": 1
+        },
+        "layers": {
+          "bed": 0.8,
+          "lead": 1,
+          "bass": 1,
+          "drums": 1
+        }
+      }
+    }
+  ]
+}

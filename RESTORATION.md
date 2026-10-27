@@ -1,3 +1,7 @@
+## TJ-004 / 4.12.0 — bounded client inverse
+
+Parent `19e42ad97efc499545fd266c7e05e3e27567711e` / 4.11.4. [Client-only patch and proof](docs/verification/2026-10-27-tj004-v4120/README.md) restore an empty parent diff; its 270 tests/checks pass. Reverse only this audio/snapshot/cache-identity delta in a clean checkout, then publish a fresh PWA version. Keep all original recordings, settings, collection, scores/outbox and 19 frozen verifiers. No backend/data rollback. Parent archive `/tmp/tesla-tj004-parent-v4114.tar`; original dirty root/index preserved. Publication is pending verification.
+
 ## Skip placement 4.11.4 — bounded inverse
 
 Parent `7f3c7b63c0d33d86280a1333e0f352fcde2ee71c`, runtime `4030bb6257f2b36c0c3a9459f6d23564b4d748c1`; Pages `40407737190` succeeded. All 194 public hashes match; 9 public checks pass. Client-only forward/reverse restores an empty parent diff and passes its 270 tests/checks. Revert only this markup/style delta in a clean checkout and publish a fresh PWA version. Preserve scores, local data and all 19 frozen verifiers; no backend/data/art rollback. [Evidence and inverse](docs/verification/2026-10-27-tj003-skip-v4114/README.md). Original dirty runtime/index preserved.

@@ -1,4 +1,4 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.11.4';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.12.0';
 const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);},mix=(a,b,t)=>a+(b-a)*t;
 // Shared contact times drive pose, dust and camera response, independent of FPS.
 export const FALL_CONTACTS=Object.freeze([.14,.36,.56]);

@@ -1,0 +1,388 @@
+{
+  "sourceFiles": [
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Bass).wav",
+      "sha256": "0519ba3451815bce285bbcc138ffb1da37fd114a7c8643ae232b2a341432692f",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.09234086914067872,
+      "peak": 0.5972900390625,
+      "bandPowerFractions": [
+        0.7597326410153595,
+        0.23551501860928056,
+        0.004737197794618538
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Brass).wav",
+      "sha256": "3c538a33dd08b088d62772a243d7743d9304211dc7067a60eff36af16fb6db80",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.0030406298266275663,
+      "peak": 0.300445556640625,
+      "bandPowerFractions": [
+        0.00015616459794802175,
+        0.8605980758869165,
+        0.13835050093448692
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Drums).wav",
+      "sha256": "2c025341d26dcaeefd778260403103455f87668a397da81fd2ea540a7958f285",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.11990992583737366,
+      "peak": 0.72808837890625,
+      "bandPowerFractions": [
+        0.9024067425363778,
+        0.03791154492395366,
+        0.05317246380427739
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (FX).wav",
+      "sha256": "97339ac53b0ed39f688f8a6ca5f7b5caaa2451d3f6e820ea54048ab00e04f741",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.017414546636018643,
+      "peak": 0.49322509765625,
+      "bandPowerFractions": [
+        0.0006227043464344219,
+        0.6036784811735636,
+        0.39557522185032284
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Keyboard).wav",
+      "sha256": "b01425d8472041082b6cc4f9e2b0450389a2021d19c6b7b224b189578ce7371d",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.04198000876341986,
+      "peak": 0.52197265625,
+      "bandPowerFractions": [
+        0.16412812422175285,
+        0.7718268711384635,
+        0.06380750364292569
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Percussion).wav",
+      "sha256": "43d8fd4499ea4dabad6a00cbd230ccf7ad273556ed2ed5bc38e9a7ad79e28146",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.0074786547145828846,
+      "peak": 0.516998291015625,
+      "bandPowerFractions": [
+        0.002528569299023307,
+        0.2872779655325653,
+        0.6164140903245853
+      ]
+    },
+    {
+      "file": "raw/spaceport-stems/Tesla Jump R3 - Spaceport - Orbital Overdrive PEAK (Synth).wav",
+      "sha256": "417a7e80e0d5d13e88368c10edd744cdb13eeda0b2dd7128537e1e1af46cddf4",
+      "seconds": 179.72,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.06262933550499411,
+      "peak": 0.553558349609375,
+      "bandPowerFractions": [
+        0.06478316276022326,
+        0.8216579958790866,
+        0.1109734525028401
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Bass).wav",
+      "sha256": "1a8a0e3059def61cd2060cb9234610c6304c5e11066eab7f447c8eba46bf0e4f",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.09104606273216223,
+      "peak": 0.531036376953125,
+      "bandPowerFractions": [
+        0.7965289499165649,
+        0.19246694505151177,
+        0.010710225200145283
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Drums).wav",
+      "sha256": "ed8ade4c644285ab03457e17fe00afefb3ff05842ee19acb60c80912fb1b0141",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.12244847229554481,
+      "peak": 0.70556640625,
+      "bandPowerFractions": [
+        0.8992238338987388,
+        0.035959360557099466,
+        0.058419035629506094
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (FX).wav",
+      "sha256": "7622db7ea8063f0b87e49fb04b983840fff073100dc143fc768c6363577c7986",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.019575128263408365,
+      "peak": 0.533935546875,
+      "bandPowerFractions": [
+        0.005093750779372865,
+        0.2542112548603495,
+        0.6772804557542395
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Keyboard).wav",
+      "sha256": "cb3bbb25d7d81cb894ccca6df2d059dab4f6e3d2f02f3ccf6f9b47f00f1a2c2b",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.040217815231816036,
+      "peak": 0.46112060546875,
+      "bandPowerFractions": [
+        0.31360797811984814,
+        0.6269907587048775,
+        0.05901918900389468
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Percussion).wav",
+      "sha256": "17100ce3067efd45a870e44732e58630205f394419801aab318376ac78265832",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.0067907066009640915,
+      "peak": 0.4290771484375,
+      "bandPowerFractions": [
+        0.0009998155612930227,
+        0.18282805261672208,
+        0.6968126421573241
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Strings).wav",
+      "sha256": "4a4546b33f2fd1798e0d54513efc486a198e4b1f24586db7aa16ded834f83c58",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.003909728909251727,
+      "peak": 0.14105224609375,
+      "bandPowerFractions": [
+        0.00465885416868977,
+        0.6560948691242513,
+        0.33211395436158037
+      ]
+    },
+    {
+      "file": "raw/factory-stems/Tesla Jump R3 - Factory B - Chrome Voltage PEAK (Synth).wav",
+      "sha256": "569349d8e4078bae5fdb3df3137a956c149c8a813bc23effaa4dfb251d393616",
+      "seconds": 180.0,
+      "sampleRate": 48000,
+      "channels": 2,
+      "rms": 0.05805186747470799,
+      "peak": 0.52679443359375,
+      "bandPowerFractions": [
+        0.05174971117293976,
+        0.7957457705749552,
+        0.14737839739973138
+      ]
+    },
+    {
+      "file": "processed/factory-bass.wav",
+      "sha256": "f14a5ae92bc08ef18312e01fa06083733bf4dfb1b67d06286857c488dee86dfb",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 1,
+      "rms": 0.06832808133636681,
+      "peak": 0.4747534990310669,
+      "bandPowerFractions": [
+        0.7201927242861245,
+        0.26269071360734103,
+        0.017116561514531
+      ]
+    },
+    {
+      "file": "processed/factory-bed.wav",
+      "sha256": "8daa7bef18e2920da0d20617301cbe6810e1cf5f7d7e13cdecc396224b80e0b5",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 2,
+      "rms": 0.028882075695048515,
+      "peak": 0.3366016149520874,
+      "bandPowerFractions": [
+        0.019262360973993923,
+        0.7139794151907702,
+        0.2667580129724464
+      ]
+    },
+    {
+      "file": "processed/factory-drums.wav",
+      "sha256": "12d226dd2ebee8febd9dc329d488294cb2f9f923fbce2b5ff29755a71b9625b6",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 1,
+      "rms": 0.10231165879035391,
+      "peak": 0.6505043506622314,
+      "bandPowerFractions": [
+        0.8925387012487086,
+        0.046221673166634954,
+        0.06123961628928734
+      ]
+    },
+    {
+      "file": "processed/factory-lead.wav",
+      "sha256": "df2de704b10a20ee8ac20d17813384958138b99afed8fefdfb87005a8fa5a73b",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 2,
+      "rms": 0.053583323083281245,
+      "peak": 0.45212459564208984,
+      "bandPowerFractions": [
+        0.059781582141713516,
+        0.7755300901417042,
+        0.1646883259501296
+      ]
+    },
+    {
+      "file": "processed/spaceport-bass.wav",
+      "sha256": "599c4fec1828a39621392db2a5997cec924f7b266e3b552b9033654591196d6b",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 1,
+      "rms": 0.0765447659952765,
+      "peak": 0.49039673805236816,
+      "bandPowerFractions": [
+        0.7725230318174133,
+        0.22263831009094967,
+        0.004838658088576936
+      ]
+    },
+    {
+      "file": "processed/spaceport-bed.wav",
+      "sha256": "0511583d13d68ab7730eb926e393de730fa3217469104caac18c750892ebe232",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 2,
+      "rms": 0.031248468744552914,
+      "peak": 0.3377758264541626,
+      "bandPowerFractions": [
+        0.05421455403872797,
+        0.7968264582924267,
+        0.14895898333796473
+      ]
+    },
+    {
+      "file": "processed/spaceport-drums.wav",
+      "sha256": "94897e86f27d21edfe8b3711aec0871ad6d8387ff2dd743f10a1f91df86cbe7b",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 1,
+      "rms": 0.1051044224709901,
+      "peak": 0.693506121635437,
+      "bandPowerFractions": [
+        0.9195788398065591,
+        0.040838709935657136,
+        0.03958244962361235
+      ]
+    },
+    {
+      "file": "processed/spaceport-lead.wav",
+      "sha256": "eac81a358a07259d7b2c2a13f19b6cb95effcb59eb825480f49a8364cffeac90",
+      "seconds": 60.0,
+      "sampleRate": 24000,
+      "channels": 2,
+      "rms": 0.05784818922143539,
+      "peak": 0.5028878450393677,
+      "bandPowerFractions": [
+        0.05186775671827464,
+        0.804432887212381,
+        0.1436993554170619
+      ]
+    }
+  ],
+  "processedGroupCorrelation": {
+    "spaceport": {
+      "layers": [
+        "bed",
+        "lead",
+        "bass",
+        "drums"
+      ],
+      "samples": 1440000,
+      "seconds": 60.0,
+      "correlation": [
+        [
+          1.0,
+          -0.02285275823394215,
+          0.009268581606482692,
+          0.00022856958056798434
+        ],
+        [
+          -0.02285275823394215,
+          1.0,
+          0.008910085581745846,
+          0.0014370133827438557
+        ],
+        [
+          0.00926858160648269,
+          0.008910085581745846,
+          1.0,
+          0.00914842882677759
+        ],
+        [
+          0.00022856958056798434,
+          0.0014370133827438557,
+          0.009148428826777587,
+          1.0
+        ]
+      ]
+    },
+    "factory": {
+      "layers": [
+        "bed",
+        "lead",
+        "bass",
+        "drums"
+      ],
+      "samples": 1440000,
+      "seconds": 60.0,
+      "correlation": [
+        [
+          1.0,
+          -0.015081425700022293,
+          0.001932226130579147,
+          -8.384703076124042e-05
+        ],
+        [
+          -0.015081425700022294,
+          1.0,
+          0.0022902051842129444,
+          0.003553974518648972
+        ],
+        [
+          0.0019322261305791473,
+          0.0022902051842129444,
+          1.0,
+          0.0038731756166946758
+        ],
+        [
+          -8.384703076124042e-05,
+          0.003553974518648972,
+          0.0038731756166946753,
+          1.0
+        ]
+      ]
+    }
+  },
+  "subjectiveListening": false,
+  "limits": "Spectral distribution and correlation do not prove isolated instruments, key compatibility or pleasant transitions. Existing source BPM measurements and cut/phase provenance are retained; no audio asset was re-encoded."
+}

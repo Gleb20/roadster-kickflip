@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "exact 4.11.4 parent installed",
+    "new cache waits while parent attempt is paused",
+    "new release activates at a safe boundary",
+    "independent audio settings preserved",
+    "best, collection and lesson state preserved",
+    "finished record and pending replay preserved",
+    "upgraded client and all music decode offline",
+    "no runtime exceptions"
+  ],
+  "errors": [],
+  "closedTabBoundaryUsed": true,
+  "physicalPhone": false,
+  "publicScoresSubmitted": 0
+}

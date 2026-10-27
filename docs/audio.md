@@ -1,3 +1,15 @@
+# TJ-004 / 4.12.0 — score-driven music
+
+User decisions on 27 October: earned instrumentation follows score/challenge and reaches the full arrangement at 30,000; boost gives a temporary accent; biome music flows on a bar without a pause; training is light at normal tempo. The selected Spaceport A and Factory B sources and all eight 60-second MP3 loops are unchanged.
+
+Bass enters over 0–7,500 points, drums over 2,500–15,000, and the full lead over 7,500–30,000. Harmony and a fragment of the motif remain from the start. Combo loss and recovery do not reset this growth. The gameplay master stays at .58 and the filter at 9.5 kHz, with small boost accents; progress is heard through parts instead of a broad low-pass sweep or global volume compensation. Independent user volume, effect ducking, quiet menu/pause/result and the shared limiter remain.
+
+The two biome groups retain the common 128 BPM clock, loop phase and playback rate 1. The next bar starts a one-bar (1.875 s) equal-power transition. Competing lead/bass parts alone recede 40% at its midpoint; the rhythm/harmony and global brightness remain. Audio can finish up to 3.75 s after the visual trigger, without delaying scenery, hazards or rules. A missing destination download leaves the current biome audible. AudioParam curves run independently of render frames. Hidden suspension freezes this clock; mute/unmute retains phase. Immediate mode/visibility/tutorial changes bypass update throttling; dispose cannot be revived by a pending download or later unlock.
+
+[Agreed specification](planning/TJ-004-music.md) and [verification/rollback](verification/2026-10-27-tj004-v4120/README.md). Only cosmetic playback and the read-only snapshot changed; ranked rules remain `roadster-v4.11.0`, with all 19 frozen versions retained. Subjective listening, instrument-bleed/harmonic judgement and physical iPhone acceptance remain open. Existing TJ-D01 is separate. PWA activation delay TJ-D02 was reproduced during the local 4.11.4→4.12.0 upgrade: closing the old tab activated the new cache, while saved settings, collection, best and pending replay were preserved.
+
+Earlier contracts below are historical where they describe the old speed/bonus normalisation, broad filter, global gain compensation or renderer-distance music crossfade; asset provenance, effects and independent channel controls still apply.
+
 # Audio contract — 4.5.1
 
 The user selected **Spaceport A / Orbital Overdrive PEAK (R3)** and **Factory B / Chrome Voltage PEAK (R3)**. A/B are generation labels, not compatibility settings. Both selections remain. Their official original WAV and V2 instrument exports are archived locally under `audio-source/selected-20261023/raw`; published assets are eight edited MP3 loops, about 5.5 MB total. Source links, hashes, measured cuts and processing are in [attribution](../assets/audio/music-v450/ATTRIBUTION.md) and [processing evidence](verification/2026-10-23-audio-v450/processing.json).

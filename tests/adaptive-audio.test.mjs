@@ -9,13 +9,14 @@ function mockContext(){
  const ctx={state:'running',currentTime:0,destination:{},createGain:()=>({gain:param(),connect(){},disconnect(){}}),createBiquadFilter:()=>({frequency:param(),Q:param(),connect(){},disconnect(){}}),createBuffer:(c,n,r)=>({duration:n/r,copyToChannel(){},getChannelData:()=>new Float32Array(n)}),decodeAudioData:async()=>({duration:60}),createBufferSource:()=>{const s={connect(){},disconnect(){},start(...args){this.started=args},stop(){this.stopped=true;}};sources.push(s);return s;}};
  return {ctx,sources};
 }
-test('speed and bonus open the arrangement; menu, pause, hidden and biome bridge remain restrained',()=>{
- const menu=musicTargets(),slow=musicTargets({mode:'playing',speed:360,multiplier:1}),fast=musicTargets({mode:'playing',speed:660,multiplier:1}),bonus=musicTargets({mode:'playing',speed:360,multiplier:6}),boost=musicTargets({mode:'playing',speed:360,boost:1});
- assert.ok(menu.volume<slow.volume&&menu.layers.drums<slow.layers.drums);
- for(const x of [fast,bonus,boost]){assert.ok(x.layers.drums>slow.layers.drums);assert.ok(x.layers.bass>slow.layers.bass);assert.ok(x.brightness>slow.brightness);}
+test('score opens the arrangement; menu, pause, hidden and tonal handover remain restrained',()=>{
+ const menu=musicTargets(),slow=musicTargets({mode:'playing',score:0}),fast=musicTargets({mode:'playing',score:30000}),boost=musicTargets({mode:'playing',score:0,boost:1});
+ assert.ok(menu.volume<slow.volume&&menu.layers.lead<slow.layers.lead);
+ for(const x of [fast,boost]){assert.ok(x.layers.drums>slow.layers.drums);assert.ok(x.layers.bass>slow.layers.bass);}
+ assert.ok(boost.brightness>slow.brightness);
  assert.ok(musicTargets({mode:'paused'}).volume<menu.volume);assert.equal(musicTargets({visible:false}).volume,0);
  for(const progress of [0,.25,.5,.75,1]){const x=musicTargets({biome:{id:'tesla-factory',from:'spaceport',progress}});assert.ok(Math.abs(Object.values(x.biomes).reduce((s,v)=>s+v*v,0)-1)<1e-10);}
- const mid=musicTargets({mode:'playing',speed:660,biome:{id:'tesla-factory',from:'spaceport',progress:.5}});assert.ok(mid.layers.lead<fast.layers.lead*.5);
+ const mid=musicTargets({mode:'playing',score:30000,biome:{id:'tesla-factory',from:'spaceport',progress:.5}});assert.equal(mid.layers.lead,fast.layers.lead);assert.ok(mid.tonalBiomes.spaceport<mid.biomes.spaceport);assert.equal(mid.brightness,fast.brightness);
 });
 test('late downloads stay muted; enabling reuses buffers on one shared musical phase with bounded voices',async()=>{
  const {ctx,sources}=mockContext();let resolve;const gate=new Promise(r=>resolve=r);let fetched=0;
