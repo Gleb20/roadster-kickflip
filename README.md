@@ -1,6 +1,6 @@
-## Material Studio — 4.13.0
+## Material Studio — 4.13.1
 
-Desktop workspace: [open Material Studio](https://gleb20.github.io/roadster-kickflip/studio/index.html?v=4.13.0). Inspect current materials and their size/layout rules, download originals or a portable package, replace files, edit descriptions/rarity and preview with the actual game renderer. Local drafts restore after reload; imports never publish to the game. Biomes own background/floor/music; HUD stays global. The music preparation guide is built into the studio.
+Desktop workspace: [open Material Studio](https://gleb20.github.io/roadster-kickflip/studio/index.html?v=4.13.1). Inspect current materials and their size/layout rules, download originals or a portable package, replace files, edit descriptions/rarity and preview with the actual game renderer. Local drafts restore after reload; imports never publish to the game. Biomes own background/floor/music; HUD stays global. The music preparation guide is built into the studio.
 
 One canonical `content/package.json` compiles into the game/studio bundle. `npm run build:content`, `npm run check:content-package`, then normal tests/PWA checks. Extract an exported draft for review with `node scripts/import-content.mjs draft.tjpack`; it creates a new `/tmp/tesla-content-review-*` directory without overwriting the game. Changed gameplay content requires a new frozen server ruleset before release. Current common weights preserve existing behavior and ranking compatibility.
 

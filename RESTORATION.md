@@ -1,3 +1,7 @@
+## TJ-005 / 4.13.1 — preview isolation correction
+
+Public-host acceptance of 4.13.0 found an extra read-only ranking preload in the preview. No scores were submitted. 4.13.1 disables that startup path and blocks preview ranking transport; game behavior/content/default rarity and the 4.11.0 ruleset remain unchanged. 300 tests and all checks pass. [Patch evidence and rollback](docs/verification/2026-10-27-tj005-v4131/README.md). Final public-host verification follows before accepting this release. Earlier candidate notes below are historical.
+
 ## TJ-005 / 4.13.0 — bounded client inverse
 
 Parent is 477a73c1bbd8f9eb5b61191c6c5e31b9fe7f3e93 / 4.12.1. Reverse only this client/studio/content delta in an isolated checkout, then publish with a fresh cache identity. Keep accepted records, IndexedDB outbox, local collection/preferences and all 19 frozen server versions. No backend migration or rollback is needed because default equal rarity retains the exact frozen simulation. The original dirty checkout/index remains untouched. [Evidence](docs/verification/2026-10-27-tj005-v4130/README.md).

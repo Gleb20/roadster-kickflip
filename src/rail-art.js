@@ -1,4 +1,4 @@
-import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {resourceUrl} from './content-runtime.js?v=4.13.1';
 /** Image-generated cutout, kept separate from deterministic rail geometry. */
 export function createRailPainter(){
  const image=new Image();

@@ -1,4 +1,4 @@
-import {previewContent} from './content-runtime.js?v=4.13.0';
+import {previewContent} from './content-runtime.js?v=4.13.1';
 /** Install support and automatic, coherent updates at a safe run boundary. */
 export function createPWA({mode,lock,canReload=()=>true,restart=()=>{}}){
  const install=document.getElementById('pwa-install'),guide=document.getElementById('pwa-guide'),status=document.getElementById('pwa-status');

@@ -1,3 +1,7 @@
+## TJ-005 / 4.13.1 — preview isolation correction
+
+Public-host acceptance of 4.13.0 found an extra read-only ranking preload in the preview. No scores were submitted. 4.13.1 disables that startup path and blocks preview ranking transport; game behavior/content/default rarity and the 4.11.0 ruleset remain unchanged. 300 tests and all checks pass. [Patch evidence and rollback](verification/2026-10-27-tj005-v4131/README.md). Final public-host verification follows before accepting this release. Earlier candidate notes below are historical.
+
 ## TJ-005 / 4.13.0 — verified candidate
 
 Shared content contract and desktop Material Studio implemented; current two scenes, HUD, records and frozen replay rules preserved. Current rarities start common; editable weighted rarity is available for draft preview, with a gameplay-hash release gate. Full portable material round-trip, original downloads, file/layout checks, local draft restore and production render/music previews are covered. [Decisions](planning/TJ-005-content.md), [verification](verification/2026-10-27-tj005-v4130/README.md). Next independent card: TJ-006. Existing TJ-D01/TJ-D02 remain separate; the PWA closed-tab boundary reproduced during upgrade.

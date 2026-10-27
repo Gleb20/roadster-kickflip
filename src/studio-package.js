@@ -1,4 +1,4 @@
-import {validatePackage,digest,canonical,gameplayContent} from './content-package.js?v=4.13.0';
+import {validatePackage,digest,canonical,gameplayContent} from './content-package.js?v=4.13.1';
 export const PORTABLE_FORMAT='tesla-materials-1';
 export const encodeBytes=bytes=>{let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return btoa(s);};
 export const decodeBytes=text=>{if(typeof text!=='string'||text.length>24*1024*1024)throw Error('Material exceeds 16 MiB');return Uint8Array.from(atob(text),c=>c.charCodeAt(0));};

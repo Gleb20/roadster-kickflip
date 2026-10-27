@@ -1,6 +1,6 @@
 // @ts-check
 // @ts-ignore Browser cache identity is checked by the content build.
-import {CONTENT} from './content-runtime.js?v=4.13.0';
+import {CONTENT} from './content-runtime.js?v=4.13.1';
 /** @typedef {import('./content-types.js').ObstacleDefinition} ObstacleDefinition */
 export const BIOMES=Object.freeze(CONTENT.biomes.map((/** @type {{id:string}} */ b)=>b.id));
 export const BIOME_CYCLE=CONTENT.cycle;

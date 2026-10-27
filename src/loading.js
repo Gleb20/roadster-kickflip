@@ -1,5 +1,5 @@
-import {previewContent} from './content-runtime.js?v=4.13.0';
-import {flipFrameAt} from './roadster-flip.js?v=4.13.0';
+import {previewContent} from './content-runtime.js?v=4.13.1';
+import {flipFrameAt} from './roadster-flip.js?v=4.13.1';
 
 const screen = document.getElementById('loading-screen');
 const game = document.getElementById('game');
@@ -161,4 +161,4 @@ logTimer = setInterval(() => {
 }, 340);
 
 // Start the tiny vector instrument before requesting the game's module graph.
-import('./main.js?v=4.13.0').catch(fail);
+import('./main.js?v=4.13.1').catch(fail);

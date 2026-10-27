@@ -20,15 +20,15 @@ const server=http.createServer((req,res)=>{try{const n=new URL(req.url,'http://x
   await p.evaluate(async()=>await(await navigator.serviceWorker.getRegistration()).update());await p.waitForFunction(async()=>!!(await navigator.serviceWorker.getRegistration()).waiting);
   check('new cache waits while parent attempt is paused',await p.evaluate(()=>JSON.parse(render_game_to_text()).version==='4.12.1'&&__qa.S.mode==='paused'));
   await p.locator('#pause-restart').tap();let closedTabBoundaryUsed=false;
-  try{await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&JSON.parse(render_game_to_text()).version==='4.13.0',{},{timeout:12000})}
-  catch{closedTabBoundaryUsed=true;await p.close();p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(url);await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&JSON.parse(render_game_to_text()).version==='4.13.0')}
+  try{await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&JSON.parse(render_game_to_text()).version==='4.13.1',{},{timeout:12000})}
+  catch{closedTabBoundaryUsed=true;await p.close();p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(url);await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert&&JSON.parse(render_game_to_text()).version==='4.13.1')}
   check('new release activates at a safe boundary',true);
   check('independent audio settings preserved',await p.evaluate(()=>JSON.stringify(__qa.sound.volumes)===JSON.stringify({effects:.6,music:.4})));
   check('best, collection and lesson state preserved',await p.evaluate(()=>localStorage.getItem('roadster-best-v3')==='12345'&&__qa.collection.state('joe')==='new'&&JSON.parse(localStorage.getItem('roadster-lessons-v1')).finished));
-  check('finished record and pending replay preserved',await p.evaluate(async()=>{const record=JSON.parse(localStorage.getItem('roadster-score-record-v1'));const {createJobStore}=await import('/src/online-store.js?v=4.13.0');const jobs=await createJobStore({storage:localStorage}).list();return record.result.score===12345&&record.result.replay.ruleset==='roadster-v4.11.0'&&jobs.some(j=>j.nickname==='LOCAL_PRESERVATION_FIXTURE'&&j.replay.ticks===100&&j.status==='pending')}));
+  check('finished record and pending replay preserved',await p.evaluate(async()=>{const record=JSON.parse(localStorage.getItem('roadster-score-record-v1'));const {createJobStore}=await import('/src/online-store.js?v=4.13.1');const jobs=await createJobStore({storage:localStorage}).list();return record.result.score===12345&&record.result.replay.ruleset==='roadster-v4.11.0'&&jobs.some(j=>j.nickname==='LOCAL_PRESERVATION_FIXTURE'&&j.replay.ticks===100&&j.status==='pending')}));
   await p.keyboard.press('Shift');await p.waitForFunction(()=>__qa.sound.inspect.music?.voices===8);await p.waitForFunction(()=>navigator.serviceWorker.controller?.state==='activated');
   await c.setOffline(true);await p.reload();await p.waitForFunction(()=>window.__qa&&!document.querySelector('#game').inert);await p.keyboard.press('Shift');await p.waitForFunction(()=>__qa.sound.inspect.music?.voices===8);
-  check('upgraded client and all music decode offline',await p.evaluate(()=>JSON.parse(render_game_to_text()).version==='4.13.0'&&Object.keys(__qa.sound.inspect.music.errors).length===0));
+  check('upgraded client and all music decode offline',await p.evaluate(()=>JSON.parse(render_game_to_text()).version==='4.13.1'&&Object.keys(__qa.sound.inspect.music.errors).length===0));
   check('no runtime exceptions',errors.length===0);await p.screenshot({path:path.join(out,'offline.png')});
   fs.writeFileSync(path.join(out,'checks.json'),JSON.stringify({checks,errors,closedTabBoundaryUsed,physicalPhone:false,publicScoresSubmitted:0},null,2));console.log(JSON.stringify({checks:checks.length,errors,closedTabBoundaryUsed}));await c.close();
  }finally{await b.close();server.close()}

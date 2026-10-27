@@ -1,5 +1,5 @@
-import {validatePackage} from './content-package.js?v=4.13.0';
-import {decodeBytes,verifyMaterial} from './studio-package.js?v=4.13.0';
+import {validatePackage} from './content-package.js?v=4.13.1';
+import {decodeBytes,verifyMaterial} from './studio-package.js?v=4.13.1';
 if(parent===window)throw Error('Preview must be opened from Material Studio');
 await new Promise((resolve,reject)=>{
  const timer=setTimeout(()=>reject(Error('Open this preview from Material Studio.')),20000);

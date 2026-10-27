@@ -1,4 +1,4 @@
-import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {resourceUrl} from './content-runtime.js?v=4.13.1';
 // One alpha atlas; all frames are cropped once, kept at a shared animation scale.
 const CELLS = [
   [100,8,120,301], [320,8,307,304], [633,116,307,193], [946,220,300,90],

@@ -1,3 +1,7 @@
+## TJ-005 / 4.13.1 — preview isolation correction
+
+Public-host acceptance of 4.13.0 found an extra read-only ranking preload in the preview. No scores were submitted. 4.13.1 disables that startup path and blocks preview ranking transport; game behavior/content/default rarity and the 4.11.0 ruleset remain unchanged. 300 tests and all checks pass. [Patch evidence and rollback](verification/2026-10-27-tj005-v4131/README.md). Final public-host verification follows before accepting this release. Earlier candidate notes below are historical.
+
 ## TJ-005 / 4.13.0 — verified candidate
 
 Desktop Material Studio and a shared immutable content contract are implemented. Current assets and equal common weights retain the exact 4.11.0 server simulation. The studio supports current-library inspection, original/portable export, transactional upload/import, local draft restore, production-rendered preview, rarity edits and full-loop/stem audition. Biome affects background/floor/music; HUD remains shared. Publishing remains the coordinated verified release path; draft import cannot mutate the live game. Existing scene profiles keep fixed pixel layouts; a universal compositor/cloud admin is outside this card.

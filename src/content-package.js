@@ -1,4 +1,4 @@
-import {SCENE_PROFILES,VISUAL_PROFILES,REACTION_PROFILES,REQUIRED_MATERIALS} from './content-profiles.js?v=4.13.0';
+import {SCENE_PROFILES,VISUAL_PROFILES,REACTION_PROFILES,REQUIRED_MATERIALS} from './content-profiles.js?v=4.13.1';
 /** Shared pure contract used by the compiler, desktop studio and game. */
 export const CONTENT_ABI='tesla-content-1',CONTENT_SCHEMA=1;
 export function freezeContent(value){if(value&&typeof value==='object'){for(const item of Object.values(value))freezeContent(item);Object.freeze(value);}return value;}

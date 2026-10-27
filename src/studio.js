@@ -1,7 +1,7 @@
-import {createMusic} from './music.js?v=4.13.0';
-import {BUNDLED} from './content-bundle.js?v=4.13.0';
-import {validatePackage,pickByRarity} from './content-package.js?v=4.13.0';
-import {portablePackage,importPortable,replaceMaterial,materialBytes,packageIdentity} from './studio-package.js?v=4.13.0';
+import {createMusic} from './music.js?v=4.13.1';
+import {BUNDLED} from './content-bundle.js?v=4.13.1';
+import {validatePackage,pickByRarity} from './content-package.js?v=4.13.1';
+import {portablePackage,importPortable,replaceMaterial,materialBytes,packageIdentity} from './studio-package.js?v=4.13.1';
 const $=id=>document.getElementById(id),node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const clean=p=>{const x=structuredClone(p);delete x.contentHash;delete x.gameplayHash;return x;};
 let draft=clean(BUNDLED),files={},tab='biomes',selected={type:'biomes',id:draft.biomes[0].id},dirty=false,frame=null,frameReady=false,db=null,busy=false,revision=0,previewRevision=-1;

@@ -1,5 +1,5 @@
-import {resourceUrl} from './content-runtime.js?v=4.13.0';
-import {MUSIC} from './music-content.js?v=4.13.0';
+import {resourceUrl} from './content-runtime.js?v=4.13.1';
+import {MUSIC} from './music-content.js?v=4.13.1';
 
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));
 const smooth=(a,b,v)=>{const x=clamp((v-a)/(b-a));return x*x*(3-2*x);};

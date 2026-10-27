@@ -1,4 +1,4 @@
-import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {resourceUrl} from './content-runtime.js?v=4.13.1';
 // Nine video-derived poses, normalized to 256 x 160 with one centre anchor.
 // The final key closes the loop on the original upright frame.
 const keys = [0, .10, .25, .35, .43, .53, .67, .78, .92, 1];

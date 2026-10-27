@@ -1,5 +1,5 @@
-import {BUNDLED} from './content-bundle.js?v=4.13.0';
-import {freezeContent,validatePackage} from './content-package.js?v=4.13.0';
+import {BUNDLED} from './content-bundle.js?v=4.13.1';
+import {freezeContent,validatePackage} from './content-package.js?v=4.13.1';
 const draft=globalThis.__TESLA_CONTENT_PREVIEW__;
 export const previewContent=!!draft;
 export const CONTENT=freezeContent(draft?.package||BUNDLED);

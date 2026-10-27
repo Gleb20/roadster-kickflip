@@ -1,4 +1,4 @@
-import {resourceUrl} from './content-runtime.js?v=4.13.0';
+import {resourceUrl} from './content-runtime.js?v=4.13.1';
 // One photographic atlas, decoded and trimmed once; ground anchors never depend on padding.
 const CELLS = Object.freeze({
   v8: [0, 70, 591, 250],
