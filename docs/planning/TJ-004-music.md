@@ -1,3 +1,7 @@
+## TJ-004 — принято пользователем, 27 октября 2026
+
+Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.
+
 # TJ-004 — score-driven arrangement and musical biome handover
 
 User decisions, 27 October 2026: instrumentation follows score/challenge, with a temporary boost accent; full arrangement at 30,000 points; a smooth rhythmic biome transition without a musical pause; light training music at the normal tempo. Implementation is authorised, including publication after verification.

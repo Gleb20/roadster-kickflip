@@ -1,3 +1,7 @@
+## TJ-004 — принято пользователем, 27 октября 2026
+
+Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.
+
 # Audio unlock recovery — 4.12.1
 
 Each explicit unlock gesture can retry an unresolved AudioContext resume. Resume callbacks belong to their original context; a stale completion/rejection cannot clear a new context or newer pending cue. A canonical start/game cue can wait for asynchronous resume in the same single, 300 ms pending slot used by legacy confirmation tones. Hide/mute clears that slot, and hidden pressure audio stays stopped. Saved independent volumes and explicit mute remain authoritative. The 4.12.0 score arrangement and musical transitions are unchanged. [Reproduction, actual-signal checks and limits](verification/2026-10-27-audio-start-v4121/README.md). The sufficient failure path was reproduced with an injected blocked first resume; the user's physical iPhone cause is not yet established.

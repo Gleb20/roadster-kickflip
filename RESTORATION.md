@@ -1,3 +1,7 @@
+## TJ-004 — принято пользователем, 27 октября 2026
+
+Пользователь подтвердил результат 4.12.1: «Всё работает. Мне нравится. Готово». TJ-004 и исправление запуска музыки/эффектов приняты. Это пользовательская приёмка; самостоятельная инструментальная проверка физического iPhone/Safari не заявляется, точная первоначальная причина на устройстве не установлена. Ниже сохранены исторические статусы до приёмки. Runtime `a87d9c9`, правила `roadster-v4.11.0` не менялись. TJ-D01/TJ-D02 остаются отдельными; следующая самостоятельная карточка — TJ-005, автоматически не начата.
+
 ## Audio unlock 4.12.1 — bounded inverse
 
 Parent `94b33f12830f8933fbf5371e60a941a8bfa4648e` / 4.12.0. [Patch and verification](docs/verification/2026-10-27-audio-start-v4121/README.md) include matching regression tests: forward 279 tests/checks; reverse empty parent diff and 275 tests/checks. Reverse this client delta in a clean checkout and publish a fresh PWA identity. Keep records/outbox, independent volume/mute, collection, music and all 19 frozen verifiers. No backend/data rollback. Original dirty root/index preserved. Published runtime `a87d9c9b5b88e1e71ea35322ef51bc6856252514`, Pages `40486230080` success; 194 public hashes and 58 public browser checks pass. Physical iPhone confirmation remains open.
