@@ -1,0 +1,678 @@
+{
+  "checks": [
+    "no audio before first gesture: {\"effects\":1,\"music\":1}",
+    "no training on returning-player first tap: {\"effects\":1,\"music\":1}",
+    "first touch starts shared context: {\"effects\":1,\"music\":1}",
+    "real music signal before any gameplay gesture: {\"effects\":1,\"music\":1}",
+    "one start and real jump cue: {\"effects\":1,\"music\":1}",
+    "no audio before first gesture: {\"effects\":0.6,\"music\":0.4}",
+    "no training on returning-player first tap: {\"effects\":0.6,\"music\":0.4}",
+    "first touch starts shared context: {\"effects\":0.6,\"music\":0.4}",
+    "real music signal before any gameplay gesture: {\"effects\":0.6,\"music\":0.4}",
+    "one start and real jump cue: {\"effects\":0.6,\"music\":0.4}",
+    "no audio before first gesture: {\"effects\":1,\"music\":0}",
+    "no training on returning-player first tap: {\"effects\":1,\"music\":0}",
+    "first touch starts shared context: {\"effects\":1,\"music\":0}",
+    "one start and real jump cue: {\"effects\":1,\"music\":0}",
+    "saved music mute retained",
+    "no audio before first gesture: {\"effects\":0,\"music\":1}",
+    "no training on returning-player first tap: {\"effects\":0,\"music\":1}",
+    "first touch starts shared context: {\"effects\":0,\"music\":1}",
+    "real music signal before any gameplay gesture: {\"effects\":0,\"music\":1}",
+    "saved effects mute retained",
+    "no audio before first gesture: {\"effects\":0,\"music\":0}",
+    "no training on returning-player first tap: {\"effects\":0,\"music\":0}",
+    "explicit full mute is preserved",
+    "no runtime errors"
+  ],
+  "results": [
+    {
+      "mix": {
+        "effects": 1,
+        "music": 1
+      },
+      "before": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 1
+        },
+        "context": "locked",
+        "music": null,
+        "effects": null
+      },
+      "after": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 1,
+            "music": 1
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.3780000000000001,
+            "targets": {
+              "intensity": 0.000004316543999999999,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.000068898816,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 0,
+            "grinding": false,
+            "counts": {
+              "start": 1
+            }
+          }
+        },
+        "tutorial": false,
+        "mode": "playing",
+        "graphs": [
+          {
+            "state": "running",
+            "time": 1.408,
+            "peak": 0.09901455044746399,
+            "gains": [
+              1,
+              0.8500000238418579,
+              1,
+              0.5797487497329712,
+              1,
+              0.10000000149011612,
+              0.7967646718025208,
+              0,
+              0.2788676619529724,
+              0,
+              0.00004895233360002749,
+              0,
+              0,
+              0,
+              0.7966912984848022,
+              1,
+              0.27884095907211304,
+              1,
+              0.000048952322686091065,
+              1,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 1,
+            "music": 1
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.532666666666664,
+            "targets": {
+              "intensity": 0.000005065605999999999,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00008083878399999999,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1
+            }
+          }
+        },
+        "graphs": [
+          {
+            "peak": 0.11425654590129852
+          }
+        ]
+      }
+    },
+    {
+      "mix": {
+        "effects": 0.6,
+        "music": 0.4
+      },
+      "before": {
+        "enabled": true,
+        "volumes": {
+          "effects": 0.6,
+          "music": 0.4
+        },
+        "context": "locked",
+        "music": null,
+        "effects": null
+      },
+      "after": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 0.6,
+            "music": 0.4
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.3780000000000001,
+            "targets": {
+              "intensity": 0.000004080157407407408,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00006513007407407409,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 0,
+            "grinding": false,
+            "counts": {
+              "start": 1
+            }
+          }
+        },
+        "tutorial": false,
+        "mode": "playing",
+        "graphs": [
+          {
+            "state": "running",
+            "time": 1.408,
+            "peak": 0.039618298411369324,
+            "gains": [
+              1,
+              0.5099999904632568,
+              0.4000000059604645,
+              0.5797412395477295,
+              1,
+              0.10000000149011612,
+              0.7969717383384705,
+              0,
+              0.27893903851509094,
+              0,
+              0.0000465237935713958,
+              0,
+              0,
+              0,
+              0.7969030737876892,
+              1,
+              0.2789161503314972,
+              1,
+              0.000046508339437423274,
+              1,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 0.6,
+            "music": 0.4
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.5060000000000002,
+            "targets": {
+              "intensity": 0.000005065605999999999,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00008083878399999999,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1
+            }
+          }
+        },
+        "graphs": [
+          {
+            "peak": 0.06303071975708008
+          }
+        ]
+      }
+    },
+    {
+      "mix": {
+        "effects": 1,
+        "music": 0
+      },
+      "before": {
+        "enabled": true,
+        "volumes": {
+          "effects": 1,
+          "music": 0
+        },
+        "context": "locked",
+        "music": null,
+        "effects": null
+      },
+      "after": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 1,
+            "music": 0
+          },
+          "context": "running",
+          "music": {
+            "enabled": false,
+            "ready": [],
+            "loading": [],
+            "errors": {},
+            "requests": 0,
+            "voices": 0,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.3726666666666674,
+            "targets": {
+              "intensity": 0.000004080157407407408,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00006513007407407409,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 0,
+            "grinding": false,
+            "counts": {
+              "start": 1
+            }
+          }
+        },
+        "tutorial": false,
+        "mode": "playing",
+        "graphs": [
+          {
+            "state": "running",
+            "time": 1.4026666666666667,
+            "peak": 0,
+            "gains": [
+              1,
+              0.8500000238418579,
+              0,
+              0,
+              1,
+              0.10000000149011612
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 1,
+            "music": 0
+          },
+          "context": "running",
+          "music": {
+            "enabled": false,
+            "ready": [],
+            "loading": [],
+            "errors": {},
+            "requests": 0,
+            "voices": 0,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.5060000000000002,
+            "targets": {
+              "intensity": 0.000005065605999999999,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00008083878399999999,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 1,
+            "grinding": false,
+            "counts": {
+              "start": 1,
+              "jump": 1
+            }
+          }
+        },
+        "graphs": [
+          {
+            "peak": 0.10534677654504776
+          }
+        ]
+      }
+    },
+    {
+      "mix": {
+        "effects": 0,
+        "music": 1
+      },
+      "before": {
+        "enabled": true,
+        "volumes": {
+          "effects": 0,
+          "music": 1
+        },
+        "context": "locked",
+        "music": null,
+        "effects": null
+      },
+      "after": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 0,
+            "music": 1
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.3726666666666674,
+            "targets": {
+              "intensity": 0.000004316543999999999,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.000068898816,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 0,
+            "grinding": false,
+            "counts": {}
+          }
+        },
+        "tutorial": false,
+        "mode": "playing",
+        "graphs": [
+          {
+            "state": "running",
+            "time": 1.4026666666666667,
+            "peak": 0.0990229994058609,
+            "gains": [
+              1,
+              0,
+              1,
+              0.5797335505485535,
+              1,
+              0.7967652082443237,
+              0,
+              0.2788678705692291,
+              0,
+              0.00004606286165653728,
+              0,
+              0,
+              0,
+              0.79669189453125,
+              1,
+              0.27884116768836975,
+              1,
+              0.000046062854380579665,
+              1,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "state": {
+          "enabled": true,
+          "volumes": {
+            "effects": 0,
+            "music": 1
+          },
+          "context": "running",
+          "music": {
+            "enabled": true,
+            "ready": [
+              "tesla-factory",
+              "spaceport"
+            ],
+            "loading": [],
+            "errors": {},
+            "requests": 2,
+            "voices": 8,
+            "seconds": 60,
+            "origin": 0.03,
+            "transition": null,
+            "phase": 1.511333333333333,
+            "targets": {
+              "intensity": 0.00000480926874074074,
+              "volume": 0.58,
+              "brightness": 9500,
+              "biomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "tonalBiomes": {
+                "spaceport": 1,
+                "tesla-factory": 0
+              },
+              "layers": {
+                "bed": 0.8,
+                "lead": 0.28,
+                "bass": 0.00007675319940740739,
+                "drums": 0
+              }
+            }
+          },
+          "effects": {
+            "voices": 0,
+            "grinding": false,
+            "counts": {}
+          }
+        },
+        "graphs": [
+          {
+            "peak": 0.033423617482185364
+          }
+        ]
+      }
+    },
+    {
+      "mix": {
+        "effects": 0,
+        "music": 0
+      },
+      "before": {
+        "enabled": false,
+        "volumes": {
+          "effects": 0,
+          "music": 0
+        },
+        "context": "locked",
+        "music": null,
+        "effects": null
+      },
+      "after": {
+        "state": {
+          "enabled": false,
+          "volumes": {
+            "effects": 0,
+            "music": 0
+          },
+          "context": "locked",
+          "music": null,
+          "effects": null
+        },
+        "tutorial": false,
+        "mode": "playing",
+        "graphs": []
+      },
+      "jump": {
+        "state": {
+          "enabled": false,
+          "volumes": {
+            "effects": 0,
+            "music": 0
+          },
+          "context": "locked",
+          "music": null,
+          "effects": null
+        },
+        "graphs": []
+      }
+    }
+  ],
+  "errors": [],
+  "faultInjected": false,
+  "physicalPhone": false,
+  "engine": "chromium"
+}

@@ -1,5 +1,5 @@
-import {createMusic} from './music.js?v=4.12.0';
-import {createEffects} from './sound-effects.js?v=4.12.0';
+import {createMusic} from './music.js?v=4.12.1';
+import {createEffects} from './sound-effects.js?v=4.12.1';
 /** One gesture-unlocked audio context shared by music and bounded effects. */
 export function normalisePressureBuffer(buffer){
   if(!buffer.getChannelData)return 1;
@@ -25,7 +25,7 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     }catch{old.clean();}
   }
   function syncThrust(){
-    if(!enabled||!volumes.effects||context?.state!=='running'){stopThrust(true);return;}
+    if(!enabled||!volumes.effects||scene.visible===false||context?.state!=='running'){stopThrust(true);return;}
     if(!thrustWanted){stopThrust();return;}
     if(!thrustBuffer||voice)return;
     try{
@@ -81,6 +81,7 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
     session(true);
     try{
       if(!context||context.state==='closed'){
+        resuming=null;pending=null;
         musicPlayer?.dispose();try{context=new AudioContext({sampleRate:24000});}catch{context=new AudioContext();}master=context.createGain();
         if(context.createDynamicsCompressor){const limiter=context.createDynamicsCompressor();limiter.threshold.value=-4;limiter.knee.value=3;limiter.ratio.value=12;limiter.attack.value=.003;limiter.release.value=.18;master.connect(limiter);limiter.connect(context.destination);}else master.connect(context.destination);
         effectBus=context.createGain();effectBus.gain.value=.85*volumes.effects;effectBus.connect(master);
@@ -98,18 +99,22 @@ export function createSound({storage,AudioContext=globalThis.AudioContext||globa
       if(volumes.effects)prepareThrust();
       musicPlayer?.setEnabled(!!volumes.music);musicPlayer?.update(scene);
       // Safari can be 'interrupted', as well as 'suspended', after leaving the tab.
-      if(context.state!=='running'&&!resuming){
-        resuming=Promise.resolve(context.resume()).then(()=>{
-          resuming=null;const next=pending;pending=null;
-          if(enabled&&volumes.effects&&context.state==='running'&&next&&Date.now()-next.at<300)play(next.args);
+      if(context.state!=='running'){
+        // A blocked resume may remain pending. Every later gesture must be able
+        // to retry; callbacks from a replaced context cannot touch its successor.
+        const active=context,attempt=Promise.resolve(active.resume());resuming=attempt;
+        attempt.then(()=>{
+          if(context!==active)return;
+          if(resuming===attempt)resuming=null;const next=pending;pending=null;
+          if(enabled&&volumes.effects&&scene.visible!==false&&context.state==='running'&&next&&Date.now()-next.at<300){if(next.event)effects?.event(next.event);else play(next.args);}
           syncThrust();
           if(enabled&&volumes.music){musicPlayer?.unlock();musicPlayer?.update(scene);}
-        },()=>{resuming=null;pending=null});
+        },()=>{if(context===active&&resuming===attempt){resuming=null;pending=null;}});
       }
     }catch{}
   }
   return {
-    event(event){if(enabled&&volumes.effects&&scene.visible!==false)effects?.event(event);},
+    event(event){if(!enabled||!volumes.effects||scene.visible===false)return;if(context?.state==='running')effects?.event(event);else if(resuming)pending={event,at:Date.now()};},
     setScene(next){scene=next;musicPlayer?.update(scene);effects?.grind(enabled&&!!volumes.effects&&scene.visible!==false&&scene.mode==='playing'&&scene.grinding,scene.speed);},
     setVisible(visible){scene={...scene,visible};musicPlayer?.update(scene);if(!visible){pending=null;stopThrust(true);effects?.stop();try{context?.suspend?.()?.catch?.(()=>{});}catch{}}},
     get inspect(){return {enabled,volumes:{...volumes},context:context?.state||'locked',music:musicPlayer?.inspect()||null,effects:effects?.inspect()||null};},

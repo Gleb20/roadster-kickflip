@@ -1,3 +1,7 @@
+# Audio unlock recovery — 4.12.1
+
+Each explicit unlock gesture can retry an unresolved AudioContext resume. Resume callbacks belong to their original context; a stale completion/rejection cannot clear a new context or newer pending cue. A canonical start/game cue can wait for asynchronous resume in the same single, 300 ms pending slot used by legacy confirmation tones. Hide/mute clears that slot, and hidden pressure audio stays stopped. Saved independent volumes and explicit mute remain authoritative. The 4.12.0 score arrangement and musical transitions are unchanged. [Reproduction, actual-signal checks and limits](verification/2026-10-27-audio-start-v4121/README.md). The sufficient failure path was reproduced with an injected blocked first resume; the user's physical iPhone cause is not yet established.
+
 # TJ-004 / 4.12.0 — published score-driven music
 
 User decisions on 27 October: earned instrumentation follows score/challenge and reaches the full arrangement at 30,000; boost gives a temporary accent; biome music flows on a bar without a pause; training is light at normal tempo. The selected Spaceport A and Factory B sources and all eight 60-second MP3 loops are unchanged.

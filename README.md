@@ -1,3 +1,7 @@
+## Audio start / 4.12.1 — verified candidate
+
+Fixes a shared-audio lockout when the first resume stays pending: later gestures retry, and the initial canonical cue survives asynchronous activation once. Existing score-driven music and saved mute remain. 279 tests/checks and real first-touch output measurements pass; physical iPhone confirmation remains open. [Evidence and bounded rollback](docs/verification/2026-10-27-audio-start-v4121/README.md).
+
 ## TJ-004 / 4.12.0 — published
 
 [Play 4.12.0](https://gleb20.github.io/roadster-kickflip/?v=4.12.0). Score progressively introduces bass, drums and the full lead by 30,000; boost adds a temporary accent. Light training retains the normal tempo, and biome music crosses on the shared bar clock without stopping the rhythm. Original recordings, gameplay and ranking remain. 275 tests/checks, 55 local browser, 8 upgrade and 28 public checks pass; all 194 live hashes match. Physical iPhone/listening acceptance remains open. Close the old PWA/tabs and reopen if the old version persists, preserving site data. [Evidence and rollback](docs/verification/2026-10-27-tj004-v4120/README.md).

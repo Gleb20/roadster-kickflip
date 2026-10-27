@@ -1,8 +1,8 @@
-import {GAMEPLAY as C} from './gameplay-config.js?v=4.12.0';
-import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.12.0';
-import {createGrind,advanceRail} from './rails.js?v=4.12.0';
-import {advanceBoosters,activeBooster,collectBooster} from './boosters.js?v=4.12.0';
-import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.12.0';
+import {GAMEPLAY as C} from './gameplay-config.js?v=4.12.1';
+import {createFlight,createPace,createEconomy,launch,advanceFlight,advancePace,advanceEconomy,advanceStreak,settleLanding,passObstacle,sweptCollision,nearWindow,rewardAction} from './gameplay.js?v=4.12.1';
+import {createGrind,advanceRail} from './rails.js?v=4.12.1';
+import {advanceBoosters,activeBooster,collectBooster} from './boosters.js?v=4.12.1';
+import {minimumForwardSight,advanceSpeedView} from './speed-feedback.js?v=4.12.1';
 export const ENCOUNTER=Object.freeze({tickBudget:18000,policyBudget:48,window:.18,sample:.03,rest:.25,accentRest:.45,airCooldown:14,railAirCooldown:16,tallPreparation:.74,tallErrorPreparation:.64});
 export const encounterBudget=()=>({ticks:0,policies:0,candidates:0,exhausted:false});
 // Minimum forward sight over supported viewports. Live validation advances the

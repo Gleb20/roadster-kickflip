@@ -1,0 +1,90 @@
+TAP version 13
+# Subtest: a later gesture retries an unresolved resume, restoring both music and effects
+not ok 1 - a later gesture retries an unresolved resume, restoring both music and effects
+  ---
+  duration_ms: 2.393042
+  location: '/private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:21:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    new gesture must retry rather than remain locked behind the first promise
+    
+    1 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:24:24)
+    async Test.run (node:internal/test_runner/test:797:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: the canonical start cue survives asynchronous first-gesture resume exactly once
+not ok 2 - the canonical start cue survives asynchronous first-gesture resume exactly once
+  ---
+  duration_ms: 1.060708
+  location: '/private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    undefined !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:30:56)
+    async Test.run (node:internal/test_runner/test:797:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: an earlier resume rejection cannot discard a newer pending cue
+not ok 3 - an earlier resume rejection cannot discard a newer pending cue
+  ---
+  duration_ms: 0.732958
+  location: '/private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:33:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'resolve')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:36:17)
+    async Test.run (node:internal/test_runner/test:797:9)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: a stale resume cannot clear the new context pending cue; mute and hidden discard queued cues
+not ok 4 - a stale resume cannot clear the new context pending cue; mute and hidden discard queued cues
+  ---
+  duration_ms: 0.630333
+  location: '/private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:38:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    a replacement context starts its own resume
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///private/tmp/tesla-audio-start-parent-v4120/tests/audio-unlock.test.mjs:40:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 52.801792

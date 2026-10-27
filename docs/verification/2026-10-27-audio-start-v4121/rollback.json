@@ -1,0 +1,11 @@
+{
+  "parent": "94b33f12830f8933fbf5371e60a941a8bfa4648e",
+  "patchSha256": "fa94d037422bf40954111c1c68ee793f715d16f38f6d451c91442206b8b2ff19",
+  "forwardTests": 279,
+  "forwardChecks": "passed",
+  "reverseTests": 275,
+  "reverseChecks": "passed",
+  "parentDiffAfterReverse": "empty",
+  "includesMatchingRegressionTests": true,
+  "dataAndBackendRollback": false
+}

@@ -1,0 +1,16 @@
+{
+  "version": "4.12.1",
+  "parent": "94b33f12830f8933fbf5371e60a941a8bfa4648e",
+  "semanticRuntimeChanges": [
+    "src/sound.js"
+  ],
+  "otherRuntimeChanges": "cache-version URLs/metadata only",
+  "ruleset": "roadster-v4.11.0",
+  "audioAssetsChanged": false,
+  "gameplayChanged": false,
+  "backendChanged": false,
+  "physicalIPhone": false,
+  "webKitRunner": "headless and headed native runner crashed before page creation on macOS 26.0.1; this is infrastructure, not a game test result",
+  "userSettingsAnswer": "not received at verification time",
+  "causeOnUsersPhone": "not directly established; a sufficient silence/retry failure condition is reproduced on the real Chromium audio graph"
+}
