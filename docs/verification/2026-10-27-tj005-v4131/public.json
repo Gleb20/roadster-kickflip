@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "desktop library has both biomes and all 29 enemies",
+    "rarity edit persists as a local draft",
+    "reload restores draft without silently changing shipped content",
+    "production preview booted with saves/ranking disabled",
+    "draft uses actual gameplay after real keyboard input",
+    "selected image exposes exact dimensions",
+    "original material downloads without conversion",
+    "bad image keeps selected material and draft",
+    "uploaded PNG reaches actual sprite renderer",
+    "portable export contains every resource and edited rarity",
+    "incompatible import is atomic",
+    "portable package imports all decoded materials",
+    "invalid audio is rejected without losing the package",
+    "assembled music audition starts from explicit gesture",
+    "preview never contacts ranking",
+    "desktop page has no horizontal overflow at Mac viewport",
+    "mobile game boots with the coordinated version",
+    "mobile start and pause remain usable",
+    "coherent package boots offline",
+    "studio and shared contract load offline from the same release",
+    "no JavaScript runtime errors"
+  ],
+  "errors": [],
+  "requests": []
+}

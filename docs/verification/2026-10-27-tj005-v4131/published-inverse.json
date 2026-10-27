@@ -1,0 +1,9 @@
+{
+  "runtimeCommit": "149d1aca26d1d1863fe689fd81710b7c3d44661f",
+  "candidateTree": "08f753a65d94cce1ac72e13a27651ab799089932",
+  "patchInverseTree": "27323ce78a3cc4304819021b8447f3573202b012",
+  "fullFeatureInverseTree": "8a1d5fabf8f55fd8acf30c686adc7696fa851d6b",
+  "exact": true,
+  "physicalPhone": false,
+  "backendChanged": false
+}

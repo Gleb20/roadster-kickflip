@@ -1,3 +1,11 @@
+## TJ-005 / 4.13.1 - published and publicly verified
+
+[Material Studio for Mac](https://gleb20.github.io/roadster-kickflip/studio/index.html?v=4.13.1), [game 4.13.1](https://gleb20.github.io/roadster-kickflip/?v=4.13.1). Runtime 149d1aca26d1d1863fe689fd81710b7c3d44661f; Pages 40566780186 succeeded. All 204 live resources and service-worker bytes match. 300 game tests, 16 server tests, 19 frozen manifests; 21 local and 21 public browser checks pass without runtime errors. Final preview makes zero ranking requests; no scores were submitted.
+
+125 materials, 29 obstacles and two biomes share one package. Inspect/download originals, export/import a portable package, replace files with size/layout checks, restore a local draft, edit descriptions/rarity and preview the actual game renderer/music mix. Biome owns background/floor/music; HUD stays shared. Current equal common weights preserve behavior. Draft rarity can change now; ranked changes require a new frozen server ruleset. Registered scene profiles retain authored atlas layouts. Cloud publishing and a universal compositor are subsequent cards.
+
+Nine upgrade checks preserve settings, collection and outbox and reject incomplete content. Existing TJ-D02 closed-tab activation boundary remains; TJ-D01 needs physical frame timing. Actual inverses of both published commits restore exact 4.12.1 tree 8a1d5fab (279 tests/check passed). Original dirty runtime/index/HEAD preserved. Work: /tmp/tesla-tj005-discovery-20261027, branch codex/tj005-content-v4131-published. Next independent card: TJ-006. A bounded TJ-D02 diagnosis is proposed, not started. Human Mac/iPhone acceptance and subjective music quality remain separate.
+
 ## TJ-005 / 4.13.1 — preview isolation correction
 
 Public-host acceptance of 4.13.0 found an extra read-only ranking preload in the preview. No scores were submitted. 4.13.1 disables that startup path and blocks preview ranking transport; game behavior/content/default rarity and the 4.11.0 ruleset remain unchanged. 300 tests and all checks pass. [Patch evidence and rollback](verification/2026-10-27-tj005-v4131/README.md). Final public-host verification follows before accepting this release. Earlier candidate notes below are historical.
